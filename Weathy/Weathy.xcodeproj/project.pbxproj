@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C6D6B3632E6D1F7D4A96051 /* Pods_Weathy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */; };
 		633984202599B1F400339615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339841F2599B1F400339615 /* AppDelegate.swift */; };
 		633984222599B1F400339615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633984212599B1F400339615 /* SceneDelegate.swift */; };
 		6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 633984282599B1F400339615 /* Weathy.xcdatamodeld */; };
@@ -22,6 +23,9 @@
 		6339842B2599B1F600339615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6339842E2599B1F600339615 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		633984302599B1F600339615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79A77C707317896743084ED5 /* Pods-Weathy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathy.release.xcconfig"; path = "Target Support Files/Pods-Weathy/Pods-Weathy.release.xcconfig"; sourceTree = "<group>"; };
+		B97C9AB444242244F6D69B1C /* Pods-Weathy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathy.debug.xcconfig"; path = "Target Support Files/Pods-Weathy/Pods-Weathy.debug.xcconfig"; sourceTree = "<group>"; };
+		EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weathy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6D6B3632E6D1F7D4A96051 /* Pods_Weathy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				6339841E2599B1F400339615 /* Weathy */,
 				6339841D2599B1F400339615 /* Products */,
+				D59EADF23CE8B3CB8DDCFFA2 /* Pods */,
+				812ECE36550959E2EC31B12D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +151,24 @@
 			path = Xibs;
 			sourceTree = "<group>";
 		};
+		812ECE36550959E2EC31B12D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D59EADF23CE8B3CB8DDCFFA2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B97C9AB444242244F6D69B1C /* Pods-Weathy.debug.xcconfig */,
+				79A77C707317896743084ED5 /* Pods-Weathy.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,6 +176,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 633984332599B1F600339615 /* Build configuration list for PBXNativeTarget "Weathy" */;
 			buildPhases = (
+				5039B58CE70327E219DE4037 /* [CP] Check Pods Manifest.lock */,
 				633984182599B1F400339615 /* Sources */,
 				633984192599B1F400339615 /* Frameworks */,
 				6339841A2599B1F400339615 /* Resources */,
@@ -207,6 +233,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5039B58CE70327E219DE4037 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Weathy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		633984182599B1F400339615 /* Sources */ = {
@@ -351,6 +402,7 @@
 		};
 		633984342599B1F600339615 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B97C9AB444242244F6D69B1C /* Pods-Weathy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -370,6 +422,7 @@
 		};
 		633984352599B1F600339615 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79A77C707317896743084ED5 /* Pods-Weathy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
