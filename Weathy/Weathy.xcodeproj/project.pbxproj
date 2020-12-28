@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		633984202599B1F400339615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339841F2599B1F400339615 /* AppDelegate.swift */; };
 		633984222599B1F400339615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633984212599B1F400339615 /* SceneDelegate.swift */; };
-		633984242599B1F400339615 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633984232599B1F400339615 /* ViewController.swift */; };
-		633984272599B1F400339615 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633984252599B1F400339615 /* Main.storyboard */; };
 		6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 633984282599B1F400339615 /* Weathy.xcdatamodeld */; };
 		6339842C2599B1F600339615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6339842B2599B1F600339615 /* Assets.xcassets */; };
 		6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6339842D2599B1F600339615 /* LaunchScreen.storyboard */; };
@@ -20,8 +18,6 @@
 		6339841C2599B1F400339615 /* Weathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339841F2599B1F400339615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		633984212599B1F400339615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		633984232599B1F400339615 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		633984262599B1F400339615 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		633984292599B1F400339615 /* Weathy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weathy.xcdatamodel; sourceTree = "<group>"; };
 		6339842B2599B1F600339615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6339842E2599B1F600339615 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,16 +54,94 @@
 		6339841E2599B1F400339615 /* Weathy */ = {
 			isa = PBXGroup;
 			children = (
-				6339841F2599B1F400339615 /* AppDelegate.swift */,
-				633984212599B1F400339615 /* SceneDelegate.swift */,
-				633984232599B1F400339615 /* ViewController.swift */,
-				633984252599B1F400339615 /* Main.storyboard */,
-				6339842B2599B1F600339615 /* Assets.xcassets */,
-				6339842D2599B1F600339615 /* LaunchScreen.storyboard */,
+				63398439259A2B2A00339615 /* Resources */,
+				63398438259A2B2100339615 /* Sources */,
 				633984302599B1F600339615 /* Info.plist */,
 				633984282599B1F400339615 /* Weathy.xcdatamodeld */,
 			);
 			path = Weathy;
+			sourceTree = "<group>";
+		};
+		63398438259A2B2100339615 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				63398440259A2BCB00339615 /* Cells */,
+				63398441259A2BD100339615 /* Classes */,
+				63398442259A2BDA00339615 /* Extensions */,
+				63398443259A2BE700339615 /* Models */,
+				6339843F259A2BB600339615 /* VCs */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		63398439259A2B2A00339615 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6339841F2599B1F400339615 /* AppDelegate.swift */,
+				633984212599B1F400339615 /* SceneDelegate.swift */,
+				6339842B2599B1F600339615 /* Assets.xcassets */,
+				6339843E259A2B7800339615 /* APIServices */,
+				6339843D259A2B6C00339615 /* Storyboards */,
+				63398444259A2BF400339615 /* Xibs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6339843D259A2B6C00339615 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6339842D2599B1F600339615 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		6339843E259A2B7800339615 /* APIServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIServices;
+			sourceTree = "<group>";
+		};
+		6339843F259A2BB600339615 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
+		63398440259A2BCB00339615 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		63398441259A2BD100339615 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		63398442259A2BDA00339615 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		63398443259A2BE700339615 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		63398444259A2BF400339615 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Xibs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,7 +203,6 @@
 			files = (
 				6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */,
 				6339842C2599B1F600339615 /* Assets.xcassets in Resources */,
-				633984272599B1F400339615 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +213,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				633984242599B1F400339615 /* ViewController.swift in Sources */,
 				6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */,
 				633984202599B1F400339615 /* AppDelegate.swift in Sources */,
 				633984222599B1F400339615 /* SceneDelegate.swift in Sources */,
@@ -150,14 +222,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		633984252599B1F400339615 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				633984262599B1F400339615 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6339842D2599B1F600339615 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
