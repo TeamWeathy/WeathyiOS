@@ -43,6 +43,10 @@ class RecordTextVC: UIViewController {
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
 }
 
 //MARK: - Style
@@ -105,6 +109,11 @@ extension RecordTextVC: UITextViewDelegate {
         if text == "\n" {
             recordTextField.resignFirstResponder()
         }
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        recordTextField.resignFirstResponder()
         return true
     }
 }
