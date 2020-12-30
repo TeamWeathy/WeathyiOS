@@ -8,6 +8,23 @@
 import UIKit
 
 class RecordRateVC: UIViewController {
+    
+    //MARK: - Custom Variables
+    
+    
+    //MARK: - IBOutlets
+    
+    @IBOutlet var backBtn: UIButton!
+    @IBOutlet var dismissBtn: UIButton!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var stepOneImageView: UIImageView!
+    @IBOutlet var stepTwoImageView: UIImageView!
+    @IBOutlet var rateCollectionView: UICollectionView!
+    @IBOutlet var nextBtn: UIButton!
+    
+    
+    //MARK: - LifeCycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,4 +33,10 @@ class RecordRateVC: UIViewController {
     }
     
 
+}
+
+//MARK: - Style
+
+extension RecordRateVC {
+    
 }
