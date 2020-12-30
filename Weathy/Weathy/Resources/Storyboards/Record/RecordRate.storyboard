@@ -55,7 +55,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0QO-lC-RRW">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecordRateCVC" id="0QO-lC-RRW" customClass="RecordRateCVC" customModule="Weathy" customModuleProvider="target">
                                         <rect key="frame" x="0.5" y="0.0" width="347" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bDa-Kd-dRK">
@@ -93,6 +93,11 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="347" height="80"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="1QV-0q-Sq6" id="knR-fq-bUj"/>
+                                            <outlet property="emojiImageView" destination="tWe-Lv-iO7" id="eBs-ih-3uD"/>
+                                            <outlet property="titleLabel" destination="g1i-Jh-DPs" id="J4r-GH-JvP"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
