@@ -45,6 +45,8 @@ class RecordRateVC: UIViewController {
         
         rateCollectionView.dataSource = self
         rateCollectionView.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+
 
         // Do any additional setup after loading the view.
     }
@@ -52,7 +54,12 @@ class RecordRateVC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func nextBtnTap(_ sender: Any) {
+        let nextStoryboard = UIStoryboard(name: "RecordText", bundle: nil)
+        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
+            return
+        }
         
+        self.navigationController?.pushViewController(dvc, animated: true)
     }
     
 
@@ -184,3 +191,12 @@ extension RecordRateVC: UICollectionViewDelegateFlowLayout {
             return UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0)
         }
 }
+
+
+//MARK: - UIGestureRecognizerDelegate
+
+extension UIViewController : UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool { return true
+    }
+}
+

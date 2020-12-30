@@ -40,11 +40,19 @@ class RecordTextVC: UIViewController {
         setFinishBtn()
         
         recordTextField.delegate = self
+
         
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    
+    //MARK: - IBActions
+    
+    @IBAction func backBtnTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

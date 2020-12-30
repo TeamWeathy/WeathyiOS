@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Aw-N5-wnx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U0A-fZ-HER">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,10 +10,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Zd3-cD-Y4N">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NDp-xd-pTi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="U0A-fZ-HER" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9y7-4R-bw7">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2Aw-N5-wnx" kind="relationship" relationship="rootViewController" id="jCp-N6-veV"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-843" y="127"/>
+        </scene>
         <!--Record RateVC-->
         <scene sceneID="F3D-Es-7nd">
             <objects>
-                <viewController id="2Aw-N5-wnx" customClass="RecordRateVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordRateVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Aw-N5-wnx" customClass="RecordRateVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m6x-WU-vaf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,6 +158,7 @@
                             <constraint firstItem="TEz-Je-2hL" firstAttribute="leading" secondItem="MLF-pb-L30" secondAttribute="leading" constant="33" id="z1R-Zs-tk8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ybh-cn-G6G"/>
                     <connections>
                         <outlet property="backBtn" destination="qnR-AN-DNU" id="JpQ-1j-khm"/>
                         <outlet property="dismissBtn" destination="xYK-8u-3D2" id="ICF-sY-GJ6"/>
