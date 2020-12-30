@@ -23,6 +23,13 @@
 		63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DEB269259CD4EF00A94488 /* DummyXib.swift */; };
 		63DEB26E259CD54100A94488 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DEB26D259CD54100A94488 /* APIConstants.swift */; };
 		63DEB272259CD55A00A94488 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DEB271259CD55A00A94488 /* NetworkResult.swift */; };
+		63DEB290259CF67200A94488 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB289259CF67200A94488 /* Roboto-Medium.ttf */; };
+		63DEB291259CF67200A94488 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28A259CF67200A94488 /* Roboto-Light.ttf */; };
+		63DEB292259CF67200A94488 /* AppleSDGothicNeoM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28B259CF67200A94488 /* AppleSDGothicNeoM.ttf */; };
+		63DEB293259CF67200A94488 /* AppleSDGothicNeoB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28C259CF67200A94488 /* AppleSDGothicNeoB.ttf */; };
+		63DEB294259CF67200A94488 /* AppleSDGothicNeoR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28D259CF67200A94488 /* AppleSDGothicNeoR.ttf */; };
+		63DEB295259CF67200A94488 /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28E259CF67200A94488 /* AppleSDGothicNeoSB.ttf */; };
+		63DEB296259CF67200A94488 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28F259CF67200A94488 /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +50,13 @@
 		63DEB269259CD4EF00A94488 /* DummyXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyXib.swift; sourceTree = "<group>"; };
 		63DEB26D259CD54100A94488 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		63DEB271259CD55A00A94488 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		63DEB289259CF67200A94488 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		63DEB28A259CF67200A94488 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		63DEB28B259CF67200A94488 /* AppleSDGothicNeoM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoM.ttf; sourceTree = "<group>"; };
+		63DEB28C259CF67200A94488 /* AppleSDGothicNeoB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoB.ttf; sourceTree = "<group>"; };
+		63DEB28D259CF67200A94488 /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
+		63DEB28E259CF67200A94488 /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
+		63DEB28F259CF67200A94488 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		79A77C707317896743084ED5 /* Pods-Weathy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathy.release.xcconfig"; path = "Target Support Files/Pods-Weathy/Pods-Weathy.release.xcconfig"; sourceTree = "<group>"; };
 		B97C9AB444242244F6D69B1C /* Pods-Weathy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathy.debug.xcconfig"; path = "Target Support Files/Pods-Weathy/Pods-Weathy.debug.xcconfig"; sourceTree = "<group>"; };
 		EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weathy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +118,7 @@
 		63398439259A2B2A00339615 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63DEB288259CF64700A94488 /* Fonts */,
 				6339841F2599B1F400339615 /* AppDelegate.swift */,
 				633984212599B1F400339615 /* SceneDelegate.swift */,
 				6339842B2599B1F600339615 /* Assets.xcassets */,
@@ -179,6 +194,20 @@
 				63DEB271259CD55A00A94488 /* NetworkResult.swift */,
 			);
 			path = APIServices;
+			sourceTree = "<group>";
+		};
+		63DEB288259CF64700A94488 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				63DEB28C259CF67200A94488 /* AppleSDGothicNeoB.ttf */,
+				63DEB28B259CF67200A94488 /* AppleSDGothicNeoM.ttf */,
+				63DEB28D259CF67200A94488 /* AppleSDGothicNeoR.ttf */,
+				63DEB28E259CF67200A94488 /* AppleSDGothicNeoSB.ttf */,
+				63DEB28A259CF67200A94488 /* Roboto-Light.ttf */,
+				63DEB289259CF67200A94488 /* Roboto-Medium.ttf */,
+				63DEB28F259CF67200A94488 /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		812ECE36550959E2EC31B12D /* Frameworks */ = {
@@ -257,8 +286,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DEB295259CF67200A94488 /* AppleSDGothicNeoSB.ttf in Resources */,
+				63DEB294259CF67200A94488 /* AppleSDGothicNeoR.ttf in Resources */,
 				6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */,
 				6339842C2599B1F600339615 /* Assets.xcassets in Resources */,
+				63DEB293259CF67200A94488 /* AppleSDGothicNeoB.ttf in Resources */,
+				63DEB291259CF67200A94488 /* Roboto-Light.ttf in Resources */,
+				63DEB296259CF67200A94488 /* Roboto-Regular.ttf in Resources */,
+				63DEB290259CF67200A94488 /* Roboto-Medium.ttf in Resources */,
+				63DEB292259CF67200A94488 /* AppleSDGothicNeoM.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +502,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Weathy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,6 +523,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Weathy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
