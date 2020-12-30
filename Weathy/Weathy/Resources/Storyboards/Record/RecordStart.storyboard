@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lhy-e1-mPL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Mt-YM-zcS">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,6 +9,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="OHF-PQ-VLj">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="5Mt-YM-zcS" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ep-Lb-buJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lhy-e1-mPL" kind="relationship" relationship="rootViewController" id="bN7-6O-OTp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dbo-ax-J5V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1045" y="76"/>
+        </scene>
         <!--Record StartVC-->
         <scene sceneID="N9W-Si-3Xf">
             <objects>
@@ -18,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6l-mk-2nU">
-                                <rect key="frame" x="33" y="59" width="17" height="22"/>
+                                <rect key="frame" x="33" y="59" width="18" height="22"/>
                                 <state key="normal" image="xmark" catalog="system"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMe-eY-fNF">
@@ -135,6 +150,7 @@
                             <constraint firstItem="W6l-mk-2nU" firstAttribute="leading" secondItem="4lq-qL-kGf" secondAttribute="leading" constant="33" id="vhB-Rx-UrB"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="t9L-vO-JdZ"/>
                     <connections>
                         <outlet property="boxLocationLabel" destination="UzI-BB-PxQ" id="ttR-gm-gfj"/>
                         <outlet property="boxTimeLabel" destination="82E-LE-4z7" id="pUX-NU-pFT"/>
@@ -153,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fb-HE-n1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-474" y="100"/>
+            <point key="canvasLocation" x="-216" y="76"/>
         </scene>
     </scenes>
     <resources>

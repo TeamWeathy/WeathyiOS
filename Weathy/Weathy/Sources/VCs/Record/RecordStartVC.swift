@@ -53,8 +53,6 @@ class RecordStartVC: UIViewController {
     }
     
 
-   
-
 }
 
 //MARK: - Style
@@ -72,8 +70,6 @@ extension RecordStartVC {
     }
     
     func setBox() {
-//        boxView.setBorder(borderColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.75), borderWidth: 2)
-        
         boxView.layer.borderWidth = 1
         boxView.layer.borderColor = UIColor.lightGray.cgColor
         boxView.layer.cornerRadius = 35
