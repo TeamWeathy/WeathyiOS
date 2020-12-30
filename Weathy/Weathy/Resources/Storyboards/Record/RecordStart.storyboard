@@ -21,16 +21,25 @@
                                 <rect key="frame" x="33" y="59" width="17" height="22"/>
                                 <state key="normal" image="xmark" catalog="system"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMe-eY-fNF">
+                                <rect key="frame" x="33" y="114" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4lq-qL-kGf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="W6l-mk-2nU" firstAttribute="top" secondItem="4lq-qL-kGf" secondAttribute="top" constant="15" id="BCk-4a-Tev"/>
+                            <constraint firstItem="uMe-eY-fNF" firstAttribute="leading" secondItem="W6l-mk-2nU" secondAttribute="leading" id="g3c-Cm-Gx5"/>
+                            <constraint firstItem="uMe-eY-fNF" firstAttribute="top" secondItem="W6l-mk-2nU" secondAttribute="bottom" constant="33" id="rbN-Mo-D7m"/>
                             <constraint firstItem="W6l-mk-2nU" firstAttribute="leading" secondItem="4lq-qL-kGf" secondAttribute="leading" constant="33" id="vhB-Rx-UrB"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="dismissBtn" destination="W6l-mk-2nU" id="bPf-GI-Ef6"/>
+                        <outlet property="titleLabel" destination="uMe-eY-fNF" id="mFF-AG-nU6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fb-HE-n1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
