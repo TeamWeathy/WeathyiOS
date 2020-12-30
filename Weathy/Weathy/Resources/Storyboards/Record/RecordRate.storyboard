@@ -46,6 +46,9 @@
                                     <constraint firstAttribute="width" secondItem="i8j-da-Hpf" secondAttribute="height" multiplier="309:55" id="afC-F6-wtp"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextBtnTap:" destination="2Aw-N5-wnx" eventType="touchUpInside" id="UGE-s6-Ciw"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TEz-Je-2hL">
                                 <rect key="frame" x="33" y="226" width="348" height="534"/>

@@ -18,7 +18,7 @@ class RecordRateVC: UIViewController {
         let explanation: String
         var isSelected: Bool
     }
-    
+
     var rate: [Rates] = []
     
     
@@ -40,13 +40,19 @@ class RecordRateVC: UIViewController {
         super.viewDidLoad()
         
         setAboveCollection()
-        setNextBtn()
+        setNextBtnDisabled()
         setCV()
         
         rateCollectionView.dataSource = self
         rateCollectionView.delegate = self
 
         // Do any additional setup after loading the view.
+    }
+    
+    //MARK: - IBActions
+    
+    @IBAction func nextBtnTap(_ sender: Any) {
+        
     }
     
 
@@ -79,7 +85,16 @@ extension RecordRateVC {
         ]
     }
     
-    func setNextBtn() {
+    func setNextBtnEnabled() {
+        nextBtn.isUserInteractionEnabled = true
+        nextBtn.backgroundColor = UIColor.green
+        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.layer.cornerRadius = 30
+    }
+    
+    func setNextBtnDisabled() {
+        nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = UIColor.lightGray
         nextBtn.setTitle("다음", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
@@ -128,7 +143,14 @@ extension RecordRateVC: UICollectionViewDataSource {
         /// 선택된 거 빼고 모두 isSelected를 false로 변경
         for i in 0...rate.count-1 {
             if i == indexPath.item {
-                rate[i].isSelected = true
+                rate[i].isSelected = !rate[i].isSelected
+                
+                if rate[i].isSelected == true {
+                    self.setNextBtnEnabled()
+                } else {
+                    self.setNextBtnDisabled()
+                }
+                
             } else {
                 rate[i].isSelected = false
             }
