@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		374D48D1259CEBF000152B9A /* RecordStart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48D0259CEBF000152B9A /* RecordStart.storyboard */; };
+		374D48D4259CEC0500152B9A /* RecordStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48D3259CEC0500152B9A /* RecordStartVC.swift */; };
 		4C6D6B3632E6D1F7D4A96051 /* Pods_Weathy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */; };
 		633984202599B1F400339615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339841F2599B1F400339615 /* AppDelegate.swift */; };
 		633984222599B1F400339615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633984212599B1F400339615 /* SceneDelegate.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		374D48D0259CEBF000152B9A /* RecordStart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordStart.storyboard; sourceTree = "<group>"; };
+		374D48D3259CEC0500152B9A /* RecordStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStartVC.swift; sourceTree = "<group>"; };
 		6339841C2599B1F400339615 /* Weathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339841F2599B1F400339615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		633984212599B1F400339615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +64,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		374D48CE259CEBD300152B9A /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				374D48D0259CEBF000152B9A /* RecordStart.storyboard */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		374D48CF259CEBE100152B9A /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				374D48D3259CEC0500152B9A /* RecordStartVC.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
 		633984132599B1F400339615 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +137,7 @@
 		6339843D259A2B6C00339615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				374D48CE259CEBD300152B9A /* Record */,
 				6339842D2599B1F600339615 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -125,6 +146,7 @@
 		6339843F259A2BB600339615 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				374D48CF259CEBE100152B9A /* Record */,
 				63DEB266259CD4D600A94488 /* DummyVC.swift */,
 			);
 			path = VCs;
@@ -258,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */,
+				374D48D1259CEBF000152B9A /* RecordStart.storyboard in Resources */,
 				6339842C2599B1F600339615 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +336,7 @@
 			files = (
 				6339846C259A431100339615 /* UIView+Extensions.swift in Sources */,
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
+				374D48D4259CEC0500152B9A /* RecordStartVC.swift in Sources */,
 				63DEB26E259CD54100A94488 /* APIConstants.swift in Sources */,
 				63DEB267259CD4D600A94488 /* DummyVC.swift in Sources */,
 				63398462259A425200339615 /* GenericResponse.swift in Sources */,
