@@ -24,7 +24,7 @@ class RecordTextVC: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
     @IBOutlet var textViewSurroundingView: UIView!
-    @IBOutlet var recordTextField: UITextView!
+    @IBOutlet var recordTextView: UITextView!
     @IBOutlet var wordCountLabel: UILabel!
     @IBOutlet var finishBtn: UIButton!
     
@@ -39,7 +39,7 @@ class RecordTextVC: UIViewController {
         textViewSetupView()
         setFinishBtn()
         
-        recordTextField.delegate = self
+        recordTextView.delegate = self
 
         
     }
@@ -76,19 +76,19 @@ extension RecordTextVC {
         textViewSurroundingView.layer.borderColor = UIColor(red: 0.506, green: 0.886, blue: 0.824, alpha: 1).cgColor
         textViewSurroundingView.layer.borderWidth = 1
         textViewSurroundingView.layer.cornerRadius = 15
-        recordTextField.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
+        recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
         wordCountLabel.text = "\(wordCount)/\(maxWordCount)"
     }
     
     func textViewSetupView() {
-        if recordTextField.text == self.placeholder {
-            recordTextField.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
-            recordTextField.text = ""
-            recordTextField.textColor = UIColor.black
-        } else if recordTextField.text == "" {
-            recordTextField.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
-            recordTextField.text = self.placeholder
-            recordTextField.textColor = UIColor.lightGray
+        if recordTextView.text == self.placeholder {
+            recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
+            recordTextView.text = ""
+            recordTextView.textColor = UIColor.black
+        } else if recordTextView.text == "" {
+            recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
+            recordTextView.text = self.placeholder
+            recordTextView.textColor = UIColor.lightGray
         }
     }
     
@@ -115,13 +115,13 @@ extension RecordTextVC: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
-            recordTextField.resignFirstResponder()
+            recordTextView.resignFirstResponder()
         }
         return true
     }
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        recordTextField.resignFirstResponder()
+        recordTextView.resignFirstResponder()
         return true
     }
 }

@@ -104,7 +104,7 @@
                         <outlet property="backBtn" destination="eck-6J-Cip" id="tnM-sQ-Ijp"/>
                         <outlet property="dismissBtn" destination="Xi7-JT-pxI" id="dHZ-O3-joQ"/>
                         <outlet property="finishBtn" destination="W20-Yo-UYI" id="kCa-e2-913"/>
-                        <outlet property="recordTextField" destination="H2S-vH-8kf" id="qRq-Cd-pYu"/>
+                        <outlet property="recordTextView" destination="H2S-vH-8kf" id="qRq-Cd-pYu"/>
                         <outlet property="subTitleLabel" destination="cFJ-j5-X5e" id="5xd-C3-yGt"/>
                         <outlet property="textViewSurroundingView" destination="2cZ-HM-yfi" id="tRS-ft-pGa"/>
                         <outlet property="titleLabel" destination="IUj-sM-iqV" id="JyT-P8-bGs"/>

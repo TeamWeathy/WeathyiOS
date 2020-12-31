@@ -19,7 +19,7 @@ class RecordRateCVC: UICollectionViewCell {
         emojiImageView.image = UIImage(named: "\(imageName)")
         
         titleLabel.text = "\(titleText)"
-//        titleLabel.textColor = UIColor.
+        titleLabel.textColor = UIColor(named: titleColor)
         titleLabel.font = UIFont(name: "AppleSDGothicNeoSB00", size: 17)
         
         descriptionLabel.text = "\(description)"

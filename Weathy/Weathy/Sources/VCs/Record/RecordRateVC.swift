@@ -88,11 +88,11 @@ extension RecordRateVC {
     
     func setCV() {
         rate = [
-            Rates(emoji: "pencil.circle", title: "너무 더워요", titleColor: "black", explanation: "훨씬 얇게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "pencil.circle", title: "더워요", titleColor: "black", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "pencil.circle", title: "적당해요", titleColor: "black", explanation: "딱 적당하게 입었어요.", isSelected: false),
-            Rates(emoji: "pencil.circle", title: "추워요", titleColor: "black", explanation: "좀 더 따뜻하게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "pencil.circle", title: "너무 추워요", titleColor: "black", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
+            Rates(emoji: "pencil.circle", title: "너무 더워요", titleColor: ".red", explanation: "훨씬 얇게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "pencil.circle", title: "더워요", titleColor: "orange", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "pencil.circle", title: "적당해요", titleColor: "yellow", explanation: "딱 적당하게 입었어요.", isSelected: false),
+            Rates(emoji: "pencil.circle", title: "추워요", titleColor: "green", explanation: "좀 더 따뜻하게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "pencil.circle", title: "너무 추워요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
         ]
     }
     
