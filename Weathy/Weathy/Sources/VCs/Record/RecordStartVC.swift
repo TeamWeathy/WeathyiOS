@@ -48,8 +48,21 @@ class RecordStartVC: UIViewController {
         setAboveBox()
         setBox()
         setBelowBox()
+        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
 
         // Do any additional setup after loading the view.
+    }
+    
+    //MARK: - IBActions
+    
+    @IBAction func nextBtnTap(_ sender: Any) {
+        let nextStoryboard = UIStoryboard(name: "RecordTag", bundle: nil)
+        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTagVC") as? RecordTagVC else {
+            return
+        }
+        
+        self.navigationController?.pushViewController(dvc, animated: true)
     }
     
 
@@ -112,3 +125,12 @@ extension RecordStartVC {
     }
     
 }
+
+
+//MARK: - UIGestureRecognizerDelegate
+
+extension UIViewController : UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool { return true
+    }
+}
+

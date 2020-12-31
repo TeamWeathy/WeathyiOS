@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OdZ-gP-p1Y">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Record TagVC-->
+        <scene sceneID="qd2-WQ-jxX">
+            <objects>
+                <viewController storyboardIdentifier="RecordTagVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OdZ-gP-p1Y" customClass="RecordTagVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w0K-3M-6hx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDW-gH-0dZ">
+                                <rect key="frame" x="33" y="58" width="18" height="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="backBtnTap:" destination="OdZ-gP-p1Y" eventType="touchUpInside" id="zKg-FG-Ls9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4q-TZ-pLb">
+                                <rect key="frame" x="363" y="58" width="18" height="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="xmark" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sx-kb-nIp">
+                                <rect key="frame" x="33" y="790" width="348" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8Sx-kb-nIp" secondAttribute="height" multiplier="309:55" id="HDC-FP-Neq"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextBtnTap:" destination="OdZ-gP-p1Y" eventType="touchUpInside" id="3Pv-ZH-hbY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="p2P-Xa-6hR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="b4q-TZ-pLb" secondAttribute="trailing" constant="33" id="6kF-bE-2dg"/>
+                            <constraint firstItem="WDW-gH-0dZ" firstAttribute="leading" secondItem="p2P-Xa-6hR" secondAttribute="leading" constant="33" id="FdM-mr-hFw"/>
+                            <constraint firstItem="b4q-TZ-pLb" firstAttribute="top" secondItem="p2P-Xa-6hR" secondAttribute="top" constant="14" id="a3z-Xc-9Ht"/>
+                            <constraint firstItem="p2P-Xa-6hR" firstAttribute="bottom" secondItem="8Sx-kb-nIp" secondAttribute="bottom" constant="10" id="e6x-C0-j2A"/>
+                            <constraint firstItem="8Sx-kb-nIp" firstAttribute="width" secondItem="8Sx-kb-nIp" secondAttribute="height" multiplier="309:55" id="geU-rX-PpQ"/>
+                            <constraint firstItem="8Sx-kb-nIp" firstAttribute="leading" secondItem="w0K-3M-6hx" secondAttribute="leading" constant="33" id="wgh-Ah-WBG"/>
+                            <constraint firstItem="p2P-Xa-6hR" firstAttribute="trailing" secondItem="8Sx-kb-nIp" secondAttribute="trailing" constant="33" id="xgX-BR-dPW"/>
+                            <constraint firstItem="WDW-gH-0dZ" firstAttribute="top" secondItem="p2P-Xa-6hR" secondAttribute="top" constant="14" id="xkA-Ut-57A"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backBtn" destination="WDW-gH-0dZ" id="WBT-Qg-WnX"/>
+                        <outlet property="dismissBtn" destination="b4q-TZ-pLb" id="Mcg-2m-FfO"/>
+                        <outlet property="nextBtn" destination="8Sx-kb-nIp" id="Tlm-XR-FDP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wiy-6E-bhn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-265.21739130434787" y="93.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

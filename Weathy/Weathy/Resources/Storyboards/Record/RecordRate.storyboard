@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U0A-fZ-HER">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Aw-N5-wnx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,21 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="Zd3-cD-Y4N">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NDp-xd-pTi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController navigationBarHidden="YES" id="U0A-fZ-HER" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9y7-4R-bw7">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="2Aw-N5-wnx" kind="relationship" relationship="rootViewController" id="jCp-N6-veV"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="-843" y="127"/>
-        </scene>
         <!--Record RateVC-->
         <scene sceneID="F3D-Es-7nd">
             <objects>
@@ -37,6 +22,9 @@
                                 <rect key="frame" x="33" y="57" width="18" height="22"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="backBtnTap:" destination="2Aw-N5-wnx" eventType="touchUpInside" id="7Iy-Rh-acE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYK-8u-3D2">
                                 <rect key="frame" x="363" y="59" width="18" height="22"/>

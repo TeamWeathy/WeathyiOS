@@ -27,7 +27,7 @@
         <!--Record StartVC-->
         <scene sceneID="N9W-Si-3Xf">
             <objects>
-                <viewController id="lhy-e1-mPL" customClass="RecordStartVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordStartVC" id="lhy-e1-mPL" customClass="RecordStartVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XaP-I9-n0b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,6 +127,9 @@
                                     <constraint firstAttribute="width" secondItem="Bb9-ee-raV" secondAttribute="height" multiplier="309:55" id="QkP-XG-jWY"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextBtnTap:" destination="lhy-e1-mPL" eventType="touchUpInside" id="Znu-Rr-Abn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4lq-qL-kGf"/>

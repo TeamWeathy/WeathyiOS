@@ -14,6 +14,8 @@
 		374D48DF259D236800152B9A /* RecordRateCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48DE259D236800152B9A /* RecordRateCVC.swift */; };
 		374D48E3259D366500152B9A /* RecordText.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48E2259D366500152B9A /* RecordText.storyboard */; };
 		374D48E6259D368600152B9A /* RecordTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48E5259D368600152B9A /* RecordTextVC.swift */; };
+		374D48EA259D49CA00152B9A /* RecordTag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48E9259D49CA00152B9A /* RecordTag.storyboard */; };
+		374D48ED259D49DB00152B9A /* RecordTagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48EC259D49DB00152B9A /* RecordTagVC.swift */; };
 		4C6D6B3632E6D1F7D4A96051 /* Pods_Weathy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */; };
 		633984202599B1F400339615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339841F2599B1F400339615 /* AppDelegate.swift */; };
 		633984222599B1F400339615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633984212599B1F400339615 /* SceneDelegate.swift */; };
@@ -47,6 +49,8 @@
 		374D48DE259D236800152B9A /* RecordRateCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRateCVC.swift; sourceTree = "<group>"; };
 		374D48E2259D366500152B9A /* RecordText.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordText.storyboard; sourceTree = "<group>"; };
 		374D48E5259D368600152B9A /* RecordTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTextVC.swift; sourceTree = "<group>"; };
+		374D48E9259D49CA00152B9A /* RecordTag.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTag.storyboard; sourceTree = "<group>"; };
+		374D48EC259D49DB00152B9A /* RecordTagVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagVC.swift; sourceTree = "<group>"; };
 		6339841C2599B1F400339615 /* Weathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339841F2599B1F400339615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		633984212599B1F400339615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				374D48D0259CEBF000152B9A /* RecordStart.storyboard */,
+				374D48E9259D49CA00152B9A /* RecordTag.storyboard */,
 				374D48D7259D1CA600152B9A /* RecordRate.storyboard */,
 				374D48E2259D366500152B9A /* RecordText.storyboard */,
 			);
@@ -102,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				374D48D3259CEC0500152B9A /* RecordStartVC.swift */,
+				374D48EC259D49DB00152B9A /* RecordTagVC.swift */,
 				374D48DA259D1CB600152B9A /* RecordRateVC.swift */,
 				374D48E5259D368600152B9A /* RecordTextVC.swift */,
 			);
@@ -340,6 +346,7 @@
 				6339842C2599B1F600339615 /* Assets.xcassets in Resources */,
 				63DEB293259CF67200A94488 /* AppleSDGothicNeoB.ttf in Resources */,
 				63DEB291259CF67200A94488 /* Roboto-Light.ttf in Resources */,
+				374D48EA259D49CA00152B9A /* RecordTag.storyboard in Resources */,
 				63DEB296259CF67200A94488 /* Roboto-Regular.ttf in Resources */,
 				63DEB290259CF67200A94488 /* Roboto-Medium.ttf in Resources */,
 				63DEB292259CF67200A94488 /* AppleSDGothicNeoM.ttf in Resources */,
@@ -401,6 +408,7 @@
 				63DEB26E259CD54100A94488 /* APIConstants.swift in Sources */,
 				374D48E6259D368600152B9A /* RecordTextVC.swift in Sources */,
 				63DEB267259CD4D600A94488 /* DummyVC.swift in Sources */,
+				374D48ED259D49DB00152B9A /* RecordTagVC.swift in Sources */,
 				374D48DF259D236800152B9A /* RecordRateCVC.swift in Sources */,
 				63398462259A425200339615 /* GenericResponse.swift in Sources */,
 				63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */,
