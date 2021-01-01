@@ -192,7 +192,7 @@ extension RecordRateVC: UICollectionViewDataSource {
 extension RecordRateVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             
-            let cellWidth : CGFloat = collectionView.frame.width
+            let cellWidth : CGFloat = collectionView.frame.width - 20
             let cellHeight : CGFloat = 80
             
             return CGSize(width: cellWidth, height: cellHeight)
@@ -207,6 +207,6 @@ extension RecordRateVC: UICollectionViewDelegateFlowLayout {
         }
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0)
+            return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         }
 }

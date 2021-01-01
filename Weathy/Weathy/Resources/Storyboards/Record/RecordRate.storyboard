@@ -54,7 +54,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TEz-Je-2hL">
-                                <rect key="frame" x="33" y="226" width="348" height="534"/>
+                                <rect key="frame" x="23" y="216" width="368" height="553"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YTD-qN-npG">
                                     <size key="itemSize" width="347" height="80"/>
@@ -64,7 +64,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecordRateCVC" id="0QO-lC-RRW" customClass="RecordRateCVC" customModule="Weathy" customModuleProvider="target">
-                                        <rect key="frame" x="0.5" y="0.0" width="347" height="80"/>
+                                        <rect key="frame" x="10.5" y="0.0" width="347" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bDa-Kd-dRK">
                                             <rect key="frame" x="0.0" y="0.0" width="347" height="80"/>
@@ -124,14 +124,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="MLF-pb-L30" firstAttribute="bottom" secondItem="i8j-da-Hpf" secondAttribute="bottom" constant="10" id="2Ib-fr-4I1"/>
-                            <constraint firstItem="i8j-da-Hpf" firstAttribute="top" secondItem="TEz-Je-2hL" secondAttribute="bottom" constant="30" id="30G-2w-qec"/>
+                            <constraint firstItem="i8j-da-Hpf" firstAttribute="top" secondItem="TEz-Je-2hL" secondAttribute="bottom" constant="21" id="30G-2w-qec"/>
                             <constraint firstItem="Jsv-V3-sXL" firstAttribute="leading" secondItem="wOF-7o-WMf" secondAttribute="trailing" constant="10" id="BF5-O8-ISJ"/>
-                            <constraint firstItem="MLF-pb-L30" firstAttribute="trailing" secondItem="TEz-Je-2hL" secondAttribute="trailing" constant="33" id="BPL-Nh-LOq"/>
+                            <constraint firstItem="MLF-pb-L30" firstAttribute="trailing" secondItem="TEz-Je-2hL" secondAttribute="trailing" constant="23" id="BPL-Nh-LOq"/>
                             <constraint firstItem="i8j-da-Hpf" firstAttribute="leading" secondItem="MLF-pb-L30" secondAttribute="leading" constant="33" id="CQh-75-uXO"/>
                             <constraint firstItem="MLF-pb-L30" firstAttribute="trailing" secondItem="i8j-da-Hpf" secondAttribute="trailing" constant="33" id="D6A-04-DIZ"/>
                             <constraint firstItem="R6c-xM-7fc" firstAttribute="leading" secondItem="jk2-WS-2BT" secondAttribute="leading" id="Fb8-mj-0Hb"/>
                             <constraint firstItem="xYK-8u-3D2" firstAttribute="top" secondItem="MLF-pb-L30" secondAttribute="top" constant="15" id="Gxx-5a-Y86"/>
-                            <constraint firstItem="TEz-Je-2hL" firstAttribute="top" secondItem="R6c-xM-7fc" secondAttribute="bottom" constant="64" id="Ivb-aL-TJV"/>
+                            <constraint firstItem="TEz-Je-2hL" firstAttribute="top" secondItem="R6c-xM-7fc" secondAttribute="bottom" constant="54" id="Ivb-aL-TJV"/>
                             <constraint firstItem="Jsv-V3-sXL" firstAttribute="top" secondItem="xYK-8u-3D2" secondAttribute="bottom" constant="38" id="NY2-sx-Gdu"/>
                             <constraint firstItem="qnR-AN-DNU" firstAttribute="leading" secondItem="MLF-pb-L30" secondAttribute="leading" constant="33" id="QzE-ln-445"/>
                             <constraint firstItem="wOF-7o-WMf" firstAttribute="centerY" secondItem="Jsv-V3-sXL" secondAttribute="centerY" id="SFs-YC-7fJ"/>
@@ -143,7 +143,7 @@
                             <constraint firstItem="MLF-pb-L30" firstAttribute="trailing" secondItem="Jsv-V3-sXL" secondAttribute="trailing" constant="33" id="tba-c8-8az"/>
                             <constraint firstItem="jk2-WS-2BT" firstAttribute="leading" secondItem="MLF-pb-L30" secondAttribute="leading" constant="33" id="tfr-vS-YR8"/>
                             <constraint firstItem="jk2-WS-2BT" firstAttribute="top" secondItem="qnR-AN-DNU" secondAttribute="bottom" constant="31" id="w7h-ps-pGj"/>
-                            <constraint firstItem="TEz-Je-2hL" firstAttribute="leading" secondItem="MLF-pb-L30" secondAttribute="leading" constant="33" id="z1R-Zs-tk8"/>
+                            <constraint firstItem="TEz-Je-2hL" firstAttribute="leading" secondItem="MLF-pb-L30" secondAttribute="leading" constant="23" id="z1R-Zs-tk8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ybh-cn-G6G"/>
