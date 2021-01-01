@@ -20,11 +20,11 @@ class RecordRateCVC: UICollectionViewCell {
         
         titleLabel.text = "\(titleText)"
         titleLabel.textColor = UIColor(named: titleColor)
-        titleLabel.font = UIFont(name: "AppleSDGothicNeoSB00", size: 17)
+        titleLabel.font = UIFont.SDGothicSemiBold17
         
         descriptionLabel.text = "\(description)"
-        descriptionLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
-        descriptionLabel.textColor = UIColor.lightGray
+        descriptionLabel.font = UIFont.SDGothicRegular16
+        descriptionLabel.textColor = UIColor.subGrey6
     }
     
 }

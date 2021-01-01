@@ -77,10 +77,12 @@ extension RecordRateVC {
 //        dismissBtn.setBackgroundImage(UIImage(named: <#T##String#>), for: .normal)
         
         titleLabel.text = "날씨는 어땠나요?"
-        titleLabel.font = UIFont(name: "AppleSDGothicNeoSB00", size: 25)
+        titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
+        titleLabel.textColor = UIColor.mainGrey
         
         explanationLabel.text = "오늘 옷차림에 대한 느낌을 선택해주세요."
-        explanationLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
+        explanationLabel.font = UIFont.SDGothicRegular16
+        explanationLabel.textColor = UIColor.subGrey6
         
 //        stepOneImageView.image = UIImage(named: <#T##String#>)
 //        stepTwoImageView.image = UIImage(named: <#T##String#>)
@@ -88,17 +90,17 @@ extension RecordRateVC {
     
     func setCV() {
         rate = [
-            Rates(emoji: "pencil.circle", title: "너무 더워요", titleColor: ".red", explanation: "훨씬 얇게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "pencil.circle", title: "더워요", titleColor: "orange", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "pencil.circle", title: "적당해요", titleColor: "yellow", explanation: "딱 적당하게 입었어요.", isSelected: false),
-            Rates(emoji: "pencil.circle", title: "추워요", titleColor: "green", explanation: "좀 더 따뜻하게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "pencil.circle", title: "너무 추워요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
+            Rates(emoji: "veryhot@4x", title: "너무 더워요", titleColor: "imojiVeryHotText", explanation: "훨씬 얇게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "hot@4x", title: "더워요", titleColor: "orange", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "good@4x", title: "적당해요", titleColor: "yellow", explanation: "딱 적당하게 입었어요.", isSelected: false),
+            Rates(emoji: "cold@4x", title: "추워요", titleColor: "green", explanation: "좀 더 따뜻하게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "verycold@4x", title: "너무 추워요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
         ]
     }
     
     func setNextBtnEnabled() {
         nextBtn.isUserInteractionEnabled = true
-        nextBtn.backgroundColor = UIColor.green
+        nextBtn.backgroundColor = UIColor.mintMain
         nextBtn.setTitle("다음", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.layer.cornerRadius = 30
@@ -106,7 +108,7 @@ extension RecordRateVC {
     
     func setNextBtnDisabled() {
         nextBtn.isUserInteractionEnabled = false
-        nextBtn.backgroundColor = UIColor.lightGray
+        nextBtn.backgroundColor = UIColor.subGrey3
         nextBtn.setTitle("다음", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.layer.cornerRadius = 30
@@ -128,22 +130,35 @@ extension RecordRateVC: UICollectionViewDataSource {
         
         cell.setCell(imageName: rate[indexPath.item].emoji, titleText: rate[indexPath.item].title, titleColor: rate[indexPath.item].titleColor, description: rate[indexPath.item].explanation)
         
+        if indexPath.item == 0 {
+            cell.titleLabel.textColor = UIColor.imojiVeryHotText
+        }
+        else if indexPath.item == 1 {
+            cell.titleLabel.textColor = UIColor.imojiHotText
+        }
+        else if indexPath.item == 2 {
+            cell.titleLabel.textColor = UIColor.imojiGootText
+        }
+        else if indexPath.item == 3 {
+            cell.titleLabel.textColor = UIColor.imojiColdText
+        }
+        else if indexPath.item == 4 {
+            cell.titleLabel.textColor = UIColor.imojiVeryColdText
+        }
+        
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 20
         
         /// 분기처리
         if rate[indexPath.item].isSelected == true {
-            cell.layer.borderColor = UIColor(red: 0.506, green: 0.886, blue: 0.824, alpha: 1).cgColor
-            cell.layer.shadowRadius = 20
-            cell.layer.shadowColor = UIColor(red: 0.506, green: 0.886, blue: 0.824, alpha: 0.4).cgColor
-            cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-            cell.layer.masksToBounds = false
-            cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMinYCorner]
+            cell.layer.borderColor = UIColor.mintMain.cgColor
+            cell.backgroundColor = .white
+            cell.dropShadow(color: UIColor(red: 129/255, green: 226/255, blue: 210/255, alpha: 1), offSet: CGSize(width: 0, height: 0), opacity: 0.4, radius: 10)
         } else {
-            cell.layer.borderColor = UIColor.lightGray.cgColor
+            cell.layer.borderColor = UIColor.subGrey7.cgColor
             cell.layer.shadowRadius = 0
         }
-        
+
         return cell
     }
     
