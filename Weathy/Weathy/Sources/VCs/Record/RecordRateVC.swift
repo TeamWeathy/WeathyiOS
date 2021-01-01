@@ -89,6 +89,10 @@ extension RecordRateVC {
     }
     
     func setCV() {
+        
+        rateCollectionView.showsVerticalScrollIndicator = false
+        rateCollectionView.bounces = true
+        
         rate = [
             Rates(emoji: "veryhot@4x", title: "너무 더워요", titleColor: "imojiVeryHotText", explanation: "훨씬 얇게 입을걸 그랬어요.", isSelected: false),
             Rates(emoji: "hot@4x", title: "더워요", titleColor: "orange", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
