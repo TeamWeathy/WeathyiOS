@@ -10,7 +10,7 @@ import UIKit
 extension UIColor{
     
     @nonobjc class var subGrey1: UIColor {
-        return UIColorUIColor(red: 0.333, green: 0.333, blue: 0.333, alpha: 1)
+        return UIColor(red: 0.333, green: 0.333, blue: 0.333, alpha: 1)
     }
     
     @nonobjc class var subGrey2: UIColor {
