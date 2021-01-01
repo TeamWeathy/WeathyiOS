@@ -76,50 +76,60 @@ extension RecordStartVC {
         
         titleLabel.text = "오늘의 웨디를\n기록해볼까요?"
         titleLabel.numberOfLines = 2
-        titleLabel.font = UIFont(name: "AppleSDGothicNeoSB00", size: 25)
+        titleLabel.font = UIFont.RobotoRegular25
         
         subTitleLabel.text = "기록할 위치와 날씨를 확인해 주세요."
-        subTitleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
+        subTitleLabel.font = UIFont.SDGothicRegular16
+        subTitleLabel.textColor = UIColor.subGrey6
     }
     
     func setBox() {
         boxView.layer.borderWidth = 1
-        boxView.layer.borderColor = UIColor.lightGray.cgColor
+        boxView.layer.borderColor = UIColor.subGrey7.cgColor
         boxView.layer.cornerRadius = 35
         
         boxTimeLabel.text = "\(month)월 \(date)일 \(day)요일 · \(ampm) \(hour)시"
-        boxTimeLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 15)
+        boxTimeLabel.font = UIFont.SDGothicRegular15
+        boxTimeLabel.textColor = UIColor.subGrey1
         
         boxLocationLabel.text = "\(location)"
-        boxLocationLabel.font = UIFont(name: "AppleSDGothicNeoSB00", size: 17)
+        boxLocationLabel.font = UIFont.SDGothicSemiBold17
+        boxLocationLabel.textColor = UIColor.subGrey1
         
         boxWeatherImageView.image = UIImage(named: "")
         
         currentTempLabel.text = "\(currentTemp)°"
-        currentTempLabel.font = UIFont(name: "Roboto-Regular", size: 60)
+        currentTempLabel.font = UIFont(name: "Roboto-Light", size: 60)
+        currentTempLabel.textColor = UIColor.subGrey1
+        currentTempLabel.baselineAdjustment = .alignBaselines
         
         maxTempLabel.text = "\(maxTemp)°"
-        maxTempLabel.font = UIFont(name: "Roboto-Regular", size: 25)
-        maxTempLabel.textColor = UIColor(red: 209/255, green: 140/255, blue: 139/255, alpha: 1)
+        maxTempLabel.font = UIFont(name: "Roboto-Light", size: 25)
+        maxTempLabel.textColor = UIColor.redTemp
+        maxTempLabel.baselineAdjustment = .alignBaselines
         
         slashLabel.text = "/"
-        slashLabel.font = UIFont(name: "Roboto-Regular", size: 15)
-        slashLabel.textColor = UIColor(red: 194/255, green: 194/255, blue: 194/255, alpha: 1)
+        slashLabel.font = UIFont.RobotoRegular15
+        slashLabel.textColor = UIColor.subGrey3
+        slashLabel.baselineAdjustment = .alignBaselines
         
         minTempLabel.text = "\(minTemp)°"
-        minTempLabel.font = UIFont(name: "Roboto-Regular", size: 25)
-        minTempLabel.textColor = UIColor(red: 139/255, green: 175/255, blue: 209/255, alpha: 1)
+        minTempLabel.font = UIFont(name: "Roboto-Light", size: 25)
+        minTempLabel.textColor = UIColor.blueTemp
+        minTempLabel.baselineAdjustment = .alignBaselines
     }
     
     func setBelowBox() {
-        modifyBtn.backgroundColor = UIColor.lightGray
+        modifyBtn.backgroundColor = UIColor.subGrey5
         modifyBtn.setTitle("변경하기", for: .normal)
         modifyBtn.setTitleColor(.black, for: .normal)
+        modifyBtn.titleLabel?.font = UIFont.SDGothicRegular13
         modifyBtn.layer.cornerRadius = 18
         
-        startBtn.backgroundColor = UIColor.lightGray
+        startBtn.backgroundColor = UIColor.mintMain
         startBtn.setTitle("기록 시작하기", for: .normal)
         startBtn.setTitleColor(.white, for: .normal)
+        startBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         startBtn.layer.cornerRadius = 30
         
     }

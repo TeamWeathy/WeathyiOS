@@ -82,7 +82,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YF1-NJ-EpU">
-                                        <rect key="frame" x="143" y="137" width="42" height="21"/>
+                                        <rect key="frame" x="143" y="144" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -108,7 +108,7 @@
                                     <constraint firstItem="82E-LE-4z7" firstAttribute="leading" secondItem="uK9-5M-D6V" secondAttribute="leading" constant="25" id="YGB-L8-iH8"/>
                                     <constraint firstItem="UzI-BB-PxQ" firstAttribute="leading" secondItem="82E-LE-4z7" secondAttribute="leading" id="awh-2e-Ik5"/>
                                     <constraint firstAttribute="bottom" secondItem="NOh-vW-Qvo" secondAttribute="bottom" constant="22" id="fmw-Uv-sHU"/>
-                                    <constraint firstItem="YF1-NJ-EpU" firstAttribute="bottom" secondItem="glp-RZ-lUG" secondAttribute="bottom" id="ssy-P4-2RH"/>
+                                    <constraint firstAttribute="bottom" secondItem="YF1-NJ-EpU" secondAttribute="bottom" constant="15" id="kf6-My-7ll"/>
                                     <constraint firstItem="gQe-4h-Eln" firstAttribute="leading" secondItem="uK9-5M-D6V" secondAttribute="leading" constant="25" id="wWo-va-G72"/>
                                     <constraint firstItem="uKf-u9-Kts" firstAttribute="bottom" secondItem="NOh-vW-Qvo" secondAttribute="bottom" id="xlx-z6-PGh"/>
                                     <constraint firstAttribute="bottom" secondItem="gQe-4h-Eln" secondAttribute="bottom" constant="25" id="zf0-aJ-M7O"/>
