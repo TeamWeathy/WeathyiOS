@@ -181,19 +181,22 @@ extension RecordTagVC: UICollectionViewDataSource {
             
             if tags[indexPath.item].isSelected == false {
                 cell.tagLabel.text = tags[indexPath.item].name
-                cell.tagLabel.textColor = .black
+                cell.tagLabel.textColor = UIColor.subGrey6
+                cell.tagLabel.font = UIFont.SDGothicRegular15
                 cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 80
-                cell.layer.borderColor = UIColor.lightGray.cgColor
+                cell.layer.borderColor = UIColor.clear.cgColor
                 cell.layer.borderWidth = 1
                 cell.layer.cornerRadius = 20
+                cell.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
 
             } else {
                 cell.tagLabel.text = tags[indexPath.item].name
-                cell.tagLabel.textColor = UIColor(red: 71/255, green: 192/255, blue: 172/255, alpha: 1)
+                cell.tagLabel.textColor = UIColor.mintIcon
                 cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
-                cell.layer.borderColor = UIColor(red: 71/255, green: 192/255, blue: 172/255, alpha: 1).cgColor
+                cell.layer.borderColor = UIColor.mintMain.cgColor
                 cell.layer.borderWidth = 1
                 cell.layer.cornerRadius = 20
+                cell.backgroundColor = UIColor.white
             }
             
             return cell
@@ -206,6 +209,9 @@ extension RecordTagVC: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             cell.setCell(title: tagTitles[indexPath.item].title, count: tagTitles[indexPath.item].count, isSelected: tagTitles[indexPath.item].isSelected)
+            
+//            cell.layer.borderWidth = 1
+//            cell.layer.borderColor = UIColor.black.cgColor
             
             return cell
         }
@@ -275,6 +281,18 @@ extension RecordTagVC: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegateFlowLayout
 
 extension RecordTagVC: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if collectionView == tagTitleCollectionView {
+            let cellWidth : CGFloat = collectionView.frame.width/4 - 6
+            let cellHeight : CGFloat = collectionView.frame.height
+            
+            return CGSize(width: cellWidth, height: cellHeight)
+        }
+        
+        return CGSize()
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         

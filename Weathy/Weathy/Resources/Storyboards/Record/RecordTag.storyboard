@@ -60,7 +60,7 @@
                                     <constraint firstAttribute="height" constant="40" id="d8v-Fs-fgn"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LXu-gn-fdb">
-                                    <size key="itemSize" width="80" height="40"/>
+                                    <size key="itemSize" width="95" height="40"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -74,21 +74,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKY-Dk-q4Y">
-                                                    <rect key="frame" x="7" y="9.5" width="41.5" height="21"/>
+                                                    <rect key="frame" x="12" y="9.5" width="41.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8D4-FE-VTE">
-                                                    <rect key="frame" x="47" y="9.5" width="41.5" height="21"/>
+                                                    <rect key="frame" x="42" y="9.5" width="41.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DsG-e9-GdQ">
-                                                    <rect key="frame" x="-3.5" y="34" width="102" height="3"/>
+                                                    <rect key="frame" x="14.5" y="34" width="66" height="3"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="66" id="dHr-OG-OYK"/>
                                                         <constraint firstAttribute="height" constant="3" id="zYo-3c-xp3"/>
                                                     </constraints>
                                                 </view>
@@ -96,11 +97,9 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="DsG-e9-GdQ" secondAttribute="bottom" constant="3" id="BLE-hf-Hzo"/>
                                                 <constraint firstItem="FKY-Dk-q4Y" firstAttribute="centerY" secondItem="RAl-DB-hHy" secondAttribute="centerY" id="GJJ-kX-Cji"/>
-                                                <constraint firstItem="8D4-FE-VTE" firstAttribute="centerX" secondItem="RAl-DB-hHy" secondAttribute="centerX" constant="20" id="Sc9-bB-k3H"/>
-                                                <constraint firstItem="FKY-Dk-q4Y" firstAttribute="centerX" secondItem="RAl-DB-hHy" secondAttribute="centerX" constant="-20" id="XBF-PO-Uyc"/>
-                                                <constraint firstItem="DsG-e9-GdQ" firstAttribute="leading" secondItem="FKY-Dk-q4Y" secondAttribute="leading" constant="-10" id="Yz5-qh-cg3"/>
+                                                <constraint firstItem="8D4-FE-VTE" firstAttribute="centerX" secondItem="RAl-DB-hHy" secondAttribute="centerX" constant="15" id="Sc9-bB-k3H"/>
+                                                <constraint firstItem="FKY-Dk-q4Y" firstAttribute="centerX" secondItem="RAl-DB-hHy" secondAttribute="centerX" constant="-15" id="XBF-PO-Uyc"/>
                                                 <constraint firstItem="DsG-e9-GdQ" firstAttribute="centerX" secondItem="RAl-DB-hHy" secondAttribute="centerX" id="grM-w7-WnJ"/>
-                                                <constraint firstItem="DsG-e9-GdQ" firstAttribute="trailing" secondItem="8D4-FE-VTE" secondAttribute="trailing" constant="10" id="nUe-G7-lFI"/>
                                                 <constraint firstItem="8D4-FE-VTE" firstAttribute="centerY" secondItem="RAl-DB-hHy" secondAttribute="centerY" id="uHh-c4-2xn"/>
                                             </constraints>
                                         </collectionViewCellContentView>
