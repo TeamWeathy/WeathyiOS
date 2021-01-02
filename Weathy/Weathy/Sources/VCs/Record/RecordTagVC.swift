@@ -16,8 +16,54 @@ class RecordTagVC: UIViewController {
         var isSelected: Bool
     }
     
-    var tags : [Tag] = [
+    struct TagTitle {
+        let title: String
+        var count: Int
+        var isSelected: Bool
+    }
+    
+    var tags: [Tag] = [
         Tag(name: " + ", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false),
         Tag(name: "후드티", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
         Tag(name: "니트", isSelected: false),
@@ -27,6 +73,16 @@ class RecordTagVC: UIViewController {
         Tag(name: "히트텍", isSelected: false),
         Tag(name: "기모맨투맨(흰색)", isSelected: false)
     ]
+    
+    var tagTitles: [TagTitle] = [
+        TagTitle(title: "상의", count: 0, isSelected: true),
+        TagTitle(title: "하의", count: 0, isSelected: false),
+        TagTitle(title: "외투", count: 0, isSelected: false),
+        TagTitle(title: "기타", count: 0, isSelected: false)
+    ]
+    
+    let name: String = "웨디"
+    var titleIndex: Int = 0
     
     //MARK: - IBOutlets
     
@@ -51,6 +107,11 @@ class RecordTagVC: UIViewController {
         let layout = TagFlowLayout()
         layout.estimatedItemSize = CGSize(width: 140, height: 40)
         tagCollectionView.collectionViewLayout = layout
+        
+        tagTitleCollectionView.dataSource = self
+        tagTitleCollectionView.delegate = self
+        
+        setHeader()
 
         // Do any additional setup after loading the view.
     }
@@ -74,7 +135,23 @@ class RecordTagVC: UIViewController {
 
 }
 
-// MARK: - UICollectionViewDataSource
+
+//MARK: - Style
+
+extension RecordTagVC {
+    func setHeader() {
+        titleLabel.text = "\(name)님은 오늘\n어떤 옷을 입었나요?"
+        titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
+        titleLabel.textColor = UIColor.mainGrey
+        titleLabel.numberOfLines = 2
+        
+        explanationLabel.text = "+를 눌러 추가하고, 꾹 눌러 삭제할 수 있어요."
+        explanationLabel.font = UIFont.SDGothicRegular16
+        explanationLabel.textColor = UIColor.subGrey6
+    }
+}
+
+//MARK: - UICollectionViewDataSource
 
 extension RecordTagVC: UICollectionViewDataSource {
     
@@ -87,7 +164,7 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagTitleCollectionView
         else if collectionView == tagTitleCollectionView {
-            
+            return tagTitles.count
         }
         
         return 0
@@ -105,7 +182,7 @@ extension RecordTagVC: UICollectionViewDataSource {
             if tags[indexPath.item].isSelected == false {
                 cell.tagLabel.text = tags[indexPath.item].name
                 cell.tagLabel.textColor = .black
-                cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
+                cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 80
                 cell.layer.borderColor = UIColor.lightGray.cgColor
                 cell.layer.borderWidth = 1
                 cell.layer.cornerRadius = 20
@@ -124,7 +201,13 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagTitleCollectionView
         else if collectionView == tagTitleCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecordTagTitleCVC", for: indexPath) as? RecordTagTitleCVC
+            else {
+                return UICollectionViewCell()
+            }
+            cell.setCell(title: tagTitles[indexPath.item].title, count: tagTitles[indexPath.item].count, isSelected: tagTitles[indexPath.item].isSelected)
             
+            return cell
         }
         
         return UICollectionViewCell()
@@ -135,14 +218,54 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-            collectionView.deselectItem(at: indexPath, animated: false)
-            tags[indexPath.item].isSelected = !tags[indexPath.item].isSelected
-            self.tagCollectionView.reloadData()
+            
+            print(tagTitles[titleIndex].count)
+            
+            if tagTitles[titleIndex].count < 5 {
+                collectionView.deselectItem(at: indexPath, animated: false)
+                tags[indexPath.item].isSelected = !tags[indexPath.item].isSelected
+                if tags[indexPath.item].isSelected == true {
+                    tagTitles[titleIndex].count += 1
+                } else {
+                    tagTitles[titleIndex].count -= 1
+                }
+                self.tagCollectionView.reloadData()
+                self.tagTitleCollectionView.reloadData()
+            } else if tagTitles[titleIndex].count == 5 {
+                if tags[indexPath.item].isSelected == true {
+                    tags[indexPath.item].isSelected = false
+                    tagTitles[titleIndex].count -= 1
+                }
+                self.tagCollectionView.reloadData()
+                self.tagTitleCollectionView.reloadData()
+            } else {
+                
+            }
+            
         }
         
         /// tagTitleCollectionView
         else if collectionView == tagTitleCollectionView {
+            collectionView.deselectItem(at: indexPath, animated: false)
             
+            /// 선택된 거 빼고 모두 isSelected를 false로 변경
+            for i in 0...tagTitles.count-1 {
+                if i == indexPath.item {
+                    tagTitles[i].isSelected = !tagTitles[i].isSelected
+                    
+                    if tagTitles[i].isSelected == true {
+                        self.titleIndex = i
+                        print("선택된 것 >> ", tagTitles[i].title)
+                    } else {
+                        
+                    }
+                    
+                } else {
+                    tagTitles[i].isSelected = false
+                }
+            }
+            
+            self.tagTitleCollectionView.reloadData()
         }
         
     }
@@ -152,19 +275,50 @@ extension RecordTagVC: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegateFlowLayout
 
 extension RecordTagVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-            return CGSize(width: 200, height: 30)
+            return 10
         }
         
         /// tagTitleCollectionView
         else if collectionView == tagTitleCollectionView {
-            
+            return 0
         }
         
-        return CGSize()
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        /// tagCollectionView
+        if collectionView == tagCollectionView {
+            return 8
+        }
+        
+        /// tagTitleCollectionView
+        else if collectionView == tagTitleCollectionView {
+            return 0
+        }
+        
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        /// tagCollectionView
+        if collectionView == tagCollectionView {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+        
+        /// tagTitleCollectionView
+        else if collectionView == tagTitleCollectionView {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+        
+        return UIEdgeInsets()
     }
 }
 
