@@ -11,14 +11,20 @@ class ExampleFirstVC: UIViewController {
 
     static let identifier = "ExampleFirstVC"
     
+    //MARK: - Custom Variables
+    
     var gradientLayer: CAGradientLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //MARK: - LifeCycle Methods
+        
         setGradientView()
     }
 
+    //MARK: - Custom Methods
+    
     /// 뒤 배경에 그라데이션을 넣기 위한 방법
     func setGradientView(){
        
@@ -51,6 +57,18 @@ class ExampleFirstVC: UIViewController {
         ///gradient를 가로로 만들어주는 시작점과 끝점 포인트
 //        self.gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
 //        self.gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+    }
+    
+    //MARK: - IBActions
+    
+    /// 설정 버튼 눌렀을 때
+    @IBAction func settingButtonDidTap(_ sender: Any) {
+        let storyB = UIStoryboard.init(name: "Setting", bundle: nil)
+        
+        guard let vc = storyB.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
+
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
 }
 

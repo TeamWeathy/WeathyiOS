@@ -144,8 +144,21 @@
                     <view key="view" contentMode="scaleToFill" id="YoP-el-kzy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LII-e6-KY3">
+                                <rect key="frame" x="330" y="69" width="20" height="22"/>
+                                <state key="normal" image="ic_settings"/>
+                                <connections>
+                                    <action selector="settingButtonDidTap:" destination="nCW-Jl-VGK" eventType="touchUpInside" id="Hej-2N-8Ba"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="BSJ-i1-Ukm"/>
                         <color key="backgroundColor" red="0.47766279363307823" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="LII-e6-KY3" firstAttribute="top" secondItem="BSJ-i1-Ukm" secondAttribute="top" constant="25" id="6Ta-eY-wOr"/>
+                            <constraint firstItem="BSJ-i1-Ukm" firstAttribute="trailing" secondItem="LII-e6-KY3" secondAttribute="trailing" constant="25" id="Bbp-pt-nan"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAU-dT-xBY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -172,6 +185,7 @@
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="ic_calendar_selected" width="25" height="25"/>
         <image name="ic_plus" width="53" height="53"/>
+        <image name="ic_settings" width="20" height="20"/>
         <image name="ic_weather_selected" width="25" height="25"/>
         <image name="ic_weather_unselected_2" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">

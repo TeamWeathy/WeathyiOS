@@ -66,9 +66,6 @@ class TabbarVC: UIViewController {
         rightVC.didMove(toParent: self)
    }
     
-    //MARK: - @objc Methods
-    
-    
     //MARK: - IBActions
     
     /// Main 버튼
@@ -78,13 +75,11 @@ class TabbarVC: UIViewController {
         if calendarButtonBool == true{
             mainButton.setImage(UIImage(named: "ic_weather_selected"), for: .normal)
             calendarButton.setImage(UIImage(named: "ic_weather_unselected_2"), for: .normal)
-            
             calendarButtonBool = false
             mainButtonBool = true
-        } else {
-            
-        }
+        } else { }
         
+        /// Scroll이 넘어가는 느낌을 줄 것이냐??  True, False
         self.scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
     /// Plus 버튼
@@ -103,15 +98,9 @@ class TabbarVC: UIViewController {
             
             calendarButtonBool = true
             mainButtonBool = false
-        } else {
-            
-        }
+        } else { }
         
         self.scrollView.setContentOffset(CGPoint(x: self.scrollView.frame.width, y: 0), animated: true)
     }
 }
 
-//MARK: - UITableViewDelegate
-
-
-//MARK: - UITableViewDatasource
