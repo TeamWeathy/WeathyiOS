@@ -13,6 +13,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     
     //MARK: - Life Cycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +27,7 @@ class MainVC: UIViewController {
     
     func setView() {
         weatherCollectionView.isPagingEnabled = true
+        weatherCollectionView.decelerationRate = .fast
     }
 }
 
@@ -46,11 +48,13 @@ extension MainVC: UICollectionViewDataSource {
             print("0 번째 ")
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainTopCVC", for: indexPath) as? MainTopCVC else {return UICollectionViewCell()}
             
+            cell.setCell()
             return cell
         case 1:
             print("1 번째 ")
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainButtomCVC", for: indexPath) as? MainButtomCVC else {return UICollectionViewCell()}
             
+            cell.setCell()
             return cell
         default:
             return UICollectionViewCell()
