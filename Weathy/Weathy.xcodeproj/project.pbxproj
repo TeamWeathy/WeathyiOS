@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E8C003125A1B7A200A31295 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8C003025A1B7A200A31295 /* Tabbar.storyboard */; };
+		0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003425A1B7CE00A31295 /* TabbarVC.swift */; };
+		0E8C003925A1BC1F00A31295 /* ExampleFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003825A1BC1F00A31295 /* ExampleFirstVC.swift */; };
+		0E8C003C25A1BC3000A31295 /* ExampleSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003B25A1BC3000A31295 /* ExampleSecondVC.swift */; };
+		0E8C003F25A1BC3F00A31295 /* ExampleThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003E25A1BC3F00A31295 /* ExampleThirdVC.swift */; };
 		374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48F1259F2A9300152B9A /* UIFont+Extension.swift */; };
 		4C6D6B3632E6D1F7D4A96051 /* Pods_Weathy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */; };
 		633984202599B1F400339615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339841F2599B1F400339615 /* AppDelegate.swift */; };
@@ -34,6 +39,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E8C003025A1B7A200A31295 /* Tabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabbar.storyboard; sourceTree = "<group>"; };
+		0E8C003425A1B7CE00A31295 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
+		0E8C003825A1BC1F00A31295 /* ExampleFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleFirstVC.swift; sourceTree = "<group>"; };
+		0E8C003B25A1BC3000A31295 /* ExampleSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSecondVC.swift; sourceTree = "<group>"; };
+		0E8C003E25A1BC3F00A31295 /* ExampleThirdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleThirdVC.swift; sourceTree = "<group>"; };
 		374D48F1259F2A9300152B9A /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		6339841C2599B1F400339615 /* Weathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339841F2599B1F400339615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +86,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E8C002F25A1B79500A31295 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				0E8C003025A1B7A200A31295 /* Tabbar.storyboard */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		0E8C003325A1B7B900A31295 /* TabbarVCs */ = {
+			isa = PBXGroup;
+			children = (
+				0E8C003425A1B7CE00A31295 /* TabbarVC.swift */,
+				0E8C003825A1BC1F00A31295 /* ExampleFirstVC.swift */,
+				0E8C003B25A1BC3000A31295 /* ExampleSecondVC.swift */,
+				0E8C003E25A1BC3F00A31295 /* ExampleThirdVC.swift */,
+			);
+			path = TabbarVCs;
+			sourceTree = "<group>";
+		};
 		633984132599B1F400339615 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +163,7 @@
 		6339843D259A2B6C00339615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				0E8C002F25A1B79500A31295 /* Tabbar */,
 				6339842D2599B1F600339615 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -142,6 +172,7 @@
 		6339843F259A2BB600339615 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				0E8C003325A1B7B900A31295 /* TabbarVCs */,
 				63DEB266259CD4D600A94488 /* DummyVC.swift */,
 			);
 			path = VCs;
@@ -289,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E8C003125A1B7A200A31295 /* Tabbar.storyboard in Resources */,
 				63DEB295259CF67200A94488 /* AppleSDGothicNeoSB.ttf in Resources */,
 				63DEB294259CF67200A94488 /* AppleSDGothicNeoR.ttf in Resources */,
 				6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */,
@@ -355,6 +387,7 @@
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
 				63DEB26E259CD54100A94488 /* APIConstants.swift in Sources */,
 				63DEB267259CD4D600A94488 /* DummyVC.swift in Sources */,
+				0E8C003C25A1BC3000A31295 /* ExampleSecondVC.swift in Sources */,
 				63398462259A425200339615 /* GenericResponse.swift in Sources */,
 				63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */,
 				63DEB272259CD55A00A94488 /* NetworkResult.swift in Sources */,
@@ -362,8 +395,11 @@
 				6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */,
 				633984202599B1F400339615 /* AppDelegate.swift in Sources */,
 				63DEB261259CD49700A94488 /* DummyCell.swift in Sources */,
+				0E8C003F25A1BC3F00A31295 /* ExampleThirdVC.swift in Sources */,
+				0E8C003925A1BC1F00A31295 /* ExampleFirstVC.swift in Sources */,
 				63DEB264259CD4AD00A94488 /* DummyClass.swift in Sources */,
 				633984222599B1F400339615 /* SceneDelegate.swift in Sources */,
+				0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
