@@ -18,12 +18,16 @@ class TabbarVC: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mainButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var tabbarView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.isScrollEnabled = false
+        
+        /// plusButton 그림자 주기
+        plusButton.dropShadow(color: UIColor.mintIcon, offSet: CGSize(width: 0, height: 3), opacity: 0.6, radius: 6)
         
         //MARK: - LifeCycle Methods
 

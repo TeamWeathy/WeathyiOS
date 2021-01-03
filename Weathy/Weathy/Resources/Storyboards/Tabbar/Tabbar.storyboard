@@ -47,9 +47,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odg-6O-jZH">
                                         <rect key="frame" x="151" y="0.0" width="73" height="73"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_plus_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="Szw-1x-Jd3">
-                                                <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
-                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfS-rF-5nV">
                                                 <rect key="frame" x="10" y="10" width="53" height="53"/>
                                                 <constraints>
@@ -66,12 +63,8 @@
                                         <constraints>
                                             <constraint firstItem="jfS-rF-5nV" firstAttribute="centerX" secondItem="odg-6O-jZH" secondAttribute="centerX" id="48U-wD-Xtu"/>
                                             <constraint firstItem="jfS-rF-5nV" firstAttribute="centerY" secondItem="odg-6O-jZH" secondAttribute="centerY" id="KBB-yo-N2p"/>
-                                            <constraint firstItem="Szw-1x-Jd3" firstAttribute="leading" secondItem="odg-6O-jZH" secondAttribute="leading" id="MBF-om-tsK"/>
-                                            <constraint firstItem="Szw-1x-Jd3" firstAttribute="top" secondItem="odg-6O-jZH" secondAttribute="top" id="NqU-om-6rc"/>
-                                            <constraint firstAttribute="trailing" secondItem="Szw-1x-Jd3" secondAttribute="trailing" id="OTn-ZJ-bkw"/>
                                             <constraint firstAttribute="width" constant="73" id="Y6x-BK-qSc"/>
                                             <constraint firstAttribute="height" constant="73" id="jgX-61-f7U"/>
-                                            <constraint firstAttribute="bottom" secondItem="Szw-1x-Jd3" secondAttribute="bottom" id="qhd-ZI-pLr"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -106,6 +99,7 @@
                     <connections>
                         <outlet property="calendarButton" destination="Ac5-gH-vr2" id="KrF-s9-nBi"/>
                         <outlet property="mainButton" destination="WNL-8W-8b6" id="ur4-hG-5gd"/>
+                        <outlet property="plusButton" destination="jfS-rF-5nV" id="Gq3-Ih-MyA"/>
                         <outlet property="scrollView" destination="dCr-oZ-z5r" id="vwc-QI-QZ4"/>
                         <outlet property="tabbarView" destination="8tI-i9-VJF" id="tub-A9-htQ"/>
                     </connections>
@@ -151,7 +145,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="BSJ-i1-Ukm"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" red="0.47766279363307823" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAU-dT-xBY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -178,7 +172,6 @@
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="ic_calendar_selected" width="25" height="25"/>
         <image name="ic_plus" width="53" height="53"/>
-        <image name="ic_plus_shadow" width="83" height="83"/>
         <image name="ic_weather_selected" width="25" height="25"/>
         <image name="ic_weather_unselected_2" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
@@ -186,9 +179,6 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

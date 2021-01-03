@@ -33,7 +33,7 @@ class ExampleFirstVC: UIViewController {
         /// View에 그라데이션 추가
         self.gradientLayer = CAGradientLayer()
         self.gradientLayer.frame = gradientView.bounds
-        self.gradientLayer.colors = [UIColor.white.withAlphaComponent(0).cgColor, UIColor.white.withAlphaComponent(0.3).cgColor, UIColor.white.cgColor]
+        self.gradientLayer.colors = [UIColor.white.withAlphaComponent(0).cgColor, UIColor.white.withAlphaComponent(0.5).cgColor, UIColor.white.cgColor]
         gradientView.layer.addSublayer(self.gradientLayer)
         
         /// grandientView 레이아웃 잡기
@@ -46,7 +46,7 @@ class ExampleFirstVC: UIViewController {
         gradientView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         
         /// gradient 위에서 아래로 주기
-        self.gradientLayer.locations = [0.5, 0.7]
+        self.gradientLayer.locations = [0.7, 0.9]
         
         ///gradient를 가로로 만들어주는 시작점과 끝점 포인트
 //        self.gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
