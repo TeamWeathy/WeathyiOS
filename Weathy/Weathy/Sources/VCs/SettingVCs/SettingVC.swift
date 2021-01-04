@@ -15,23 +15,30 @@ class SettingVC: UIViewController {
     
     @IBOutlet weak var setLabel: UILabel!
     @IBOutlet weak var switchButton: UISwitch!
+    @IBOutlet var buttonLabels: [UILabel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setLabel.font = UIFont.SDGothicSemiBold25
-        switchButton.onTintColor = UIColor.mintMain
+       
         
         //MARK: - LifeCycle Methods
-        
+        fontColorSeting()
     }
     
     //MARK: - Custom Methods
     
+    func fontColorSeting(){
+        setLabel.font = UIFont.SDGothicSemiBold25
+        for i in 0 ..< buttonLabels.count {
+            buttonLabels[i].font = UIFont.SDGothicRegular16
+        }
+        switchButton.onTintColor = UIColor.mintMain
+    }
     
     //MARK: - @objc Methods
-
-
+    
+    
     //MARK: - IBActions
 
     @IBAction func backButtonDidTap(_ sender: Any) {

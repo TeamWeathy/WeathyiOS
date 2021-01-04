@@ -13,7 +13,10 @@ class DevelopersInfoVC: UIViewController {
     
     //MARK: - IBOutlets
     
+    
+    @IBOutlet weak var developersInfoLabel: UILabel!
     @IBOutlet var nameLabels: [UILabel]!    /// Name 관련
+    @IBOutlet var partLalbels: [UILabel]!   /// Part 관련
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +29,15 @@ class DevelopersInfoVC: UIViewController {
     //MARK: - Custom Methods
     
     func textColor(){
-        for i in 0..<nameLabels.count{
+        developersInfoLabel.font = UIFont.SDGothicSemiBold25
+        
+        for i in 0..<nameLabels.count {
                 nameLabels[i].font = UIFont.SDGothicRegular16
-                nameLabels[i].textColor = UIColor.gray
+                nameLabels[i].textColor = UIColor.subGrey6
+        }
+        for i in 0 ..< partLalbels.count {
+            partLalbels[i].font = UIFont.SDGothicRegular16
+            partLalbels[i].textColor = UIColor.mainGrey
         }
     }
     

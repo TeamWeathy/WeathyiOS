@@ -16,6 +16,9 @@ class ChangeNickNameVC: UIViewController {
     
     //MARK: - IBOutlets
     
+    @IBOutlet weak var nickLabel: UILabel!
+    @IBOutlet weak var sentenceLabel: UILabel!
+    
     @IBOutlet weak var textRadiusImage: UIImageView!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
@@ -31,10 +34,17 @@ class ChangeNickNameVC: UIViewController {
         
         //MARK: - LifeCycle Methods
         
+        labelFontSetting()
         keyBoardAction()
     }
     
     //MARK: - Custom Methods
+    
+    func labelFontSetting(){
+        nickLabel.font = UIFont.SDGothicSemiBold25
+        sentenceLabel.font = UIFont.SDGothicRegular16
+        sentenceLabel.textColor = UIColor.subGrey6
+    }
     
     //MARK: - @objc Methods
 

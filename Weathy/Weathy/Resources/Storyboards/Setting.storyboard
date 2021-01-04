@@ -182,13 +182,6 @@
                                                     <constraint firstAttribute="height" constant="48" id="kYy-yg-wDl"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzw-gs-wqA">
-                                                <rect key="frame" x="0.0" y="61" width="307" height="1"/>
-                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="Adk-mY-hrz"/>
-                                                </constraints>
-                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMw-3N-UiK">
                                                 <rect key="frame" x="0.0" y="0.0" width="307" height="62"/>
                                                 <connections>
@@ -199,7 +192,6 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="307" id="48k-jv-8M3"/>
-                                            <constraint firstAttribute="bottom" secondItem="lzw-gs-wqA" secondAttribute="bottom" id="4pl-Ne-PuH"/>
                                             <constraint firstAttribute="bottom" secondItem="lMw-3N-UiK" secondAttribute="bottom" id="ASG-jm-pdW"/>
                                             <constraint firstAttribute="trailing" secondItem="lMw-3N-UiK" secondAttribute="trailing" id="LIo-Lu-LCe"/>
                                             <constraint firstItem="BYm-EQ-qbh" firstAttribute="centerY" secondItem="npZ-dC-eQn" secondAttribute="centerY" id="QG8-Ym-ddw"/>
@@ -207,10 +199,8 @@
                                             <constraint firstAttribute="trailing" secondItem="JPN-iY-3sJ" secondAttribute="trailing" id="dem-R6-lc4"/>
                                             <constraint firstAttribute="height" constant="62" id="imZ-eb-e9j"/>
                                             <constraint firstItem="JPN-iY-3sJ" firstAttribute="centerY" secondItem="npZ-dC-eQn" secondAttribute="centerY" id="iqT-il-PQa"/>
-                                            <constraint firstItem="lzw-gs-wqA" firstAttribute="leading" secondItem="npZ-dC-eQn" secondAttribute="leading" id="kcm-DW-SnZ"/>
                                             <constraint firstItem="BYm-EQ-qbh" firstAttribute="leading" secondItem="npZ-dC-eQn" secondAttribute="leading" id="lLb-Of-TfK"/>
                                             <constraint firstItem="lMw-3N-UiK" firstAttribute="leading" secondItem="npZ-dC-eQn" secondAttribute="leading" id="ylJ-IG-Nju"/>
-                                            <constraint firstAttribute="trailing" secondItem="lzw-gs-wqA" secondAttribute="trailing" id="ziF-nK-7MT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -231,6 +221,10 @@
                     <connections>
                         <outlet property="setLabel" destination="tp5-0I-7HR" id="Mgh-q0-JyF"/>
                         <outlet property="switchButton" destination="vqr-9i-3An" id="Uiq-6Y-IsF"/>
+                        <outletCollection property="buttonLabels" destination="xVA-WE-Cyx" collectionClass="NSMutableArray" id="2vz-1S-YQU"/>
+                        <outletCollection property="buttonLabels" destination="2MD-r2-LSm" collectionClass="NSMutableArray" id="Mte-XZ-ma4"/>
+                        <outletCollection property="buttonLabels" destination="A75-14-pM8" collectionClass="NSMutableArray" id="Ska-7i-e0T"/>
+                        <outletCollection property="buttonLabels" destination="BYm-EQ-qbh" collectionClass="NSMutableArray" id="x86-Po-rco"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DwO-hH-5Oh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -475,6 +469,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="AmF-nr-zqS"/>
                     <connections>
+                        <outlet property="developersInfoLabel" destination="YEU-YW-dxo" id="nGH-rI-Qk2"/>
                         <outletCollection property="nameLabels" destination="zZW-Cp-MEs" collectionClass="NSMutableArray" id="lrr-NX-QC5"/>
                         <outletCollection property="nameLabels" destination="SAr-hP-jQS" collectionClass="NSMutableArray" id="VHf-hm-dhm"/>
                         <outletCollection property="nameLabels" destination="k6g-FM-Jur" collectionClass="NSMutableArray" id="5o4-hM-HLL"/>
@@ -491,6 +486,11 @@
                         <outletCollection property="nameLabels" destination="m07-jY-huj" collectionClass="NSMutableArray" id="vYt-NT-MVc"/>
                         <outletCollection property="nameLabels" destination="cgr-P0-nSo" collectionClass="NSMutableArray" id="0uZ-Zt-Rcs"/>
                         <outletCollection property="nameLabels" destination="4Tc-xz-yxy" collectionClass="NSMutableArray" id="oID-Zc-mnx"/>
+                        <outletCollection property="partLalbels" destination="m2Y-SM-QBp" collectionClass="NSMutableArray" id="ybX-9h-2gj"/>
+                        <outletCollection property="partLalbels" destination="TRo-WT-2g4" collectionClass="NSMutableArray" id="gYt-EM-3aC"/>
+                        <outletCollection property="partLalbels" destination="hXZ-tK-7l9" collectionClass="NSMutableArray" id="zoM-Ur-Ler"/>
+                        <outletCollection property="partLalbels" destination="DiS-zY-yDG" collectionClass="NSMutableArray" id="gt7-hW-VeB"/>
+                        <outletCollection property="partLalbels" destination="gp9-IB-97b" collectionClass="NSMutableArray" id="8hJ-hV-6wv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R5l-mf-ybC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -618,7 +618,9 @@
                         <outlet property="changeButtonBottom" destination="LEQ-I8-IeA" id="PyQ-Ua-qv7"/>
                         <outlet property="clearButton" destination="XdS-xS-MiL" id="BGe-co-Ru9"/>
                         <outlet property="countLabel" destination="cHl-UF-gw1" id="iLW-Vd-T5U"/>
+                        <outlet property="nickLabel" destination="2ui-HA-fmE" id="GG6-cj-FVB"/>
                         <outlet property="nickNameTextField" destination="Lv4-7S-nDz" id="q9V-fg-OTh"/>
+                        <outlet property="sentenceLabel" destination="q95-EC-W4X" id="5sC-f5-bvU"/>
                         <outlet property="textRadiusImage" destination="58n-Cx-0zT" id="5Po-it-3LC"/>
                     </connections>
                 </viewController>
