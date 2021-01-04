@@ -19,8 +19,7 @@
   <br> <br>
 ### 라이브러리
 
-  | 라이브러리(Library) | 목적(Purpose) | 버전(Version) |
-
+| 라이브러리(Library) | 목적(Purpose) | 버전(Version) |
 |:---|:----------|----|
 | Alamofire | 서버 통신 | 5.2.2|
 | Kingfisher  | 이미지 처리 | 5.0 |
