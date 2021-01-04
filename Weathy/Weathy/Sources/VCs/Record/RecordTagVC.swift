@@ -114,7 +114,7 @@ class RecordTagVC: UIViewController {
     var tagTitles: [TagTitle] = []
     
     let name: String = "웨디"
-    var titleIndex: Int = 0
+    var titleIndex: Int = 1
     
     //MARK: - IBOutlets
     
@@ -146,11 +146,16 @@ class RecordTagVC: UIViewController {
         setHeader()
         
         self.tagTitles = [
-            TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
-            TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
+            TagTitle(title: "상의", count: 0, isSelected: false, tagTab: tagUpper),
+            TagTitle(title: "하의", count: 0, isSelected: true, tagTab: tagUnder),
             TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
             TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
         ]
+        
+        DispatchQueue.main.async{
+            self.tagCollectionView.reloadData()
+            self.tagTitleCollectionView.reloadData()
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -214,11 +219,13 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
+            print(">>>")
+
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecordTagCVC", for: indexPath) as? RecordTagCVC
             else {
                 return UICollectionViewCell()
             }
-            
+
             if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
                 cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
                 cell.tagLabel.textColor = UIColor.subGrey6
@@ -229,7 +236,8 @@ extension RecordTagVC: UICollectionViewDataSource {
                 cell.layer.cornerRadius = 20
                 cell.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
 
-            } else {
+            }
+            else {
                 cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
                 cell.tagLabel.textColor = UIColor.mintIcon
                 cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
@@ -238,9 +246,10 @@ extension RecordTagVC: UICollectionViewDataSource {
                 cell.layer.cornerRadius = 20
                 cell.backgroundColor = UIColor.white
             }
-            
+
             return cell
         }
+        
         
         /// tagTitleCollectionView
         else if collectionView == tagTitleCollectionView {
@@ -275,17 +284,21 @@ extension RecordTagVC: UICollectionViewDataSource {
                 } else {
                     tagTitles[titleIndex].count -= 1
                 }
-            } else if tagTitles[titleIndex].count == 5 {
+            }
+            else if tagTitles[titleIndex].count == 5 {
                 if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
                     tagTitles[titleIndex].tagTab[indexPath.item].isSelected = false
                     tagTitles[titleIndex].count -= 1
                 }
-            } else {
+            }
+            else {
                 
             }
+            DispatchQueue.main.async{
+                self.tagCollectionView.reloadData()
+                self.tagTitleCollectionView.reloadData()
+            }
             
-            self.tagCollectionView.reloadData()
-            self.tagTitleCollectionView.reloadData()
             
         }
         
@@ -298,12 +311,12 @@ extension RecordTagVC: UICollectionViewDataSource {
                 if i == indexPath.item {
 
                     if tagTitles[i].isSelected == true {
-                        self.titleIndex = i
+//                        self.titleIndex = i
                         print("선택된 것 >> ", tagTitles[i].title)
                     } else {
                         self.titleIndex = i
                         tagTitles[i].isSelected = !tagTitles[i].isSelected
-                        self.tagCollectionView.reloadData()
+                        
                     }
                     
                 } else {
@@ -312,6 +325,7 @@ extension RecordTagVC: UICollectionViewDataSource {
             }
             
             self.tagTitleCollectionView.reloadData()
+            self.tagCollectionView.reloadData()
         }
         
     }
