@@ -198,6 +198,7 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
+            print(">>>", tagTitles[titleIndex].title ,tagTitles[titleIndex].tagTab.count)
             return tagTitles[titleIndex].tagTab.count
         }
         
@@ -274,18 +275,17 @@ extension RecordTagVC: UICollectionViewDataSource {
                 } else {
                     tagTitles[titleIndex].count -= 1
                 }
-                self.tagCollectionView.reloadData()
-                self.tagTitleCollectionView.reloadData()
             } else if tagTitles[titleIndex].count == 5 {
                 if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
                     tagTitles[titleIndex].tagTab[indexPath.item].isSelected = false
                     tagTitles[titleIndex].count -= 1
                 }
-                self.tagCollectionView.reloadData()
-                self.tagTitleCollectionView.reloadData()
             } else {
                 
             }
+            
+            self.tagCollectionView.reloadData()
+            self.tagTitleCollectionView.reloadData()
             
         }
         
@@ -296,13 +296,14 @@ extension RecordTagVC: UICollectionViewDataSource {
             /// 선택된 거 빼고 모두 isSelected를 false로 변경
             for i in 0...tagTitles.count-1 {
                 if i == indexPath.item {
-                    tagTitles[i].isSelected = !tagTitles[i].isSelected
-                    
+
                     if tagTitles[i].isSelected == true {
                         self.titleIndex = i
                         print("선택된 것 >> ", tagTitles[i].title)
                     } else {
-                        
+                        self.titleIndex = i
+                        tagTitles[i].isSelected = !tagTitles[i].isSelected
+                        self.tagCollectionView.reloadData()
                     }
                     
                 } else {
@@ -311,7 +312,6 @@ extension RecordTagVC: UICollectionViewDataSource {
             }
             
             self.tagTitleCollectionView.reloadData()
-            self.tagCollectionView.reloadData()
         }
         
     }
