@@ -8,6 +8,8 @@
 import UIKit
 
 class MainVC: UIViewController {
+    //MARK: - Custom Variables
+    
     //MARK: - IBOutlet
     
     @IBOutlet weak var weatherCollectionView: UICollectionView!
@@ -45,19 +47,27 @@ extension MainVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            print("0 번째 ")
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainTopCVC", for: indexPath) as? MainTopCVC else {return UICollectionViewCell()}
             
             cell.setCell()
             return cell
         case 1:
-            print("1 번째 ")
-            guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainButtomCVC", for: indexPath) as? MainButtomCVC else {return UICollectionViewCell()}
+            guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainBottomCVC", for: indexPath) as? MainBottomCVC else {return UICollectionViewCell()}
             
             cell.setCell()
             return cell
         default:
             return UICollectionViewCell()
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let bottomCVC = weatherCollectionView.cellForItem(at: [1, 0]) as? MainBottomCVC {
+            if (scrollView.contentOffset.y >= 500) {
+                bottomCVC.viewScrollDown()
+            } else {
+                bottomCVC.viewScrollUp()
+            }
         }
     }
 }
