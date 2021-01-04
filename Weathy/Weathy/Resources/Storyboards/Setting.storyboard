@@ -144,9 +144,6 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIf-zJ-oPF">
                                                 <rect key="frame" x="0.0" y="0.0" width="307" height="62"/>
-                                                <connections>
-                                                    <segue destination="CVR-9y-N3s" kind="show" id="2mV-4n-5Cb"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -191,6 +188,9 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMw-3N-UiK">
                                                 <rect key="frame" x="0.0" y="0.0" width="307" height="62"/>
+                                                <connections>
+                                                    <segue destination="CVR-9y-N3s" kind="show" id="Udu-85-5db"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -494,6 +494,9 @@
                                         <rect key="frame" x="15" y="15.666666666666659" width="277" height="18.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="NickTextFieldDidTap:" destination="v8m-hs-VH6" eventType="editingChanged" id="mKO-lU-qzk"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -516,30 +519,61 @@
                                     <constraint firstAttribute="height" constant="55" id="RPi-cR-hgo"/>
                                 </constraints>
                                 <state key="normal" image="settingBtnEditUnselected"/>
+                                <connections>
+                                    <action selector="changeButtonDidTap:" destination="v8m-hs-VH6" eventType="touchUpInside" id="vC2-jJ-XK0"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfX-ks-T7T">
+                                <rect key="frame" x="325" y="276" width="16" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHl-UF-gw1">
+                                <rect key="frame" x="283" y="276" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cJU-F3-1XE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6xh-y7-9IU" firstAttribute="top" secondItem="cJU-F3-1XE" secondAttribute="top" constant="15" id="4Su-Pd-3Fz"/>
                             <constraint firstItem="Eab-DD-lof" firstAttribute="top" secondItem="q95-EC-W4X" secondAttribute="bottom" constant="46" id="BA5-t6-VDp"/>
                             <constraint firstItem="2ui-HA-fmE" firstAttribute="leading" secondItem="cJU-F3-1XE" secondAttribute="leading" constant="34" id="CXH-bC-nqS"/>
                             <constraint firstItem="2ui-HA-fmE" firstAttribute="top" secondItem="6xh-y7-9IU" secondAttribute="bottom" constant="33" id="EFS-zR-yAK"/>
+                            <constraint firstItem="cHl-UF-gw1" firstAttribute="centerY" secondItem="XfX-ks-T7T" secondAttribute="centerY" id="Hxr-on-Yfj"/>
                             <constraint firstItem="cJU-F3-1XE" firstAttribute="bottom" secondItem="i7X-JX-aly" secondAttribute="bottom" id="LEQ-I8-IeA"/>
                             <constraint firstItem="i7X-JX-aly" firstAttribute="centerX" secondItem="G8S-Yt-2sb" secondAttribute="centerX" id="QKT-8g-1L4"/>
                             <constraint firstItem="q95-EC-W4X" firstAttribute="top" secondItem="2ui-HA-fmE" secondAttribute="bottom" constant="10" id="T0m-2d-vC3"/>
                             <constraint firstItem="6xh-y7-9IU" firstAttribute="leading" secondItem="cJU-F3-1XE" secondAttribute="leading" constant="33" id="bEm-1d-wRh"/>
                             <constraint firstItem="q95-EC-W4X" firstAttribute="leading" secondItem="2ui-HA-fmE" secondAttribute="leading" id="e1q-rS-Agv"/>
+                            <constraint firstItem="XfX-ks-T7T" firstAttribute="leading" secondItem="cHl-UF-gw1" secondAttribute="trailing" id="gJ9-G7-tMr"/>
                             <constraint firstItem="Eab-DD-lof" firstAttribute="centerX" secondItem="G8S-Yt-2sb" secondAttribute="centerX" id="oJF-wb-U5G"/>
+                            <constraint firstItem="XfX-ks-T7T" firstAttribute="trailing" secondItem="58n-Cx-0zT" secondAttribute="trailing" id="pNh-xC-7RK"/>
+                            <constraint firstItem="XfX-ks-T7T" firstAttribute="top" secondItem="Eab-DD-lof" secondAttribute="bottom" constant="5" id="uru-7H-7dX"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4TP-UE-Nt4" appends="YES" id="1FA-qk-2C2"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="4PP-jk-QHo"/>
                     <connections>
                         <outlet property="changeButton" destination="i7X-JX-aly" id="JF3-sb-FJT"/>
-                        <outlet property="nickNameTextField" destination="Lv4-7S-nDz" id="L2b-lR-jop"/>
+                        <outlet property="changeButtonBottom" destination="LEQ-I8-IeA" id="PyQ-Ua-qv7"/>
+                        <outlet property="countLabel" destination="cHl-UF-gw1" id="iLW-Vd-T5U"/>
+                        <outlet property="nickNameTextField" destination="Lv4-7S-nDz" id="q9V-fg-OTh"/>
+                        <outlet property="textRadiusImage" destination="58n-Cx-0zT" id="5Po-it-3LC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwc-cj-Hfu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4TP-UE-Nt4">
+                    <connections>
+                        <action selector="tapBG:" destination="v8m-hs-VH6" id="QSJ-w0-8Pw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="952.79999999999995" y="-684.23645320197045"/>
         </scene>
