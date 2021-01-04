@@ -22,11 +22,8 @@
   | 라이브러리(Library) | 목적(Purpose) | 버전(Version) |
 
 |:---|:----------|----|
-
 | Alamofire | 서버 통신 | 5.2.2|
-
 | Kingfisher  | 이미지 처리 | 5.0 |
-
 | SnapKit  | Layout 설정 | 5.0.0 |
 
   <br> <br>
@@ -180,7 +177,6 @@ git checkout develop             // develop 브랜치로 이동
 
 git pull origin < develop >     // 합쳐진 develop pull 받기 
 git checkout -b < feat/2 >         // feature 브랜치 만들면서 이동 
-&
 git push -u origin < feat/2 >     // 브랜치 생성+이동 후 바로 이 명령어하면 로컬 - 리모트 연결 되고 이후 origin 뭐시기 노필요
 
 ```
