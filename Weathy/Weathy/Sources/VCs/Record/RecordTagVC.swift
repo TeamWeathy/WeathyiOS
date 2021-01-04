@@ -20,9 +20,10 @@ class RecordTagVC: UIViewController {
         let title: String
         var count: Int
         var isSelected: Bool
+        var tagTab: [Tag]
     }
     
-    var tags: [Tag] = [
+    var tagUpper: [Tag] = [
         Tag(name: " + ", isSelected: false),
         Tag(name: "후드티", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
@@ -74,12 +75,43 @@ class RecordTagVC: UIViewController {
         Tag(name: "기모맨투맨(흰색)", isSelected: false)
     ]
     
-    var tagTitles: [TagTitle] = [
-        TagTitle(title: "상의", count: 0, isSelected: true),
-        TagTitle(title: "하의", count: 0, isSelected: false),
-        TagTitle(title: "외투", count: 0, isSelected: false),
-        TagTitle(title: "기타", count: 0, isSelected: false)
+    var tagUnder: [Tag] = [
+        Tag(name: " + ", isSelected: false),
+        Tag(name: "하의", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false)
     ]
+    
+    var tagOuter: [Tag] = [
+        Tag(name: " + ", isSelected: false),
+        Tag(name: "외투", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false)
+    ]
+    
+    var tagEtc: [Tag] = [
+        Tag(name: " + ", isSelected: false),
+        Tag(name: "기타", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false)
+    ]
+    
+    var tagTitles: [TagTitle] = []
     
     let name: String = "웨디"
     var titleIndex: Int = 0
@@ -112,6 +144,13 @@ class RecordTagVC: UIViewController {
         tagTitleCollectionView.delegate = self
         
         setHeader()
+        
+        self.tagTitles = [
+            TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
+            TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
+            TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
+            TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
+        ]
 
         // Do any additional setup after loading the view.
     }
@@ -159,7 +198,7 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-            return tags.count
+            return tagTitles[titleIndex].tagTab.count
         }
         
         /// tagTitleCollectionView
@@ -179,8 +218,8 @@ extension RecordTagVC: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            if tags[indexPath.item].isSelected == false {
-                cell.tagLabel.text = tags[indexPath.item].name
+            if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
+                cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
                 cell.tagLabel.textColor = UIColor.subGrey6
                 cell.tagLabel.font = UIFont.SDGothicRegular15
                 cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 80
@@ -190,7 +229,7 @@ extension RecordTagVC: UICollectionViewDataSource {
                 cell.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
 
             } else {
-                cell.tagLabel.text = tags[indexPath.item].name
+                cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
                 cell.tagLabel.textColor = UIColor.mintIcon
                 cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
                 cell.layer.borderColor = UIColor.mintMain.cgColor
@@ -229,8 +268,8 @@ extension RecordTagVC: UICollectionViewDataSource {
             
             if tagTitles[titleIndex].count < 5 {
                 collectionView.deselectItem(at: indexPath, animated: false)
-                tags[indexPath.item].isSelected = !tags[indexPath.item].isSelected
-                if tags[indexPath.item].isSelected == true {
+                tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
+                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
                     tagTitles[titleIndex].count += 1
                 } else {
                     tagTitles[titleIndex].count -= 1
@@ -238,8 +277,8 @@ extension RecordTagVC: UICollectionViewDataSource {
                 self.tagCollectionView.reloadData()
                 self.tagTitleCollectionView.reloadData()
             } else if tagTitles[titleIndex].count == 5 {
-                if tags[indexPath.item].isSelected == true {
-                    tags[indexPath.item].isSelected = false
+                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
+                    tagTitles[titleIndex].tagTab[indexPath.item].isSelected = false
                     tagTitles[titleIndex].count -= 1
                 }
                 self.tagCollectionView.reloadData()
@@ -272,6 +311,7 @@ extension RecordTagVC: UICollectionViewDataSource {
             }
             
             self.tagTitleCollectionView.reloadData()
+            self.tagCollectionView.reloadData()
         }
         
     }
