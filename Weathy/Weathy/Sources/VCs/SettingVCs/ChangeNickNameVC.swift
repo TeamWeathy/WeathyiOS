@@ -16,16 +16,17 @@ class ChangeNickNameVC: UIViewController {
     
     //MARK: - IBOutlets
     
+    @IBOutlet weak var textRadiusImage: UIImageView!
+    @IBOutlet weak var nickNameTextField: UITextField!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var changeButtonBottom: NSLayoutConstraint!
-    @IBOutlet weak var nickNameTextField: UITextField!
-    @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var textRadiusImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         countLabel.text = "\(textCount)"
-        
+        clearButton.isHidden = true
         nickNameTextField.delegate = self
         
         //MARK: - LifeCycle Methods
@@ -39,6 +40,10 @@ class ChangeNickNameVC: UIViewController {
 
     //MARK: - IBActions
     
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // TODO: BG 탭했을때, 키보드 내려오게 하기
     @IBAction func tapBG(_ sender: Any) {
         nickNameTextField.resignFirstResponder()
@@ -49,8 +54,19 @@ class ChangeNickNameVC: UIViewController {
         checkMaxLength(textField: nickNameTextField, maxLength: 6)
     }
     
-    @IBAction func backButtonDidTap(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+    /// textField 모두 지우기
+    @IBAction func clearButtonDidTap(_ sender: Any) {
+        if changBool == false {
+            clearButton.isHidden = false
+        } else {
+            changBool = false
+            clearButton.isHidden = true
+            self.changeButton.setImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
+            self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
+            countLabel.textColor = UIColor.black
+            countLabel.text = "0"
+            nickNameTextField.text = ""
+        }
     }
     
     @IBAction func changeButtonDidTap(_ sender: Any) {
@@ -86,12 +102,14 @@ extension ChangeNickNameVC: UITextFieldDelegate{
             self.changBool = false
             self.changeButton.setImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
-            countLabel.textColor = UIColor.mintIcon
+            clearButton.isHidden = true
+            countLabel.textColor = UIColor.black
         }else{
             self.changBool = true
             self.changeButton.setImage(UIImage(named: "settingBtnEditSelected"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
-            countLabel.textColor = UIColor.black
+            clearButton.isHidden = false
+            countLabel.textColor = UIColor.mintMain
             
         }
     }
@@ -112,7 +130,7 @@ extension ChangeNickNameVC {
         guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         if noti.name == UIResponder.keyboardWillShowNotification {
             let adjustemnHeight = keyboardFrame.height - view.safeAreaInsets.bottom
-            changeButtonBottom.constant = adjustemnHeight
+            changeButtonBottom.constant = adjustemnHeight + 16
         }else {
             changeButtonBottom.constant = 0
         }

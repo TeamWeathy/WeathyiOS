@@ -498,22 +498,35 @@
                                             <action selector="NickTextFieldDidTap:" destination="v8m-hs-VH6" eventType="editingChanged" id="mKO-lU-qzk"/>
                                         </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdS-xS-MiL">
+                                        <rect key="frame" x="273" y="17" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="5Aw-OG-0de"/>
+                                            <constraint firstAttribute="height" constant="16" id="yJ6-zu-IC2"/>
+                                        </constraints>
+                                        <state key="normal" image="btnDelete"/>
+                                        <connections>
+                                            <action selector="clearButtonDidTap:" destination="v8m-hs-VH6" eventType="touchUpInside" id="HR0-CM-JbT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="58n-Cx-0zT" secondAttribute="bottom" id="66q-CQ-sOn"/>
                                     <constraint firstAttribute="width" constant="307" id="BHi-rf-6PD"/>
                                     <constraint firstAttribute="trailing" secondItem="58n-Cx-0zT" secondAttribute="trailing" id="K7G-bT-gTl"/>
+                                    <constraint firstAttribute="trailing" secondItem="XdS-xS-MiL" secondAttribute="trailing" constant="18" id="KQM-wE-qXD"/>
                                     <constraint firstItem="Lv4-7S-nDz" firstAttribute="centerY" secondItem="Eab-DD-lof" secondAttribute="centerY" id="ZVj-dC-axA"/>
                                     <constraint firstAttribute="trailing" secondItem="Lv4-7S-nDz" secondAttribute="trailing" constant="15" id="bqc-hI-dN7"/>
                                     <constraint firstItem="58n-Cx-0zT" firstAttribute="leading" secondItem="Eab-DD-lof" secondAttribute="leading" id="jzG-A8-aXz"/>
                                     <constraint firstItem="58n-Cx-0zT" firstAttribute="top" secondItem="Eab-DD-lof" secondAttribute="top" id="mdU-Cg-wYW"/>
                                     <constraint firstItem="Lv4-7S-nDz" firstAttribute="leading" secondItem="Eab-DD-lof" secondAttribute="leading" constant="15" id="rah-XO-mhs"/>
+                                    <constraint firstItem="XdS-xS-MiL" firstAttribute="centerY" secondItem="Eab-DD-lof" secondAttribute="centerY" id="s7s-sf-hJ3"/>
                                     <constraint firstAttribute="height" constant="50" id="wgC-65-oiF"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7X-JX-aly">
-                                <rect key="frame" x="34" y="723" width="307" height="55"/>
+                                <rect key="frame" x="34" y="707" width="307" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="307" id="1p9-hf-vRW"/>
                                     <constraint firstAttribute="height" constant="55" id="RPi-cR-hgo"/>
@@ -545,7 +558,7 @@
                             <constraint firstItem="2ui-HA-fmE" firstAttribute="leading" secondItem="cJU-F3-1XE" secondAttribute="leading" constant="34" id="CXH-bC-nqS"/>
                             <constraint firstItem="2ui-HA-fmE" firstAttribute="top" secondItem="6xh-y7-9IU" secondAttribute="bottom" constant="33" id="EFS-zR-yAK"/>
                             <constraint firstItem="cHl-UF-gw1" firstAttribute="centerY" secondItem="XfX-ks-T7T" secondAttribute="centerY" id="Hxr-on-Yfj"/>
-                            <constraint firstItem="cJU-F3-1XE" firstAttribute="bottom" secondItem="i7X-JX-aly" secondAttribute="bottom" id="LEQ-I8-IeA"/>
+                            <constraint firstItem="cJU-F3-1XE" firstAttribute="bottom" secondItem="i7X-JX-aly" secondAttribute="bottom" constant="16" id="LEQ-I8-IeA"/>
                             <constraint firstItem="i7X-JX-aly" firstAttribute="centerX" secondItem="G8S-Yt-2sb" secondAttribute="centerX" id="QKT-8g-1L4"/>
                             <constraint firstItem="q95-EC-W4X" firstAttribute="top" secondItem="2ui-HA-fmE" secondAttribute="bottom" constant="10" id="T0m-2d-vC3"/>
                             <constraint firstItem="6xh-y7-9IU" firstAttribute="leading" secondItem="cJU-F3-1XE" secondAttribute="leading" constant="33" id="bEm-1d-wRh"/>
@@ -563,6 +576,7 @@
                     <connections>
                         <outlet property="changeButton" destination="i7X-JX-aly" id="JF3-sb-FJT"/>
                         <outlet property="changeButtonBottom" destination="LEQ-I8-IeA" id="PyQ-Ua-qv7"/>
+                        <outlet property="clearButton" destination="XdS-xS-MiL" id="BGe-co-Ru9"/>
                         <outlet property="countLabel" destination="cHl-UF-gw1" id="iLW-Vd-T5U"/>
                         <outlet property="nickNameTextField" destination="Lv4-7S-nDz" id="q9V-fg-OTh"/>
                         <outlet property="textRadiusImage" destination="58n-Cx-0zT" id="5Po-it-3LC"/>
@@ -596,6 +610,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btnDelete" width="16" height="16"/>
         <image name="ic_back" width="20" height="20"/>
         <image name="settingBtnEditUnselected" width="307" height="55"/>
         <image name="settingFrameArrow" width="48" height="48"/>
