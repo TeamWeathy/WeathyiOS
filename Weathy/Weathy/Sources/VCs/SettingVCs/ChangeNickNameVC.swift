@@ -110,7 +110,6 @@ extension ChangeNickNameVC: UITextFieldDelegate{
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
             clearButton.isHidden = false
             countLabel.textColor = UIColor.mintMain
-            
         }
     }
 }

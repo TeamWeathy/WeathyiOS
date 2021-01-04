@@ -17,6 +17,7 @@
 		0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C004A25A2514B00A31295 /* ChangeNickNameVC.swift */; };
 		0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005125A2585C00A31295 /* SettingNVC.swift */; };
 		0E8C005625A2598800A31295 /* DevelopersInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005525A2598800A31295 /* DevelopersInfoVC.swift */; };
+		0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005825A2F64900A31295 /* AskForVC.swift */; };
 		374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48F1259F2A9300152B9A /* UIFont+Extension.swift */; };
 		4C6D6B3632E6D1F7D4A96051 /* Pods_Weathy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */; };
 		633984202599B1F400339615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339841F2599B1F400339615 /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		0E8C004A25A2514B00A31295 /* ChangeNickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNickNameVC.swift; sourceTree = "<group>"; };
 		0E8C005125A2585C00A31295 /* SettingNVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNVC.swift; sourceTree = "<group>"; };
 		0E8C005525A2598800A31295 /* DevelopersInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersInfoVC.swift; sourceTree = "<group>"; };
+		0E8C005825A2F64900A31295 /* AskForVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForVC.swift; sourceTree = "<group>"; };
 		374D48F1259F2A9300152B9A /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		6339841C2599B1F400339615 /* Weathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339841F2599B1F400339615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				0E8C004625A249B900A31295 /* SettingVC.swift */,
 				0E8C004A25A2514B00A31295 /* ChangeNickNameVC.swift */,
 				0E8C005525A2598800A31295 /* DevelopersInfoVC.swift */,
+				0E8C005825A2F64900A31295 /* AskForVC.swift */,
 			);
 			path = SettingVCs;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				63DEB261259CD49700A94488 /* DummyCell.swift in Sources */,
 				0E8C003F25A1BC3F00A31295 /* ExampleThirdVC.swift in Sources */,
 				0E8C003925A1BC1F00A31295 /* ExampleFirstVC.swift in Sources */,
+				0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */,
 				63DEB264259CD4AD00A94488 /* DummyClass.swift in Sources */,
 				633984222599B1F400339615 /* SceneDelegate.swift in Sources */,
 				0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */,
