@@ -20,9 +20,8 @@ class SettingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
-        
         //MARK: - LifeCycle Methods
+        
         fontColorSeting()
     }
     

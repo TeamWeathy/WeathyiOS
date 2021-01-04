@@ -13,7 +13,6 @@ class DevelopersInfoVC: UIViewController {
     
     //MARK: - IBOutlets
     
-    
     @IBOutlet weak var developersInfoLabel: UILabel!
     @IBOutlet var nameLabels: [UILabel]!    /// Name 관련
     @IBOutlet var partLalbels: [UILabel]!   /// Part 관련

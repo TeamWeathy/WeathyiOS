@@ -14,13 +14,9 @@ class ExampleSecondVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
     @IBAction func backPressBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-
 }

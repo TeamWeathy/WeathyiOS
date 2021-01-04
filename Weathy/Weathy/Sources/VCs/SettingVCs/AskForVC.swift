@@ -14,8 +14,9 @@ class AskForVC: UIViewController {
 
     }
     
+    //MARK: - IBActions
+    
     @IBAction func backButtonDidTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
 }

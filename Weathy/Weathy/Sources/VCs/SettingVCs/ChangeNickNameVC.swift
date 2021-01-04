@@ -23,6 +23,7 @@ class ChangeNickNameVC: UIViewController {
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var countLabel: UILabel!
+    
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var changeButtonBottom: NSLayoutConstraint!
     
