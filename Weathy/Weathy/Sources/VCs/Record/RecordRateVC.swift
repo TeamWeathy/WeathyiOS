@@ -23,7 +23,6 @@ class RecordRateVC: UIViewController {
     
     
     //MARK: - IBOutlets
-    
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var dismissBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
@@ -54,7 +53,7 @@ class RecordRateVC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func backBtnTap(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
@@ -63,7 +62,7 @@ class RecordRateVC: UIViewController {
             return
         }
         
-        self.navigationController?.pushViewController(dvc, animated: true)
+        self.navigationController?.pushViewController(dvc, animated: false)
     }
     
 

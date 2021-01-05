@@ -62,7 +62,7 @@ class RecordStartVC: UIViewController {
             return
         }
         
-        self.navigationController?.pushViewController(dvc, animated: true)
+        self.navigationController?.pushViewController(dvc, animated: false)
     }
     
 

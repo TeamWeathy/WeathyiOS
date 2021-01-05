@@ -204,7 +204,7 @@ class RecordTagVC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func backBtnTap(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
@@ -213,7 +213,7 @@ class RecordTagVC: UIViewController {
             return
         }
         
-        self.navigationController?.pushViewController(dvc, animated: true)
+        self.navigationController?.pushViewController(dvc, animated: false)
     }
     
 

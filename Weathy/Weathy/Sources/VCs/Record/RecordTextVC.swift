@@ -52,7 +52,7 @@ class RecordTextVC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func backBtnTap(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
     
 }
