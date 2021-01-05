@@ -13,6 +13,7 @@ class MainBottomCVC: UICollectionViewCell {
     @IBOutlet weak var timeZoneWeatherView: UIView!
     @IBOutlet weak var weeklyWeatherView: UIView!
     @IBOutlet weak var detailWeatherView: UIView!
+    @IBOutlet weak var timeZoneCenterY: NSLayoutConstraint!
     
     //MARK: - Custom Methods
     func setCell() {
@@ -30,14 +31,31 @@ class MainBottomCVC: UICollectionViewCell {
     }
     
     func viewScrollUp() {
-        UIView.animate(withDuration: 0.2, delay: 0.3, options: [.curveLinear], animations: {
-            self.timeZoneWeatherView.transform = CGAffineTransform(translationX: 0, y: 100)
+//        timeZoneCenterY.constant = 21
+        
+//        UIView.animate(withDuration: 0.2, delay: 0.3, options: [.curveLinear], animations: {
+//            self.timeZoneWeatherView.transform = CGAffineTransform(translationX: 0, y: 100)
+//        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveLinear], animations: {
+            self.timeZoneCenterY.constant = 250
+            self.timeZoneWeatherView.alpha = 0
+            
+            self.layoutIfNeeded()
         }, completion: nil)
     }
     
     func viewScrollDown() {
-        UIView.animate(withDuration: 0.2, delay: 0.3, options: [.curveLinear], animations: {
-            self.timeZoneWeatherView.transform = CGAffineTransform(translationX: 0, y: 0)
+//        self.timeZoneCenterY.constant = 300
+        
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveLinear], animations: {
+            self.timeZoneCenterY.constant = 21
+            self.timeZoneWeatherView.alpha = 1
+            
+            self.layoutIfNeeded()
         }, completion: nil)
+//        UIView.animate(withDuration: 0.2, delay: 0.3, options: [.curveLinear], animations: {
+//            self.timeZoneWeatherView.transform = CGAffineTransform(translationX: 0, y: 0)
+//        }, completion: nil)
     }
 }

@@ -62,6 +62,7 @@ extension MainVC: UICollectionViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // fix: scrollUp 영역 다시 잡기
         if let bottomCVC = weatherCollectionView.cellForItem(at: [1, 0]) as? MainBottomCVC {
             if (scrollView.contentOffset.y >= 500) {
                 bottomCVC.viewScrollDown()
