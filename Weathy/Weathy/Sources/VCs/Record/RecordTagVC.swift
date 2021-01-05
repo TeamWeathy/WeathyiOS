@@ -161,6 +161,7 @@ class RecordTagVC: UIViewController {
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var indicatorCircle: [UIView]!
     
     @IBOutlet var tagTitleCollectionView: UICollectionView!
     @IBOutlet var tagCollectionView: UICollectionView!
@@ -183,6 +184,7 @@ class RecordTagVC: UIViewController {
         tagTitleCollectionView.delegate = self
         
         setHeader()
+        setTitleLabel()
         
         self.tagTitles = [
             TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
@@ -231,6 +233,35 @@ extension RecordTagVC {
         explanationLabel.text = "+를 눌러 추가하고, 꾹 눌러 삭제할 수 있어요."
         explanationLabel.font = UIFont.SDGothicRegular16
         explanationLabel.textColor = UIColor.subGrey6
+        
+        indicatorCircle[0].layer.cornerRadius = 4.5
+        indicatorCircle[0].backgroundColor = UIColor.mintMain
+        indicatorCircle[0].alpha = 0.4
+        
+        indicatorCircle[1].layer.cornerRadius = 7.5
+        indicatorCircle[1].backgroundColor = UIColor.mintMain
+        
+        indicatorCircle[2].layer.cornerRadius = 4.5
+        indicatorCircle[2].backgroundColor = UIColor.subGrey7
+    }
+    
+    func setTitleLabel() {
+        let attributedString = NSMutableAttributedString(string: "희지님\n어떤 옷을 입었나요?", attributes: [
+            .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
+            .foregroundColor: UIColor.mainGrey,
+            .kern: -1.25
+        ])
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+        
+        attributedString.addAttributes([
+            .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
+            .foregroundColor: UIColor.mintIcon
+        ], range: NSRange(location: 4, length: 4))
+        
+        titleLabel.attributedText = attributedString
     }
 }
 
