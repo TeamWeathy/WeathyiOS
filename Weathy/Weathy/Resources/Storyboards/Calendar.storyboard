@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T7l-AV-MGM">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -9,38 +9,121 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--CalendarVC-->
+        <!--Calendar DetailVC-->
         <scene sceneID="WdB-eP-j4y">
             <objects>
-                <viewController id="T7l-AV-MGM" customClass="CalendarVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="T7l-AV-MGM" customClass="CalendarDetailVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WEm-SD-tmm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarImgCloud" translatesAutoresizingMaskIntoConstraints="NO" id="aVD-Qw-6W5">
+                                <rect key="frame" x="98" y="375.33333333333331" width="179" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aVD-Qw-6W5" secondAttribute="height" multiplier="179:110" id="CpW-ep-biJ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3O-5L-M7h">
+                                <rect key="frame" x="139.66666666666666" y="502.33333333333326" width="96" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Z3O-5L-M7h" secondAttribute="height" multiplier="96:48" id="m1y-pK-0jn"/>
+                                </constraints>
+                                <state key="normal" image="calendarBtnRecord"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6NH-hq-cD8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aVD-Qw-6W5" firstAttribute="centerX" secondItem="6NH-hq-cD8" secondAttribute="centerX" id="6IP-Nb-Vo7"/>
+                            <constraint firstItem="Z3O-5L-M7h" firstAttribute="top" secondItem="aVD-Qw-6W5" secondAttribute="bottom" constant="17" id="6LN-YT-sih"/>
+                            <constraint firstItem="aVD-Qw-6W5" firstAttribute="top" secondItem="6NH-hq-cD8" secondAttribute="top" multiplier="354:734" constant="354" id="See-3z-jWq"/>
+                            <constraint firstItem="Z3O-5L-M7h" firstAttribute="centerX" secondItem="6NH-hq-cD8" secondAttribute="centerX" id="nJi-qI-Zjb"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailEmptyImageView" destination="aVD-Qw-6W5" id="9f5-dO-39P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1r-2E-K0o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-154" y="32"/>
+            <point key="canvasLocation" x="-135" y="-89"/>
         </scene>
-        <!--Calendar PartialVC-->
+        <!--CalendarVC-->
         <scene sceneID="rjw-Fe-Uh8">
             <objects>
-                <viewController id="fIu-Ko-aR9" customClass="CalendarPartialVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarVC" id="fIu-Ko-aR9" customClass="CalendarVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s3g-XO-p9O">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9k-NW-X9X">
+                                <rect key="frame" x="0.0" y="44" width="375" height="661"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarFrameSlide" translatesAutoresizingMaskIntoConstraints="NO" id="9Mq-yL-8s0">
+                                        <rect key="frame" x="122.66666666666669" y="629" width="130" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="9Mq-yL-8s0" secondAttribute="height" multiplier="130:32" id="xtr-Za-Tj4"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="2021.1" translatesAutoresizingMaskIntoConstraints="NO" id="MLH-qw-EFI">
+                                        <rect key="frame" x="130" y="12" width="115" height="48"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="MLH-qw-EFI" secondAttribute="height" multiplier="115:48" id="bZX-nQ-PUJ"/>
+                                        </constraints>
+                                        <inset key="scrollIndicatorInsets" minX="8" minY="8" maxX="0.0" maxY="0.0"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" calendarEvent="YES"/>
+                                    </textView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarBtnArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Zop-PL-sAi">
+                                        <rect key="frame" x="227" y="33" width="11" height="6.3333333333333357"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Zop-PL-sAi" secondAttribute="height" multiplier="10.5:6" id="xFW-hg-Ww3"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Zop-PL-sAi" firstAttribute="centerY" secondItem="MLH-qw-EFI" secondAttribute="centerY" id="1yS-go-5xb"/>
+                                    <constraint firstItem="MLH-qw-EFI" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="3p0-TN-BMc"/>
+                                    <constraint firstItem="MLH-qw-EFI" firstAttribute="top" secondItem="j9k-NW-X9X" secondAttribute="top" constant="12" id="4W8-Nr-f4i"/>
+                                    <constraint firstItem="9Mq-yL-8s0" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="8e6-gJ-kcQ"/>
+                                    <constraint firstItem="Zop-PL-sAi" firstAttribute="trailing" secondItem="MLH-qw-EFI" secondAttribute="trailing" constant="-7" id="8hY-gl-rkQ"/>
+                                    <constraint firstItem="9Mq-yL-8s0" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="130:375" id="GbK-jG-Srz"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Mq-yL-8s0" secondAttribute="bottom" id="prY-LM-ZcZ"/>
+                                    <constraint firstItem="MLH-qw-EFI" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="115:375" id="w9p-bo-8Ho"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="HMP-Nq-GSb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HMP-Nq-GSb" firstAttribute="bottom" secondItem="j9k-NW-X9X" secondAttribute="bottom" constant="73" id="0Zv-ia-RXK"/>
+                            <constraint firstItem="j9k-NW-X9X" firstAttribute="top" secondItem="HMP-Nq-GSb" secondAttribute="top" id="6m6-B7-5eN"/>
+                            <constraint firstItem="j9k-NW-X9X" firstAttribute="trailing" secondItem="HMP-Nq-GSb" secondAttribute="trailing" id="GQS-LB-dYF"/>
+                            <constraint firstItem="j9k-NW-X9X" firstAttribute="leading" secondItem="HMP-Nq-GSb" secondAttribute="leading" id="vZN-ed-NFY"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calendarDrawerView" destination="j9k-NW-X9X" id="HPl-bX-3M6"/>
+                        <outlet property="yearMonthTextView" destination="MLH-qw-EFI" id="Tqn-Nf-Ccn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pe2-HT-H79" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="713" y="52"/>
+            <point key="canvasLocation" x="631.20000000000005" y="-89.408866995073893"/>
         </scene>
     </scenes>
     <resources>
+        <image name="calendarBtnArrow" width="11" height="6.3333334922790527"/>
+        <image name="calendarBtnRecord" width="96" height="48"/>
+        <image name="calendarFrameSlide" width="130" height="32"/>
+        <image name="calendarImgCloud" width="179" height="110"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
