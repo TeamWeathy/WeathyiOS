@@ -77,7 +77,47 @@ class RecordTagVC: UIViewController {
     
     var tagUnder: [Tag] = [
         Tag(name: " + ", isSelected: false),
-        Tag(name: "하의", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
+        Tag(name: "반팔티", isSelected: false),
+        Tag(name: "니트", isSelected: false),
+        Tag(name: "기모후드티", isSelected: false),
+        Tag(name: "폴로니트", isSelected: false),
+        Tag(name: "목폴라", isSelected: false),
+        Tag(name: "히트텍", isSelected: false),
+        Tag(name: "기모맨투맨(흰색)", isSelected: false),
+        Tag(name: "후드티", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
         Tag(name: "니트", isSelected: false),
         Tag(name: "기모후드티", isSelected: false),
@@ -114,7 +154,7 @@ class RecordTagVC: UIViewController {
     var tagTitles: [TagTitle] = []
     
     let name: String = "웨디"
-    var titleIndex: Int = 1
+    var titleIndex: Int = 0
     
     //MARK: - IBOutlets
     
@@ -146,8 +186,8 @@ class RecordTagVC: UIViewController {
         setHeader()
         
         self.tagTitles = [
-            TagTitle(title: "상의", count: 0, isSelected: false, tagTab: tagUpper),
-            TagTitle(title: "하의", count: 0, isSelected: true, tagTab: tagUnder),
+            TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
+            TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
             TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
             TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
         ]
@@ -338,14 +378,11 @@ extension RecordTagVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if collectionView == tagTitleCollectionView {
-            let cellWidth : CGFloat = collectionView.frame.width/4 - 6
-            let cellHeight : CGFloat = collectionView.frame.height
-            
-            return CGSize(width: cellWidth, height: cellHeight)
-        }
+        let cellWidth : CGFloat = collectionView.frame.width/4 - 6
+        let cellHeight : CGFloat = collectionView.frame.height
         
-        return CGSize()
+        return CGSize(width: cellWidth, height: cellHeight)
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
