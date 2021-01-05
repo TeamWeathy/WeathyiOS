@@ -37,6 +37,7 @@ class RecordRateVC: UIViewController {
         
         setAboveCollection()
         setNextBtnDisabled()
+        setTitleLabel()
         setCV()
         
         rateCollectionView.dataSource = self
@@ -82,6 +83,20 @@ extension RecordRateVC {
         
 //        stepOneImageView.image = UIImage(named: <#T##String#>)
 //        stepTwoImageView.image = UIImage(named: <#T##String#>)
+    }
+    
+    func setTitleLabel() {
+        let attributedString = NSMutableAttributedString(string: "날씨는 어땠나요?", attributes: [
+          .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
+          .foregroundColor: UIColor.mainGrey,
+          .kern: -1.25
+        ])
+        attributedString.addAttributes([
+          .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
+          .foregroundColor: UIColor.mintIcon
+        ], range: NSRange(location: 0, length: 2))
+        
+        titleLabel.attributedText = attributedString
     }
     
     func setCV() {
