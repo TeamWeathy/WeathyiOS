@@ -48,6 +48,30 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QkZ-YO-Jsj">
+                                <rect key="frame" x="316.5" y="124" width="9" height="9"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="9" id="8wh-ts-c8X"/>
+                                    <constraint firstAttribute="width" constant="9" id="C4N-8Z-fzI"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qoI-2D-5VO">
+                                <rect key="frame" x="334.5" y="124" width="9" height="9"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="9" id="SsL-OT-Jfz"/>
+                                    <constraint firstAttribute="width" constant="9" id="qX0-g9-D89"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bnb-OS-G7U">
+                                <rect key="frame" x="350.5" y="122" width="13" height="13"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="Xj2-VD-rPt"/>
+                                    <constraint firstAttribute="width" constant="13" id="usa-mE-ngo"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8j-da-Hpf">
                                 <rect key="frame" x="33" y="790" width="348" height="62"/>
                                 <constraints>
@@ -133,12 +157,18 @@
                             <constraint firstItem="TEz-Je-2hL" firstAttribute="width" secondItem="m6x-WU-vaf" secondAttribute="width" multiplier="329:375" id="9lk-Ml-GmL"/>
                             <constraint firstItem="i8j-da-Hpf" firstAttribute="leading" secondItem="MLF-pb-L30" secondAttribute="leading" constant="33" id="CQh-75-uXO"/>
                             <constraint firstItem="MLF-pb-L30" firstAttribute="trailing" secondItem="i8j-da-Hpf" secondAttribute="trailing" constant="33" id="D6A-04-DIZ"/>
+                            <constraint firstItem="Bnb-OS-G7U" firstAttribute="top" secondItem="jk2-WS-2BT" secondAttribute="top" constant="12" id="Gpz-db-BNM"/>
                             <constraint firstItem="R6c-xM-7fc" firstAttribute="leading" secondItem="TEz-Je-2hL" secondAttribute="leading" constant="10" id="HD7-Xa-i5d"/>
                             <constraint firstItem="TEz-Je-2hL" firstAttribute="top" secondItem="R6c-xM-7fc" secondAttribute="bottom" constant="54" id="Ivb-aL-TJV"/>
+                            <constraint firstItem="Bnb-OS-G7U" firstAttribute="leading" secondItem="qoI-2D-5VO" secondAttribute="trailing" constant="7" id="JRj-jr-L0L"/>
+                            <constraint firstItem="QkZ-YO-Jsj" firstAttribute="centerY" secondItem="qoI-2D-5VO" secondAttribute="centerY" id="LbX-td-JTU"/>
                             <constraint firstItem="TEz-Je-2hL" firstAttribute="centerX" secondItem="m6x-WU-vaf" secondAttribute="centerX" id="ShZ-L7-LPo"/>
                             <constraint firstItem="qnR-AN-DNU" firstAttribute="leading" secondItem="TEz-Je-2hL" secondAttribute="leading" constant="10" id="Vlg-hh-cAr"/>
                             <constraint firstItem="R6c-xM-7fc" firstAttribute="top" secondItem="jk2-WS-2BT" secondAttribute="bottom" constant="10" id="dLO-WN-O6Y"/>
+                            <constraint firstItem="qoI-2D-5VO" firstAttribute="centerY" secondItem="Bnb-OS-G7U" secondAttribute="centerY" id="hqe-jS-v6G"/>
+                            <constraint firstItem="qoI-2D-5VO" firstAttribute="leading" secondItem="QkZ-YO-Jsj" secondAttribute="trailing" constant="9" id="nlr-J2-YlE"/>
                             <constraint firstItem="qnR-AN-DNU" firstAttribute="top" secondItem="MLF-pb-L30" secondAttribute="top" constant="13" id="qd9-oo-a01"/>
+                            <constraint firstItem="Bnb-OS-G7U" firstAttribute="trailing" secondItem="TEz-Je-2hL" secondAttribute="trailing" constant="-25" id="tBs-jz-3i9"/>
                             <constraint firstItem="jk2-WS-2BT" firstAttribute="top" secondItem="qnR-AN-DNU" secondAttribute="bottom" constant="31" id="w7h-ps-pGj"/>
                             <constraint firstItem="jk2-WS-2BT" firstAttribute="leading" secondItem="TEz-Je-2hL" secondAttribute="leading" constant="10" id="xCs-J7-RDh"/>
                         </constraints>
@@ -150,6 +180,9 @@
                         <outlet property="nextBtn" destination="i8j-da-Hpf" id="Xxw-Bl-R2w"/>
                         <outlet property="rateCollectionView" destination="TEz-Je-2hL" id="abC-Sl-BJ6"/>
                         <outlet property="titleLabel" destination="jk2-WS-2BT" id="cEF-PD-D4G"/>
+                        <outletCollection property="indicatorCircle" destination="QkZ-YO-Jsj" collectionClass="NSMutableArray" id="4gG-2P-0GM"/>
+                        <outletCollection property="indicatorCircle" destination="qoI-2D-5VO" collectionClass="NSMutableArray" id="Xy3-y6-NFR"/>
+                        <outletCollection property="indicatorCircle" destination="Bnb-OS-G7U" collectionClass="NSMutableArray" id="T95-aD-7eh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjf-wE-atP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

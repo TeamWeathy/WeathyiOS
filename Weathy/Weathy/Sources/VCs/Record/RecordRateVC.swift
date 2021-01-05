@@ -26,6 +26,7 @@ class RecordRateVC: UIViewController {
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var indicatorCircle: [UIView]!
     @IBOutlet var rateCollectionView: UICollectionView!
     @IBOutlet var nextBtn: UIButton!
     
@@ -81,8 +82,16 @@ extension RecordRateVC {
         explanationLabel.font = UIFont.SDGothicRegular16
         explanationLabel.textColor = UIColor.subGrey6
         
-//        stepOneImageView.image = UIImage(named: <#T##String#>)
-//        stepTwoImageView.image = UIImage(named: <#T##String#>)
+        indicatorCircle[0].layer.cornerRadius = 4.5
+        indicatorCircle[0].backgroundColor = UIColor.mintMain
+        indicatorCircle[0].alpha = 0.4
+        
+        indicatorCircle[1].layer.cornerRadius = 4.5
+        indicatorCircle[1].backgroundColor = UIColor.mintMain
+        indicatorCircle[1].alpha = 0.4
+        
+        indicatorCircle[2].layer.cornerRadius = 6.5
+        indicatorCircle[2].backgroundColor = UIColor.mintMain
     }
     
     func setTitleLabel() {
