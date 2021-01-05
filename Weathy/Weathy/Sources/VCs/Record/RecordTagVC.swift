@@ -185,6 +185,7 @@ class RecordTagVC: UIViewController {
         
         setHeader()
         setTitleLabel()
+        setNextBtnDeactivated()
         
         self.tagTitles = [
             TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
@@ -209,6 +210,7 @@ class RecordTagVC: UIViewController {
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
+        
         let nextStoryboard = UIStoryboard(name: "RecordRate", bundle: nil)
         guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordRateVC") as? RecordRateVC else {
             return
@@ -262,6 +264,24 @@ extension RecordTagVC {
         ], range: NSRange(location: 4, length: 4))
         
         titleLabel.attributedText = attributedString
+    }
+    
+    func setNextBtnActivated() {
+        nextBtn.isUserInteractionEnabled = true
+        nextBtn.backgroundColor = UIColor.mintMain
+        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        nextBtn.layer.cornerRadius = 30
+    }
+    
+    func setNextBtnDeactivated() {
+        nextBtn.isUserInteractionEnabled = false
+        nextBtn.backgroundColor = UIColor.subGrey3
+        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        nextBtn.layer.cornerRadius = 30
     }
 }
 
@@ -367,6 +387,14 @@ extension RecordTagVC: UICollectionViewDataSource {
             DispatchQueue.main.async{
                 self.tagCollectionView.reloadData()
                 self.tagTitleCollectionView.reloadData()
+            }
+            
+            if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
+                tagTitles[3].count >= 1 {
+                self.setNextBtnActivated()
+            }
+            else {
+                self.setNextBtnDeactivated()
             }
             
             
