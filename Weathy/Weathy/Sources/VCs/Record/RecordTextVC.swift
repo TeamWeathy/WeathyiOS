@@ -20,7 +20,6 @@ class RecordTextVC: UIViewController {
     //MARK: - IBOutlets
     
     @IBOutlet var backBtn: UIButton!
-    @IBOutlet var dismissBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
     @IBOutlet var textViewSurroundingView: UIView!

@@ -159,7 +159,6 @@ class RecordTagVC: UIViewController {
     //MARK: - IBOutlets
     
     @IBOutlet var backBtn: UIButton!
-    @IBOutlet var dismissBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
     

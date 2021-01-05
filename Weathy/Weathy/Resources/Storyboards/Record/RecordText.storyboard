@@ -25,11 +25,6 @@
                                     <action selector="backBtnTap:" destination="xjN-KD-4od" eventType="touchUpInside" id="fny-Dp-biR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xi7-JT-pxI">
-                                <rect key="frame" x="363" y="58" width="18" height="22"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="xmark" catalog="system"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUj-sM-iqV">
                                 <rect key="frame" x="33" y="110" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -82,7 +77,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IUj-sM-iqV" firstAttribute="leading" secondItem="eck-6J-Cip" secondAttribute="leading" id="24D-NV-JzY"/>
-                            <constraint firstItem="bOC-i1-THr" firstAttribute="trailing" secondItem="Xi7-JT-pxI" secondAttribute="trailing" constant="33" id="7EH-aw-0kv"/>
                             <constraint firstItem="2cZ-HM-yfi" firstAttribute="leading" secondItem="bOC-i1-THr" secondAttribute="leading" constant="33" id="9bP-Km-S1B"/>
                             <constraint firstAttribute="trailing" secondItem="W20-Yo-UYI" secondAttribute="trailing" constant="33" id="HH6-T9-8N2"/>
                             <constraint firstItem="7Fp-vR-GCx" firstAttribute="trailing" secondItem="2cZ-HM-yfi" secondAttribute="trailing" id="K2v-O2-Mjs"/>
@@ -96,13 +90,11 @@
                             <constraint firstItem="W20-Yo-UYI" firstAttribute="width" secondItem="W20-Yo-UYI" secondAttribute="height" multiplier="309:55" id="q0Z-ZB-4jO"/>
                             <constraint firstItem="2cZ-HM-yfi" firstAttribute="top" secondItem="cFJ-j5-X5e" secondAttribute="bottom" constant="63" id="r9F-CH-tt4"/>
                             <constraint firstItem="bOC-i1-THr" firstAttribute="bottom" secondItem="W20-Yo-UYI" secondAttribute="bottom" constant="10" id="t83-g6-Jx0"/>
-                            <constraint firstItem="Xi7-JT-pxI" firstAttribute="top" secondItem="bOC-i1-THr" secondAttribute="top" constant="14" id="vvo-DK-cca"/>
                             <constraint firstItem="cFJ-j5-X5e" firstAttribute="top" secondItem="IUj-sM-iqV" secondAttribute="bottom" constant="10" id="z6X-DS-7U3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="eck-6J-Cip" id="tnM-sQ-Ijp"/>
-                        <outlet property="dismissBtn" destination="Xi7-JT-pxI" id="dHZ-O3-joQ"/>
                         <outlet property="finishBtn" destination="W20-Yo-UYI" id="kCa-e2-913"/>
                         <outlet property="recordTextView" destination="H2S-vH-8kf" id="qRq-Cd-pYu"/>
                         <outlet property="subTitleLabel" destination="cFJ-j5-X5e" id="5xd-C3-yGt"/>

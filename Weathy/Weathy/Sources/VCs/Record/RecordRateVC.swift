@@ -24,11 +24,8 @@ class RecordRateVC: UIViewController {
     
     //MARK: - IBOutlets
     @IBOutlet var backBtn: UIButton!
-    @IBOutlet var dismissBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
-    @IBOutlet var stepOneImageView: UIImageView!
-    @IBOutlet var stepTwoImageView: UIImageView!
     @IBOutlet var rateCollectionView: UICollectionView!
     @IBOutlet var nextBtn: UIButton!
     
