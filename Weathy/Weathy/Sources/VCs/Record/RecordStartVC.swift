@@ -98,7 +98,7 @@ extension RecordStartVC {
         boxLocationLabel.font = UIFont.SDGothicSemiBold17
         boxLocationLabel.textColor = UIColor.subGrey1
         
-        boxWeatherImageView.image = UIImage(named: "")
+        boxWeatherImageView.image = UIImage(named: "searchImgSunnycloud")
         
         maxTempLabel.text = "\(maxTemp)°"
         maxTempLabel.font = UIFont(name: "Roboto-Light", size: 50)
