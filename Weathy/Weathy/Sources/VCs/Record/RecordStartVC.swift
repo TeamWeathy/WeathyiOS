@@ -14,12 +14,10 @@ class RecordStartVC: UIViewController {
     var todayMonth: Int = 1
     var todayDate: Int = 1
     
-    var month: Int = 1
-    var date: Int = 1
+    var month: Int = 12
+    var date: Int = 20
     var day: String = "월"
-    var ampm: String = "오전"
-    var hour: Int = 1
-    var location: String = "서울시 종로구"
+    var location: String = "서울시 서초구"
     var currentTemp: Int = -2
     var maxTemp: Int = 4
     var minTemp: Int = -4
@@ -125,7 +123,7 @@ extension RecordStartVC {
         boxView.layer.borderColor = UIColor.subGrey7.cgColor
         boxView.layer.cornerRadius = 35
         
-        boxTimeLabel.text = "\(month)월 \(date)일 \(day)요일 · \(ampm) \(hour)시"
+        boxTimeLabel.text = "\(month)월 \(date)일 \(day)요일"
         boxTimeLabel.font = UIFont.SDGothicRegular15
         boxTimeLabel.textColor = UIColor.subGrey1
         
