@@ -85,7 +85,7 @@ extension RecordStartVC {
         subTitleLabel.font = UIFont.SDGothicRegular16
         subTitleLabel.textColor = UIColor.subGrey6
         
-        indicatorCircle[0].layer.cornerRadius = 7.5
+        indicatorCircle[0].layer.cornerRadius = 6.5
         indicatorCircle[0].backgroundColor = UIColor.mintMain
         
         indicatorCircle[1].layer.cornerRadius = 4.5

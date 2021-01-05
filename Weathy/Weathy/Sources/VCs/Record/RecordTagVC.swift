@@ -240,7 +240,7 @@ extension RecordTagVC {
         indicatorCircle[0].backgroundColor = UIColor.mintMain
         indicatorCircle[0].alpha = 0.4
         
-        indicatorCircle[1].layer.cornerRadius = 7.5
+        indicatorCircle[1].layer.cornerRadius = 6.5
         indicatorCircle[1].backgroundColor = UIColor.mintMain
         
         indicatorCircle[2].layer.cornerRadius = 4.5
