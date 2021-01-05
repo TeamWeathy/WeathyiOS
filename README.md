@@ -1,6 +1,7 @@
 
 # ☁️ 나에게 돌아오는 맞춤 날씨 서비스, Weathy  ☁️
-<img style="border: 1px solid black !important; border-radius:20px; " src="https://user-images.githubusercontent.com/63707317/103549586-f7b3c680-4eea-11eb-9ef1-248da4b4bbb2.png" width="600px" />
+<p align = "center">
+<img style="border: 1px solid black !important; border-radius:20px; " src="https://user-images.githubusercontent.com/63707317/103549586-f7b3c680-4eea-11eb-9ef1-248da4b4bbb2.png" width="600px" /></p>
 
 <br> <br>
   ## 🛠 개발 환경 및 사용한 라이브러리 (Development Environment and Using Library)
