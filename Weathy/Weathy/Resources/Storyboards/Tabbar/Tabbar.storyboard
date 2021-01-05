@@ -81,7 +81,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCr-oZ-z5r">
-                                <rect key="frame" x="0.0" y="44" width="375" height="661"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="705"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BdJ-VM-pyE"/>
@@ -90,7 +90,7 @@
                             <constraint firstItem="BdJ-VM-pyE" firstAttribute="trailing" secondItem="dCr-oZ-z5r" secondAttribute="trailing" id="5UK-sC-bCf"/>
                             <constraint firstItem="8tI-i9-VJF" firstAttribute="leading" secondItem="BdJ-VM-pyE" secondAttribute="leading" id="5oX-QN-dC7"/>
                             <constraint firstItem="dCr-oZ-z5r" firstAttribute="leading" secondItem="BdJ-VM-pyE" secondAttribute="leading" id="PGR-6x-Q0i"/>
-                            <constraint firstItem="dCr-oZ-z5r" firstAttribute="top" secondItem="BdJ-VM-pyE" secondAttribute="top" id="bwV-dK-bYu"/>
+                            <constraint firstItem="dCr-oZ-z5r" firstAttribute="top" secondItem="uAD-ns-xnl" secondAttribute="top" id="bwV-dK-bYu"/>
                             <constraint firstItem="8tI-i9-VJF" firstAttribute="top" secondItem="dCr-oZ-z5r" secondAttribute="bottom" id="c0z-6L-mJw"/>
                             <constraint firstItem="BdJ-VM-pyE" firstAttribute="bottom" secondItem="8tI-i9-VJF" secondAttribute="bottom" id="hYU-WW-x0T"/>
                             <constraint firstItem="8tI-i9-VJF" firstAttribute="trailing" secondItem="BdJ-VM-pyE" secondAttribute="trailing" id="pqT-Lo-4oi"/>
@@ -145,19 +145,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchBgMorning" id="V3I-zv-Xd2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LII-e6-KY3">
-                                <rect key="frame" x="330" y="69" width="20" height="22"/>
+                                <rect key="frame" x="311" y="44" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="ktR-bK-opT"/>
+                                    <constraint firstAttribute="width" constant="48" id="oUu-NQ-OFc"/>
+                                </constraints>
                                 <state key="normal" image="ic_settings"/>
                                 <connections>
                                     <action selector="settingButtonDidTap:" destination="nCW-Jl-VGK" eventType="touchUpInside" id="Hej-2N-8Ba"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4FY-zE-YNn">
+                                <rect key="frame" x="263" y="44" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="FYU-zd-00l"/>
+                                    <constraint firstAttribute="width" constant="48" id="SQp-m9-tkB"/>
+                                </constraints>
+                                <state key="normal" image="ic_search"/>
+                                <connections>
+                                    <action selector="searchButtonDidTap:" destination="nCW-Jl-VGK" eventType="touchUpInside" id="qdT-53-Zyf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BSJ-i1-Ukm"/>
-                        <color key="backgroundColor" red="0.47766279363307823" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LII-e6-KY3" firstAttribute="top" secondItem="BSJ-i1-Ukm" secondAttribute="top" constant="25" id="6Ta-eY-wOr"/>
-                            <constraint firstItem="BSJ-i1-Ukm" firstAttribute="trailing" secondItem="LII-e6-KY3" secondAttribute="trailing" constant="25" id="Bbp-pt-nan"/>
+                            <constraint firstItem="V3I-zv-Xd2" firstAttribute="trailing" secondItem="BSJ-i1-Ukm" secondAttribute="trailing" id="3id-a6-JNv"/>
+                            <constraint firstItem="LII-e6-KY3" firstAttribute="top" secondItem="BSJ-i1-Ukm" secondAttribute="top" id="6Ta-eY-wOr"/>
+                            <constraint firstItem="BSJ-i1-Ukm" firstAttribute="trailing" secondItem="LII-e6-KY3" secondAttribute="trailing" constant="16" id="Bbp-pt-nan"/>
+                            <constraint firstItem="BSJ-i1-Ukm" firstAttribute="bottom" secondItem="V3I-zv-Xd2" secondAttribute="bottom" id="b1I-0y-OjW"/>
+                            <constraint firstItem="V3I-zv-Xd2" firstAttribute="leading" secondItem="BSJ-i1-Ukm" secondAttribute="leading" id="eRc-LN-gac"/>
+                            <constraint firstItem="LII-e6-KY3" firstAttribute="leading" secondItem="4FY-zE-YNn" secondAttribute="trailing" id="lef-62-FtD"/>
+                            <constraint firstItem="V3I-zv-Xd2" firstAttribute="top" secondItem="YoP-el-kzy" secondAttribute="top" id="nky-5K-qi9"/>
+                            <constraint firstItem="4FY-zE-YNn" firstAttribute="top" secondItem="BSJ-i1-Ukm" secondAttribute="top" id="wGm-Q9-sKw"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -185,9 +209,11 @@
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="ic_calendar_selected" width="25" height="25"/>
         <image name="ic_plus" width="53" height="53"/>
+        <image name="ic_search" width="20" height="20"/>
         <image name="ic_settings" width="20" height="20"/>
         <image name="ic_weather_selected" width="25" height="25"/>
         <image name="ic_weather_unselected_2" width="25" height="25"/>
+        <image name="searchBgMorning" width="375" height="812"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
