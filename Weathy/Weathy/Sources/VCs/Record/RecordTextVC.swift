@@ -25,6 +25,7 @@ class RecordTextVC: UIViewController {
     @IBOutlet var textViewSurroundingView: UIView!
     @IBOutlet var recordTextView: UITextView!
     @IBOutlet var wordCountLabel: UILabel!
+    @IBOutlet var maxWordLabel: SpacedLabel!
     @IBOutlet var finishBtn: UIButton!
     
     
@@ -111,9 +112,12 @@ extension RecordTextVC {
     func setTextField() {
         recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
         
-        wordCountLabel.text = "\(wordCount)/\(maxWordCount)"
-        wordCountLabel.font = UIFont.SDGothicRegular13
-        wordCountLabel.textColor = UIColor.subGrey6
+//        wordCountLabel.text = "\(wordCount)/\(maxWordCount)"
+//        wordCountLabel.font = UIFont.SDGothicRegular13
+//        wordCountLabel.textColor = UIColor.subGrey6
+        
+        maxWordLabel.font = UIFont.SDGothicRegular13
+        maxWordLabel.textColor = UIColor.subGrey6
     }
     
     func textViewSetupView() {
@@ -145,6 +149,9 @@ extension RecordTextVC {
         finishBtn.setTitle("내용 추가하기", for: .normal)
         finishBtn.setTitleColor(.white, for: .normal)
         finishBtn.layer.cornerRadius = 30
+        
+        wordCountLabel.font = UIFont.SDGothicSemiBold13
+        wordCountLabel.textColor = UIColor.mintMain
     }
     
     func textNotExists() {
@@ -157,6 +164,10 @@ extension RecordTextVC {
         finishBtn.setTitle("내용 추가하기", for: .normal)
         finishBtn.setTitleColor(.white, for: .normal)
         finishBtn.layer.cornerRadius = 30
+        
+        wordCountLabel.text = "0"
+        wordCountLabel.font = UIFont.SDGothicRegular13
+        wordCountLabel.textColor = UIColor.subGrey6
     }
 }
 
@@ -194,7 +205,7 @@ extension RecordTextVC: UITextViewDelegate {
         }
         
         self.wordCount = Int(textView.text.count)
-        wordCountLabel.text = "\(wordCount)/100"
+        wordCountLabel.text = "\(wordCount)"
 
         if textView.text.count == 0 {
             self.textNotExists()

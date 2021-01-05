@@ -49,8 +49,8 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fp-vR-GCx" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                <rect key="frame" x="335.5" y="374.5" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fp-vR-GCx" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                <rect key="frame" x="344.5" y="374.5" width="33" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -82,11 +82,23 @@
                                     <constraint firstItem="H2S-vH-8kf" firstAttribute="centerX" secondItem="2cZ-HM-yfi" secondAttribute="centerX" id="wOq-Sb-83x"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJY-0x-mJy" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                <rect key="frame" x="302.5" y="374.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                        <real key="value" value="-0.65000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bOC-i1-THr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2cZ-HM-yfi" firstAttribute="centerX" secondItem="OXM-SK-kBb" secondAttribute="centerX" id="0sS-2g-1zv"/>
+                            <constraint firstItem="7Fp-vR-GCx" firstAttribute="leading" secondItem="oJY-0x-mJy" secondAttribute="trailing" id="C0C-LJ-3km"/>
                             <constraint firstItem="2cZ-HM-yfi" firstAttribute="width" secondItem="OXM-SK-kBb" secondAttribute="width" multiplier="309:375" id="G8R-nR-N4j"/>
                             <constraint firstAttribute="trailing" secondItem="W20-Yo-UYI" secondAttribute="trailing" constant="33" id="HH6-T9-8N2"/>
                             <constraint firstItem="7Fp-vR-GCx" firstAttribute="trailing" secondItem="2cZ-HM-yfi" secondAttribute="trailing" id="K2v-O2-Mjs"/>
@@ -94,6 +106,7 @@
                             <constraint firstItem="IUj-sM-iqV" firstAttribute="top" secondItem="eck-6J-Cip" secondAttribute="bottom" constant="30" id="OTj-JK-4t4"/>
                             <constraint firstItem="eck-6J-Cip" firstAttribute="leading" secondItem="2cZ-HM-yfi" secondAttribute="leading" id="PFL-MO-ZII"/>
                             <constraint firstItem="7Fp-vR-GCx" firstAttribute="top" secondItem="2cZ-HM-yfi" secondAttribute="bottom" constant="5" id="QiL-vg-2dw"/>
+                            <constraint firstItem="oJY-0x-mJy" firstAttribute="centerY" secondItem="7Fp-vR-GCx" secondAttribute="centerY" id="YJv-Ln-sNS"/>
                             <constraint firstItem="eck-6J-Cip" firstAttribute="top" secondItem="bOC-i1-THr" secondAttribute="top" constant="14" id="ant-Fg-gH8"/>
                             <constraint firstItem="cFJ-j5-X5e" firstAttribute="leading" secondItem="2cZ-HM-yfi" secondAttribute="leading" id="f36-PC-HCZ"/>
                             <constraint firstItem="W20-Yo-UYI" firstAttribute="width" secondItem="W20-Yo-UYI" secondAttribute="height" multiplier="309:55" id="q0Z-ZB-4jO"/>
@@ -106,11 +119,12 @@
                     <connections>
                         <outlet property="backBtn" destination="eck-6J-Cip" id="tnM-sQ-Ijp"/>
                         <outlet property="finishBtn" destination="W20-Yo-UYI" id="kCa-e2-913"/>
+                        <outlet property="maxWordLabel" destination="7Fp-vR-GCx" id="YFk-7u-A9X"/>
                         <outlet property="recordTextView" destination="H2S-vH-8kf" id="qRq-Cd-pYu"/>
                         <outlet property="subTitleLabel" destination="cFJ-j5-X5e" id="5xd-C3-yGt"/>
                         <outlet property="textViewSurroundingView" destination="2cZ-HM-yfi" id="tRS-ft-pGa"/>
                         <outlet property="titleLabel" destination="IUj-sM-iqV" id="JyT-P8-bGs"/>
-                        <outlet property="wordCountLabel" destination="7Fp-vR-GCx" id="8wE-ub-y54"/>
+                        <outlet property="wordCountLabel" destination="oJY-0x-mJy" id="028-Cs-zEx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Se8-4E-DCc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
