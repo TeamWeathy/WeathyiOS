@@ -34,7 +34,6 @@ class RecordStartVC: UIViewController {
     @IBOutlet var boxTimeLabel: UILabel!
     @IBOutlet var boxLocationLabel: UILabel!
     @IBOutlet var boxWeatherImageView: UIImageView!
-    @IBOutlet var currentTempLabel: UILabel!
     @IBOutlet var maxTempLabel: UILabel!
     @IBOutlet var slashLabel: UILabel!
     @IBOutlet var minTempLabel: UILabel!
@@ -101,23 +100,18 @@ extension RecordStartVC {
         
         boxWeatherImageView.image = UIImage(named: "")
         
-        currentTempLabel.text = "\(currentTemp)°"
-        currentTempLabel.font = UIFont(name: "Roboto-Light", size: 60)
-        currentTempLabel.textColor = UIColor.subGrey1
-        currentTempLabel.baselineAdjustment = .alignBaselines
-        
         maxTempLabel.text = "\(maxTemp)°"
-        maxTempLabel.font = UIFont(name: "Roboto-Light", size: 25)
+        maxTempLabel.font = UIFont(name: "Roboto-Light", size: 50)
         maxTempLabel.textColor = UIColor.redTemp
         maxTempLabel.baselineAdjustment = .alignBaselines
         
         slashLabel.text = "/"
-        slashLabel.font = UIFont.RobotoRegular15
-        slashLabel.textColor = UIColor.subGrey3
+        slashLabel.font = UIFont(name: "Roboto-Light", size: 30)
+        slashLabel.textColor = UIColor(red: 107/255, green: 107/255, blue: 107/255, alpha: 1)
         slashLabel.baselineAdjustment = .alignBaselines
         
         minTempLabel.text = "\(minTemp)°"
-        minTempLabel.font = UIFont(name: "Roboto-Light", size: 25)
+        minTempLabel.font = UIFont(name: "Roboto-Light", size: 50)
         minTempLabel.textColor = UIColor.blueTemp
         minTempLabel.baselineAdjustment = .alignBaselines
     }
