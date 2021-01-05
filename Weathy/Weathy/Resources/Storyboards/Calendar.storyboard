@@ -59,6 +59,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9k-NW-X9X">
                                 <rect key="frame" x="0.0" y="44" width="375" height="661"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DUV-T1-txb">
+                                        <rect key="frame" x="30" y="60" width="315" height="1"/>
+                                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="PPk-YN-Maf"/>
+                                        </constraints>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="jUc-Bh-1hY">
                                         <rect key="frame" x="31" y="78" width="313" height="17"/>
                                         <subviews>
@@ -121,7 +128,7 @@
                                             <constraint firstAttribute="width" secondItem="Zop-PL-sAi" secondAttribute="height" multiplier="10.5:6" id="xFW-hg-Ww3"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="2021.1" translatesAutoresizingMaskIntoConstraints="NO" id="MLH-qw-EFI" customClass="SpacedTextView" customModule="Weathy" customModuleProvider="target">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="2021. 1" translatesAutoresizingMaskIntoConstraints="NO" id="MLH-qw-EFI" customClass="SpacedTextView" customModule="Weathy" customModuleProvider="target">
                                         <rect key="frame" x="130" y="12" width="115" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MLH-qw-EFI" secondAttribute="height" multiplier="115:48" id="bZX-nQ-PUJ"/>
@@ -137,17 +144,33 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZs-Aw-Oxd">
+                                        <rect key="frame" x="301" y="9" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="GZs-Aw-Oxd" secondAttribute="height" multiplier="1:1" id="XVk-to-hNC"/>
+                                        </constraints>
+                                        <state key="normal" image="calendarFrameGotoday"/>
+                                        <connections>
+                                            <action selector="todayButtonDidTap:" destination="fIu-Ko-aR9" eventType="touchUpInside" id="1hm-S5-lru"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Zop-PL-sAi" firstAttribute="centerY" secondItem="MLH-qw-EFI" secondAttribute="centerY" id="1yS-go-5xb"/>
+                                    <constraint firstItem="GZs-Aw-Oxd" firstAttribute="top" secondItem="j9k-NW-X9X" secondAttribute="top" constant="9" id="2fd-Uz-UK3"/>
                                     <constraint firstItem="MLH-qw-EFI" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="3p0-TN-BMc"/>
                                     <constraint firstItem="MLH-qw-EFI" firstAttribute="top" secondItem="j9k-NW-X9X" secondAttribute="top" constant="12" id="4W8-Nr-f4i"/>
+                                    <constraint firstItem="DUV-T1-txb" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="315:375" id="8Tl-vE-lWC"/>
                                     <constraint firstItem="9Mq-yL-8s0" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="8e6-gJ-kcQ"/>
                                     <constraint firstItem="Zop-PL-sAi" firstAttribute="trailing" secondItem="MLH-qw-EFI" secondAttribute="trailing" constant="-7" id="8hY-gl-rkQ"/>
                                     <constraint firstItem="9Mq-yL-8s0" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="130:375" id="GbK-jG-Srz"/>
+                                    <constraint firstItem="GZs-Aw-Oxd" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="48:375" id="IFR-HN-PoD"/>
                                     <constraint firstItem="jUc-Bh-1hY" firstAttribute="top" secondItem="MLH-qw-EFI" secondAttribute="bottom" constant="18" id="KMP-pj-1G7"/>
                                     <constraint firstItem="jUc-Bh-1hY" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="313:375" id="UaU-8j-pnv"/>
+                                    <constraint firstItem="DUV-T1-txb" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="WQF-yh-pHJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="GZs-Aw-Oxd" secondAttribute="trailing" constant="26" id="X7x-8N-bS0"/>
+                                    <constraint firstItem="DUV-T1-txb" firstAttribute="top" secondItem="MLH-qw-EFI" secondAttribute="bottom" id="b4o-Ct-OCu"/>
                                     <constraint firstItem="jUc-Bh-1hY" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="ogb-TP-h6Y"/>
                                     <constraint firstAttribute="bottom" secondItem="9Mq-yL-8s0" secondAttribute="bottom" id="prY-LM-ZcZ"/>
                                     <constraint firstItem="MLH-qw-EFI" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="115:375" id="w9p-bo-8Ho"/>
@@ -170,12 +193,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pe2-HT-H79" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="631.20000000000005" y="-89.408866995073893"/>
+            <point key="canvasLocation" x="514" y="-170"/>
         </scene>
     </scenes>
     <resources>
         <image name="calendarBtnArrow" width="11" height="6.3333334922790527"/>
         <image name="calendarBtnRecord" width="96" height="48"/>
+        <image name="calendarFrameGotoday" width="48" height="48"/>
         <image name="calendarFrameSlide" width="130" height="32"/>
         <image name="calendarImgCloud" width="179" height="110"/>
         <systemColor name="labelColor">

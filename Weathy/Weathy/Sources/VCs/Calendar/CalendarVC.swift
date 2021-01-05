@@ -27,7 +27,12 @@ class CalendarVC: UIViewController {
     
     func setStyle(){
         yearMonthTextView.font = UIFont(name: "Roboto-Medium", size: 25)
+        yearMonthTextView.textColor = .mainGrey
     }
+    
     //MARK: - IBActions
+    
+    @IBAction func todayButtonDidTap(_ sender: Any) {
+    }
     
 }
