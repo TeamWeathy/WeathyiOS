@@ -11,6 +11,9 @@ class RecordStartVC: UIViewController {
 
     //MARK: - Custom Variables
     
+    var todayMonth: Int = 1
+    var todayDate: Int = 1
+    
     var month: Int = 1
     var date: Int = 1
     var day: String = "월"
@@ -74,7 +77,7 @@ extension RecordStartVC {
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
-        titleLabel.text = "오늘의 웨디를\n기록해볼까요?"
+        titleLabel.text = "\(todayMonth)월 \(todayDate)일의 웨디를\n기록해볼까요?"
         titleLabel.numberOfLines = 2
         titleLabel.font = UIFont.RobotoRegular25
         
