@@ -123,7 +123,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wiX-dK-HUU">
-                                <rect key="frame" x="33" y="293" width="309" height="415"/>
+                                <rect key="frame" x="33" y="263" width="309" height="445"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="swA-sO-s9M">
                                     <size key="itemSize" width="128" height="128"/>
@@ -191,22 +191,40 @@
                                     <constraint firstAttribute="height" constant="9" id="J0y-v4-AqE"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recordImgBottomblur" translatesAutoresizingMaskIntoConstraints="NO" id="Rji-1N-CWU">
+                                <rect key="frame" x="0.0" y="661" width="375" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="qaJ-4o-rbw"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recordImgTopblur" translatesAutoresizingMaskIntoConstraints="NO" id="Pc2-TS-gDV">
+                                <rect key="frame" x="0.0" y="263" width="375" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="0mG-9M-KKP"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="p2P-Xa-6hR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Rji-1N-CWU" firstAttribute="leading" secondItem="p2P-Xa-6hR" secondAttribute="leading" id="1qU-ZF-FiT"/>
+                            <constraint firstItem="p2P-Xa-6hR" firstAttribute="trailing" secondItem="Pc2-TS-gDV" secondAttribute="trailing" id="5EH-eG-eYE"/>
                             <constraint firstItem="gPA-Vt-UcZ" firstAttribute="top" secondItem="P9G-sT-4S1" secondAttribute="bottom" constant="10" id="8ny-Wz-GJv"/>
                             <constraint firstItem="P9G-sT-4S1" firstAttribute="top" secondItem="WDW-gH-0dZ" secondAttribute="bottom" constant="31" id="9O6-6R-Ecr"/>
                             <constraint firstItem="ncI-hT-bUM" firstAttribute="centerY" secondItem="S6g-a8-t60" secondAttribute="centerY" id="D6O-wJ-8ol"/>
                             <constraint firstItem="eay-L1-NoR" firstAttribute="top" secondItem="P9G-sT-4S1" secondAttribute="top" constant="12" id="H87-Nf-gEv"/>
                             <constraint firstItem="wiX-dK-HUU" firstAttribute="width" secondItem="w0K-3M-6hx" secondAttribute="width" multiplier="309:375" id="Hq1-HO-t9h"/>
                             <constraint firstItem="WDW-gH-0dZ" firstAttribute="leading" secondItem="P9G-sT-4S1" secondAttribute="leading" id="Ium-LB-tCy"/>
+                            <constraint firstItem="Pc2-TS-gDV" firstAttribute="top" secondItem="wiX-dK-HUU" secondAttribute="top" id="JHT-gK-ooe"/>
+                            <constraint firstItem="8Sx-kb-nIp" firstAttribute="top" secondItem="Rji-1N-CWU" secondAttribute="bottom" id="RQm-nu-7i8"/>
+                            <constraint firstItem="Pc2-TS-gDV" firstAttribute="leading" secondItem="p2P-Xa-6hR" secondAttribute="leading" id="SRc-Xi-Raf"/>
                             <constraint firstItem="8Sx-kb-nIp" firstAttribute="top" secondItem="wiX-dK-HUU" secondAttribute="bottom" constant="5" id="Vjo-tG-wDX"/>
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="trailing" secondItem="wiX-dK-HUU" secondAttribute="trailing" id="XYO-to-zVJ"/>
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="top" secondItem="gPA-Vt-UcZ" secondAttribute="bottom" constant="60" id="bjm-K5-CcE"/>
                             <constraint firstItem="eay-L1-NoR" firstAttribute="trailing" secondItem="lOI-Su-7sH" secondAttribute="trailing" constant="-15" id="bzg-mE-whA"/>
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="leading" secondItem="wiX-dK-HUU" secondAttribute="leading" id="d6k-d6-oOa"/>
                             <constraint firstItem="p2P-Xa-6hR" firstAttribute="bottom" secondItem="8Sx-kb-nIp" secondAttribute="bottom" constant="10" id="e6x-C0-j2A"/>
+                            <constraint firstItem="Rji-1N-CWU" firstAttribute="trailing" secondItem="p2P-Xa-6hR" secondAttribute="trailing" id="gIa-sa-az8"/>
                             <constraint firstItem="8Sx-kb-nIp" firstAttribute="width" secondItem="8Sx-kb-nIp" secondAttribute="height" multiplier="309:55" id="geU-rX-PpQ"/>
                             <constraint firstItem="gPA-Vt-UcZ" firstAttribute="leading" secondItem="lOI-Su-7sH" secondAttribute="leading" id="hz0-Ek-E3B"/>
                             <constraint firstItem="wiX-dK-HUU" firstAttribute="centerX" secondItem="w0K-3M-6hx" secondAttribute="centerX" id="lC2-1t-hev"/>
@@ -214,7 +232,7 @@
                             <constraint firstItem="S6g-a8-t60" firstAttribute="centerY" secondItem="eay-L1-NoR" secondAttribute="centerY" id="nuU-uo-3pt"/>
                             <constraint firstItem="eay-L1-NoR" firstAttribute="leading" secondItem="S6g-a8-t60" secondAttribute="trailing" constant="7" id="oyh-0R-eQ4"/>
                             <constraint firstItem="P9G-sT-4S1" firstAttribute="leading" secondItem="gPA-Vt-UcZ" secondAttribute="leading" id="sd3-Ff-Pa3"/>
-                            <constraint firstItem="wiX-dK-HUU" firstAttribute="top" secondItem="lOI-Su-7sH" secondAttribute="bottom" constant="30" id="uEs-TG-vLE"/>
+                            <constraint firstItem="wiX-dK-HUU" firstAttribute="top" secondItem="lOI-Su-7sH" secondAttribute="bottom" id="uEs-TG-vLE"/>
                             <constraint firstItem="8Sx-kb-nIp" firstAttribute="leading" secondItem="w0K-3M-6hx" secondAttribute="leading" constant="33" id="wgh-Ah-WBG"/>
                             <constraint firstItem="p2P-Xa-6hR" firstAttribute="trailing" secondItem="8Sx-kb-nIp" secondAttribute="trailing" constant="33" id="xgX-BR-dPW"/>
                             <constraint firstItem="WDW-gH-0dZ" firstAttribute="top" secondItem="p2P-Xa-6hR" secondAttribute="top" constant="14" id="xkA-Ut-57A"/>
@@ -222,6 +240,7 @@
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="WDW-gH-0dZ" id="WBT-Qg-WnX"/>
+                        <outlet property="blurView" destination="Pc2-TS-gDV" id="d4o-bM-jNS"/>
                         <outlet property="explanationLabel" destination="gPA-Vt-UcZ" id="636-cy-J5m"/>
                         <outlet property="nextBtn" destination="8Sx-kb-nIp" id="Tlm-XR-FDP"/>
                         <outlet property="tagCollectionView" destination="wiX-dK-HUU" id="6Cp-qE-CeY"/>
@@ -238,6 +257,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="recordImgBottomblur" width="375" height="52"/>
+        <image name="recordImgTopblur" width="375" height="52"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

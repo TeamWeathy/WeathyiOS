@@ -157,6 +157,7 @@ class RecordTagVC: UIViewController {
     var titleIndex: Int = 0
     
     //MARK: - IBOutlets
+    @IBOutlet var blurView: UIImageView!
     
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
@@ -477,7 +478,7 @@ extension RecordTagVC: UICollectionViewDelegateFlowLayout {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 30, left: 0, bottom: 50, right: 0)
         }
         
         /// tagTitleCollectionView
@@ -486,6 +487,13 @@ extension RecordTagVC: UICollectionViewDelegateFlowLayout {
         }
         
         return UIEdgeInsets()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        if y <= 150 {
+            blurView.alpha = y / 150
+        }
     }
 }
 
