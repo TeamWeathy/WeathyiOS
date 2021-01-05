@@ -9,6 +9,7 @@ import UIKit
 
 class MainVC: UIViewController {
     //MARK: - Custom Variables
+    var lastContentOffset: CGFloat = 0.0
     
     //MARK: - IBOutlet
     
@@ -32,6 +33,25 @@ class MainVC: UIViewController {
         weatherCollectionView.decelerationRate = .fast
     }
 }
+
+//MARK: - UICollectionViewDelegate
+
+extension MainVC: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let bottomCVC = weatherCollectionView.cellForItem(at: [1, 0]) as? MainBottomCVC {
+            if (lastContentOffset < scrollView.contentOffset.y && scrollView.contentOffset.y >= 200) {
+                bottomCVC.viewScrollDown()
+            }
+            
+            else if (lastContentOffset > scrollView.contentOffset.y && scrollView.contentOffset.y <= 500){
+                bottomCVC.viewScrollUp()
+            }
+            
+            lastContentOffset = scrollView.contentOffset.y
+        }
+    }
+}
+
 
 //MARK: - UICollectionViewDataSource
 
@@ -58,17 +78,6 @@ extension MainVC: UICollectionViewDataSource {
             return cell
         default:
             return UICollectionViewCell()
-        }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // fix: scrollUp 영역 다시 잡기
-        if let bottomCVC = weatherCollectionView.cellForItem(at: [1, 0]) as? MainBottomCVC {
-            if (scrollView.contentOffset.y >= 500) {
-                bottomCVC.viewScrollDown()
-            } else {
-                bottomCVC.viewScrollUp()
-            }
         }
     }
 }

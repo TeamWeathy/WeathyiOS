@@ -14,6 +14,8 @@ class MainBottomCVC: UICollectionViewCell {
     @IBOutlet weak var weeklyWeatherView: UIView!
     @IBOutlet weak var detailWeatherView: UIView!
     @IBOutlet weak var timeZoneCenterY: NSLayoutConstraint!
+    @IBOutlet weak var WeeklyCenterY: NSLayoutConstraint!
+    @IBOutlet weak var mainBottomScrollView: UIScrollView!
     
     //MARK: - Custom Methods
     func setCell() {
@@ -31,31 +33,37 @@ class MainBottomCVC: UICollectionViewCell {
     }
     
     func viewScrollUp() {
-//        timeZoneCenterY.constant = 21
+        self.timeZoneCenterY.constant = UIScreen.main.bounds.height
+        self.WeeklyCenterY.constant = UIScreen.main.bounds.height
         
-//        UIView.animate(withDuration: 0.2, delay: 0.3, options: [.curveLinear], animations: {
-//            self.timeZoneWeatherView.transform = CGAffineTransform(translationX: 0, y: 100)
-//        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveLinear], animations: {
-            self.timeZoneCenterY.constant = 250
+        UIView.animate(withDuration: 1.2, delay: 0, options: [.curveLinear], animations: {
             self.timeZoneWeatherView.alpha = 0
-            
+            self.weeklyWeatherView.alpha = 0
+                        
             self.layoutIfNeeded()
         }, completion: nil)
     }
     
     func viewScrollDown() {
-//        self.timeZoneCenterY.constant = 300
+        self.timeZoneCenterY.constant = 21
+        self.WeeklyCenterY.constant = 24
         
-        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveLinear], animations: {
-            self.timeZoneCenterY.constant = 21
+        UIView.animate(withDuration: 0.8, delay: 0, options: [.overrideInheritedCurve],animations: {
             self.timeZoneWeatherView.alpha = 1
+            self.weeklyWeatherView.alpha = 1
             
             self.layoutIfNeeded()
-        }, completion: nil)
-//        UIView.animate(withDuration: 0.2, delay: 0.3, options: [.curveLinear], animations: {
-//            self.timeZoneWeatherView.transform = CGAffineTransform(translationX: 0, y: 0)
-//        }, completion: nil)
+        })
+    }
+    
+    //MARK: - Life Cycle Methods
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.timeZoneCenterY.constant = UIScreen.main.bounds.height
+        self.WeeklyCenterY.constant = UIScreen.main.bounds.height
+
+        self.layoutIfNeeded()
     }
 }
