@@ -124,7 +124,7 @@ extension RecordStartVC {
         modifyBtn.layer.cornerRadius = 18
         
         startBtn.backgroundColor = UIColor.mintMain
-        startBtn.setTitle("기록 시작하기", for: .normal)
+        startBtn.setTitle("다음", for: .normal)
         startBtn.setTitleColor(.white, for: .normal)
         startBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         startBtn.layer.cornerRadius = 30
