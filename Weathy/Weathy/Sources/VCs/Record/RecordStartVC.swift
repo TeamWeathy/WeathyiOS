@@ -30,6 +30,8 @@ class RecordStartVC: UIViewController {
     @IBOutlet var dismissBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var indicatorCircle: [UIView]!
+    
     @IBOutlet var boxView: UIView!
     @IBOutlet var boxTimeLabel: UILabel!
     @IBOutlet var boxLocationLabel: UILabel!
@@ -50,7 +52,6 @@ class RecordStartVC: UIViewController {
         setAboveBox()
         setBox()
         setBelowBox()
-        
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
 
         // Do any additional setup after loading the view.
@@ -83,6 +84,15 @@ extension RecordStartVC {
         subTitleLabel.text = "기록할 위치와 날씨를 확인해 주세요."
         subTitleLabel.font = UIFont.SDGothicRegular16
         subTitleLabel.textColor = UIColor.subGrey6
+        
+        indicatorCircle[0].layer.cornerRadius = 7.5
+        indicatorCircle[0].backgroundColor = UIColor.mintMain
+        
+        indicatorCircle[1].layer.cornerRadius = 4.5
+        indicatorCircle[1].backgroundColor = UIColor.subGrey7
+        
+        indicatorCircle[2].layer.cornerRadius = 4.5
+        indicatorCircle[2].backgroundColor = UIColor.subGrey7
     }
     
     func setBox() {
