@@ -53,6 +53,8 @@ class RecordStartVC: UIViewController {
         setBox()
         setBelowBox()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
+        setTitleLabel()
 
         // Do any additional setup after loading the view.
     }
@@ -93,6 +95,29 @@ extension RecordStartVC {
         
         indicatorCircle[2].layer.cornerRadius = 4.5
         indicatorCircle[2].backgroundColor = UIColor.subGrey7
+    }
+    
+    func setTitleLabel() {
+        /// 기본 설정
+        let attributedString = NSMutableAttributedString(string: "1월 1일의 웨디를\n기록해볼까요?", attributes: [
+            .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
+            .foregroundColor: UIColor.mainGrey,
+            .kern: -1.25
+        ])
+        
+        /// 행간 조정
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+        
+        /// 볼드 처리
+        attributedString.addAttributes([
+            .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
+            .foregroundColor: UIColor.mintIcon
+        ], range: NSRange(location: 7, length: 2))
+        
+        /// 스타일 적용
+        titleLabel.attributedText = attributedString
     }
     
     func setBox() {
