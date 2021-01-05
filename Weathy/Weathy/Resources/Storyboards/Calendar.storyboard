@@ -59,15 +59,70 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9k-NW-X9X">
                                 <rect key="frame" x="0.0" y="44" width="375" height="661"/>
                                 <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="jUc-Bh-1hY">
+                                        <rect key="frame" x="31" y="78" width="313" height="17"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGD-Gk-BMk">
+                                                <rect key="frame" x="0.0" y="0.0" width="43" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <color key="textColor" red="0.69803921570000005" green="0.20000000000000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCH-DE-VRA">
+                                                <rect key="frame" x="45" y="0.0" width="43" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aC6-HK-V4g">
+                                                <rect key="frame" x="90" y="0.0" width="43" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOT-sQ-oS0">
+                                                <rect key="frame" x="135" y="0.0" width="43" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npp-UM-iMe">
+                                                <rect key="frame" x="180" y="0.0" width="43" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="금" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcQ-en-Ffp">
+                                                <rect key="frame" x="225" y="0.0" width="43" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWt-2o-UjA">
+                                                <rect key="frame" x="270" y="0.0" width="43" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <color key="textColor" red="0.42352941179999998" green="0.60392156860000001" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="jUc-Bh-1hY" secondAttribute="height" multiplier="313:17" id="lMb-kY-DKc"/>
+                                        </constraints>
+                                    </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarFrameSlide" translatesAutoresizingMaskIntoConstraints="NO" id="9Mq-yL-8s0">
                                         <rect key="frame" x="122.66666666666669" y="629" width="130" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="9Mq-yL-8s0" secondAttribute="height" multiplier="130:32" id="xtr-Za-Tj4"/>
                                         </constraints>
                                     </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarBtnArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Zop-PL-sAi">
+                                        <rect key="frame" x="227" y="33" width="11" height="6.3333333333333357"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Zop-PL-sAi" secondAttribute="height" multiplier="10.5:6" id="xFW-hg-Ww3"/>
+                                        </constraints>
+                                    </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="2021.1" translatesAutoresizingMaskIntoConstraints="NO" id="MLH-qw-EFI">
                                         <rect key="frame" x="130" y="12" width="115" height="48"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MLH-qw-EFI" secondAttribute="height" multiplier="115:48" id="bZX-nQ-PUJ"/>
                                         </constraints>
@@ -77,12 +132,6 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" calendarEvent="YES"/>
                                     </textView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarBtnArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Zop-PL-sAi">
-                                        <rect key="frame" x="227" y="33" width="11" height="6.3333333333333357"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Zop-PL-sAi" secondAttribute="height" multiplier="10.5:6" id="xFW-hg-Ww3"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -92,6 +141,9 @@
                                     <constraint firstItem="9Mq-yL-8s0" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="8e6-gJ-kcQ"/>
                                     <constraint firstItem="Zop-PL-sAi" firstAttribute="trailing" secondItem="MLH-qw-EFI" secondAttribute="trailing" constant="-7" id="8hY-gl-rkQ"/>
                                     <constraint firstItem="9Mq-yL-8s0" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="130:375" id="GbK-jG-Srz"/>
+                                    <constraint firstItem="jUc-Bh-1hY" firstAttribute="top" secondItem="MLH-qw-EFI" secondAttribute="bottom" constant="18" id="KMP-pj-1G7"/>
+                                    <constraint firstItem="jUc-Bh-1hY" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="313:375" id="UaU-8j-pnv"/>
+                                    <constraint firstItem="jUc-Bh-1hY" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="ogb-TP-h6Y"/>
                                     <constraint firstAttribute="bottom" secondItem="9Mq-yL-8s0" secondAttribute="bottom" id="prY-LM-ZcZ"/>
                                     <constraint firstItem="MLH-qw-EFI" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="115:375" id="w9p-bo-8Ho"/>
                                 </constraints>
