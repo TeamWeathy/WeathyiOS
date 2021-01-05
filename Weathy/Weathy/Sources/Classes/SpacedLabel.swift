@@ -6,7 +6,7 @@
 //
 import UIKit
 
-open class CustomLabel : UILabel {
+open class SpacedLabel: UILabel {
     @IBInspectable open var characterSpacing:CGFloat = 1 {
         didSet {
             let attributedString = NSMutableAttributedString(string: self.text!)
