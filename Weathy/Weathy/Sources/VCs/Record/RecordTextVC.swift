@@ -34,11 +34,16 @@ class RecordTextVC: UIViewController {
         super.viewDidLoad()
         
         setUpper()
+        setTitleLabel()
         setTextField()
         textViewSetupView()
         setFinishBtn()
         
+        textNotExists()
+        
         recordTextView.delegate = self
+//        recordTextView.addTarget(self, action: #selector(textViewDidChange(sender:)),for: .editingChanged)
+//        recordTextView.add
 
         
     }
@@ -54,6 +59,18 @@ class RecordTextVC: UIViewController {
         self.navigationController?.popViewController(animated: false)
     }
     
+    //MARK: - @objc methods
+    
+    @objc func textViewDidChange(sender:UITextView) {
+
+                if let text = sender.text {
+                    // 초과되는 텍스트 제거
+                    print(text)
+                    
+                }
+            
+        }
+
 }
 
 //MARK: - Style
@@ -67,16 +84,36 @@ extension RecordTextVC {
         titleLabel.numberOfLines = 2
         titleLabel.font = UIFont(name: "AppleSDGothicNeoSB00", size: 25)
         
-        subTitleLabel.text = "무엇을 적든, 웨디는 다시 돌아와요."
+        subTitleLabel.text = "이 웨디는 비슷한 날씨에 나에게 돌아와요."
         subTitleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
+        subTitleLabel.textColor = UIColor.subGrey6
+    }
+    
+    func setTitleLabel() {
+        let attributedString = NSMutableAttributedString(string: "등록이 완료되었어요!\n더 추가할 내용이 있나요?", attributes: [
+            .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
+            .foregroundColor: UIColor.mainGrey,
+            .kern: -1.25
+        ])
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+        
+        attributedString.addAttributes([
+            .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
+            .foregroundColor: UIColor.mintIcon
+        ], range: NSRange(location: 0, length: 6))
+        
+        titleLabel.attributedText = attributedString
     }
     
     func setTextField() {
-        textViewSurroundingView.layer.borderColor = UIColor(red: 0.506, green: 0.886, blue: 0.824, alpha: 1).cgColor
-        textViewSurroundingView.layer.borderWidth = 1
-        textViewSurroundingView.layer.cornerRadius = 15
         recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
+        
         wordCountLabel.text = "\(wordCount)/\(maxWordCount)"
+        wordCountLabel.font = UIFont.SDGothicRegular13
+        wordCountLabel.textColor = UIColor.subGrey6
     }
     
     func textViewSetupView() {
@@ -93,7 +130,31 @@ extension RecordTextVC {
     
     func setFinishBtn() {
         finishBtn.backgroundColor = UIColor.lightGray
-        finishBtn.setTitle("완료", for: .normal)
+        finishBtn.setTitle("내용 추가하기", for: .normal)
+        finishBtn.setTitleColor(.white, for: .normal)
+        finishBtn.layer.cornerRadius = 30
+    }
+    
+    func textExists() {
+        finishBtn.isUserInteractionEnabled = true
+        textViewSurroundingView.layer.borderColor = UIColor.mintMain.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
+        
+        finishBtn.backgroundColor = UIColor.mintMain
+        finishBtn.setTitle("내용 추가하기", for: .normal)
+        finishBtn.setTitleColor(.white, for: .normal)
+        finishBtn.layer.cornerRadius = 30
+    }
+    
+    func textNotExists() {
+        finishBtn.isUserInteractionEnabled = false
+        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
+        
+        finishBtn.backgroundColor = UIColor.subGrey3
+        finishBtn.setTitle("내용 추가하기", for: .normal)
         finishBtn.setTitleColor(.white, for: .normal)
         finishBtn.layer.cornerRadius = 30
     }
@@ -107,20 +168,39 @@ extension RecordTextVC: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         textViewSetupView()
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
         textViewSetupView()
     }
-    
+
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
         if text == "\n" {
-            recordTextView.resignFirstResponder()
+            textView.resignFirstResponder()
         }
+        
+        return true
+    }
+
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
         return true
     }
     
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        recordTextView.resignFirstResponder()
-        return true
+    func textViewDidChange(_ textView: UITextView) {
+        
+        if(textView.text.count > maxWordCount) {
+            textView.deleteBackward()
+        }
+        
+        self.wordCount = Int(textView.text.count)
+        wordCountLabel.text = "\(wordCount)/100"
+
+        if textView.text.count == 0 {
+            self.textNotExists()
+        }else{
+            self.textExists()
+        }
     }
+    
 }

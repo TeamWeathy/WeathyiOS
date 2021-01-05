@@ -49,7 +49,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>RecordStart</string>
+					<string>RecordText</string>
 				</dict>
 			</array>
 		</dict>
