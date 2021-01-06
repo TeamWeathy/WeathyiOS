@@ -15,7 +15,10 @@ class CalendarVC: UIViewController {
     var panGesture = UIPanGestureRecognizer()
     var tapGesture = UITapGestureRecognizer()
     var picker = UIDatePicker()
-    
+    var pickerSelectedYear: Int!
+    var pickerSelectedMonth: Int!
+    var pickerSelectedDay: Int!
+    var selectedDate = Date()
     //MARK: - IBOutlets
     
     @IBOutlet weak var calendarDrawerView: UIView!
@@ -30,7 +33,6 @@ class CalendarVC: UIViewController {
         setGesture()
         setStyle()
         initPicker()
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         UIView.animate(withDuration: 0.3){
@@ -66,21 +68,21 @@ class CalendarVC: UIViewController {
     
     ///initPicker
     func initPicker(){
-        picker = UIDatePicker(frame:CGRect(x: 0, y: 200, width: view.frame.width, height: 279))
+//        yearMonthTextView.inputView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
+        
+        picker =  UIDatePicker(frame:CGRect(x: 0, y: 0, width: view.frame.width, height: 500))
         picker.datePickerMode = .date
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = .wheels
+        }
+        
+        picker.locale = Locale(identifier: "ko-KR")
         picker.backgroundColor = .white
-        let dateArr = yearMonthTextView.text?.components(separatedBy: ".")
-        print("date",dateArr)
-        picker.addTarget(self, action: #selector(donePicker), for: .valueChanged)
-       
-//        picker.dataSource = self
-//        picker.selectRow(Int(dateArr![0])!-2011, inComponent: 0, animated: true)
-//        picker.selectRow(Int(dateArr![1])!-1,inComponent: 1,animated:true)
-        picker.tintColor = .mintMain
-        print("pickerframe",picker.subviews[1].frame)
-        picker.subviews[1].backgroundColor = UIColor(red: 0.506, green: 0.886, blue: 0.824, alpha: 0.15)
-//        picker.frame = CGRect(x: 0, y: 0, width: screen.width
-//                              , height: 230)
+        picker.addTarget(self, action: #selector(pickerValueDidChange), for: .valueChanged)
+        
+       ///피커뷰를 열었을때 선택된 날짜가 나오도록
+        picker.date = selectedDate
+        picker.subviews[0].subviews[1].backgroundColor = UIColor(red: 0.506, green: 0.886, blue: 0.824, alpha: 0.15)
 
         
         let shadowView = UIView()
@@ -100,6 +102,7 @@ class CalendarVC: UIViewController {
         
         let doneBTN = UIButton(frame: CGRect(x: screen.width-57,y: 8,width: 48,height: 48))
         doneBTN.setImage(UIImage(named: "calendarFrameCheck"), for: .normal)
+        
         let closeBTN = UIButton(frame: CGRect(x: 9,y: 8 ,width: 48,height: 48))
         closeBTN.setImage(UIImage(named:"calendarFrameCancel"), for: .normal)
         doneBTN.addTarget(self, action: #selector(donePicker), for: .touchUpInside)
@@ -108,6 +111,11 @@ class CalendarVC: UIViewController {
         topView.addSubview(closeBTN)
         yearMonthTextView.inputView = picker
         yearMonthTextView.inputAccessoryView = shadowView
+        yearMonthTextView.inputView?.translatesAutoresizingMaskIntoConstraints = false
+        yearMonthTextView.inputView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
+        yearMonthTextView.inputView?.layoutSubviews()
+        yearMonthTextView.inputView?.layoutIfNeeded()
+ 
         UIView.performWithoutAnimation {
             self.view.layoutIfNeeded()
         }
@@ -199,7 +207,12 @@ class CalendarVC: UIViewController {
     @objc func donePicker(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
-        dateFormatter.dateFormat = "yyyy.MM"
+        if Calendar.current.component(.month, from: picker.date)<10{
+            dateFormatter.dateFormat = "yyyy. M"
+        }
+        else{
+            dateFormatter.dateFormat = "yyyy.MM"
+        }
         let dateString = dateFormatter.string(from: picker.date)
 
         view.endEditing(true)
@@ -213,6 +226,9 @@ class CalendarVC: UIViewController {
     }
     @objc func closePicker(){
         view.endEditing(true)
+    }
+    @objc func pickerValueDidChange(){
+        
     }
     
     //MARK: - IBActions
