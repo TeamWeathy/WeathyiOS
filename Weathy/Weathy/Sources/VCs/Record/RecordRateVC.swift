@@ -193,14 +193,10 @@ extension RecordRateVC: UICollectionViewDataSource {
         /// 선택된 거 빼고 모두 isSelected를 false로 변경
         for i in 0...rate.count-1 {
             if i == indexPath.item {
-                rate[i].isSelected = !rate[i].isSelected
-                
-                if rate[i].isSelected == true {
+                if rate[i].isSelected == false {
+                    rate[i].isSelected = !rate[i].isSelected
                     self.setNextBtnEnabled()
-                } else {
-                    self.setNextBtnDisabled()
                 }
-                
             } else {
                 rate[i].isSelected = false
             }
