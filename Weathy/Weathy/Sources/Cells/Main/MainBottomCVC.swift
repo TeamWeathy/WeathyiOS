@@ -10,6 +10,7 @@ import UIKit
 class MainBottomCVC: UICollectionViewCell {
     //MARK: - IBOutlet
     
+    @IBOutlet weak var cellBackgroundImage: UIImageView!
     @IBOutlet weak var timeZoneWeatherView: UIView!
     @IBOutlet weak var weeklyWeatherView: UIView!
     @IBOutlet weak var detailWeatherView: UIView!
@@ -20,6 +21,8 @@ class MainBottomCVC: UICollectionViewCell {
         
     //MARK: - Custom Methods
     func setCell() {
+        cellBackgroundImage.image = UIImage(named: "search_bg_morning")
+        
         timeZoneWeatherView.backgroundColor = .white
         timeZoneWeatherView.makeRounded(cornerRadius: 35)
         timeZoneWeatherView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)

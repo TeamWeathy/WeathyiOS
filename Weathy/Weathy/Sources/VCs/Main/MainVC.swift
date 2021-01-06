@@ -13,6 +13,7 @@ class MainVC: UIViewController {
     
     //MARK: - IBOutlet
     
+    @IBOutlet weak var topBlurView: UIImageView!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     
     //MARK: - Life Cycle Methods
