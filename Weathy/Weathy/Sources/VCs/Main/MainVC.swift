@@ -29,6 +29,7 @@ class MainVC: UIViewController {
     //MARK: - Custom Method
     
     func setView() {
+        weatherCollectionView.backgroundColor = .clear
         weatherCollectionView.isPagingEnabled = true
         weatherCollectionView.decelerationRate = .fast
     }
