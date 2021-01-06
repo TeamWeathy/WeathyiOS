@@ -15,8 +15,9 @@ class MainBottomCVC: UICollectionViewCell {
     @IBOutlet weak var detailWeatherView: UIView!
     @IBOutlet weak var timeZoneCenterY: NSLayoutConstraint!
     @IBOutlet weak var WeeklyCenterY: NSLayoutConstraint!
+    @IBOutlet weak var detailCenterY: NSLayoutConstraint!
     @IBOutlet weak var mainBottomScrollView: UIScrollView!
-    
+        
     //MARK: - Custom Methods
     func setCell() {
         timeZoneWeatherView.backgroundColor = .white
@@ -35,10 +36,12 @@ class MainBottomCVC: UICollectionViewCell {
     func viewScrollUp() {
         self.timeZoneCenterY.constant = UIScreen.main.bounds.height
         self.WeeklyCenterY.constant = UIScreen.main.bounds.height
+        self.detailCenterY.constant = UIScreen.main.bounds.height
         
         UIView.animate(withDuration: 1.2, delay: 0, options: [.curveLinear], animations: {
             self.timeZoneWeatherView.alpha = 0
             self.weeklyWeatherView.alpha = 0
+            self.detailWeatherView.alpha = 0
                         
             self.layoutIfNeeded()
         }, completion: nil)
@@ -47,10 +50,12 @@ class MainBottomCVC: UICollectionViewCell {
     func viewScrollDown() {
         self.timeZoneCenterY.constant = 21
         self.WeeklyCenterY.constant = 24
+        self.detailCenterY.constant = 24
         
-        UIView.animate(withDuration: 0.8, delay: 0, options: [.overrideInheritedCurve],animations: {
+        UIView.animate(withDuration: 0.9, delay: 0, options: [.overrideInheritedCurve],animations: {
             self.timeZoneWeatherView.alpha = 1
             self.weeklyWeatherView.alpha = 1
+            self.detailWeatherView.alpha = 1
             
             self.layoutIfNeeded()
         })

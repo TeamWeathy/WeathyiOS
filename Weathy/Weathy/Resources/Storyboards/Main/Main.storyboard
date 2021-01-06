@@ -182,7 +182,6 @@
                                                                 </view>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="5N0-je-WH6" firstAttribute="centerX" secondItem="OSI-QG-09X" secondAttribute="centerX" id="2CV-d2-Rw8"/>
                                                                 <constraint firstItem="5N0-je-WH6" firstAttribute="width" secondItem="OSI-QG-09X" secondAttribute="width" multiplier="309:375" constant="25.765333333333388" id="2Ia-CG-ENF"/>
                                                                 <constraint firstItem="3Ww-4d-Su8" firstAttribute="top" secondItem="ghX-Vc-V0V" secondAttribute="bottom" constant="24" id="BgK-sy-WXQ"/>
                                                                 <constraint firstItem="3Ww-4d-Su8" firstAttribute="width" secondItem="ghX-Vc-V0V" secondAttribute="width" id="IeN-bc-ahv"/>
@@ -191,6 +190,7 @@
                                                                 <constraint firstItem="ghX-Vc-V0V" firstAttribute="centerX" secondItem="5N0-je-WH6" secondAttribute="centerX" id="VHg-lE-C4g"/>
                                                                 <constraint firstItem="3Ww-4d-Su8" firstAttribute="centerX" secondItem="ghX-Vc-V0V" secondAttribute="centerX" id="lrH-lb-DMl"/>
                                                                 <constraint firstAttribute="bottom" secondItem="3Ww-4d-Su8" secondAttribute="bottom" constant="20" id="r6D-Vd-jbY"/>
+                                                                <constraint firstItem="5N0-je-WH6" firstAttribute="centerX" secondItem="OSI-QG-09X" secondAttribute="centerX" id="so8-mE-h9W"/>
                                                                 <constraint firstItem="ghX-Vc-V0V" firstAttribute="width" secondItem="5N0-je-WH6" secondAttribute="width" id="vL1-Dn-yQf"/>
                                                             </constraints>
                                                         </view>
@@ -215,6 +215,7 @@
                                         <size key="customSize" width="405" height="1024"/>
                                         <connections>
                                             <outlet property="WeeklyCenterY" destination="N3a-vZ-tID" id="lwX-G7-47S"/>
+                                            <outlet property="detailCenterY" destination="BgK-sy-WXQ" id="I4x-jD-Hkz"/>
                                             <outlet property="detailWeatherView" destination="3Ww-4d-Su8" id="48n-m7-v27"/>
                                             <outlet property="mainBottomScrollView" destination="ph0-hb-Tpn" id="t0a-7W-DgV"/>
                                             <outlet property="timeZoneCenterY" destination="Lcn-xp-Eig" id="AKW-1u-s2x"/>
