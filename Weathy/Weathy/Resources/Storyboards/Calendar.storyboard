@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -46,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1r-2E-K0o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-135" y="-89"/>
+            <point key="canvasLocation" x="-399" y="-143"/>
         </scene>
         <!--CalendarVC-->
         <scene sceneID="rjw-Fe-Uh8">
@@ -72,7 +73,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGD-Gk-BMk">
                                                 <rect key="frame" x="0.0" y="0.0" width="43" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                                <color key="textColor" red="0.69803921570000005" green="0.20000000000000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.87450980392156863" green="0.44313725490196076" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCH-DE-VRA">
@@ -108,7 +109,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWt-2o-UjA">
                                                 <rect key="frame" x="270" y="0.0" width="43" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                                <color key="textColor" red="0.42352941179999998" green="0.60392156860000001" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.20784313725490194" green="0.52549019607843139" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -154,6 +155,27 @@
                                             <action selector="todayButtonDidTap:" destination="fIu-Ko-aR9" eventType="touchUpInside" id="1hm-S5-lru"/>
                                         </connections>
                                     </button>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t1f-kf-2Bh">
+                                        <rect key="frame" x="30" y="128" width="314" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1WX-JK-WHY">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="igw-HG-L5K">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Pc8-H0-0op">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -176,6 +198,13 @@
                                     <constraint firstItem="MLH-qw-EFI" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="115:375" id="w9p-bo-8Ho"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Inp-Yt-33o">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ZqE-ul-NO4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HMP-Nq-GSb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -183,17 +212,27 @@
                             <constraint firstItem="HMP-Nq-GSb" firstAttribute="bottom" secondItem="j9k-NW-X9X" secondAttribute="bottom" constant="73" id="0Zv-ia-RXK"/>
                             <constraint firstItem="j9k-NW-X9X" firstAttribute="top" secondItem="HMP-Nq-GSb" secondAttribute="top" id="6m6-B7-5eN"/>
                             <constraint firstItem="j9k-NW-X9X" firstAttribute="trailing" secondItem="HMP-Nq-GSb" secondAttribute="trailing" id="GQS-LB-dYF"/>
+                            <constraint firstItem="HMP-Nq-GSb" firstAttribute="trailing" secondItem="Inp-Yt-33o" secondAttribute="trailing" id="QYI-jk-ZtR"/>
+                            <constraint firstItem="Inp-Yt-33o" firstAttribute="leading" secondItem="s3g-XO-p9O" secondAttribute="leading" id="d4A-42-goq"/>
+                            <constraint firstItem="Inp-Yt-33o" firstAttribute="top" secondItem="s3g-XO-p9O" secondAttribute="top" id="hrS-0P-GiC"/>
                             <constraint firstItem="j9k-NW-X9X" firstAttribute="leading" secondItem="HMP-Nq-GSb" secondAttribute="leading" id="vZN-ed-NFY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="calendarDrawerView" destination="j9k-NW-X9X" id="HPl-bX-3M6"/>
                         <outlet property="yearMonthTextView" destination="MLH-qw-EFI" id="Tqn-Nf-Ccn"/>
+                        <outletCollection property="weekdayLabelCollection" destination="BGD-Gk-BMk" collectionClass="NSMutableArray" id="wia-1G-bje"/>
+                        <outletCollection property="weekdayLabelCollection" destination="BCH-DE-VRA" collectionClass="NSMutableArray" id="cZu-ts-3wc"/>
+                        <outletCollection property="weekdayLabelCollection" destination="aC6-HK-V4g" collectionClass="NSMutableArray" id="oRU-BG-mBy"/>
+                        <outletCollection property="weekdayLabelCollection" destination="vOT-sQ-oS0" collectionClass="NSMutableArray" id="qJN-yS-BMZ"/>
+                        <outletCollection property="weekdayLabelCollection" destination="Npp-UM-iMe" collectionClass="NSMutableArray" id="71m-FT-xzF"/>
+                        <outletCollection property="weekdayLabelCollection" destination="wcQ-en-Ffp" collectionClass="NSMutableArray" id="EyC-2X-3Vr"/>
+                        <outletCollection property="weekdayLabelCollection" destination="uWt-2o-UjA" collectionClass="NSMutableArray" id="KN5-mm-8wk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pe2-HT-H79" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514" y="-170"/>
+            <point key="canvasLocation" x="512.79999999999995" y="-170.68965517241381"/>
         </scene>
     </scenes>
     <resources>
