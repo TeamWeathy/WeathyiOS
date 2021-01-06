@@ -186,7 +186,6 @@ class RecordTagVC: UIViewController {
         
         setHeader()
         setTitleLabel()
-        setNextBtnDeactivated()
         
         self.tagTitles = [
             TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
@@ -199,6 +198,13 @@ class RecordTagVC: UIViewController {
             self.tagCollectionView.reloadData()
             self.tagTitleCollectionView.reloadData()
         }
+        
+        nextBtn.isUserInteractionEnabled = false
+        nextBtn.backgroundColor = UIColor.subGrey3
+        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        nextBtn.layer.cornerRadius = 30
 
         // Do any additional setup after loading the view.
     }
@@ -273,20 +279,24 @@ extension RecordTagVC {
     
     func setNextBtnActivated() {
         nextBtn.isUserInteractionEnabled = true
-        nextBtn.backgroundColor = UIColor.mintMain
-        nextBtn.setTitle("다음", for: .normal)
-        nextBtn.setTitleColor(.white, for: .normal)
-        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
+        UIView.animate(withDuration: 0.5, animations: {
+            self.nextBtn.backgroundColor = UIColor.mintMain
+            self.nextBtn.setTitle("다음", for: .normal)
+            self.nextBtn.setTitleColor(.white, for: .normal)
+            self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+            self.nextBtn.layer.cornerRadius = 30
+        })
     }
     
     func setNextBtnDeactivated() {
         nextBtn.isUserInteractionEnabled = false
-        nextBtn.backgroundColor = UIColor.subGrey3
-        nextBtn.setTitle("다음", for: .normal)
-        nextBtn.setTitleColor(.white, for: .normal)
-        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
+        UIView.animate(withDuration: 0.5, animations: {
+            self.nextBtn.backgroundColor = UIColor.subGrey3
+            self.nextBtn.setTitle("다음", for: .normal)
+            self.nextBtn.setTitleColor(.white, for: .normal)
+            self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+            self.nextBtn.layer.cornerRadius = 30
+        })
     }
 }
 

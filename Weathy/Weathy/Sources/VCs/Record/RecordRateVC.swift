@@ -123,11 +123,13 @@ extension RecordRateVC {
     }
     
     func setNextBtnEnabled() {
-        nextBtn.isUserInteractionEnabled = true
-        nextBtn.backgroundColor = UIColor.mintMain
-        nextBtn.setTitle("다음", for: .normal)
-        nextBtn.setTitleColor(.white, for: .normal)
-        nextBtn.layer.cornerRadius = 30
+        self.nextBtn.isUserInteractionEnabled = true
+        UIView.animate(withDuration: 0.5, animations: {
+            self.nextBtn.backgroundColor = UIColor.mintMain
+            self.nextBtn.setTitle("다음", for: .normal)
+            self.nextBtn.setTitleColor(.white, for: .normal)
+            self.nextBtn.layer.cornerRadius = 30
+        })
     }
     
     func setNextBtnDisabled() {

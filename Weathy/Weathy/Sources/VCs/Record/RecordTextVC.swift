@@ -40,11 +40,24 @@ class RecordTextVC: UIViewController {
         textViewSetupView()
         setFinishBtn()
         
-        textNotExists()
         
         recordTextView.delegate = self
 //        recordTextView.addTarget(self, action: #selector(textViewDidChange(sender:)),for: .editingChanged)
 //        recordTextView.add
+        
+        finishBtn.isUserInteractionEnabled = false
+        finishBtn.backgroundColor = UIColor.subGrey3
+        finishBtn.setTitle("내용 추가하기", for: .normal)
+        finishBtn.setTitleColor(.white, for: .normal)
+        finishBtn.layer.cornerRadius = 30
+        
+        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
+        
+        wordCountLabel.text = "0"
+        wordCountLabel.font = UIFont.SDGothicRegular13
+        wordCountLabel.textColor = UIColor.subGrey6
 
         
     }
@@ -141,14 +154,16 @@ extension RecordTextVC {
     
     func textExists() {
         finishBtn.isUserInteractionEnabled = true
+        UIView.animate(withDuration: 0.5, animations: {
+            self.finishBtn.backgroundColor = UIColor.mintMain
+            self.finishBtn.setTitle("내용 추가하기", for: .normal)
+            self.finishBtn.setTitleColor(.white, for: .normal)
+            self.finishBtn.layer.cornerRadius = 30
+        })
+        
         textViewSurroundingView.layer.borderColor = UIColor.mintMain.cgColor
         textViewSurroundingView.layer.borderWidth = 1
         textViewSurroundingView.layer.cornerRadius = 15
-        
-        finishBtn.backgroundColor = UIColor.mintMain
-        finishBtn.setTitle("내용 추가하기", for: .normal)
-        finishBtn.setTitleColor(.white, for: .normal)
-        finishBtn.layer.cornerRadius = 30
         
         wordCountLabel.font = UIFont.SDGothicSemiBold13
         wordCountLabel.textColor = UIColor.mintMain
@@ -156,14 +171,15 @@ extension RecordTextVC {
     
     func textNotExists() {
         finishBtn.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.5, animations: {
+            self.finishBtn.backgroundColor = UIColor.subGrey3
+            self.finishBtn.setTitle("내용 추가하기", for: .normal)
+            self.finishBtn.setTitleColor(.white, for: .normal)
+            self.finishBtn.layer.cornerRadius = 30
+        })
         textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
         textViewSurroundingView.layer.borderWidth = 1
         textViewSurroundingView.layer.cornerRadius = 15
-        
-        finishBtn.backgroundColor = UIColor.subGrey3
-        finishBtn.setTitle("내용 추가하기", for: .normal)
-        finishBtn.setTitleColor(.white, for: .normal)
-        finishBtn.layer.cornerRadius = 30
         
         wordCountLabel.text = "0"
         wordCountLabel.font = UIFont.SDGothicRegular13
