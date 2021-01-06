@@ -203,6 +203,10 @@ class RecordTagVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        blurView.alpha = 0
+    }
+    
     
     //MARK: - IBActions
     
@@ -491,8 +495,8 @@ extension RecordTagVC: UICollectionViewDelegateFlowLayout {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y
-        if y <= 150 {
-            blurView.alpha = y / 150
+        if y <= 30 {
+            blurView.alpha = y / 30
         }
     }
 }
