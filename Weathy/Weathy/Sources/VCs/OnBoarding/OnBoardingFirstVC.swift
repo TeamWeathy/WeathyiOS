@@ -9,160 +9,223 @@ import UIKit
 
 class OnBoardingFirstVC: UIViewController {
     
+    //MARK: - Custom Variables
+    var currentPage = 1
+    
+    //MARK: - IBOutlets
+    
+    @IBOutlet weak var phoneImage: UIImageView!
+    @IBOutlet weak var firstImage: UIImageView!
+    @IBOutlet weak var secondImage: UIImageView!
+    @IBOutlet weak var thirdImage: UIImageView!
+    
+    @IBOutlet weak var startButton: UIButton!
     
     @IBOutlet var gestureStart: UISwipeGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        phoneImage.alpha = 0
+        firstImage.alpha = 0
+        secondImage.isHidden = true
+        secondImage.alpha = 0
+        thirdImage.isHidden = true
+        thirdImage.alpha = 0
+        startButton.isHidden = true
+        startButton.alpha = 0
         
-          let right = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
-        right.direction = .right
-          self.view.addGestureRecognizer(right)
+        //MARK: - LifeCycle Methods
         
-        
-          let left = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
-        left.direction = .left
-          self.view.addGestureRecognizer(left)
-
+        makeGesture()
     }
     
-    @IBAction func actGesture(_ sender: UISwipeGestureRecognizer) {
-        
-        /// 오른쪽 -> 왼쪽
-        if sender.direction == .left {
-            print("left")
-            guard let storyboard = self.storyboard else {
-                return
-            }
-            guard let gestureEndViewController = storyboard.instantiateViewController(withIdentifier: "firstViewController") as? firstViewController else {
-                return
-            }
-            self.navigationController?.pushViewController(gestureEndViewController, animated: true)
-        }
-        
-        /// 왼쪽 -> 오른쪽
-        if sender.direction == .right {
-            print("right")
-            self.dismiss(animated: true)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        firstViewAnimate()
     }
+    //MARK: - Custom Methods
     
-}
-
-
-class firstViewController: UIViewController {
-    
-    @IBOutlet var gestureStart: UISwipeGestureRecognizer!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func makeGesture(){
         let right = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
-      right.direction = .right
+        right.direction = .right
         self.view.addGestureRecognizer(right)
-      
-      
+        
+        
         let left = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
-      left.direction = .left
+        left.direction = .left
         self.view.addGestureRecognizer(left)
     }
     
+    /// firstView 움직임 넣기
+    private func firstViewAnimate(){
+        
+        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.phoneImage.alpha = 1;         self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: {(finish) in
+            UIView.animate(withDuration: 1, animations: {
+                            self.firstImage.alpha = 1;
+                            self.firstImage.transform = CGAffineTransform(translationX: 0, y: -10)})
+        })
+    }
+    
+    /// firstView 원상 복귀
+    private func firstRestoration(){
+        phoneImage.alpha = 0
+        firstImage.alpha = 0
+        UIView.animate(withDuration: 0, animations: {self.phoneImage.transform = .identity;
+            self.firstImage.transform = .identity
+        })
+    }
+    
+    /// secondView 움직임 넣기
+    private func secondViewAnimate(){
+        
+        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.phoneImage.alpha = 1;         self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: {(finish) in
+            UIView.animate(withDuration: 1, animations: {
+                            self.secondImage.alpha = 1;
+                            self.secondImage.transform = CGAffineTransform(translationX: 0, y: 10)})
+        })
+    }
+    
+    /// secondView 원상 복귀
+    private func secondRestoration(){
+        phoneImage.alpha = 0
+        secondImage.alpha = 0
+        UIView.animate(withDuration: 0, animations: {self.phoneImage.transform = .identity;
+            self.secondImage.transform = .identity
+        })
+    }
+    
+    /// thirdView 움직임 넣기
+    private func thirdViewAnimate(){
+        
+        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.phoneImage.alpha = 1;         self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: {(finish) in
+            UIView.animate(withDuration: 1, animations: {
+                            self.thirdImage.alpha = 1;
+                            self.thirdImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion:{ (finish) in
+                                UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.startButton.alpha = 1;         self.startButton.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: nil)
+                                
+                            })
+        })
+        
+    }
+    
+    /// thirdView 원상 복귀
+    private func thirdRestoration(){
+        phoneImage.alpha = 0
+        thirdImage.alpha = 0
+        startButton.alpha = 0
+        UIView.animate(withDuration: 0, animations: {self.phoneImage.transform = .identity;
+            self.thirdImage.transform = .identity
+        })
+        UIView.animate(withDuration: 0, animations: {self.startButton.transform = .identity})
+    }
+    
+    
+    //MARK: - IBActions
+    
     @IBAction func actGesture(_ sender: UISwipeGestureRecognizer) {
         
-        /// 오른쪽 -> 왼쪽
-        if sender.direction == .left {
-            print("left")
-            guard let storyboard = self.storyboard else {
-                return
-            }
-            guard let gestureEndViewController = storyboard.instantiateViewController(withIdentifier: "ThirdViewController") as? ThirdViewController else {
-                return
-            }
-            self.navigationController?.pushViewController(gestureEndViewController, animated: true)
-        }
-        
-        /// 왼쪽 -> 오른쪽
-        if sender.direction == .right {
+        if currentPage == 1 {
+            /// 오른쪽 -> 왼쪽 스와이프
+            if sender.direction == .left {
+                print("left")
+                
+                phoneImage.image = UIImage(named: "onboarding_img_phone_2")
+                
+                firstImage.isHidden = true
+                secondImage.isHidden = false
+                thirdImage.isHidden = true
 
-            self.navigationController?.popViewController(animated: true)
+                /// 원상복귀
+                firstRestoration()
+                
+                /// 에니메이션
+                secondViewAnimate()
+                
+
+                
+                self.currentPage = 2
+            }
+            
+            /// 왼쪽 -> 오른쪽 스와이프
+            if sender.direction == .right {
+                print("안돼~")
+            }
+            
+        }else if currentPage == 2{
+            
+            if currentPage == 2 {
+                /// 오른쪽 -> 왼쪽 스와이프
+                if sender.direction == .left {
+                    print("left")
+                    
+                    phoneImage.image = UIImage(named: "onboarding_img_phone_3")
+                    
+                    firstImage.isHidden = true
+                    secondImage.isHidden = true
+                    thirdImage.isHidden = false
+                    
+                    startButton.isHidden = false
+                    
+                    ///원상복귀
+                    secondRestoration()
+                    
+                    /// 에니메이션
+                    thirdViewAnimate()
+                    
+                    self.currentPage = 3
+                }
+                
+                /// 왼쪽 -> 오른쪽 스와이프
+                if sender.direction == .right {
+                    print("안돼~")
+                    
+                    phoneImage.image = UIImage(named: "onboarding_img_phone_1")
+
+                    firstImage.isHidden = false
+                    secondImage.isHidden = true
+                    thirdImage.isHidden = true
+                    
+                    ///원상복귀
+                    secondRestoration()
+                    
+                    /// 에니메이션
+                    firstViewAnimate()
+                    
+                    self.currentPage = 1
+                }
+            }
+        } else{
+            
+            if currentPage == 3 {
+                /// 오른쪽 -> 왼쪽 스와이프
+                if sender.direction == .left {
+                    print("안돼~")
+                }
+                
+                /// 왼쪽 -> 오른쪽 스와이프
+                if sender.direction == .right {
+                    print("안돼~")
+                    
+                    phoneImage.image = UIImage(named: "onboarding_img_phone_2")
+                    
+                    firstImage.isHidden = true
+                    secondImage.isHidden = false
+                    thirdImage.isHidden = true
+                    
+                    startButton.isHidden = true
+                    
+                    ///원상복귀
+                    thirdRestoration()
+                    
+                    /// 에니메이션
+                    secondViewAnimate()
+                         
+                    self.currentPage = 2
+
+                }
+            }
         }
     }
-    
 }
 
 
-
-class secondViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-}
-
-
-class ThirdViewController: UIViewController {
-    
-    @IBOutlet var gestureStart: UISwipeGestureRecognizer!
-    @IBOutlet weak var OnButton: UIButton!
-    @IBOutlet weak var onButtonContstantHeight: NSLayoutConstraint!
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let right = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
-        
-        right.direction = .right
-        self.view.addGestureRecognizer(right)
-        
-        
-        //        let left = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
-        //      left.direction = .left
-        //        self.view.addGestureRecognizer(left)
-        
-        prepareanimation()
-    }
-    
-    // 화면이 나타날 때!
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showAnimation()
-    }
-    
-    // 오토레이아웃 원상복귀 시키기!
-    private func prepareanimation(){
-        onButtonContstantHeight.constant = 10
-        OnButton.alpha = 0
-    
-    }
-    
-    private func showAnimation(){
-
-
-        
-        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.OnButton.alpha = 1;         self.OnButton.transform = CGAffineTransform(translationX: 0, y: -30)}, completion: nil)
-       
-        }
-    
-    
-    @IBAction func actGesture(_ sender: UISwipeGestureRecognizer) {
-        /// 오른쪽 -> 왼쪽
-        if sender.direction == .left {
-            print("left")
-            guard let storyboard = self.storyboard else {
-                return
-            }
-            guard let gestureEndViewController = storyboard.instantiateViewController(withIdentifier: "firstViewController") as? firstViewController else {
-                return
-            }
-            self.navigationController?.pushViewController(gestureEndViewController, animated: true)
-        }
-        
-        /// 왼쪽 -> 오른쪽
-        if sender.direction == .right {
-            self.navigationController?.popViewController(animated: true)
-        }
-    }
-
-}

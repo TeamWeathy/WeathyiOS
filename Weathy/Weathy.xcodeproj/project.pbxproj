@@ -10,7 +10,8 @@
 		0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3133F725A4EB5C0059028C /* RecentTVC.swift */; };
 		0E31344225A724570059028C /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E31344125A724570059028C /* OnBoarding.storyboard */; };
 		0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344425A724A80059028C /* OnBoardingFirstVC.swift */; };
-		0E31344D25A7342E0059028C /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344C25A7342E0059028C /* OnBoardingVC.swift */; };
+		0E31345025A74ECD0059028C /* OnBoardingSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344F25A74ECD0059028C /* OnBoardingSecondVC.swift */; };
+		0E31345325A74EE20059028C /* OnBoardingThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31345225A74EE20059028C /* OnBoardingThirdVC.swift */; };
 		0E8C003125A1B7A200A31295 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8C003025A1B7A200A31295 /* Tabbar.storyboard */; };
 		0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003425A1B7CE00A31295 /* TabbarVC.swift */; };
 		0E8C003925A1BC1F00A31295 /* ExampleFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003825A1BC1F00A31295 /* ExampleFirstVC.swift */; };
@@ -55,7 +56,8 @@
 		0E3133F725A4EB5C0059028C /* RecentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTVC.swift; sourceTree = "<group>"; };
 		0E31344125A724570059028C /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
 		0E31344425A724A80059028C /* OnBoardingFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFirstVC.swift; sourceTree = "<group>"; };
-		0E31344C25A7342E0059028C /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
+		0E31344F25A74ECD0059028C /* OnBoardingSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSecondVC.swift; sourceTree = "<group>"; };
+		0E31345225A74EE20059028C /* OnBoardingThirdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingThirdVC.swift; sourceTree = "<group>"; };
 		0E8C003025A1B7A200A31295 /* Tabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabbar.storyboard; sourceTree = "<group>"; };
 		0E8C003425A1B7CE00A31295 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
 		0E8C003825A1BC1F00A31295 /* ExampleFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleFirstVC.swift; sourceTree = "<group>"; };
@@ -116,7 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				0E31344425A724A80059028C /* OnBoardingFirstVC.swift */,
-				0E31344C25A7342E0059028C /* OnBoardingVC.swift */,
+				0E31344F25A74ECD0059028C /* OnBoardingSecondVC.swift */,
+				0E31345225A74EE20059028C /* OnBoardingThirdVC.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -457,14 +460,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */,
-				0E31344D25A7342E0059028C /* OnBoardingVC.swift in Sources */,
 				0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */,
+				0E31345325A74EE20059028C /* OnBoardingThirdVC.swift in Sources */,
 				6339846C259A431100339615 /* UIView+Extensions.swift in Sources */,
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
 				0E8C005625A2598800A31295 /* DevelopersInfoVC.swift in Sources */,
 				63DEB26E259CD54100A94488 /* APIConstants.swift in Sources */,
 				0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */,
 				63DEB267259CD4D600A94488 /* DummyVC.swift in Sources */,
+				0E31345025A74ECD0059028C /* OnBoardingSecondVC.swift in Sources */,
 				0E8C003C25A1BC3000A31295 /* ExampleSecondVC.swift in Sources */,
 				0E8C004725A249B900A31295 /* SettingVC.swift in Sources */,
 				0E9152E025A39A1F0048E226 /* MainSearchVC.swift in Sources */,

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Uv-V2-B0z">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MnK-b1-ZUD">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -14,14 +14,68 @@
             <objects>
                 <viewController storyboardIdentifier="OnBoardingFirstVC" title="OnBoardingFirstVC" id="MnK-b1-ZUD" customClass="OnBoardingFirstVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceg-9O-kML">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Nnl-Jr-muc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_phone_1" translatesAutoresizingMaskIntoConstraints="NO" id="Xdx-y9-Waj">
+                                <rect key="frame" x="0.0" y="305" width="375" height="507"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Xdx-y9-Waj" secondAttribute="height" multiplier="375:507" id="Unn-Le-SZf"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_1" translatesAutoresizingMaskIntoConstraints="NO" id="Isq-6G-8RV">
+                                <rect key="frame" x="29" y="573" width="317" height="118"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKT-p6-Abv">
+                                <rect key="frame" x="34" y="718" width="307" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="kag-0W-qU6"/>
+                                    <constraint firstAttribute="width" constant="307" id="ztB-p1-d8F"/>
+                                </constraints>
+                                <state key="normal" image="onboarding_btn_start"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_2" translatesAutoresizingMaskIntoConstraints="NO" id="A4D-vv-KYn">
+                                <rect key="frame" x="29" y="393" width="317" height="145"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_3" translatesAutoresizingMaskIntoConstraints="NO" id="DCe-Eb-WTe">
+                                <rect key="frame" x="29" y="415" width="317" height="300"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="2UP-hJ-Rj1"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DCe-Eb-WTe" firstAttribute="top" secondItem="Xdx-y9-Waj" secondAttribute="top" constant="110" id="5aj-Uh-geV"/>
+                            <constraint firstItem="Nnl-Jr-muc" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="5gs-Xo-msa"/>
+                            <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="DCe-Eb-WTe" secondAttribute="trailing" constant="29" id="7KY-H7-bdB"/>
+                            <constraint firstItem="DCe-Eb-WTe" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="8sc-n4-DaR"/>
+                            <constraint firstItem="A4D-vv-KYn" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="9bl-If-GRP"/>
+                            <constraint firstItem="Nnl-Jr-muc" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" id="Hho-89-Pn6"/>
+                            <constraint firstItem="A4D-vv-KYn" firstAttribute="top" secondItem="Xdx-y9-Waj" secondAttribute="top" constant="88" id="LnK-3L-FqF"/>
+                            <constraint firstAttribute="bottom" secondItem="Isq-6G-8RV" secondAttribute="bottom" constant="121" id="Nbf-NJ-oGB"/>
+                            <constraint firstAttribute="bottom" secondItem="Xdx-y9-Waj" secondAttribute="bottom" id="Uil-hr-U9f"/>
+                            <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="A4D-vv-KYn" secondAttribute="trailing" constant="29" id="VJu-O8-zGk"/>
+                            <constraint firstItem="bKT-p6-Abv" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="WQk-zo-9wp"/>
+                            <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="Isq-6G-8RV" secondAttribute="trailing" constant="29" id="aga-qN-FeU"/>
+                            <constraint firstItem="Xdx-y9-Waj" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="eME-Ed-Mth"/>
+                            <constraint firstItem="Isq-6G-8RV" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="ef8-sq-0ks"/>
+                            <constraint firstItem="Isq-6G-8RV" firstAttribute="centerX" secondItem="Xdx-y9-Waj" secondAttribute="centerX" id="h1G-1e-7SO"/>
+                            <constraint firstItem="Xdx-y9-Waj" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" id="j3Y-oK-jdM"/>
+                            <constraint firstItem="2UP-hJ-Rj1" firstAttribute="bottom" secondItem="bKT-p6-Abv" secondAttribute="bottom" constant="5" id="kgI-V8-sTh"/>
+                            <constraint firstAttribute="bottom" secondItem="Nnl-Jr-muc" secondAttribute="bottom" id="lwj-SR-MkS"/>
+                            <constraint firstItem="Nnl-Jr-muc" firstAttribute="top" secondItem="ceg-9O-kML" secondAttribute="top" id="oHY-v2-54a"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6Q2-FO-9HZ"/>
                     <connections>
-                        <outlet property="gestureStart" destination="c4O-7v-VU3" id="K4I-Wb-fF0"/>
+                        <outlet property="firstImage" destination="Isq-6G-8RV" id="91S-bC-Tkz"/>
+                        <outlet property="gestureStart" destination="c4O-7v-VU3" id="ZGr-tm-czw"/>
+                        <outlet property="phoneImage" destination="Xdx-y9-Waj" id="hX3-g0-JeE"/>
+                        <outlet property="secondImage" destination="A4D-vv-KYn" id="dKi-Qd-5fa"/>
+                        <outlet property="startButton" destination="bKT-p6-Abv" id="0Ly-zx-CqE"/>
+                        <outlet property="thirdImage" destination="DCe-Eb-WTe" id="YnG-zE-GuJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U30-a8-1vY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -38,11 +92,11 @@
             <objects>
                 <viewController storyboardIdentifier="OnBoardingVC" id="qfc-K7-vfu" customClass="OnBoardingVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zRP-ha-nta">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GB-Ww-4fQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rpA-Oe-jQq"/>
@@ -62,16 +116,16 @@
             </objects>
             <point key="canvasLocation" x="967" y="490"/>
         </scene>
-        <!--Third View Controller-->
+        <!--On Boarding ThirdVC-->
         <scene sceneID="qOY-mh-2L8">
             <objects>
-                <viewController storyboardIdentifier="ThirdViewController" id="awx-d5-9tc" customClass="ThirdViewController" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnBoardingThirdVC" id="awx-d5-9tc" customClass="OnBoardingThirdVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pLE-o4-hct">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGB-3M-P6I">
-                                <rect key="frame" x="132" y="782" width="150" height="50"/>
+                                <rect key="frame" x="112.66666666666669" y="698" width="150" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="10S-DM-iT7"/>
@@ -102,14 +156,14 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4163.768115942029" y="30.803571428571427"/>
+            <point key="canvasLocation" x="3529" y="-342"/>
         </scene>
-        <!--firstViewController-->
+        <!--OnBoardingSecondVC-->
         <scene sceneID="aZx-gu-WmN">
             <objects>
-                <viewController storyboardIdentifier="firstViewController" title="firstViewController" id="s2g-3P-cK6" customClass="firstViewController" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnBoardingSecondVC" title="OnBoardingSecondVC" id="s2g-3P-cK6" customClass="OnBoardingSecondVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YAX-RY-pKO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="8mE-de-AG7"/>
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
@@ -125,50 +179,21 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2655.072463768116" y="30.803571428571427"/>
-        </scene>
-        <!--firstViewController-->
-        <scene sceneID="D0q-R8-SHd">
-            <objects>
-                <viewController storyboardIdentifier="secondViewController" title="firstViewController" id="XHe-YL-tkX" customClass="secondViewController" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0ld-V0-0wM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="XbR-Rg-H1O"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QDi-uD-dFk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3415.9420289855075" y="30.803571428571427"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Tue-pq-HKx">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="0Uv-V2-B0z" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vr6-mV-APc">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="MnK-b1-ZUD" kind="relationship" relationship="rootViewController" id="Kkh-0N-6Aq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mC1-zf-6Id" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="966.66666666666674" y="-341.51785714285711"/>
+            <point key="canvasLocation" x="2723" y="-342"/>
         </scene>
     </scenes>
     <resources>
+        <image name="onboarding_bg" width="375" height="812"/>
+        <image name="onboarding_btn_start" width="309" height="55"/>
+        <image name="onboarding_img_phone_1" width="375" height="547"/>
+        <image name="onboarding_img_popup_1" width="317" height="118"/>
+        <image name="onboarding_img_popup_2" width="314.33334350585938" height="145"/>
+        <image name="onboarding_img_popup_3" width="326" height="300"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
