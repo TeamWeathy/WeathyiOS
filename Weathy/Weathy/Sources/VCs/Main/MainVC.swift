@@ -17,7 +17,8 @@ class MainVC: UIViewController {
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     @IBOutlet weak var settingIconImage: UIImageView!
     @IBOutlet weak var searchIconImage: UIImageView!
-    @IBOutlet weak var todayDateTimeLabel: NSLayoutConstraint!
+    @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet weak var todayDateTimeLabel: UILabel!
     
     //MARK: - Life Cycle Methods
     
@@ -38,9 +39,14 @@ class MainVC: UIViewController {
         weatherCollectionView.isPagingEnabled = true
         weatherCollectionView.decelerationRate = .fast
         
-//        topBlurView.layer.zPosition = 1
-//        settingIconImage.layer.zPosition = 1
-//        searchIconImage.layer.zPosition = 1
+        topBlurView.alpha = 0
+        
+        todayDateTimeLabel.font = UIFont.RobotoRegular15
+        todayDateTimeLabel.textColor = UIColor.subGrey1
+        todayDateTimeLabel.text = "1월 7일 일요일 • 오후 4시"
+        
+        logoImage.transform = CGAffineTransform(translationX: 0, y: 100)
+        logoImage.alpha = 0
     }
 }
 
@@ -58,6 +64,33 @@ extension MainVC: UICollectionViewDelegate {
             }
             
             lastContentOffset = scrollView.contentOffset.y
+        }
+        
+        if (scrollView.contentOffset.y > 0) {
+            UIView.animate(withDuration: 0.7) {
+                print(scrollView.contentOffset.y)
+                self.topBlurView.alpha = 1
+            }
+        } else {
+            UIView.animate(withDuration: 0.7, delay: 0, options: [.curveEaseIn], animations: {
+                print(scrollView.contentOffset.y)
+                self.topBlurView.alpha = 0
+
+            }, completion: nil)
+        }
+        
+        if (scrollView.contentOffset.y >= 400) {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.logoImage.alpha = 1
+                self.logoImage.transform = CGAffineTransform(translationX: 0, y: 0)
+                self.todayDateTimeLabel.transform = CGAffineTransform(translationX: 0, y: -100)
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.logoImage.alpha = 0
+                self.logoImage.transform = CGAffineTransform(translationX: 0, y: 100)
+                self.todayDateTimeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+            })
         }
     }
 }
