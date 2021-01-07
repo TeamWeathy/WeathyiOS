@@ -39,6 +39,7 @@ extension UIView {
         // 구글링 해보세요!
         layer.masksToBounds = false
         
+        // 그림자 캐시
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
     }
