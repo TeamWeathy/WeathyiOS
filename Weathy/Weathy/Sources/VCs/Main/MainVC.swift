@@ -38,9 +38,9 @@ class MainVC: UIViewController {
         weatherCollectionView.isPagingEnabled = true
         weatherCollectionView.decelerationRate = .fast
         
-        topBlurView.layer.zPosition = 0.9
-        settingIconImage.layer.zPosition = 1
-        searchIconImage.layer.zPosition = 1
+//        topBlurView.layer.zPosition = 1
+//        settingIconImage.layer.zPosition = 1
+//        searchIconImage.layer.zPosition = 1
     }
 }
 
