@@ -19,9 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDW-gH-0dZ">
-                                <rect key="frame" x="33" y="58" width="18" height="22"/>
+                                <rect key="frame" x="33" y="58" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="7H8-W9-Ucu"/>
+                                    <constraint firstAttribute="height" constant="20" id="sMe-hC-nbn"/>
+                                </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="xmark" catalog="system"/>
+                                <state key="normal" image="ic_back"/>
                                 <connections>
                                     <action selector="backBtnTap:" destination="OdZ-gP-p1Y" eventType="touchUpInside" id="zKg-FG-Ls9"/>
                                 </connections>
@@ -37,13 +41,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9G-sT-4S1">
-                                <rect key="frame" x="33" y="111" width="42" height="21"/>
+                                <rect key="frame" x="33" y="109" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPA-Vt-UcZ" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                <rect key="frame" x="33" y="142" width="42" height="21"/>
+                                <rect key="frame" x="33" y="140" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,7 +58,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lOI-Su-7sH">
-                                <rect key="frame" x="33" y="223" width="309" height="40"/>
+                                <rect key="frame" x="33" y="221" width="309" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="d8v-Fs-fgn"/>
@@ -123,7 +127,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wiX-dK-HUU">
-                                <rect key="frame" x="33" y="263" width="309" height="445"/>
+                                <rect key="frame" x="33" y="261" width="309" height="447"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="swA-sO-s9M">
                                     <size key="itemSize" width="128" height="128"/>
@@ -168,7 +172,7 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncI-hT-bUM">
-                                <rect key="frame" x="282" y="123" width="9" height="9"/>
+                                <rect key="frame" x="282" y="121" width="9" height="9"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="9" id="02W-f2-Dt3"/>
@@ -176,7 +180,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6g-a8-t60">
-                                <rect key="frame" x="298" y="121" width="13" height="13"/>
+                                <rect key="frame" x="298" y="119" width="13" height="13"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13" id="U2g-3v-KWR"/>
@@ -184,7 +188,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eay-L1-NoR">
-                                <rect key="frame" x="318" y="123" width="9" height="9"/>
+                                <rect key="frame" x="318" y="121" width="9" height="9"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="9" id="Igc-3L-Jhm"/>
@@ -198,7 +202,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recordImgTopblur" translatesAutoresizingMaskIntoConstraints="NO" id="Pc2-TS-gDV">
-                                <rect key="frame" x="0.0" y="263" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="261" width="375" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="0mG-9M-KKP"/>
                                 </constraints>
@@ -257,9 +261,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_back" width="20" height="20"/>
         <image name="recordImgBottomblur" width="375" height="52"/>
         <image name="recordImgTopblur" width="375" height="52"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
