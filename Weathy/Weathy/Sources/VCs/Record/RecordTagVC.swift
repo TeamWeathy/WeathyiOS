@@ -344,6 +344,7 @@ extension RecordTagVC: UICollectionViewDataSource {
             else {
                 cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
                 cell.tagLabel.textColor = UIColor.mintIcon
+                cell.tagLabel.font = UIFont.SDGothicRegular15
                 cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
                 cell.layer.borderColor = UIColor.mintMain.cgColor
                 cell.layer.borderWidth = 1
