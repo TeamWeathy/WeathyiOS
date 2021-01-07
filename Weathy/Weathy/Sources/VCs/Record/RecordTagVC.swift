@@ -194,10 +194,10 @@ class RecordTagVC: UIViewController {
             TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
         ]
         
-        DispatchQueue.main.async{
-            self.tagCollectionView.reloadData()
-            self.tagTitleCollectionView.reloadData()
-        }
+//        DispatchQueue.main.async{
+//            self.tagCollectionView.reloadData()
+//            self.tagTitleCollectionView.reloadData()
+//        }
         
         nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = UIColor.subGrey3
@@ -507,6 +507,9 @@ extension RecordTagVC: UICollectionViewDelegateFlowLayout {
         let y = scrollView.contentOffset.y
         if y <= 30 {
             blurView.alpha = y / 30
+        }
+        else {
+            blurView.alpha = 1
         }
     }
 }
