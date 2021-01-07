@@ -169,7 +169,7 @@ class RecordTagVC: UIViewController {
     
     @IBOutlet var nextBtn: UIButton!
     
-
+    
     
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -194,10 +194,10 @@ class RecordTagVC: UIViewController {
             TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
         ]
         
-//        DispatchQueue.main.async{
-//            self.tagCollectionView.reloadData()
-//            self.tagTitleCollectionView.reloadData()
-//        }
+        //        DispatchQueue.main.async{
+        //            self.tagCollectionView.reloadData()
+        //            self.tagTitleCollectionView.reloadData()
+        //        }
         
         nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = UIColor.subGrey3
@@ -205,7 +205,7 @@ class RecordTagVC: UIViewController {
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -230,7 +230,7 @@ class RecordTagVC: UIViewController {
         self.navigationController?.pushViewController(dvc, animated: false)
     }
     
-
+    
 }
 
 
@@ -275,6 +275,24 @@ extension RecordTagVC {
         ], range: NSRange(location: 4, length: 4))
         
         titleLabel.attributedText = attributedString
+    }
+    
+    func setTagSelected(cell: RecordTagCVC) {
+        cell.tagLabel.font = UIFont.SDGothicRegular15
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 20
+        cell.tagLabel.textColor = UIColor.mintIcon
+        cell.layer.borderColor = UIColor.mintMain.cgColor
+        cell.backgroundColor = UIColor.white
+    }
+    
+    func setTagUnselected(cell: RecordTagCVC) {
+        cell.tagLabel.font = UIFont.SDGothicRegular15
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 20
+        cell.tagLabel.textColor = UIColor.subGrey6
+        cell.layer.borderColor = UIColor.clear.cgColor
+        cell.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
     }
     
     func setNextBtnActivated() {
@@ -324,34 +342,22 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-
+            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecordTagCVC", for: indexPath) as? RecordTagCVC
             else {
                 return UICollectionViewCell()
             }
-
+            
+            cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
+            cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
+        
             if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
-                cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
-                cell.tagLabel.textColor = UIColor.subGrey6
-                cell.tagLabel.font = UIFont.SDGothicRegular15
-                cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 80
-                cell.layer.borderColor = UIColor.clear.cgColor
-                cell.layer.borderWidth = 1
-                cell.layer.cornerRadius = 20
-                cell.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
-
+                setTagUnselected(cell: cell)
             }
             else {
-                cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
-                cell.tagLabel.textColor = UIColor.mintIcon
-                cell.tagLabel.font = UIFont.SDGothicRegular15
-                cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
-                cell.layer.borderColor = UIColor.mintMain.cgColor
-                cell.layer.borderWidth = 1
-                cell.layer.cornerRadius = 20
-                cell.backgroundColor = UIColor.white
+                setTagSelected(cell: cell)
             }
-
+            
             return cell
         }
         
@@ -364,14 +370,14 @@ extension RecordTagVC: UICollectionViewDataSource {
             }
             cell.setCell(title: tagTitles[indexPath.item].title, count: tagTitles[indexPath.item].count, isSelected: tagTitles[indexPath.item].isSelected)
             
-//            cell.layer.borderWidth = 1
-//            cell.layer.borderColor = UIColor.black.cgColor
+            //            cell.layer.borderWidth = 1
+            //            cell.layer.borderColor = UIColor.black.cgColor
             
             return cell
         }
         
         return UICollectionViewCell()
-       
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -422,9 +428,9 @@ extension RecordTagVC: UICollectionViewDataSource {
             /// 선택된 거 빼고 모두 isSelected를 false로 변경
             for i in 0...tagTitles.count-1 {
                 if i == indexPath.item {
-
+                    
                     if tagTitles[i].isSelected == true {
-//                        self.titleIndex = i
+                        //                        self.titleIndex = i
                         print("선택된 것 >> ", tagTitles[i].title)
                     } else {
                         self.titleIndex = i
@@ -455,7 +461,7 @@ extension RecordTagVC: UICollectionViewDelegateFlowLayout {
         let cellHeight : CGFloat = collectionView.frame.height
         
         return CGSize(width: cellWidth, height: cellHeight)
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
