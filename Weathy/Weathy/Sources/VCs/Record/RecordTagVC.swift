@@ -446,6 +446,7 @@ extension RecordTagVC: UICollectionViewDataSource {
         /// tagTitleCollectionView
         else if collectionView == tagTitleCollectionView {
             collectionView.deselectItem(at: indexPath, animated: false)
+            tagCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             
             /// 선택된 거 빼고 모두 isSelected를 false로 변경
             for i in 0...tagTitles.count-1 {
