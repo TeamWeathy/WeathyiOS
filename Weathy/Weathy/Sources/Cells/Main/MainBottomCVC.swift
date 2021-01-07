@@ -21,7 +21,7 @@ class MainBottomCVC: UICollectionViewCell {
         
     //MARK: - Custom Methods
     func setCell() {
-        cellBackgroundImage.image = UIImage(named: "search_bg_morning")
+//        cellBackgroundImage.image = UIImage(named: "search_bg_morning")
         
         timeZoneWeatherView.backgroundColor = .white
         timeZoneWeatherView.makeRounded(cornerRadius: 35)
@@ -55,7 +55,7 @@ class MainBottomCVC: UICollectionViewCell {
         self.WeeklyCenterY.constant = 24
         self.detailCenterY.constant = 24
         
-        UIView.animate(withDuration: 0.9, delay: 0, options: [.overrideInheritedCurve],animations: {
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.overrideInheritedCurve],animations: {
             self.timeZoneWeatherView.alpha = 1
             self.weeklyWeatherView.alpha = 1
             self.detailWeatherView.alpha = 1

@@ -15,6 +15,9 @@ class MainVC: UIViewController {
     
     @IBOutlet weak var topBlurView: UIImageView!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
+    @IBOutlet weak var settingIconImage: UIImageView!
+    @IBOutlet weak var searchIconImage: UIImageView!
+    @IBOutlet weak var todayDateTimeLabel: NSLayoutConstraint!
     
     //MARK: - Life Cycle Methods
     
@@ -33,7 +36,15 @@ class MainVC: UIViewController {
         weatherCollectionView.backgroundColor = .clear
         weatherCollectionView.isPagingEnabled = true
         weatherCollectionView.decelerationRate = .fast
+        
+        print(topBlurView.layer.zPosition)
+        topBlurView.layer.zPosition = 0.9
+        settingIconImage.layer.zPosition = 1
+        searchIconImage.layer.zPosition = 1
+        
     }
+    
+//    func
 }
 
 //MARK: - UICollectionViewDelegate

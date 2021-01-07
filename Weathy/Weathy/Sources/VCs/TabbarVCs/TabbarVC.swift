@@ -43,10 +43,12 @@ class TabbarVC: UIViewController {
         /// ExampleFirstVC 생성
         guard let leftVC = self.storyboard?.instantiateViewController(withIdentifier: ExampleFirstVC.identifier) as? ExampleFirstVC else { return }
         /// ExampleFirstVC를 Child View Controller로 지정
-        self.addChild(leftVC)
+        
+        guard let MainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainVC") as? MainVC else {return}
+        self.addChild(MainVC)
        
         /// ExampleFirstVC의 View만 가져오기
-        guard let leftVCView = leftVC.view else { return }
+        guard let leftVCView = MainVC.view else { return }
        
         /// ExampleFirstVC View의 Frame 지정
         leftVCView.frame = CGRect(x: 0, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.height)
