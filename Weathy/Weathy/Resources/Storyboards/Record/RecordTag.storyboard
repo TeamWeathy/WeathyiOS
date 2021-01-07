@@ -143,6 +143,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="72" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fVZ-lr-Xlt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="40"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pii-Su-gAr" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="0.0" width="42" height="40"/>
                                                     <constraints>
@@ -160,12 +163,17 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Pii-Su-gAr" firstAttribute="top" secondItem="MbA-lR-Thg" secondAttribute="top" id="Eau-aM-Wqg"/>
+                                                <constraint firstAttribute="trailing" secondItem="fVZ-lr-Xlt" secondAttribute="trailing" id="Efc-Aq-IzZ"/>
                                                 <constraint firstItem="Pii-Su-gAr" firstAttribute="leading" secondItem="MbA-lR-Thg" secondAttribute="leading" constant="15" id="Lrh-ne-jRH"/>
+                                                <constraint firstItem="fVZ-lr-Xlt" firstAttribute="top" secondItem="MbA-lR-Thg" secondAttribute="top" id="OlH-jb-2Yk"/>
                                                 <constraint firstAttribute="bottom" secondItem="Pii-Su-gAr" secondAttribute="bottom" id="P2j-bk-BKR"/>
+                                                <constraint firstItem="fVZ-lr-Xlt" firstAttribute="leading" secondItem="MbA-lR-Thg" secondAttribute="leading" id="RH8-Nn-qSp"/>
                                                 <constraint firstAttribute="trailing" secondItem="Pii-Su-gAr" secondAttribute="trailing" constant="15" id="jZy-yl-5c9"/>
+                                                <constraint firstAttribute="bottom" secondItem="fVZ-lr-Xlt" secondAttribute="bottom" id="uxe-Iy-ec1"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="addTagImage" destination="fVZ-lr-Xlt" id="EMQ-GA-BGn"/>
                                             <outlet property="tagLabel" destination="Pii-Su-gAr" id="23W-Be-INk"/>
                                         </connections>
                                     </collectionViewCell>
@@ -257,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiy-6E-bhn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-265.21739130434787" y="93.75"/>
+            <point key="canvasLocation" x="-266.39999999999998" y="93.103448275862078"/>
         </scene>
     </scenes>
     <resources>

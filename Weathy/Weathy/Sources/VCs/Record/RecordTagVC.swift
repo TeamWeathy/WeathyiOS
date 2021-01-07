@@ -24,7 +24,7 @@ class RecordTagVC: UIViewController {
     }
     
     var tagUpper: [Tag] = [
-        Tag(name: " + ", isSelected: false),
+        Tag(name: "  ", isSelected: false),
         Tag(name: "후드티", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
         Tag(name: "니트", isSelected: false),
@@ -76,7 +76,7 @@ class RecordTagVC: UIViewController {
     ]
     
     var tagUnder: [Tag] = [
-        Tag(name: " + ", isSelected: false),
+        Tag(name: "  ", isSelected: false),
         Tag(name: "후드티", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
         Tag(name: "니트", isSelected: false),
@@ -128,7 +128,7 @@ class RecordTagVC: UIViewController {
     ]
     
     var tagOuter: [Tag] = [
-        Tag(name: " + ", isSelected: false),
+        Tag(name: "  ", isSelected: false),
         Tag(name: "외투", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
         Tag(name: "니트", isSelected: false),
@@ -140,7 +140,7 @@ class RecordTagVC: UIViewController {
     ]
     
     var tagEtc: [Tag] = [
-        Tag(name: " + ", isSelected: false),
+        Tag(name: "  ", isSelected: false),
         Tag(name: "기타", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
         Tag(name: "니트", isSelected: false),
@@ -194,10 +194,6 @@ class RecordTagVC: UIViewController {
             TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
         ]
         
-        //        DispatchQueue.main.async{
-        //            self.tagCollectionView.reloadData()
-        //            self.tagTitleCollectionView.reloadData()
-        //        }
         
         nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = UIColor.subGrey3
@@ -278,6 +274,8 @@ extension RecordTagVC {
     }
     
     func setTagSelected(cell: RecordTagCVC) {
+        cell.addTagImage.isHidden = true
+        cell.tagLabel.isHidden = false
         cell.tagLabel.font = UIFont.SDGothicRegular15
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 20
@@ -287,6 +285,8 @@ extension RecordTagVC {
     }
     
     func setTagUnselected(cell: RecordTagCVC) {
+        cell.addTagImage.isHidden = true
+        cell.tagLabel.isHidden = false
         cell.tagLabel.font = UIFont.SDGothicRegular15
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 20
@@ -350,13 +350,30 @@ extension RecordTagVC: UICollectionViewDataSource {
             
             cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
             cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
-        
-            if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
-                setTagUnselected(cell: cell)
+            
+            if indexPath.item == 0 {
+//                cell.tagLabel.font = UIFont.SDGothicRegular15
+//                cell.layer.borderWidth = 1
+//                cell.layer.cornerRadius = 19.5
+//                cell.layer.borderColor = UIColor.subGrey3.cgColor
+//                cell.tagLabel.textColor = .black
+//                cell.backgroundColor = .white
+                
+                cell.tagLabel.isHidden = true
+                cell.addTagImage.isHidden = false
+                cell.layer.borderWidth = 0
+                cell.backgroundColor = .white
             }
             else {
-                setTagSelected(cell: cell)
+                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
+                    setTagUnselected(cell: cell)
+                }
+                else {
+                    setTagSelected(cell: cell)
+                }
             }
+            
+            
             
             return cell
         }
@@ -385,39 +402,44 @@ extension RecordTagVC: UICollectionViewDataSource {
         /// tagCollectionView
         if collectionView == tagCollectionView {
             
-            print(tagTitles[titleIndex].count)
-            
-            if tagTitles[titleIndex].count < 5 {
-                collectionView.deselectItem(at: indexPath, animated: false)
-                tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
-                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
-                    tagTitles[titleIndex].count += 1
-                } else {
-                    tagTitles[titleIndex].count -= 1
-                }
+            /// +가 선택됐을 경우
+            if indexPath.item == 0 {
+                print("I'm chosen")
             }
-            else if tagTitles[titleIndex].count == 5 {
-                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
-                    tagTitles[titleIndex].tagTab[indexPath.item].isSelected = false
-                    tagTitles[titleIndex].count -= 1
-                }
-            }
+            /// 태그가 선택됐을 경우
             else {
+                if tagTitles[titleIndex].count < 5 {
+                    collectionView.deselectItem(at: indexPath, animated: false)
+                    tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
+                    if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
+                        tagTitles[titleIndex].count += 1
+                    } else {
+                        tagTitles[titleIndex].count -= 1
+                    }
+                }
+                else if tagTitles[titleIndex].count == 5 {
+                    if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
+                        tagTitles[titleIndex].tagTab[indexPath.item].isSelected = false
+                        tagTitles[titleIndex].count -= 1
+                    }
+                }
+                else {
+                    
+                }
                 
+                DispatchQueue.main.async{
+                    self.tagCollectionView.reloadData()
+                    self.tagTitleCollectionView.reloadData()
+                }
+                
+                if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
+                    tagTitles[3].count >= 1 {
+                    self.setNextBtnActivated()
+                }
+                else {
+                    self.setNextBtnDeactivated()
+                }
             }
-            DispatchQueue.main.async{
-                self.tagCollectionView.reloadData()
-                self.tagTitleCollectionView.reloadData()
-            }
-            
-            if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
-                tagTitles[3].count >= 1 {
-                self.setNextBtnActivated()
-            }
-            else {
-                self.setNextBtnDeactivated()
-            }
-            
             
         }
         

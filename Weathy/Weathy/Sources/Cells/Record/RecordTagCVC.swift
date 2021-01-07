@@ -13,5 +13,10 @@ class RecordTagCVC: UICollectionViewCell {
     // MARK: - IBOutlets
     
     @IBOutlet var tagLabel: UILabel!
+    @IBOutlet var addTagImage: UIImageView!
+    
+    override func awakeFromNib() {
+        addTagImage.image = UIImage(named: "recordBtnAddtag")
+    }
     
 }
