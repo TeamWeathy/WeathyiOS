@@ -20,6 +20,9 @@
 		0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005825A2F64900A31295 /* AskForVC.swift */; };
 		374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48F1259F2A9300152B9A /* UIFont+Extension.swift */; };
 		4C6D6B3632E6D1F7D4A96051 /* Pods_Weathy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */; };
+		6303766B25A649EE00E0EC5E /* MonthlyCalendarCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303766A25A649ED00E0EC5E /* MonthlyCalendarCVC.swift */; };
+		6303767125A708F800E0EC5E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303767025A708F800E0EC5E /* Date+Extensions.swift */; };
+		6303767625A7201600E0EC5E /* InfiniteScrollCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303767525A7201600E0EC5E /* InfiniteScrollCVC.swift */; };
 		633984202599B1F400339615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339841F2599B1F400339615 /* AppDelegate.swift */; };
 		633984222599B1F400339615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633984212599B1F400339615 /* SceneDelegate.swift */; };
 		6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 633984282599B1F400339615 /* Weathy.xcdatamodeld */; };
@@ -60,6 +63,9 @@
 		0E8C005525A2598800A31295 /* DevelopersInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersInfoVC.swift; sourceTree = "<group>"; };
 		0E8C005825A2F64900A31295 /* AskForVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForVC.swift; sourceTree = "<group>"; };
 		374D48F1259F2A9300152B9A /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		6303766A25A649ED00E0EC5E /* MonthlyCalendarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarCVC.swift; sourceTree = "<group>"; };
+		6303767025A708F800E0EC5E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		6303767525A7201600E0EC5E /* InfiniteScrollCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollCVC.swift; sourceTree = "<group>"; };
 		6339841C2599B1F400339615 /* Weathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339841F2599B1F400339615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		633984212599B1F400339615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +141,15 @@
 			path = SettingVCs;
 			sourceTree = "<group>";
 		};
+		6303766D25A649F300E0EC5E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				6303767525A7201600E0EC5E /* InfiniteScrollCVC.swift */,
+				6303766A25A649ED00E0EC5E /* MonthlyCalendarCVC.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		633984132599B1F400339615 = {
 			isa = PBXGroup;
 			children = (
@@ -207,7 +222,6 @@
 				63DEB2A3259DACFD00A94488 /* Calendar */,
 				0E8C003325A1B7B900A31295 /* TabbarVCs */,
 				0E8C004525A249A900A31295 /* SettingVCs */,
-				63DEB266259CD4D600A94488 /* DummyVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -215,6 +229,7 @@
 		63398440259A2BCB00339615 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6303766D25A649F300E0EC5E /* Calendar */,
 				63DEB260259CD49700A94488 /* DummyCell.swift */,
 			);
 			path = Cells;
@@ -236,6 +251,7 @@
 				6339846E259A433400339615 /* UIColor+Extensions.swift */,
 				63398471259A435400339615 /* UIImageView+Extensions.swift */,
 				374D48F1259F2A9300152B9A /* UIFont+Extension.swift */,
+				6303767025A708F800E0EC5E /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -436,10 +452,10 @@
 				0E8C005625A2598800A31295 /* DevelopersInfoVC.swift in Sources */,
 				63DEB26E259CD54100A94488 /* APIConstants.swift in Sources */,
 				0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */,
-				63DEB267259CD4D600A94488 /* DummyVC.swift in Sources */,
 				0E8C003C25A1BC3000A31295 /* ExampleSecondVC.swift in Sources */,
 				0E8C004725A249B900A31295 /* SettingVC.swift in Sources */,
 				63398462259A425200339615 /* GenericResponse.swift in Sources */,
+				6303767125A708F800E0EC5E /* Date+Extensions.swift in Sources */,
 				63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */,
 				63DEB272259CD55A00A94488 /* NetworkResult.swift in Sources */,
 				6339846F259A433400339615 /* UIColor+Extensions.swift in Sources */,
@@ -449,7 +465,9 @@
 				63DEB261259CD49700A94488 /* DummyCell.swift in Sources */,
 				0E8C003F25A1BC3F00A31295 /* ExampleThirdVC.swift in Sources */,
 				0E8C003925A1BC1F00A31295 /* ExampleFirstVC.swift in Sources */,
+				6303766B25A649EE00E0EC5E /* MonthlyCalendarCVC.swift in Sources */,
 				0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */,
+				6303767625A7201600E0EC5E /* InfiniteScrollCVC.swift in Sources */,
 				63DEB264259CD4AD00A94488 /* DummyClass.swift in Sources */,
 				633984222599B1F400339615 /* SceneDelegate.swift in Sources */,
 				0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */,
