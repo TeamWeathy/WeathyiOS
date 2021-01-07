@@ -41,7 +41,6 @@ class MainSearchVC: UIViewController {
     @IBAction func backButtonDidTap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
- 
 }
 
 ////MARK: - UITableView Datasource
@@ -53,7 +52,6 @@ extension MainSearchVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let recentCell = recentTableView.dequeueReusableCell(withIdentifier: RecentTVC.identifier, for: indexPath) as? RecentTVC else { return UITableViewCell() }
-        
         
         recentCell.selectionStyle = .none
         
@@ -68,7 +66,7 @@ extension MainSearchVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 183
     }
-    
+
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { _, _, complete in
@@ -78,7 +76,9 @@ extension MainSearchVC: UITableViewDelegate {
         }
         
         // here set your image and background color
-        deleteAction.backgroundColor = .gray
+        
+        deleteAction.backgroundColor = UIColor(white: 1, alpha: 0)
+        deleteAction.image = #imageLiteral(resourceName: "search_weather")
         
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         configuration.performsFirstActionWithFullSwipe = true
@@ -89,6 +89,6 @@ extension MainSearchVC: UITableViewDelegate {
 
         let cell = tableView.cellForRow(at: indexPath)
 
-        cell?.backgroundColor = .clear
+        cell?.backgroundColor = .black
       }
 }

@@ -145,9 +145,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchBgMorning" id="V3I-zv-Xd2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchBgMorning" translatesAutoresizingMaskIntoConstraints="NO" id="V3I-zv-Xd2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LII-e6-KY3">
                                 <rect key="frame" x="311" y="44" width="48" height="48"/>
@@ -177,7 +176,7 @@
                             <constraint firstItem="V3I-zv-Xd2" firstAttribute="trailing" secondItem="BSJ-i1-Ukm" secondAttribute="trailing" id="3id-a6-JNv"/>
                             <constraint firstItem="LII-e6-KY3" firstAttribute="top" secondItem="BSJ-i1-Ukm" secondAttribute="top" id="6Ta-eY-wOr"/>
                             <constraint firstItem="BSJ-i1-Ukm" firstAttribute="trailing" secondItem="LII-e6-KY3" secondAttribute="trailing" constant="16" id="Bbp-pt-nan"/>
-                            <constraint firstItem="BSJ-i1-Ukm" firstAttribute="bottom" secondItem="V3I-zv-Xd2" secondAttribute="bottom" id="b1I-0y-OjW"/>
+                            <constraint firstAttribute="bottom" secondItem="V3I-zv-Xd2" secondAttribute="bottom" id="b1I-0y-OjW"/>
                             <constraint firstItem="V3I-zv-Xd2" firstAttribute="leading" secondItem="BSJ-i1-Ukm" secondAttribute="leading" id="eRc-LN-gac"/>
                             <constraint firstItem="LII-e6-KY3" firstAttribute="leading" secondItem="4FY-zE-YNn" secondAttribute="trailing" id="lef-62-FtD"/>
                             <constraint firstItem="V3I-zv-Xd2" firstAttribute="top" secondItem="YoP-el-kzy" secondAttribute="top" id="nky-5K-qi9"/>
