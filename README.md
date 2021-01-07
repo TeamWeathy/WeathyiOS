@@ -1,15 +1,14 @@
 
 # ☁️ 나에게 돌아오는 맞춤 날씨 서비스, Weathy  ☁️
-<img style="border: 1px solid black !important; border-radius:20px; " src="https://user-images.githubusercontent.com/63707317/103549586-f7b3c680-4eea-11eb-9ef1-248da4b4bbb2.png" width="600px" />
+<p align = "center">
+<img style="border: 1px solid black !important; border-radius:20px; " src="https://user-images.githubusercontent.com/63707317/103549586-f7b3c680-4eea-11eb-9ef1-248da4b4bbb2.png" width="600px" /></p>
 
 <br> <br>
   ## 🛠 개발 환경 및 사용한 라이브러리 (Development Environment and Using Library)
   
-<img src="https://camo.githubusercontent.com/aed50ad10015be965f5e23eb27a2c2094d335d3cf8b334014c3676ac5425a013/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f694f532d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d696f73266c6f676f436f6c6f723d7768697465"> <img src="https://camo.githubusercontent.com/42cf4ea24de2413dc2e79ddc2476f9e26a2fbebb841adfe323ceae6098368c98/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53776966742d4641373334333f7374796c653d666f722d7468652d6261646765266c6f676f3d7377696674266c6f676f436f6c6f723d7768697465">
 [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://creativecommons.org/licenses/by/4.0/) ![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg) 
 
 
-  
 
 - iOS 13.0+
 
@@ -43,8 +42,6 @@
 
 🗂 Resources
 
-  
-
     - AppDelegate
 
     - SceneDelegate
@@ -57,11 +54,7 @@
 
     - Xibs🗂
 
-  
-
 🗂 Sources
-
-  
 
     - VCs 🗂
 
@@ -99,15 +92,15 @@
 - feature : 기능을 개발하는 브랜치
 ```
 
-- Main
+- main
 
     └── develop
 
-            ├── feature/1 (# Issue Number)
+            ├── feat/1 (# Issue Number)
 
-            ├── feature/2
+            ├── feat/2
 
-            └── feature/3
+            └── feat/3
 
 ```
 
@@ -183,7 +176,7 @@ git push -u origin < feat/2 >     // 브랜치 생성+이동 후 바로 이 명�
 해당 가이드 ---> [참고](https://woowabros.github.io/experience/2017/10/30/baemin-mobile-git-branch-strategy.html)
 
 <br> <br>
-  ### 📜커밋 메시지 명령어
+  ### 📜 커밋 메시지 명령어
 ```
   - init : 초기화 
   - add : 기능 추가 
@@ -197,7 +190,7 @@ git push -u origin < feat/2 >     // 브랜치 생성+이동 후 바로 이 명�
 ```
 
 <br> <br>
-### 칸반 보드
+### 🗂 칸반 보드
 
   
 
