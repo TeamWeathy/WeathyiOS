@@ -324,7 +324,6 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-            print(">>>")
 
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecordTagCVC", for: indexPath) as? RecordTagCVC
             else {
