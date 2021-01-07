@@ -25,6 +25,7 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         
         setView()
+        setGradientView()
         
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
@@ -37,14 +38,10 @@ class MainVC: UIViewController {
         weatherCollectionView.isPagingEnabled = true
         weatherCollectionView.decelerationRate = .fast
         
-        print(topBlurView.layer.zPosition)
         topBlurView.layer.zPosition = 0.9
         settingIconImage.layer.zPosition = 1
         searchIconImage.layer.zPosition = 1
-        
     }
-    
-//    func
 }
 
 //MARK: - UICollectionViewDelegate
