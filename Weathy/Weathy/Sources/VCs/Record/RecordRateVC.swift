@@ -49,6 +49,10 @@ class RecordRateVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        animationPrac()
+    }
+    
     //MARK: - IBActions
     
     @IBAction func backBtnTap(_ sender: Any) {
@@ -138,6 +142,30 @@ extension RecordRateVC {
         nextBtn.setTitle("다음", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.layer.cornerRadius = 30
+    }
+    
+    func initPosition() {
+        
+        titleLabel.alpha = 0
+        titleLabel.frame = CGRect(x: titleLabel.frame.origin.x, y: titleLabel.frame.origin.y-10, width: titleLabel.frame.width, height: titleLabel.frame.height)
+        
+        explanationLabel.alpha = 0
+        explanationLabel.frame = CGRect(x: explanationLabel.frame.origin.x, y: explanationLabel.frame.origin.y-10, width: explanationLabel.frame.width, height: explanationLabel.frame.height)
+        
+    }
+    
+    func animationPrac() {
+        self.initPosition()
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.titleLabel.alpha = 1
+            self.titleLabel.frame = CGRect(x: self.titleLabel.frame.origin.x, y: self.titleLabel.frame.origin.y+10, width: self.titleLabel.frame.width, height: self.titleLabel.frame.height)
+        })
+        
+        UIView.animate(withDuration: 1, delay: 0.5, animations: {
+            self.explanationLabel.alpha = 1
+            self.explanationLabel.frame = CGRect(x: self.explanationLabel.frame.origin.x, y: self.explanationLabel.frame.origin.y+10, width: self.explanationLabel.frame.width, height: self.explanationLabel.frame.height)
+        })
     }
 }
 

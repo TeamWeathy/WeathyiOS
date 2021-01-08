@@ -57,6 +57,11 @@ class RecordStartVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        animationPrac()
+    }
+    
     //MARK: - IBActions
     
     @IBAction func nextBtnTap(_ sender: Any) {
@@ -162,6 +167,30 @@ extension RecordStartVC {
         startBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         startBtn.layer.cornerRadius = 30
         
+    }
+    
+    func initPosition() {
+        
+        titleLabel.alpha = 0
+        titleLabel.frame = CGRect(x: titleLabel.frame.origin.x, y: titleLabel.frame.origin.y-10, width: titleLabel.frame.width, height: titleLabel.frame.height)
+        
+        subTitleLabel.alpha = 0
+        subTitleLabel.frame = CGRect(x: subTitleLabel.frame.origin.x, y: subTitleLabel.frame.origin.y-10, width: subTitleLabel.frame.width, height: subTitleLabel.frame.height)
+        
+    }
+    
+    func animationPrac() {
+        self.initPosition()
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.titleLabel.alpha = 1
+            self.titleLabel.frame = CGRect(x: self.titleLabel.frame.origin.x, y: self.titleLabel.frame.origin.y+10, width: self.titleLabel.frame.width, height: self.titleLabel.frame.height)
+        })
+        
+        UIView.animate(withDuration: 1, delay: 0.5, animations: {
+            self.subTitleLabel.alpha = 1
+            self.subTitleLabel.frame = CGRect(x: self.subTitleLabel.frame.origin.x, y: self.subTitleLabel.frame.origin.y+10, width: self.subTitleLabel.frame.width, height: self.subTitleLabel.frame.height)
+        })
     }
     
 }

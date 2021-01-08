@@ -62,6 +62,10 @@ class RecordTextVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        animationPrac()
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -82,9 +86,7 @@ class RecordTextVC: UIViewController {
                     print(text)
                     
                 }
-            
         }
-
 }
 
 //MARK: - Style
@@ -184,6 +186,30 @@ extension RecordTextVC {
         wordCountLabel.text = "0"
         wordCountLabel.font = UIFont.SDGothicRegular13
         wordCountLabel.textColor = UIColor.subGrey6
+    }
+    
+    func initPosition() {
+        
+        titleLabel.alpha = 0
+        titleLabel.frame = CGRect(x: titleLabel.frame.origin.x, y: titleLabel.frame.origin.y-10, width: titleLabel.frame.width, height: titleLabel.frame.height)
+        
+        subTitleLabel.alpha = 0
+        subTitleLabel.frame = CGRect(x: subTitleLabel.frame.origin.x, y: subTitleLabel.frame.origin.y-10, width: subTitleLabel.frame.width, height: subTitleLabel.frame.height)
+        
+    }
+    
+    func animationPrac() {
+        self.initPosition()
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.titleLabel.alpha = 1
+            self.titleLabel.frame = CGRect(x: self.titleLabel.frame.origin.x, y: self.titleLabel.frame.origin.y+10, width: self.titleLabel.frame.width, height: self.titleLabel.frame.height)
+        })
+        
+        UIView.animate(withDuration: 1, delay: 0.5, animations: {
+            self.subTitleLabel.alpha = 1
+            self.subTitleLabel.frame = CGRect(x: self.subTitleLabel.frame.origin.x, y: self.subTitleLabel.frame.origin.y+10, width: self.subTitleLabel.frame.width, height: self.subTitleLabel.frame.height)
+        })
     }
 }
 
