@@ -385,7 +385,7 @@ extension RecordTagVC: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            cell.setCell(title: tagTitles[indexPath.item].title, count: tagTitles[indexPath.item].count, isSelected: tagTitles[indexPath.item].isSelected)
+            cell.setCell(title: tagTitles[indexPath.item].title, total: tagTitles[titleIndex].tagTab.count, count: tagTitles[indexPath.item].count, isSelected: tagTitles[indexPath.item].isSelected, isDeleteView: false)
             
             //            cell.layer.borderWidth = 1
             //            cell.layer.borderColor = UIColor.black.cgColor

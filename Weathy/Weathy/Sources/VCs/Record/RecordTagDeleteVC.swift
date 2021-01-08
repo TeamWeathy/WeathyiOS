@@ -159,10 +159,8 @@ class RecordTagDeleteVC: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
     
-    @IBOutlet var backBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
-    @IBOutlet var indicatorCircle: [UIView]!
     
     @IBOutlet var tagTitleCollectionView: UICollectionView!
     @IBOutlet var tagCollectionView: UICollectionView!
@@ -212,10 +210,6 @@ class RecordTagDeleteVC: UIViewController {
     
     //MARK: - IBActions
     
-    @IBAction func backBtnTap(_ sender: Any) {
-        self.navigationController?.popViewController(animated: false)
-    }
-    
     @IBAction func nextBtnTap(_ sender: Any) {
         
         let nextStoryboard = UIStoryboard(name: "RecordRate", bundle: nil)
@@ -234,28 +228,15 @@ class RecordTagDeleteVC: UIViewController {
 
 extension RecordTagDeleteVC {
     func setHeader() {
-        titleLabel.text = "\(name)님은 오늘\n어떤 옷을 입었나요?"
-        titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
-        titleLabel.textColor = UIColor.mainGrey
         titleLabel.numberOfLines = 2
         
-        explanationLabel.text = "+를 눌러 추가하고, 꾹 눌러 삭제할 수 있어요."
+        explanationLabel.text = "여러 개 선택도 가능해요."
         explanationLabel.font = UIFont.SDGothicRegular16
         explanationLabel.textColor = UIColor.subGrey6
-        
-        indicatorCircle[0].layer.cornerRadius = 4.5
-        indicatorCircle[0].backgroundColor = UIColor.mintMain
-        indicatorCircle[0].alpha = 0.4
-        
-        indicatorCircle[1].layer.cornerRadius = 6.5
-        indicatorCircle[1].backgroundColor = UIColor.mintMain
-        
-        indicatorCircle[2].layer.cornerRadius = 4.5
-        indicatorCircle[2].backgroundColor = UIColor.subGrey7
     }
     
     func setTitleLabel() {
-        let attributedString = NSMutableAttributedString(string: "희지님\n어떤 옷을 입었나요?", attributes: [
+        let attributedString = NSMutableAttributedString(string: "삭제할 옷을\n선택해주세요.", attributes: [
             .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
             .foregroundColor: UIColor.mainGrey,
             .kern: -1.25
@@ -267,8 +248,8 @@ extension RecordTagDeleteVC {
         
         attributedString.addAttributes([
             .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
-            .foregroundColor: UIColor.mintIcon
-        ], range: NSRange(location: 4, length: 4))
+            .foregroundColor: UIColor.pink
+        ], range: NSRange(location: 0, length: 5))
         
         titleLabel.attributedText = attributedString
     }
@@ -279,8 +260,8 @@ extension RecordTagDeleteVC {
         cell.tagLabel.font = UIFont.SDGothicRegular15
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 20
-        cell.tagLabel.textColor = UIColor.mintIcon
-        cell.layer.borderColor = UIColor.mintMain.cgColor
+        cell.tagLabel.textColor = UIColor.pink
+        cell.layer.borderColor = UIColor.pink.cgColor
         cell.backgroundColor = UIColor.white
     }
     
@@ -290,15 +271,15 @@ extension RecordTagDeleteVC {
         cell.tagLabel.font = UIFont.SDGothicRegular15
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 20
-        cell.tagLabel.textColor = UIColor.subGrey6
-        cell.layer.borderColor = UIColor.clear.cgColor
-        cell.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
+        cell.tagLabel.textColor = UIColor.mainGrey
+        cell.layer.borderColor = UIColor.subGrey3.cgColor
+        cell.backgroundColor = UIColor.white
     }
     
     func setNextBtnActivated() {
         nextBtn.isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.5, animations: {
-            self.nextBtn.backgroundColor = UIColor.mintMain
+            self.nextBtn.backgroundColor = UIColor.pink
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
@@ -385,10 +366,7 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            cell.setCell(title: tagTitles[indexPath.item].title, count: tagTitles[indexPath.item].count, isSelected: tagTitles[indexPath.item].isSelected)
-            
-            //            cell.layer.borderWidth = 1
-            //            cell.layer.borderColor = UIColor.black.cgColor
+            cell.setCell(title: tagTitles[indexPath.item].title, total: tagTitles[indexPath.item].tagTab.count, count: tagTitles[indexPath.item].count, isSelected: tagTitles[indexPath.item].isSelected, isDeleteView: true)
             
             return cell
         }
