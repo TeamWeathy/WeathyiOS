@@ -151,6 +151,8 @@ class RecordTagDeleteVC: UIViewController {
     
     let name: String = "웨디"
     var titleIndex: Int = 0
+    var initialTagTab: Int = 0
+    var initialSelectedIdx: Int = 0
     
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
@@ -184,15 +186,20 @@ class RecordTagDeleteVC: UIViewController {
         setCancelBtn()
         
         self.tagTitles = [
-            TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
+            TagTitle(title: "상의", count: 0, isSelected: false, tagTab: tagUpper),
             TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
             TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
             TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
         ]
         
+        /// 삭제 탭 부를 때 선택했던 셀은 기본적으로 선택돼있게
+        titleIndex = initialTagTab
+        tagTitles[initialTagTab].tagTab[initialSelectedIdx-1].isSelected = true
+        tagTitles[initialTagTab].count = 1
+        tagTitles[initialTagTab].isSelected = true
         
-        nextBtn.isUserInteractionEnabled = false
-        nextBtn.backgroundColor = UIColor.subGrey3
+        nextBtn.isUserInteractionEnabled = true
+        nextBtn.backgroundColor = UIColor.pink
         nextBtn.setTitle("삭제하기", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
@@ -211,17 +218,12 @@ class RecordTagDeleteVC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func cancleBtnTap(_ sender: Any) {
-        
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
         
-        let nextStoryboard = UIStoryboard(name: "RecordRate", bundle: nil)
-        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordRateVC") as? RecordRateVC else {
-            return
-        }
-        
-        self.navigationController?.pushViewController(dvc, animated: false)
+        self.dismiss(animated: false, completion: nil)
     }
     
     

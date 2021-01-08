@@ -13,7 +13,7 @@
         <!--Record Tag DeleteVC-->
         <scene sceneID="q3C-Xq-dky">
             <objects>
-                <viewController storyboardIdentifier="RecordTagVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nCx-CK-tIh" customClass="RecordTagDeleteVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordTagDeleteVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nCx-CK-tIh" customClass="RecordTagDeleteVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IrG-mf-XOF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

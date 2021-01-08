@@ -187,6 +187,7 @@ class RecordTagVC: UIViewController {
         setHeader()
         setTitleLabel()
         
+        
         self.tagTitles = [
             TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
             TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
@@ -208,6 +209,39 @@ class RecordTagVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         blurView.alpha = 0
     }
+    
+    
+    @objc func longTap(gesture : UILongPressGestureRecognizer!) {
+        if gesture.state != .ended {
+            let p = gesture.location(in: self.tagCollectionView)
+            
+            if let indexPath = self.tagCollectionView.indexPathForItem(at: p) {
+                // get the cell at indexPath (the one you long pressed)
+                print(">>>", indexPath)
+                let cell = self.tagCollectionView.cellForItem(at: indexPath)
+                print("long press detected")
+//                cell?.setBorder(borderColor: UIColor.pink, borderWidth: 1)
+//                cell?.backgroundColor = UIColor.white
+                
+                let nextStoryboard = UIStoryboard(name: "RecordTagDelete", bundle: nil)
+                guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTagDeleteVC") as? RecordTagDeleteVC else {
+                    return
+                }
+                
+                dvc.initialTagTab = titleIndex
+                dvc.initialSelectedIdx = indexPath[1]
+                
+                dvc.modalPresentationStyle = .fullScreen
+                
+                self.present(dvc, animated: false, completion: nil)
+            } else {
+                print("couldn't find index path")
+            }
+        }
+        
+        
+    }
+    
     
     
     //MARK: - IBActions
@@ -348,6 +382,9 @@ extension RecordTagVC: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
+            let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap))
+            cell.addGestureRecognizer(longPressGesture)
+            
             cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
             cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
             
@@ -396,6 +433,8 @@ extension RecordTagVC: UICollectionViewDataSource {
         return UICollectionViewCell()
         
     }
+    
+  
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

@@ -49,7 +49,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>RecordTagDelete</string>
+					<string>RecordTag</string>
 				</dict>
 			</array>
 		</dict>
