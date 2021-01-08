@@ -11,6 +11,8 @@ class RecordTagVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var notificationGenerator: UIImpactFeedbackGenerator?
+    
     struct Tag {
         var name: String
         var isSelected: Bool
@@ -214,12 +216,16 @@ class RecordTagVC: UIViewController {
     
     @objc func longTap(gesture : UILongPressGestureRecognizer!) {
         if gesture.state != .ended {
+            
+            self.notificationGenerator = UIImpactFeedbackGenerator(style: .light)
+            self.notificationGenerator?.impactOccurred()
+            
             let p = gesture.location(in: self.tagCollectionView)
             
             if let indexPath = self.tagCollectionView.indexPathForItem(at: p) {
                 // get the cell at indexPath (the one you long pressed)
                 print(">>>", indexPath)
-                let cell = self.tagCollectionView.cellForItem(at: indexPath)
+//                let cell = self.tagCollectionView.cellForItem(at: indexPath)
                 print("long press detected")
 //                cell?.setBorder(borderColor: UIColor.pink, borderWidth: 1)
 //                cell?.backgroundColor = UIColor.white
