@@ -23,26 +23,25 @@ extension Date {
         return Calendar.current.component(.weekday, from: self) - 1
     }
     
-    public var currentYearMonth: String{
-        if month < 10{
-            return "\(year). \(month)"
+    public var monthType: Int{
+        if month<10{
+            return 0
         }
         else{
-            return "\(year).\(month)"
+            return 1
         }
     }
     
+    public var currentYearMonth: String{
+        return "\(year).\(month)"
+    }
+
     public var nextYearMonth: String{
         if month == 12{
-            return "\(year+1). 1"
+            return "\(year+1).01"
         }
         else{
-            if month < 9{
-                return "\(year). \(month+1)"
-            }
-            else{
-                return "\(year).\(month+1)"
-            }
+            return "\(year).\(month+1)"
         }
     }
     
@@ -51,12 +50,7 @@ extension Date {
             return "\(year-1).12"
         }
         else{
-            if month > 10{
-                return "\(year).\(month-1)"
-            }
-            else{
-                return "\(year). \(month-1)"
-            }
+            return "\(year).\(month-1)"
         }
     }
     public var isLeapMonth: Bool{
@@ -70,7 +64,7 @@ extension Date {
     
     public var numberOfMonth: Int{
         let numberList = [0,31,28,31,30,31,30,31,31,30,31,30,31]
-        if isLeapMonth{
+        if isLeapMonth && month == 2{
             return 29
         }
         else{
@@ -83,7 +77,7 @@ extension Date {
         dateComponent.year = Calendar.current.component(.year, from: self)
         dateComponent.month = Calendar.current.component(.month, from: self)
         dateComponent.day = 1
-        dateComponent.weekday = Calendar.current.component(.weekday,from: Calendar.current.date(from:dateComponent) ?? <#default value#>)
+        dateComponent.weekday = Calendar.current.component(.weekday,from: Calendar.current.date(from: dateComponent)!)
         /// 리턴값 : 일 - 토 -> 0 - 6
         return dateComponent.weekday! - 1
     }
