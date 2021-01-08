@@ -20,6 +20,8 @@
 		0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005825A2F64900A31295 /* AskForVC.swift */; };
 		3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */; };
 		3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */; };
+		3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */; };
+		3735AE3425A8F24C00E71DC3 /* RecordTagAddPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */; };
 		374D48D1259CEBF000152B9A /* RecordStart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48D0259CEBF000152B9A /* RecordStart.storyboard */; };
 		374D48D4259CEC0500152B9A /* RecordStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48D3259CEC0500152B9A /* RecordStartVC.swift */; };
 		374D48D8259D1CA600152B9A /* RecordRate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48D7259D1CA600152B9A /* RecordRate.storyboard */; };
@@ -29,7 +31,6 @@
 		374D48E6259D368600152B9A /* RecordTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48E5259D368600152B9A /* RecordTextVC.swift */; };
 		374D48EA259D49CA00152B9A /* RecordTag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48E9259D49CA00152B9A /* RecordTag.storyboard */; };
 		374D48ED259D49DB00152B9A /* RecordTagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48EC259D49DB00152B9A /* RecordTagVC.swift */; };
-		3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */; };
 		374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48F1259F2A9300152B9A /* UIFont+Extension.swift */; };
 		374D48FE259F678200152B9A /* RecordTagCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48FD259F678200152B9A /* RecordTagCVC.swift */; };
 		374D4904259F68EE00152B9A /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D4903259F68EE00152B9A /* TagFlowLayout.swift */; };
@@ -74,6 +75,8 @@
 		0E8C005825A2F64900A31295 /* AskForVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForVC.swift; sourceTree = "<group>"; };
 		3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTagDelete.storyboard; sourceTree = "<group>"; };
 		3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagDeleteVC.swift; sourceTree = "<group>"; };
+		3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagAddPopupVC.swift; sourceTree = "<group>"; };
 		374D48D0259CEBF000152B9A /* RecordStart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordStart.storyboard; sourceTree = "<group>"; };
 		374D48D3259CEC0500152B9A /* RecordStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStartVC.swift; sourceTree = "<group>"; };
 		374D48D7259D1CA600152B9A /* RecordRate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordRate.storyboard; sourceTree = "<group>"; };
@@ -83,7 +86,6 @@
 		374D48E5259D368600152B9A /* RecordTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTextVC.swift; sourceTree = "<group>"; };
 		374D48E9259D49CA00152B9A /* RecordTag.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTag.storyboard; sourceTree = "<group>"; };
 		374D48EC259D49DB00152B9A /* RecordTagVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagVC.swift; sourceTree = "<group>"; };
-		3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		374D48F1259F2A9300152B9A /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		374D48FD259F678200152B9A /* RecordTagCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagCVC.swift; sourceTree = "<group>"; };
 		374D4903259F68EE00152B9A /* TagFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				374D48D3259CEC0500152B9A /* RecordStartVC.swift */,
 				374D48EC259D49DB00152B9A /* RecordTagVC.swift */,
+				3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */,
 				3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */,
 				374D48DA259D1CB600152B9A /* RecordRateVC.swift */,
 				374D48E5259D368600152B9A /* RecordTextVC.swift */,
@@ -511,6 +514,7 @@
 				633984202599B1F400339615 /* AppDelegate.swift in Sources */,
 				374D4904259F68EE00152B9A /* TagFlowLayout.swift in Sources */,
 				63D3C53925A4A57500E5FDFE /* SpacedLabel.swift in Sources */,
+				3735AE3425A8F24C00E71DC3 /* RecordTagAddPopupVC.swift in Sources */,
 				63DEB261259CD49700A94488 /* DummyCell.swift in Sources */,
 				3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */,
 				0E8C003F25A1BC3F00A31295 /* ExampleThirdVC.swift in Sources */,

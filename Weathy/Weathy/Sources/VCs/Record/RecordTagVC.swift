@@ -498,6 +498,15 @@ extension RecordTagVC: UICollectionViewDataSource {
             /// +가 선택됐을 경우
             if indexPath.item == 0 {
                 print("I'm chosen")
+                
+                guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordTagAddPopupVC") as? RecordTagAddPopupVC else {
+                    return
+                }
+                
+                dvc.modalPresentationStyle = .overCurrentContext
+                
+                self.present(dvc, animated: false, completion: nil)
+                
             }
             /// 태그가 선택됐을 경우
             else {
