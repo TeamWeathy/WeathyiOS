@@ -378,25 +378,16 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
         /// tagCollectionView
         if collectionView == tagCollectionView {
             
+        
+            collectionView.deselectItem(at: indexPath, animated: false)
             
-            if tagTitles[titleIndex].count < 5 {
-                collectionView.deselectItem(at: indexPath, animated: false)
-                tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
-                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
-                    tagTitles[titleIndex].count += 1
-                } else {
-                    tagTitles[titleIndex].count -= 1
-                }
+            tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
+            if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
+                tagTitles[titleIndex].count += 1
+            } else {
+                tagTitles[titleIndex].count -= 1
             }
-            else if tagTitles[titleIndex].count == 5 {
-                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
-                    tagTitles[titleIndex].tagTab[indexPath.item].isSelected = false
-                    tagTitles[titleIndex].count -= 1
-                }
-            }
-            else {
-                
-            }
+            
             
             DispatchQueue.main.async{
                 self.tagCollectionView.reloadData()
