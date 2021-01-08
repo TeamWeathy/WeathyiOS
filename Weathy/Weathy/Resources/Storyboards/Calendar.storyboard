@@ -105,20 +105,20 @@
                                             <action selector="todayButtonDidTap:" destination="fIu-Ko-aR9" eventType="touchUpInside" id="1hm-S5-lru"/>
                                         </connections>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uOT-xR-3sR">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uOT-xR-3sR">
                                         <rect key="frame" x="33.666666666666657" y="60" width="308" height="105"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="uOT-xR-3sR" secondAttribute="height" multiplier="308:105" id="n3d-MH-o8i"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A3b-5m-wvD">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A3b-5m-wvD">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Bl0-h9-Svm">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InfiniteWeeklyCVC" id="Bl0-h9-Svm" customClass="InfiniteWeeklyCVC" customModule="Weathy" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="308" height="105"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7ZS-ao-Wbw">
@@ -202,6 +202,9 @@
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="308" height="105"/>
+                                                <connections>
+                                                    <outlet property="weeklyCalendarCV" destination="Zlu-Ta-rjm" id="cbj-bT-h56"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
@@ -436,7 +439,7 @@
                     <connections>
                         <outlet property="calendarDrawerView" destination="j9k-NW-X9X" id="HPl-bX-3M6"/>
                         <outlet property="infiniteMonthlyCV" destination="bb2-V1-BIL" id="wQV-zo-XGv"/>
-                        <outlet property="weeklyCalendarCV" destination="Zlu-Ta-rjm" id="kQ2-pw-fWc"/>
+                        <outlet property="infiniteWeeklyCV" destination="uOT-xR-3sR" id="s61-zo-o4h"/>
                         <outlet property="yearMonthTextView" destination="MLH-qw-EFI" id="Tqn-Nf-Ccn"/>
                         <outletCollection property="weekdayLabelCollection" destination="BGD-Gk-BMk" collectionClass="NSMutableArray" id="wia-1G-bje"/>
                         <outletCollection property="weekdayLabelCollection" destination="BCH-DE-VRA" collectionClass="NSMutableArray" id="cZu-ts-3wc"/>
