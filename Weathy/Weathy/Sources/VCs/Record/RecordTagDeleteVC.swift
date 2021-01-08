@@ -206,6 +206,8 @@ class RecordTagDeleteVC: UIViewController {
     }
     
     
+    
+    
     //MARK: - IBActions
     
     @IBAction func cancleBtnTap(_ sender: Any) {
@@ -374,46 +376,40 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
         /// tagCollectionView
         if collectionView == tagCollectionView {
             
-            /// +가 선택됐을 경우
-            if indexPath.item == 0 {
-                print("I'm chosen")
+            
+            if tagTitles[titleIndex].count < 5 {
+                collectionView.deselectItem(at: indexPath, animated: false)
+                tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
+                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
+                    tagTitles[titleIndex].count += 1
+                } else {
+                    tagTitles[titleIndex].count -= 1
+                }
             }
-            /// 태그가 선택됐을 경우
+            else if tagTitles[titleIndex].count == 5 {
+                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
+                    tagTitles[titleIndex].tagTab[indexPath.item].isSelected = false
+                    tagTitles[titleIndex].count -= 1
+                }
+            }
             else {
-                if tagTitles[titleIndex].count < 5 {
-                    collectionView.deselectItem(at: indexPath, animated: false)
-                    tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
-                    if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
-                        tagTitles[titleIndex].count += 1
-                    } else {
-                        tagTitles[titleIndex].count -= 1
-                    }
-                }
-                else if tagTitles[titleIndex].count == 5 {
-                    if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
-                        tagTitles[titleIndex].tagTab[indexPath.item].isSelected = false
-                        tagTitles[titleIndex].count -= 1
-                    }
-                }
-                else {
-                    
-                }
                 
-                DispatchQueue.main.async{
-                    self.tagCollectionView.reloadData()
-                    self.tagTitleCollectionView.reloadData()
-                }
-                
-                if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
-                    tagTitles[3].count >= 1 {
-                    self.setNextBtnActivated()
-                }
-                else {
-                    self.setNextBtnDeactivated()
-                }
             }
             
+            DispatchQueue.main.async{
+                self.tagCollectionView.reloadData()
+                self.tagTitleCollectionView.reloadData()
+            }
+            
+            if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
+                tagTitles[3].count >= 1 {
+                self.setNextBtnActivated()
+            }
+            else {
+                self.setNextBtnDeactivated()
+            }
         }
+        
         
         /// tagTitleCollectionView
         else if collectionView == tagTitleCollectionView {
