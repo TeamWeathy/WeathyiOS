@@ -24,7 +24,6 @@ class RecordTagDeleteVC: UIViewController {
     }
     
     var tagUpper: [Tag] = [
-        Tag(name: "  ", isSelected: false),
         Tag(name: "후드티", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
         Tag(name: "니트", isSelected: false),
@@ -76,7 +75,6 @@ class RecordTagDeleteVC: UIViewController {
     ]
     
     var tagUnder: [Tag] = [
-        Tag(name: "  ", isSelected: false),
         Tag(name: "후드티", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
         Tag(name: "니트", isSelected: false),
@@ -128,7 +126,6 @@ class RecordTagDeleteVC: UIViewController {
     ]
     
     var tagOuter: [Tag] = [
-        Tag(name: "  ", isSelected: false),
         Tag(name: "외투", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
         Tag(name: "니트", isSelected: false),
@@ -140,7 +137,6 @@ class RecordTagDeleteVC: UIViewController {
     ]
     
     var tagEtc: [Tag] = [
-        Tag(name: "  ", isSelected: false),
         Tag(name: "기타", isSelected: false),
         Tag(name: "반팔티", isSelected: false),
         Tag(name: "니트", isSelected: false),
@@ -165,6 +161,7 @@ class RecordTagDeleteVC: UIViewController {
     @IBOutlet var tagTitleCollectionView: UICollectionView!
     @IBOutlet var tagCollectionView: UICollectionView!
     
+    @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var nextBtn: UIButton!
     
     
@@ -184,6 +181,7 @@ class RecordTagDeleteVC: UIViewController {
         
         setHeader()
         setTitleLabel()
+        setCancelBtn()
         
         self.tagTitles = [
             TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
@@ -195,7 +193,7 @@ class RecordTagDeleteVC: UIViewController {
         
         nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = UIColor.subGrey3
-        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitle("삭제하기", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
@@ -209,6 +207,10 @@ class RecordTagDeleteVC: UIViewController {
     
     
     //MARK: - IBActions
+    
+    @IBAction func cancleBtnTap(_ sender: Any) {
+        
+    }
     
     @IBAction func nextBtnTap(_ sender: Any) {
         
@@ -280,7 +282,7 @@ extension RecordTagDeleteVC {
         nextBtn.isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.5, animations: {
             self.nextBtn.backgroundColor = UIColor.pink
-            self.nextBtn.setTitle("다음", for: .normal)
+            self.nextBtn.setTitle("삭제하기", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
             self.nextBtn.layer.cornerRadius = 30
@@ -291,11 +293,20 @@ extension RecordTagDeleteVC {
         nextBtn.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.5, animations: {
             self.nextBtn.backgroundColor = UIColor.subGrey3
-            self.nextBtn.setTitle("다음", for: .normal)
+            self.nextBtn.setTitle("삭제하기", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
             self.nextBtn.layer.cornerRadius = 30
         })
+    }
+    
+    func setCancelBtn() {
+        self.cancelBtn.backgroundColor = UIColor.white
+        self.cancelBtn.setBorder(borderColor: UIColor.subGrey2, borderWidth: 1)
+        self.cancelBtn.setTitle("취소", for: .normal)
+        self.cancelBtn.setTitleColor(UIColor.subGrey6, for: .normal)
+        self.cancelBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        self.cancelBtn.layer.cornerRadius = 30
     }
 }
 
@@ -332,29 +343,12 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
             cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
             cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
             
-            if indexPath.item == 0 {
-//                cell.tagLabel.font = UIFont.SDGothicRegular15
-//                cell.layer.borderWidth = 1
-//                cell.layer.cornerRadius = 19.5
-//                cell.layer.borderColor = UIColor.subGrey3.cgColor
-//                cell.tagLabel.textColor = .black
-//                cell.backgroundColor = .white
-                
-                cell.tagLabel.isHidden = true
-                cell.addTagImage.isHidden = false
-                cell.layer.borderWidth = 0
-                cell.backgroundColor = .white
+            if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
+                setTagUnselected(cell: cell)
             }
             else {
-                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
-                    setTagUnselected(cell: cell)
-                }
-                else {
-                    setTagSelected(cell: cell)
-                }
+                setTagSelected(cell: cell)
             }
-            
-            
             
             return cell
         }

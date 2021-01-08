@@ -18,11 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dw-8g-tpW">
+                                <rect key="frame" x="33" y="789.5" width="136" height="62.5"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="cancleBtnTap:" destination="nCx-CK-tIh" eventType="touchUpInside" id="f5J-KA-3WB"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvY-4Z-bLM">
-                                <rect key="frame" x="33" y="790" width="348" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="WvY-4Z-bLM" secondAttribute="height" multiplier="309:55" id="fDv-6J-bcn"/>
-                                </constraints>
+                                <rect key="frame" x="181" y="789.5" width="200" height="62.5"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="nextBtnTap:" destination="nCx-CK-tIh" eventType="touchUpInside" id="zvc-Hl-dsR"/>
@@ -115,7 +119,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UD1-T1-hxJ">
-                                <rect key="frame" x="36.5" y="261" width="341" height="524"/>
+                                <rect key="frame" x="36.5" y="261" width="341" height="523.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8M7-1F-g83">
                                     <size key="itemSize" width="128" height="128"/>
@@ -168,7 +172,7 @@
                                 </cells>
                             </collectionView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recordImgBottomblur" translatesAutoresizingMaskIntoConstraints="NO" id="wUG-ZI-ccq">
-                                <rect key="frame" x="0.0" y="738" width="414" height="52"/>
+                                <rect key="frame" x="0.0" y="737.5" width="414" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="9TC-TX-eZX"/>
                                 </constraints>
@@ -187,20 +191,24 @@
                             <constraint firstItem="wUG-ZI-ccq" firstAttribute="trailing" secondItem="lCK-ig-urt" secondAttribute="trailing" id="222-6i-yxE"/>
                             <constraint firstItem="wKM-bB-Ebe" firstAttribute="top" secondItem="9Ul-3l-hhB" secondAttribute="bottom" constant="10" id="3k7-GZ-yvX"/>
                             <constraint firstItem="9Ul-3l-hhB" firstAttribute="top" secondItem="lCK-ig-urt" secondAttribute="top" constant="65" id="4HQ-NQ-wq3"/>
+                            <constraint firstItem="2dw-8g-tpW" firstAttribute="width" secondItem="2dw-8g-tpW" secondAttribute="height" multiplier="120:55" id="5qz-QG-dE0"/>
+                            <constraint firstItem="2dw-8g-tpW" firstAttribute="centerY" secondItem="WvY-4Z-bLM" secondAttribute="centerY" id="9uh-nj-At8"/>
                             <constraint firstItem="wKM-bB-Ebe" firstAttribute="leading" secondItem="5aq-6h-1Jr" secondAttribute="leading" id="F2F-75-bKB"/>
                             <constraint firstItem="lCK-ig-urt" firstAttribute="bottom" secondItem="WvY-4Z-bLM" secondAttribute="bottom" constant="10" id="Fzy-M4-A03"/>
                             <constraint firstItem="WvY-4Z-bLM" firstAttribute="top" secondItem="wUG-ZI-ccq" secondAttribute="bottom" id="GMa-Nn-3RD"/>
-                            <constraint firstItem="WvY-4Z-bLM" firstAttribute="width" secondItem="WvY-4Z-bLM" secondAttribute="height" multiplier="309:55" id="Jwe-tD-0bU"/>
+                            <constraint firstItem="WvY-4Z-bLM" firstAttribute="width" secondItem="WvY-4Z-bLM" secondAttribute="height" multiplier="176:55" id="Jwe-tD-0bU"/>
                             <constraint firstItem="UD1-T1-hxJ" firstAttribute="centerX" secondItem="IrG-mf-XOF" secondAttribute="centerX" id="Kpt-lO-wZE"/>
                             <constraint firstItem="lCK-ig-urt" firstAttribute="trailing" secondItem="WvY-4Z-bLM" secondAttribute="trailing" constant="33" id="MpY-ye-HXW"/>
+                            <constraint firstItem="lCK-ig-urt" firstAttribute="bottom" secondItem="2dw-8g-tpW" secondAttribute="bottom" constant="10" id="UvX-Iv-ppe"/>
                             <constraint firstItem="Z0N-Wt-8tu" firstAttribute="leading" secondItem="lCK-ig-urt" secondAttribute="leading" id="Vfq-Xq-JgO"/>
                             <constraint firstItem="UD1-T1-hxJ" firstAttribute="top" secondItem="5aq-6h-1Jr" secondAttribute="bottom" id="W0N-tb-cfF"/>
                             <constraint firstItem="UD1-T1-hxJ" firstAttribute="width" secondItem="IrG-mf-XOF" secondAttribute="width" multiplier="309:375" id="ZX3-C0-aAC"/>
+                            <constraint firstItem="WvY-4Z-bLM" firstAttribute="leading" secondItem="2dw-8g-tpW" secondAttribute="trailing" constant="12" id="Zdt-wn-m3R"/>
                             <constraint firstItem="9Ul-3l-hhB" firstAttribute="leading" secondItem="wKM-bB-Ebe" secondAttribute="leading" id="Zpy-ZX-Ogj"/>
                             <constraint firstItem="Z0N-Wt-8tu" firstAttribute="top" secondItem="UD1-T1-hxJ" secondAttribute="top" id="bly-LG-wjD"/>
                             <constraint firstItem="wUG-ZI-ccq" firstAttribute="leading" secondItem="lCK-ig-urt" secondAttribute="leading" id="d0X-wB-VDg"/>
-                            <constraint firstItem="WvY-4Z-bLM" firstAttribute="leading" secondItem="IrG-mf-XOF" secondAttribute="leading" constant="33" id="eRN-IR-5AM"/>
                             <constraint firstItem="WvY-4Z-bLM" firstAttribute="top" secondItem="UD1-T1-hxJ" secondAttribute="bottom" constant="5" id="hhZ-bZ-uhE"/>
+                            <constraint firstItem="2dw-8g-tpW" firstAttribute="leading" secondItem="lCK-ig-urt" secondAttribute="leading" constant="33" id="l0I-tP-MoU"/>
                             <constraint firstItem="5aq-6h-1Jr" firstAttribute="leading" secondItem="UD1-T1-hxJ" secondAttribute="leading" id="noj-ON-YBu"/>
                             <constraint firstItem="lCK-ig-urt" firstAttribute="trailing" secondItem="Z0N-Wt-8tu" secondAttribute="trailing" id="o1J-uz-SGc"/>
                             <constraint firstItem="5aq-6h-1Jr" firstAttribute="trailing" secondItem="UD1-T1-hxJ" secondAttribute="trailing" id="ot8-91-bZq"/>
@@ -208,6 +216,7 @@
                     </view>
                     <connections>
                         <outlet property="blurView" destination="Z0N-Wt-8tu" id="OTI-p3-uUK"/>
+                        <outlet property="cancelBtn" destination="2dw-8g-tpW" id="UJQ-cN-yh1"/>
                         <outlet property="explanationLabel" destination="wKM-bB-Ebe" id="1Bs-Hy-2zb"/>
                         <outlet property="nextBtn" destination="WvY-4Z-bLM" id="Nov-2Q-f1y"/>
                         <outlet property="tagCollectionView" destination="UD1-T1-hxJ" id="Fgj-nd-0UZ"/>
