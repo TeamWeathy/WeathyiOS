@@ -43,10 +43,10 @@ class MainVC: UIViewController {
         todayDateTimeLabel.textColor = UIColor.subGrey1
         todayDateTimeLabel.text = "1월 7일 일요일 • 오후 4시"
         
-        logoImage.transform = CGAffineTransform(translationX: 0, y: 100)
+        logoImage.frame.origin.y -= 100
         logoImage.alpha = 0
         
-        topBlurView.transform = CGAffineTransform(translationX: 0, y: -300)
+        topBlurView.frame.origin.y -= topBlurView.bounds.height
     }
 }
 
@@ -62,18 +62,17 @@ extension MainVC: UICollectionViewDelegate {
             else if (lastContentOffset > scrollView.contentOffset.y && scrollView.contentOffset.y <= 500){
                 bottomCVC.viewScrollUp()
             }
-            
-            lastContentOffset = scrollView.contentOffset.y
         }
 
         if (scrollView.contentOffset.y >= 400) {
             UIView.animate(withDuration: 0.5, animations: {
-                self.logoImage.alpha = 1
                 self.logoImage.transform = CGAffineTransform(translationX: 0, y: 0)
                 self.todayDateTimeLabel.transform = CGAffineTransform(translationX: 0, y: -100)
             })
             
-            self.topBlurView.transform = CGAffineTransform(translationX: 0, y: 0)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.logoImage.alpha = 1
+            })
         } else {
             UIView.animate(withDuration: 0.5, animations: {
                 self.logoImage.transform = CGAffineTransform(translationX: 0, y: 100)
@@ -84,9 +83,24 @@ extension MainVC: UICollectionViewDelegate {
             UIView.animate(withDuration: 0.3, animations: {
                 self.logoImage.alpha = 0
             })
-            
-            self.topBlurView.transform = CGAffineTransform(translationX: 0, y: -300)
         }
+        
+        let blurHeight = self.topBlurView.frame.size.height
+                
+        if (lastContentOffset < scrollView.contentOffset.y && scrollView.contentOffset.y <= blurHeight) {
+            print("작다")
+
+//            topBlurView.frame.origin.y += blurHeight / scrollView.contentOffset.y
+            print(topBlurView.frame.origin.y)
+        } else if(lastContentOffset > scrollView.contentOffset.y && scrollView.contentOffset.y <= blurHeight && scrollView.contentOffset.y > 0) {
+            print("올라가유")
+//            topBlurView.frame.origin.y -= blurHeight / scrollView.contentOffset.y
+            print(topBlurView.frame.origin.y)
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        lastContentOffset = scrollView.contentOffset.y
     }
 }
 
