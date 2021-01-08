@@ -52,6 +52,9 @@
                                     <constraint firstAttribute="width" secondItem="W20-Yo-UYI" secondAttribute="height" multiplier="309:55" id="Xwo-er-GCS"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextBtnTap:" destination="xjN-KD-4od" eventType="touchUpInside" id="dau-P3-tQB"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fp-vR-GCx" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="344.5" y="372.5" width="33" height="21"/>
