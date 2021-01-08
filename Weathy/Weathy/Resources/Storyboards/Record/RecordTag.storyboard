@@ -332,13 +332,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sr8-mA-efc">
-                                        <rect key="frame" x="221" y="153" width="42" height="21"/>
+                                        <rect key="frame" x="238" y="153" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRO-cC-UJt">
-                                        <rect key="frame" x="179" y="153" width="42" height="21"/>
+                                        <rect key="frame" x="196" y="153" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -354,7 +354,7 @@
                                     <constraint firstItem="15V-fE-7bn" firstAttribute="top" secondItem="idj-el-lQs" secondAttribute="top" constant="28" id="PAE-SH-0nE"/>
                                     <constraint firstAttribute="bottom" secondItem="Pvd-ZV-GVy" secondAttribute="bottom" constant="26" id="PtF-jU-atO"/>
                                     <constraint firstItem="0A4-yk-9Ph" firstAttribute="leading" secondItem="15V-fE-7bn" secondAttribute="leading" id="TPB-cZ-Vap"/>
-                                    <constraint firstItem="sr8-mA-efc" firstAttribute="trailing" secondItem="DF7-tG-xdP" secondAttribute="trailing" id="ch6-zC-EZe"/>
+                                    <constraint firstItem="sr8-mA-efc" firstAttribute="trailing" secondItem="6fp-m8-Jnq" secondAttribute="trailing" id="ch6-zC-EZe"/>
                                     <constraint firstItem="mRO-cC-UJt" firstAttribute="centerY" secondItem="sr8-mA-efc" secondAttribute="centerY" id="iYa-eV-FJI"/>
                                     <constraint firstItem="6fp-m8-Jnq" firstAttribute="top" secondItem="0A4-yk-9Ph" secondAttribute="bottom" constant="23" id="mqO-X5-wzV"/>
                                     <constraint firstItem="sr8-mA-efc" firstAttribute="top" secondItem="DF7-tG-xdP" secondAttribute="bottom" constant="5" id="nyX-9Y-SUv"/>
