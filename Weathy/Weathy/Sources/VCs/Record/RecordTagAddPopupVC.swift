@@ -12,6 +12,7 @@ class RecordTagAddPopupVC: UIViewController {
     
     var tagCount: Int = 23
     var wordCount: Int = 0
+    var tagCategory: String = "상의"
     
     
     @IBOutlet var popupView: UIView!
@@ -50,7 +51,7 @@ extension RecordTagAddPopupVC {
         titleLabel.font = UIFont.SDGothicSemiBold18
         titleLabel.textColor = UIColor.mintIcon
         titleLabel.lineSetting(kernValue: -0.9)
-        titleLabel.text = "상의 추가하기 (\(tagCount)/50)"
+        titleLabel.text = "\(tagCategory) 추가하기 (\(tagCount)/50)"
         
         subTitleLabel.font = UIFont.SDGothicRegular16
         subTitleLabel.textColor = UIColor.subGrey6
@@ -76,7 +77,7 @@ extension RecordTagAddPopupVC {
         closeBtn.setBorder(borderColor: .subGrey2, borderWidth: 1)
         closeBtn.makeRounded(cornerRadius: 25)
         closeBtn.setTitle("닫기", for: .normal)
-        closeBtn.setTitleColor(UIColor.black, for: .normal)
+        closeBtn.setTitleColor(UIColor.subGrey6, for: .normal)
         closeBtn.titleLabel?.font = .SDGothicMedium16
         closeBtn.titleLabel?.lineSetting(kernValue: -0.8)
         
