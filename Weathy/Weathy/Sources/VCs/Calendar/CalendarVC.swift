@@ -169,6 +169,7 @@ class CalendarVC: UIViewController {
         
     }
     
+    
     //MARK: - Custom Methods - Calendar
     
     func selectedDateDidChange(){
@@ -177,6 +178,7 @@ class CalendarVC: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.dateFormat = "yyyy.MM"
+        yearMonthTextView.text = dateFormatter.string(from: selectedDate)
         var nextComponent = DateComponents()
         nextComponent.day = 7
         var lastComponent = DateComponents()
@@ -216,6 +218,39 @@ class CalendarVC: UIViewController {
         print("last4", infiniteWeekList)
     }
     
+    func openDrawer(){
+        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.screen.height)
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: {
+            _ in
+            self.infiniteMonthlyCV.reloadData()
+            self.infiniteMonthlyCV.contentOffset.x = 308*self.screen.width/375
+            
+        })
+        UIView.animate(withDuration: 0.3){
+            self.infiniteMonthlyCV.alpha = 1
+            self.infiniteWeeklyCV.alpha = 0
+        }
+        
+        self.view.layoutSubviews()
+        panGesture.setTranslation(CGPoint.zero, in: self.view)
+        self.isCovered = true
+    }
+    
+    func closeDrawer(){
+        infiniteWeeklyCV.reloadData()
+        self.infiniteWeeklyCV.contentOffset.x = 308*self.screen.width/375
+        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.screen.height*330/812)
+        //spring effect
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
+        UIView.animate(withDuration: 0.3){
+            self.infiniteMonthlyCV.alpha = 0
+            self.infiniteWeeklyCV.alpha = 1
+        }
+        
+        self.view.layoutSubviews()
+        panGesture.setTranslation(CGPoint.zero, in: self.view)
+        self.isCovered = false
+    }
     
     //MARK: - @objc methods
     
@@ -274,15 +309,6 @@ class CalendarVC: UIViewController {
                     self.infiniteMonthlyCV.alpha = 0
                     self.infiniteWeeklyCV.alpha = 1
                 }
-                //curveEaseIn
-                //                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: {_ in
-                //
-                //                    UIView.animate(withDuration: 0.3){
-                //                        self.monthlyCalendarCV.alpha = 0
-                //                        self.infiniteWeeklyCV.alpha = 1
-                //                    }
-                //                })
-                
                 self.view.layoutSubviews()
                 recognizer.setTranslation(CGPoint.zero, in: self.view)
                 self.isCovered = false
@@ -324,6 +350,10 @@ class CalendarVC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func todayButtonDidTap(_ sender: Any) {
+        selectedDate = Date()
+        selectedDateDidChange()
+        closeDrawer()
+        
     }
     
 }
