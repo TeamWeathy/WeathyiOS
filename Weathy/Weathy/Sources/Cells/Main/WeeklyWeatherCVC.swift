@@ -38,6 +38,6 @@ class WeeklyWeatherCVC: UICollectionViewCell {
         minTempLabel.textColor = UIColor.blueTemp
         
         tempDiffView.backgroundColor = UIColor.subGrey3
-//        tempDiffView.layer.cornerRadius = 5
+        tempDiffView.makeRounded(cornerRadius: 1)
     }
 }
