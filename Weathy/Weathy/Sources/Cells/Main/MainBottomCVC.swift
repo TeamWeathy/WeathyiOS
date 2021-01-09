@@ -20,6 +20,7 @@ class MainBottomCVC: UICollectionViewCell {
     @IBOutlet weak var mainBottomScrollView: UIScrollView!
     @IBOutlet weak var timeZoneWeatherCollectionView: UICollectionView!
     @IBOutlet weak var weeklyWeatherCollectionView: UICollectionView!
+    @IBOutlet weak var detailWeatherCollectionView: UICollectionView!
     
     //MARK: - Life Cycle Methods
         
@@ -34,6 +35,8 @@ class MainBottomCVC: UICollectionViewCell {
         self.timeZoneWeatherCollectionView.dataSource = self
         self.weeklyWeatherCollectionView.delegate = self
         self.weeklyWeatherCollectionView.dataSource = self
+        self.detailWeatherCollectionView.delegate = self
+        self.detailWeatherCollectionView.dataSource = self
 
         self.layoutIfNeeded()
     }
@@ -94,6 +97,8 @@ extension MainBottomCVC: UICollectionViewDataSource {
             return 24
         case weeklyWeatherCollectionView:
             return 7
+        case detailWeatherCollectionView:
+            return 3
         default:
             return 0
         }
@@ -112,6 +117,11 @@ extension MainBottomCVC: UICollectionViewDataSource {
             
             cell.setCell()
             return cell
+        case detailWeatherCollectionView:
+            guard let cell = detailWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: DetailWeatherCVC.identifier, for: indexPath) as? DetailWeatherCVC else {return UICollectionViewCell()}
+            
+            cell.setCell()
+            return cell
         default:
             return UICollectionViewCell()
         }
@@ -125,6 +135,8 @@ extension MainBottomCVC: UICollectionViewDelegateFlowLayout {
         switch (collectionView) {
         case timeZoneWeatherCollectionView, weeklyWeatherCollectionView:
             return CGSize(width: collectionView.bounds.size.width / 7, height: collectionView.bounds.size.height)
+        case detailWeatherCollectionView:
+            return CGSize(width: collectionView.bounds.size.width / 3, height: collectionView.bounds.size.height)
         default:
             return CGSize(width: 0, height: 0)
         }
@@ -137,8 +149,4 @@ extension MainBottomCVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//    }
 }
