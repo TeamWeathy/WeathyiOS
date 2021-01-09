@@ -18,9 +18,26 @@ class MainBottomCVC: UICollectionViewCell {
     @IBOutlet weak var WeeklyCenterY: NSLayoutConstraint!
     @IBOutlet weak var detailCenterY: NSLayoutConstraint!
     @IBOutlet weak var mainBottomScrollView: UIScrollView!
+    @IBOutlet weak var timeZoneWeatherCollectionView: UICollectionView!
+    
+    //MARK: - Life Cycle Methods
         
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.timeZoneCenterY.constant = UIScreen.main.bounds.height
+        self.WeeklyCenterY.constant = UIScreen.main.bounds.height
+        self.detailCenterY.constant = UIScreen.main.bounds.height
+        
+        self.timeZoneWeatherCollectionView.delegate = self
+        self.timeZoneWeatherCollectionView.dataSource = self
+
+        self.layoutIfNeeded()
+    }
+    
     //MARK: - Custom Methods
     func setCell() {
+        // remove: 스크롤 후 배경 픽스된 것 없으면 삭제
 //        cellBackgroundImage.image = UIImage(named: "search_bg_morning")
         
         timeZoneWeatherView.backgroundColor = .white
@@ -63,15 +80,35 @@ class MainBottomCVC: UICollectionViewCell {
             self.layoutIfNeeded()
         })
     }
-    
-    //MARK: - Life Cycle Methods
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.timeZoneCenterY.constant = UIScreen.main.bounds.height
-        self.WeeklyCenterY.constant = UIScreen.main.bounds.height
+}
 
-        self.layoutIfNeeded()
+//MARK: - 주석 종류
+
+extension MainBottomCVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 24
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = timeZoneWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: "TImezoneWeatherCVC", for: indexPath) as? TImezoneWeatherCVC else {return UICollectionViewCell()}
+        
+        cell.setCell()
+        return cell
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension MainBottomCVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width / 7, height: collectionView.bounds.size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

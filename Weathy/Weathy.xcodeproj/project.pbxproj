@@ -45,6 +45,7 @@
 		63DEB295259CF67200A94488 /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28E259CF67200A94488 /* AppleSDGothicNeoSB.ttf */; };
 		63DEB296259CF67200A94488 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28F259CF67200A94488 /* Roboto-Regular.ttf */; };
 		AB4E1C8725A6FE48002F3B79 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C8625A6FE48002F3B79 /* UIViewController+Extensions.swift */; };
+		AB4E1C9225A9D440002F3B79 /* TImezoneWeatherCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C9125A9D440002F3B79 /* TImezoneWeatherCVC.swift */; };
 		ABBA9CA225A2217F008785BD /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA9CA125A2217F008785BD /* MainVC.swift */; };
 		ABBA9CA925A22254008785BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABBA9CA825A22254008785BD /* Main.storyboard */; };
 		ABBA9CAF25A22C93008785BD /* MainTopCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA9CAE25A22C93008785BD /* MainTopCVC.swift */; };
@@ -92,6 +93,7 @@
 		63DEB28F259CF67200A94488 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		79A77C707317896743084ED5 /* Pods-Weathy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathy.release.xcconfig"; path = "Target Support Files/Pods-Weathy/Pods-Weathy.release.xcconfig"; sourceTree = "<group>"; };
 		AB4E1C8625A6FE48002F3B79 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		AB4E1C9125A9D440002F3B79 /* TImezoneWeatherCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImezoneWeatherCVC.swift; sourceTree = "<group>"; };
 		ABBA9CA125A2217F008785BD /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainVC.swift; path = Weathy/Sources/VCs/Main/MainVC.swift; sourceTree = SOURCE_ROOT; };
 		ABBA9CA825A22254008785BD /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ABBA9CAE25A22C93008785BD /* MainTopCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTopCVC.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 			children = (
 				ABBA9CAE25A22C93008785BD /* MainTopCVC.swift */,
 				ABBA9CB125A22CBC008785BD /* MainBottomCVC.swift */,
+				AB4E1C9125A9D440002F3B79 /* TImezoneWeatherCVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */,
 				63DEB264259CD4AD00A94488 /* DummyClass.swift in Sources */,
 				AB4E1C8725A6FE48002F3B79 /* UIViewController+Extensions.swift in Sources */,
+				AB4E1C9225A9D440002F3B79 /* TImezoneWeatherCVC.swift in Sources */,
 				633984222599B1F400339615 /* SceneDelegate.swift in Sources */,
 				0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */,
 				0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */,
