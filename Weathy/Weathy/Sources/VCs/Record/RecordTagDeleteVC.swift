@@ -228,6 +228,15 @@ class RecordTagDeleteVC: UIViewController {
         
         dvc.modalPresentationStyle = .overCurrentContext
         
+        var tagWillBeDeletedCount = 0
+        
+        for i in 0...3 {
+            tagWillBeDeletedCount += tagTitles[i].count
+        }
+        
+        
+        dvc.tagCount = tagWillBeDeletedCount
+        
         self.present(dvc, animated: false, completion: nil)
         
     }

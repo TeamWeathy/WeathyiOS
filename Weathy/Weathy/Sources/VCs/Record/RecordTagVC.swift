@@ -511,6 +511,9 @@ extension RecordTagVC: UICollectionViewDataSource {
                     return
                 }
                 
+                dvc.tagCategory = tagTitles[titleIndex].title
+                dvc.tagCount = tagTitles[titleIndex].tagTab.count-1
+                
                 dvc.modalPresentationStyle = .overCurrentContext
                 
                 self.present(dvc, animated: false, completion: nil)
