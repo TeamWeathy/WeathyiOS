@@ -297,6 +297,9 @@
                                                 <rect key="frame" x="20" y="0.0" width="214" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="editChanged:" destination="gQc-vC-Av2" eventType="editingChanged" id="UHG-Bd-cl3"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -386,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfD-9V-LwX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632.79999999999995" y="-185.46798029556652"/>
+            <point key="canvasLocation" x="454" y="93"/>
         </scene>
     </scenes>
     <resources>
