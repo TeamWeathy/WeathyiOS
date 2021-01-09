@@ -43,6 +43,46 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_3" translatesAutoresizingMaskIntoConstraints="NO" id="DCe-Eb-WTe">
                                 <rect key="frame" x="29" y="415" width="317" height="300"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_logo_1" translatesAutoresizingMaskIntoConstraints="NO" id="BQt-41-9hc">
+                                <rect key="frame" x="144" y="80" width="87" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="I3c-bS-MlH"/>
+                                    <constraint firstAttribute="width" constant="87" id="J0K-1j-YXf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨를 기록해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="136-AM-m6k">
+                                <rect key="frame" x="115.33333333333333" y="160" width="144.66666666666669" height="27.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 날씨에 대한 옷차림과 상태를 기록해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a69-LG-iOR">
+                                <rect key="frame" x="44.333333333333343" y="194.66666666666666" width="286.66666666666663" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_ic_circle" translatesAutoresizingMaskIntoConstraints="NO" id="mTK-dV-Mix">
+                                <rect key="frame" x="183" y="242.66666666666666" width="9" height="9"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="9" id="Tzt-BZ-jTI"/>
+                                    <constraint firstAttribute="width" constant="9" id="hRf-kl-jAs"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_ic_circle" translatesAutoresizingMaskIntoConstraints="NO" id="UgB-fn-TBp">
+                                <rect key="frame" x="167" y="242.66666666666666" width="9" height="9"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="9" id="0kO-8A-3nF"/>
+                                    <constraint firstAttribute="height" constant="9" id="vAB-T7-Maw"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_ic_circle" translatesAutoresizingMaskIntoConstraints="NO" id="w46-EK-5Zy">
+                                <rect key="frame" x="199" y="242.66666666666666" width="9" height="9"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="9" id="IDK-hz-ISY"/>
+                                    <constraint firstAttribute="width" constant="9" id="NQt-27-Ndn"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2UP-hJ-Rj1"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
@@ -50,22 +90,34 @@
                             <constraint firstItem="DCe-Eb-WTe" firstAttribute="top" secondItem="Xdx-y9-Waj" secondAttribute="top" constant="110" id="5aj-Uh-geV"/>
                             <constraint firstItem="Nnl-Jr-muc" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="5gs-Xo-msa"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="DCe-Eb-WTe" secondAttribute="trailing" constant="29" id="7KY-H7-bdB"/>
+                            <constraint firstItem="mTK-dV-Mix" firstAttribute="leading" secondItem="UgB-fn-TBp" secondAttribute="trailing" constant="7" id="7V2-j5-B1r"/>
                             <constraint firstItem="DCe-Eb-WTe" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="8sc-n4-DaR"/>
                             <constraint firstItem="A4D-vv-KYn" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="9bl-If-GRP"/>
+                            <constraint firstItem="UgB-fn-TBp" firstAttribute="centerY" secondItem="mTK-dV-Mix" secondAttribute="centerY" id="GpP-lz-Dly"/>
                             <constraint firstItem="Nnl-Jr-muc" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" id="Hho-89-Pn6"/>
+                            <constraint firstItem="mTK-dV-Mix" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="L7h-qN-pl5"/>
                             <constraint firstItem="A4D-vv-KYn" firstAttribute="top" secondItem="Xdx-y9-Waj" secondAttribute="top" constant="88" id="LnK-3L-FqF"/>
                             <constraint firstAttribute="bottom" secondItem="Isq-6G-8RV" secondAttribute="bottom" constant="121" id="Nbf-NJ-oGB"/>
+                            <constraint firstItem="BQt-41-9hc" firstAttribute="top" secondItem="ceg-9O-kML" secondAttribute="top" constant="80" id="OOw-em-r4Z"/>
                             <constraint firstAttribute="bottom" secondItem="Xdx-y9-Waj" secondAttribute="bottom" id="Uil-hr-U9f"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="A4D-vv-KYn" secondAttribute="trailing" constant="29" id="VJu-O8-zGk"/>
                             <constraint firstItem="bKT-p6-Abv" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="WQk-zo-9wp"/>
+                            <constraint firstItem="136-AM-m6k" firstAttribute="top" secondItem="BQt-41-9hc" secondAttribute="bottom" constant="27" id="ZJa-1t-oZQ"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="Isq-6G-8RV" secondAttribute="trailing" constant="29" id="aga-qN-FeU"/>
+                            <constraint firstItem="BQt-41-9hc" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="b1l-gQ-4Yk"/>
                             <constraint firstItem="Xdx-y9-Waj" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="eME-Ed-Mth"/>
                             <constraint firstItem="Isq-6G-8RV" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="ef8-sq-0ks"/>
+                            <constraint firstItem="mTK-dV-Mix" firstAttribute="top" secondItem="a69-LG-iOR" secondAttribute="bottom" constant="27" id="gYX-3n-TaL"/>
                             <constraint firstItem="Isq-6G-8RV" firstAttribute="centerX" secondItem="Xdx-y9-Waj" secondAttribute="centerX" id="h1G-1e-7SO"/>
+                            <constraint firstItem="a69-LG-iOR" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="iFI-mT-Lf8"/>
                             <constraint firstItem="Xdx-y9-Waj" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" id="j3Y-oK-jdM"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="bottom" secondItem="bKT-p6-Abv" secondAttribute="bottom" constant="5" id="kgI-V8-sTh"/>
+                            <constraint firstItem="w46-EK-5Zy" firstAttribute="centerY" secondItem="mTK-dV-Mix" secondAttribute="centerY" id="km2-8Z-oYP"/>
                             <constraint firstAttribute="bottom" secondItem="Nnl-Jr-muc" secondAttribute="bottom" id="lwj-SR-MkS"/>
+                            <constraint firstItem="w46-EK-5Zy" firstAttribute="leading" secondItem="mTK-dV-Mix" secondAttribute="trailing" constant="7" id="nqd-Fn-cLb"/>
                             <constraint firstItem="Nnl-Jr-muc" firstAttribute="top" secondItem="ceg-9O-kML" secondAttribute="top" id="oHY-v2-54a"/>
+                            <constraint firstItem="a69-LG-iOR" firstAttribute="top" secondItem="136-AM-m6k" secondAttribute="bottom" constant="7" id="sM0-fA-x9K"/>
+                            <constraint firstItem="136-AM-m6k" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="x6d-t7-9t2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6Q2-FO-9HZ"/>
@@ -85,118 +137,20 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1876.8115942028987" y="-341.51785714285711"/>
-        </scene>
-        <!--On BoardingVC-->
-        <scene sceneID="zni-SN-j7t">
-            <objects>
-                <viewController storyboardIdentifier="OnBoardingVC" id="qfc-K7-vfu" customClass="OnBoardingVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zRP-ha-nta">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GB-Ww-4fQ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="rpA-Oe-jQq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="rpA-Oe-jQq" firstAttribute="trailing" secondItem="6GB-Ww-4fQ" secondAttribute="trailing" id="Av5-0n-RI6"/>
-                            <constraint firstItem="6GB-Ww-4fQ" firstAttribute="top" secondItem="rpA-Oe-jQq" secondAttribute="top" id="HBH-M0-IJQ"/>
-                            <constraint firstItem="6GB-Ww-4fQ" firstAttribute="leading" secondItem="rpA-Oe-jQq" secondAttribute="leading" id="vsg-fZ-J9R"/>
-                            <constraint firstItem="rpA-Oe-jQq" firstAttribute="bottom" secondItem="6GB-Ww-4fQ" secondAttribute="bottom" id="xVD-tv-AqS"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="scrollView" destination="6GB-Ww-4fQ" id="kg1-4c-oNd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EJ5-Pp-VvK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="967" y="490"/>
-        </scene>
-        <!--On Boarding ThirdVC-->
-        <scene sceneID="qOY-mh-2L8">
-            <objects>
-                <viewController storyboardIdentifier="OnBoardingThirdVC" id="awx-d5-9tc" customClass="OnBoardingThirdVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pLE-o4-hct">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGB-3M-P6I">
-                                <rect key="frame" x="112.66666666666669" y="698" width="150" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="10S-DM-iT7"/>
-                                    <constraint firstAttribute="width" constant="150" id="6ae-a5-Pkg"/>
-                                </constraints>
-                                <state key="normal" title="버튼">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="oYg-Qh-QnJ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="GGB-3M-P6I" firstAttribute="centerX" secondItem="pLE-o4-hct" secondAttribute="centerX" id="AHD-HU-LKa"/>
-                            <constraint firstItem="oYg-Qh-QnJ" firstAttribute="bottom" secondItem="GGB-3M-P6I" secondAttribute="bottom" constant="30" id="O7R-0T-Nf6"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="OnButton" destination="GGB-3M-P6I" id="mQf-ud-1iO"/>
-                        <outlet property="gestureStart" destination="9ta-Z6-Z90" id="ZXA-RK-j0x"/>
-                        <outlet property="onButtonContstantHeight" destination="O7R-0T-Nf6" id="2OF-J0-Xwh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wvv-ij-adw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="9ta-Z6-Z90">
-                    <connections>
-                        <action selector="actGesture:" destination="awx-d5-9tc" id="YHC-xO-WYz"/>
-                    </connections>
-                </swipeGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="3529" y="-342"/>
-        </scene>
-        <!--OnBoardingSecondVC-->
-        <scene sceneID="aZx-gu-WmN">
-            <objects>
-                <viewController storyboardIdentifier="OnBoardingSecondVC" title="OnBoardingSecondVC" id="s2g-3P-cK6" customClass="OnBoardingSecondVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YAX-RY-pKO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="8mE-de-AG7"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
-                    </view>
-                    <connections>
-                        <outlet property="gestureStart" destination="b9E-nZ-Gno" id="Qdb-0V-crO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a85-C2-lho" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="b9E-nZ-Gno">
-                    <connections>
-                        <action selector="actGesture:" destination="s2g-3P-cK6" id="vj4-fc-Usz"/>
-                    </connections>
-                </swipeGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="2723" y="-342"/>
+            <point key="canvasLocation" x="1876" y="-342.11822660098522"/>
         </scene>
     </scenes>
     <resources>
         <image name="onboarding_bg" width="375" height="812"/>
         <image name="onboarding_btn_start" width="309" height="55"/>
+        <image name="onboarding_ic_circle" width="9" height="9"/>
+        <image name="onboarding_img_logo_1" width="87" height="53.333332061767578"/>
         <image name="onboarding_img_phone_1" width="375" height="547"/>
         <image name="onboarding_img_popup_1" width="317" height="118"/>
         <image name="onboarding_img_popup_2" width="314.33334350585938" height="145"/>
         <image name="onboarding_img_popup_3" width="326" height="300"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

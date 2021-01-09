@@ -18,7 +18,6 @@ class OnBoardingFirstVC: UIViewController {
     @IBOutlet weak var firstImage: UIImageView!
     @IBOutlet weak var secondImage: UIImageView!
     @IBOutlet weak var thirdImage: UIImageView!
-    
     @IBOutlet weak var startButton: UIButton!
     
     @IBOutlet var gestureStart: UISwipeGestureRecognizer!
@@ -41,8 +40,10 @@ class OnBoardingFirstVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         firstViewAnimate()
     }
+    
     //MARK: - Custom Methods
     
     func makeGesture(){
@@ -58,7 +59,6 @@ class OnBoardingFirstVC: UIViewController {
     
     /// firstView 움직임 넣기
     private func firstViewAnimate(){
-        
         UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.phoneImage.alpha = 1;         self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: {(finish) in
             UIView.animate(withDuration: 1, animations: {
                             self.firstImage.alpha = 1;
@@ -77,7 +77,6 @@ class OnBoardingFirstVC: UIViewController {
     
     /// secondView 움직임 넣기
     private func secondViewAnimate(){
-        
         UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.phoneImage.alpha = 1;         self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: {(finish) in
             UIView.animate(withDuration: 1, animations: {
                             self.secondImage.alpha = 1;
@@ -96,16 +95,13 @@ class OnBoardingFirstVC: UIViewController {
     
     /// thirdView 움직임 넣기
     private func thirdViewAnimate(){
-        
         UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.phoneImage.alpha = 1;         self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: {(finish) in
             UIView.animate(withDuration: 1, animations: {
                             self.thirdImage.alpha = 1;
                             self.thirdImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion:{ (finish) in
-                                UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.startButton.alpha = 1;         self.startButton.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: nil)
-                                
+                                UIView.animate(withDuration: 2, delay: 0, options: .allowUserInteraction, animations: {self.startButton.alpha = 1;         self.startButton.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: nil)
                             })
         })
-        
     }
     
     /// thirdView 원상 복귀
@@ -137,12 +133,9 @@ class OnBoardingFirstVC: UIViewController {
 
                 /// 원상복귀
                 firstRestoration()
-                
                 /// 에니메이션
                 secondViewAnimate()
-                
 
-                
                 self.currentPage = 2
             }
             
@@ -168,7 +161,6 @@ class OnBoardingFirstVC: UIViewController {
                     
                     ///원상복귀
                     secondRestoration()
-                    
                     /// 에니메이션
                     thirdViewAnimate()
                     
@@ -187,7 +179,6 @@ class OnBoardingFirstVC: UIViewController {
                     
                     ///원상복귀
                     secondRestoration()
-                    
                     /// 에니메이션
                     firstViewAnimate()
                     
@@ -211,12 +202,10 @@ class OnBoardingFirstVC: UIViewController {
                     firstImage.isHidden = true
                     secondImage.isHidden = false
                     thirdImage.isHidden = true
-                    
                     startButton.isHidden = true
                     
                     ///원상복귀
                     thirdRestoration()
-                    
                     /// 에니메이션
                     secondViewAnimate()
                          
