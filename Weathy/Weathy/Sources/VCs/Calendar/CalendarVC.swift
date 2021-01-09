@@ -191,8 +191,10 @@ class CalendarVC: UIViewController {
         infiniteMonthList = [lastMonthDate,selectedDate,nextMonthDate]
         infiniteWeekList = [lastWeekDate,selectedDate,nextWeekDate]
         print("last4", infiniteWeekList)
-        infiniteMonthlyCV.reloadData()
-        infiniteWeeklyCV.reloadData()
+        UIView.performWithoutAnimation {
+            infiniteMonthlyCV.reloadData()
+            infiniteWeeklyCV.reloadData()
+        }
         DispatchQueue.main.async(execute: {
             print("$$setOffset")
             self.infiniteMonthlyCV.contentOffset.x = 308*self.screen.width/375
@@ -414,6 +416,19 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             }
         }
     }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let x = scrollView.contentOffset.x
+//        if x < 308*screen.width/375{
+//            if let cell = infiniteWeeklyCV.cellForItem(at: [0,0]) as? InfiniteMonthlyCVC{
+//                cell.monthlyCalendarCV.alpha = 1-x/(308*screen.width/375)
+//            }
+//        }
+//        else if x > 308*screen.width/375{
+//            if let cell = infiniteWeeklyCV.cellForItem(at: [0,2]) as? InfiniteMonthlyCVC{
+//                cell.monthlyCalendarCV.alpha = x/(308*screen.width/375) - 1
+//            }
+//        }
+//    }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("#")
         let x = scrollView.contentOffset.x
@@ -474,6 +489,9 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 
             }
             else if x == 308*screen.width/375{
+                if let cell = infiniteWeeklyCV.cellForItem(at: [0,1]) as? InfiniteMonthlyCVC{
+                    cell.monthlyCalendarCV.alpha = 1
+                }
                 yearMonthTextView.text = infiniteWeekList[1].currentYearMonth
             }
         }
@@ -508,6 +526,9 @@ extension CalendarVC: UICollectionViewDataSource{
             print("$$reloaded")
             print("~~~indexPath",indexPath,infiniteMonthList)
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteMonthlyCVC.identifier, for: indexPath) as? InfiniteMonthlyCVC else { return UICollectionViewCell() }
+            if indexPath.item != 1{
+                cell.monthlyCalendarCV.alpha = 0
+            }
             cell.initDate(infiniteMonthList[indexPath.item])
             cell.monthlyCalendarCV.reloadData()
             return cell
@@ -516,6 +537,7 @@ extension CalendarVC: UICollectionViewDataSource{
         ///weekly
         else{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteWeeklyCVC.identifier, for: indexPath) as? InfiniteWeeklyCVC else { return UICollectionViewCell() }
+            
             cell.selectedDate = infiniteWeekList[indexPath.item]
             cell.weeklyCalendarCV.reloadData()
             return cell

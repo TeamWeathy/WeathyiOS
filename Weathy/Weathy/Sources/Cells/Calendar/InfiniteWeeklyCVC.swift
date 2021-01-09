@@ -10,6 +10,7 @@ import UIKit
 class InfiniteWeeklyCVC: UICollectionViewCell {
     static let identifier = "InfiniteWeeklyCVC"
     var selectedDate = Date()
+    var lastSelectedIdx = Date().weekday
     let screen = UIScreen.main.bounds
     @IBOutlet weak var weeklyCalendarCV: UICollectionView!
     
@@ -28,14 +29,28 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-  
+        
         return CGSize(width: 308*screen.width/375/7, height: 105*screen.width/375)
         
     }
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected")
+        if lastSelectedIdx != indexPath.item{
+            if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? WeeklyCalendarCVC{
+                cell.isSelected = false
+
+            }
+            if let cell = collectionView.cellForItem(at: indexPath) as? WeeklyCalendarCVC{
+                var selectedComponent = DateComponents()
+                selectedComponent.day = indexPath.item - selectedDate.weekday
+                selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+                lastSelectedIdx = indexPath.item
+            }
         }
-    
+    }
 }
 
 extension InfiniteWeeklyCVC: UICollectionViewDataSource{
@@ -59,7 +74,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         }
         if indexPath.item == selectedDate.weekday{
             print("here1")
-//            weekdayLabelCollection[indexPath.item].textColor = .white
+            //            weekdayLabelCollection[indexPath.item].textColor = .white
             cell.setToday()
         }
         else if indexPath.item > selectedDate.weekday{
@@ -78,7 +93,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         }
         
         return cell
-    
+        
     }
-
+    
 }

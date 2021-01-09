@@ -9,7 +9,16 @@ import UIKit
 
 class WeeklyCalendarCVC: UICollectionViewCell {
     static let identifier = "WeeklyCalendarCVC"
-    
+    override var isSelected: Bool{
+        didSet{
+            if isSelected{
+                setSelectedDay()
+            }
+            else{
+                selectedView.alpha = 0
+            }
+        }
+    }
     @IBOutlet weak var selectedView: UIView!
     @IBOutlet weak var dayLabel: SpacedLabel!
     @IBOutlet weak var emotionView: UIView!
@@ -35,7 +44,8 @@ class WeeklyCalendarCVC: UICollectionViewCell {
         dayLabel.textColor = .white
         selectedView.alpha = 1
     }
-    func selectedDay(){
+    func setSelectedDay(){
+        selectedView.alpha = 1
         selectedView.backgroundColor = .subGrey5
         selectedView.setBorder(borderColor: .greyBorder, borderWidth: 1)
     }
