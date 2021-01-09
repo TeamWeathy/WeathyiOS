@@ -227,8 +227,10 @@ class RecordTagVC: UIViewController {
                 print(">>>", indexPath)
 //                let cell = self.tagCollectionView.cellForItem(at: indexPath)
                 print("long press detected")
-//                cell?.setBorder(borderColor: UIColor.pink, borderWidth: 1)
-//                cell?.backgroundColor = UIColor.white
+                
+                if indexPath[1] == 0 {
+                    return
+                }
                 
                 let nextStoryboard = UIStoryboard(name: "RecordTagDelete", bundle: nil)
                 guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTagDeleteVC") as? RecordTagDeleteVC else {
