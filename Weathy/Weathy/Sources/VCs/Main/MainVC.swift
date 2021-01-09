@@ -39,7 +39,7 @@ class MainVC: UIViewController {
         weatherCollectionView.isPagingEnabled = true
         weatherCollectionView.decelerationRate = .fast
         
-        todayDateTimeLabel.font = UIFont.RobotoRegular15
+        todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
         todayDateTimeLabel.text = "1월 7일 일요일 • 오후 4시"
         
@@ -47,6 +47,7 @@ class MainVC: UIViewController {
         logoImage.alpha = 0
         
         topBlurView.frame.origin.y -= topBlurView.bounds.height
+        topBlurView.alpha = 0
     }
 }
 
