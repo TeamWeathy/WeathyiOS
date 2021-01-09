@@ -30,16 +30,10 @@ class RecordTagDeletePopupVC: UIViewController {
     }
     
     @IBAction func deleteBtnTap(_ sender: Any) {
-//        self.dismiss(animated: false, completion: nil)
-        let nextStoryboard = UIStoryboard(name: "RecordTag", bundle: nil)
         
-        guard let nextvc = nextStoryboard.instantiateViewController(identifier: "RecordTagVC") as? RecordTagVC else {
-            return
-        }
+        // 삭제 API 연결
         
-        nextvc.modalPresentationStyle = .fullScreen
-        
-        self.present(nextvc, animated: false, completion: nil)
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
     }
 }
 

@@ -228,12 +228,7 @@ class RecordTagDeleteVC: UIViewController {
         
         dvc.modalPresentationStyle = .overCurrentContext
         
-        self.present(dvc, animated: false, completion: {
-//            guard let nextvc = self.storyboard?.instantiateViewController(identifier: "RecordTagVC") as? RecordTagVC else {
-//                return
-//            }
-//            self.present(nextvc, animated: false, completion: nil)
-        })
+        self.present(dvc, animated: false, completion: nil)
         
     }
     
