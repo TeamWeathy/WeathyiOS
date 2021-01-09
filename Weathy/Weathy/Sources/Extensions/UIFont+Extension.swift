@@ -72,8 +72,16 @@ extension UIFont {
     
     
     /// Roboto Regular
+    class var RobotoRegular12: UIFont {
+        return UIFont(name: "Roboto-Regular", size: 12)!
+    }
+    
     class var RobotoRegular15: UIFont{
         return UIFont(name: "Roboto-Regular", size: 15)!
+    }
+    
+    class var RobotoRegular16: UIFont{
+        return UIFont(name: "Roboto-Regular", size: 16)!
     }
     
     class var RobotoRegular18: UIFont{
