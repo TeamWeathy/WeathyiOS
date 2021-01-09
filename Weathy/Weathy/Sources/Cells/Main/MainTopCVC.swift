@@ -30,7 +30,6 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var closetOuterLabel: UILabel!
     @IBOutlet weak var closetEtcLabel: UILabel!
     
-    
     //MARK: - Custom Methods
     func setCell() {
         todayWeathyNicknameTextLabel.font = UIFont.SDGothicRegular16
@@ -63,8 +62,10 @@ class MainTopCVC: UICollectionViewCell {
         weathyDateLabel.font = UIFont.SDGothicRegular13
         weathyDateLabel.textColor = UIColor.subGrey6
         
-        weathyClimateLabel.text = "구름 조금"
-        weathyClimateLabel.font = UIFont.SDGothicRegular15
+        weathyClimateImage.image = UIImage(named: "ic_fewclouds_day")
+        
+        weathyClimateLabel.text = "구름조금"
+        weathyClimateLabel.font = UIFont.SDGothicMedium15
         weathyClimateLabel.textColor = UIColor.subGrey1
         
         weathyHighTemperatureLabel.text = "4°"

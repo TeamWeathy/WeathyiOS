@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "scale" : "1x",
+      "idiom" : "universal",
+      "filename" : "icRainfall.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icRainfall@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icRainfall@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
