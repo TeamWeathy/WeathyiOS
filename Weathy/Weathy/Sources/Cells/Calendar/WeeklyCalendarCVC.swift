@@ -19,6 +19,7 @@ class WeeklyCalendarCVC: UICollectionViewCell {
             }
         }
     }
+    @IBOutlet weak var todayView: UIView!
     @IBOutlet weak var selectedView: UIView!
     @IBOutlet weak var dayLabel: SpacedLabel!
     @IBOutlet weak var emotionView: UIView!
@@ -29,8 +30,13 @@ class WeeklyCalendarCVC: UICollectionViewCell {
         dayLabel.textColor = .mainGrey
         selectedView.clipsToBounds = true
         selectedView.layer.cornerRadius = 21
+        todayView.clipsToBounds = true
+        todayView.layer.cornerRadius = 21
         emotionView.clipsToBounds = true
         emotionView.layer.cornerRadius = 7.5
+        todayView.backgroundColor = .mintMain
+        todayView.setBorder(borderColor: .mintBorder, borderWidth: 1)
+        todayView.alpha = 0
         selectedView.alpha = 0
         
     }
@@ -39,10 +45,8 @@ class WeeklyCalendarCVC: UICollectionViewCell {
         dayLabel.textColor = .subGrey3
     }
     func setToday(){
-        selectedView.backgroundColor = .mintMain
-        selectedView.setBorder(borderColor: .mintBorder, borderWidth: 1)
         dayLabel.textColor = .white
-        selectedView.alpha = 1
+        todayView.alpha = 1
     }
     func setSelectedDay(){
         selectedView.alpha = 1

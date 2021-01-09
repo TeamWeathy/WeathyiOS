@@ -47,6 +47,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
                 var selectedComponent = DateComponents()
                 selectedComponent.day = indexPath.item - selectedDate.weekday
                 selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+//                collectionView.reloadData()
                 lastSelectedIdx = indexPath.item
             }
         }

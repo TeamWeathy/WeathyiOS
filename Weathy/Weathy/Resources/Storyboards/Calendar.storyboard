@@ -153,6 +153,13 @@
                                                                                     <constraint firstAttribute="height" constant="64" id="n7Q-Th-P7b"/>
                                                                                 </constraints>
                                                                             </view>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTB-H2-lqo">
+                                                                                <rect key="frame" x="1.6666666666666679" y="8" width="41" height="64"/>
+                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="64" id="dUv-2j-33r"/>
+                                                                                </constraints>
+                                                                            </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmY-5B-FIM" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                                                 <rect key="frame" x="18.666666666666668" y="42" width="6.6666666666666679" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
@@ -174,10 +181,13 @@
                                                                             </view>
                                                                         </subviews>
                                                                         <constraints>
+                                                                            <constraint firstItem="HTB-H2-lqo" firstAttribute="trailing" secondItem="pvc-68-Ney" secondAttribute="trailing" id="4iX-qe-oPw"/>
+                                                                            <constraint firstItem="HTB-H2-lqo" firstAttribute="top" secondItem="pvc-68-Ney" secondAttribute="top" id="7Yw-2j-OfI"/>
                                                                             <constraint firstItem="tcJ-eb-mDG" firstAttribute="top" secondItem="pvc-68-Ney" secondAttribute="bottom" constant="12" id="7i0-tw-oLf"/>
                                                                             <constraint firstItem="MmY-5B-FIM" firstAttribute="centerX" secondItem="RMC-Jh-c1u" secondAttribute="centerX" id="DbU-ek-DLL"/>
                                                                             <constraint firstItem="pvc-68-Ney" firstAttribute="centerX" secondItem="RMC-Jh-c1u" secondAttribute="centerX" id="L06-rd-dDG"/>
                                                                             <constraint firstItem="pvc-68-Ney" firstAttribute="leading" secondItem="RMC-Jh-c1u" secondAttribute="leading" constant="1.5" id="O40-Uc-nO9"/>
+                                                                            <constraint firstItem="HTB-H2-lqo" firstAttribute="leading" secondItem="pvc-68-Ney" secondAttribute="leading" id="Qcd-Qg-wHE"/>
                                                                             <constraint firstItem="MmY-5B-FIM" firstAttribute="top" secondItem="RMC-Jh-c1u" secondAttribute="top" constant="42" id="WlQ-eg-OdJ"/>
                                                                             <constraint firstItem="tcJ-eb-mDG" firstAttribute="centerX" secondItem="RMC-Jh-c1u" secondAttribute="centerX" id="fPZ-vy-byJ"/>
                                                                             <constraint firstItem="pvc-68-Ney" firstAttribute="top" secondItem="RMC-Jh-c1u" secondAttribute="top" constant="8" id="hHQ-EV-DJj"/>
@@ -189,6 +199,7 @@
                                                                         <outlet property="dayLabel" destination="MmY-5B-FIM" id="zKP-FZ-l1A"/>
                                                                         <outlet property="emotionView" destination="tcJ-eb-mDG" id="Xjd-53-BdF"/>
                                                                         <outlet property="selectedView" destination="pvc-68-Ney" id="1R4-rk-9Dc"/>
+                                                                        <outlet property="todayView" destination="HTB-H2-lqo" id="gag-rf-Aah"/>
                                                                     </connections>
                                                                 </collectionViewCell>
                                                             </cells>

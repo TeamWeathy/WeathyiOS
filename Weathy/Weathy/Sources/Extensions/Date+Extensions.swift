@@ -33,25 +33,32 @@ extension Date {
     }
     
     public var currentYearMonth: String{
-        return "\(year).\(month)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM"
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: self)
     }
 
     public var nextYearMonth: String{
-        if month == 12{
-            return "\(year+1).01"
-        }
-        else{
-            return "\(year).\(month+1)"
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM"
+        dateFormatter.timeZone = TimeZone.current
+        var dateComponent = DateComponents()
+        let current = self
+        dateComponent.month = 1
+        let nextDate = Calendar.current.date(byAdding: dateComponent, to: current)!
+        return dateFormatter.string(from:nextDate)
     }
     
     public var lastYearMonth: String{
-        if month == 1{
-            return "\(year-1).12"
-        }
-        else{
-            return "\(year).\(month-1)"
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM"
+        dateFormatter.timeZone = TimeZone.current
+        var dateComponent = DateComponents()
+        let current = self
+        dateComponent.month = -1
+        let nextDate = Calendar.current.date(byAdding: dateComponent, to: current)!
+        return dateFormatter.string(from:nextDate)
     }
     public var isLeapMonth: Bool{
         if year % 400 == 0 || (year % 4 == 0 && year % 100 != 0){

@@ -206,6 +206,7 @@ class CalendarVC: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.dateFormat = "yyyy.MM"
+        yearMonthTextView.text = dateFormatter.string(from: selectedDate)
         var nextComponent = DateComponents()
         nextComponent.day = 7
         var lastComponent = DateComponents()
@@ -526,9 +527,6 @@ extension CalendarVC: UICollectionViewDataSource{
             print("$$reloaded")
             print("~~~indexPath",indexPath,infiniteMonthList)
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteMonthlyCVC.identifier, for: indexPath) as? InfiniteMonthlyCVC else { return UICollectionViewCell() }
-            if indexPath.item != 1{
-                cell.monthlyCalendarCV.alpha = 0
-            }
             cell.initDate(infiniteMonthList[indexPath.item])
             cell.monthlyCalendarCV.reloadData()
             return cell
