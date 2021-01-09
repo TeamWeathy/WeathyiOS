@@ -209,7 +209,13 @@ class RecordTagVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        blurView.alpha = 0
+        if tagCollectionView.contentOffset.y <= 30 {
+            blurView.alpha = tagCollectionView.contentOffset.y / 30
+        }
+        else {
+            blurView.alpha = 1
+        }
+        
         animationPrac()
     }
     
