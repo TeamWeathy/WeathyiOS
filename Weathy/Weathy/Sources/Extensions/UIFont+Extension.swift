@@ -88,6 +88,11 @@ extension UIFont {
         return UIFont(name: "Roboto-Regular", size: 60)!
     }
     
+    class var RobotoLight25: UIFont {
+        return UIFont(name: "Roboto-Light", size: 25)!
+    }
     
-    
+    class var RobotoLight60: UIFont {
+        return UIFont(name: "Roboto-Light", size: 60)!
+    }
 }

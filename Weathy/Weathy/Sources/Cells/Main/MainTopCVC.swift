@@ -31,16 +31,16 @@ class MainTopCVC: UICollectionViewCell {
         locationLabel.font = UIFont.SDGothicSemiBold20
         locationLabel.textColor = UIColor.mainGrey
         
-        currTemperatureLabel.text = "2º"
-        currTemperatureLabel.font = UIFont.RobotoRegular60
+        currTemperatureLabel.text = "2°"
+        currTemperatureLabel.font = UIFont.RobotoLight60
         currTemperatureLabel.textColor = UIColor.subGrey1
         
-        highTemperatureLabel.text = "4º"
-        highTemperatureLabel.font = UIFont.RobotoRegular25
+        highTemperatureLabel.text = "4°"
+        highTemperatureLabel.font = UIFont.RobotoLight25
         highTemperatureLabel.textColor = UIColor.redTemp
         
-        lowTemperatureLabel.text = "-4º"
-        lowTemperatureLabel.font = UIFont.RobotoRegular25
+        lowTemperatureLabel.text = "-4°"
+        lowTemperatureLabel.font = UIFont.RobotoLight25
         lowTemperatureLabel.textColor = UIColor.blueTemp
         
         climateLabel.text = "조금 흐리지만\n햇살이 따스해요 :)"

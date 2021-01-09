@@ -68,21 +68,21 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4º" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCF-fp-hV7">
-                                                            <rect key="frame" x="68" y="102" width="25" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4º" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="BCF-fp-hV7">
+                                                            <rect key="frame" x="64" y="102" width="25" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_ic_tempbar" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-mn-rDh">
-                                                            <rect key="frame" x="91" y="114" width="11" height="12"/>
+                                                            <rect key="frame" x="87" y="114" width="11" height="12"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="11" id="10n-Y0-G2v"/>
                                                                 <constraint firstAttribute="height" constant="12" id="SAk-Q1-fcS"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-4º" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wro-YX-AXK">
-                                                            <rect key="frame" x="101" y="102" width="36" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-4º" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="wro-YX-AXK">
+                                                            <rect key="frame" x="100" y="102" width="36" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -99,10 +99,10 @@
                                                         <constraint firstItem="kn9-ne-VwD" firstAttribute="leading" secondItem="XFM-xw-3ZN" secondAttribute="leading" id="Fe8-6L-eGX"/>
                                                         <constraint firstItem="XFM-xw-3ZN" firstAttribute="leading" secondItem="dWl-HQ-BdI" secondAttribute="leading" constant="5" id="FgV-Iz-kZu"/>
                                                         <constraint firstItem="BCF-fp-hV7" firstAttribute="top" secondItem="dWl-HQ-BdI" secondAttribute="top" constant="102" id="HoR-1j-OgT"/>
-                                                        <constraint firstItem="BCF-fp-hV7" firstAttribute="leading" secondItem="XFM-xw-3ZN" secondAttribute="trailing" constant="2" id="alE-eB-Th1"/>
+                                                        <constraint firstItem="BCF-fp-hV7" firstAttribute="leading" secondItem="XFM-xw-3ZN" secondAttribute="trailing" constant="-2" id="alE-eB-Th1"/>
                                                         <constraint firstItem="bHx-mn-rDh" firstAttribute="bottom" secondItem="BCF-fp-hV7" secondAttribute="bottom" constant="-6" id="avc-5F-iv2"/>
                                                         <constraint firstItem="wro-YX-AXK" firstAttribute="top" secondItem="BCF-fp-hV7" secondAttribute="top" id="jgd-hO-Gm3"/>
-                                                        <constraint firstItem="wro-YX-AXK" firstAttribute="leading" secondItem="bHx-mn-rDh" secondAttribute="trailing" constant="-1" id="vOO-FW-v8H"/>
+                                                        <constraint firstItem="wro-YX-AXK" firstAttribute="leading" secondItem="bHx-mn-rDh" secondAttribute="trailing" constant="2" id="vOO-FW-v8H"/>
                                                         <constraint firstItem="kn9-ne-VwD" firstAttribute="top" secondItem="XFM-xw-3ZN" secondAttribute="bottom" constant="4" id="vbv-X9-i4q"/>
                                                         <constraint firstItem="XFM-xw-3ZN" firstAttribute="top" secondItem="dWl-HQ-BdI" secondAttribute="top" constant="68" id="y0q-J8-Auz"/>
                                                     </constraints>
