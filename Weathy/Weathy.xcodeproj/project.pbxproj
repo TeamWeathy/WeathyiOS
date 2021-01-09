@@ -22,6 +22,7 @@
 		3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */; };
 		3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */; };
 		3735AE3425A8F24C00E71DC3 /* RecordTagAddPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */; };
+		3735AE3725A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE3625A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift */; };
 		374D48D1259CEBF000152B9A /* RecordStart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48D0259CEBF000152B9A /* RecordStart.storyboard */; };
 		374D48D4259CEC0500152B9A /* RecordStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48D3259CEC0500152B9A /* RecordStartVC.swift */; };
 		374D48D8259D1CA600152B9A /* RecordRate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48D7259D1CA600152B9A /* RecordRate.storyboard */; };
@@ -77,6 +78,7 @@
 		3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagDeleteVC.swift; sourceTree = "<group>"; };
 		3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagAddPopupVC.swift; sourceTree = "<group>"; };
+		3735AE3625A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagDeletePopupVC.swift; sourceTree = "<group>"; };
 		374D48D0259CEBF000152B9A /* RecordStart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordStart.storyboard; sourceTree = "<group>"; };
 		374D48D3259CEC0500152B9A /* RecordStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStartVC.swift; sourceTree = "<group>"; };
 		374D48D7259D1CA600152B9A /* RecordRate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordRate.storyboard; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				374D48EC259D49DB00152B9A /* RecordTagVC.swift */,
 				3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */,
 				3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */,
+				3735AE3625A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift */,
 				374D48DA259D1CB600152B9A /* RecordRateVC.swift */,
 				374D48E5259D368600152B9A /* RecordTextVC.swift */,
 			);
@@ -507,6 +510,7 @@
 				63398462259A425200339615 /* GenericResponse.swift in Sources */,
 				63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */,
 				63DEB272259CD55A00A94488 /* NetworkResult.swift in Sources */,
+				3735AE3725A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift in Sources */,
 				6339846F259A433400339615 /* UIColor+Extensions.swift in Sources */,
 				6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */,
 				374D490B259F6CAD00152B9A /* RecordTagTitleCVC.swift in Sources */,

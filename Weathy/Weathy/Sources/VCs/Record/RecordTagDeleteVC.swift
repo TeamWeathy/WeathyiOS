@@ -222,8 +222,19 @@ class RecordTagDeleteVC: UIViewController {
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
+        guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordTagDeletePopupVC") as? RecordTagDeletePopupVC else {
+            return
+        }
         
-        self.dismiss(animated: false, completion: nil)
+        dvc.modalPresentationStyle = .overCurrentContext
+        
+        self.present(dvc, animated: false, completion: {
+//            guard let nextvc = self.storyboard?.instantiateViewController(identifier: "RecordTagVC") as? RecordTagVC else {
+//                return
+//            }
+//            self.present(nextvc, animated: false, completion: nil)
+        })
+        
     }
     
     

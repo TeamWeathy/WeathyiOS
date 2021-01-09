@@ -228,6 +228,87 @@
             </objects>
             <point key="canvasLocation" x="-266.39999999999998" y="93.103448275862078"/>
         </scene>
+        <!--Record Tag Delete PopupVC-->
+        <scene sceneID="rVg-wY-G3l">
+            <objects>
+                <viewController storyboardIdentifier="RecordTagDeletePopupVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eju-ir-fFt" customClass="RecordTagDeletePopupVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="16L-rX-ZjJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJL-kw-mnL">
+                                <rect key="frame" x="52.5" y="279" width="309" height="195"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWf-dt-eag">
+                                        <rect key="frame" x="133.5" y="39" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhJ-H1-TsL">
+                                        <rect key="frame" x="133.5" y="66" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ota-Yn-hh5">
+                                        <rect key="frame" x="29" y="121" width="119" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="119" id="WwJ-n6-uBQ"/>
+                                            <constraint firstAttribute="height" constant="47" id="pnA-tN-9cD"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="cancelBtnTap:" destination="eju-ir-fFt" eventType="touchUpInside" id="Z4m-iF-50k"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uNp-jT-3Ae">
+                                        <rect key="frame" x="161" y="121" width="119" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="119" id="RVV-7Q-dQX"/>
+                                            <constraint firstAttribute="height" constant="47" id="mf0-El-CwO"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="deleteBtnTap:" destination="eju-ir-fFt" eventType="touchUpInside" id="geT-w1-Hjg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ota-Yn-hh5" secondAttribute="bottom" constant="27" id="CQg-Xj-Br5"/>
+                                    <constraint firstAttribute="height" constant="195" id="EuO-SH-qkw"/>
+                                    <constraint firstAttribute="bottom" secondItem="uNp-jT-3Ae" secondAttribute="bottom" constant="27" id="F2b-Wv-Uwd"/>
+                                    <constraint firstItem="nWf-dt-eag" firstAttribute="centerX" secondItem="tJL-kw-mnL" secondAttribute="centerX" id="HMj-GI-KPp"/>
+                                    <constraint firstItem="uNp-jT-3Ae" firstAttribute="centerY" secondItem="ota-Yn-hh5" secondAttribute="centerY" id="He5-ga-4c9"/>
+                                    <constraint firstItem="HhJ-H1-TsL" firstAttribute="centerX" secondItem="nWf-dt-eag" secondAttribute="centerX" id="ORb-m1-5N5"/>
+                                    <constraint firstAttribute="trailing" secondItem="uNp-jT-3Ae" secondAttribute="trailing" constant="29" id="Xby-x0-bLh"/>
+                                    <constraint firstItem="ota-Yn-hh5" firstAttribute="leading" secondItem="tJL-kw-mnL" secondAttribute="leading" constant="29" id="jL8-o3-azj"/>
+                                    <constraint firstItem="HhJ-H1-TsL" firstAttribute="top" secondItem="nWf-dt-eag" secondAttribute="bottom" constant="6" id="nzh-5R-H6n"/>
+                                    <constraint firstAttribute="width" constant="309" id="vm6-FB-d90"/>
+                                    <constraint firstItem="nWf-dt-eag" firstAttribute="top" secondItem="tJL-kw-mnL" secondAttribute="top" constant="39" id="yLi-hu-f6g"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="of1-GV-Ezr"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.39858178500892555" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tJL-kw-mnL" firstAttribute="top" secondItem="of1-GV-Ezr" secondAttribute="top" constant="235" id="Puz-ac-Bbh"/>
+                            <constraint firstItem="tJL-kw-mnL" firstAttribute="centerX" secondItem="16L-rX-ZjJ" secondAttribute="centerX" id="srR-yD-AEA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelBtn" destination="ota-Yn-hh5" id="uVc-5X-nm6"/>
+                        <outlet property="deleteBtn" destination="uNp-jT-3Ae" id="3aE-R2-CEF"/>
+                        <outlet property="popupView" destination="tJL-kw-mnL" id="VZM-eG-nlz"/>
+                        <outlet property="subTitleLabel" destination="HhJ-H1-TsL" id="q3m-lC-K5P"/>
+                        <outlet property="titleLabel" destination="nWf-dt-eag" id="lXA-9h-LWM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="41C-wk-dwb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="430" y="93"/>
+        </scene>
     </scenes>
     <resources>
         <image name="recordImgBottomblur" width="375" height="52"/>
