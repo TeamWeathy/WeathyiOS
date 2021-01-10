@@ -22,6 +22,9 @@ class RecordStartVC: UIViewController {
     var maxTemp: Int = 4
     var minTemp: Int = -4
     
+    var visitedFlag: Bool = false
+    var dvc = RecordTagVC()
+    
     
     //MARK: - IBOutlets
     
@@ -65,9 +68,12 @@ class RecordStartVC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        let nextStoryboard = UIStoryboard(name: "RecordTag", bundle: nil)
-        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTagVC") as? RecordTagVC else {
-            return
+        
+        if visitedFlag == false {
+            let nextStoryboard = UIStoryboard(name: "RecordTag", bundle: nil)
+            self.dvc = (nextStoryboard.instantiateViewController(identifier: "RecordTagVC") as? RecordTagVC)!
+            
+            visitedFlag = true
         }
         
         self.navigationController?.pushViewController(dvc, animated: false)

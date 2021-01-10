@@ -21,6 +21,8 @@ class RecordRateVC: UIViewController {
 
     var rate: [Rates] = []
     
+    var visitedFlag: Bool = false
+    
     
     //MARK: - IBOutlets
     @IBOutlet var backBtn: UIButton!

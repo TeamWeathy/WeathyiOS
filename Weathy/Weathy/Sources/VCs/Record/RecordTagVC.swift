@@ -157,6 +157,9 @@ class RecordTagVC: UIViewController {
     
     let name: String = "웨디"
     var titleIndex: Int = 0
+    var visitedFlag: Bool = false
+    
+    var dvc = RecordRateVC()
     
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
@@ -267,12 +270,14 @@ class RecordTagVC: UIViewController {
     
     @IBAction func nextBtnTap(_ sender: Any) {
         
-        let nextStoryboard = UIStoryboard(name: "RecordRate", bundle: nil)
-        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordRateVC") as? RecordRateVC else {
-            return
+        if visitedFlag == false {
+            let nextStoryboard = UIStoryboard(name: "RecordRate", bundle: nil)
+            self.dvc = (nextStoryboard.instantiateViewController(identifier: "RecordRateVC") as? RecordRateVC)!
+            
+            visitedFlag = true
         }
         
-        self.navigationController?.pushViewController(dvc, animated: false)
+        self.navigationController?.pushViewController(self.dvc, animated: false)
     }
     
     
