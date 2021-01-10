@@ -117,6 +117,7 @@ extension RecordTagAddPopupVC {
         maxWordLabel.textColor = .subGrey6
         maxWordLabel.text = "/10"
         
+        addBtn.isUserInteractionEnabled = true
         addBtn.makeRounded(cornerRadius: 25)
         addBtn.setTitle("추가하기", for: .normal)
         addBtn.setTitleColor(.white, for: .normal)
@@ -133,6 +134,7 @@ extension RecordTagAddPopupVC {
         wordCountLabel.isHidden = true
         maxWordLabel.isHidden = true
         
+        addBtn.isUserInteractionEnabled = false
         addBtn.makeRounded(cornerRadius: 25)
         addBtn.setTitle("추가하기", for: .normal)
         addBtn.setTitleColor(.white, for: .normal)
