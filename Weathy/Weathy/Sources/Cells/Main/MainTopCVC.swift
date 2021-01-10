@@ -15,20 +15,20 @@ class MainTopCVC: UICollectionViewCell {
     var closetEtc: [String] = ["목도리","장갑","귀마개","수면양말", "어쩌라구.."]
     
     //MARK: - IBOutlets
-    @IBOutlet weak var todayWeathyNicknameTextLabel: UILabel!
+    @IBOutlet weak var todayWeathyNicknameTextLabel: SpacedLabel!
     @IBOutlet weak var todayWeathyView: UIView!
-    @IBOutlet weak var currTemperatureLabel: UILabel!
-    @IBOutlet weak var highTemperatureLabel: UILabel!
-    @IBOutlet weak var lowTemperatureLabel: UILabel!
-    @IBOutlet weak var climateLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var weathyDateLabel: UILabel!
+    @IBOutlet weak var currTempLabel: SpacedLabel!
+    @IBOutlet weak var maxTempLabel: SpacedLabel!
+    @IBOutlet weak var minTempLabel: SpacedLabel!
+    @IBOutlet weak var climateLabel: SpacedLabel!
+    @IBOutlet weak var locationLabel: SpacedLabel!
+    @IBOutlet weak var weathyDateLabel: SpacedLabel!
     @IBOutlet weak var weathyClimateImage: UIImageView!
-    @IBOutlet weak var weathyClimateLabel: UILabel!
-    @IBOutlet weak var weathyHighTemperatureLabel: UILabel!
-    @IBOutlet weak var weathyLowTemperatureLabel: UILabel!
+    @IBOutlet weak var weathyClimateLabel: SpacedLabel!
+    @IBOutlet weak var weathyHighTemperatureLabel: SpacedLabel!
+    @IBOutlet weak var weathyLowTemperatureLabel: SpacedLabel!
     @IBOutlet weak var weathyStampImage: UIImageView!
-    @IBOutlet weak var weathyStampLabel: UILabel!
+    @IBOutlet weak var weathyStampLabel: SpacedLabel!
     @IBOutlet weak var closetTopLabel: SpacedLabel!
     @IBOutlet weak var closetBottomLabel: SpacedLabel!
     @IBOutlet weak var closetOuterLabel: SpacedLabel!
@@ -58,6 +58,7 @@ class MainTopCVC: UICollectionViewCell {
 
         todayWeathyNicknameTextLabel.font = UIFont.SDGothicRegular16
         todayWeathyNicknameTextLabel.text = "희지님이 기억하는"
+        todayWeathyNicknameTextLabel.characterSpacing = -0.8
         
         todayWeathyView.makeRounded(cornerRadius: 35)
         todayWeathyView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
@@ -65,20 +66,24 @@ class MainTopCVC: UICollectionViewCell {
         locationLabel.text = "서울 서대문구"
         locationLabel.font = UIFont.SDGothicSemiBold20
         locationLabel.textColor = UIColor.mainGrey
+        locationLabel.characterSpacing = -1.0
         
-        currTemperatureLabel.text = "-2°"
-        currTemperatureLabel.font = UIFont.RobotoLight60
-        currTemperatureLabel.textColor = UIColor.subGrey1
+        currTempLabel.text = "-2°"
+        currTempLabel.font = UIFont.RobotoLight60
+        currTempLabel.textColor = UIColor.subGrey1
+        currTempLabel.characterSpacing = -3.0
         
-        highTemperatureLabel.text = "24°"
-        highTemperatureLabel.font = UIFont.RobotoLight25
-        highTemperatureLabel.textColor = UIColor.redTemp
+        maxTempLabel.text = "24°"
+        maxTempLabel.font = UIFont.RobotoLight25
+        maxTempLabel.textColor = UIColor.redTemp
+        maxTempLabel.characterSpacing = -1.25
         
-        lowTemperatureLabel.text = "-14°"
-        lowTemperatureLabel.font = UIFont.RobotoLight25
-        lowTemperatureLabel.textColor = UIColor.blueTemp
+        minTempLabel.text = "-14°"
+        minTempLabel.font = UIFont.RobotoLight25
+        minTempLabel.textColor = UIColor.blueTemp
+        minTempLabel.characterSpacing = -1.25
         
-        climateLabel.text = "저 구름은 어디에서 왔을까요"
+        climateLabel.text = "겹겹이 입기 좋은 날씨"
         climateLabel.font = UIFont.SDGothicRegular16
         climateLabel.textColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.58)
         
@@ -91,19 +96,24 @@ class MainTopCVC: UICollectionViewCell {
         weathyClimateLabel.text = "구름조금"
         weathyClimateLabel.font = UIFont.SDGothicMedium15
         weathyClimateLabel.textColor = UIColor.subGrey1
+        weathyClimateLabel.characterSpacing = -1.15
         
         weathyHighTemperatureLabel.text = "4°"
         weathyHighTemperatureLabel.textColor = UIColor.redTemp
         weathyHighTemperatureLabel.font = UIFont.RobotoLight30
-
+        weathyHighTemperatureLabel.characterSpacing = -1.75
+        
         weathyLowTemperatureLabel.text = "-4°"
         weathyLowTemperatureLabel.textColor = UIColor.blueTemp
         weathyLowTemperatureLabel.font = UIFont.RobotoLight30
+        weathyLowTemperatureLabel.characterSpacing = -1.75
+        
         
 //        weathyStampImage.image = UIImage(named: <#T##String#>)
         weathyStampLabel.text = "추워요"
         weathyStampLabel.font = UIFont.SDGothicSemiBold23
         weathyStampLabel.textColor = UIColor.imojiColdText
+        weathyStampLabel.characterSpacing = -1.15
     }
     
     func insertSeparatorInArray(_ arr: [String]) -> String {

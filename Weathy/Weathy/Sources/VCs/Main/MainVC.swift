@@ -18,7 +18,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var settingIconImage: UIImageView!
     @IBOutlet weak var searchIconImage: UIImageView!
     @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var todayDateTimeLabel: UILabel!
+    @IBOutlet weak var todayDateTimeLabel: SpacedLabel!
     
     //MARK: - Life Cycle Methods
     
@@ -49,6 +49,7 @@ class MainVC: UIViewController {
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
         todayDateTimeLabel.text = "1월 7일 일요일 • 오후 4시"
+        todayDateTimeLabel.characterSpacing = -0.75
         
         logoImage.frame.origin.y -= 100
         logoImage.alpha = 0
