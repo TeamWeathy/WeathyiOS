@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoR.ttf">
+            <string>AppleSDGothicNeoR00</string>
+        </array>
         <array key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
         </array>
@@ -23,12 +26,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarImgCloud" translatesAutoresizingMaskIntoConstraints="NO" id="aVD-Qw-6W5">
-                                <rect key="frame" x="98" y="375.33333333333331" width="179" height="110"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="aVD-Qw-6W5" secondAttribute="height" multiplier="179:110" id="CpW-ep-biJ"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3O-5L-M7h">
                                 <rect key="frame" x="139.66666666666666" y="502.33333333333326" width="96" height="48"/>
                                 <constraints>
@@ -36,23 +33,298 @@
                                 </constraints>
                                 <state key="normal" image="calendarBtnRecord"/>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarImgCloud" translatesAutoresizingMaskIntoConstraints="NO" id="aVD-Qw-6W5">
+                                <rect key="frame" x="98" y="375.33333333333331" width="179" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aVD-Qw-6W5" secondAttribute="height" multiplier="179:110" id="CpW-ep-biJ"/>
+                                </constraints>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjD-XH-60E">
+                                <rect key="frame" x="0.0" y="257" width="375" height="521"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJS-Lx-AE2">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gth-jb-ONu">
+                                                <rect key="frame" x="294" y="20" width="48" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="48" id="C1h-Ln-zOO"/>
+                                                    <constraint firstAttribute="height" constant="48" id="URe-MB-9Qv"/>
+                                                </constraints>
+                                                <state key="normal" image="calendarIcMore"/>
+                                                <connections>
+                                                    <action selector="moreBtnDidTap:" destination="T7l-AV-MGM" eventType="touchUpInside" id="Hi8-iK-h8K"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12월 21일 월요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="Eq8-fr-Nct" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="45" y="42" width="92" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="92" id="ZZ9-C9-xQa"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                        <real key="value" value="-0.75"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울 종로구" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="8qQ-cu-yV0" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="144" y="41" width="78" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                        <real key="value" value="-0.75"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarIcCloudy" translatesAutoresizingMaskIntoConstraints="NO" id="N0h-3k-cme">
+                                                <rect key="frame" x="47" y="73" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="6RK-at-zKG"/>
+                                                    <constraint firstAttribute="width" constant="18" id="BOM-VB-1eL"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조금흐림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dn-NN-Anx" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="70.666666666666671" y="73" width="59.000000000000014" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                        <real key="value" value="-0.75"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarIcEmoji" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-vR-vSx">
+                                                <rect key="frame" x="288" y="85" width="42" height="42"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="42" id="Lzg-Bj-gDZ"/>
+                                                    <constraint firstAttribute="height" constant="42" id="ZTw-8u-Z1j"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWH-Dm-en1" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="46" y="103" width="27" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                        <real key="value" value="-1.75"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarTextDivider" translatesAutoresizingMaskIntoConstraints="NO" id="FQa-Zn-lon">
+                                                <rect key="frame" x="73" y="104.33333333333331" width="18.666666666666671" height="17.666666666666671"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="17.800000000000001" id="RTL-vc-bfv"/>
+                                                    <constraint firstAttribute="width" constant="18.800000000000001" id="o43-2l-d31"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="적당했어요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="gYD-Ye-sL1" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="256.33333333333331" y="133" width="73.666666666666686" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                        <real key="value" value="-1.1499999999999999"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Kx-JS-DNJ">
+                                                <rect key="frame" x="45" y="174" width="285" height="1"/>
+                                                <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="pIe-2y-BZy"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTX-8O-mf4">
+                                                <rect key="frame" x="45" y="391.33333333333337" width="285" height="1"/>
+                                                <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="RjW-gA-jJG"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-20°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqf-FB-afp" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="91.666666666666671" y="103" width="34.666666666666671" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                        <real key="value" value="-1.75"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="상의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYN-xo-TaZ" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="45" y="197" width="22.666666666666671" height="16"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="13"/>
+                                                <color key="textColor" red="0.57647058823529407" green="0.57647058823529407" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="하의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3u8-p9-9Jw" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="45" y="288.33333333333337" width="30" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.57647058823529407" green="0.57647058823529407" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="기타" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrO-oa-erZ" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="45" y="349" width="30" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="겉옷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d23-Eq-Wdp" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="45" y="318.66666666666663" width="30" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbZ-I1-Rwa" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="75.666666666666671" y="197" width="254.33333333333331" height="81.333333333333314"/>
+                                                <string key="text">기모랑 히트텍 입고 하나 더 입었어야 했다...
+진짜 바람이 살을 파고드는 것처럼 추운 날이었어</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRX-Sa-26G" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="75.666666666666671" y="288.33333333333337" width="254.33333333333331" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-qz-WFd" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="75.666666666666671" y="318.66666666666663" width="254.33333333333331" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdH-cT-eVd" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="75.666666666666671" y="349" width="254.33333333333331" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xG1-fR-RgC">
+                                                <rect key="frame" x="45" y="409.33333333333337" width="285" height="80"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="iGp-DH-hzi"/>
+                                                </constraints>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="IrO-oa-erZ" firstAttribute="top" secondItem="GMB-qz-WFd" secondAttribute="bottom" constant="10" id="0DF-gc-4c9"/>
+                                            <constraint firstItem="mTX-8O-mf4" firstAttribute="top" secondItem="KdH-cT-eVd" secondAttribute="bottom" constant="22" id="1qi-pe-HoX"/>
+                                            <constraint firstItem="3Kx-JS-DNJ" firstAttribute="top" secondItem="gYD-Ye-sL1" secondAttribute="bottom" constant="20" id="29z-Q5-g4L"/>
+                                            <constraint firstItem="KdH-cT-eVd" firstAttribute="top" secondItem="IrO-oa-erZ" secondAttribute="top" id="3og-jt-VJq"/>
+                                            <constraint firstItem="GMB-qz-WFd" firstAttribute="trailing" secondItem="3Kx-JS-DNJ" secondAttribute="trailing" id="4dt-mx-Zzf"/>
+                                            <constraint firstItem="d23-Eq-Wdp" firstAttribute="leading" secondItem="3u8-p9-9Jw" secondAttribute="leading" id="7Lq-0E-4PR"/>
+                                            <constraint firstItem="3u8-p9-9Jw" firstAttribute="leading" secondItem="cYN-xo-TaZ" secondAttribute="leading" id="7g9-07-gK1"/>
+                                            <constraint firstItem="KdH-cT-eVd" firstAttribute="leading" secondItem="GMB-qz-WFd" secondAttribute="leading" id="8Pm-fB-EaD"/>
+                                            <constraint firstItem="3u8-p9-9Jw" firstAttribute="top" secondItem="LbZ-I1-Rwa" secondAttribute="bottom" constant="10" id="8cn-w3-5VU"/>
+                                            <constraint firstItem="7dn-NN-Anx" firstAttribute="leading" secondItem="N0h-3k-cme" secondAttribute="trailing" constant="5.5" id="ABN-bk-4Qk"/>
+                                            <constraint firstItem="cqf-FB-afp" firstAttribute="leading" secondItem="FQa-Zn-lon" secondAttribute="trailing" id="ERb-4z-BSN"/>
+                                            <constraint firstItem="Rlt-vR-vSx" firstAttribute="top" secondItem="Gth-jb-ONu" secondAttribute="bottom" constant="17" id="EhM-Cg-8Sy"/>
+                                            <constraint firstItem="7dn-NN-Anx" firstAttribute="top" secondItem="N0h-3k-cme" secondAttribute="top" id="GqL-DN-2BJ"/>
+                                            <constraint firstItem="kRX-Sa-26G" firstAttribute="top" secondItem="3u8-p9-9Jw" secondAttribute="top" id="JeC-nZ-6p6"/>
+                                            <constraint firstAttribute="trailing" secondItem="gYD-Ye-sL1" secondAttribute="trailing" constant="45" id="KDH-20-f3h"/>
+                                            <constraint firstItem="Gth-jb-ONu" firstAttribute="top" secondItem="OJS-Lx-AE2" secondAttribute="top" constant="20" id="LbN-fh-eYL"/>
+                                            <constraint firstItem="N0h-3k-cme" firstAttribute="top" secondItem="Eq8-fr-Nct" secondAttribute="bottom" constant="11" id="Ls0-Bm-xoc"/>
+                                            <constraint firstItem="kRX-Sa-26G" firstAttribute="leading" secondItem="LbZ-I1-Rwa" secondAttribute="leading" id="NDP-4d-gen"/>
+                                            <constraint firstItem="d23-Eq-Wdp" firstAttribute="top" secondItem="kRX-Sa-26G" secondAttribute="bottom" constant="10" id="Oty-em-JD4"/>
+                                            <constraint firstItem="jWH-Dm-en1" firstAttribute="leading" secondItem="OJS-Lx-AE2" secondAttribute="leading" constant="46" id="PB0-qe-WF4"/>
+                                            <constraint firstItem="kRX-Sa-26G" firstAttribute="trailing" secondItem="3Kx-JS-DNJ" secondAttribute="trailing" id="POq-on-3ej"/>
+                                            <constraint firstAttribute="width" constant="375" id="QkO-rX-RMb"/>
+                                            <constraint firstItem="3Kx-JS-DNJ" firstAttribute="leading" secondItem="mTX-8O-mf4" secondAttribute="leading" id="RPT-cs-2Yv"/>
+                                            <constraint firstItem="N0h-3k-cme" firstAttribute="leading" secondItem="OJS-Lx-AE2" secondAttribute="leading" constant="47" id="RXX-PP-qgQ"/>
+                                            <constraint firstItem="gYD-Ye-sL1" firstAttribute="top" secondItem="Rlt-vR-vSx" secondAttribute="bottom" constant="6" id="SHG-VB-d19"/>
+                                            <constraint firstAttribute="trailing" secondItem="Gth-jb-ONu" secondAttribute="trailing" constant="33" id="Y2d-ie-UEN"/>
+                                            <constraint firstItem="FQa-Zn-lon" firstAttribute="centerY" secondItem="jWH-Dm-en1" secondAttribute="centerY" id="aDt-TS-XQs"/>
+                                            <constraint firstItem="FQa-Zn-lon" firstAttribute="leading" secondItem="jWH-Dm-en1" secondAttribute="trailing" id="aUX-bc-eZa"/>
+                                            <constraint firstItem="KdH-cT-eVd" firstAttribute="trailing" secondItem="3Kx-JS-DNJ" secondAttribute="trailing" id="aes-Qk-9Lb"/>
+                                            <constraint firstItem="cYN-xo-TaZ" firstAttribute="top" secondItem="3Kx-JS-DNJ" secondAttribute="bottom" constant="22" id="bHE-CT-Kg4"/>
+                                            <constraint firstItem="3Kx-JS-DNJ" firstAttribute="leading" secondItem="OJS-Lx-AE2" secondAttribute="leading" constant="45" id="d1L-fQ-ZP4"/>
+                                            <constraint firstItem="cYN-xo-TaZ" firstAttribute="leading" secondItem="OJS-Lx-AE2" secondAttribute="leading" constant="45" id="d2A-PE-gB8"/>
+                                            <constraint firstItem="IrO-oa-erZ" firstAttribute="leading" secondItem="d23-Eq-Wdp" secondAttribute="leading" id="d2c-PT-edJ"/>
+                                            <constraint firstItem="Eq8-fr-Nct" firstAttribute="leading" secondItem="OJS-Lx-AE2" secondAttribute="leading" constant="45" id="esP-L4-YaO"/>
+                                            <constraint firstItem="8qQ-cu-yV0" firstAttribute="top" secondItem="OJS-Lx-AE2" secondAttribute="top" constant="41" id="g8G-jg-Yin"/>
+                                            <constraint firstItem="Eq8-fr-Nct" firstAttribute="top" secondItem="OJS-Lx-AE2" secondAttribute="top" constant="42" id="gCk-l4-tIv"/>
+                                            <constraint firstItem="GMB-qz-WFd" firstAttribute="top" secondItem="d23-Eq-Wdp" secondAttribute="top" id="ijK-2E-oW4"/>
+                                            <constraint firstItem="LbZ-I1-Rwa" firstAttribute="top" secondItem="cYN-xo-TaZ" secondAttribute="top" id="j4D-Kt-lgq"/>
+                                            <constraint firstItem="xG1-fR-RgC" firstAttribute="leading" secondItem="OJS-Lx-AE2" secondAttribute="leading" constant="45" id="mjU-sc-mJ0"/>
+                                            <constraint firstItem="jWH-Dm-en1" firstAttribute="top" secondItem="N0h-3k-cme" secondAttribute="bottom" constant="12" id="nOe-rH-0jh"/>
+                                            <constraint firstAttribute="trailing" secondItem="xG1-fR-RgC" secondAttribute="trailing" constant="45" id="qa4-TG-gqM"/>
+                                            <constraint firstItem="cqf-FB-afp" firstAttribute="centerY" secondItem="FQa-Zn-lon" secondAttribute="centerY" id="r2m-f5-lIW"/>
+                                            <constraint firstItem="LbZ-I1-Rwa" firstAttribute="trailing" secondItem="3Kx-JS-DNJ" secondAttribute="trailing" id="r3F-aK-7Pc"/>
+                                            <constraint firstItem="8qQ-cu-yV0" firstAttribute="leading" secondItem="Eq8-fr-Nct" secondAttribute="trailing" constant="7" id="rV5-GN-fwn"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rlt-vR-vSx" secondAttribute="trailing" constant="45" id="sIS-sC-Aqg"/>
+                                            <constraint firstItem="LbZ-I1-Rwa" firstAttribute="leading" secondItem="cYN-xo-TaZ" secondAttribute="trailing" constant="8" id="u5c-Wn-ljO"/>
+                                            <constraint firstItem="xG1-fR-RgC" firstAttribute="top" secondItem="mTX-8O-mf4" secondAttribute="bottom" constant="17" id="wZ8-AJ-F7A"/>
+                                            <constraint firstAttribute="height" constant="900" id="we6-ll-PO6"/>
+                                            <constraint firstItem="GMB-qz-WFd" firstAttribute="leading" secondItem="kRX-Sa-26G" secondAttribute="leading" id="ydB-Du-NUA"/>
+                                            <constraint firstAttribute="trailing" secondItem="3Kx-JS-DNJ" secondAttribute="trailing" constant="45" id="ynJ-tT-wzQ"/>
+                                            <constraint firstItem="3Kx-JS-DNJ" firstAttribute="trailing" secondItem="mTX-8O-mf4" secondAttribute="trailing" id="ynL-uA-iSa"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="OJS-Lx-AE2" firstAttribute="top" secondItem="OjD-XH-60E" secondAttribute="top" id="Km5-a1-4Es"/>
+                                    <constraint firstAttribute="trailing" secondItem="OJS-Lx-AE2" secondAttribute="trailing" id="WLN-eV-kb6"/>
+                                    <constraint firstAttribute="bottom" secondItem="OJS-Lx-AE2" secondAttribute="bottom" id="WsJ-h2-jwW"/>
+                                    <constraint firstItem="OJS-Lx-AE2" firstAttribute="leading" secondItem="OjD-XH-60E" secondAttribute="leading" id="eOH-FQ-JEM"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6NH-hq-cD8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aVD-Qw-6W5" firstAttribute="centerX" secondItem="6NH-hq-cD8" secondAttribute="centerX" id="6IP-Nb-Vo7"/>
+                            <constraint firstItem="6NH-hq-cD8" firstAttribute="bottom" secondItem="OjD-XH-60E" secondAttribute="bottom" id="6JY-6Q-1hh"/>
                             <constraint firstItem="Z3O-5L-M7h" firstAttribute="top" secondItem="aVD-Qw-6W5" secondAttribute="bottom" constant="17" id="6LN-YT-sih"/>
+                            <constraint firstItem="OjD-XH-60E" firstAttribute="leading" secondItem="6NH-hq-cD8" secondAttribute="leading" id="Gpp-fS-oCf"/>
                             <constraint firstItem="aVD-Qw-6W5" firstAttribute="top" secondItem="6NH-hq-cD8" secondAttribute="top" multiplier="354:734" constant="354" id="See-3z-jWq"/>
+                            <constraint firstItem="OjD-XH-60E" firstAttribute="top" secondItem="6NH-hq-cD8" secondAttribute="top" constant="213" id="Skx-lG-PYF"/>
                             <constraint firstItem="Z3O-5L-M7h" firstAttribute="centerX" secondItem="6NH-hq-cD8" secondAttribute="centerX" id="nJi-qI-Zjb"/>
+                            <constraint firstItem="6NH-hq-cD8" firstAttribute="trailing" secondItem="OjD-XH-60E" secondAttribute="trailing" id="tf3-gF-Bl5"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="climateImageView" destination="N0h-3k-cme" id="oC3-8q-Hry"/>
+                        <outlet property="climateLabel" destination="7dn-NN-Anx" id="Yuz-Yo-0HE"/>
+                        <outlet property="dateLabel" destination="Eq8-fr-Nct" id="j53-ow-1ef"/>
                         <outlet property="detailEmptyImageView" destination="aVD-Qw-6W5" id="9f5-dO-39P"/>
+                        <outlet property="detailTopConstraint" destination="Skx-lG-PYF" id="nTe-Fe-Xw5"/>
+                        <outlet property="emojiImageView" destination="Rlt-vR-vSx" id="2Cu-AB-AbV"/>
+                        <outlet property="emojiLabel" destination="gYD-Ye-sL1" id="34g-eu-ie5"/>
+                        <outlet property="locationLabel" destination="8qQ-cu-yV0" id="1hk-z7-rsz"/>
+                        <outlet property="temperatureHighLabel" destination="jWH-Dm-en1" id="aHJ-fM-yvb"/>
+                        <outlet property="temperatureLowLabel" destination="cqf-FB-afp" id="F3V-fP-nGz"/>
+                        <outletCollection property="clothesTagLabels" destination="LbZ-I1-Rwa" collectionClass="NSMutableArray" id="NGQ-fL-Dqk"/>
+                        <outletCollection property="clothesTagLabels" destination="kRX-Sa-26G" collectionClass="NSMutableArray" id="9ku-DI-ym2"/>
+                        <outletCollection property="clothesTagLabels" destination="GMB-qz-WFd" collectionClass="NSMutableArray" id="5Wf-aG-TX8"/>
+                        <outletCollection property="clothesTagLabels" destination="KdH-cT-eVd" collectionClass="NSMutableArray" id="JeC-ya-lTS"/>
+                        <outletCollection property="clothesTagTitleLabels" destination="cYN-xo-TaZ" collectionClass="NSMutableArray" id="oPU-Zh-fkk"/>
+                        <outletCollection property="clothesTagTitleLabels" destination="3u8-p9-9Jw" collectionClass="NSMutableArray" id="5km-sD-D0G"/>
+                        <outletCollection property="clothesTagLabels" destination="d23-Eq-Wdp" collectionClass="NSMutableArray" id="4w1-Jw-mbM"/>
+                        <outletCollection property="clothesTagTitleLabels" destination="d23-Eq-Wdp" collectionClass="NSMutableArray" id="JkT-bh-qpp"/>
+                        <outletCollection property="clothesTagTitleLabels" destination="IrO-oa-erZ" collectionClass="NSMutableArray" id="yla-KZ-6HV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1r-2E-K0o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-177" y="-171"/>
+            <point key="canvasLocation" x="-178.40000000000001" y="-171.42857142857144"/>
         </scene>
         <!--CalendarVC-->
         <scene sceneID="rjw-Fe-Uh8">
@@ -480,9 +752,13 @@
         <image name="calendarBtnRecord" width="96" height="48"/>
         <image name="calendarFrameGotoday" width="48" height="48"/>
         <image name="calendarFrameSlide" width="130" height="32"/>
+        <image name="calendarIcCloudy" width="18" height="16.666666030883789"/>
+        <image name="calendarIcEmoji" width="42" height="42"/>
+        <image name="calendarIcMore" width="24" height="24"/>
         <image name="calendarImgCloud" width="179" height="110"/>
         <image name="calendarImgHigh" width="38.333332061767578" height="26"/>
         <image name="calendarImgLow" width="38.333332061767578" height="26"/>
+        <image name="calendarTextDivider" width="19" height="17.666666030883789"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

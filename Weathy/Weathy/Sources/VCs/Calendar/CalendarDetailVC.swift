@@ -11,9 +11,25 @@ class CalendarDetailVC: UIViewController {
     
     //MARK: - Custom Properties
     let screen = UIScreen.main.bounds
+    
+    var clothesTopList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애"]
+    var clothesBottomList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애"]
+    var clothesOuterList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애"]
+    var clothesEtcList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애"]
     //MARK: - IBOutlets
     
+    @IBOutlet weak var detailTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var climateImageView: UIImageView!
     @IBOutlet weak var detailEmptyImageView: UIImageView!
+    @IBOutlet weak var emojiImageView: UIImageView!
+    @IBOutlet weak var emojiLabel: SpacedLabel!
+    @IBOutlet weak var dateLabel: SpacedLabel!
+    @IBOutlet weak var locationLabel: SpacedLabel!
+    @IBOutlet weak var climateLabel: SpacedLabel!
+    @IBOutlet weak var temperatureHighLabel: SpacedLabel!
+    @IBOutlet weak var temperatureLowLabel: SpacedLabel!
+    @IBOutlet var clothesTagLabels: [SpacedLabel]!
+    @IBOutlet var clothesTagTitleLabels: [SpacedLabel]!
     
     //MARK: - Lifecycle Methods
     
@@ -26,17 +42,60 @@ class CalendarDetailVC: UIViewController {
         self.view.addSubview(calendarVC.view)
         calendarVC.didMove(toParent: self)
         calendarVC.view.backgroundColor = .clear
-        
+        detailTopConstraint.constant = self.screen.height*213/812
         let height = view.frame.height
         let width = view.frame.width
-        
         calendarVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        setStyle()
+        setData()
 
     }
     //MARK: - Custom Methods
+    func setStyle(){
+        dateLabel.textColor = .subGrey1
+        dateLabel.font = .SDGothicRegular15
+        
+        locationLabel.textColor = .mainGrey
+        locationLabel.font = .SDGothicMedium15
+        
+        climateLabel.textColor = .mainGrey
+        climateLabel.font = .SDGothicMedium15
+        
+        temperatureHighLabel.textColor = .redTemp
+        temperatureHighLabel.font = UIFont(name: "Roboto-Light", size: 35)
+        
+        temperatureLowLabel.textColor = .blueTemp
+        temperatureLowLabel.font = UIFont(name: "Roboto-Light", size: 35)
+        
+        emojiLabel.textColor = .imojiGootText
+        emojiLabel.font = .SDGothicSemiBold23
+        
+        for titleLabel in clothesTagTitleLabels{
+            titleLabel.font = .SDGothicRegular13
+            titleLabel.characterSpacing = -0.65
+            titleLabel.textColor = .subGrey6
+        }
+        for tagLabel in clothesTagLabels{
+            tagLabel.font = .SDGothicRegular13
+            tagLabel.characterSpacing = -0.65
+        }
+        
+    }
     
+    func setData(){
+        clothesTagLabels[0].text = insertSeparatorInArray(clothesTopList)
+        clothesTagLabels[1].text = insertSeparatorInArray(clothesBottomList)
+        clothesTagLabels[2].text = insertSeparatorInArray(clothesOuterList)
+        clothesTagLabels[3].text = insertSeparatorInArray(clothesEtcList)
+      
+    }
     
+    func insertSeparatorInArray(_ arr: [String]) -> String {
+            return arr.joined(separator: "  ・  ")
+        }
     //MARK: - IBActions
     
-
+    @IBAction func moreBtnDidTap(_ sender: Any) {
+    }
+    
 }
