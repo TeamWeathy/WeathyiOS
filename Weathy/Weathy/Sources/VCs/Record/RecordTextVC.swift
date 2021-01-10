@@ -50,6 +50,7 @@ class RecordTextVC: UIViewController {
         finishBtn.setTitle("내용 추가하기", for: .normal)
         finishBtn.setTitleColor(.white, for: .normal)
         finishBtn.layer.cornerRadius = 30
+        finishBtn.titleLabel?.font = .SDGothicSemiBold16
         
         textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
         textViewSurroundingView.layer.borderWidth = 1
@@ -84,13 +85,13 @@ class RecordTextVC: UIViewController {
     //MARK: - @objc methods
     
     @objc func textViewDidChange(sender:UITextView) {
-
-                if let text = sender.text {
-                    // 초과되는 텍스트 제거
-                    print(text)
-                    
-                }
+        
+        if let text = sender.text {
+            // 초과되는 텍스트 제거
+            print(text)
+            
         }
+    }
 }
 
 //MARK: - Style
@@ -165,6 +166,7 @@ extension RecordTextVC {
             self.finishBtn.setTitle("내용 추가하기", for: .normal)
             self.finishBtn.setTitleColor(.white, for: .normal)
             self.finishBtn.layer.cornerRadius = 30
+            self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
         })
         
         textViewSurroundingView.layer.borderColor = UIColor.mintMain.cgColor
@@ -182,6 +184,7 @@ extension RecordTextVC {
             self.finishBtn.setTitle("내용 추가하기", for: .normal)
             self.finishBtn.setTitleColor(.white, for: .normal)
             self.finishBtn.layer.cornerRadius = 30
+            self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
         })
         textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
         textViewSurroundingView.layer.borderWidth = 1
