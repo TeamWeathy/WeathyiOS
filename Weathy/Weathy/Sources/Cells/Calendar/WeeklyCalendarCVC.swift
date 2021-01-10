@@ -40,7 +40,6 @@ class WeeklyCalendarCVC: UICollectionViewCell {
         selectedView.alpha = 0
         
     }
-    
     func setGreyDay(){
         dayLabel.textColor = .subGrey3
     }

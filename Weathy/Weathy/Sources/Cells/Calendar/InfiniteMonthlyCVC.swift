@@ -23,6 +23,7 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     let today = Date()
     var selectedDate = Date()
     var monthCellDelegate: MonthCellDelegate?
+    var lastSelectedIdx = Date().firstWeekday - 1 + Date().day
     
     @IBOutlet weak var monthlyCalendarCV: UICollectionView!
     
@@ -84,12 +85,18 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
 
 extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? MonthlyCalendarCVC{
-            var selectedComponent = DateComponents()
-            selectedComponent.day = indexPath.item - selectedDate.weekday
-            selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
-            monthCellDelegate?.selectedMonthDateDidChange(selectedDate)
-//            lastSelectedIdx = indexPath.item
+        if lastSelectedIdx != indexPath.item{
+            if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? MonthlyCalendarCVC{
+                cell.isSelected = false
+                
+            }
+            if let cell = collectionView.cellForItem(at: indexPath) as? MonthlyCalendarCVC{
+                var selectedComponent = DateComponents()
+                selectedComponent.day = indexPath.item - (selectedDate.firstWeekday - 1 + selectedDate.day)
+                selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+                monthCellDelegate?.selectedMonthDateDidChange(selectedDate)
+                lastSelectedIdx = indexPath.item
+            }
         }
         
     }
@@ -118,31 +125,56 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthlyCalendarCVC.identifier, for: indexPath) as? MonthlyCalendarCVC else { return UICollectionViewCell() }
+        print("===")
         cell.setDay()
-        //이번달
+        ///이번달
+        print("plz",selectedDate)
         print("month",selectedDate.month,selectedDate.numberOfMonth)
         if indexPath.item >= selectedDate.firstWeekday && indexPath.item < selectedDate.firstWeekday+selectedDate.numberOfMonth{
             //현재 날짜(현재달)
+            if indexPath.item % 7 == 0{
+                cell.setRedday()
+            }
+            if indexPath.item % 7 == 6{
+                cell.setSaturday()
+            }
             cell.dayLabel.text = String(indexPath.item-selectedDate.firstWeekday+1)
+            print("plz",selectedDate.day)
+ 
+            if indexPath.item-selectedDate.firstWeekday+1 == selectedDate.day{
+                print("why1")
+                cell.isSelected = true
+            }
             
+            ///현재달이 오늘을 포함하고 있는 경우
+            if selectedDate.currentYearMonth == Date().currentYearMonth{
+                print("why2")
+                if indexPath.item-selectedDate.firstWeekday+1 == Date().day{
+                    print("why1")
+                    cell.setToday()
+                }
+            }
         }
-        //이전달
-        else if indexPath.item < selectedDate.firstWeekday{
-            
-            let numberOfMonth = lastDate.numberOfMonth
-            cell.dayLabel.text = String(numberOfMonth-selectedDate.firstWeekday+1+indexPath.item)
-            cell.setNonCurrent()
-            
-        }
-        //다음달
-        else if indexPath.item >= selectedDate.firstWeekday+selectedDate.numberOfMonth{
-            ///indexPath.item == firstWeekday+numberOfMonth
-            cell.dayLabel.text = String(indexPath.item - (selectedDate.firstWeekday + selectedDate.numberOfMonth) + 1)
-            cell.setNonCurrent()
-            
-        }
+    
         
-        return cell
-        
+    
+    ///이전달
+    else if indexPath.item < selectedDate.firstWeekday{
+    
+    let numberOfMonth = lastDate.numberOfMonth
+    cell.dayLabel.text = String(numberOfMonth-selectedDate.firstWeekday+1+indexPath.item)
+    cell.setNonCurrent()
+    
     }
+    ///다음달
+    else if indexPath.item >= selectedDate.firstWeekday+selectedDate.numberOfMonth{
+    ///indexPath.item == firstWeekday+numberOfMonth
+    cell.dayLabel.text = String(indexPath.item - (selectedDate.firstWeekday + selectedDate.numberOfMonth) + 1)
+    cell.setNonCurrent()
+    
+    }
+    
+    return cell
+    
+}
 }

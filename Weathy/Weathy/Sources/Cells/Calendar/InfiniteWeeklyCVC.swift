@@ -69,7 +69,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeeklyCalendarCVC.identifier, for: indexPath) as? WeeklyCalendarCVC else { return UICollectionViewCell() }
         cell.selectedView.alpha = 0
-        
+        cell.todayView.alpha = 0
         let tempIdx = indexPath.item + selectedDate.day-(selectedDate.weekday)
         ///토요일
         if indexPath.item == 6{
@@ -82,15 +82,17 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
             cell.dayLabel.textColor = .mainGrey
         }
         if indexPath.item == selectedDate.weekday{
-            if selectedDate == Date(){
-                cell.setToday()
-            }
-            else{
-                cell.setSelectedDay()
-            }
+            cell.setSelectedDay()
         }
         else if indexPath.item > selectedDate.weekday{
             cell.emotionView.alpha = 0
+        }
+        ///현재주가 오늘을 포함하고 있는 경우
+        if selectedDate.currentYearMonth == Date().currentYearMonth{
+            if indexPath.item + selectedDate.day-(selectedDate.weekday) == Date().day{
+                print("today1",selectedDate)
+                cell.setToday()
+            }
         }
         ///현재달
         if 0 < tempIdx && tempIdx <= selectedDate.numberOfMonth{
