@@ -12,10 +12,10 @@ class TImezoneWeatherCVC: UICollectionViewCell {
     
     //MARK: - IBOutlets
     
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeLabel: SpacedLabel!
     @IBOutlet weak var climateImage: UIImageView!
-    @IBOutlet weak var popLabel: UILabel!
-    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var popLabel: SpacedLabel!
+    @IBOutlet weak var temperatureLabel: SpacedLabel!
     
     //MARK: - LifeCycle Methods
     
@@ -25,15 +25,18 @@ class TImezoneWeatherCVC: UICollectionViewCell {
         timeLabel.text = "18시"
         timeLabel.font = UIFont.SDGothicRegular13
         timeLabel.textColor = UIColor.subGrey6
+        timeLabel.characterSpacing = -0.65
         
         climateImage.image = UIImage(named: "ic_fewclouds_day")
         
         popLabel.text = "30%"
         popLabel.font = UIFont.RobotoRegular12
         popLabel.textColor = UIColor.mintIcon
+        popLabel.characterSpacing = -0.6
         
         temperatureLabel.text = "-5°"
         temperatureLabel.font = UIFont.RobotoRegular16
         temperatureLabel.textColor = UIColor.subGrey1
+        temperatureLabel.characterSpacing = -0.8
     }
 }

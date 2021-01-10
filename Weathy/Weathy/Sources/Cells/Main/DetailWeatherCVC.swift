@@ -13,9 +13,9 @@ class DetailWeatherCVC: UICollectionViewCell {
     
     //MARK: - IBOutlets
     @IBOutlet weak var detailPropertyImage: UIImageView!
-    @IBOutlet weak var detailPropertyLabel: UILabel!
-    @IBOutlet weak var detailValueLabel: UILabel!
-    @IBOutlet weak var detailRatingLabel: UILabel!
+    @IBOutlet weak var detailPropertyLabel: SpacedLabel!
+    @IBOutlet weak var detailValueLabel: SpacedLabel!
+    @IBOutlet weak var detailRatingLabel: SpacedLabel!
     
     //MARK: - Custom Methods
     func setCell() {
@@ -24,13 +24,16 @@ class DetailWeatherCVC: UICollectionViewCell {
         detailPropertyLabel.text = "강수량"
         detailPropertyLabel.font = UIFont.SDGothicSemiBold13
         detailPropertyLabel.textColor = UIColor.subGrey6
+        detailPropertyLabel.characterSpacing = -0.65
         
         detailValueLabel.text = "보통"
         detailValueLabel.font = UIFont.SDGothicMedium15
         detailValueLabel.textColor = UIColor.subGrey1
+        detailValueLabel.characterSpacing = -0.75
         
         detailRatingLabel.text = "12m/s"
         detailRatingLabel.font = UIFont.RobotoRegular11
         detailRatingLabel.textColor = UIColor.subGrey6
+        detailRatingLabel.characterSpacing = -0.65
     }
 }

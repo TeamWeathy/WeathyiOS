@@ -12,7 +12,7 @@ class MainTopCVC: UICollectionViewCell {
     var closetTop: [String] = ["기모 맨투맨", "히트텍", "폴로니트", "메종 마르지엘라"]
     var closetOuter: [String] = ["청바지", "청바지","청바지","청바지","청바지"]
     var closetBottom: [String] = ["롱패딩","루리스"]
-    var closetEtc: [String] = ["목도리","장갑","귀마개","수면양말", "어쩌라구.."]
+    var closetEtc: [String] = ["목도리","장갑","귀마개","수면양말", "어쩌라","마마무"]
     
     //MARK: - IBOutlets
     @IBOutlet weak var todayWeathyNicknameTextLabel: SpacedLabel!
@@ -61,7 +61,7 @@ class MainTopCVC: UICollectionViewCell {
         todayWeathyNicknameTextLabel.characterSpacing = -0.8
         
         todayWeathyView.makeRounded(cornerRadius: 35)
-        todayWeathyView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
+        todayWeathyView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
         
         locationLabel.text = "서울 서대문구"
         locationLabel.font = UIFont.SDGothicSemiBold20
@@ -86,10 +86,12 @@ class MainTopCVC: UICollectionViewCell {
         climateLabel.text = "겹겹이 입기 좋은 날씨"
         climateLabel.font = UIFont.SDGothicRegular16
         climateLabel.textColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.58)
+        climateLabel.characterSpacing = -0.8
         
         weathyDateLabel.text = "2020년 12월 1일"
         weathyDateLabel.font = UIFont.SDGothicRegular13
         weathyDateLabel.textColor = UIColor.subGrey6
+        weathyDateLabel.characterSpacing = -0.65
         
         weathyClimateImage.image = UIImage(named: "ic_fewclouds_day")
         
@@ -117,6 +119,6 @@ class MainTopCVC: UICollectionViewCell {
     }
     
     func insertSeparatorInArray(_ arr: [String]) -> String {
-        return arr.joined(separator: " • ")
+        return arr.joined(separator: "  ・  ")
     }
 }
