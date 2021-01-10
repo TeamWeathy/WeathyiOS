@@ -11,7 +11,7 @@ class MainVC: UIViewController {
     //MARK: - Custom Variables
     var lastContentOffset: CGFloat = 0.0
     
-    //MARK: - IBOutlet
+    //MARK: - IBOutlets
     
     @IBOutlet weak var topBlurView: UIImageView!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
