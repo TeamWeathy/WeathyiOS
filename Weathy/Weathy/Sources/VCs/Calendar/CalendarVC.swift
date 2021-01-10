@@ -7,10 +7,10 @@
 
 import UIKit
 
-class CalendarVC: UIViewController {
+class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
+    
     
     //MARK: - Custom Properties
-    
     let screen = UIScreen.main.bounds
     var isCovered = false
     var panGesture = UIPanGestureRecognizer()
@@ -55,7 +55,6 @@ class CalendarVC: UIViewController {
         setStyle()
         initPicker()
         
-        
         print("today",Calendar.current.dateComponents(in: TimeZone.current, from: selectedDate))
         
     }
@@ -78,7 +77,6 @@ class CalendarVC: UIViewController {
         })
         
     }
-    
     
     //MARK: - Custom Methods
     
@@ -253,6 +251,21 @@ class CalendarVC: UIViewController {
         self.view.layoutSubviews()
         panGesture.setTranslation(CGPoint.zero, in: self.view)
         self.isCovered = false
+    }
+    
+    //MARK: - Protocol Methods
+    
+    func selectedWeekDateDidChange(_ selectedDate: Date) {
+        self.selectedDate = selectedDate
+        selectedDateDidChange()
+        DispatchQueue.main.async(execute: {self.infiniteWeeklyCV.contentOffset.x = 308*self.screen.width/375})
+    }
+    
+    func selectedMonthDateDidChange(_ selectedDate: Date) {
+        self.selectedDate = selectedDate
+        selectedDateDidChange()
+        DispatchQueue.main.async(execute: {self.infiniteWeeklyCV.contentOffset.x = 308*self.screen.width/375})
+        closeDrawer()
     }
     
     //MARK: - @objc methods
@@ -471,9 +484,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 selectedDate = lastWeekDate
                 selectedDateDidChange()
                 DispatchQueue.main.async(execute: {
-                    print("$$")
                     self.infiniteWeeklyCV.contentOffset.x = 308*self.screen.width/375
-                    //                self.pickerTextView.alpha = 1
                 })
                 
             }
@@ -527,6 +538,7 @@ extension CalendarVC: UICollectionViewDataSource{
             print("$$reloaded")
             print("~~~indexPath",indexPath,infiniteMonthList)
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteMonthlyCVC.identifier, for: indexPath) as? InfiniteMonthlyCVC else { return UICollectionViewCell() }
+            cell.monthCellDelegate = self
             cell.initDate(infiniteMonthList[indexPath.item])
             cell.monthlyCalendarCV.reloadData()
             return cell
@@ -535,7 +547,7 @@ extension CalendarVC: UICollectionViewDataSource{
         ///weekly
         else{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteWeeklyCVC.identifier, for: indexPath) as? InfiniteWeeklyCVC else { return UICollectionViewCell() }
-            
+            cell.weekCellDelegate = self
             cell.selectedDate = infiniteWeekList[indexPath.item]
             cell.weeklyCalendarCV.reloadData()
             return cell
@@ -543,3 +555,4 @@ extension CalendarVC: UICollectionViewDataSource{
         
     }
 }
+

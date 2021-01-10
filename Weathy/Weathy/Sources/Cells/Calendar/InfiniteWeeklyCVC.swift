@@ -7,11 +7,18 @@
 
 import UIKit
 
+protocol WeekCellDelegate{
+    func selectedWeekDateDidChange(_ selectedDate: Date)
+}
+
 class InfiniteWeeklyCVC: UICollectionViewCell {
+    
     static let identifier = "InfiniteWeeklyCVC"
     var selectedDate = Date()
     var lastSelectedIdx = Date().weekday
     let screen = UIScreen.main.bounds
+    var weekCellDelegate: WeekCellDelegate?
+    
     @IBOutlet weak var weeklyCalendarCV: UICollectionView!
     
     override func awakeFromNib() {
@@ -37,7 +44,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected")
+        print("weekly selected",indexPath)
         if lastSelectedIdx != indexPath.item{
             if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? WeeklyCalendarCVC{
                 cell.isSelected = false
@@ -47,7 +54,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
                 var selectedComponent = DateComponents()
                 selectedComponent.day = indexPath.item - selectedDate.weekday
                 selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
-//                collectionView.reloadData()
+                weekCellDelegate?.selectedWeekDateDidChange(selectedDate)
                 lastSelectedIdx = indexPath.item
             }
         }
@@ -62,6 +69,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeeklyCalendarCVC.identifier, for: indexPath) as? WeeklyCalendarCVC else { return UICollectionViewCell() }
         cell.selectedView.alpha = 0
+        
         let tempIdx = indexPath.item + selectedDate.day-(selectedDate.weekday)
         ///토요일
         if indexPath.item == 6{
@@ -74,22 +82,32 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
             cell.dayLabel.textColor = .mainGrey
         }
         if indexPath.item == selectedDate.weekday{
-            print("here1")
-            //            weekdayLabelCollection[indexPath.item].textColor = .white
-            cell.setToday()
+            if selectedDate == Date(){
+                cell.setToday()
+            }
+            else{
+                cell.setSelectedDay()
+            }
         }
         else if indexPath.item > selectedDate.weekday{
             cell.emotionView.alpha = 0
         }
-        if tempIdx>0{
+        ///현재달
+        if 0 < tempIdx && tempIdx <= selectedDate.numberOfMonth{
             cell.dayLabel.text = String(indexPath.item + selectedDate.day-(selectedDate.weekday))
         }
+        ///이전달
         else if tempIdx<=0{
-            var lastMonth = selectedDate.month - 1
-            if lastMonth == 0{
-                lastMonth = 12
-            }
-            cell.dayLabel.text = String(selectedDate.numberOfMonth-(selectedDate.weekday)-1+indexPath.item)
+            var last = Date()
+            var lastComponent = DateComponents()
+            lastComponent.month = -1
+            last = Calendar.current.date(byAdding: lastComponent, to: selectedDate)!
+            cell.dayLabel.text = String(last.numberOfMonth + tempIdx)
+            cell.setGreyDay()
+        }
+        ///다음달
+        else if tempIdx > selectedDate.numberOfMonth{
+            cell.dayLabel.text = String(tempIdx - selectedDate.numberOfMonth)
             cell.setGreyDay()
         }
         
