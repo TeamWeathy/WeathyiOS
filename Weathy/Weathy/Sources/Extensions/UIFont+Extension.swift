@@ -100,12 +100,20 @@ extension UIFont {
         return UIFont(name: "Roboto-Regular", size: 60)!
     }
     
+    class var RobotoLight23: UIFont {
+        return UIFont(name: "Roboto-Light", size: 23)!
+    }
+    
     class var RobotoLight25: UIFont {
         return UIFont(name: "Roboto-Light", size: 25)!
     }
     
     class var RobotoLight30: UIFont {
         return UIFont(name: "Roboto-Light", size: 30)!
+    }
+    
+    class var RobotoLight50: UIFont {
+        return UIFont(name: "Roboto-Light", size: 50)!
     }
     
     class var RobotoLight60: UIFont {

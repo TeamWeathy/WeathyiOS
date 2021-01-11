@@ -26,7 +26,6 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         
         setView()
-        setGradientView()
         
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self

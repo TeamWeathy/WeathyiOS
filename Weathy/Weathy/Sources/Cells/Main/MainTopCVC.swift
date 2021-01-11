@@ -69,20 +69,20 @@ class MainTopCVC: UICollectionViewCell {
         locationLabel.textColor = UIColor.mainGrey
         locationLabel.characterSpacing = -1.0
         
-        currTempLabel.text = "-2°"
-        currTempLabel.font = UIFont.RobotoLight60
+        currTempLabel.text = "-20°"
+        currTempLabel.font = UIFont.RobotoLight50
         currTempLabel.textColor = UIColor.subGrey1
-        currTempLabel.characterSpacing = -3.0
+        currTempLabel.characterSpacing = -2.5
         
         maxTempLabel.text = "24°"
-        maxTempLabel.font = UIFont.RobotoLight25
+        maxTempLabel.font = UIFont.RobotoLight23
         maxTempLabel.textColor = UIColor.redTemp
-        maxTempLabel.characterSpacing = -1.25
+        maxTempLabel.characterSpacing = -1.15
         
         minTempLabel.text = "-14°"
-        minTempLabel.font = UIFont.RobotoLight25
+        minTempLabel.font = UIFont.RobotoLight23
         minTempLabel.textColor = UIColor.blueTemp
-        minTempLabel.characterSpacing = -1.25
+        minTempLabel.characterSpacing = -1.15
         
         climateLabel.text = "겹겹이 입기 좋은 날씨"
         climateLabel.font = UIFont.SDGothicRegular16
