@@ -48,15 +48,15 @@ class MainBottomCVC: UICollectionViewCell {
         
         timeZoneWeatherView.backgroundColor = .white
         timeZoneWeatherView.makeRounded(cornerRadius: 35)
-        timeZoneWeatherView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
+        timeZoneWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1    ), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
         
         weeklyWeatherView.backgroundColor = .white
         weeklyWeatherView.makeRounded(cornerRadius: 35)
-        weeklyWeatherView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
+        weeklyWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
         
         detailWeatherView.backgroundColor = .white
         detailWeatherView.makeRounded(cornerRadius: 35)
-        detailWeatherView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
+        detailWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
     }
     
     func viewScrollUp() {
@@ -78,7 +78,7 @@ class MainBottomCVC: UICollectionViewCell {
         self.WeeklyCenterY.constant = 24
         self.detailCenterY.constant = 24
         
-        UIView.animate(withDuration: 2.0, delay: 0, options: [.overrideInheritedCurve],animations: {
+        UIView.animate(withDuration: 1.2, delay: 0, options: [.overrideInheritedCurve],animations: {
             self.timeZoneWeatherView.alpha = 1
             self.weeklyWeatherView.alpha = 1
             self.detailWeatherView.alpha = 1

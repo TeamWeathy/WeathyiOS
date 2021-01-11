@@ -13,6 +13,7 @@ class MainVC: UIViewController {
     
     //MARK: - IBOutlets
     
+    @IBOutlet weak var mainBackgroundImage: UIImageView!
     @IBOutlet weak var topBlurView: UIImageView!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     @IBOutlet weak var settingIconImage: UIImageView!
@@ -34,6 +35,8 @@ class MainVC: UIViewController {
     //MARK: - Custom Method
     
     func setView() {
+        mainBackgroundImage.image = UIImage(named: "main_bg_morning")
+        
         weatherCollectionView.backgroundColor = .clear
         weatherCollectionView.isPagingEnabled = true
         weatherCollectionView.decelerationRate = .fast
