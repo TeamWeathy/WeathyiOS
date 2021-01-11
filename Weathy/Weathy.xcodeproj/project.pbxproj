@@ -10,6 +10,7 @@
 		0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3133F725A4EB5C0059028C /* RecentTVC.swift */; };
 		0E31344225A724570059028C /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E31344125A724570059028C /* OnBoarding.storyboard */; };
 		0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344425A724A80059028C /* OnBoardingFirstVC.swift */; };
+		0E75F64C25AC1C9D00D98633 /* SearchRecentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */; };
 		0E8C003125A1B7A200A31295 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8C003025A1B7A200A31295 /* Tabbar.storyboard */; };
 		0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003425A1B7CE00A31295 /* TabbarVC.swift */; };
 		0E8C003925A1BC1F00A31295 /* ExampleFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003825A1BC1F00A31295 /* ExampleFirstVC.swift */; };
@@ -54,6 +55,7 @@
 		0E3133F725A4EB5C0059028C /* RecentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTVC.swift; sourceTree = "<group>"; };
 		0E31344125A724570059028C /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
 		0E31344425A724A80059028C /* OnBoardingFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFirstVC.swift; sourceTree = "<group>"; };
+		0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecentInfo.swift; sourceTree = "<group>"; };
 		0E8C003025A1B7A200A31295 /* Tabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabbar.storyboard; sourceTree = "<group>"; };
 		0E8C003425A1B7CE00A31295 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
 		0E8C003825A1BC1F00A31295 /* ExampleFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleFirstVC.swift; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 			path = OnBoarding;
 			sourceTree = "<group>";
 		};
+		0E75F64E25AC1CA500D98633 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		0E8C002F25A1B79500A31295 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,7 +136,7 @@
 			path = Tabbar;
 			sourceTree = "<group>";
 		};
-		0E8C003325A1B7B900A31295 /* TabbarVCs */ = {
+		0E8C003325A1B7B900A31295 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
 				0E8C003425A1B7CE00A31295 /* TabbarVC.swift */,
@@ -134,10 +144,10 @@
 				0E8C003B25A1BC3000A31295 /* ExampleSecondVC.swift */,
 				0E8C003E25A1BC3F00A31295 /* ExampleThirdVC.swift */,
 			);
-			path = TabbarVCs;
+			path = Tabbar;
 			sourceTree = "<group>";
 		};
-		0E8C004525A249A900A31295 /* SettingVCs */ = {
+		0E8C004525A249A900A31295 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				0E8C005125A2585C00A31295 /* SettingNVC.swift */,
@@ -146,7 +156,7 @@
 				0E8C005525A2598800A31295 /* DevelopersInfoVC.swift */,
 				0E8C005825A2F64900A31295 /* AskForVC.swift */,
 			);
-			path = SettingVCs;
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		0E9152DE25A399FE0048E226 /* MainSearchVCs */ = {
@@ -226,8 +236,8 @@
 				0E8C002F25A1B79500A31295 /* Tabbar */,
 				0E8C004125A2498200A31295 /* Setting.storyboard */,
 				0E9152DB25A399EA0048E226 /* MainSearch.storyboard */,
-				6339842D2599B1F600339615 /* LaunchScreen.storyboard */,
 				0E31344125A724570059028C /* OnBoarding.storyboard */,
+				6339842D2599B1F600339615 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -236,8 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				0E31344725A724AC0059028C /* OnBoarding */,
-				0E8C003325A1B7B900A31295 /* TabbarVCs */,
-				0E8C004525A249A900A31295 /* SettingVCs */,
+				0E8C003325A1B7B900A31295 /* Tabbar */,
+				0E8C004525A249A900A31295 /* Setting */,
 				0E9152DE25A399FE0048E226 /* MainSearchVCs */,
 				63DEB266259CD4D600A94488 /* DummyVC.swift */,
 			);
@@ -256,6 +266,7 @@
 		63398441259A2BD100339615 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0E75F64E25AC1CA500D98633 /* Search */,
 				63DEB263259CD4AD00A94488 /* DummyClass.swift */,
 				63D3C53825A4A57500E5FDFE /* SpacedLabel.swift */,
 			);
@@ -477,6 +488,7 @@
 				0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */,
 				63DEB264259CD4AD00A94488 /* DummyClass.swift in Sources */,
 				633984222599B1F400339615 /* SceneDelegate.swift in Sources */,
+				0E75F64C25AC1C9D00D98633 /* SearchRecentInfo.swift in Sources */,
 				0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */,
 				0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */,
 				0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */,
