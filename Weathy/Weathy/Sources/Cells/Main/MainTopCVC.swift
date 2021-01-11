@@ -34,9 +34,14 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var closetOuterLabel: SpacedLabel!
     @IBOutlet weak var closetEtcLabel: SpacedLabel!
     @IBOutlet weak var helpButton: UIButton!
+    @IBOutlet weak var emptyImage: UIImageView!
     
     //MARK: - Custom Methods
     func setCell() {
+        emptyImage.image = UIImage(named: "main_img_empty")
+        emptyImage.alpha = 0
+//        emptyImage.layer.zPosition = 1
+        
         closetTopLabel.text = insertSeparatorInArray(closetTop)
         closetTopLabel.font = UIFont.SDGothicRegular13
         closetTopLabel.textColor = UIColor.black
