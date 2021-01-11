@@ -50,6 +50,7 @@
 		63DEB29C259DA86200A94488 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB29B259DA86200A94488 /* Calendar.storyboard */; };
 		63DEB29F259DAB7400A94488 /* CalendarDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DEB29E259DAB7400A94488 /* CalendarDetailVC.swift */; };
 		63DEB2A5259DAD2C00A94488 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DEB2A4259DAD2C00A94488 /* CalendarVC.swift */; };
+		63E75C8125ACC8C7006D8AA3 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E75C8025ACC8C7006D8AA3 /* CoverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		63DEB29B259DA86200A94488 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		63DEB29E259DAB7400A94488 /* CalendarDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailVC.swift; sourceTree = "<group>"; };
 		63DEB2A4259DAD2C00A94488 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
+		63E75C8025ACC8C7006D8AA3 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		79A77C707317896743084ED5 /* Pods-Weathy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathy.release.xcconfig"; path = "Target Support Files/Pods-Weathy/Pods-Weathy.release.xcconfig"; sourceTree = "<group>"; };
 		B97C9AB444242244F6D69B1C /* Pods-Weathy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathy.debug.xcconfig"; path = "Target Support Files/Pods-Weathy/Pods-Weathy.debug.xcconfig"; sourceTree = "<group>"; };
 		EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weathy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +248,7 @@
 			children = (
 				63DEB263259CD4AD00A94488 /* DummyClass.swift */,
 				63D3C53825A4A57500E5FDFE /* SpacedLabel.swift */,
+				63E75C8025ACC8C7006D8AA3 /* CoverView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
 				63DEB2A5259DAD2C00A94488 /* CalendarVC.swift in Sources */,
 				63DEB29F259DAB7400A94488 /* CalendarDetailVC.swift in Sources */,
+				63E75C8125ACC8C7006D8AA3 /* CoverView.swift in Sources */,
 				0E8C005625A2598800A31295 /* DevelopersInfoVC.swift in Sources */,
 				63DEB26E259CD54100A94488 /* APIConstants.swift in Sources */,
 				0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */,
