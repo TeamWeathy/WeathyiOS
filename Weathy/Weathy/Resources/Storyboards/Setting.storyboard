@@ -531,7 +531,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="307" height="50"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="부메랑" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lv4-7S-nDz">
-                                        <rect key="frame" x="15" y="15.666666666666659" width="277" height="18.666666666666671"/>
+                                        <rect key="frame" x="15" y="15.666666666666657" width="237" height="19"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -539,10 +539,10 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdS-xS-MiL">
-                                        <rect key="frame" x="273" y="17" width="16" height="16"/>
+                                        <rect key="frame" x="252" y="1" width="48" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="16" id="5Aw-OG-0de"/>
-                                            <constraint firstAttribute="height" constant="16" id="yJ6-zu-IC2"/>
+                                            <constraint firstAttribute="width" constant="48" id="5Aw-OG-0de"/>
+                                            <constraint firstAttribute="height" constant="48" id="yJ6-zu-IC2"/>
                                         </constraints>
                                         <state key="normal" image="btnDelete"/>
                                         <connections>
@@ -555,9 +555,9 @@
                                     <constraint firstAttribute="bottom" secondItem="58n-Cx-0zT" secondAttribute="bottom" id="66q-CQ-sOn"/>
                                     <constraint firstAttribute="width" constant="307" id="BHi-rf-6PD"/>
                                     <constraint firstAttribute="trailing" secondItem="58n-Cx-0zT" secondAttribute="trailing" id="K7G-bT-gTl"/>
-                                    <constraint firstAttribute="trailing" secondItem="XdS-xS-MiL" secondAttribute="trailing" constant="18" id="KQM-wE-qXD"/>
+                                    <constraint firstAttribute="trailing" secondItem="XdS-xS-MiL" secondAttribute="trailing" constant="7" id="KQM-wE-qXD"/>
+                                    <constraint firstItem="XdS-xS-MiL" firstAttribute="leading" secondItem="Lv4-7S-nDz" secondAttribute="trailing" id="Xs6-Iu-3dN"/>
                                     <constraint firstItem="Lv4-7S-nDz" firstAttribute="centerY" secondItem="Eab-DD-lof" secondAttribute="centerY" id="ZVj-dC-axA"/>
-                                    <constraint firstAttribute="trailing" secondItem="Lv4-7S-nDz" secondAttribute="trailing" constant="15" id="bqc-hI-dN7"/>
                                     <constraint firstItem="58n-Cx-0zT" firstAttribute="leading" secondItem="Eab-DD-lof" secondAttribute="leading" id="jzG-A8-aXz"/>
                                     <constraint firstItem="58n-Cx-0zT" firstAttribute="top" secondItem="Eab-DD-lof" secondAttribute="top" id="mdU-Cg-wYW"/>
                                     <constraint firstItem="Lv4-7S-nDz" firstAttribute="leading" secondItem="Eab-DD-lof" secondAttribute="leading" constant="15" id="rah-XO-mhs"/>
@@ -631,7 +631,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="698" y="-750"/>
+            <point key="canvasLocation" x="696.79999999999995" y="-750"/>
         </scene>
         <!--SettingNVC-->
         <scene sceneID="Wj5-ha-tXR">

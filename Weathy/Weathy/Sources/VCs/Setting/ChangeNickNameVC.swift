@@ -80,6 +80,7 @@ class ChangeNickNameVC: UIViewController {
         }
     }
     
+    /// 변경하기 눌렀을 때 Aleart
     @IBAction func changeButtonDidTap(_ sender: Any) {
         
         let alert = UIAlertController(title: "닉네임을 변경 하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
@@ -126,6 +127,7 @@ extension ChangeNickNameVC: UITextFieldDelegate{
 }
 
 //MARK: extension ketBoardAction 추가
+
 extension ChangeNickNameVC {
     
     func keyBoardAction(){

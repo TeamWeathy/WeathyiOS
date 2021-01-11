@@ -61,6 +61,17 @@ class ExampleFirstVC: UIViewController {
     
     //MARK: - IBActions
     
+    /// 검색 버튼 눌렀을 때
+    @IBAction func searchButtonDidTap(_ sender: Any) {
+        let storyB = UIStoryboard.init(name: "MainSearch", bundle: nil)
+        
+        guard let vc = storyB.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
+        
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
+    
     /// 설정 버튼 눌렀을 때
     @IBAction func settingButtonDidTap(_ sender: Any) {
         let storyB = UIStoryboard.init(name: "Setting", bundle: nil)

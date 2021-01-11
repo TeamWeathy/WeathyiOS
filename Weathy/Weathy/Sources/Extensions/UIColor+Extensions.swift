@@ -136,6 +136,10 @@ extension UIColor{
     @nonobjc class var imojiHotWhite: UIColor {
         return UIColor(red: 1, green: 0.784, blue: 0.624, alpha: 0.4)
     }
+    @nonobjc class var pink: UIColor {
+        return UIColor(red: 243.0 / 255.0, green: 113.0 / 255.0, blue: 136.0 / 255.0, alpha: 1.0)
+    }
+    
     
     @nonobjc class var imojiVeryHotWhite: UIColor {
         return UIColor(red: 0.954, green: 0.441, blue: 0.534, alpha: 0)
