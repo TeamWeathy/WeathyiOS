@@ -35,9 +35,12 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var closetEtcLabel: SpacedLabel!
     @IBOutlet weak var helpButton: UIButton!
     @IBOutlet weak var emptyImage: UIImageView!
+    @IBOutlet weak var downImage: UIImageView!
     
     //MARK: - Custom Methods
     func setCell() {
+        blankDownImage()
+        
         emptyImage.image = UIImage(named: "main_img_empty")
         emptyImage.alpha = 0
 //        emptyImage.layer.zPosition = 1
@@ -126,6 +129,14 @@ class MainTopCVC: UICollectionViewCell {
     func insertSeparatorInArray(_ arr: [String]) -> String {
         return arr.joined(separator: "  ・  ")
     }
+    
+    func blankDownImage() {
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.autoreverse, .repeat], animations: {
+            self.downImage.alpha = 0
+            self.downImage.alpha = 1
+        }, completion: nil)
+    }
+
 
     //MARK: - IBActions
     
