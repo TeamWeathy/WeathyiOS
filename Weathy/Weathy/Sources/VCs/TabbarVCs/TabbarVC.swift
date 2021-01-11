@@ -82,7 +82,7 @@ class TabbarVC: UIViewController {
         } else { }
         
         /// Scroll이 넘어가는 느낌을 줄 것이냐??  True, False
-        self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+        self.scrollView.setContentOffset(CGPoint.zero, animated: false)
     }
     /// Plus 버튼
     @IBAction func plusButtonDidTap(_ sender: Any) {
@@ -102,7 +102,7 @@ class TabbarVC: UIViewController {
             mainButtonBool = false
         } else { }
         
-        self.scrollView.setContentOffset(CGPoint(x: self.scrollView.frame.width, y: 0), animated: true)
+        self.scrollView.setContentOffset(CGPoint(x: self.scrollView.frame.width, y: 0), animated: false)
     }
 }
 

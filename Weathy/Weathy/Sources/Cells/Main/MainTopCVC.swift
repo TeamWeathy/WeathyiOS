@@ -110,7 +110,6 @@ class MainTopCVC: UICollectionViewCell {
         weathyLowTemperatureLabel.font = UIFont.RobotoLight30
         weathyLowTemperatureLabel.characterSpacing = -1.75
         
-        
 //        weathyStampImage.image = UIImage(named: <#T##String#>)
         weathyStampLabel.text = "추워요"
         weathyStampLabel.font = UIFont.SDGothicSemiBold23
@@ -120,5 +119,45 @@ class MainTopCVC: UICollectionViewCell {
     
     func insertSeparatorInArray(_ arr: [String]) -> String {
         return arr.joined(separator: "  ・  ")
+    }
+
+    //MARK: - IBActions
+    
+    @IBAction func touchUpHelpButton(_ sender: Any) {
+        let screen = UIScreen.main.bounds
+        let screenWidth = 286*screen.width/375
+        
+        let helpBackgroundImage = UIImageView(image: UIImage(named: "main_help_bg_grey"))
+        helpBackgroundImage.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        helpBackgroundImage.contentMode = .scaleToFill
+        helpBackgroundImage.tag = 101
+        
+        let helpBoxImage = UIImageView(image: UIImage(named: "main_help_box_help"))
+        helpBoxImage.frame = CGRect(x: (screen.width-screenWidth+3)/2, y: 335*screen.width/375, width: screenWidth, height: screenWidth * 216 / 286)
+        helpBoxImage.contentMode = .scaleToFill
+        helpBoxImage.tag = 102
+        
+        let closeButton = UIButton(frame: CGRect(x: helpBoxImage.frame.width, y: helpBoxImage.frame.origin.y + 8, width: 48, height: 48))
+        closeButton.setImage(UIImage(named: "ic_close"), for: .normal)
+        closeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 19, bottom: 17, right: 18)
+        closeButton.tag = 103
+        closeButton.addTarget(self, action: #selector(touchUpCloseHelpButton(_:)), for: .touchUpInside)
+        
+        self.superview?.superview?.addSubview(helpBackgroundImage)
+        self.superview?.superview?.addSubview(helpBoxImage)
+        self.superview?.superview?.addSubview(closeButton)
+    }
+    
+    @IBAction func touchUpCloseHelpButton(_ sender: Any) {
+        print("close")
+        guard let helpView = self.superview?.superview else {return}
+        
+        if let helpBackgroundImage = helpView.viewWithTag(101),
+           let helpBoxImage = helpView.viewWithTag(102),
+           let closeButton = helpView.viewWithTag(103) {
+            helpBackgroundImage.removeFromSuperview()
+            helpBoxImage.removeFromSuperview()
+            closeButton.removeFromSuperview()
+        }
     }
 }

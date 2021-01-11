@@ -33,13 +33,6 @@ class MainVC: UIViewController {
     }
     
     //MARK: - Custom Method
-    @IBAction func touchUpSetting(_ sender: Any) {
-        print("setting")
-    }
-    
-    @IBAction func touchUpSearch(_ sender: Any) {
-        print("search")
-    }
     
     func setView() {
         weatherCollectionView.backgroundColor = .clear
@@ -110,6 +103,16 @@ extension MainVC: UICollectionViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastContentOffset = scrollView.contentOffset.y
+    }
+    
+    //MARK: - IBActions
+    
+    @IBAction func touchUpSetting(_ sender: Any) {
+        print("setting")
+    }
+    
+    @IBAction func touchUpSearch(_ sender: Any) {
+        print("search")
     }
 }
 
