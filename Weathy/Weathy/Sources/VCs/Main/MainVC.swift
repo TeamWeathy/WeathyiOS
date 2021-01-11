@@ -50,7 +50,7 @@ class MainVC: UIViewController {
         logoImage.alpha = 0
         
         topBlurView.frame.origin.y -= topBlurView.bounds.height
-        topBlurView.alpha = 1
+        topBlurView.alpha = 0
     }
 }
 
@@ -76,30 +76,18 @@ extension MainVC: UICollectionViewDelegate {
             
             UIView.animate(withDuration: 0.3, animations: {
                 self.logoImage.alpha = 1
+                self.topBlurView.alpha = 1
             })
         } else {
             UIView.animate(withDuration: 0.5, animations: {
                 self.logoImage.transform = CGAffineTransform(translationX: 0, y: 100)
-                
                 self.todayDateTimeLabel.transform = .identity
             })
             
             UIView.animate(withDuration: 0.3, animations: {
                 self.logoImage.alpha = 0
+                self.topBlurView.alpha = 0
             })
-        }
-        
-        let blurHeight = self.topBlurView.frame.size.height
-                
-        if (lastContentOffset < scrollView.contentOffset.y && scrollView.contentOffset.y <= blurHeight) {
-            print("작다")
-
-//            topBlurView.frame.origin.y += blurHeight / scrollView.contentOffset.y
-            print(topBlurView.frame.origin.y)
-        } else if(lastContentOffset > scrollView.contentOffset.y && scrollView.contentOffset.y <= blurHeight && scrollView.contentOffset.y > 0) {
-            print("올라가유")
-//            topBlurView.frame.origin.y -= blurHeight / scrollView.contentOffset.y
-            print(topBlurView.frame.origin.y)
         }
     }
     
