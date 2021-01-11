@@ -58,7 +58,8 @@ class TabbarVC: UIViewController {
         leftVC.didMove(toParent: self)
         
         /// ExampleThirdVC도 동일.
-        guard let rightVC = self.storyboard?.instantiateViewController(withIdentifier: ExampleThirdVC.identifier) as? ExampleThirdVC else { return }
+//        guard let rightVC = self.storyboard?.instantiateViewController(withIdentifier: ExampleThirdVC.identifier) as? ExampleThirdVC else { return }
+        guard let rightVC = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(identifier: "CalendarDetailVC") as? CalendarDetailVC else {return}
         self.addChild(rightVC)
         guard let rightVCView = rightVC.view else { return }
         rightVCView.frame = CGRect(x: self.view.frame.width, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.height)

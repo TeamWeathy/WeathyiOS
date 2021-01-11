@@ -14,6 +14,8 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
     let screen = UIScreen.main.bounds
     let calendarWidth = 308*UIScreen.main.bounds.width/375
     let calendarHeight = 516*UIScreen.main.bounds.width/375
+    let weeklyHeight = UIScreen.main.bounds.height*257/812 + 50
+    let monthlyHeight = UIScreen.main.bounds.height*704/812 + 50
     var isCovered = false
     var panGesture = UIPanGestureRecognizer()
     var tapGesture = UITapGestureRecognizer()
@@ -63,7 +65,7 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
     override func viewWillAppear(_ animated: Bool) {
         UIView.animate(withDuration: 0.3){
             let frame = self.view.frame
-            let heightComponent = self.screen.height*330/812
+            let heightComponent = self.weeklyHeight
             print(heightComponent)
             self.view.frame = CGRect(x: 0, y: 0, width: frame.width, height: heightComponent)
         }
@@ -83,6 +85,7 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
     //MARK: - Custom Methods
     
     func setStyle(){
+        self.view.clipsToBounds = true
         yearMonthTextView.font = UIFont(name: "Roboto-Medium", size: 25)
         yearMonthTextView.textColor = .mainGrey
         calendarDrawerView.clipsToBounds = true
@@ -224,7 +227,7 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
     func openDrawer(){
         infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
                                                 self.infiniteMonthlyCV.contentOffset.x = self.calendarWidth})
-        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.screen.height)
+        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.screen.height-108)
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()})
         UIView.animate(withDuration: 0.3){
             self.infiniteMonthlyCV.alpha = 1
@@ -239,7 +242,7 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
     func closeDrawer(){
         infiniteWeeklyCV.reloadData()
         self.infiniteWeeklyCV.contentOffset.x = calendarWidth
-        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.screen.height*330/812)
+        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: weeklyHeight)
         //spring effect
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
         UIView.animate(withDuration: 0.3){
@@ -273,7 +276,7 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
         print("tapped")
         if isCovered == true{
             print("covered and tapped")
-            self.view.frame = CGRect(x: 0, y: 0, width: self.screen.width, height: self.screen.height*330/812)
+            self.view.frame = CGRect(x: 0, y: 0, width: self.screen.width, height: weeklyHeight)
             UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
             UIView.animate(withDuration: 0.3){
                 self.infiniteMonthlyCV.alpha = 0
@@ -294,11 +297,12 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
             ///going down
             if velocity.y>0{
                 
-                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.screen.height)
+                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: monthlyHeight)
                 infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
                                                         self.infiniteMonthlyCV.contentOffset.x = self.calendarWidth})
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
                                 self.view.layoutIfNeeded()
+                                
                                 },
                                completion: nil)
                 UIView.animate(withDuration: 0.3){
@@ -317,7 +321,7 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
             else{
                 infiniteWeeklyCV.reloadData()
                 self.infiniteWeeklyCV.contentOffset.x = calendarWidth
-                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.screen.height*330/812)
+                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: weeklyHeight)
                 //spring effect
                 UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
                 UIView.animate(withDuration: 0.3){
@@ -332,8 +336,11 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
         }
         //움직이는 중
         else{
-            if self.screen.height*330/812<=height+translation.y && height+translation.y <= self.screen.height{
+            if weeklyHeight<=height+translation.y && height+translation.y <= self.screen.height{
                 self.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: height+translation.y)
+                UIView.animate(withDuration: 0, animations: {self.view.layoutIfNeeded()
+                                self.calendarDrawerView.layoutIfNeeded()})
+                
                 self.view.layoutSubviews()
                 self.infiniteWeeklyCV.alpha = 0
                 self.infiniteMonthlyCV.alpha = (height+translation.y)/(self.screen.height)
