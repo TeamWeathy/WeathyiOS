@@ -20,7 +20,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Nnl-Jr-muc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_phone_1" translatesAutoresizingMaskIntoConstraints="NO" id="Xdx-y9-Waj">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_phone_1" translatesAutoresizingMaskIntoConstraints="NO" id="Xdx-y9-Waj">
                                 <rect key="frame" x="0.0" y="305" width="375" height="507"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Xdx-y9-Waj" secondAttribute="height" multiplier="375:507" id="Unn-Le-SZf"/>
@@ -29,13 +29,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_1" translatesAutoresizingMaskIntoConstraints="NO" id="Isq-6G-8RV">
                                 <rect key="frame" x="29" y="573" width="317" height="118"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKT-p6-Abv">
-                                <rect key="frame" x="34" y="718" width="307" height="55"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKT-p6-Abv">
+                                <rect key="frame" x="33" y="717.66666666666663" width="309" height="55.333333333333371"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="kag-0W-qU6"/>
-                                    <constraint firstAttribute="width" constant="307" id="ztB-p1-d8F"/>
+                                    <constraint firstAttribute="width" secondItem="bKT-p6-Abv" secondAttribute="height" multiplier="307:55" id="vqW-ta-6nw"/>
                                 </constraints>
-                                <state key="normal" image="onboarding_btn_start"/>
+                                <state key="normal" backgroundImage="onboarding_btn_start"/>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_2" translatesAutoresizingMaskIntoConstraints="NO" id="A4D-vv-KYn">
                                 <rect key="frame" x="29" y="393" width="317" height="145"/>
@@ -116,6 +115,7 @@
                             <constraint firstAttribute="bottom" secondItem="Nnl-Jr-muc" secondAttribute="bottom" id="lwj-SR-MkS"/>
                             <constraint firstItem="w46-EK-5Zy" firstAttribute="leading" secondItem="mTK-dV-Mix" secondAttribute="trailing" constant="7" id="nqd-Fn-cLb"/>
                             <constraint firstItem="Nnl-Jr-muc" firstAttribute="top" secondItem="ceg-9O-kML" secondAttribute="top" id="oHY-v2-54a"/>
+                            <constraint firstItem="bKT-p6-Abv" firstAttribute="width" secondItem="ceg-9O-kML" secondAttribute="width" multiplier="309:375" id="oHs-QA-Fyd"/>
                             <constraint firstItem="a69-LG-iOR" firstAttribute="top" secondItem="136-AM-m6k" secondAttribute="bottom" constant="7" id="sM0-fA-x9K"/>
                             <constraint firstItem="136-AM-m6k" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="x6d-t7-9t2"/>
                         </constraints>
