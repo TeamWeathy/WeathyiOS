@@ -21,8 +21,8 @@ class CalendarDetailVC: UIViewController,WeekCellDelegate,MonthCellDelegate {
     
     let screen = UIScreen.main.bounds
     
-    var clothesTopList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애"]
-    var clothesBottomList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애"]
+    var clothesTopList = ["기모맨투맨투맨","히트텍하트","폴로니트니트니","메종 마르지엘라 사줘","이인애바보"]
+    var clothesBottomList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애요지랄"]
     var clothesOuterList = ["기모맨투맨","히트텍","마","메종 마르지엘라 사줘","이인애"]
     var clothesEtcList = ["기모맨투맨","히트텍","폴로니트","메종 ","이인애"]
     var blurView = UIView()
@@ -181,25 +181,21 @@ class CalendarDetailVC: UIViewController,WeekCellDelegate,MonthCellDelegate {
         UIView.animate(withDuration: 0.2){
             self.view.layoutIfNeeded()
             self.moreMenuView.alpha = 0
-//            self.moreBtn.isSelected = false
         }
     }
     
     @objc func cancelAction(_ sender: Any){
-        closeMoreMenu(nil)
         self.blurView.removeFromSuperview()
     }
     
     @objc func deleteAction(_ sender: Any){
-        closeMoreMenu(nil)
-        self.parent?.view.addSubview(blurView)
+        self.parent?.view.addSubview(self.blurView)
     }
     
     
     //MARK: - IBActions
     
     @IBAction func moreBtnDidTap(_ sender: UIButton) {
-//        moreBtn.isSelected = true
         self.moreViewHeightConstraint.constant = 90
         UIView.animate(withDuration: 0.3){
             self.moreMenuView.alpha = 1
@@ -214,7 +210,7 @@ class CalendarDetailVC: UIViewController,WeekCellDelegate,MonthCellDelegate {
         
     }
     @IBAction func deleteBtnDidTap(_ sender: Any) {
-//        closeMoreMenu(nil)
+        closeMoreMenu(nil)
         self.parent?.view.addSubview(blurView)
  
     }
