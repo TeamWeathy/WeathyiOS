@@ -134,7 +134,7 @@ class MainTopCVC: UICollectionViewCell {
         helpBackgroundImage.tag = 101
         
         let helpBoxImage = UIImageView(image: UIImage(named: "main_help_box_help"))
-        helpBoxImage.frame = CGRect(x: (screen.width-screenWidth+3)/2, y: 335*screen.width/375, width: screenWidth, height: screenWidth * 216 / 286)
+        helpBoxImage.frame = CGRect(x: (screen.width-screenWidth+3)/2, y: 382*screen.width/375, width: screenWidth, height: screenWidth * 216 / 286)
         helpBoxImage.contentMode = .scaleToFill
         helpBoxImage.tag = 102
         
@@ -146,9 +146,8 @@ class MainTopCVC: UICollectionViewCell {
         
         guard let helpView = self.superview?.superview?.superview?.superview else {return}
         
-        if let scrollView = self.superview?.superview {
-            print(scrollView)
-            print("성공..")
+        if let collectionView = self.superview as? UICollectionView{
+            collectionView.isScrollEnabled = false
         } else {
             return
         }
@@ -169,6 +168,12 @@ class MainTopCVC: UICollectionViewCell {
             helpBackgroundImage.removeFromSuperview()
             helpBoxImage.removeFromSuperview()
             closeButton.removeFromSuperview()
+        }
+        
+        if let collectionView = self.superview as? UICollectionView{
+            collectionView.isScrollEnabled = true
+        } else {
+            return
         }
         
         helpButton.isUserInteractionEnabled = true
