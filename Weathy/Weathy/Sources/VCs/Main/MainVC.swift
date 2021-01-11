@@ -50,7 +50,7 @@ class MainVC: UIViewController {
         logoImage.alpha = 0
         
         topBlurView.frame.origin.y -= topBlurView.bounds.height
-        topBlurView.alpha = 0
+        topBlurView.alpha = 1
     }
 }
 

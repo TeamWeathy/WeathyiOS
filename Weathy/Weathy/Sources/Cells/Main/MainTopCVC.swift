@@ -104,17 +104,17 @@ class MainTopCVC: UICollectionViewCell {
         weathyClimateLabel.text = "구름조금"
         weathyClimateLabel.font = UIFont.SDGothicMedium15
         weathyClimateLabel.textColor = UIColor.subGrey1
-        weathyClimateLabel.characterSpacing = -1.15
+        weathyClimateLabel.characterSpacing = -0.75
         
-        weathyHighTemperatureLabel.text = "4°"
+        weathyHighTemperatureLabel.text = "20°"
         weathyHighTemperatureLabel.textColor = UIColor.redTemp
         weathyHighTemperatureLabel.font = UIFont.RobotoLight30
-        weathyHighTemperatureLabel.characterSpacing = -1.75
+        weathyHighTemperatureLabel.characterSpacing = -1.5
         
-        weathyLowTemperatureLabel.text = "-4°"
+        weathyLowTemperatureLabel.text = "-20°"
         weathyLowTemperatureLabel.textColor = UIColor.blueTemp
         weathyLowTemperatureLabel.font = UIFont.RobotoLight30
-        weathyLowTemperatureLabel.characterSpacing = -1.75
+        weathyLowTemperatureLabel.characterSpacing = -1.5
         
 //        weathyStampImage.image = UIImage(named: <#T##String#>)
         weathyStampLabel.text = "추워요"

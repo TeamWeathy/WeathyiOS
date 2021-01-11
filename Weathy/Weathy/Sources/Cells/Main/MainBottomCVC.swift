@@ -48,15 +48,15 @@ class MainBottomCVC: UICollectionViewCell {
         
         timeZoneWeatherView.backgroundColor = .white
         timeZoneWeatherView.makeRounded(cornerRadius: 35)
-        timeZoneWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1    ), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
+        timeZoneWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
         
         weeklyWeatherView.backgroundColor = .white
         weeklyWeatherView.makeRounded(cornerRadius: 35)
-        weeklyWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
+        weeklyWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
         
         detailWeatherView.backgroundColor = .white
         detailWeatherView.makeRounded(cornerRadius: 35)
-        detailWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
+        detailWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
     }
     
     func viewScrollUp() {
