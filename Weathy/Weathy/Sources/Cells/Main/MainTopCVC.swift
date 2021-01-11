@@ -33,6 +33,7 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var closetBottomLabel: SpacedLabel!
     @IBOutlet weak var closetOuterLabel: SpacedLabel!
     @IBOutlet weak var closetEtcLabel: SpacedLabel!
+    @IBOutlet weak var helpButton: UIButton!
     
     //MARK: - Custom Methods
     func setCell() {
@@ -123,7 +124,7 @@ class MainTopCVC: UICollectionViewCell {
 
     //MARK: - IBActions
     
-    @IBAction func touchUpHelpButton(_ sender: Any) {
+    @IBAction func touchUpHelpButton(_ sender: UIButton) {
         let screen = UIScreen.main.bounds
         let screenWidth = 286*screen.width/375
         
@@ -143,14 +144,24 @@ class MainTopCVC: UICollectionViewCell {
         closeButton.tag = 103
         closeButton.addTarget(self, action: #selector(touchUpCloseHelpButton(_:)), for: .touchUpInside)
         
-        self.superview?.superview?.addSubview(helpBackgroundImage)
-        self.superview?.superview?.addSubview(helpBoxImage)
-        self.superview?.superview?.addSubview(closeButton)
+        guard let helpView = self.superview?.superview?.superview?.superview else {return}
+        
+        if let scrollView = self.superview?.superview {
+            print(scrollView)
+            print("성공..")
+        } else {
+            return
+        }
+        
+        helpView.addSubview(helpBackgroundImage)
+        helpView.addSubview(helpBoxImage)
+        helpView.addSubview(closeButton)
+        
+        helpButton.isUserInteractionEnabled = false
     }
     
     @IBAction func touchUpCloseHelpButton(_ sender: Any) {
-        print("close")
-        guard let helpView = self.superview?.superview else {return}
+        guard let helpView = self.superview?.superview?.superview?.superview else {return}
         
         if let helpBackgroundImage = helpView.viewWithTag(101),
            let helpBoxImage = helpView.viewWithTag(102),
@@ -159,5 +170,7 @@ class MainTopCVC: UICollectionViewCell {
             helpBoxImage.removeFromSuperview()
             closeButton.removeFromSuperview()
         }
+        
+        helpButton.isUserInteractionEnabled = true
     }
 }

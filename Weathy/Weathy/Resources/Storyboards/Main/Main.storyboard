@@ -366,6 +366,7 @@
                                             <outlet property="closetOuterLabel" destination="MoV-sh-QYb" id="Tg2-0p-zm2"/>
                                             <outlet property="closetTopLabel" destination="tf8-gM-odq" id="glk-HJ-HFz"/>
                                             <outlet property="currTempLabel" destination="XFM-xw-3ZN" id="CIE-zt-3WF"/>
+                                            <outlet property="helpButton" destination="VRS-U2-Pfs" id="MUZ-8q-Cus"/>
                                             <outlet property="locationLabel" destination="5nk-g4-658" id="Rb7-J9-T8E"/>
                                             <outlet property="maxTempLabel" destination="BCF-fp-hV7" id="vfk-Ur-5cT"/>
                                             <outlet property="minTempLabel" destination="wro-YX-AXK" id="nHP-5C-MCi"/>
