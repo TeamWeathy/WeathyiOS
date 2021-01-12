@@ -61,7 +61,7 @@
 		6354ED9D25AE0B3700C5CAC5 /* InfiniteMonthlyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354ED9925AE0B3700C5CAC5 /* InfiniteMonthlyCVC.swift */; };
 		6354ED9E25AE0B3700C5CAC5 /* InfiniteWeeklyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354ED9A25AE0B3700C5CAC5 /* InfiniteWeeklyCVC.swift */; };
 		6354EDA125AE0B6700C5CAC5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354EDA025AE0B6700C5CAC5 /* Date+Extensions.swift */; };
-		6354EDAC25AE244600C5CAC5 /* CalendarOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354EDAB25AE244600C5CAC5 /* CalendarOverview.swift */; };
+		6354EDAC25AE244600C5CAC5 /* MonthlyWeathy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354EDAB25AE244600C5CAC5 /* MonthlyWeathy.swift */; };
 		63D3C53925A4A57500E5FDFE /* SpacedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D3C53825A4A57500E5FDFE /* SpacedLabel.swift */; };
 		63DEB261259CD49700A94488 /* DummyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DEB260259CD49700A94488 /* DummyCell.swift */; };
 		63DEB264259CD4AD00A94488 /* DummyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DEB263259CD4AD00A94488 /* DummyClass.swift */; };
@@ -133,7 +133,7 @@
 		6354ED9925AE0B3700C5CAC5 /* InfiniteMonthlyCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteMonthlyCVC.swift; path = Calendar/InfiniteMonthlyCVC.swift; sourceTree = "<group>"; };
 		6354ED9A25AE0B3700C5CAC5 /* InfiniteWeeklyCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteWeeklyCVC.swift; path = Calendar/InfiniteWeeklyCVC.swift; sourceTree = "<group>"; };
 		6354EDA025AE0B6700C5CAC5 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
-		6354EDAB25AE244600C5CAC5 /* CalendarOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOverview.swift; sourceTree = "<group>"; };
+		6354EDAB25AE244600C5CAC5 /* MonthlyWeathy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyWeathy.swift; sourceTree = "<group>"; };
 		63D3C53825A4A57500E5FDFE /* SpacedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacedLabel.swift; sourceTree = "<group>"; };
 		63DEB260259CD49700A94488 /* DummyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCell.swift; sourceTree = "<group>"; };
 		63DEB263259CD4AD00A94488 /* DummyClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyClass.swift; sourceTree = "<group>"; };
@@ -385,7 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				63398461259A425200339615 /* GenericResponse.swift */,
-				6354EDAB25AE244600C5CAC5 /* CalendarOverview.swift */,
+				6354EDAB25AE244600C5CAC5 /* MonthlyWeathy.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -614,7 +614,7 @@
 				63398462259A425200339615 /* GenericResponse.swift in Sources */,
 				63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */,
 				63DEB272259CD55A00A94488 /* NetworkResult.swift in Sources */,
-				6354EDAC25AE244600C5CAC5 /* CalendarOverview.swift in Sources */,
+				6354EDAC25AE244600C5CAC5 /* MonthlyWeathy.swift in Sources */,
 				3735AE3725A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift in Sources */,
 				6339846F259A433400339615 /* UIColor+Extensions.swift in Sources */,
 				6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */,

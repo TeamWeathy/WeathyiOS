@@ -91,4 +91,6 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         highLabel.text = "\(high)º"
         lowLabel.text = "\(low)º"
     }
+    
+    
 }

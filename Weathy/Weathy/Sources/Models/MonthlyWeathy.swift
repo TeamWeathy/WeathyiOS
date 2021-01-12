@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct CalendarOverview: Codable {
-    var calendarOverviewList: [CalendarOverviewList?]
+struct MonthlyWeathy: Codable {
+    var calendarOverviewList: [CalendarOverview?]
     var message: String
 }
 
 // MARK: - CalendarOverviewList
-struct CalendarOverviewList: Codable {
+struct CalendarOverview: Codable {
     var id, stampID: Int
     var temperature: Temperature
 

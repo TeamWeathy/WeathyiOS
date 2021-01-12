@@ -12,7 +12,9 @@ protocol MonthCellDelegate{
 }
 
 class InfiniteMonthlyCVC: UICollectionViewCell {
+    
     static let identifier = "InfiniteMonthlyCVC"
+    
     let screen = UIScreen.main.bounds
     var dateComponents = DateComponents()
     var lastComponents = DateComponents()
@@ -23,6 +25,7 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     var selectedDate = Date()
     var monthCellDelegate: MonthCellDelegate?
     var lastSelectedIdx = Date().firstWeekday - 1 + Date().day
+    var monthlyWeathyList:[MonthlyWeathyData?] = []
     
     @IBOutlet weak var monthlyCalendarCV: UICollectionView!
     
