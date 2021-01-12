@@ -19,8 +19,8 @@ class RecordStartVC: UIViewController {
     var day: String = "월"
     var location: String = "서울시 서초구"
     var currentTemp: Int = -2
-    var maxTemp: Int = 4
-    var minTemp: Int = -4
+    var maxTemp: Int = 20
+    var minTemp: Int = -20
     
     var visitedFlag: Bool = false
     var dvc = RecordTagVC()
@@ -145,17 +145,17 @@ extension RecordStartVC {
         boxWeatherImageView.image = UIImage(named: "searchImgSunnycloud")
         
         maxTempLabel.text = "\(maxTemp)°"
-        maxTempLabel.font = UIFont(name: "Roboto-Light", size: 50)
+        maxTempLabel.font = UIFont(name: "Roboto-Light", size: 40)
         maxTempLabel.textColor = UIColor.redTemp
         maxTempLabel.baselineAdjustment = .alignBaselines
         
         slashLabel.text = "/"
-        slashLabel.font = UIFont(name: "Roboto-Light", size: 30)
+        slashLabel.font = UIFont(name: "Roboto-Regular", size: 23)
         slashLabel.textColor = UIColor(red: 107/255, green: 107/255, blue: 107/255, alpha: 1)
         slashLabel.baselineAdjustment = .alignBaselines
         
         minTempLabel.text = "\(minTemp)°"
-        minTempLabel.font = UIFont(name: "Roboto-Light", size: 50)
+        minTempLabel.font = UIFont(name: "Roboto-Light", size: 40)
         minTempLabel.textColor = UIColor.blueTemp
         minTempLabel.baselineAdjustment = .alignBaselines
     }
