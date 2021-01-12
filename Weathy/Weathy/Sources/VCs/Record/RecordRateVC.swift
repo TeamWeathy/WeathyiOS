@@ -120,11 +120,11 @@ extension RecordRateVC {
         rateCollectionView.bounces = true
         
         rate = [
-            Rates(emoji: "veryhot@4x", title: "너무 더워요", titleColor: "imojiVeryHotText", explanation: "훨씬 얇게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "hot@4x", title: "더워요", titleColor: "orange", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "good@4x", title: "적당해요", titleColor: "yellow", explanation: "딱 적당하게 입었어요.", isSelected: false),
-            Rates(emoji: "cold@4x", title: "추워요", titleColor: "green", explanation: "좀 더 따뜻하게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "verycold@4x", title: "너무 추워요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
+            Rates(emoji: "veryhot", title: "너무 더워요", titleColor: "imojiVeryHotText", explanation: "훨씬 얇게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "hot", title: "더워요", titleColor: "orange", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "good", title: "적당해요", titleColor: "yellow", explanation: "딱 적당하게 입었어요.", isSelected: false),
+            Rates(emoji: "cold", title: "추워요", titleColor: "green", explanation: "좀 더 따뜻하게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "verycold", title: "너무 추워요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
         ]
     }
     
