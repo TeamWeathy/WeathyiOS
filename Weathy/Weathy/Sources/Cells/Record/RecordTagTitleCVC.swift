@@ -23,6 +23,18 @@ class RecordTagTitleCVC: UICollectionViewCell {
         
         if isDeleteView == false {
             countLabel.text = "\(count)/5"
+            
+            if let text = countLabel.text {
+                // "\(group.peopleCount)명" 부분에만 폰트를 다르게 설정
+                let attributedStr = NSMutableAttributedString(string: countLabel.text ?? "")
+                attributedStr.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
+                                           value: UIFont(name: "AppleSDGothicNeoSB00", size: 15.0)!, range: (text as NSString).range(of: "\(count)"))
+                attributedStr.addAttribute(.foregroundColor, value: UIColor.mintIcon, range: (countLabel.text! as NSString).range(of: "\(count)"))
+                
+                if count >= 1 {
+                    countLabel.attributedText = attributedStr
+                }
+            }
         }
         else {
             countLabel.text = "\(total)"
