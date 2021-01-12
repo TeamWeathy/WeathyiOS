@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MonthlyWeathy: Codable {
+struct MonthlyWeathyData: Codable {
     var calendarOverviewList: [CalendarOverview?]
     var message: String
 }
