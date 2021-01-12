@@ -14,7 +14,6 @@ protocol MonthCellDelegate{
 class InfiniteMonthlyCVC: UICollectionViewCell {
     static let identifier = "InfiniteMonthlyCVC"
     let screen = UIScreen.main.bounds
-    var monthlyLines = 5
     var dateComponents = DateComponents()
     var lastComponents = DateComponents()
     var nextComponents = DateComponents()
@@ -59,24 +58,6 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
             isThisMonth = false
         }
         
-        if selectedDate.firstWeekday == 0{
-            if selectedDate.month == 2 && selectedDate.isLeapMonth == false{
-                monthlyLines = 4
-            }
-            else{
-                monthlyLines = 5
-            }
-        }
-        else{
-            if selectedDate.firstWeekday == 6 || (selectedDate.firstWeekday == 5 && selectedDate.numberOfMonth == 31){
-                monthlyLines = 6
-            }
-            else{
-                monthlyLines = 5
-            }
-            
-        }
-        
     }
     
 }
@@ -107,7 +88,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(Int((308*screen.width/375)/7)), height: CGFloat(516/CGFloat(monthlyLines)))
+        return CGSize(width: CGFloat(Int((308*screen.width/375)/7)), height: CGFloat(516/CGFloat(selectedDate.monthlyLines)))
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -120,7 +101,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
 
 extension InfiniteMonthlyCVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return monthlyLines*7
+        return selectedDate.monthlyLines*7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
