@@ -27,7 +27,7 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         
         setView()
-        fallingSnow()
+        fallingRain()
         
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
@@ -80,7 +80,35 @@ class MainVC: UIViewController {
         snowEmitterLayer.timeOffset = 30
         snowEmitterLayer.emitterCells = [flakeEmitterCell]
         snowEmitterLayer.zPosition = 1
-        view.layer.addSublayer(snowEmitterLayer)
+        mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
+    }
+    
+    func fallingRain() {
+        let flakeEmitterCell = CAEmitterCell()
+        flakeEmitterCell.contents = UIImage(named: "rain")?.cgImage
+        flakeEmitterCell.alphaRange = 0.5
+        flakeEmitterCell.alphaSpeed = -0.1
+        flakeEmitterCell.scale = 0.3
+        flakeEmitterCell.scaleRange = 0.3
+        flakeEmitterCell.lifetime = 20.0
+        flakeEmitterCell.birthRate = 20
+        flakeEmitterCell.velocity = 200
+        flakeEmitterCell.velocityRange = 20
+        flakeEmitterCell.yAcceleration = 300
+        flakeEmitterCell.xAcceleration = 5
+        
+        let snowEmitterLayer = CAEmitterLayer()
+        snowEmitterLayer.emitterPosition = CGPoint(x: view.bounds.width / 2, y: -300)
+        snowEmitterLayer.emitterSize = CGSize(width: view.bounds.width * 2, height: 0)
+        snowEmitterLayer.emitterShape = CAEmitterLayerEmitterShape.line
+        snowEmitterLayer.beginTime = CACurrentMediaTime()
+        snowEmitterLayer.timeOffset = 30
+        snowEmitterLayer.emitterCells = [flakeEmitterCell]
+        
+        snowEmitterLayer.setAffineTransform(CGAffineTransform(rotationAngle: .pi/24))
+        snowEmitterLayer.opacity = 0.9
+        
+        mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
     }
 }
 
