@@ -73,6 +73,8 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         dayLabel.textColor = .mainGrey
         highImageView.image = UIImage(named:"calendarImgHigh")
         lowImageView.image = UIImage(named: "calendarImgLow")
+        highImageView.alpha = 0
+        lowImageView.alpha = 0
     }
     
     func setRedday(){
@@ -83,7 +85,7 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         dayLabel.textColor = .dateSaturday
     }
     
-    func setData(_ high: Int, _ low: Int){
+    func setData(high: Int, low: Int){
         highImageView.alpha = 1
         lowImageView.alpha = 1
         highLabel.alpha = 1

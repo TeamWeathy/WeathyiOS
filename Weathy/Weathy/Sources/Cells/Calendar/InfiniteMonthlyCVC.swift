@@ -25,7 +25,7 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     var selectedDate = Date()
     var monthCellDelegate: MonthCellDelegate?
     var lastSelectedIdx = Date().firstWeekday - 1 + Date().day
-    var monthlyWeathyList:[MonthlyWeathyData?] = []
+    var monthlyWeathyData: MonthlyWeathyData?
     
     @IBOutlet weak var monthlyCalendarCV: UICollectionView!
     
@@ -157,6 +157,13 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
     cell.setNonCurrent()
     
     }
+    
+    ///데이터 표시
+        if let high = monthlyWeathyData?.calendarOverviewList[indexPath.item]?.temperature.maxTemp{
+            if let low = monthlyWeathyData?.calendarOverviewList[indexPath.item]?.temperature.minTemp{
+                cell.setData(high: high, low: low)
+            }
+        }
     
     return cell
     
