@@ -23,12 +23,12 @@ class SplashVC: UIViewController {
     }
     
     func displaySplash() {
-        animationView.animation = Animation.named("스플래시.json")
+        animationView.animation = Animation.named("스플래시")
         animationView.frame = view.bounds
-        animationView.contentMode = .scaleAspectFill
+        animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
         animationView.play()
-        view.addSubview(animationView)
+        self.view.addSubview(animationView)
     }
 
 }
