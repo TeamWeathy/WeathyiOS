@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "scale" : "1x",
+      "idiom" : "universal",
+      "filename" : "calendarIcEmoji.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "calendarIcEmoji@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "calendarIcEmoji@3x.png",
+      "scale" : "3x",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
