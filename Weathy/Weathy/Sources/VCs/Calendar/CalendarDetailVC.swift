@@ -36,6 +36,7 @@ class CalendarDetailVC: UIViewController {
     var clothesEtcList = ["기모맨투맨","히트텍","폴로니트","메종 ","이인애"]
     var blurView = UIView()
     var selectedDate = Date()
+    var calendarVC: CalendarVC!
     
     //MARK: - IBOutlets
     
@@ -60,9 +61,7 @@ class CalendarDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let calendarVC = self.storyboard?.instantiateViewController(identifier: "CalendarVC") as? CalendarVC else{
-            return
-        }
+        calendarVC = self.storyboard?.instantiateViewController(identifier: "CalendarVC") as? CalendarVC
         self.addChild(calendarVC)
         self.view.addSubview(calendarVC.view)
         calendarVC.didMove(toParent: self)
@@ -71,19 +70,22 @@ class CalendarDetailVC: UIViewController {
         let height = view.frame.height
         let width = view.frame.width
         calendarVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        if let weekCell = calendarVC.infiniteWeeklyCV.cellForItem(at: [0,selectedDate.weekday]) as? InfiniteWeeklyCVC{
-//            weekCell.weekCellDelegate = self
-            DispatchQueue.main.async {
-                
-            }
-        }
+        //        if let weekCell = calendarVC.infiniteWeeklyCV.cellForItem(at: [0,selectedDate.weekday]) as? InfiniteWeeklyCVC{
+        //            weekCell.weekCellDelegate = self
+        //            DispatchQueue.main.async {
+        //
+        //            }
+        //        }
         setStyle()
         setData()
         setPopup()
+        NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
 //        initGestureRecognizer()
         
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        closeMoreMenu(nil)
+    }
     //MARK: - Custom Methods
     func initGestureRecognizer() {
         let moreBtnTap = UITapGestureRecognizer(target: self, action: #selector(closeMoreMenu(_:)))
@@ -218,6 +220,10 @@ class CalendarDetailVC: UIViewController {
         self.parent?.view.addSubview(self.blurView)
     }
     
+    @objc func selectedDateDidChange(_ notification: NSNotification){
+        selectedDate = notification.object as! Date
+        dateLabel.text = dateFormatter.string(from: selectedDate)
+    }
     
     //MARK: - IBActions
     
@@ -238,17 +244,20 @@ class CalendarDetailVC: UIViewController {
     @IBAction func deleteBtnDidTap(_ sender: Any) {
         closeMoreMenu(nil)
         self.parent?.view.addSubview(blurView)
- 
+        
     }
     
 }
 
 extension CalendarDetailVC: UIGestureRecognizerDelegate{
     func gestureRecognizer(_ gestrueRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-            if (touch.view?.isDescendant(of: self.moreMenuView))! {
-
-                return true
-            }
+        if (touch.view?.isDescendant(of: self.moreMenuView))! {
+            
             return true
         }
+        if (touch.view?.isDescendant(of: self.calendarVC.calendarDrawerView))!{
+            return true
+        }
+        return false
+    }
 }

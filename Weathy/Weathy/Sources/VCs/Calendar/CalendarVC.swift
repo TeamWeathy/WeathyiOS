@@ -191,7 +191,8 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
     
     func selectedDateDidChange(){
         print("selected")
-        
+        NotificationCenter.default.post(
+            name: NSNotification.Name(rawValue: "ChangeDate"),object: selectedDate)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.dateFormat = "yyyy.MM"
