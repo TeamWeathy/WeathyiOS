@@ -47,10 +47,12 @@ extension RecordTagDeletePopupVC {
         titleLabel.font = .SDGothicSemiBold20
         titleLabel.textColor = .pink
         titleLabel.text = "\(tagCount)개 태그를 정말 삭제할까요?"
+        titleLabel.lineSetting(kernValue: -1.0)
         
         subTitleLabel.font = .SDGothicRegular16
         subTitleLabel.textColor = .subGrey6
         subTitleLabel.text = "삭제하면 되돌릴 수 없어요."
+        subTitleLabel.lineSetting(kernValue: -0.8)
         
         cancelBtn.setBorder(borderColor: .subGrey2, borderWidth: 1)
         cancelBtn.makeRounded(cornerRadius: 25)
