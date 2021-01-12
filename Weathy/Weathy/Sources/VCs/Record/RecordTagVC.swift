@@ -293,7 +293,7 @@ extension RecordTagVC {
         titleLabel.textColor = UIColor.mainGrey
         titleLabel.numberOfLines = 2
         
-        explanationLabel.text = "+를 눌러 추가하고, 꾹 눌러 삭제할 수 있어요."
+        explanationLabel.text = "옷은 길게 눌러 삭제하고, +를 눌러 추가할 수 있어요."
         explanationLabel.font = UIFont.SDGothicRegular16
         explanationLabel.textColor = UIColor.subGrey6
         
