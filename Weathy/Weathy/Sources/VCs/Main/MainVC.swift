@@ -27,6 +27,7 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         
         setView()
+        fallingSnow()
         
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
@@ -35,7 +36,7 @@ class MainVC: UIViewController {
     //MARK: - Custom Method
     
     func setView() {
-        mainBackgroundImage.image = UIImage(named: "main_bg_morning")
+        mainBackgroundImage.image = UIImage(named: "main_bg_snowrain")
         
         weatherCollectionView.backgroundColor = .clear
         weatherCollectionView.isPagingEnabled = true
@@ -49,8 +50,37 @@ class MainVC: UIViewController {
         logoImage.frame.origin.y -= 100
         logoImage.alpha = 0
         
+        topBlurView.image = UIImage(named: "mainscroll_box_topblur_snowrain")
         topBlurView.frame.origin.y -= topBlurView.bounds.height
         topBlurView.alpha = 0
+    }
+    
+    func fallingSnow() {
+        let flakeEmitterCell = CAEmitterCell()
+        flakeEmitterCell.contents = UIImage(named: "snow")?.cgImage
+        flakeEmitterCell.alphaRange = 0.5
+        flakeEmitterCell.alphaSpeed = -0.1
+        flakeEmitterCell.scale = 0.3
+        flakeEmitterCell.scaleRange = 0.6
+        flakeEmitterCell.emissionRange = .pi * 2
+        flakeEmitterCell.lifetime = 20.0
+        flakeEmitterCell.birthRate = 10
+        flakeEmitterCell.velocity = 50
+        flakeEmitterCell.velocityRange = 20
+        flakeEmitterCell.yAcceleration = 10
+        flakeEmitterCell.xAcceleration = 5
+        flakeEmitterCell.spin = -0.5
+        flakeEmitterCell.spinRange = 1.0
+        
+        let snowEmitterLayer = CAEmitterLayer()
+        snowEmitterLayer.emitterPosition = CGPoint(x: view.bounds.width / 2.0, y: -50)
+        snowEmitterLayer.emitterSize = CGSize(width: view.bounds.width, height: 0)
+        snowEmitterLayer.emitterShape = CAEmitterLayerEmitterShape.line
+        snowEmitterLayer.beginTime = CACurrentMediaTime()
+        snowEmitterLayer.timeOffset = 30
+        snowEmitterLayer.emitterCells = [flakeEmitterCell]
+        snowEmitterLayer.zPosition = 1
+        view.layer.addSublayer(snowEmitterLayer)
     }
 }
 

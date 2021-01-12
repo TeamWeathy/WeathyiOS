@@ -72,7 +72,7 @@ class MainTopCVC: UICollectionViewCell {
         todayWeathyView.makeRounded(cornerRadius: 35)
         todayWeathyView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
         
-        locationLabel.text = "서울 서대문구"
+        locationLabel.text = "서울 도봉구"
         locationLabel.font = UIFont.SDGothicSemiBold20
         locationLabel.textColor = UIColor.mainGrey
         locationLabel.characterSpacing = -1.0
@@ -92,7 +92,7 @@ class MainTopCVC: UICollectionViewCell {
         minTempLabel.textColor = UIColor.blueTemp
         minTempLabel.characterSpacing = -1.15
         
-        climateLabel.text = "겹겹이 입기 좋은 날씨"
+        climateLabel.text = "조금 흐리지만 햇살이 따스해요 :)"
         climateLabel.font = UIFont.SDGothicRegular16
         climateLabel.textColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.58)
         climateLabel.characterSpacing = -0.8
