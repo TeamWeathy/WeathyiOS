@@ -196,8 +196,8 @@
 			children = (
 				6303767525A7201600E0EC5E /* InfiniteMonthlyCVC.swift */,
 				6303766A25A649ED00E0EC5E /* MonthlyCalendarCVC.swift */,
-				6303767925A7449A00E0EC5E /* WeeklyCalendarCVC.swift */,
 				637CE7AD25A8EE5200FB8125 /* InfiniteWeeklyCVC.swift */,
+				6303767925A7449A00E0EC5E /* WeeklyCalendarCVC.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";

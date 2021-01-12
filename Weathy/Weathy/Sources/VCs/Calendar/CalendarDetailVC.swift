@@ -7,25 +7,35 @@
 
 import UIKit
 
-class CalendarDetailVC: UIViewController,WeekCellDelegate,MonthCellDelegate {
+class CalendarDetailVC: UIViewController {
     func selectedWeekDateDidChange(_ selectedDate: Date) {
-        print()
+        print("week")
+        self.selectedDate = selectedDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko")
+        dateFormatter.dateFormat = "MM월 dd일 eeee"
+        dateLabel.text = dateFormatter.string(from: selectedDate)
     }
     
     func selectedMonthDateDidChange(_ selectedDate: Date) {
-        print()
+        self.selectedDate = selectedDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko")
+        dateFormatter.dateFormat = "MM월 dd일 eeee"
+        dateLabel.text = dateFormatter.string(from: selectedDate)
     }
     
     
     //MARK: - Custom Properties
     
     let screen = UIScreen.main.bounds
-    
+    let dateFormatter = DateFormatter()
     var clothesTopList = ["기모맨투맨투맨","히트텍하트","폴로니트니트니","메종 마르지엘라 사줘","이인애바보"]
     var clothesBottomList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애요지랄"]
     var clothesOuterList = ["기모맨투맨","히트텍","마","메종 마르지엘라 사줘","이인애"]
     var clothesEtcList = ["기모맨투맨","히트텍","폴로니트","메종 ","이인애"]
     var blurView = UIView()
+    var selectedDate = Date()
     
     //MARK: - IBOutlets
     
@@ -44,6 +54,7 @@ class CalendarDetailVC: UIViewController,WeekCellDelegate,MonthCellDelegate {
     @IBOutlet weak var moreMenuView: UIView!
     @IBOutlet weak var moreViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var moreBtn: UIButton!
+    @IBOutlet weak var commentLabel: SpacedLabel!
     
     //MARK: - Lifecycle Methods
     
@@ -60,10 +71,16 @@ class CalendarDetailVC: UIViewController,WeekCellDelegate,MonthCellDelegate {
         let height = view.frame.height
         let width = view.frame.width
         calendarVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        if let weekCell = calendarVC.infiniteWeeklyCV.cellForItem(at: [0,selectedDate.weekday]) as? InfiniteWeeklyCVC{
+//            weekCell.weekCellDelegate = self
+            DispatchQueue.main.async {
+                
+            }
+        }
         setStyle()
         setData()
         setPopup()
-        initGestureRecognizer()
+//        initGestureRecognizer()
         
     }
     
@@ -110,6 +127,13 @@ class CalendarDetailVC: UIViewController,WeekCellDelegate,MonthCellDelegate {
         moreViewHeightConstraint.constant = 0
         self.view.layoutIfNeeded()
         
+        dateFormatter.locale = Locale(identifier: "ko")
+        dateFormatter.dateFormat = "MM월 dd일 eeee"
+        
+        commentLabel.font = .SDGothicRegular15
+        commentLabel.lineSetting(kernValue: -0.75, lineSpacing: 0, lineHeightMultiple: 1.17)
+        commentLabel.textAlignment = .left
+        
     }
     
     func setData(){
@@ -117,6 +141,8 @@ class CalendarDetailVC: UIViewController,WeekCellDelegate,MonthCellDelegate {
         clothesTagLabels[1].text = insertSeparatorInArray(clothesBottomList)
         clothesTagLabels[2].text = insertSeparatorInArray(clothesOuterList)
         clothesTagLabels[3].text = insertSeparatorInArray(clothesEtcList)
+        
+        dateLabel.text = dateFormatter.string(from: selectedDate)
     }
     
     
@@ -221,7 +247,7 @@ extension CalendarDetailVC: UIGestureRecognizerDelegate{
     func gestureRecognizer(_ gestrueRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
             if (touch.view?.isDescendant(of: self.moreMenuView))! {
 
-                return false
+                return true
             }
             return true
         }

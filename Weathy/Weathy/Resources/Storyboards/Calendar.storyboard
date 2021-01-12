@@ -301,7 +301,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="xoG-cR-d4f" secondAttribute="trailing" id="zdu-08-YvW"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-6V-EYV" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-6V-EYV" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                 <rect key="frame" x="45" y="328" width="285" height="110"/>
                                                 <string key="text">기모랑 히트텍 입고 하나 더 입었어야 했다...
 진짜 바람이 살을 파고드는 것처럼 추운 날이었어 기모랑 히트텍 입고 하나 더 입었어야 했다...
@@ -400,6 +400,7 @@
                     <connections>
                         <outlet property="climateImageView" destination="N0h-3k-cme" id="oC3-8q-Hry"/>
                         <outlet property="climateLabel" destination="7dn-NN-Anx" id="Yuz-Yo-0HE"/>
+                        <outlet property="commentLabel" destination="6YH-6V-EYV" id="Wu0-Or-5t1"/>
                         <outlet property="dateLabel" destination="Eq8-fr-Nct" id="j53-ow-1ef"/>
                         <outlet property="detailEmptyImageView" destination="aVD-Qw-6W5" id="9f5-dO-39P"/>
                         <outlet property="detailTopConstraint" destination="Skx-lG-PYF" id="nTe-Fe-Xw5"/>
