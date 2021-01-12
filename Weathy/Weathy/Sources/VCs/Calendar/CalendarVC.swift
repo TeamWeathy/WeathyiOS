@@ -404,7 +404,7 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
 
 //MARK: - UIGestureRecognizer Delegate
 
-extension CalendarVC: UIGestureRecognizerDelegate{
+extension CalendarVC{
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if gestureRecognizer == self.tapGesture{
             if touch.view?.isDescendant(of: self.view) == true{

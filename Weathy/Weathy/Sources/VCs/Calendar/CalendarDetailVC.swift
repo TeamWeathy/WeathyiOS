@@ -249,7 +249,7 @@ class CalendarDetailVC: UIViewController {
     
 }
 
-extension CalendarDetailVC: UIGestureRecognizerDelegate{
+extension CalendarDetailVC{
     func gestureRecognizer(_ gestrueRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if (touch.view?.isDescendant(of: self.moreMenuView))! {
             
