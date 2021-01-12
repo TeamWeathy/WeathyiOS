@@ -26,7 +26,7 @@ class SplashVC: UIViewController {
         animationView.animation = Animation.named("스플래시")
         animationView.frame = view.bounds
         animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
+        animationView.loopMode = .playOnce
         animationView.play()
         self.view.addSubview(animationView)
     }
