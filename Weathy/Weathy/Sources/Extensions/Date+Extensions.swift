@@ -89,5 +89,24 @@ extension Date {
         return dateComponent.weekday! - 1
     }
     
+    public var monthlyLines: Int{
+        if firstWeekday == 0{
+            if month == 2 && isLeapMonth == false{
+                return 4
+            }
+            else{
+                return 5
+            }
+        }
+        else{
+            if firstWeekday == 6 || (firstWeekday == 5 && numberOfMonth == 31){
+                return 6
+            }
+            else{
+                return 5
+            }
+            
+        }
+    }
     
 }

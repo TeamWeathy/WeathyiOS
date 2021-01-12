@@ -8,23 +8,6 @@
 import UIKit
 
 class CalendarDetailVC: UIViewController {
-    func selectedWeekDateDidChange(_ selectedDate: Date) {
-        print("week")
-        self.selectedDate = selectedDate
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko")
-        dateFormatter.dateFormat = "MM월 dd일 eeee"
-        dateLabel.text = dateFormatter.string(from: selectedDate)
-    }
-    
-    func selectedMonthDateDidChange(_ selectedDate: Date) {
-        self.selectedDate = selectedDate
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko")
-        dateFormatter.dateFormat = "MM월 dd일 eeee"
-        dateLabel.text = dateFormatter.string(from: selectedDate)
-    }
-    
     
     //MARK: - Custom Properties
     
