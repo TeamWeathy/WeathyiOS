@@ -24,8 +24,9 @@ class SplashVC: UIViewController {
     
     func displaySplash() {
         animationView.animation = Animation.named("스플래시")
-        animationView.frame = view.bounds
+        animationView.frame = CGRect(x: 0, y: 0, width: view.frame.width*0.8, height: view.frame.width*0.8)
         animationView.contentMode = .scaleAspectFit
+        animationView.center = self.view.center
         animationView.loopMode = .playOnce
         animationView.play()
         self.view.addSubview(animationView)
