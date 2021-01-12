@@ -22,10 +22,27 @@
 		0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005125A2585C00A31295 /* SettingNVC.swift */; };
 		0E8C005625A2598800A31295 /* DevelopersInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005525A2598800A31295 /* DevelopersInfoVC.swift */; };
 		0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005825A2F64900A31295 /* AskForVC.swift */; };
+		3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */; };
+		3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */; };
 		0E9152DC25A399EA0048E226 /* MainSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9152DB25A399EA0048E226 /* MainSearch.storyboard */; };
 		0E9152E025A39A1F0048E226 /* MainSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9152DF25A39A1F0048E226 /* MainSearchVC.swift */; };
 		3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */; };
+		3735AE3425A8F24C00E71DC3 /* RecordTagAddPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */; };
+		3735AE3725A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE3625A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift */; };
+		374D48D1259CEBF000152B9A /* RecordStart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48D0259CEBF000152B9A /* RecordStart.storyboard */; };
+		374D48D4259CEC0500152B9A /* RecordStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48D3259CEC0500152B9A /* RecordStartVC.swift */; };
+		374D48D8259D1CA600152B9A /* RecordRate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48D7259D1CA600152B9A /* RecordRate.storyboard */; };
+		374D48DB259D1CB600152B9A /* RecordRateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48DA259D1CB600152B9A /* RecordRateVC.swift */; };
+		374D48DF259D236800152B9A /* RecordRateCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48DE259D236800152B9A /* RecordRateCVC.swift */; };
+		374D48E3259D366500152B9A /* RecordText.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48E2259D366500152B9A /* RecordText.storyboard */; };
+		374D48E6259D368600152B9A /* RecordTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48E5259D368600152B9A /* RecordTextVC.swift */; };
+		374D48EA259D49CA00152B9A /* RecordTag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374D48E9259D49CA00152B9A /* RecordTag.storyboard */; };
+		374D48ED259D49DB00152B9A /* RecordTagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48EC259D49DB00152B9A /* RecordTagVC.swift */; };
 		374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48F1259F2A9300152B9A /* UIFont+Extension.swift */; };
+		374D48FE259F678200152B9A /* RecordTagCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D48FD259F678200152B9A /* RecordTagCVC.swift */; };
+		374D4904259F68EE00152B9A /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D4903259F68EE00152B9A /* TagFlowLayout.swift */; };
+		374D490B259F6CAD00152B9A /* RecordTagTitleCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D490A259F6CAD00152B9A /* RecordTagTitleCVC.swift */; };
+		37D3476F25ADB7BD0069247F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */; };
 		4C6D6B3632E6D1F7D4A96051 /* Pods_Weathy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */; };
 		6303766B25A649EE00E0EC5E /* MonthlyCalendarCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303766A25A649ED00E0EC5E /* MonthlyCalendarCVC.swift */; };
 		6303767125A708F800E0EC5E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303767025A708F800E0EC5E /* Date+Extensions.swift */; };
@@ -75,14 +92,31 @@
 		0E8C005125A2585C00A31295 /* SettingNVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNVC.swift; sourceTree = "<group>"; };
 		0E8C005525A2598800A31295 /* DevelopersInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersInfoVC.swift; sourceTree = "<group>"; };
 		0E8C005825A2F64900A31295 /* AskForVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForVC.swift; sourceTree = "<group>"; };
+		3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTagDelete.storyboard; sourceTree = "<group>"; };
+		3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagDeleteVC.swift; sourceTree = "<group>"; };
 		0E9152DB25A399EA0048E226 /* MainSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainSearch.storyboard; sourceTree = "<group>"; };
 		0E9152DF25A39A1F0048E226 /* MainSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchVC.swift; sourceTree = "<group>"; };
 		3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagAddPopupVC.swift; sourceTree = "<group>"; };
+		3735AE3625A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagDeletePopupVC.swift; sourceTree = "<group>"; };
+		374D48D0259CEBF000152B9A /* RecordStart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordStart.storyboard; sourceTree = "<group>"; };
+		374D48D3259CEC0500152B9A /* RecordStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStartVC.swift; sourceTree = "<group>"; };
+		374D48D7259D1CA600152B9A /* RecordRate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordRate.storyboard; sourceTree = "<group>"; };
+		374D48DA259D1CB600152B9A /* RecordRateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRateVC.swift; sourceTree = "<group>"; };
+		374D48DE259D236800152B9A /* RecordRateCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRateCVC.swift; sourceTree = "<group>"; };
+		374D48E2259D366500152B9A /* RecordText.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordText.storyboard; sourceTree = "<group>"; };
+		374D48E5259D368600152B9A /* RecordTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTextVC.swift; sourceTree = "<group>"; };
+		374D48E9259D49CA00152B9A /* RecordTag.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTag.storyboard; sourceTree = "<group>"; };
+		374D48EC259D49DB00152B9A /* RecordTagVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagVC.swift; sourceTree = "<group>"; };
 		374D48F1259F2A9300152B9A /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		6303766A25A649ED00E0EC5E /* MonthlyCalendarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarCVC.swift; sourceTree = "<group>"; };
 		6303767025A708F800E0EC5E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		6303767525A7201600E0EC5E /* InfiniteMonthlyCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteMonthlyCVC.swift; sourceTree = "<group>"; };
 		6303767925A7449A00E0EC5E /* WeeklyCalendarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarCVC.swift; sourceTree = "<group>"; };
+		374D48FD259F678200152B9A /* RecordTagCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagCVC.swift; sourceTree = "<group>"; };
+		374D4903259F68EE00152B9A /* TagFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
+		374D490A259F6CAD00152B9A /* RecordTagTitleCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagTitleCVC.swift; sourceTree = "<group>"; };
+		37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		6339841C2599B1F400339615 /* Weathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339841F2599B1F400339615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		633984212599B1F400339615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +234,41 @@
 				6303767925A7449A00E0EC5E /* WeeklyCalendarCVC.swift */,
 			);
 			path = Calendar;
+		374D48CE259CEBD300152B9A /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				374D48D0259CEBF000152B9A /* RecordStart.storyboard */,
+				374D48E9259D49CA00152B9A /* RecordTag.storyboard */,
+				3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */,
+				374D48D7259D1CA600152B9A /* RecordRate.storyboard */,
+				374D48E2259D366500152B9A /* RecordText.storyboard */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		374D48CF259CEBE100152B9A /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				374D48D3259CEC0500152B9A /* RecordStartVC.swift */,
+				374D48EC259D49DB00152B9A /* RecordTagVC.swift */,
+				3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */,
+				3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */,
+				3735AE3625A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift */,
+				374D48DA259D1CB600152B9A /* RecordRateVC.swift */,
+				374D48E5259D368600152B9A /* RecordTextVC.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		374D48DD259D234A00152B9A /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				374D48DE259D236800152B9A /* RecordRateCVC.swift */,
+				374D48FD259F678200152B9A /* RecordTagCVC.swift */,
+				374D490A259F6CAD00152B9A /* RecordTagTitleCVC.swift */,
+				374D4903259F68EE00152B9A /* TagFlowLayout.swift */,
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 		633984132599B1F400339615 = {
@@ -260,6 +329,7 @@
 		6339843D259A2B6C00339615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				374D48CE259CEBD300152B9A /* Record */,
 				0E8C002F25A1B79500A31295 /* Tabbar */,
 				0E8C004125A2498200A31295 /* Setting.storyboard */,
 				0E9152DB25A399EA0048E226 /* MainSearch.storyboard */,
@@ -274,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				63DEB2A3259DACFD00A94488 /* Calendar */,
+				374D48CF259CEBE100152B9A /* Record */,
 				0E31344725A724AC0059028C /* OnBoarding */,
 				0E8C003325A1B7B900A31295 /* Tabbar */,
 				0E8C004525A249A900A31295 /* Setting */,
@@ -286,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				6303766D25A649F300E0EC5E /* Calendar */,
+				374D48DD259D234A00152B9A /* Record */,
 				0E9152E325A4A0490048E226 /* MainSearchTVCells */,
 				63DEB260259CD49700A94488 /* DummyCell.swift */,
 			);
@@ -311,6 +383,7 @@
 				374D48F1259F2A9300152B9A /* UIFont+Extension.swift */,
 				6303767025A708F800E0EC5E /* Date+Extensions.swift */,
 				3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */,
+				37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -439,15 +512,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				374D48E3259D366500152B9A /* RecordText.storyboard in Resources */,
 				0E8C003125A1B7A200A31295 /* Tabbar.storyboard in Resources */,
 				63DEB295259CF67200A94488 /* AppleSDGothicNeoSB.ttf in Resources */,
+				374D48D8259D1CA600152B9A /* RecordRate.storyboard in Resources */,
 				63DEB294259CF67200A94488 /* AppleSDGothicNeoR.ttf in Resources */,
 				0E31344225A724570059028C /* OnBoarding.storyboard in Resources */,
 				0E9152DC25A399EA0048E226 /* MainSearch.storyboard in Resources */,
 				6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */,
+				374D48D1259CEBF000152B9A /* RecordStart.storyboard in Resources */,
 				6339842C2599B1F600339615 /* Assets.xcassets in Resources */,
 				63DEB293259CF67200A94488 /* AppleSDGothicNeoB.ttf in Resources */,
 				63DEB291259CF67200A94488 /* Roboto-Light.ttf in Resources */,
+				3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */,
+				374D48EA259D49CA00152B9A /* RecordTag.storyboard in Resources */,
 				63DEB296259CF67200A94488 /* Roboto-Regular.ttf in Resources */,
 				63DEB290259CF67200A94488 /* Roboto-Medium.ttf in Resources */,
 				63DEB29C259DA86200A94488 /* Calendar.storyboard in Resources */,
@@ -505,15 +583,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				374D48FE259F678200152B9A /* RecordTagCVC.swift in Sources */,
 				374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */,
 				0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */,
 				6339846C259A431100339615 /* UIView+Extensions.swift in Sources */,
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
 				63DEB2A5259DAD2C00A94488 /* CalendarVC.swift in Sources */,
 				63DEB29F259DAB7400A94488 /* CalendarDetailVC.swift in Sources */,
+				374D48D4259CEC0500152B9A /* RecordStartVC.swift in Sources */,
 				0E8C005625A2598800A31295 /* DevelopersInfoVC.swift in Sources */,
 				63DEB26E259CD54100A94488 /* APIConstants.swift in Sources */,
+				3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */,
+				374D48E6259D368600152B9A /* RecordTextVC.swift in Sources */,
 				0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */,
+				374D48ED259D49DB00152B9A /* RecordTagVC.swift in Sources */,
+				374D48DF259D236800152B9A /* RecordRateCVC.swift in Sources */,
 				0E8C003C25A1BC3000A31295 /* ExampleSecondVC.swift in Sources */,
 				637CE7AE25A8EE5200FB8125 /* InfiniteWeeklyCVC.swift in Sources */,
 				0E8C004725A249B900A31295 /* SettingVC.swift in Sources */,
@@ -523,10 +607,15 @@
 				6303767A25A7449A00E0EC5E /* WeeklyCalendarCVC.swift in Sources */,
 				63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */,
 				63DEB272259CD55A00A94488 /* NetworkResult.swift in Sources */,
+				3735AE3725A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift in Sources */,
 				6339846F259A433400339615 /* UIColor+Extensions.swift in Sources */,
 				6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */,
+				374D490B259F6CAD00152B9A /* RecordTagTitleCVC.swift in Sources */,
+				374D48DB259D1CB600152B9A /* RecordRateVC.swift in Sources */,
 				633984202599B1F400339615 /* AppDelegate.swift in Sources */,
+				374D4904259F68EE00152B9A /* TagFlowLayout.swift in Sources */,
 				63D3C53925A4A57500E5FDFE /* SpacedLabel.swift in Sources */,
+				3735AE3425A8F24C00E71DC3 /* RecordTagAddPopupVC.swift in Sources */,
 				63DEB261259CD49700A94488 /* DummyCell.swift in Sources */,
 				3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */,
 				0E8C003F25A1BC3F00A31295 /* ExampleThirdVC.swift in Sources */,
@@ -539,6 +628,7 @@
 				0E75F64C25AC1C9D00D98633 /* SearchRecentInfo.swift in Sources */,
 				0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */,
 				0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */,
+				37D3476F25ADB7BD0069247F /* UITextField+Extension.swift in Sources */,
 				0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
