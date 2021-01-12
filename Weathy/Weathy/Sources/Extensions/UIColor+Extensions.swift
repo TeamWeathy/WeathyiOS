@@ -105,9 +105,43 @@ extension UIColor{
         return UIColor(red: 0.954, green: 0.441, blue: 0.534, alpha: 1)
     }
     
+    @nonobjc class var mintBorder: UIColor{
+        return UIColor(red: 0.277, green: 0.754, blue: 0.675, alpha: 0.14)
+    }
+    
+    @nonobjc class var greyBorder: UIColor{
+        return UIColor(red: 0.917, green: 0.917, blue: 0.917, alpha: 1)
+    }
+    
+    @nonobjc class var dateRedday: UIColor{
+        return UIColor(red: 0.875, green: 0.443, blue: 0.439, alpha: 1)
+    }
+    
+    @nonobjc class var dateSaturday: UIColor{
+        return UIColor(red: 0.208, green: 0.525, blue: 0.817, alpha: 1)
+    }
+    
+    @nonobjc class var imojiVeryColdWhite: UIColor {
+        return UIColor(red: 0.773, green: 0.773, blue: 1, alpha: 0.4)
+    }
+    
+    @nonobjc class var imojiColdWhite: UIColor {
+        return UIColor(red: 0.6, green: 0.867, blue: 1, alpha: 0.4)
+    }
+    
+    @nonobjc class var imojiGoodWhite: UIColor {
+        return UIColor(red: 0.667, green: 0.886, blue: 0.843, alpha: 0.4)
+    }
+    
+    @nonobjc class var imojiHotWhite: UIColor {
+        return UIColor(red: 1, green: 0.784, blue: 0.624, alpha: 0.4)
+    }
     @nonobjc class var pink: UIColor {
         return UIColor(red: 243.0 / 255.0, green: 113.0 / 255.0, blue: 136.0 / 255.0, alpha: 1.0)
     }
     
     
+    @nonobjc class var imojiVeryHotWhite: UIColor {
+        return UIColor(red: 0.954, green: 0.441, blue: 0.534, alpha: 0)
+    }
 }
