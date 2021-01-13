@@ -84,7 +84,7 @@ class RecordTagVC: UIViewController {
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
-    
+        NotificationCenter.default.addObserver(self, selector: #selector(tagAdded(_:)), name: NSNotification.Name("TagAdded"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,7 +111,10 @@ class RecordTagVC: UIViewController {
         callDisplayTagService()
     }
     
-    
+    @objc func tagAdded(_ noti : Notification){
+        let isAdded = noti.object
+        self.viewWillAppear(true)
+    }
     @objc func longTap(gesture : UILongPressGestureRecognizer!) {
         if gesture.state != .ended {
             

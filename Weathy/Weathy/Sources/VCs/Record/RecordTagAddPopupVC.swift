@@ -69,7 +69,7 @@ class RecordTagAddPopupVC: UIViewController {
     
     @IBAction func closeBtnTap(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
-        self.presentingViewController?.viewWillAppear(false)
+//        self.presentingViewController?.viewWillAppear(false)
     }
     
     @IBAction func addBtnTap(_ sender: Any) {
@@ -159,9 +159,9 @@ extension RecordTagAddPopupVC {
                 if let loadData = data as? ClothesTagData {
 //                    print(">>> loadData", loadData)
                     self.isAdded = true
-                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TagAdded"), object: self.isAdded)
                     self.dismiss(animated: false, completion: nil)
-                    self.presentingViewController?.viewWillAppear(false)
+//                    self.presentingViewController?.viewWillAppear(false)
                 }
                 
             case .requestErr(let msg):
