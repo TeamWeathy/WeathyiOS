@@ -204,12 +204,16 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Zg1-1F-YMv" firstAttribute="top" secondItem="8In-cd-6ni" secondAttribute="bottom" id="Emg-2F-n7X"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7yz-kP-IeN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tp5-0I-7HR" firstAttribute="leading" secondItem="7yz-kP-IeN" secondAttribute="leading" constant="34" id="555-ZD-bd1"/>
+                            <constraint firstItem="NeL-lU-eZP" firstAttribute="leading" secondItem="tp5-0I-7HR" secondAttribute="leading" id="7YZ-53-HG5"/>
                             <constraint firstItem="NeL-lU-eZP" firstAttribute="centerX" secondItem="MLW-OF-2CF" secondAttribute="centerX" id="WPN-uI-2gQ"/>
                             <constraint firstItem="tp5-0I-7HR" firstAttribute="top" secondItem="wB3-mZ-Fcq" secondAttribute="bottom" constant="33" id="e1J-8T-3ex"/>
                             <constraint firstItem="wB3-mZ-Fcq" firstAttribute="leading" secondItem="7yz-kP-IeN" secondAttribute="leading" constant="33" id="gWd-4x-tiS"/>
