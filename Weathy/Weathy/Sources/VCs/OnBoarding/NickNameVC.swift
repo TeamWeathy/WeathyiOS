@@ -84,7 +84,7 @@ class NickNameVC: UIViewController {
         } else {
             changBool = false
             clearButton.isHidden = true
-            self.changeButton.setImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
+            self.changeButton.setImage(UIImage(named: "nickname_btn_start"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             countLabel.textColor = UIColor.black
             countLabel.text = "0"
@@ -149,13 +149,13 @@ extension NickNameVC: UITextFieldDelegate{
         /// 글자 개수에 따른 "변경하기" 버튼 이미지 변경
         if nickNameTextField.text?.count == 0{
             self.changBool = false
-            self.changeButton.setImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
+            self.changeButton.setImage(UIImage(named: "nickname_btn_start"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             clearButton.isHidden = true
             countLabel.textColor = UIColor.black
         }else{
             self.changBool = true
-            self.changeButton.setImage(UIImage(named: "settingBtnEditSelected"), for: .normal)
+            self.changeButton.setImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
             clearButton.isHidden = false
             countLabel.textColor = UIColor.mintMain
