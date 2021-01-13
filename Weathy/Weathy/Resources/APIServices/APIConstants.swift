@@ -12,4 +12,7 @@ struct APIConstants{
     
     // 기록뷰 - 태그, 태그 추가, 태그 삭제
     static let clothesTagURL = baseURL + "/users/"
+    
+    // 웨디 기록
+    static let recordWeathyURL = baseURL + "/weathy"
 }

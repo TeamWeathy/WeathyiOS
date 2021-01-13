@@ -12,10 +12,13 @@ class RecordTextVC: UIViewController {
     //MARK: - Custom Variables
     
     var selectedTags: [Int] = []
+    var selectedStamp: Int = -1
     
     let placeholder: String = "미래의 나에게 들려주고 싶은 날씨 조언을 적어주세요. (예 : 목도리를 챙길걸 그랬어.)"
     let maxWordCount: Int = 100
     var wordCount: Int = 0
+    
+    var enteredText: String?
     
     
     
@@ -77,11 +80,15 @@ class RecordTextVC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func backBtnTap(_ sender: Any) {
-        self.navigationController?.popViewController(animated: false)
+//        self.navigationController?.popViewController(animated: false)
+        self.enteredText = ""
+        callRecordWeathyService()
+//        self.showToast(message: "웨디에 내용이 추가되었어요!")
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        self.showToast(message: "웨디에 내용이 추가되었어요!")
+        callRecordWeathyService()
+//        self.showToast(message: "웨디에 내용이 추가되었어요!")
     }
     
     //MARK: - @objc methods
@@ -220,6 +227,32 @@ extension RecordTextVC {
             self.subTitleLabel.frame = CGRect(x: self.subTitleLabel.frame.origin.x, y: self.subTitleLabel.frame.origin.y+10, width: self.subTitleLabel.frame.width, height: self.subTitleLabel.frame.height)
         })
     }
+    
+    func callRecordWeathyService() {
+        RecordWeathyService.shared.recordWeathy(userId: 63, token: "63:wckgTPK2NtG7JoM0p207XwsmDxOmM7", date: "2021-01-14", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
+            switch networkResult {
+            case .success(let data):
+                if let loadData = data as? RecordWeathyData {
+                    print(loadData)
+                }
+                self.showToast(message: "웨디에 내용이 추가되었어요!")
+                
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                    self.showToast(message: message)
+                }
+                
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
 }
 
 
@@ -255,6 +288,7 @@ extension RecordTextVC: UITextViewDelegate {
             textView.deleteBackward()
         }
         
+        self.enteredText = textView.text
         self.wordCount = Int(textView.text.count)
         wordCountLabel.text = "\(wordCount)"
 

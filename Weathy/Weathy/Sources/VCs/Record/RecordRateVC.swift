@@ -20,6 +20,7 @@ class RecordRateVC: UIViewController {
     }
     
     var selectedTags: [Int] = []
+    var selectedStamp: Int = -1
 
     var rate: [Rates] = []
     
@@ -70,6 +71,7 @@ class RecordRateVC: UIViewController {
         }
         
         dvc.selectedTags = selectedTags
+        dvc.selectedStamp = selectedStamp
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }
@@ -231,6 +233,8 @@ extension RecordRateVC: UICollectionViewDataSource {
             if i == indexPath.item {
                 if rate[i].isSelected == false {
                     rate[i].isSelected = !rate[i].isSelected
+                    /// stampId
+                    self.selectedStamp = indexPath.item + 1
                     self.setNextBtnEnabled()
                 }
             } else {
