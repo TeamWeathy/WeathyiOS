@@ -13,7 +13,10 @@ class RecordTagAddPopupVC: UIViewController {
     
     var tagCount: Int = 23
     var wordCount: Int = 0
+    var tagIndex: Int = -1
     var tagCategory: String = "상의"
+    
+    var isAdded: Bool = false
     
     //MARK: - @IBOutlets
     
@@ -40,6 +43,10 @@ class RecordTagAddPopupVC: UIViewController {
         
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.presentingViewController?.viewWillAppear(false)
+//    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -62,10 +69,11 @@ class RecordTagAddPopupVC: UIViewController {
     
     @IBAction func closeBtnTap(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
+        self.presentingViewController?.viewWillAppear(false)
     }
     
     @IBAction func addBtnTap(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
+        self.callAddTagService()
     }
 }
 
@@ -141,6 +149,34 @@ extension RecordTagAddPopupVC {
         addBtn.backgroundColor = .subGrey3
         addBtn.titleLabel?.font = .SDGothicSemiBold16
         addBtn.titleLabel?.lineSetting(kernValue: -0.8)
+    }
+    
+    func callAddTagService() {
+        RecordTagService.shared.addTag(userId: 63, token: "63:wckgTPK2NtG7JoM0p207XwsmDxOmM7", category: tagIndex, tagName: tagNameTextField.text!) { (networkResult) -> (Void) in
+            switch networkResult {
+            case .success(let data):
+                print(">>> success")
+                if let loadData = data as? ClothesTagData {
+//                    print(">>> loadData", loadData)
+                    self.isAdded = true
+                    
+                    self.dismiss(animated: false, completion: nil)
+                    self.presentingViewController?.viewWillAppear(false)
+                }
+                
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                }
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
 }

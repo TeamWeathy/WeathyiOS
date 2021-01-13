@@ -13,6 +13,13 @@ struct GetClothesArrayData: Codable {
     let message: String
 }
 
+
+//MARK: - Welcome
+struct AddClothesData: Codable{
+    let clothesList: ClothesTagData
+    let message: String
+}
+
 // MARK: - Closet
 struct ClothesTagData: Codable {
     let top, bottom, outer, etc: TagCategoryData
@@ -21,7 +28,7 @@ struct ClothesTagData: Codable {
 // MARK: - Bottom
 struct TagCategoryData: Codable {
     let categoryID: Int
-    let clothes: [TagNameData]
+    let clothes: [TagNameData]?
 
     enum CodingKeys: String, CodingKey {
         case categoryID = "categoryId"

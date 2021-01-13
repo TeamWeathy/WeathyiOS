@@ -44,6 +44,8 @@ class RecordTagVC: UIViewController {
     var localizedClothesTagData: [TagCategoryData] = []
     var isSelected: [Bool] = []
     
+    var isAdded: Bool = false
+    
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
     
@@ -75,14 +77,6 @@ class RecordTagVC: UIViewController {
         setHeader()
         setTitleLabel()
         
-        // 초기화
-        self.tagTitles = [
-            TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
-            TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
-            TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
-            TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
-        ]
-        
         // 초기 상태 버튼 (애니메이션 안 들어가야 해서 따로 선언)
         nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = UIColor.subGrey3
@@ -94,6 +88,8 @@ class RecordTagVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear called")
+        
         if tagCollectionView.contentOffset.y <= 30 {
             blurView.alpha = tagCollectionView.contentOffset.y / 30
         }
@@ -101,7 +97,17 @@ class RecordTagVC: UIViewController {
             blurView.alpha = 1
         }
         
+        // 타이틀 애니메이션
         animationPrac()
+        
+        // 초기화
+        self.tagTitles = [
+            TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
+            TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
+            TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
+            TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
+        ]
+    
         callDisplayTagService()
     }
     
@@ -116,7 +122,7 @@ class RecordTagVC: UIViewController {
             
             if let indexPath = self.tagCollectionView.indexPathForItem(at: p) {
                 // get the cell at indexPath (the one you long pressed)
-                print(">>>", indexPath)
+//                print(">>>", indexPath)
 //                let cell = self.tagCollectionView.cellForItem(at: indexPath)
                 print("long press detected")
                 
@@ -307,7 +313,7 @@ extension RecordTagVC {
                     self.myClothesTagData = loadData
                 }
                 
-//                print(self.myClothesTagData)
+                print(self.myClothesTagData)
                 self.processDataAtLocal()
                 
                 DispatchQueue.main.async {
@@ -343,19 +349,26 @@ extension RecordTagVC {
     
     func makeLocalTagData() {
         
-        print(">>> here", localizedClothesTagData[titleIndex].clothes.count, tagTitles[titleIndex].tagTab.count - 1)
+        print(">>> here", localizedClothesTagData[titleIndex].clothes!.count, tagTitles[titleIndex].tagTab.count - 1)
+        
+        print(">> isAdded", RecordTagAddPopupVC().isAdded)
         
         // viewWillAppear에서 다시 호출되었을 경우를 대비한 분기처리
-        if localizedClothesTagData[titleIndex].clothes.count != tagTitles[titleIndex].tagTab.count - 1 {
+        if localizedClothesTagData[titleIndex].clothes!.count != tagTitles[titleIndex].tagTab.count - 1 {
+            
+            print(">>> data modified")
+            
             for j in 0...3 {
-                for i in 0...localizedClothesTagData[j].clothes.count - 1 {
-                    self.tagTitles[j].tagTab.append(Tag(id: localizedClothesTagData[j].clothes[i].id, name: localizedClothesTagData[j].clothes[i].name, isSelected: false))
+                for i in 0...localizedClothesTagData[j].clothes!.count - 1 {
+                    self.tagTitles[j].tagTab.append(Tag(id: localizedClothesTagData[j].clothes![i].id, name: localizedClothesTagData[j].clothes![i].name, isSelected: false))
                 }
             }
+            
+            isAdded = false
         }
         
-        print(">>>", self.tagTitles)
-        print(">>>", self.tagTitles[titleIndex].tagTab.count)
+//        print(">>>", self.tagTitles)
+//        print(">>>", self.tagTitles[titleIndex].tagTab.count)
 
     }
 }
@@ -400,7 +413,7 @@ extension RecordTagVC: UICollectionViewDataSource {
             cell.addGestureRecognizer(longPressGesture)
             
             cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
-            print(tagTitles[titleIndex].tagTab[indexPath.item].name)
+//            print(tagTitles[titleIndex].tagTab[indexPath.item].name)
             cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
             
             if indexPath.item == 0 {
@@ -415,14 +428,14 @@ extension RecordTagVC: UICollectionViewDataSource {
                 cell.addTagImage.isHidden = false
                 cell.layer.borderWidth = 0
                 cell.backgroundColor = .white
-                print(">>>", indexPath.item)
+//                print(">>>", indexPath.item)
             }
             else {
                 
-                print(">>>", tagTitles[titleIndex].tagTab.count, localizedClothesTagData[titleIndex].clothes.count)
+//                print(">>>", tagTitles[titleIndex].tagTab.count, localizedClothesTagData[titleIndex].clothes!.count)
                 
                 if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
-                    print(">>>", indexPath.item)
+//                    print(">>>", indexPath.item)
                     setTagUnselected(cell: cell)
                 }
                 else {
@@ -467,6 +480,7 @@ extension RecordTagVC: UICollectionViewDataSource {
                     return
                 }
                 
+                dvc.tagIndex = titleIndex + 1
                 dvc.tagCategory = tagTitles[titleIndex].title
                 dvc.tagCount = tagTitles[titleIndex].tagTab.count-1
                 
