@@ -23,6 +23,8 @@ class RecordTagDeleteVC: UIViewController {
     var initialTagTab: Int = 0
     var initialSelectedIdx: Int = 0
     
+    var selectedTags: [Int] = []
+    
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
     
@@ -69,6 +71,7 @@ class RecordTagDeleteVC: UIViewController {
         tagTitles[initialTagTab].tagTab[initialSelectedIdx-1].isSelected = true
         tagTitles[initialTagTab].count = 1
         tagTitles[initialTagTab].isSelected = true
+        selectedTags.append(tagTitles[initialTagTab].tagTab[initialSelectedIdx-1].id)
         
         nextBtn.isUserInteractionEnabled = true
         nextBtn.backgroundColor = UIColor.pink
@@ -270,9 +273,15 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
             
             tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
             if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
+                selectedTags.append(tagTitles[titleIndex].tagTab[indexPath.item].id)
                 tagTitles[titleIndex].count += 1
+                print(">>>", selectedTags)
             } else {
+                let selectedId = tagTitles[titleIndex].tagTab[indexPath.item].id
+                let selectedIndex = selectedTags.firstIndex(of: selectedId)
+                selectedTags.remove(at: selectedIndex!)
                 tagTitles[titleIndex].count -= 1
+                print(">>>", selectedTags)
             }
             
             
