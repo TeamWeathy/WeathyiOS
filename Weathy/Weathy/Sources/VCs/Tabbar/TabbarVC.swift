@@ -42,8 +42,6 @@ class TabbarVC: UIViewController {
     func viewcontrollerSetting(){
        self.scrollView.contentSize.width = self.view.frame.width * 2
        
-        /// ExampleFirstVC 생성
-        guard let leftVC = self.storyboard?.instantiateViewController(withIdentifier: ExampleFirstVC.identifier) as? ExampleFirstVC else { return }
         /// ExampleFirstVC를 Child View Controller로 지정
         
         guard let MainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainVC") as? MainVC else {return}
@@ -59,7 +57,7 @@ class TabbarVC: UIViewController {
         self.scrollView.addSubview(leftVCView)
        
         /// 이제 leftVC가 Container View Controller 앞으로 올라왔기 때문에 didmove(toParent:)를 실행
-        leftVC.didMove(toParent: self)
+//        leftVCView.didMove(toParent: self)
         
         /// ExampleThirdVC도 동일.
 //        guard let rightVC = self.storyboard?.instantiateViewController(withIdentifier: ExampleThirdVC.identifier) as? ExampleThirdVC else { return }
