@@ -238,7 +238,7 @@
                                     <constraint firstAttribute="width" constant="307" id="obd-pp-PUI"/>
                                     <constraint firstAttribute="height" constant="55" id="sha-7A-e9n"/>
                                 </constraints>
-                                <state key="normal" image="settingBtnEditUnselected"/>
+                                <state key="normal" image="nickname_btn_start"/>
                                 <connections>
                                     <action selector="changeButtonDidTap:" destination="Umd-x9-smB" eventType="touchUpInside" id="bN1-6d-Q3l"/>
                                 </connections>
@@ -301,6 +301,7 @@
     </scenes>
     <resources>
         <image name="btnDelete" width="16" height="16"/>
+        <image name="nickname_btn_start" width="309" height="55"/>
         <image name="onboarding_bg" width="375" height="812"/>
         <image name="onboarding_btn_start" width="309" height="55"/>
         <image name="onboarding_ic_circle" width="9" height="9"/>
@@ -309,7 +310,6 @@
         <image name="onboarding_img_popup_1" width="317" height="118"/>
         <image name="onboarding_img_popup_2" width="314.33334350585938" height="145"/>
         <image name="onboarding_img_popup_3" width="326" height="300"/>
-        <image name="settingBtnEditUnselected" width="307" height="55"/>
         <image name="settingImgTextfieldUnselected" width="307" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
