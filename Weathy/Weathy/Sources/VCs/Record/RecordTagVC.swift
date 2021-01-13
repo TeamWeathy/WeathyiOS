@@ -162,6 +162,7 @@ class RecordTagVC: UIViewController {
     var dvc = RecordRateVC()
     
     var myClothesTagData: ClothesTagData?
+    var localizedClothesTagData: [TagCategoryData] = []
     
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
@@ -427,7 +428,12 @@ extension RecordTagVC {
                     self.myClothesTagData = loadData
                 }
                 
-                print(self.myClothesTagData)
+//                print(self.myClothesTagData)
+                self.processDataAtLocal()
+                
+                DispatchQueue.main.async {
+                    self.tagCollectionView.reloadData()
+                }
                 
             case .requestErr(let msg):
                 print("requestErr")
@@ -441,10 +447,18 @@ extension RecordTagVC {
             case .networkFail:
                 print("networkFail")
             }
-            
         }
+    }
+    
+    func processDataAtLocal() {
+        self.localizedClothesTagData = [
+            self.myClothesTagData!.top,
+            self.myClothesTagData!.bottom,
+            self.myClothesTagData!.outer,
+            self.myClothesTagData!.etc
+        ]
         
-        
+        print(self.localizedClothesTagData)
     }
 
 
@@ -458,8 +472,12 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-            print(">>>", tagTitles[titleIndex].title ,tagTitles[titleIndex].tagTab.count)
-            return tagTitles[titleIndex].tagTab.count
+            if localizedClothesTagData.count == 0 {
+                return 0
+            }
+            
+            print(">>>", localizedClothesTagData[titleIndex].clothes.count)
+            return localizedClothesTagData[titleIndex].clothes.count
         }
         
         /// tagTitleCollectionView
@@ -483,7 +501,7 @@ extension RecordTagVC: UICollectionViewDataSource {
             let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap))
             cell.addGestureRecognizer(longPressGesture)
             
-            cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
+            cell.tagLabel.text = localizedClothesTagData[titleIndex].clothes[indexPath.item].name
             cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
             
             if indexPath.item == 0 {
