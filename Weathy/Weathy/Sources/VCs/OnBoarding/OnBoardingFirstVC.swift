@@ -14,6 +14,7 @@ class OnBoardingFirstVC: UIViewController {
     
     //MARK: - IBOutlets
     
+    @IBOutlet weak var blindView: UIView!
     /// label
     @IBOutlet weak var lodingCloudImage: UIImageView!
     @IBOutlet weak var firstWord: UILabel!
@@ -51,6 +52,11 @@ class OnBoardingFirstVC: UIViewController {
         startButton.isHidden = true
         startButton.alpha = 0
         
+        /// OnBoarding 한번만 띄우기 위한 방법
+        let isUser = UserDefaults.standard.bool(forKey: "onboarding")
+        blindView.isHidden = isUser ? false : true
+
+        
         //MARK: - LifeCycle Methods
         labelFont()
         makeGesture()
@@ -60,6 +66,39 @@ class OnBoardingFirstVC: UIViewController {
         super.viewWillAppear(animated)
         firstLabelAnimate()
         firstViewAnimate()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let isUser = UserDefaults.standard.bool(forKey: "onboarding")
+        
+        if isUser {
+            guard let uuid =  UserDefaults.standard.string(forKey: "UUID") else
+            { return }
+//            print("userID--->\(uuid)")
+            
+            autoLoginService.shared.autoLoginPost(uuid: uuid) {(NetworkResult) -> (Void) in
+                switch NetworkResult{
+                case .success:
+                    let story = UIStoryboard.init(name: "Tabbar", bundle: nil)
+                    
+                    guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier ) as? TabbarVC else { return }
+                    
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: false, completion: nil)
+                    print("success")
+                case .requestErr:
+                    print("requestErr")
+                case .pathErr:
+                    print("---> pathErr")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
+                }
+            }
+        }
     }
     
     //MARK: - Custom Methods

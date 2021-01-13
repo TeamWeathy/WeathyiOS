@@ -52,6 +52,7 @@ class NickNameVC: UIViewController {
         let alert = UIAlertController(title: "닉네임을 설정 하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
         let noButton = UIAlertAction(title: "아니요", style: UIAlertAction.Style.default, handler: nil)
         let yesButton = UIAlertAction(title: "네", style: UIAlertAction.Style.default, handler: { _ in
+                UserDefaults.standard.set(true, forKey: "onboarding")
                 let story = UIStoryboard.init(name: "Tabbar", bundle: nil)
                 guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
                                         
@@ -96,8 +97,11 @@ class NickNameVC: UIViewController {
         
         guard let nickName = nickNameTextField.text else { return }
         
+         let uuid = UUID().uuidString
+        
+//        let UUID : String = UUID().
         /// 서버 연결!
-        createUserService.shared.createUserPost(uuid: UUID().uuidString, nickname: nickName){(NetworkResult) -> (Void) in
+        createUserService.shared.createUserPost(uuid: uuid, nickname: nickName){(NetworkResult) -> (Void) in
             switch NetworkResult{
             case .success(let data):
                 
@@ -105,6 +109,7 @@ class NickNameVC: UIViewController {
                     UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
                     UserDefaults.standard.set(createData.token, forKey: "token")
                     UserDefaults.standard.set(createData.user.id, forKey: "userID")
+                    UserDefaults.standard.set(uuid, forKey: "UUID")
 
 //                    print("userID ---> \(UserDefaults.standard.string(forKey: "userID"))")
 //                    print("token ---> \(UserDefaults.standard.string(forKey: "token"))")

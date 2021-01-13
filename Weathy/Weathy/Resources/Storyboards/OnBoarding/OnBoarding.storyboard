@@ -96,10 +96,15 @@
                                     <constraint firstAttribute="width" constant="9" id="NQt-27-Ndn"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bre-w5-Y9h">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2UP-hJ-Rj1"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Bre-w5-Y9h" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" id="0KA-ui-GEW"/>
                             <constraint firstItem="a69-LG-iOR" firstAttribute="top" secondItem="ITY-1x-alH" secondAttribute="bottom" constant="7" id="4NC-b9-RTj"/>
                             <constraint firstItem="DCe-Eb-WTe" firstAttribute="top" secondItem="Xdx-y9-Waj" secondAttribute="top" constant="110" id="5aj-Uh-geV"/>
                             <constraint firstItem="Nnl-Jr-muc" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="5gs-Xo-msa"/>
@@ -115,6 +120,7 @@
                             <constraint firstItem="A4D-vv-KYn" firstAttribute="top" secondItem="Xdx-y9-Waj" secondAttribute="top" constant="88" id="LnK-3L-FqF"/>
                             <constraint firstAttribute="bottom" secondItem="Isq-6G-8RV" secondAttribute="bottom" constant="121" id="Nbf-NJ-oGB"/>
                             <constraint firstItem="BQt-41-9hc" firstAttribute="top" secondItem="ceg-9O-kML" secondAttribute="top" constant="80" id="OOw-em-r4Z"/>
+                            <constraint firstItem="Bre-w5-Y9h" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="Tya-QZ-IS4"/>
                             <constraint firstAttribute="bottom" secondItem="Xdx-y9-Waj" secondAttribute="bottom" id="Uil-hr-U9f"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="A4D-vv-KYn" secondAttribute="trailing" constant="29" id="VJu-O8-zGk"/>
                             <constraint firstItem="bKT-p6-Abv" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="WQk-zo-9wp"/>
@@ -124,8 +130,10 @@
                             <constraint firstItem="Isq-6G-8RV" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="ef8-sq-0ks"/>
                             <constraint firstItem="mTK-dV-Mix" firstAttribute="top" secondItem="a69-LG-iOR" secondAttribute="bottom" constant="27" id="gYX-3n-TaL"/>
                             <constraint firstItem="Isq-6G-8RV" firstAttribute="centerX" secondItem="Xdx-y9-Waj" secondAttribute="centerX" id="h1G-1e-7SO"/>
+                            <constraint firstAttribute="top" secondItem="Bre-w5-Y9h" secondAttribute="top" id="h20-Ov-H04"/>
                             <constraint firstItem="a69-LG-iOR" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="iFI-mT-Lf8"/>
                             <constraint firstItem="Xdx-y9-Waj" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" id="j3Y-oK-jdM"/>
+                            <constraint firstAttribute="bottom" secondItem="Bre-w5-Y9h" secondAttribute="bottom" id="jdf-AG-72i"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="bottom" secondItem="bKT-p6-Abv" secondAttribute="bottom" constant="5" id="kgI-V8-sTh"/>
                             <constraint firstItem="w46-EK-5Zy" firstAttribute="centerY" secondItem="mTK-dV-Mix" secondAttribute="centerY" id="km2-8Z-oYP"/>
                             <constraint firstAttribute="bottom" secondItem="Nnl-Jr-muc" secondAttribute="bottom" id="lwj-SR-MkS"/>
@@ -136,6 +144,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="6Q2-FO-9HZ"/>
                     <connections>
+                        <outlet property="blindView" destination="Bre-w5-Y9h" id="SQq-Zi-RCJ"/>
                         <outlet property="firstDot" destination="UgB-fn-TBp" id="7wh-V1-ISS"/>
                         <outlet property="firstImage" destination="Isq-6G-8RV" id="91S-bC-Tkz"/>
                         <outlet property="firstWord" destination="136-AM-m6k" id="fHT-Ax-ZqI"/>
