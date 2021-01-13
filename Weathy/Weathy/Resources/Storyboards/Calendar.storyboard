@@ -35,6 +35,9 @@
                                     <constraint firstAttribute="width" secondItem="Z3O-5L-M7h" secondAttribute="height" multiplier="96:48" id="m1y-pK-0jn"/>
                                 </constraints>
                                 <state key="normal" image="calendarBtnRecord"/>
+                                <connections>
+                                    <action selector="recordBtnDidTap:" destination="T7l-AV-MGM" eventType="touchUpInside" id="kUd-bg-N8d"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarImgCloud" translatesAutoresizingMaskIntoConstraints="NO" id="aVD-Qw-6W5">
                                 <rect key="frame" x="98" y="375.33333333333331" width="179" height="110"/>
@@ -401,6 +404,7 @@
                         <outlet property="climateImageView" destination="N0h-3k-cme" id="oC3-8q-Hry"/>
                         <outlet property="climateLabel" destination="7dn-NN-Anx" id="Yuz-Yo-0HE"/>
                         <outlet property="commentLabel" destination="6YH-6V-EYV" id="Wu0-Or-5t1"/>
+                        <outlet property="contentScrollView" destination="OjD-XH-60E" id="CEb-gj-8ZW"/>
                         <outlet property="dateLabel" destination="Eq8-fr-Nct" id="j53-ow-1ef"/>
                         <outlet property="detailEmptyImageView" destination="aVD-Qw-6W5" id="9f5-dO-39P"/>
                         <outlet property="detailTopConstraint" destination="Skx-lG-PYF" id="nTe-Fe-Xw5"/>
@@ -410,6 +414,7 @@
                         <outlet property="moreBtn" destination="Gth-jb-ONu" id="4k4-Tk-lD6"/>
                         <outlet property="moreMenuView" destination="bPc-en-inU" id="J0W-XB-KAc"/>
                         <outlet property="moreViewHeightConstraint" destination="1TQ-nb-GKn" id="lkm-yg-qKn"/>
+                        <outlet property="recordButton" destination="Z3O-5L-M7h" id="ln3-tZ-PvL"/>
                         <outlet property="temperatureHighLabel" destination="jWH-Dm-en1" id="aHJ-fM-yvb"/>
                         <outlet property="temperatureLowLabel" destination="cqf-FB-afp" id="F3V-fP-nGz"/>
                         <outletCollection property="clothesTagLabels" destination="LbZ-I1-Rwa" collectionClass="NSMutableArray" id="NGQ-fL-Dqk"/>

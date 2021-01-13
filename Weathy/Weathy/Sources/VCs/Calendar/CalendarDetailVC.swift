@@ -39,6 +39,8 @@ class CalendarDetailVC: UIViewController {
     @IBOutlet weak var moreViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var commentLabel: SpacedLabel!
+    @IBOutlet weak var contentScrollView: UIScrollView!
+    @IBOutlet weak var recordButton: UIButton!
     
     //MARK: - Lifecycle Methods
     
@@ -120,7 +122,22 @@ class CalendarDetailVC: UIViewController {
         commentLabel.textAlignment = .left
         
     }
-    
+    func setEmptyView(state: EmptyState){
+        
+        contentScrollView.alpha = 0
+        
+        switch state{
+        case .beforeContent:
+            recordButton.alpha = 0
+            detailEmptyImageView.image = UIImage(named: "calendarImgBeforeCloud")
+        case . noContent:
+            recordButton.alpha = 1
+            detailEmptyImageView.image = UIImage(named: "calendarImgNoContentCloud")
+        }
+    }
+    func setContent(){
+        contentScrollView.alpha = 1
+    }
     func setData(){
         clothesTagLabels[0].text = insertSeparatorInArray(clothesTopList)
         clothesTagLabels[1].text = insertSeparatorInArray(clothesBottomList)
@@ -229,6 +246,9 @@ class CalendarDetailVC: UIViewController {
         self.parent?.view.addSubview(blurView)
         
     }
+    @IBAction func recordBtnDidTap(_ sender: Any) {
+        
+    }
     
 }
 
@@ -243,4 +263,9 @@ extension CalendarDetailVC{
         }
         return false
     }
+}
+
+enum EmptyState{
+    case noContent
+    case beforeContent
 }

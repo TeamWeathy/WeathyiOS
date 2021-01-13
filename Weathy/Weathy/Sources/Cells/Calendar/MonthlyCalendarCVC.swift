@@ -90,8 +90,8 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         lowImageView.alpha = 1
         highLabel.alpha = 1
         lowLabel.alpha = 1
-        highLabel.text = "\(high)º"
-        lowLabel.text = "\(low)º"
+        highLabel.text = "\(high)°"
+        lowLabel.text = "\(low)°"
     }
     
     
