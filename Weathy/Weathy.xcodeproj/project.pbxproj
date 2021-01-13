@@ -74,6 +74,8 @@
 		63DEB294259CF67200A94488 /* AppleSDGothicNeoR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28D259CF67200A94488 /* AppleSDGothicNeoR.ttf */; };
 		63DEB295259CF67200A94488 /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28E259CF67200A94488 /* AppleSDGothicNeoSB.ttf */; };
 		63DEB296259CF67200A94488 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28F259CF67200A94488 /* Roboto-Regular.ttf */; };
+		AB09371025AE446B00F69220 /* LocationWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09370F25AE446B00F69220 /* LocationWeatherData.swift */; };
+		AB09371B25AE48F800F69220 /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09371A25AE48F800F69220 /* MainService.swift */; };
 		AB4E1C8725A6FE48002F3B79 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C8625A6FE48002F3B79 /* UIViewController+Extensions.swift */; };
 		AB4E1C9225A9D440002F3B79 /* TImezoneWeatherCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C9125A9D440002F3B79 /* TImezoneWeatherCVC.swift */; };
 		AB4E1C9525A9ED4C002F3B79 /* WeeklyWeatherCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C9425A9ED4C002F3B79 /* WeeklyWeatherCVC.swift */; };
@@ -154,6 +156,8 @@
 		63DEB28E259CF67200A94488 /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
 		63DEB28F259CF67200A94488 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		79A77C707317896743084ED5 /* Pods-Weathy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathy.release.xcconfig"; path = "Target Support Files/Pods-Weathy/Pods-Weathy.release.xcconfig"; sourceTree = "<group>"; };
+		AB09370F25AE446B00F69220 /* LocationWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWeatherData.swift; sourceTree = "<group>"; };
+		AB09371A25AE48F800F69220 /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
 		AB4E1C8625A6FE48002F3B79 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		AB4E1C9125A9D440002F3B79 /* TImezoneWeatherCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImezoneWeatherCVC.swift; sourceTree = "<group>"; };
 		AB4E1C9425A9ED4C002F3B79 /* WeeklyWeatherCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWeatherCVC.swift; sourceTree = "<group>"; };
@@ -244,11 +248,11 @@
 		374D48CE259CEBD300152B9A /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				374D48D0259CEBF000152B9A /* RecordStart.storyboard */,
 				374D48E9259D49CA00152B9A /* RecordTag.storyboard */,
 				3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */,
 				374D48D7259D1CA600152B9A /* RecordRate.storyboard */,
 				374D48E2259D366500152B9A /* RecordText.storyboard */,
+				374D48D0259CEBF000152B9A /* RecordStart.storyboard */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -336,10 +340,10 @@
 		6339843D259A2B6C00339615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				0E8C002F25A1B79500A31295 /* Tabbar */,
 				ABBA9CAC25A22B31008785BD /* Main */,
 				6354ED8125AE0A2D00C5CAC5 /* Calendar.storyboard */,
 				374D48CE259CEBD300152B9A /* Record */,
-				0E8C002F25A1B79500A31295 /* Tabbar */,
 				0E8C004125A2498200A31295 /* Setting.storyboard */,
 				0E9152DB25A399EA0048E226 /* MainSearch.storyboard */,
 				0E31344125A724570059028C /* OnBoarding.storyboard */,
@@ -352,7 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				ABBA9CAB25A22B25008785BD /* Main */,
-				63DEB266259CD4D600A94488 /* DummyVC.swift */,
 				6354ED9025AE0AED00C5CAC5 /* Calendar */,
 				374D48CF259CEBE100152B9A /* Record */,
 				0E31344725A724AC0059028C /* OnBoarding */,
@@ -403,6 +406,7 @@
 		63398443259A2BE700339615 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AB09370D25AE43DB00F69220 /* Main */,
 				63398461259A425200339615 /* GenericResponse.swift */,
 			);
 			path = Models;
@@ -439,6 +443,7 @@
 		63DEB251259CD3EF00A94488 /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
+				AB09371925AE47A300F69220 /* Main */,
 				63DEB26D259CD54100A94488 /* APIConstants.swift */,
 				63DEB271259CD55A00A94488 /* NetworkResult.swift */,
 			);
@@ -465,6 +470,22 @@
 				EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB09370D25AE43DB00F69220 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AB09370F25AE446B00F69220 /* LocationWeatherData.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		AB09371925AE47A300F69220 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AB09371A25AE48F800F69220 /* MainService.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		ABBA9CAB25A22B25008785BD /* Main */ = {
@@ -653,6 +674,7 @@
 				0E8C005625A2598800A31295 /* DevelopersInfoVC.swift in Sources */,
 				63DEB26E259CD54100A94488 /* APIConstants.swift in Sources */,
 				3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */,
+				AB09371025AE446B00F69220 /* LocationWeatherData.swift in Sources */,
 				374D48E6259D368600152B9A /* RecordTextVC.swift in Sources */,
 				0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */,
 				374D48ED259D49DB00152B9A /* RecordTagVC.swift in Sources */,
@@ -686,6 +708,7 @@
 				AB4E1C9225A9D440002F3B79 /* TImezoneWeatherCVC.swift in Sources */,
 				6354ED9E25AE0B3700C5CAC5 /* InfiniteWeeklyCVC.swift in Sources */,
 				633984222599B1F400339615 /* SceneDelegate.swift in Sources */,
+				AB09371B25AE48F800F69220 /* MainService.swift in Sources */,
 				0E75F64C25AC1C9D00D98633 /* SearchRecentInfo.swift in Sources */,
 				0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */,
 				0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */,

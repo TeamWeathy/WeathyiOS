@@ -297,10 +297,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbw-fd-GAL" userLabel="Weather Icon View">
-                                                    <rect key="frame" x="0.0" y="-23" width="298" height="331"/>
+                                                    <rect key="frame" x="0.0" y="-23" width="254" height="331"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainImgSnowRotate" translatesAutoresizingMaskIntoConstraints="NO" id="igr-s5-HPi">
-                                                            <rect key="frame" x="0.0" y="0.0" width="298" height="331"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainImgFewcloudsDay" translatesAutoresizingMaskIntoConstraints="NO" id="igr-s5-HPi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="254" height="331"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEz-AN-Xfj">
                                                             <rect key="frame" x="22" y="26" width="47" height="47"/>
@@ -318,7 +318,7 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="VEz-AN-Xfj" firstAttribute="top" secondItem="Xbw-fd-GAL" secondAttribute="top" constant="26" id="2bq-jJ-bP2"/>
-                                                        <constraint firstAttribute="width" secondItem="Xbw-fd-GAL" secondAttribute="height" multiplier="270:300" id="8Rg-rd-mp1"/>
+                                                        <constraint firstAttribute="width" secondItem="Xbw-fd-GAL" secondAttribute="height" multiplier="230:300" id="8Rg-rd-mp1"/>
                                                         <constraint firstItem="VEz-AN-Xfj" firstAttribute="leading" secondItem="Xbw-fd-GAL" secondAttribute="leading" multiplier="33:375" constant="22" id="Eq9-ww-Kaq"/>
                                                         <constraint firstItem="5nk-g4-658" firstAttribute="centerY" secondItem="VEz-AN-Xfj" secondAttribute="centerY" id="PWe-tg-kl0"/>
                                                         <constraint firstAttribute="bottom" secondItem="igr-s5-HPi" secondAttribute="bottom" id="Tu2-YU-kbe"/>
@@ -347,7 +347,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="oC5-e9-Od0" firstAttribute="top" secondItem="Uqs-Z5-8WA" secondAttribute="bottom" constant="2" id="7e5-n2-sbh"/>
-                                                <constraint firstItem="igr-s5-HPi" firstAttribute="width" secondItem="7do-R4-eyY" secondAttribute="width" multiplier="270:375" id="8H4-MM-D0d"/>
+                                                <constraint firstItem="igr-s5-HPi" firstAttribute="width" secondItem="7do-R4-eyY" secondAttribute="width" multiplier="230:375" id="8H4-MM-D0d"/>
                                                 <constraint firstItem="dWl-HQ-BdI" firstAttribute="height" secondItem="Xbw-fd-GAL" secondAttribute="height" multiplier="225:300" id="ABy-bP-QPS"/>
                                                 <constraint firstItem="VRS-U2-Pfs" firstAttribute="height" secondItem="oC5-e9-Od0" secondAttribute="height" id="E9G-X6-nsK"/>
                                                 <constraint firstItem="qR8-i0-Kyx" firstAttribute="top" secondItem="KTc-lH-swO" secondAttribute="bottom" constant="15" id="FWx-j9-ApR"/>
@@ -355,7 +355,7 @@
                                                 <constraint firstItem="VRS-U2-Pfs" firstAttribute="centerY" secondItem="oC5-e9-Od0" secondAttribute="centerY" id="KNH-6Q-ShD"/>
                                                 <constraint firstItem="Xbw-fd-GAL" firstAttribute="leading" secondItem="7do-R4-eyY" secondAttribute="leading" id="LV6-pp-Abq"/>
                                                 <constraint firstItem="VRS-U2-Pfs" firstAttribute="leading" secondItem="oC5-e9-Od0" secondAttribute="trailing" constant="6" id="MeJ-Yz-JqK"/>
-                                                <constraint firstItem="Xbw-fd-GAL" firstAttribute="width" secondItem="dWl-HQ-BdI" secondAttribute="width" multiplier="270:149" id="SvV-d9-BhA"/>
+                                                <constraint firstItem="Xbw-fd-GAL" firstAttribute="width" secondItem="dWl-HQ-BdI" secondAttribute="width" multiplier="230:149" id="SvV-d9-BhA"/>
                                                 <constraint firstItem="qR8-i0-Kyx" firstAttribute="width" secondItem="KTc-lH-swO" secondAttribute="width" multiplier="19:309" id="TMu-cO-Uea"/>
                                                 <constraint firstItem="Uqs-Z5-8WA" firstAttribute="leading" secondItem="oC5-e9-Od0" secondAttribute="leading" id="Tqd-4J-RAa"/>
                                                 <constraint firstItem="KTc-lH-swO" firstAttribute="width" secondItem="7do-R4-eyY" secondAttribute="width" multiplier="309:375" id="WyZ-QF-TfO"/>
@@ -889,7 +889,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iEt-IS-0JS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="163.768115942029" y="35.491071428571423"/>
+            <point key="canvasLocation" x="184" y="36"/>
         </scene>
     </scenes>
     <resources>
@@ -900,7 +900,7 @@
         <image name="ic_plus" width="53" height="53"/>
         <image name="ic_search" width="20" height="20"/>
         <image name="ic_settings" width="20" height="20"/>
-        <image name="mainImgSnowRotate" width="270" height="300"/>
+        <image name="mainImgFewcloudsDay" width="230" height="300"/>
         <image name="main_bg_morning" width="375" height="812"/>
         <image name="mainscroll_box_topblur_morning" width="375" height="151"/>
         <image name="mainscroll_img_logo" width="102" height="29"/>

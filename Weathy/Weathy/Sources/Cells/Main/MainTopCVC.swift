@@ -13,6 +13,16 @@ class MainTopCVC: UICollectionViewCell {
     var closetOuter: [String] = ["청바지", "청바지","청바지","청바지","청바지"]
     var closetBottom: [String] = ["롱패딩","루리스"]
     var closetEtc: [String] = ["목도리","장갑","귀마개","수면양말", "어쩌라","마마무"]
+    var defaultLocationFlag: Bool = true{
+        didSet {
+            // 값이 바뀔 때
+            if (defaultLocationFlag) {
+                // 위치정보로
+            } else {
+                //
+            }
+        }
+    }
     
     //MARK: - IBOutlets
     @IBOutlet weak var todayWeathyNicknameTextLabel: SpacedLabel!
@@ -38,7 +48,7 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var downImage: UIImageView!
     
     //MARK: - Custom Methods
-    func setCell() {
+    func setCell(data: LocationWeatherData) {
         blankDownImage()
         
         emptyImage.image = UIImage(named: "main_img_empty")
@@ -66,33 +76,33 @@ class MainTopCVC: UICollectionViewCell {
         closetEtcLabel.characterSpacing = -0.65
 
         todayWeathyNicknameTextLabel.font = UIFont.SDGothicRegular16
-        todayWeathyNicknameTextLabel.text = "희지님이 기억하는"
+        todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
         todayWeathyNicknameTextLabel.characterSpacing = -0.8
         
         todayWeathyView.makeRounded(cornerRadius: 35)
         todayWeathyView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
         
-        locationLabel.text = "서울 도봉구"
+        locationLabel.text = "\(data.overviewWeather.region.name)"
         locationLabel.font = UIFont.SDGothicSemiBold20
         locationLabel.textColor = UIColor.mainGrey
         locationLabel.characterSpacing = -1.0
         
-        currTempLabel.text = "-20°"
+        currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature)°"
         currTempLabel.font = UIFont.RobotoLight50
         currTempLabel.textColor = UIColor.subGrey1
         currTempLabel.characterSpacing = -2.5
         
-        maxTempLabel.text = "24°"
+        maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
         maxTempLabel.font = UIFont.RobotoLight23
         maxTempLabel.textColor = UIColor.redTemp
         maxTempLabel.characterSpacing = -1.15
         
-        minTempLabel.text = "-14°"
+        minTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.minTemp)°"
         minTempLabel.font = UIFont.RobotoLight23
         minTempLabel.textColor = UIColor.blueTemp
         minTempLabel.characterSpacing = -1.15
         
-        climateLabel.text = "조금 흐리지만 햇살이 따스해요 :)"
+        climateLabel.text = "\(data.overviewWeather.hourlyWeather.climate.climateDescription)"
         climateLabel.font = UIFont.SDGothicRegular16
         climateLabel.textColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.58)
         climateLabel.characterSpacing = -0.8

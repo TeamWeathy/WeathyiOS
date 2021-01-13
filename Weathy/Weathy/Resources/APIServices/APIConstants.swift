@@ -8,5 +8,8 @@
 import Foundation
 
 struct APIConstants{
-    static let baseURL = "http://"
+    static let baseURL = "http://ec2-15-164-146-132.ap-northeast-2.compute.amazonaws.com:3000"
+    
+    // Main
+    static let getWeatherByLocationURL = baseURL + "/weather/overview"
 }

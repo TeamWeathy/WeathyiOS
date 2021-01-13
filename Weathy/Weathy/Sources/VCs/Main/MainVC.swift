@@ -10,6 +10,11 @@ import UIKit
 class MainVC: UIViewController {
     //MARK: - Custom Variables
     var lastContentOffset: CGFloat = 0.0
+    let dateFormatter = DateFormatter()
+    var currDate: Date = Date()
+    var lat: Double?
+    var lon: Double?
+    var locationWeatherData: LocationWeatherData?
     
     //MARK: - IBOutlets
     
@@ -23,11 +28,43 @@ class MainVC: UIViewController {
     
     //MARK: - Life Cycle Methods
     
+    override func viewWillAppear(_ animated: Bool) {
+        currDate = Date()
+        
+        lat = 37.59311236609
+        lon = 126.9501814612
+        
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
+        
+        UserDefaults.standard.setValue("62:p5RMVC9Z6Vpy82nLmV9ZDt2u1gDy15", forKey: "token")
+        UserDefaults.standard.setValue("이내옹", forKey: "nickname")
+        
+        MainService.shared.getWeatherByLocation(token: UserDefaults.standard.string(forKey: "token")!, lat: lat ?? 0, lon: lon ?? 0, date: dateFormatter.string(from: currDate)) { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? LocationWeatherData {
+                    self.setViewByData(data: response)
+                }
+                
+                self.weatherCollectionView.reloadData()
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setView()
-        fallingRain()
+//        fallingRain()
+        fallingSnow()
         
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
@@ -35,24 +72,30 @@ class MainVC: UIViewController {
     
     //MARK: - Custom Method
     
-    func setView() {
+    func setViewByData(data: LocationWeatherData) {
+        // background 설정
         mainBackgroundImage.image = UIImage(named: "main_bg_snowrain")
+        
+        topBlurView.image = UIImage(named: "mainscroll_box_topblur_snowrain")
+        topBlurView.frame.origin.y -= topBlurView.bounds.height
+        topBlurView.alpha = 0
         
         weatherCollectionView.backgroundColor = .clear
         weatherCollectionView.isPagingEnabled = true
         weatherCollectionView.decelerationRate = .fast
         
+        // navigation bar
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
-        todayDateTimeLabel.text = "1월 7일 일요일 • 오후 4시"
+        todayDateTimeLabel.text = "\(data.overviewWeather.dailyWeather.date.month)월 \(data.overviewWeather.dailyWeather.date.day)일 \(data.overviewWeather.dailyWeather.date.dayOfWeek) • \(data.overviewWeather.hourlyWeather.time)"
         todayDateTimeLabel.characterSpacing = -0.75
         
         logoImage.frame.origin.y -= 100
         logoImage.alpha = 0
         
-        topBlurView.image = UIImage(named: "mainscroll_box_topblur_snowrain")
-        topBlurView.frame.origin.y -= topBlurView.bounds.height
-        topBlurView.alpha = 0
+        if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
+            topCVC.setCell(data: data)
+        }
     }
     
     func fallingSnow() {
@@ -181,7 +224,7 @@ extension MainVC: UICollectionViewDataSource {
         case 0:
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainTopCVC", for: indexPath) as? MainTopCVC else {return UICollectionViewCell()}
             
-            cell.setCell()
+//            cell.setCell()
             return cell
         case 1:
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainBottomCVC", for: indexPath) as? MainBottomCVC else {return UICollectionViewCell()}
