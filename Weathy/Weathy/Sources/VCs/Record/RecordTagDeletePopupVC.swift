@@ -86,8 +86,10 @@ extension RecordTagDeletePopupVC {
                 print(">>> success")
                 if let loadData = data as? ClothesTagData {
                     self.isDeleted = true
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TagDeleted"), object: self.isDeleted)
-                    self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                    
+                    self.view.window!.rootViewController?.dismiss(animated: false) {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TagDeleted"), object: self.isDeleted)
+                    }
                     //                    self.presentingViewController?.viewWillAppear(false)
                 }
                 

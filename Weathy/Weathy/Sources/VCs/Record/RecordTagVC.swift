@@ -124,6 +124,7 @@ class RecordTagVC: UIViewController {
     
     @objc func tagDeleted(_ noti : Notification){
         let isDeleted = noti.object
+        print(">>> received")
         showToast(message: "태그가 삭제되었어요!")
     }
     
