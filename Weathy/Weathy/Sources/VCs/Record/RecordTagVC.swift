@@ -86,7 +86,9 @@ class RecordTagVC: UIViewController {
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
+        
         NotificationCenter.default.addObserver(self, selector: #selector(tagAdded(_:)), name: NSNotification.Name("TagAdded"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(tagDeleted(_:)), name: NSNotification.Name("TagDeleted"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,6 +121,12 @@ class RecordTagVC: UIViewController {
         self.viewWillAppear(true)
         showToast(message: "태그가 추가되었어요!")
     }
+    
+    @objc func tagDeleted(_ noti : Notification){
+        let isDeleted = noti.object
+        showToast(message: "태그가 삭제되었어요!")
+    }
+    
     @objc func longTap(gesture : UILongPressGestureRecognizer!) {
         if gesture.state != .ended {
             

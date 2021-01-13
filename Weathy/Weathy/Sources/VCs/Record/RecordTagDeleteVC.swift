@@ -80,6 +80,7 @@ class RecordTagDeleteVC: UIViewController {
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
         
+        
         // Do any additional setup after loading the view.
     }
     
@@ -111,6 +112,7 @@ class RecordTagDeleteVC: UIViewController {
         
         
         dvc.tagCount = tagWillBeDeletedCount
+        dvc.selectedTags = selectedTags
         
         self.present(dvc, animated: false, completion: nil)
         

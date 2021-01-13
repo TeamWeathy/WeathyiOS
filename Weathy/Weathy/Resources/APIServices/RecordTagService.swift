@@ -112,4 +112,58 @@ struct RecordTagService {
             return .networkFail
         }
     }
+    
+    func deleteTag(userId:Int, token: String, clothArray: [Int], completion: @escaping (NetworkResult<Any>)->(Void)) {
+        let url = APIConstants.clothesTagURL + "\(userId)" + "/clothes"
+        
+        let header: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "x-access-token": token
+        ]
+        
+        let body: Parameters = [
+            "clothes": clothArray
+        ]
+        
+        let dataRequest = AF.request(url,
+                                     method: .delete,
+                                     parameters: body,
+                                     encoding: JSONEncoding.default,
+                                     headers: header)
+        
+        dataRequest.responseData { (response) in
+            switch response.result {
+            case .success :
+                guard let statusCode = response.response?.statusCode else {
+                    return
+                }
+                guard let data = response.value else {
+                    return
+                }
+                completion(judgeDeleteTagService(status: statusCode, data: data))
+                
+            case .failure(let err) :
+                print(err)
+            }
+        }
+    }
+    
+    private func judgeDeleteTagService(status: Int, data: Data) -> NetworkResult<Any> {
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(GetClothesArrayData.self, from: data) else {
+            return .pathErr }
+        
+        switch status {
+        case 200:
+            return .success(decodedData.closet)
+        case 400..<500:
+            return .requestErr(decodedData.message)
+        case 500:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
 }
+
+
