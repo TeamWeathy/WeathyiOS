@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8tI-i9-VJF">
-                                <rect key="frame" x="0.0" y="705" width="375" height="73"/>
+                                <rect key="frame" x="0.0" y="720" width="375" height="73"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNL-8W-8b6">
                                         <rect key="frame" x="51" y="12.666666666666629" width="72" height="48"/>
@@ -92,7 +92,7 @@
                             <constraint firstItem="dCr-oZ-z5r" firstAttribute="leading" secondItem="BdJ-VM-pyE" secondAttribute="leading" id="PGR-6x-Q0i"/>
                             <constraint firstItem="dCr-oZ-z5r" firstAttribute="top" secondItem="uAD-ns-xnl" secondAttribute="top" id="bwV-dK-bYu"/>
                             <constraint firstItem="8tI-i9-VJF" firstAttribute="top" secondItem="dCr-oZ-z5r" secondAttribute="bottom" id="c0z-6L-mJw"/>
-                            <constraint firstItem="BdJ-VM-pyE" firstAttribute="bottom" secondItem="8tI-i9-VJF" secondAttribute="bottom" id="hYU-WW-x0T"/>
+                            <constraint firstItem="BdJ-VM-pyE" firstAttribute="bottom" secondItem="8tI-i9-VJF" secondAttribute="bottom" constant="-15" id="hYU-WW-x0T"/>
                             <constraint firstItem="8tI-i9-VJF" firstAttribute="trailing" secondItem="BdJ-VM-pyE" secondAttribute="trailing" id="pqT-Lo-4oi"/>
                         </constraints>
                     </view>

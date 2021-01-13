@@ -45,10 +45,12 @@ class TabbarVC: UIViewController {
         /// ExampleFirstVC 생성
         guard let leftVC = self.storyboard?.instantiateViewController(withIdentifier: ExampleFirstVC.identifier) as? ExampleFirstVC else { return }
         /// ExampleFirstVC를 Child View Controller로 지정
-        self.addChild(leftVC)
+        
+        guard let MainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainVC") as? MainVC else {return}
+        self.addChild(MainVC)
        
         /// ExampleFirstVC의 View만 가져오기
-        guard let leftVCView = leftVC.view else { return }
+        guard let leftVCView = MainVC.view else { return }
        
         /// ExampleFirstVC View의 Frame 지정
         leftVCView.frame = CGRect(x: 0, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.height)
@@ -60,7 +62,8 @@ class TabbarVC: UIViewController {
         leftVC.didMove(toParent: self)
         
         /// ExampleThirdVC도 동일.
-        guard let rightVC = self.storyboard?.instantiateViewController(withIdentifier: ExampleThirdVC.identifier) as? ExampleThirdVC else { return }
+//        guard let rightVC = self.storyboard?.instantiateViewController(withIdentifier: ExampleThirdVC.identifier) as? ExampleThirdVC else { return }
+        guard let rightVC = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(identifier: "CalendarDetailVC") as? CalendarDetailVC else {return}
         self.addChild(rightVC)
         guard let rightVCView = rightVC.view else { return }
         rightVCView.frame = CGRect(x: self.view.frame.width, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.height)
@@ -82,7 +85,7 @@ class TabbarVC: UIViewController {
         } else { }
         
         /// Scroll이 넘어가는 느낌을 줄 것이냐??  True, False
-        self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+        self.scrollView.setContentOffset(CGPoint.zero, animated: false)
     }
     /// Plus 버튼
     @IBAction func plusButtonDidTap(_ sender: Any) {
@@ -102,7 +105,7 @@ class TabbarVC: UIViewController {
             mainButtonBool = false
         } else { }
         
-        self.scrollView.setContentOffset(CGPoint(x: self.scrollView.frame.width, y: 0), animated: true)
+        self.scrollView.setContentOffset(CGPoint(x: self.scrollView.frame.width, y: 0), animated: false)
     }
 }
 
