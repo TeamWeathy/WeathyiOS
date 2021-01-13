@@ -16,8 +16,12 @@ class MainSearchVC: UIViewController {
     
     var SearchRecentInfos : [SearchRecentInfo] = []
     var SearchInfos : [SearchRecentInfo] = []
+    
+    var searchInformations : [SearchOverviewWeatherList] = []
     var changBool = false
     
+    let dateFormatter = DateFormatter()
+
     //MARK: - IBOutlets
     
     @IBOutlet weak var backView: UIImageView!
@@ -97,6 +101,35 @@ class MainSearchVC: UIViewController {
     /// textField 눌렀을 때    
     @IBAction func textFieldDidTap(_ sender: Any) {
         checkTextCount(textField: searchTextField)
+     
+        /// 한국 시간으로 설정
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
+        
+        guard let searchText = searchTextField.text else { return }
+        
+        print(searchText)
+        print("현재 시간---> \(dateFormatter.string(from: Date()))")
+        if searchText == "" {
+            
+        }else{
+            /// 서버 연결!
+            searchService.shared.searchWheatherget(keyword: searchText, date: dateFormatter.string(from: Date())){(NetworkResult) -> (Void) in
+                switch NetworkResult{
+                case .success:
+                    print("성공 했냐?")
+
+                case .requestErr:
+                    print("requestErr")
+                case .pathErr:
+                    print("pathErr")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
+                }
+            }
+        }
     }
     
     /// textfield 지우기 버튼 눌렀을 때

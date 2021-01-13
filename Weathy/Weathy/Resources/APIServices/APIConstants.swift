@@ -17,4 +17,7 @@ struct APIConstants{
     /// Login Post 관련
     static let loginURL = baseURL + "/auth/login"
     
+    /// Search Weather 관련
+    static let searchURL = baseURL + "/weather/overviews?keyword={keyword}&date={date}"
+    
 }

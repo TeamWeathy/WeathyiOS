@@ -12,6 +12,8 @@
 		0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344425A724A80059028C /* OnBoardingFirstVC.swift */; };
 		0E6E9A6925AF5CFF00702706 /* modifyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */; };
 		0E6E9A7125AF7EE300702706 /* autoLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7025AF7EE300702706 /* autoLoginService.swift */; };
+		0E6E9A7625AF9E7700702706 /* searchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7525AF9E7700702706 /* searchService.swift */; };
+		0E6E9A8025AFA1FC00702706 /* SearchWeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7F25AFA1FC00702706 /* SearchWeatherInformation.swift */; };
 		0E75F64C25AC1C9D00D98633 /* SearchRecentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */; };
 		0E75F65825AD800A00D98633 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F65725AD800A00D98633 /* SearchTVC.swift */; };
 		0E75F65B25AD984D00D98633 /* NickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F65A25AD984D00D98633 /* NickNameVC.swift */; };
@@ -94,6 +96,8 @@
 		0E31344425A724A80059028C /* OnBoardingFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFirstVC.swift; sourceTree = "<group>"; };
 		0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modifyUserService.swift; sourceTree = "<group>"; };
 		0E6E9A7025AF7EE300702706 /* autoLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autoLoginService.swift; sourceTree = "<group>"; };
+		0E6E9A7525AF9E7700702706 /* searchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchService.swift; sourceTree = "<group>"; };
+		0E6E9A7F25AFA1FC00702706 /* SearchWeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWeatherInformation.swift; sourceTree = "<group>"; };
 		0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecentInfo.swift; sourceTree = "<group>"; };
 		0E75F65725AD800A00D98633 /* SearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVC.swift; sourceTree = "<group>"; };
 		0E75F65A25AD984D00D98633 /* NickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameVC.swift; sourceTree = "<group>"; };
@@ -201,6 +205,14 @@
 				0E6E9A7025AF7EE300702706 /* autoLoginService.swift */,
 			);
 			path = AuthorizationAPI;
+			sourceTree = "<group>";
+		};
+		0E6E9A7A25AFA1A600702706 /* SearchInformation */ = {
+			isa = PBXGroup;
+			children = (
+				0E6E9A7F25AFA1FC00702706 /* SearchWeatherInformation.swift */,
+			);
+			path = SearchInformation;
 			sourceTree = "<group>";
 		};
 		0E75F64E25AC1CA500D98633 /* Search */ = {
@@ -460,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				0E75F67325AF3D4E00D98633 /* UserInformation */,
+				0E6E9A7A25AFA1A600702706 /* SearchInformation */,
 				63398461259A425200339615 /* GenericResponse.swift */,
 			);
 			path = Models;
@@ -496,10 +509,11 @@
 		63DEB251259CD3EF00A94488 /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
-				0E6E9A6E25AF7E8200702706 /* AuthorizationAPI */,
 				63DEB26D259CD54100A94488 /* APIConstants.swift */,
 				63DEB271259CD55A00A94488 /* NetworkResult.swift */,
+				0E6E9A6E25AF7E8200702706 /* AuthorizationAPI */,
 				0E75F66E25AF3C4700D98633 /* UserAPI */,
+				0E6E9A7525AF9E7700702706 /* searchService.swift */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -705,9 +719,11 @@
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
 				0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */,
 				0E75F67525AF3DA100D98633 /* UserInformation.swift in Sources */,
+				0E6E9A7625AF9E7700702706 /* searchService.swift in Sources */,
 				6339846C259A431100339615 /* UIView+Extensions.swift in Sources */,
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
 				ABBA9CAF25A22C93008785BD /* MainTopCVC.swift in Sources */,
+				0E6E9A8025AFA1FC00702706 /* SearchWeatherInformation.swift in Sources */,
 				6354ED9C25AE0B3700C5CAC5 /* MonthlyCalendarCVC.swift in Sources */,
 				374D48D4259CEC0500152B9A /* RecordStartVC.swift in Sources */,
 				6354ED9B25AE0B3700C5CAC5 /* WeeklyCalendarCVC.swift in Sources */,
