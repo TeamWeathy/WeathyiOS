@@ -11,141 +11,10 @@ class RecordTagDeleteVC: UIViewController {
     
     //MARK: - Custom Variables
     
-    struct Tag {
-        var name: String
-        var isSelected: Bool
-    }
-    
-    struct TagTitle {
-        let title: String
-        var count: Int
-        var isSelected: Bool
-        var tagTab: [Tag]
-    }
-    
-    var tagUpper: [Tag] = [
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
-    
-    var tagUnder: [Tag] = [
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
-    
-    var tagOuter: [Tag] = [
-        Tag(name: "외투", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
-    
-    var tagEtc: [Tag] = [
-        Tag(name: "기타", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
+    var tagUpper: [Tag] = []
+    var tagUnder: [Tag] = []
+    var tagOuter: [Tag] = []
+    var tagEtc: [Tag] = []
     
     var tagTitles: [TagTitle] = []
     
@@ -185,12 +54,10 @@ class RecordTagDeleteVC: UIViewController {
         setTitleLabel()
         setCancelBtn()
         
-        self.tagTitles = [
-            TagTitle(title: "상의", count: 0, isSelected: false, tagTab: tagUpper),
-            TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
-            TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
-            TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
-        ]
+        /// + 자리에 있던 아이 삭제
+        for i in 0...3 {
+            tagTitles[i].tagTab.removeFirst()
+        }
         
         /// 삭제 탭 부를 때 선택했던 셀은 기본적으로 선택돼있게
         titleIndex = initialTagTab

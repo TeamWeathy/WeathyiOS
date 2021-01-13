@@ -7,25 +7,27 @@
 
 import UIKit
 
+//MARK: - struct
+
+struct Tag {
+    let id: Int
+    let name: String
+//        let tag: TagNameData
+    var isSelected: Bool
+}
+
+struct TagTitle {
+    let title: String
+    var count: Int
+    var isSelected: Bool
+    var tagTab: [Tag]
+}
+
 class RecordTagVC: UIViewController {
     
     //MARK: - Custom Variables
     
     var notificationGenerator: UIImpactFeedbackGenerator?
-    
-    struct Tag {
-        let id: Int
-        let name: String
-//        let tag: TagNameData
-        var isSelected: Bool
-    }
-    
-    struct TagTitle {
-        let title: String
-        var count: Int
-        var isSelected: Bool
-        var tagTab: [Tag]
-    }
     
     var tagUpper: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
     var tagUnder: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
@@ -88,7 +90,7 @@ class RecordTagVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear called")
+//        print("viewWillAppear called")
         
         if tagCollectionView.contentOffset.y <= 30 {
             blurView.alpha = tagCollectionView.contentOffset.y / 30
@@ -142,6 +144,7 @@ class RecordTagVC: UIViewController {
                 
                 dvc.initialTagTab = titleIndex
                 dvc.initialSelectedIdx = indexPath[1]
+                dvc.tagTitles = tagTitles
                 
                 dvc.modalPresentationStyle = .fullScreen
                 
@@ -318,7 +321,7 @@ extension RecordTagVC {
                     self.myClothesTagData = loadData
                 }
                 
-                print(self.myClothesTagData)
+//                print(self.myClothesTagData)
                 self.processDataAtLocal()
                 
                 DispatchQueue.main.async {
@@ -355,14 +358,14 @@ extension RecordTagVC {
     
     func makeLocalTagData() {
         
-        print(">>> here", localizedClothesTagData[titleIndex].clothes!.count, tagTitles[titleIndex].tagTab.count - 1)
+//        print(">>> here", localizedClothesTagData[titleIndex].clothes!.count, tagTitles[titleIndex].tagTab.count - 1)
         
-        print(">> isAdded", RecordTagAddPopupVC().isAdded)
+//        print(">> isAdded", RecordTagAddPopupVC().isAdded)
         
         // viewWillAppear에서 다시 호출되었을 경우를 대비한 분기처리
         if localizedClothesTagData[titleIndex].clothes!.count != tagTitles[titleIndex].tagTab.count - 1 {
             
-            print(">>> data modified")
+//            print(">>> data modified")
             
             for j in 0...3 {
                 for i in 0...localizedClothesTagData[j].clothes!.count - 1 {
@@ -388,7 +391,7 @@ extension RecordTagVC: UICollectionViewDataSource {
         /// tagCollectionView
         if collectionView == tagCollectionView {
             
-            print(">>>", tagTitles[titleIndex].tagTab.count)
+//            print(">>>", tagTitles[titleIndex].tagTab.count)
             
             if tagTitles[titleIndex].tagTab.count == 1 {
                 return 0
@@ -640,4 +643,6 @@ extension RecordTagVC: UICollectionViewDelegateFlowLayout {
         }
     }
 }
+
+
 
