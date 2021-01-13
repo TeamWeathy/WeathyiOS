@@ -28,7 +28,7 @@ struct createUserService {
                     return
                 }
                 completion(createUserData(status: statusCode, data: data))
-                
+//            print(" 연결??-----> \(data)")
             case .failure(let err):
                 print(err)
                 completion(.networkFail)
@@ -43,7 +43,7 @@ struct createUserService {
         }
         switch status {
         case 200:
-            print(" 연결??-----> \(decodedData)")
+//            print(" 연결??-----> \(decodedData)")
             return .success(decodedData)
         case 400..<500:
             return .requestErr(decodedData.message)

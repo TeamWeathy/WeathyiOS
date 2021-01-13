@@ -100,10 +100,12 @@ class NickNameVC: UIViewController {
         createUserService.shared.createUser(uuid: UUID().uuidString, nickname: nickName){(NetworkResult) -> (Void) in
             switch NetworkResult{
             case .success(let data):
-                if let signInData = data as? UserData {
-                    print("서버 성공했나??")
-                    UserDefaults.standard.set(signInData.nickname, forKey: "nickname")
+                
+                if let createData = data as? UserInformation {
+                    UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
+                    UserDefaults.standard.set(createData.token, forKey: "token")
 
+//                    print("---> 뭐니 넌\(self.changBool)")
                     /// 닉네임 설정 했을 때 aleart 띄우기
                     if self.changBool == true {
                         self.simpleAlert()
