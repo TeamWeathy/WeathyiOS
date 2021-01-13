@@ -318,6 +318,7 @@ extension RecordTagVC {
                 
                 DispatchQueue.main.async {
                     self.tagCollectionView.reloadData()
+                    self.tagTitleCollectionView.reloadData()
                 }
                 
             case .requestErr(let msg):
