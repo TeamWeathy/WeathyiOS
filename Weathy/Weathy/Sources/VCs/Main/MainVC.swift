@@ -157,10 +157,22 @@ extension MainVC: UICollectionViewDelegate {
     
     @IBAction func touchUpSetting(_ sender: Any) {
         print("setting")
+        let storyB = UIStoryboard.init(name: "Setting", bundle: nil)
+        
+        guard let vc = storyB.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
+
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     @IBAction func touchUpSearch(_ sender: Any) {
         print("search")
+        let storyB = UIStoryboard.init(name: "MainSearch", bundle: nil)
+        
+        guard let vc = storyB.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
+        
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
 }
 
