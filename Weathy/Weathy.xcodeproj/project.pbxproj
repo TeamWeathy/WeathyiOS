@@ -658,12 +658,9 @@
 				6354ED9B25AE0B3700C5CAC5 /* WeeklyCalendarCVC.swift in Sources */,
 				0E8C005625A2598800A31295 /* DevelopersInfoVC.swift in Sources */,
 				63DEB26E259CD54100A94488 /* APIConstants.swift in Sources */,
-<<<<<<< HEAD
 				0E75F65B25AD984D00D98633 /* NickNameVC.swift in Sources */,
-=======
 				3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */,
 				374D48E6259D368600152B9A /* RecordTextVC.swift in Sources */,
->>>>>>> develop
 				0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */,
 				374D48ED259D49DB00152B9A /* RecordTagVC.swift in Sources */,
 				374D48DF259D236800152B9A /* RecordRateCVC.swift in Sources */,
