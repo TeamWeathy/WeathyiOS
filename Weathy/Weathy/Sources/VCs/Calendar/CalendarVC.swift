@@ -9,7 +9,6 @@ import UIKit
 
 class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
     
-    
     //MARK: - Custom Properties
     let screen = UIScreen.main.bounds
     let calendarWidth = 308*UIScreen.main.bounds.width/375
@@ -569,6 +568,7 @@ extension CalendarVC: UICollectionViewDataSource{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteMonthlyCVC.identifier, for: indexPath) as? InfiniteMonthlyCVC else { return UICollectionViewCell() }
             cell.monthCellDelegate = self
             cell.initDate(infiniteMonthList[indexPath.item])
+            cell.callMonthlyWeathy()
             cell.monthlyCalendarCV.reloadData()
             return cell
         }

@@ -19,6 +19,9 @@
         <array key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
         </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Calendar DetailVC-->
@@ -679,8 +682,8 @@
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQ6-44-TyD" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                                                <rect key="frame" x="13" y="56.333333333333336" width="0.0" height="0.0"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <rect key="frame" x="21.666666666666668" y="56.333333333333336" width="0.0" height="0.0"/>
+                                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                                 <userDefinedRuntimeAttributes>
@@ -689,9 +692,9 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1º" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twg-iT-6Jz" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                                                <rect key="frame" x="13" y="62.333333333333336" width="14.333333333333336" height="20.333333333333336"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twg-iT-6Jz" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                                                <rect key="frame" x="21.666666666666668" y="62.333333333333336" width="0.0" height="0.0"/>
+                                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                                 <userDefinedRuntimeAttributes>
@@ -708,11 +711,11 @@
                                                                             <constraint firstItem="oj3-3k-fZZ" firstAttribute="top" secondItem="sQI-57-kK4" secondAttribute="bottom" constant="3" id="HhC-dy-rip"/>
                                                                             <constraint firstItem="oj3-3k-fZZ" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="KsM-xs-MMK"/>
                                                                             <constraint firstItem="sQI-57-kK4" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="QP7-sX-q8M"/>
-                                                                            <constraint firstItem="vQ6-44-TyD" firstAttribute="leading" secondItem="sQI-57-kK4" secondAttribute="leading" constant="10" id="UgT-Qy-dwb"/>
                                                                             <constraint firstItem="oj3-3k-fZZ" firstAttribute="width" secondItem="sQI-57-kK4" secondAttribute="width" id="g2S-RF-NMH"/>
+                                                                            <constraint firstItem="vQ6-44-TyD" firstAttribute="centerX" secondItem="sQI-57-kK4" secondAttribute="centerX" id="gBO-1q-CkB"/>
                                                                             <constraint firstItem="HBi-qq-hlx" firstAttribute="top" secondItem="Pc8-H0-0op" secondAttribute="top" constant="4" id="jaH-uf-lNB"/>
+                                                                            <constraint firstItem="Twg-iT-6Jz" firstAttribute="centerX" secondItem="oj3-3k-fZZ" secondAttribute="centerX" id="o2F-Bi-bMP"/>
                                                                             <constraint firstItem="HBi-qq-hlx" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="opI-cI-A1C"/>
-                                                                            <constraint firstItem="Twg-iT-6Jz" firstAttribute="leading" secondItem="vQ6-44-TyD" secondAttribute="leading" id="sSZ-09-F2Q"/>
                                                                             <constraint firstItem="vQ6-44-TyD" firstAttribute="bottom" secondItem="sQI-57-kK4" secondAttribute="bottom" id="svU-Cw-f4R"/>
                                                                         </constraints>
                                                                     </collectionViewCellContentView>

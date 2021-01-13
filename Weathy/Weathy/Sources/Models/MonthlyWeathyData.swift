@@ -14,17 +14,12 @@ struct MonthlyWeathyData: Codable {
 
 // MARK: - CalendarOverviewList
 struct CalendarOverview: Codable {
-    var id, stampID: Int
-    var temperature: Temperature
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case stampID = "stampId"
-        case temperature
-    }
+    var id: Int
+    var date: String
+    var temperature: CalendarTemperature
 }
 
 // MARK: - Temperature
-struct Temperature: Codable {
+struct CalendarTemperature: Codable {
     var maxTemp, minTemp: Int
 }

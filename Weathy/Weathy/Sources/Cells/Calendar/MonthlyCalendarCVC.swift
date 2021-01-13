@@ -37,7 +37,8 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         dayLabel.clipsToBounds = true
         dayLabel.layer.cornerRadius = 11.5
         dayLabel.textColor = .mainGrey
-        
+        highLabel.text = ""
+        lowLabel.text = ""
         highLabel.alpha = 0
         
         lowLabel.alpha = 0
@@ -75,6 +76,8 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         lowImageView.image = UIImage(named: "calendarImgLow")
         highImageView.alpha = 0
         lowImageView.alpha = 0
+        highLabel.text = ""
+        lowLabel.text = ""
     }
     
     func setRedday(){

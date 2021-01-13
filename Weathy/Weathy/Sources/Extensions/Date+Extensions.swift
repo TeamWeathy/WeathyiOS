@@ -127,7 +127,7 @@ extension Date {
             var firstDate = Calendar.current.date(from: firstComponent)!
             
             var startComponent = DateComponents()
-            startComponent.day = -(self.firstWeekday-1)
+            startComponent.day = -(self.firstWeekday)
             
             var startDate = Calendar.current.date(byAdding: startComponent, to: firstDate)!
             
