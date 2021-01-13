@@ -16,9 +16,6 @@
 		0E75F66625AF149500D98633 /* RecordNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F66525AF149500D98633 /* RecordNVC.swift */; };
 		0E8C003125A1B7A200A31295 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8C003025A1B7A200A31295 /* Tabbar.storyboard */; };
 		0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003425A1B7CE00A31295 /* TabbarVC.swift */; };
-		0E8C003925A1BC1F00A31295 /* ExampleFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003825A1BC1F00A31295 /* ExampleFirstVC.swift */; };
-		0E8C003C25A1BC3000A31295 /* ExampleSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003B25A1BC3000A31295 /* ExampleSecondVC.swift */; };
-		0E8C003F25A1BC3F00A31295 /* ExampleThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003E25A1BC3F00A31295 /* ExampleThirdVC.swift */; };
 		0E8C004225A2498200A31295 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8C004125A2498200A31295 /* Setting.storyboard */; };
 		0E8C004725A249B900A31295 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C004625A249B900A31295 /* SettingVC.swift */; };
 		0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C004A25A2514B00A31295 /* ChangeNickNameVC.swift */; };
@@ -97,9 +94,6 @@
 		0E75F66525AF149500D98633 /* RecordNVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordNVC.swift; sourceTree = "<group>"; };
 		0E8C003025A1B7A200A31295 /* Tabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabbar.storyboard; sourceTree = "<group>"; };
 		0E8C003425A1B7CE00A31295 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
-		0E8C003825A1BC1F00A31295 /* ExampleFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleFirstVC.swift; sourceTree = "<group>"; };
-		0E8C003B25A1BC3000A31295 /* ExampleSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSecondVC.swift; sourceTree = "<group>"; };
-		0E8C003E25A1BC3F00A31295 /* ExampleThirdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleThirdVC.swift; sourceTree = "<group>"; };
 		0E8C004125A2498200A31295 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		0E8C004625A249B900A31295 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		0E8C004A25A2514B00A31295 /* ChangeNickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNickNameVC.swift; sourceTree = "<group>"; };
@@ -201,6 +195,30 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		0E75F66825AF171A00D98633 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				0E8C004125A2498200A31295 /* Setting.storyboard */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		0E75F66925AF172C00D98633 /* MainSearch */ = {
+			isa = PBXGroup;
+			children = (
+				0E9152DB25A399EA0048E226 /* MainSearch.storyboard */,
+			);
+			path = MainSearch;
+			sourceTree = "<group>";
+		};
+		0E75F66A25AF174200D98633 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				0E31344125A724570059028C /* OnBoarding.storyboard */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
 		0E8C002F25A1B79500A31295 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,9 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				0E8C003425A1B7CE00A31295 /* TabbarVC.swift */,
-				0E8C003825A1BC1F00A31295 /* ExampleFirstVC.swift */,
-				0E8C003B25A1BC3000A31295 /* ExampleSecondVC.swift */,
-				0E8C003E25A1BC3F00A31295 /* ExampleThirdVC.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -232,12 +247,12 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		0E9152DE25A399FE0048E226 /* MainSearchVCs */ = {
+		0E9152DE25A399FE0048E226 /* MainSearch */ = {
 			isa = PBXGroup;
 			children = (
 				0E9152DF25A39A1F0048E226 /* MainSearchVC.swift */,
 			);
-			path = MainSearchVCs;
+			path = MainSearch;
 			sourceTree = "<group>";
 		};
 		0E9152E325A4A0490048E226 /* MainSearchTVCells */ = {
@@ -345,13 +360,13 @@
 		6339843D259A2B6C00339615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				0E75F66A25AF174200D98633 /* OnBoarding */,
 				ABBA9CAC25A22B31008785BD /* Main */,
+				0E75F66925AF172C00D98633 /* MainSearch */,
+				0E75F66825AF171A00D98633 /* Setting */,
 				6354ED8125AE0A2D00C5CAC5 /* Calendar.storyboard */,
 				374D48CE259CEBD300152B9A /* Record */,
 				0E8C002F25A1B79500A31295 /* Tabbar */,
-				0E8C004125A2498200A31295 /* Setting.storyboard */,
-				0E9152DB25A399EA0048E226 /* MainSearch.storyboard */,
-				0E31344125A724570059028C /* OnBoarding.storyboard */,
 				6339842D2599B1F600339615 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -366,7 +381,7 @@
 				0E31344725A724AC0059028C /* OnBoarding */,
 				0E8C003325A1B7B900A31295 /* Tabbar */,
 				0E8C004525A249A900A31295 /* Setting */,
-				0E9152DE25A399FE0048E226 /* MainSearchVCs */,
+				0E9152DE25A399FE0048E226 /* MainSearch */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -666,7 +681,6 @@
 				0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */,
 				374D48ED259D49DB00152B9A /* RecordTagVC.swift in Sources */,
 				374D48DF259D236800152B9A /* RecordRateCVC.swift in Sources */,
-				0E8C003C25A1BC3000A31295 /* ExampleSecondVC.swift in Sources */,
 				0E8C004725A249B900A31295 /* SettingVC.swift in Sources */,
 				0E9152E025A39A1F0048E226 /* MainSearchVC.swift in Sources */,
 				63398462259A425200339615 /* GenericResponse.swift in Sources */,
@@ -686,8 +700,6 @@
 				3735AE3425A8F24C00E71DC3 /* RecordTagAddPopupVC.swift in Sources */,
 				63DEB261259CD49700A94488 /* DummyCell.swift in Sources */,
 				3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */,
-				0E8C003F25A1BC3F00A31295 /* ExampleThirdVC.swift in Sources */,
-				0E8C003925A1BC1F00A31295 /* ExampleFirstVC.swift in Sources */,
 				0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */,
 				6354ED9325AE0B0300C5CAC5 /* CalendarVC.swift in Sources */,
 				63DEB264259CD4AD00A94488 /* DummyClass.swift in Sources */,
