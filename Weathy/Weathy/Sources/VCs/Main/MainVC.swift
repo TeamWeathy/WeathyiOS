@@ -10,11 +10,9 @@ import UIKit
 class MainVC: UIViewController {
     //MARK: - Custom Variables
     var lastContentOffset: CGFloat = 0.0
-    let dateFormatter = DateFormatter()
-    var currDate: Date = Date()
-    var lat: Double?
-    var lon: Double?
+
     var locationWeatherData: LocationWeatherData?
+    var recommenedWeathyData: RecommendedWeathyData?
     
     //MARK: - IBOutlets
     
@@ -29,35 +27,14 @@ class MainVC: UIViewController {
     //MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        currDate = Date()
-        
-        lat = 37.59311236609
-        lon = 126.9501814612
-        
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
-        
-        UserDefaults.standard.setValue("62:p5RMVC9Z6Vpy82nLmV9ZDt2u1gDy15", forKey: "token")
+        UserDefaults.standard.setValue("62:YDMYXAMVWtyiAbVYNy2X1RDQLYMNiN", forKey: "token")
         UserDefaults.standard.setValue("이내옹", forKey: "nickname")
+        UserDefaults.standard.setValue(62, forKey: "userId")
         
-        MainService.shared.getWeatherByLocation(token: UserDefaults.standard.string(forKey: "token")!, lat: lat ?? 0, lon: lon ?? 0, date: dateFormatter.string(from: currDate)) { (result) -> (Void) in
-            switch result {
-            case .success(let data):
-                if let response = data as? LocationWeatherData {
-                    self.setViewByData(data: response)
-                }
-                
-                self.weatherCollectionView.reloadData()
-            case .requestErr(let msg):
-                print(msg)
-            case .pathErr:
-                print("path Err")
-            case .serverErr:
-                print("server Err")
-            case .networkFail:
-                print("network Fail")
-            }
-        }
+        getLocationWeather()
+        getRecommendedWeathy()
+        
+        weatherCollectionView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -87,14 +64,61 @@ class MainVC: UIViewController {
         // navigation bar
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
-        todayDateTimeLabel.text = "\(data.overviewWeather.dailyWeather.date.month)월 \(data.overviewWeather.dailyWeather.date.day)일 \(data.overviewWeather.dailyWeather.date.dayOfWeek) • \(data.overviewWeather.hourlyWeather.time)"
+        todayDateTimeLabel.text = "\(data.overviewWeather.dailyWeather.date.month)월 \(data.overviewWeather.dailyWeather.date.day)일 \(data.overviewWeather.dailyWeather.date.dayOfWeek) • \(data.overviewWeather.hourlyWeather.time!)"
         todayDateTimeLabel.characterSpacing = -0.75
         
         logoImage.frame.origin.y -= 100
         logoImage.alpha = 0
+    }
+    
+    func getLocationWeather() {
+        MainService.shared.getWeatherByLocation() { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? LocationWeatherData {
+                    self.locationWeatherData = response
+                    self.setViewByData(data: response)
+                    
+                    if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
+                        topCVC.changeWeatherViewData(data: self.locationWeatherData!)
+                    }
+
+                    UserDefaults.standard.setValue(response.overviewWeather.region.code, forKey: "locationCode")
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
+    }
+    
+    func getRecommendedWeathy() {
+        let userId: Int = UserDefaults.standard.integer(forKey: "userId")
         
-        if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-            topCVC.changeCellData(data: data)
+        MainService.shared.getRecommendedWeathy(userId: userId) { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? RecommendedWeathyData {
+                    self.recommenedWeathyData = response
+                    
+                    if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
+                        topCVC.changeWeathyViewData(data: self.recommenedWeathyData!)
+                    }
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
         }
     }
     

@@ -391,8 +391,8 @@
                                             <outlet property="weathyClimateImage" destination="ieG-uf-I35" id="J1i-ir-Vog"/>
                                             <outlet property="weathyClimateLabel" destination="8JD-go-9Kf" id="HaF-DI-IFP"/>
                                             <outlet property="weathyDateLabel" destination="4eM-8I-BwY" id="HEu-fr-Onf"/>
-                                            <outlet property="weathyHighTemperatureLabel" destination="aRc-R8-eQU" id="kqn-JJ-z3L"/>
-                                            <outlet property="weathyLowTemperatureLabel" destination="UQB-rv-BGD" id="3ep-zi-fT6"/>
+                                            <outlet property="weathyMaxTempLabel" destination="aRc-R8-eQU" id="kqn-JJ-z3L"/>
+                                            <outlet property="weathyMinTempLabel" destination="UQB-rv-BGD" id="3ep-zi-fT6"/>
                                             <outlet property="weathyStampImage" destination="D24-sT-9uo" id="Nhw-xl-Y7f"/>
                                             <outlet property="weathyStampLabel" destination="Jxy-gh-P4M" id="mW4-eG-j7W"/>
                                         </connections>

@@ -8,45 +8,46 @@
 import Foundation
 
 // MARK: - LocationWeatherData
+
 struct LocationWeatherData: Codable {
-    let overviewWeather: OverviewWeather
+    let overviewWeather: MainOverviewWeather
     let message: String
 }
 
 // MARK: - OverviewWeather
-struct OverviewWeather: Codable {
-    let region: Region
-    let dailyWeather: DailyWeather
-    let hourlyWeather: HourlyWeather
+struct MainOverviewWeather: Codable {
+    let region: MainRegion
+    let dailyWeather: MainDailyWeather
+    let hourlyWeather: MainHourlyWeather
 }
 
 // MARK: - DailyWeather
-struct DailyWeather: Codable {
-    let date: DateClass
-    let temperature: Temperature
+struct MainDailyWeather: Codable {
+    let date: MainDateClass
+    let temperature: MainTemperature
 }
 
 // MARK: - DateClass
-struct DateClass: Codable {
+struct MainDateClass: Codable {
     let year, month, day: Int
     let dayOfWeek: String
 }
 
 // MARK: - Temperature
-struct Temperature: Codable {
+struct MainTemperature: Codable {
     let maxTemp, minTemp: Int
 }
 
 // MARK: - HourlyWeather
-struct HourlyWeather: Codable {
-    let time: String
-    let temperature: Int
-    let climate: Climate
+struct MainHourlyWeather: Codable {
+    let time: String?
+    let temperature: Int?
+    let climate: MainClimate
     let pop: Int
 }
 
 // MARK: - Climate
-struct Climate: Codable {
+struct MainClimate: Codable {
     let iconID: Int
     let climateDescription: String
 
@@ -57,7 +58,7 @@ struct Climate: Codable {
 }
 
 // MARK: - Region
-struct Region: Codable {
+struct MainRegion: Codable {
     let code: Int
     let name: String
 }

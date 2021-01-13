@@ -7,6 +7,14 @@
 
 import UIKit
 
+struct Emoji{
+    static let veryHot = 1
+    static let hot = 2
+    static let good = 3
+    static let cold = 4
+    static let veryCold = 5
+}
+
 class MainTopCVC: UICollectionViewCell {
     //MARK: - Custom Variables
     var closetTop: [String] = ["기모 맨투맨", "히트텍", "폴로니트", "메종 마르지엘라"]
@@ -35,8 +43,8 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var weathyDateLabel: SpacedLabel!
     @IBOutlet weak var weathyClimateImage: UIImageView!
     @IBOutlet weak var weathyClimateLabel: SpacedLabel!
-    @IBOutlet weak var weathyHighTemperatureLabel: SpacedLabel!
-    @IBOutlet weak var weathyLowTemperatureLabel: SpacedLabel!
+    @IBOutlet weak var weathyMaxTempLabel: SpacedLabel!
+    @IBOutlet weak var weathyMinTempLabel: SpacedLabel!
     @IBOutlet weak var weathyStampImage: UIImageView!
     @IBOutlet weak var weathyStampLabel: SpacedLabel!
     @IBOutlet weak var closetTopLabel: SpacedLabel!
@@ -48,35 +56,44 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var downImage: UIImageView!
     
     //MARK: - Custom Methods
-    func changeCellData(data: LocationWeatherData) {
-        emptyImage.image = UIImage(named: "main_img_empty")
-        emptyImage.alpha = 0
-//        emptyImage.layer.zPosition = 1
-        
-        closetTopLabel.text = insertSeparatorInArray(closetTop)
-        closetOuterLabel.text = insertSeparatorInArray(closetOuter)
-        closetBottomLabel.text = insertSeparatorInArray(closetBottom)
-        closetEtcLabel.text = insertSeparatorInArray(closetEtc)
-
-        todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
+    func changeWeatherViewData(data: LocationWeatherData!) {
         locationLabel.text = "\(data.overviewWeather.region.name)"
-        currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature)°"
+        currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature!)°"
         maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.minTemp)°"
         climateLabel.text = "\(data.overviewWeather.hourlyWeather.climate.climateDescription)"
-        
-        weathyDateLabel.text = "2020년 12월 1일"
-        weathyClimateImage.image = UIImage(named: "ic_fewclouds_day")
-        weathyClimateLabel.text = "구름조금"
-        weathyHighTemperatureLabel.text = "20°"
-        weathyLowTemperatureLabel.text = "-20°"
-        
-//        weathyStampImage.image = UIImage(named: <#T##String#>)
-        weathyStampLabel.text = "추워요"
     }
     
-    func insertSeparatorInArray(_ arr: [String]) -> String {
-        return arr.joined(separator: "  ・  ")
+    func changeWeathyViewData(data: RecommendedWeathyData) {
+        if (data.weathy == nil) {
+            emptyImage.image = UIImage(named: "main_img_empty")
+            emptyImage.alpha = 1
+            
+            return
+        }
+        
+        todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
+
+        closetTopLabel.text = insertSeparatorInArray(data.weathy.closet.top.clothes)
+        closetOuterLabel.text = insertSeparatorInArray(data.weathy.closet.outer.clothes)
+        closetBottomLabel.text = insertSeparatorInArray(data.weathy.closet.bottom.clothes)
+        closetEtcLabel.text = insertSeparatorInArray(data.weathy.closet.etc.clothes)
+
+        weathyDateLabel.text = "\(data.weathy.dailyWeather.date.year)년 \(data.weathy.dailyWeather.date.month)월 \(data.weathy.dailyWeather.date.day)일"
+        weathyClimateImage.image = UIImage(named: "ic_fewclouds_day")
+//        weathyClimateLabel.text = "\(data.weathy)"
+        weathyMaxTempLabel.text = "\(data.weathy.dailyWeather.temperature.maxTemp)°"
+        weathyMinTempLabel.text = "\(data.weathy.dailyWeather.temperature.minTemp)°"
+        
+//        weathyStampImage.image = UIImage(named: <#T##String#>)
+        // stampLabel
+        weathyStampLabel.text = "추워요"
+    }
+        
+    func insertSeparatorInArray(_ arr: [Clothe]) -> String {
+        return arr.map({ (val) -> String in
+            "\(val.name)"
+        }).joined(separator: " ・ ")
     }
     
     func blankDownImage() {
@@ -139,13 +156,13 @@ class MainTopCVC: UICollectionViewCell {
         weathyClimateLabel.textColor = UIColor.subGrey1
         weathyClimateLabel.characterSpacing = -0.75
 
-        weathyHighTemperatureLabel.textColor = UIColor.redTemp
-        weathyHighTemperatureLabel.font = UIFont.RobotoLight30
-        weathyHighTemperatureLabel.characterSpacing = -1.5
+        weathyMaxTempLabel.textColor = UIColor.redTemp
+        weathyMaxTempLabel.font = UIFont.RobotoLight30
+        weathyMaxTempLabel.characterSpacing = -1.5
 
-        weathyLowTemperatureLabel.textColor = UIColor.blueTemp
-        weathyLowTemperatureLabel.font = UIFont.RobotoLight30
-        weathyLowTemperatureLabel.characterSpacing = -1.5
+        weathyMinTempLabel.textColor = UIColor.blueTemp
+        weathyMinTempLabel.font = UIFont.RobotoLight30
+        weathyMinTempLabel.characterSpacing = -1.5
 
         weathyStampLabel.font = UIFont.SDGothicSemiBold23
         weathyStampLabel.textColor = UIColor.imojiColdText

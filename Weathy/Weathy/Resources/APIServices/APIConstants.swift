@@ -12,4 +12,8 @@ struct APIConstants{
     
     // Main
     static let getWeatherByLocationURL = baseURL + "/weather/overview"
+    
+    static func getRecommendedWeathyURL(userId: Int, code: String, date: String) -> String {
+        return baseURL + "/users/\(userId)/weathy/recommend?code=\(code)&date=\(date)"
+    }
 }
