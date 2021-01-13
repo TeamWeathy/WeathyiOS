@@ -480,17 +480,23 @@ extension RecordTagVC: UICollectionViewDataSource {
             if indexPath.item == 0 {
                 print("I'm chosen")
                 
-                guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordTagAddPopupVC") as? RecordTagAddPopupVC else {
-                    return
+                if tagTitles[titleIndex].tagTab.count <= 50 {
+                    guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordTagAddPopupVC") as? RecordTagAddPopupVC else {
+                        return
+                    }
+                    
+                    dvc.tagIndex = titleIndex + 1
+                    dvc.tagCategory = tagTitles[titleIndex].title
+                    dvc.tagCount = tagTitles[titleIndex].tagTab.count-1
+                    
+                    dvc.modalPresentationStyle = .overCurrentContext
+                    
+                    self.present(dvc, animated: false, completion: nil)
+                }
+                else {
+                    showToast(message: "태그를 추가하려면 기존 태그를 삭제해주세요.")
                 }
                 
-                dvc.tagIndex = titleIndex + 1
-                dvc.tagCategory = tagTitles[titleIndex].title
-                dvc.tagCount = tagTitles[titleIndex].tagTab.count-1
-                
-                dvc.modalPresentationStyle = .overCurrentContext
-                
-                self.present(dvc, animated: false, completion: nil)
                 
             }
             /// 태그가 선택됐을 경우
