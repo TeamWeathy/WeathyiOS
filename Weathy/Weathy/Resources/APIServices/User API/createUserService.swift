@@ -11,7 +11,7 @@ import Alamofire
 struct createUserService {
     static let shared = createUserService()
     
-    func createUser(uuid: String, nickname: String, completion: @escaping (NetworkResult<Any>) -> () ){
+    func createUserPost(uuid: String, nickname: String, completion: @escaping (NetworkResult<Any>) -> () ){
         
         let url = APIConstants.createUserURL
         let header : HTTPHeaders = [ "Content-Type" : "application/json"]

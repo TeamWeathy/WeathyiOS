@@ -10,6 +10,7 @@
 		0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3133F725A4EB5C0059028C /* RecentTVC.swift */; };
 		0E31344225A724570059028C /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E31344125A724570059028C /* OnBoarding.storyboard */; };
 		0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344425A724A80059028C /* OnBoardingFirstVC.swift */; };
+		0E6E9A6925AF5CFF00702706 /* modifyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */; };
 		0E75F64C25AC1C9D00D98633 /* SearchRecentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */; };
 		0E75F65825AD800A00D98633 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F65725AD800A00D98633 /* SearchTVC.swift */; };
 		0E75F65B25AD984D00D98633 /* NickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F65A25AD984D00D98633 /* NickNameVC.swift */; };
@@ -90,6 +91,7 @@
 		0E3133F725A4EB5C0059028C /* RecentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTVC.swift; sourceTree = "<group>"; };
 		0E31344125A724570059028C /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
 		0E31344425A724A80059028C /* OnBoardingFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFirstVC.swift; sourceTree = "<group>"; };
+		0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modifyUserService.swift; sourceTree = "<group>"; };
 		0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecentInfo.swift; sourceTree = "<group>"; };
 		0E75F65725AD800A00D98633 /* SearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVC.swift; sourceTree = "<group>"; };
 		0E75F65A25AD984D00D98633 /* NickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameVC.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				0E75F67825AF3E5600D98633 /* createUserService.swift */,
+				0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */,
 			);
 			path = "User API";
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E6E9A6925AF5CFF00702706 /* modifyUserService.swift in Sources */,
 				6354ED9D25AE0B3700C5CAC5 /* InfiniteMonthlyCVC.swift in Sources */,
 				374D48FE259F678200152B9A /* RecordTagCVC.swift in Sources */,
 				6354EDA125AE0B6700C5CAC5 /* Date+Extensions.swift in Sources */,

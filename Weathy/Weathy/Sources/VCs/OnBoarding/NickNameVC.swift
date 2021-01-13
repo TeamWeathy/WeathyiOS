@@ -97,14 +97,18 @@ class NickNameVC: UIViewController {
         guard let nickName = nickNameTextField.text else { return }
         
         /// 서버 연결!
-        createUserService.shared.createUser(uuid: UUID().uuidString, nickname: nickName){(NetworkResult) -> (Void) in
+        createUserService.shared.createUserPost(uuid: UUID().uuidString, nickname: nickName){(NetworkResult) -> (Void) in
             switch NetworkResult{
             case .success(let data):
                 
                 if let createData = data as? UserInformation {
                     UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
                     UserDefaults.standard.set(createData.token, forKey: "token")
+                    UserDefaults.standard.set(createData.user.id, forKey: "userID")
 
+//                    print("userID ---> \(UserDefaults.standard.string(forKey: "userID"))")
+//                    print("token ---> \(UserDefaults.standard.string(forKey: "token"))")
+                    
 //                    print("---> 뭐니 넌\(self.changBool)")
                     /// 닉네임 설정 했을 때 aleart 띄우기
                     if self.changBool == true {
