@@ -89,7 +89,9 @@ class TabbarVC: UIViewController {
     }
     /// Plus 버튼
     @IBAction func plusButtonDidTap(_ sender: Any) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: ExampleSecondVC.identifier) as? ExampleSecondVC else {return}
+        
+        let story = UIStoryboard.init(name: "RecordStart", bundle: nil)
+        guard let vc = story.instantiateViewController(withIdentifier: RecordNVC.identifier) as? RecordNVC else {return}
         vc.modalPresentationStyle = .fullScreen
         
         present(vc, animated: true, completion: nil)
