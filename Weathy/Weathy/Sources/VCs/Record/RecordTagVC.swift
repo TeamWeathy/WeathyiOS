@@ -102,11 +102,12 @@ class RecordTagVC: UIViewController {
         
         // 초기화
         self.tagTitles = [
-            TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
+            TagTitle(title: "상의", count: 0, isSelected: false, tagTab: tagUpper),
             TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
             TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
             TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
         ]
+        tagTitles[titleIndex].isSelected = true
     
         callDisplayTagService()
     }
@@ -114,6 +115,7 @@ class RecordTagVC: UIViewController {
     @objc func tagAdded(_ noti : Notification){
         let isAdded = noti.object
         self.viewWillAppear(true)
+        showToast(message: "태그가 추가되었어요!")
     }
     @objc func longTap(gesture : UILongPressGestureRecognizer!) {
         if gesture.state != .ended {
