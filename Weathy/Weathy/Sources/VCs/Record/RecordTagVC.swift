@@ -44,7 +44,7 @@ class RecordTagVC: UIViewController {
     
     var myClothesTagData: ClothesTagData?
     var localizedClothesTagData: [TagCategoryData] = []
-    var isSelected: [Bool] = []
+    var selectedTags: [Int] = []
     
     var isAdded: Bool = false
     
@@ -498,15 +498,25 @@ extension RecordTagVC: UICollectionViewDataSource {
                     collectionView.deselectItem(at: indexPath, animated: false)
                     tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
                     if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
+                        selectedTags.append(tagTitles[titleIndex].tagTab[indexPath.item].id)
                         tagTitles[titleIndex].count += 1
+                        print(">>>", selectedTags)
                     } else {
+                        let selectedId = tagTitles[titleIndex].tagTab[indexPath.item].id
+                        let selectedIndex = selectedTags.firstIndex(of: selectedId)
+                        selectedTags.remove(at: selectedIndex!)
                         tagTitles[titleIndex].count -= 1
+                        print(">>>", selectedTags)
                     }
                 }
                 else if tagTitles[titleIndex].count == 5 {
                     if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
                         tagTitles[titleIndex].tagTab[indexPath.item].isSelected = false
+                        let selectedId = tagTitles[titleIndex].tagTab[indexPath.item].id
+                        let selectedIndex = selectedTags.firstIndex(of: selectedId)
+                        selectedTags.remove(at: selectedIndex!)
                         tagTitles[titleIndex].count -= 1
+                        print(">>>", selectedTags)
                     }
                     else {
                         showToast(message: "태그는 카테고리당 5개만 선택할 수 있어요.")
