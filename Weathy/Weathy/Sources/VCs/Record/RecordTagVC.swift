@@ -352,7 +352,7 @@ extension RecordTagVC {
         
 //        print(">> isAdded", RecordTagAddPopupVC().isAdded)
         
-        // viewWillAppear에서 다시 호출되었을 경우를 대비한 분기처리
+        /// viewWillAppear에서 다시 호출되었을 경우를 대비한 분기처리
         if localizedClothesTagData[titleIndex].clothes?.count != tagTitles[titleIndex].tagTab.count - 1 {
             
 //            print(">>> data modified")
@@ -388,7 +388,7 @@ extension RecordTagVC: UICollectionViewDataSource {
 //            print(">>>", tagTitles[titleIndex].tagTab.count)
             
             if tagTitles[titleIndex].tagTab.count == 1 {
-                return 0
+                return 1
             }
             
             return tagTitles[titleIndex].tagTab.count
