@@ -124,7 +124,7 @@ class RecordTagVC: UIViewController {
     
     @objc func tagDeleted(_ noti : Notification){
         let isDeleted = noti.object
-        print(">>> received")
+//        print(">>> received")
         self.showToast(message: "태그가 삭제되었어요!")
     }
     
@@ -140,7 +140,7 @@ class RecordTagVC: UIViewController {
                 // get the cell at indexPath (the one you long pressed)
 //                print(">>>", indexPath)
 //                let cell = self.tagCollectionView.cellForItem(at: indexPath)
-                print("long press detected")
+//                print("long press detected")
                 
                 if indexPath[1] == 0 {
                     return
@@ -341,21 +341,14 @@ extension RecordTagVC {
             self.myClothesTagData!.outer,
             self.myClothesTagData!.etc
         ]
-        
-        print(">>> localized", self.localizedClothesTagData)
+
         makeLocalTagData()
     }
     
     func makeLocalTagData() {
         
-//        print(">>> here", localizedClothesTagData[titleIndex].clothes!.count, tagTitles[titleIndex].tagTab.count - 1)
-        
-//        print(">> isAdded", RecordTagAddPopupVC().isAdded)
-        
         /// viewWillAppear에서 다시 호출되었을 경우를 대비한 분기처리
         if localizedClothesTagData[titleIndex].clothes?.count != tagTitles[titleIndex].tagTab.count - 1 || localizedClothesTagData[titleIndex].clothes?.count == 0 {
-            
-//            print(">>> data modified")
             
             for j in 0...3 {
                 
@@ -369,9 +362,6 @@ extension RecordTagVC {
                 }
             }
         }
-        
-        print(">>> tagTitles", self.tagTitles)
-//        print(">>>", self.tagTitles[titleIndex].tagTab.count)
 
     }
 }
@@ -385,7 +375,7 @@ extension RecordTagVC: UICollectionViewDataSource {
         /// tagCollectionView
         if collectionView == tagCollectionView {
             
-            print(">>> tag", titleIndex, tagTitles[titleIndex].tagTab.count)
+//            print(">>> tag", titleIndex, tagTitles[titleIndex].tagTab.count)
             
             if tagTitles[titleIndex].tagTab.count == 1 {
                 return 1
@@ -477,7 +467,7 @@ extension RecordTagVC: UICollectionViewDataSource {
             
             /// +가 선택됐을 경우
             if indexPath.item == 0 {
-                print("I'm chosen")
+//                print("I'm chosen")
                 
                 if tagTitles[titleIndex].tagTab.count <= 50 {
                     guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordTagAddPopupVC") as? RecordTagAddPopupVC else {
@@ -506,13 +496,13 @@ extension RecordTagVC: UICollectionViewDataSource {
                     if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
                         selectedTags.append(tagTitles[titleIndex].tagTab[indexPath.item].id)
                         tagTitles[titleIndex].count += 1
-                        print(">>>", selectedTags)
+//                        print(">>>", selectedTags)
                     } else {
                         let selectedId = tagTitles[titleIndex].tagTab[indexPath.item].id
                         let selectedIndex = selectedTags.firstIndex(of: selectedId)
                         selectedTags.remove(at: selectedIndex!)
                         tagTitles[titleIndex].count -= 1
-                        print(">>>", selectedTags)
+//                        print(">>>", selectedTags)
                     }
                 }
                 else if tagTitles[titleIndex].count == 5 {
@@ -522,7 +512,7 @@ extension RecordTagVC: UICollectionViewDataSource {
                         let selectedIndex = selectedTags.firstIndex(of: selectedId)
                         selectedTags.remove(at: selectedIndex!)
                         tagTitles[titleIndex].count -= 1
-                        print(">>>", selectedTags)
+//                        print(">>>", selectedTags)
                     }
                     else {
                         showToast(message: "태그는 카테고리당 5개만 선택할 수 있어요.")
@@ -559,7 +549,7 @@ extension RecordTagVC: UICollectionViewDataSource {
                     
                     if tagTitles[i].isSelected == true {
                         //                        self.titleIndex = i
-                        print("선택된 것 >> ", tagTitles[i].title)
+//                        print("선택된 것 >> ", tagTitles[i].title)
                     } else {
                         self.titleIndex = i
                         tagTitles[i].isSelected = !tagTitles[i].isSelected
