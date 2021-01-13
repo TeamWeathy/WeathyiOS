@@ -9,6 +9,8 @@ import UIKit
 
 class TabbarVC: UIViewController {
     
+    static let identifier = "TabbarVC"
+    
     //MARK: - Custom Variables
     
     var mainButtonBool = true
