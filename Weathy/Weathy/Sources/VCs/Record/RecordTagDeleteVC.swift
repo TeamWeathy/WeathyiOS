@@ -57,6 +57,11 @@ class RecordTagDeleteVC: UIViewController {
         /// + 자리에 있던 아이 삭제
         for i in 0...3 {
             tagTitles[i].tagTab.removeFirst()
+            
+            /// isSelected 초기화
+            for j in 0...tagTitles[i].tagTab.count - 1 {
+                tagTitles[i].tagTab[j].isSelected = false
+            }
         }
         
         /// 삭제 탭 부를 때 선택했던 셀은 기본적으로 선택돼있게
