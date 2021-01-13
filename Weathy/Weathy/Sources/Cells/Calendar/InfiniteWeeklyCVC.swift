@@ -112,7 +112,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
             cell.dayLabel.text = String(tempIdx - selectedDate.numberOfMonth)
             cell.setGreyDay()
         }
-        
+        cell.setEmotionView(emotionCode: 2)
         return cell
         
     }
