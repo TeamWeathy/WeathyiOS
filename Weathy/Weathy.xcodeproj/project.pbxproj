@@ -47,6 +47,9 @@
 		374D4904259F68EE00152B9A /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D4903259F68EE00152B9A /* TagFlowLayout.swift */; };
 		374D490B259F6CAD00152B9A /* RecordTagTitleCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D490A259F6CAD00152B9A /* RecordTagTitleCVC.swift */; };
 		37D3476F25ADB7BD0069247F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */; };
+		37FB8AA825AE4FA5001A6287 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FB8AA725AE4FA5001A6287 /* Splash.storyboard */; };
+		37FB8AAB25AE4FB7001A6287 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB8AAA25AE4FB7001A6287 /* SplashVC.swift */; };
+		37FB8AAF25AE52E1001A6287 /* 스플래시.json in Resources */ = {isa = PBXBuildFile; fileRef = 37FB8AAE25AE52E1001A6287 /* 스플래시.json */; };
 		4C6D6B3632E6D1F7D4A96051 /* Pods_Weathy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */; };
 		633984202599B1F400339615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339841F2599B1F400339615 /* AppDelegate.swift */; };
 		633984222599B1F400339615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633984212599B1F400339615 /* SceneDelegate.swift */; };
@@ -129,6 +132,9 @@
 		374D4903259F68EE00152B9A /* TagFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
 		374D490A259F6CAD00152B9A /* RecordTagTitleCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagTitleCVC.swift; sourceTree = "<group>"; };
 		37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		37FB8AA725AE4FA5001A6287 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		37FB8AAA25AE4FB7001A6287 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		37FB8AAE25AE52E1001A6287 /* 스플래시.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "스플래시.json"; path = "../../../../../../../../Downloads/스플래시.json"; sourceTree = "<group>"; };
 		6339841C2599B1F400339615 /* Weathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339841F2599B1F400339615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		633984212599B1F400339615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -335,6 +341,30 @@
 			path = Record;
 			sourceTree = "<group>";
 		};
+		37FB8AA525AE4F85001A6287 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				37FB8AA725AE4FA5001A6287 /* Splash.storyboard */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		37FB8AA625AE4F99001A6287 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				37FB8AAA25AE4FB7001A6287 /* SplashVC.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		37FB8AAD25AE52BD001A6287 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				37FB8AAE25AE52E1001A6287 /* 스플래시.json */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		633984132599B1F400339615 = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +423,7 @@
 		6339843D259A2B6C00339615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				37FB8AA525AE4F85001A6287 /* Splash */,
 				0E75F66A25AF174200D98633 /* OnBoarding */,
 				ABBA9CAC25A22B31008785BD /* Main */,
 				0E75F66925AF172C00D98633 /* MainSearch */,
@@ -408,6 +439,7 @@
 		6339843F259A2BB600339615 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				37FB8AA625AE4F99001A6287 /* Splash */,
 				ABBA9CAB25A22B25008785BD /* Main */,
 				6354ED9025AE0AED00C5CAC5 /* Calendar */,
 				374D48CF259CEBE100152B9A /* Record */,
@@ -459,6 +491,7 @@
 		63398443259A2BE700339615 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				37FB8AAD25AE52BD001A6287 /* Splash */,
 				0E75F67325AF3D4E00D98633 /* UserInformation */,
 				63398461259A425200339615 /* GenericResponse.swift */,
 			);
@@ -638,10 +671,12 @@
 				3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */,
 				374D48EA259D49CA00152B9A /* RecordTag.storyboard in Resources */,
 				63DEB296259CF67200A94488 /* Roboto-Regular.ttf in Resources */,
+				37FB8AAF25AE52E1001A6287 /* 스플래시.json in Resources */,
 				63DEB290259CF67200A94488 /* Roboto-Medium.ttf in Resources */,
 				6354ED8225AE0A2E00C5CAC5 /* Calendar.storyboard in Resources */,
 				0E8C004225A2498200A31295 /* Setting.storyboard in Resources */,
 				63DEB292259CF67200A94488 /* AppleSDGothicNeoM.ttf in Resources */,
+				37FB8AA825AE4FA5001A6287 /* Splash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +757,7 @@
 				0E8C004725A249B900A31295 /* SettingVC.swift in Sources */,
 				0E9152E025A39A1F0048E226 /* MainSearchVC.swift in Sources */,
 				63398462259A425200339615 /* GenericResponse.swift in Sources */,
+				37FB8AAB25AE4FB7001A6287 /* SplashVC.swift in Sources */,
 				AB4E1C9525A9ED4C002F3B79 /* WeeklyWeatherCVC.swift in Sources */,
 				63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */,
 				63DEB272259CD55A00A94488 /* NetworkResult.swift in Sources */,
