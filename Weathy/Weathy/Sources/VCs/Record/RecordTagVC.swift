@@ -161,6 +161,8 @@ class RecordTagVC: UIViewController {
     
     var dvc = RecordRateVC()
     
+    var myClothesTagData: ClothesTagData?
+    
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
     
@@ -220,6 +222,7 @@ class RecordTagVC: UIViewController {
         }
         
         animationPrac()
+        callDisplayTagService()
     }
     
     
@@ -414,6 +417,34 @@ extension RecordTagVC {
         }, completion: { (isCompleted) in
             toastLabel.removeFromSuperview()
         })
+    }
+    
+    func callDisplayTagService() {
+        RecordTagService.shared.displayTag(userId: 63, token: "63:wckgTPK2NtG7JoM0p207XwsmDxOmM7") { (networkResult) -> (Void) in
+            switch networkResult {
+            case .success(let data):
+                if let loadData = data as? ClothesTagData {
+                    self.myClothesTagData = loadData
+                }
+                
+                print(self.myClothesTagData)
+                
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                }
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+            
+        }
+        
+        
     }
 
 
