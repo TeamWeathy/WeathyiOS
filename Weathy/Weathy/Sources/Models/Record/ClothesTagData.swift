@@ -33,4 +33,5 @@ struct TagCategoryData: Codable {
 struct TagNameData: Codable {
     let id: Int
     let name: String
+//    var isSelected: Bool = false
 }

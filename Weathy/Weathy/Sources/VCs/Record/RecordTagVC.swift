@@ -14,7 +14,9 @@ class RecordTagVC: UIViewController {
     var notificationGenerator: UIImpactFeedbackGenerator?
     
     struct Tag {
-        var name: String
+        let id: Int
+        let name: String
+//        let tag: TagNameData
         var isSelected: Bool
     }
     
@@ -25,144 +27,22 @@ class RecordTagVC: UIViewController {
         var tagTab: [Tag]
     }
     
-    var tagUpper: [Tag] = [
-        Tag(name: "  ", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
+    var tagUpper: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
+    var tagUnder: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
+    var tagOuter: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
+    var tagEtc: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
     
-    var tagUnder: [Tag] = [
-        Tag(name: "  ", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
+    var tagTitles: [TagTitle] = [] // 태그 카테고리
     
-    var tagOuter: [Tag] = [
-        Tag(name: "  ", isSelected: false),
-        Tag(name: "외투", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
+    let name: String = "웨디" // 사용자 닉네임
+    var titleIndex: Int = 0 // 현재 선택된 태그 카테고리
     
-    var tagEtc: [Tag] = [
-        Tag(name: "  ", isSelected: false),
-        Tag(name: "기타", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
-    
-    var tagTitles: [TagTitle] = []
-    
-    let name: String = "웨디"
-    var titleIndex: Int = 0
-    var visitedFlag: Bool = false
-    
+    var visitedFlag: Bool = false // 다음 뷰로 넘어간 적이 있는지 판단
     var dvc = RecordRateVC()
     
     var myClothesTagData: ClothesTagData?
     var localizedClothesTagData: [TagCategoryData] = []
+    var isSelected: [Bool] = []
     
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
@@ -195,7 +75,7 @@ class RecordTagVC: UIViewController {
         setHeader()
         setTitleLabel()
         
-        
+        // 초기화
         self.tagTitles = [
             TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
             TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
@@ -203,15 +83,14 @@ class RecordTagVC: UIViewController {
             TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
         ]
         
-        
+        // 초기 상태 버튼 (애니메이션 안 들어가야 해서 따로 선언)
         nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = UIColor.subGrey3
         nextBtn.setTitle("다음", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
-        
-        // Do any additional setup after loading the view.
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -459,9 +338,21 @@ extension RecordTagVC {
         ]
         
         print(self.localizedClothesTagData)
+        makeLocalTagData()
     }
+    
+    func makeLocalTagData() {
+        
+        for j in 0...3 {
+            for i in 0...localizedClothesTagData[j].clothes.count - 1 {
+                self.tagTitles[j].tagTab.append(Tag(id: localizedClothesTagData[j].clothes[i].id, name: localizedClothesTagData[j].clothes[i].name, isSelected: false))
+            }
+        }
+        
+        print(">>>", self.tagTitles)
+        print(">>>", self.tagTitles[titleIndex].tagTab.count)
 
-
+    }
 }
 
 //MARK: - UICollectionViewDataSource
@@ -472,12 +363,14 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-            if localizedClothesTagData.count == 0 {
+            
+            print(">>>", tagTitles[titleIndex].tagTab.count)
+            
+            if tagTitles[titleIndex].tagTab.count == 1 {
                 return 0
             }
             
-            print(">>>", localizedClothesTagData[titleIndex].clothes.count)
-            return localizedClothesTagData[titleIndex].clothes.count
+            return tagTitles[titleIndex].tagTab.count
         }
         
         /// tagTitleCollectionView
@@ -501,7 +394,8 @@ extension RecordTagVC: UICollectionViewDataSource {
             let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap))
             cell.addGestureRecognizer(longPressGesture)
             
-            cell.tagLabel.text = localizedClothesTagData[titleIndex].clothes[indexPath.item].name
+            cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
+            print(tagTitles[titleIndex].tagTab[indexPath.item].name)
             cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
             
             if indexPath.item == 0 {
@@ -516,17 +410,20 @@ extension RecordTagVC: UICollectionViewDataSource {
                 cell.addTagImage.isHidden = false
                 cell.layer.borderWidth = 0
                 cell.backgroundColor = .white
+                print(">>>", indexPath.item)
             }
             else {
+                
+                print(">>>", tagTitles[titleIndex].tagTab.count, localizedClothesTagData[titleIndex].clothes.count)
+                
                 if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
+                    print(">>>", indexPath.item)
                     setTagUnselected(cell: cell)
                 }
                 else {
                     setTagSelected(cell: cell)
                 }
             }
-            
-            
             
             return cell
         }
