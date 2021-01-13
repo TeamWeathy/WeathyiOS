@@ -33,7 +33,8 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
         super.awakeFromNib()
         monthlyCalendarCV.delegate = self
         monthlyCalendarCV.dataSource = self
-        initDate(selectedDate)
+        selectedDateDidChange(selectedDate)
+        monthlyWeathyList = []
         callMonthlyWeathy()
         
     }
@@ -68,7 +69,7 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     
     //MARK: - Calendar Methods
     
-    func initDate(_ selected: Date){
+    func selectedDateDidChange(_ selected: Date){
         self.selectedDate = selected
         lastComponents.year = Calendar.current.component(.year, from: selectedDate)
         lastComponents.month = Calendar.current.component(.month, from: selectedDate)

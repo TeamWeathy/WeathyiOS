@@ -563,13 +563,12 @@ extension CalendarVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == infiniteMonthlyCV{
-            print("$$reloaded")
-            print("~~~indexPath",indexPath,infiniteMonthList)
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteMonthlyCVC.identifier, for: indexPath) as? InfiniteMonthlyCVC else { return UICollectionViewCell() }
+            cell.monthlyWeathyList = [] 
             cell.monthCellDelegate = self
-            cell.initDate(infiniteMonthList[indexPath.item])
+            cell.selectedDateDidChange(infiniteMonthList[indexPath.item])
             cell.callMonthlyWeathy()
-            cell.monthlyCalendarCV.reloadData()
+//            cell.monthlyCalendarCV.reloadData()
             return cell
         }
         
