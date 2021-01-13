@@ -193,7 +193,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="NickTextFieldDidTap:" destination="Umd-x9-smB" eventType="editingDidEnd" id="tzN-Jz-lnx"/>
+                                            <action selector="NickTextFieldDidTap:" destination="Umd-x9-smB" eventType="editingChanged" id="q2S-ML-vdI"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdG-G6-S0u">

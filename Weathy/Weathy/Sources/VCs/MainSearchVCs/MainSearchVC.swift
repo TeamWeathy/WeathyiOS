@@ -30,16 +30,17 @@ class MainSearchVC: UIViewController {
     @IBOutlet weak var recentTableView: UITableView!
     
     /// 현재 검색 관련
+    @IBOutlet weak var gradientView: UIImageView!
     @IBOutlet weak var searchBackgroundView: UIView!
     @IBOutlet weak var searchNoneImage: UIImageView!
     @IBOutlet weak var searchTableView: UITableView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         clearButton.isHidden = true
         searchTextField.isSelected = true    // 첫 상태
         searchBackgroundView.isHidden = true
+        recentNoneImage.isHidden = true
         
         /// cell 지우기 관련 Notifi
         NotificationCenter.default.addObserver(self, selector: #selector(deleteNoti), name: .init("delete"), object: nil)
@@ -93,7 +94,7 @@ class MainSearchVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /// textField 눌렀을 때
+    /// textField 눌렀을 때    
     @IBAction func textFieldDidTap(_ sender: Any) {
         checkTextCount(textField: searchTextField)
     }
@@ -148,7 +149,6 @@ extension MainSearchVC: UITableViewDataSource {
             guard let searchCell = searchTableView.dequeueReusableCell(withIdentifier: SearchTVC.identifier, for: indexPath) as? SearchTVC else { return UITableViewCell() }
             
             searchCell.bind(weatherDate: SearchInfos[indexPath.row].date, weahterTime: SearchInfos[indexPath.row].time, location: SearchInfos[indexPath.row].location, weatherImage: SearchInfos[indexPath.row].weatherImage, currentTemper: "\(SearchInfos[indexPath.row].currentTemper)°", highTemper:  "\(SearchInfos[indexPath.row].highTemper)°", lowTemper: "\(SearchInfos[indexPath.row].lowTemper)°")
-            
             
             return searchCell
         }
@@ -206,7 +206,7 @@ extension MainSearchVC: CellDelegate {
     func swipeCell(indexPath: IndexPath) {
         print("-----> index \(indexPath)")
         
-        UIView.animate(withDuration: 1, animations: {            self.SearchRecentInfos.remove(at: indexPath.row)
+        UIView.animate(withDuration: 0.3, animations: {            self.SearchRecentInfos.remove(at: indexPath.row)
                         self.recentTableView.deleteRows(at: [indexPath], with: .automatic)}, completion: {_ in self.recentTableView.reloadData()})
         
     }

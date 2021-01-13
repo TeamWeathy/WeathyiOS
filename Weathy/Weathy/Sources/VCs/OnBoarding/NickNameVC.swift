@@ -57,7 +57,6 @@ class NickNameVC: UIViewController {
     }
     
     @IBAction func NickTextFieldDidTap(_ sender: Any) {
-        /// 최대길이 설정
         checkMaxLength(textField: nickNameTextField, maxLength: 6)
     }
     
