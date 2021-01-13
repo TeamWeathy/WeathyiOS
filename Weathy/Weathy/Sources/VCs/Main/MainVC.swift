@@ -94,7 +94,7 @@ class MainVC: UIViewController {
         logoImage.alpha = 0
         
         if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-            topCVC.setCell(data: data)
+            topCVC.changeCellData(data: data)
         }
     }
     
@@ -224,7 +224,7 @@ extension MainVC: UICollectionViewDataSource {
         case 0:
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainTopCVC", for: indexPath) as? MainTopCVC else {return UICollectionViewCell()}
             
-//            cell.setCell()
+            cell.setCell()
             return cell
         case 1:
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainBottomCVC", for: indexPath) as? MainBottomCVC else {return UICollectionViewCell()}

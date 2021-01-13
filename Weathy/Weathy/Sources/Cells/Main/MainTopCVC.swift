@@ -48,92 +48,31 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var downImage: UIImageView!
     
     //MARK: - Custom Methods
-    func setCell(data: LocationWeatherData) {
-        blankDownImage()
-        
+    func changeCellData(data: LocationWeatherData) {
         emptyImage.image = UIImage(named: "main_img_empty")
         emptyImage.alpha = 0
 //        emptyImage.layer.zPosition = 1
         
         closetTopLabel.text = insertSeparatorInArray(closetTop)
-        closetTopLabel.font = UIFont.SDGothicRegular13
-        closetTopLabel.textColor = UIColor.black
-        closetTopLabel.characterSpacing = -0.65
-        
         closetOuterLabel.text = insertSeparatorInArray(closetOuter)
-        closetOuterLabel.font = UIFont.SDGothicRegular13
-        closetOuterLabel.textColor = UIColor.black
-        closetOuterLabel.characterSpacing = -0.65
-        
         closetBottomLabel.text = insertSeparatorInArray(closetBottom)
-        closetBottomLabel.font = UIFont.SDGothicRegular13
-        closetBottomLabel.textColor = UIColor.black
-        closetBottomLabel.characterSpacing = -0.65
-
         closetEtcLabel.text = insertSeparatorInArray(closetEtc)
-        closetEtcLabel.font = UIFont.SDGothicRegular13
-        closetEtcLabel.textColor = UIColor.black
-        closetEtcLabel.characterSpacing = -0.65
 
-        todayWeathyNicknameTextLabel.font = UIFont.SDGothicRegular16
         todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
-        todayWeathyNicknameTextLabel.characterSpacing = -0.8
-        
-        todayWeathyView.makeRounded(cornerRadius: 35)
-        todayWeathyView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
-        
         locationLabel.text = "\(data.overviewWeather.region.name)"
-        locationLabel.font = UIFont.SDGothicSemiBold20
-        locationLabel.textColor = UIColor.mainGrey
-        locationLabel.characterSpacing = -1.0
-        
         currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature)°"
-        currTempLabel.font = UIFont.RobotoLight50
-        currTempLabel.textColor = UIColor.subGrey1
-        currTempLabel.characterSpacing = -2.5
-        
         maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
-        maxTempLabel.font = UIFont.RobotoLight23
-        maxTempLabel.textColor = UIColor.redTemp
-        maxTempLabel.characterSpacing = -1.15
-        
         minTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.minTemp)°"
-        minTempLabel.font = UIFont.RobotoLight23
-        minTempLabel.textColor = UIColor.blueTemp
-        minTempLabel.characterSpacing = -1.15
-        
         climateLabel.text = "\(data.overviewWeather.hourlyWeather.climate.climateDescription)"
-        climateLabel.font = UIFont.SDGothicRegular16
-        climateLabel.textColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.58)
-        climateLabel.characterSpacing = -0.8
         
         weathyDateLabel.text = "2020년 12월 1일"
-        weathyDateLabel.font = UIFont.SDGothicRegular13
-        weathyDateLabel.textColor = UIColor.subGrey6
-        weathyDateLabel.characterSpacing = -0.65
-        
         weathyClimateImage.image = UIImage(named: "ic_fewclouds_day")
-        
         weathyClimateLabel.text = "구름조금"
-        weathyClimateLabel.font = UIFont.SDGothicMedium15
-        weathyClimateLabel.textColor = UIColor.subGrey1
-        weathyClimateLabel.characterSpacing = -0.75
-        
         weathyHighTemperatureLabel.text = "20°"
-        weathyHighTemperatureLabel.textColor = UIColor.redTemp
-        weathyHighTemperatureLabel.font = UIFont.RobotoLight30
-        weathyHighTemperatureLabel.characterSpacing = -1.5
-        
         weathyLowTemperatureLabel.text = "-20°"
-        weathyLowTemperatureLabel.textColor = UIColor.blueTemp
-        weathyLowTemperatureLabel.font = UIFont.RobotoLight30
-        weathyLowTemperatureLabel.characterSpacing = -1.5
         
 //        weathyStampImage.image = UIImage(named: <#T##String#>)
         weathyStampLabel.text = "추워요"
-        weathyStampLabel.font = UIFont.SDGothicSemiBold23
-        weathyStampLabel.textColor = UIColor.imojiColdText
-        weathyStampLabel.characterSpacing = -1.15
     }
     
     func insertSeparatorInArray(_ arr: [String]) -> String {
@@ -147,6 +86,71 @@ class MainTopCVC: UICollectionViewCell {
         }, completion: nil)
     }
 
+    func setCell() {
+        blankDownImage()
+
+        closetTopLabel.font = UIFont.SDGothicRegular13
+        closetTopLabel.textColor = UIColor.black
+        closetTopLabel.characterSpacing = -0.65
+
+        closetOuterLabel.font = UIFont.SDGothicRegular13
+        closetOuterLabel.textColor = UIColor.black
+        closetOuterLabel.characterSpacing = -0.65
+
+        closetBottomLabel.font = UIFont.SDGothicRegular13
+        closetBottomLabel.textColor = UIColor.black
+        closetBottomLabel.characterSpacing = -0.65
+        
+        closetEtcLabel.font = UIFont.SDGothicRegular13
+        closetEtcLabel.textColor = UIColor.black
+        closetEtcLabel.characterSpacing = -0.65
+
+        todayWeathyNicknameTextLabel.font = UIFont.SDGothicRegular16
+        todayWeathyNicknameTextLabel.characterSpacing = -0.8
+
+        todayWeathyView.makeRounded(cornerRadius: 35)
+        todayWeathyView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
+
+        locationLabel.font = UIFont.SDGothicSemiBold20
+        locationLabel.textColor = UIColor.mainGrey
+        locationLabel.characterSpacing = -1.0
+
+        currTempLabel.font = UIFont.RobotoLight50
+        currTempLabel.textColor = UIColor.subGrey1
+        currTempLabel.characterSpacing = -2.5
+
+        maxTempLabel.font = UIFont.RobotoLight23
+        maxTempLabel.textColor = UIColor.redTemp
+        maxTempLabel.characterSpacing = -1.15
+        
+        minTempLabel.font = UIFont.RobotoLight23
+        minTempLabel.textColor = UIColor.blueTemp
+        minTempLabel.characterSpacing = -1.15
+        
+        climateLabel.font = UIFont.SDGothicRegular16
+        climateLabel.textColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.58)
+        climateLabel.characterSpacing = -0.8
+        
+        weathyDateLabel.font = UIFont.SDGothicRegular13
+        weathyDateLabel.textColor = UIColor.subGrey6
+        weathyDateLabel.characterSpacing = -0.65
+        
+        weathyClimateLabel.font = UIFont.SDGothicMedium15
+        weathyClimateLabel.textColor = UIColor.subGrey1
+        weathyClimateLabel.characterSpacing = -0.75
+
+        weathyHighTemperatureLabel.textColor = UIColor.redTemp
+        weathyHighTemperatureLabel.font = UIFont.RobotoLight30
+        weathyHighTemperatureLabel.characterSpacing = -1.5
+
+        weathyLowTemperatureLabel.textColor = UIColor.blueTemp
+        weathyLowTemperatureLabel.font = UIFont.RobotoLight30
+        weathyLowTemperatureLabel.characterSpacing = -1.5
+
+        weathyStampLabel.font = UIFont.SDGothicSemiBold23
+        weathyStampLabel.textColor = UIColor.imojiColdText
+        weathyStampLabel.characterSpacing = -1.15
+    }
 
     //MARK: - IBActions
     
