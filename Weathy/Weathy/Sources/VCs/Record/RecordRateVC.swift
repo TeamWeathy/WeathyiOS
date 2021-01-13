@@ -18,6 +18,8 @@ class RecordRateVC: UIViewController {
         let explanation: String
         var isSelected: Bool
     }
+    
+    var selectedTags: [Int] = []
 
     var rate: [Rates] = []
     
@@ -66,6 +68,8 @@ class RecordRateVC: UIViewController {
         guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
             return
         }
+        
+        dvc.selectedTags = selectedTags
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }

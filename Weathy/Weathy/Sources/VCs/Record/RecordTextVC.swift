@@ -11,6 +11,8 @@ class RecordTextVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var selectedTags: [Int] = []
+    
     let placeholder: String = "미래의 나에게 들려주고 싶은 날씨 조언을 적어주세요. (예 : 목도리를 챙길걸 그랬어.)"
     let maxWordCount: Int = 100
     var wordCount: Int = 0

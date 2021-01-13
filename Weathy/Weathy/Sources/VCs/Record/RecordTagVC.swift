@@ -183,6 +183,8 @@ class RecordTagVC: UIViewController {
             visitedFlag = true
         }
         
+        dvc.selectedTags = selectedTags
+        
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
     
