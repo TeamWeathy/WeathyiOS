@@ -342,7 +342,7 @@ extension RecordTagVC {
             self.myClothesTagData!.etc
         ]
         
-        print(self.localizedClothesTagData)
+        print(">>> localized", self.localizedClothesTagData)
         makeLocalTagData()
     }
     
@@ -353,20 +353,24 @@ extension RecordTagVC {
 //        print(">> isAdded", RecordTagAddPopupVC().isAdded)
         
         // viewWillAppear에서 다시 호출되었을 경우를 대비한 분기처리
-        if localizedClothesTagData[titleIndex].clothes!.count != tagTitles[titleIndex].tagTab.count - 1 {
+        if localizedClothesTagData[titleIndex].clothes?.count != tagTitles[titleIndex].tagTab.count - 1 {
             
 //            print(">>> data modified")
             
             for j in 0...3 {
-                for i in 0...localizedClothesTagData[j].clothes!.count - 1 {
-                    self.tagTitles[j].tagTab.append(Tag(id: localizedClothesTagData[j].clothes![i].id, name: localizedClothesTagData[j].clothes![i].name, isSelected: false))
+                
+                if localizedClothesTagData[j].clothes?.count == 0 {
+                    break
+                }
+                else {
+                    for i in 0...localizedClothesTagData[j].clothes!.count - 1 {
+                        self.tagTitles[j].tagTab.append(Tag(id: localizedClothesTagData[j].clothes![i].id, name: localizedClothesTagData[j].clothes![i].name, isSelected: false))
+                    }
                 }
             }
-            
-            isAdded = false
         }
         
-//        print(">>>", self.tagTitles)
+        print(">>> tagTitles", self.tagTitles)
 //        print(">>>", self.tagTitles[titleIndex].tagTab.count)
 
     }

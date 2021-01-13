@@ -60,6 +60,10 @@ class RecordTagDeleteVC: UIViewController {
         for i in 0...3 {
             tagTitles[i].tagTab.removeFirst()
             
+            if tagTitles[i].tagTab.count == 0 {
+                break
+            }
+            
             /// isSelected 초기화
             for j in 0...tagTitles[i].tagTab.count - 1 {
                 tagTitles[i].tagTab[j].isSelected = false
