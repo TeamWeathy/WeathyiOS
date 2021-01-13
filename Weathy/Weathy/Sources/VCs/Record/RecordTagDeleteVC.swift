@@ -218,7 +218,7 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-            print(">>>", tagTitles[titleIndex].title ,tagTitles[titleIndex].tagTab.count)
+//            print(">>>", tagTitles[titleIndex].title ,tagTitles[titleIndex].tagTab.count)
             return tagTitles[titleIndex].tagTab.count
         }
         
@@ -315,7 +315,7 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
                     
                     if tagTitles[i].isSelected == true {
                         //                        self.titleIndex = i
-                        print("선택된 것 >> ", tagTitles[i].title)
+//                        print("선택된 것 >> ", tagTitles[i].title)
                     } else {
                         self.titleIndex = i
                         tagTitles[i].isSelected = !tagTitles[i].isSelected

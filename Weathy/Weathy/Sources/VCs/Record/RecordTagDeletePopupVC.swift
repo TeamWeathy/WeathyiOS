@@ -83,7 +83,7 @@ extension RecordTagDeletePopupVC {
         RecordTagService.shared.deleteTag(userId: 63, token: "63:wckgTPK2NtG7JoM0p207XwsmDxOmM7", clothArray: selectedTags) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
-                print(">>> success")
+//                print(">>> success")
                 if let loadData = data as? ClothesTagData {
                     self.isDeleted = true
                     
