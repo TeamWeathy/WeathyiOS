@@ -48,6 +48,8 @@ class RecordTagVC: UIViewController {
     
     var isAdded: Bool = false
     
+    var scrollYOffset: CGFloat = 0
+    
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
     
@@ -153,6 +155,7 @@ class RecordTagVC: UIViewController {
                 
                 dvc.initialTagTab = titleIndex
                 dvc.initialSelectedIdx = indexPath[1]
+                dvc.initialYOffset = scrollYOffset
                 dvc.tagTitles = tagTitles
                 
                 dvc.modalPresentationStyle = .fullScreen
@@ -628,9 +631,9 @@ extension RecordTagVC: UICollectionViewDelegateFlowLayout {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y = scrollView.contentOffset.y
-        if y <= 30 {
-            blurView.alpha = y / 30
+        self.scrollYOffset = scrollView.contentOffset.y
+        if self.scrollYOffset <= 30 {
+            blurView.alpha = self.scrollYOffset / 30
         }
         else {
             blurView.alpha = 1

@@ -22,6 +22,9 @@ class RecordTagDeleteVC: UIViewController {
     var titleIndex: Int = 0
     var initialTagTab: Int = 0
     var initialSelectedIdx: Int = 0
+    var initialYOffset: CGFloat = 0
+    
+    var isInitialized: Bool = false
     
     var selectedTags: [Int] = []
     
@@ -76,6 +79,8 @@ class RecordTagDeleteVC: UIViewController {
         tagTitles[initialTagTab].count = 1
         tagTitles[initialTagTab].isSelected = true
         selectedTags.append(tagTitles[initialTagTab].tagTab[initialSelectedIdx-1].id)
+        print(initialYOffset)
+        tagCollectionView.contentOffset.y = self.initialYOffset
         
         nextBtn.isUserInteractionEnabled = true
         nextBtn.backgroundColor = UIColor.pink
@@ -238,6 +243,11 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecordTagCVC", for: indexPath) as? RecordTagCVC
             else {
                 return UICollectionViewCell()
+            }
+            
+            if isInitialized == false {
+                tagCollectionView.contentOffset.y = self.initialYOffset
+                isInitialized = true
             }
             
             cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
