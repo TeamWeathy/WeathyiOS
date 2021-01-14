@@ -213,9 +213,12 @@ extension RecordRateVC: UICollectionViewDataSource {
         
         /// 분기처리
         if rate[indexPath.item].isSelected == true {
-            cell.layer.borderColor = UIColor.mintMain.cgColor
-            cell.backgroundColor = .white
-            cell.dropShadow(color: UIColor(red: 129/255, green: 226/255, blue: 210/255, alpha: 1), offSet: CGSize(width: 0, height: 0), opacity: 0.4, radius: 10)
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                cell.layer.borderColor = UIColor.mintMain.cgColor
+                cell.backgroundColor = .white
+                cell.dropShadow(color: UIColor(red: 129/255, green: 226/255, blue: 210/255, alpha: 1), offSet: CGSize(width: 0, height: 0), opacity: 0.4, radius: 10)
+            })
         } else {
             cell.layer.borderColor = UIColor.subGrey7.cgColor
             cell.layer.shadowRadius = 0
