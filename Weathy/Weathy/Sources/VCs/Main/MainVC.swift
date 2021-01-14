@@ -15,6 +15,7 @@ class MainVC: UIViewController {
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
     var dailyWeatherData: DailyWeatherData?
+    var extraWeatherData: ExtraWeatherData?
     
     //MARK: - IBOutlets
     
@@ -29,7 +30,7 @@ class MainVC: UIViewController {
     //MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        UserDefaults.standard.setValue("62:JFM1BVoNgbAtJJBSmLgoX5LMNlWL3V", forKey: "token")
+        UserDefaults.standard.setValue("62:q3BcI3cyAoP5A1wNoA50GLo2oDx5d9", forKey: "token")
         UserDefaults.standard.setValue("이내옹", forKey: "nickname")
         UserDefaults.standard.setValue(62, forKey: "userId")
         
@@ -37,6 +38,7 @@ class MainVC: UIViewController {
         getRecommendedWeathy()
         getHourlyWeather()
         getDailyWeather()
+        getExtraWeather()
     }
     
     override func viewDidLoad() {
@@ -160,6 +162,26 @@ class MainVC: UIViewController {
                 print("network Fail")
             }
         }
+    }
+    
+    func getExtraWeather() {
+        MainService.shared.getExtraWeather() { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? ExtraWeatherData {
+                    self.extraWeatherData = response
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
+
     }
     
     func fallingSnow() {
@@ -317,6 +339,10 @@ extension MainVC: UICollectionViewDataSource {
             if let daily = dailyWeatherData {
                 cell.changeDailyViewData(data: daily)
 //                cell.weeklyWeatherCollectionView.reloadData()
+            }
+            
+            if let extra = extraWeatherData {
+                cell.changeExtraViewData(data: extra)
             }
             
             cell.setCell()

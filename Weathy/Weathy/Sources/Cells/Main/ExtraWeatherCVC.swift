@@ -7,9 +7,9 @@
 
 import UIKit
 
-class DetailWeatherCVC: UICollectionViewCell {
+class ExtraWeatherCVC: UICollectionViewCell {
     //MARK: - local Variables
-    static let identifier = "DetailWeatherCVC"
+    static let identifier = "ExtraWeatherCVC"
     
     //MARK: - IBOutlets
     @IBOutlet weak var detailPropertyImage: UIImageView!
@@ -19,21 +19,23 @@ class DetailWeatherCVC: UICollectionViewCell {
     
     //MARK: - Custom Methods
     func setCell() {
-        detailPropertyImage.image = UIImage(named: "icRainfall")
-        
-        detailPropertyLabel.text = "강수량"
         detailPropertyLabel.font = UIFont.SDGothicSemiBold13
         detailPropertyLabel.textColor = UIColor.subGrey6
         detailPropertyLabel.characterSpacing = -0.65
         
-        detailValueLabel.text = "보통"
         detailValueLabel.font = UIFont.SDGothicMedium15
         detailValueLabel.textColor = UIColor.subGrey1
         detailValueLabel.characterSpacing = -0.75
         
-        detailRatingLabel.text = "12m/s"
         detailRatingLabel.font = UIFont.RobotoRegular11
         detailRatingLabel.textColor = UIColor.subGrey6
         detailRatingLabel.characterSpacing = -0.65
+    }
+    
+    func setExtraWeatherData(data: ExtraWeather, idx: Int) {
+        detailPropertyImage.image = UIImage(named: "icRainfall")
+        detailPropertyLabel.text = "강수량"
+        detailValueLabel.text = "\(data.humidity.value)"
+        detailRatingLabel.text = "\(data.humidity.value) m/s"
     }
 }

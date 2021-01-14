@@ -59,7 +59,7 @@ struct MainService {
         
         let url: String = APIConstants.getRecommendedWeathyURL(userId: userId, code: locationCode, date: "2021-01-14")
         let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
-
+        
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
         dataRequest.responseData { (response) in
             switch response.result {
@@ -98,26 +98,47 @@ struct MainService {
     }
     
     func getDailyWeather(completion: @escaping (((NetworkResult<Any>) -> (Void)))) {
-    guard let locationCode = UserDefaults.standard.string(forKey: "locationCode") else {return}
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    
-    let url: String = APIConstants.getDailyWeatherURL(code: locationCode, date: dateFormatter.string(from: currDate))
-    let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
-
-    let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
-    dataRequest.responseData { (response) in
-        switch response.result {
-        case .success:
-            guard let statusCode = response.response?.statusCode else {return}
-            guard let data = response.value else {return}
-            
-            completion(judgeDailyWeatherData(status: statusCode, data: data))
-        case .failure(let err):
-            print(err)
-            completion(.networkFail)
+        guard let locationCode = UserDefaults.standard.string(forKey: "locationCode") else {return}
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let url: String = APIConstants.getDailyWeatherURL(code: locationCode, date: dateFormatter.string(from: currDate))
+        let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
+        
+        let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
+        dataRequest.responseData { (response) in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else {return}
+                guard let data = response.value else {return}
+                
+                completion(judgeDailyWeatherData(status: statusCode, data: data))
+            case .failure(let err):
+                print(err)
+                completion(.networkFail)
+            }
         }
     }
-
+    
+    func getExtraWeather(completion: @escaping (((NetworkResult<Any>) -> (Void)))) {
+        guard let locationCode = UserDefaults.standard.string(forKey: "locationCode") else {return}
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let url: String = APIConstants.getExtraWeatherURL(code: locationCode, date: dateFormatter.string(from: currDate))
+        let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
+        
+        let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
+        dataRequest.responseData { (response) in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else {return}
+                guard let data = response.value else {return}
+                
+                completion(judgeExtraWeatherData(status: statusCode, data: data))
+            case .failure(let err):
+                print(err)
+                completion(.networkFail)
+            }
+        }
     }
     
     //MARK: - Judge func
@@ -185,5 +206,20 @@ struct MainService {
             return .networkFail
         }
     }
-
+    
+    private func judgeExtraWeatherData(status: Int, data: Data) -> NetworkResult<Any> {
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(ExtraWeatherData.self, from: data) else {return .pathErr}
+        
+        switch status {
+        case 200:
+            return .success(decodedData)
+        case 400..<500:
+            return .requestErr(decodedData.message)
+        case 500:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
 }

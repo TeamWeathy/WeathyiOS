@@ -669,7 +669,7 @@
                                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                             </collectionViewFlowLayout>
                                                                             <cells>
-                                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailWeatherCVC" id="eOv-ZO-6Wg" customClass="DetailWeatherCVC" customModule="Weathy" customModuleProvider="target">
+                                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExtraWeatherCVC" id="eOv-ZO-6Wg" customClass="ExtraWeatherCVC" customModule="Weathy" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="-0.5" width="128" height="128"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TtM-Za-WyT">
@@ -777,9 +777,9 @@
                                         <connections>
                                             <outlet property="WeeklyCenterY" destination="N3a-vZ-tID" id="lwX-G7-47S"/>
                                             <outlet property="cellBackgroundImage" destination="S7t-x5-bQ0" id="ln7-ll-9hH"/>
-                                            <outlet property="detailCenterY" destination="BgK-sy-WXQ" id="I4x-jD-Hkz"/>
-                                            <outlet property="detailWeatherCollectionView" destination="cq9-S5-k9s" id="V3P-45-e7y"/>
-                                            <outlet property="detailWeatherView" destination="3Ww-4d-Su8" id="48n-m7-v27"/>
+                                            <outlet property="extraCenterY" destination="BgK-sy-WXQ" id="I4x-jD-Hkz"/>
+                                            <outlet property="extraWeatherCollectionView" destination="cq9-S5-k9s" id="V3P-45-e7y"/>
+                                            <outlet property="extraWeatherView" destination="3Ww-4d-Su8" id="48n-m7-v27"/>
                                             <outlet property="mainBottomScrollView" destination="ph0-hb-Tpn" id="t0a-7W-DgV"/>
                                             <outlet property="timeZoneCenterY" destination="Lcn-xp-Eig" id="AKW-1u-s2x"/>
                                             <outlet property="timeZoneWeatherCollectionView" destination="UZy-g9-uDk" id="tKe-oO-NJ1"/>

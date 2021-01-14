@@ -12,20 +12,21 @@ class MainBottomCVC: UICollectionViewCell {
     
     var hourlyWeatherData: HourlyWeatherData?
     var dailyWeatherData: DailyWeatherData?
+    var extraWeatherData: ExtraWeatherData?
     
     //MARK: - IBOutlet
     
     @IBOutlet weak var cellBackgroundImage: UIImageView!
     @IBOutlet weak var timeZoneWeatherView: UIView!
     @IBOutlet weak var weeklyWeatherView: UIView!
-    @IBOutlet weak var detailWeatherView: UIView!
+    @IBOutlet weak var extraWeatherView: UIView!
     @IBOutlet weak var timeZoneCenterY: NSLayoutConstraint!
     @IBOutlet weak var WeeklyCenterY: NSLayoutConstraint!
-    @IBOutlet weak var detailCenterY: NSLayoutConstraint!
+    @IBOutlet weak var extraCenterY: NSLayoutConstraint!
     @IBOutlet weak var mainBottomScrollView: UIScrollView!
     @IBOutlet weak var timeZoneWeatherCollectionView: UICollectionView!
     @IBOutlet weak var weeklyWeatherCollectionView: UICollectionView!
-    @IBOutlet weak var detailWeatherCollectionView: UICollectionView!
+    @IBOutlet weak var extraWeatherCollectionView: UICollectionView!
     
     //MARK: - Life Cycle Methods
         
@@ -34,14 +35,14 @@ class MainBottomCVC: UICollectionViewCell {
         
         self.timeZoneCenterY.constant = UIScreen.main.bounds.height
         self.WeeklyCenterY.constant = UIScreen.main.bounds.height
-        self.detailCenterY.constant = UIScreen.main.bounds.height
+        self.extraCenterY.constant = UIScreen.main.bounds.height
         
         self.timeZoneWeatherCollectionView.delegate = self
         self.timeZoneWeatherCollectionView.dataSource = self
         self.weeklyWeatherCollectionView.delegate = self
         self.weeklyWeatherCollectionView.dataSource = self
-        self.detailWeatherCollectionView.delegate = self
-        self.detailWeatherCollectionView.dataSource = self
+        self.extraWeatherCollectionView.delegate = self
+        self.extraWeatherCollectionView.dataSource = self
 
         self.layoutIfNeeded()
     }
@@ -59,20 +60,20 @@ class MainBottomCVC: UICollectionViewCell {
         weeklyWeatherView.makeRounded(cornerRadius: 35)
         weeklyWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
         
-        detailWeatherView.backgroundColor = .white
-        detailWeatherView.makeRounded(cornerRadius: 35)
-        detailWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
+        extraWeatherView.backgroundColor = .white
+        extraWeatherView.makeRounded(cornerRadius: 35)
+        extraWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
     }
     
     func viewScrollUp() {
         self.timeZoneCenterY.constant = UIScreen.main.bounds.height
         self.WeeklyCenterY.constant = UIScreen.main.bounds.height
-        self.detailCenterY.constant = UIScreen.main.bounds.height
+        self.extraCenterY.constant = UIScreen.main.bounds.height
         
         UIView.animate(withDuration: 1.2, delay: 0, options: [.curveLinear], animations: {
             self.timeZoneWeatherView.alpha = 0
             self.weeklyWeatherView.alpha = 0
-            self.detailWeatherView.alpha = 0
+            self.extraWeatherView.alpha = 0
                         
             self.layoutIfNeeded()
         }, completion: nil)
@@ -81,12 +82,12 @@ class MainBottomCVC: UICollectionViewCell {
     func viewScrollDown() {
         self.timeZoneCenterY.constant = 21
         self.WeeklyCenterY.constant = 24
-        self.detailCenterY.constant = 24
+        self.extraCenterY.constant = 24
         
         UIView.animate(withDuration: 1.2, delay: 0, options: [.overrideInheritedCurve],animations: {
             self.timeZoneWeatherView.alpha = 1
             self.weeklyWeatherView.alpha = 1
-            self.detailWeatherView.alpha = 1
+            self.extraWeatherView.alpha = 1
             
             self.layoutIfNeeded()
         })
@@ -103,6 +104,12 @@ class MainBottomCVC: UICollectionViewCell {
 
         weeklyWeatherCollectionView.reloadData()
     }
+    
+    func changeExtraViewData(data: ExtraWeatherData) {
+        self.extraWeatherData = data
+        
+        extraWeatherCollectionView.reloadData()
+    }
 }
 
 //MARK: - 주석 종류
@@ -114,7 +121,7 @@ extension MainBottomCVC: UICollectionViewDataSource {
             return hourlyWeatherData?.hourlyWeatherList.count ?? 0
         case weeklyWeatherCollectionView:
             return 7
-        case detailWeatherCollectionView:
+        case extraWeatherCollectionView:
             return 3
         default:
             return 0
@@ -141,8 +148,11 @@ extension MainBottomCVC: UICollectionViewDataSource {
             cell.setCell()
         
             return cell
-        case detailWeatherCollectionView:
-            guard let cell = detailWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: DetailWeatherCVC.identifier, for: indexPath) as? DetailWeatherCVC else {return UICollectionViewCell()}
+        case extraWeatherCollectionView:
+            guard let cell = extraWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: ExtraWeatherCVC.identifier, for: indexPath) as? ExtraWeatherCVC else {return UICollectionViewCell()}
+            if let extra = extraWeatherData {
+                cell.setExtraWeatherData(data: extra.extraWeather, idx: indexPath.row)
+            }
             
             cell.setCell()
             return cell
@@ -159,7 +169,7 @@ extension MainBottomCVC: UICollectionViewDelegateFlowLayout {
         switch (collectionView) {
         case timeZoneWeatherCollectionView, weeklyWeatherCollectionView:
             return CGSize(width: collectionView.bounds.size.width / 7, height: collectionView.bounds.size.height)
-        case detailWeatherCollectionView:
+        case extraWeatherCollectionView:
             return CGSize(width: collectionView.bounds.size.width / 3, height: collectionView.bounds.size.height)
         default:
             return CGSize(width: 0, height: 0)
