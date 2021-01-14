@@ -73,12 +73,12 @@ class ModifyWeathyTextVC: UIViewController {
     @IBAction func backBtnTap(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: false)
         self.enteredText = ""
-        callRecordWeathyService()
+        callModifyWeathyService()
 //        self.showToast(message: "웨디에 내용이 추가되었어요!")
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        callRecordWeathyService()
+        callModifyWeathyService()
 //        self.showToast(message: "웨디에 내용이 추가되었어요!")
     }
     
@@ -204,8 +204,8 @@ extension ModifyWeathyTextVC {
         })
     }
     
-    func callRecordWeathyService() {
-        RecordWeathyService.shared.recordWeathy(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
+    func callModifyWeathyService() {
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {
