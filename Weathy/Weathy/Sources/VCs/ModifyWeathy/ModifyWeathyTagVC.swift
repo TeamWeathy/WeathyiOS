@@ -67,12 +67,12 @@ class ModifyWeathyTagVC: UIViewController {
         setTitleLabel()
         
         // 초기 상태 버튼 (애니메이션 안 들어가야 해서 따로 선언)
-        nextBtn.isUserInteractionEnabled = false
-        nextBtn.backgroundColor = UIColor.subGrey3
+        nextBtn.backgroundColor = .white
         nextBtn.setTitle("다음", for: .normal)
-        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.setTitleColor(.subGrey3, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
+        nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
         
         NotificationCenter.default.addObserver(self, selector: #selector(tagAdded(_:)), name: NSNotification.Name("TagAdded"), object: nil)
     }
@@ -211,22 +211,24 @@ extension ModifyWeathyTagVC {
     func setNextBtnActivated() {
         nextBtn.isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.5, animations: {
-            self.nextBtn.backgroundColor = UIColor.mintMain
+            self.nextBtn.backgroundColor = .white
             self.nextBtn.setTitle("다음", for: .normal)
-            self.nextBtn.setTitleColor(.white, for: .normal)
+            self.nextBtn.setTitleColor(.mintIcon, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
             self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.setBorder(borderColor: .mintMain, borderWidth: 1)
         })
     }
     
     func setNextBtnDeactivated() {
         nextBtn.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.5, animations: {
-            self.nextBtn.backgroundColor = UIColor.subGrey3
+            self.nextBtn.backgroundColor = .white
             self.nextBtn.setTitle("다음", for: .normal)
-            self.nextBtn.setTitleColor(.white, for: .normal)
+            self.nextBtn.setTitleColor(.subGrey3, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
             self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
         })
     }
     
