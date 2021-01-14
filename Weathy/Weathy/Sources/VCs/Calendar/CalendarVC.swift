@@ -206,15 +206,21 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         infiniteMonthList = [lastMonthDate,selectedDate,nextMonthDate]
         infiniteWeekList = [lastWeekDate,selectedDate,nextWeekDate]
         print("last4", infiniteWeekList)
-        UIView.performWithoutAnimation {
-            infiniteMonthlyCV.reloadData()
-            infiniteWeeklyCV.reloadData()
-        }
-        DispatchQueue.main.async(execute: { [self] in
-            print("$$setOffset")
+//        UIView.performWithoutAnimation {
+//            infiniteMonthlyCV.reloadData()
+//            infiniteWeeklyCV.reloadData()
+//        }
+//        DispatchQueue.main.async(execute: { [self] in
+//            print("$$setOffset")
+//            self.infiniteMonthlyCV.contentOffset.x = calendarWidth
+//            self.infiniteWeeklyCV.contentOffset.x = calendarWidth
+//        })
+        infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadItems(at: [[0,1]])
             self.infiniteMonthlyCV.contentOffset.x = calendarWidth
+        }, completion: nil)
+        infiniteWeeklyCV.performBatchUpdates({self.infiniteWeeklyCV.reloadItems(at: [[0,1]])
             self.infiniteWeeklyCV.contentOffset.x = calendarWidth
-        })
+        }, completion: nil)
     }
     
     func initDate(){
@@ -481,11 +487,11 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 selectedDate = lastMonthDate
                 selectedDateDidChange()
                 
-                DispatchQueue.main.async(execute: { [self] in
-                    print("$$")
-                    self.infiniteMonthlyCV.contentOffset.x = calendarWidth
-                    //                self.pickerTextView.alpha = 1
-                })
+//                DispatchQueue.main.async(execute: { [self] in
+//                    print("$$")
+//                    self.infiniteMonthlyCV.contentOffset.x = calendarWidth
+//                    //                self.pickerTextView.alpha = 1
+//                })
                 
             }
             else if x == calendarWidth*2{
@@ -494,11 +500,11 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 
                 selectedDateDidChange()
                 
-                DispatchQueue.main.async(execute: { [self] in
-                    print("$$")
-                    self.infiniteMonthlyCV.contentOffset.x = calendarWidth
-                    //                self.pickerTextView.alpha = 1
-                })
+//                DispatchQueue.main.async(execute: { [self] in
+//                    print("$$")
+//                    self.infiniteMonthlyCV.contentOffset.x = calendarWidth
+//                    //                self.pickerTextView.alpha = 1
+//                })
                 
             }
             else if x == calendarWidth{
