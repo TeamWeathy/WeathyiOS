@@ -136,6 +136,9 @@ class ModifyWeathyTagVC: UIViewController {
 extension ModifyWeathyTagVC {
     func setHeader() {
         titleLabel.numberOfLines = 2
+        titleLabel.text = "\(name)님\n어떤 옷을 입었나요?"
+        titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
+        titleLabel.textColor = .mainGrey
         
         explanationLabel.text = "수정하기에서는 태그를 삭제할 수 없어요."
         explanationLabel.font = UIFont.SDGothicRegular16
@@ -153,20 +156,15 @@ extension ModifyWeathyTagVC {
     }
     
     func setTitleLabel() {
-        let attributedString = NSMutableAttributedString(string: "\(name)님\n어떤 옷을 입었나요?", attributes: [
-            .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
-            .foregroundColor: UIColor.mainGrey,
-            .kern: -1.25
-        ])
+        
+        let attributedString = NSMutableAttributedString(string: titleLabel.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
+                                      value: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!, range: (titleLabel.text! as NSString).range(of: "어떤 옷"))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.mintIcon, range: (titleLabel.text! as NSString).range(of: "어떤 옷"))
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
-        
-        attributedString.addAttributes([
-            .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
-            .foregroundColor: UIColor.mintIcon
-        ], range: NSRange(location: 4, length: 4))
         
         titleLabel.attributedText = attributedString
     }
