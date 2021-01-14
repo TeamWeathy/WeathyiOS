@@ -138,7 +138,7 @@ extension MainBottomCVC: UICollectionViewDataSource {
         
         switch (collectionView) {
         case timeZoneWeatherCollectionView:
-            guard let cell = timeZoneWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: "TImezoneWeatherCVC", for: indexPath) as? TImezoneWeatherCVC else {return UICollectionViewCell()}
+            guard let cell = timeZoneWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: TimezoneWeatherCVC.idenfier, for: indexPath) as? TimezoneWeatherCVC else {return UICollectionViewCell()}
             if let hourly = hourlyWeatherData?.hourlyWeatherList {
                 cell.setTimezoneWeatherData(hourlyData: hourly[indexPath.row], idx: indexPath.row)
             }
@@ -146,13 +146,12 @@ extension MainBottomCVC: UICollectionViewDataSource {
             cell.setCell()
             return cell
         case weeklyWeatherCollectionView:
-            guard let cell = weeklyWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: "WeeklyWeatherCVC", for: indexPath) as? WeeklyWeatherCVC else {return UICollectionViewCell()}
+            guard let cell = weeklyWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: WeeklyWeatherCVC.identifier, for: indexPath) as? WeeklyWeatherCVC else {return UICollectionViewCell()}
             if let daily = dailyWeatherData {
                 cell.setWeeklyWeatherData(data: daily.dailyWeatherList[indexPath.row], idx: indexPath.row)
             }
             
             cell.setCell()
-        
             return cell
         case extraWeatherCollectionView:
             guard let cell = extraWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: ExtraWeatherCVC.identifier, for: indexPath) as? ExtraWeatherCVC else {return UICollectionViewCell()}

@@ -7,8 +7,9 @@
 
 import UIKit
 
-class TImezoneWeatherCVC: UICollectionViewCell {
+class TimezoneWeatherCVC: UICollectionViewCell {
     //MARK: - Custom Variables
+    static let idenfier = "TimezoneWeatherCVC"
     
     //MARK: - IBOutlets
     

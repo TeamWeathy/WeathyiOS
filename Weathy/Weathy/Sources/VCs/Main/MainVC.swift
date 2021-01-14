@@ -30,7 +30,7 @@ class MainVC: UIViewController {
     //MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        UserDefaults.standard.setValue("62:q3BcI3cyAoP5A1wNoA50GLo2oDx5d9", forKey: "token")
+        UserDefaults.standard.setValue("62:CfL6LqDE3Y6aF3QA3IdUjpTAPbC0gI", forKey: "token")
         UserDefaults.standard.setValue("이내옹", forKey: "nickname")
         UserDefaults.standard.setValue(62, forKey: "userId")
         

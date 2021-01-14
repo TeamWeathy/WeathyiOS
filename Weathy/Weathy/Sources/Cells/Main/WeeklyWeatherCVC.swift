@@ -9,6 +9,7 @@ import UIKit
 
 class WeeklyWeatherCVC: UICollectionViewCell {
     //MARK: - Custom Variables
+    static let identifier = "WeeklyWeatherCVC"
     
     //MARK: - IBOutlets
     

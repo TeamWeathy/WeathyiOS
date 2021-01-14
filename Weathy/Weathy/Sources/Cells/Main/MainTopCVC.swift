@@ -83,7 +83,9 @@ class MainTopCVC: UICollectionViewCell {
         }
         
         weathyClimateImage.image = UIImage(named: "ic_fewclouds_day")
-//        weathyClimateLabel.text = "\(data.weathy)"
+        if let climateDesc = data.weathy.hourlyWeather.climate.climateDescription {
+            weathyClimateLabel.text = "\(climateDesc)"
+        }
         weathyMaxTempLabel.text = "\(data.weathy.dailyWeather.temperature.maxTemp)°"
         weathyMinTempLabel.text = "\(data.weathy.dailyWeather.temperature.minTemp)°"
         
