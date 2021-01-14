@@ -7,16 +7,9 @@
 
 import UIKit
 
-struct Emoji{
-    static let veryHot = 1
-    static let hot = 2
-    static let good = 3
-    static let cold = 4
-    static let veryCold = 5
-}
-
 class MainTopCVC: UICollectionViewCell {
     //MARK: - Custom Variables
+    
     var closetTop: [String] = ["기모 맨투맨", "히트텍", "폴로니트", "메종 마르지엘라"]
     var closetOuter: [String] = ["청바지", "청바지","청바지","청바지","청바지"]
     var closetBottom: [String] = ["롱패딩","루리스"]
@@ -33,6 +26,7 @@ class MainTopCVC: UICollectionViewCell {
     }
     
     //MARK: - IBOutlets
+    
     @IBOutlet weak var todayWeathyNicknameTextLabel: SpacedLabel!
     @IBOutlet weak var todayWeathyView: UIView!
     @IBOutlet weak var currTempLabel: SpacedLabel!
@@ -85,9 +79,9 @@ class MainTopCVC: UICollectionViewCell {
         weathyMaxTempLabel.text = "\(data.weathy.dailyWeather.temperature.maxTemp)°"
         weathyMinTempLabel.text = "\(data.weathy.dailyWeather.temperature.minTemp)°"
         
-//        weathyStampImage.image = UIImage(named: <#T##String#>)
-        // stampLabel
-        weathyStampLabel.text = "추워요"
+        weathyStampImage.image = UIImage(named: Emoji.getEmojiImageAsset(stampId: data.weathy.stampID))
+        weathyStampLabel.text = Emoji.getEmojiText(stampId: data.weathy.stampID)
+        weathyStampLabel.textColor = Emoji.getEmojiTextColor(stampId: data.weathy.stampID)
     }
         
     func insertSeparatorInArray(_ arr: [Clothe]) -> String {
