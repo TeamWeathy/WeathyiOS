@@ -42,7 +42,7 @@ class ModifyWeathyStartVC: UIViewController {
     @IBOutlet var slashLabel: UILabel!
     @IBOutlet var minTempLabel: UILabel!
     @IBOutlet var modifyBtn: UIButton!
-    @IBOutlet var startBtn: UIButton!
+    @IBOutlet var nextBtn: UIButton!
     
     
     
@@ -170,17 +170,18 @@ extension ModifyWeathyStartVC {
     }
     
     func setBelowBox() {
-        modifyBtn.backgroundColor = UIColor.subGrey5
+        modifyBtn.backgroundColor = .subGrey5
         modifyBtn.setTitle("변경하기", for: .normal)
         modifyBtn.setTitleColor(.black, for: .normal)
         modifyBtn.titleLabel?.font = UIFont.SDGothicRegular13
         modifyBtn.layer.cornerRadius = 18
         
-        startBtn.backgroundColor = UIColor.mintMain
-        startBtn.setTitle("다음", for: .normal)
-        startBtn.setTitleColor(.white, for: .normal)
-        startBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        startBtn.layer.cornerRadius = 30
+        nextBtn.backgroundColor = .white
+        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitleColor(.mintIcon, for: .normal)
+        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        nextBtn.layer.cornerRadius = 30
+        nextBtn.setBorder(borderColor: .mintMain, borderWidth: 1)
         
     }
     
