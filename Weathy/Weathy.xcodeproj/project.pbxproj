@@ -37,6 +37,8 @@
 		37222E8E25B0DE4200577FEE /* ModifyWeathyNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */; };
 		37222E9D25B0EB2200577FEE /* ModifyWeathyTag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37222E9C25B0EB2200577FEE /* ModifyWeathyTag.storyboard */; };
 		37222EA025B0EBE100577FEE /* ModifyWeathyTagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E9F25B0EBE100577FEE /* ModifyWeathyTagVC.swift */; };
+		37222EAC25B1060300577FEE /* ModifyWeathyRate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37222EAB25B1060300577FEE /* ModifyWeathyRate.storyboard */; };
+		37222EAF25B1061600577FEE /* ModifyWeathyRateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222EAE25B1061600577FEE /* ModifyWeathyRateVC.swift */; };
 		3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */; };
 		3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */; };
 		3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */; };
@@ -138,6 +140,8 @@
 		37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyNVC.swift; sourceTree = "<group>"; };
 		37222E9C25B0EB2200577FEE /* ModifyWeathyTag.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModifyWeathyTag.storyboard; sourceTree = "<group>"; };
 		37222E9F25B0EBE100577FEE /* ModifyWeathyTagVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyTagVC.swift; sourceTree = "<group>"; };
+		37222EAB25B1060300577FEE /* ModifyWeathyRate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModifyWeathyRate.storyboard; sourceTree = "<group>"; };
+		37222EAE25B1061600577FEE /* ModifyWeathyRateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyRateVC.swift; sourceTree = "<group>"; };
 		3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTagDelete.storyboard; sourceTree = "<group>"; };
 		3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagDeleteVC.swift; sourceTree = "<group>"; };
 		3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 			children = (
 				37222E8925B0D6EA00577FEE /* ModifyWeathyStart.storyboard */,
 				37222E9C25B0EB2200577FEE /* ModifyWeathyTag.storyboard */,
+				37222EAB25B1060300577FEE /* ModifyWeathyRate.storyboard */,
 			);
 			path = ModifyWeathy;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				37222E8625B0D6BA00577FEE /* ModifyWeathyStartVC.swift */,
 				37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */,
 				37222E9F25B0EBE100577FEE /* ModifyWeathyTagVC.swift */,
+				37222EAE25B1061600577FEE /* ModifyWeathyRateVC.swift */,
 			);
 			path = ModifyWeathy;
 			sourceTree = "<group>";
@@ -766,6 +772,7 @@
 				ABBA9CA925A22254008785BD /* Main.storyboard in Resources */,
 				37222E8A25B0D6EA00577FEE /* ModifyWeathyStart.storyboard in Resources */,
 				374D48D8259D1CA600152B9A /* RecordRate.storyboard in Resources */,
+				37222EAC25B1060300577FEE /* ModifyWeathyRate.storyboard in Resources */,
 				37222E9D25B0EB2200577FEE /* ModifyWeathyTag.storyboard in Resources */,
 				63DEB294259CF67200A94488 /* AppleSDGothicNeoR.ttf in Resources */,
 				6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */,
@@ -909,6 +916,7 @@
 				0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */,
 				0E75F66625AF149500D98633 /* RecordNVC.swift in Sources */,
 				37D3476F25ADB7BD0069247F /* UITextField+Extension.swift in Sources */,
+				37222EAF25B1061600577FEE /* ModifyWeathyRateVC.swift in Sources */,
 				0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
