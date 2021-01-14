@@ -32,6 +32,8 @@
 		37222E7025AFA09000577FEE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E6F25AFA09000577FEE /* UIViewController+Extension.swift */; };
 		37222E7325AFA83B00577FEE /* RecordWeathyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E7225AFA83B00577FEE /* RecordWeathyService.swift */; };
 		37222E7625AFAA4700577FEE /* RecordWeathyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E7525AFAA4700577FEE /* RecordWeathyData.swift */; };
+		37222E8725B0D6BA00577FEE /* ModifyWeathyStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E8625B0D6BA00577FEE /* ModifyWeathyStart.swift */; };
+		37222E8A25B0D6EA00577FEE /* ModifyWeathyStart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37222E8925B0D6EA00577FEE /* ModifyWeathyStart.storyboard */; };
 		3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */; };
 		3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */; };
 		3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */; };
@@ -128,6 +130,8 @@
 		37222E6F25AFA09000577FEE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		37222E7225AFA83B00577FEE /* RecordWeathyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWeathyService.swift; sourceTree = "<group>"; };
 		37222E7525AFAA4700577FEE /* RecordWeathyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWeathyData.swift; sourceTree = "<group>"; };
+		37222E8625B0D6BA00577FEE /* ModifyWeathyStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyStart.swift; sourceTree = "<group>"; };
+		37222E8925B0D6EA00577FEE /* ModifyWeathyStart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModifyWeathyStart.storyboard; sourceTree = "<group>"; };
 		3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTagDelete.storyboard; sourceTree = "<group>"; };
 		3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagDeleteVC.swift; sourceTree = "<group>"; };
 		3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -342,6 +346,22 @@
 			path = Record;
 			sourceTree = "<group>";
 		};
+		37222E8425B0D60E00577FEE /* ModifyWeathy */ = {
+			isa = PBXGroup;
+			children = (
+				37222E8925B0D6EA00577FEE /* ModifyWeathyStart.storyboard */,
+			);
+			path = ModifyWeathy;
+			sourceTree = "<group>";
+		};
+		37222E8525B0D65900577FEE /* ModifyWeathy */ = {
+			isa = PBXGroup;
+			children = (
+				37222E8625B0D6BA00577FEE /* ModifyWeathyStart.swift */,
+			);
+			path = ModifyWeathy;
+			sourceTree = "<group>";
+		};
 		374D48CE259CEBD300152B9A /* Record */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +489,7 @@
 				0E75F66825AF171A00D98633 /* Setting */,
 				6354ED8125AE0A2D00C5CAC5 /* Calendar.storyboard */,
 				374D48CE259CEBD300152B9A /* Record */,
+				37222E8425B0D60E00577FEE /* ModifyWeathy */,
 				0E8C002F25A1B79500A31295 /* Tabbar */,
 				6339842D2599B1F600339615 /* LaunchScreen.storyboard */,
 			);
@@ -482,6 +503,7 @@
 				ABBA9CAB25A22B25008785BD /* Main */,
 				6354ED9025AE0AED00C5CAC5 /* Calendar */,
 				374D48CF259CEBE100152B9A /* Record */,
+				37222E8525B0D65900577FEE /* ModifyWeathy */,
 				0E31344725A724AC0059028C /* OnBoarding */,
 				0E8C003325A1B7B900A31295 /* Tabbar */,
 				0E8C004525A249A900A31295 /* Setting */,
@@ -733,6 +755,7 @@
 				0E8C003125A1B7A200A31295 /* Tabbar.storyboard in Resources */,
 				63DEB295259CF67200A94488 /* AppleSDGothicNeoSB.ttf in Resources */,
 				ABBA9CA925A22254008785BD /* Main.storyboard in Resources */,
+				37222E8A25B0D6EA00577FEE /* ModifyWeathyStart.storyboard in Resources */,
 				374D48D8259D1CA600152B9A /* RecordRate.storyboard in Resources */,
 				63DEB294259CF67200A94488 /* AppleSDGothicNeoR.ttf in Resources */,
 				6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */,
@@ -806,6 +829,7 @@
 				6354ED9D25AE0B3700C5CAC5 /* InfiniteMonthlyCVC.swift in Sources */,
 				374D48FE259F678200152B9A /* RecordTagCVC.swift in Sources */,
 				6354EDA125AE0B6700C5CAC5 /* Date+Extensions.swift in Sources */,
+				37222E8725B0D6BA00577FEE /* ModifyWeathyStart.swift in Sources */,
 				374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */,
 				ABBA9CA225A2217F008785BD /* MainVC.swift in Sources */,
 				6339846C259A431100339615 /* UIView+Extensions.swift in Sources */,
@@ -831,7 +855,6 @@
 				374D48ED259D49DB00152B9A /* RecordTagVC.swift in Sources */,
 				37222E6425AE64DA00577FEE /* ClothesTagData.swift in Sources */,
 				374D48DF259D236800152B9A /* RecordRateCVC.swift in Sources */,
-				0E8C003C25A1BC3000A31295 /* ExampleSecondVC.swift in Sources */,
 				37222E6725AE657C00577FEE /* RecordTagService.swift in Sources */,
 				0E8C004725A249B900A31295 /* SettingVC.swift in Sources */,
 				0E9152E025A39A1F0048E226 /* MainSearchVC.swift in Sources */,
@@ -859,9 +882,7 @@
 				63DEB261259CD49700A94488 /* DummyCell.swift in Sources */,
 				3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */,
 				37222E7625AFAA4700577FEE /* RecordWeathyData.swift in Sources */,
-				0E8C003F25A1BC3F00A31295 /* ExampleThirdVC.swift in Sources */,
 				37222E7025AFA09000577FEE /* UIViewController+Extension.swift in Sources */,
-				0E8C003925A1BC1F00A31295 /* ExampleFirstVC.swift in Sources */,
 				0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */,
 				6354ED9325AE0B0300C5CAC5 /* CalendarVC.swift in Sources */,
 				63DEB264259CD4AD00A94488 /* DummyClass.swift in Sources */,
