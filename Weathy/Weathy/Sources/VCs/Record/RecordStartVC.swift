@@ -85,7 +85,10 @@ class RecordStartVC: UIViewController {
         self.navigationController?.pushViewController(dvc, animated: false)
     }
     
-
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 //MARK: - Style

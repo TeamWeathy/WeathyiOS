@@ -13,6 +13,7 @@ class ChangeNickNameVC: UIViewController {
     
     var textCount = 0
     var changBool = false
+    var nickName : String?
     
     //MARK: - IBOutlets
     
@@ -32,6 +33,8 @@ class ChangeNickNameVC: UIViewController {
         countLabel.text = "\(textCount)"
         clearButton.isHidden = true
         nickNameTextField.delegate = self
+        nickName = UserDefaults.standard.string(forKey: "nickname")
+        self.nickNameTextField.placeholder = nickName
         
         //MARK: - LifeCycle Methods
         
@@ -45,6 +48,17 @@ class ChangeNickNameVC: UIViewController {
         nickLabel.font = UIFont.SDGothicSemiBold25
         sentenceLabel.font = UIFont.SDGothicRegular16
         sentenceLabel.textColor = UIColor.subGrey6
+    }
+    
+    /// 변경하기 aleart  생성
+    func simpleAlert() {
+        let alert = UIAlertController(title: "닉네임을 변경 하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
+        let noButton = UIAlertAction(title: "아니요", style: UIAlertAction.Style.default, handler: nil)
+        let yesButton = UIAlertAction(title: "네", style: UIAlertAction.Style.default, handler: { _ in        self.navigationController?.popViewController(animated: true)})
+        
+        alert.addAction(noButton)
+        alert.addAction(yesButton)
+        present(alert, animated: true)
     }
     
     //MARK: - @objc Methods
@@ -83,15 +97,32 @@ class ChangeNickNameVC: UIViewController {
     /// 변경하기 눌렀을 때 Aleart
     @IBAction func changeButtonDidTap(_ sender: Any) {
         
-        let alert = UIAlertController(title: "닉네임을 변경 하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
-        let noButton = UIAlertAction(title: "아니요", style: UIAlertAction.Style.default, handler: nil)
-        let yesButton = UIAlertAction(title: "네", style: UIAlertAction.Style.default, handler: { _ in        self.navigationController?.popViewController(animated: true)})
+        guard let nickName = nickNameTextField.text else { return }
         
-        alert.addAction(noButton)
-        alert.addAction(yesButton)
-        
-        if changBool == true {
-        present(alert, animated: true, completion: nil)
+        /// 서버 연결!
+        modifyUserService.shared.modifyUserPut(nickname: nickName){(NetworkResult) -> (Void) in
+            switch NetworkResult{
+            case .success(let data):
+                
+                if let modifyData = data as? UserInformation{
+                    UserDefaults.standard.setValue(modifyData.user.nickname, forKey: "nickname")
+                    
+                    self.nickName = modifyData.user.nickname
+                    
+                    /// 닉네임 설정 했을 때 aleart 띄우기
+                    if self.changBool == true {
+                        self.simpleAlert()
+                    }
+                }
+            case .requestErr:
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
         }
     }
 }
