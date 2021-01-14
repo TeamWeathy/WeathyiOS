@@ -8,6 +8,10 @@
 import UIKit
 
 class MainBottomCVC: UICollectionViewCell {
+    //MARK: - Custom Variables
+    
+    var hourlyWeatherData: HourlyWeatherData?
+    
     //MARK: - IBOutlet
     
     @IBOutlet weak var cellBackgroundImage: UIImageView!
@@ -86,6 +90,14 @@ class MainBottomCVC: UICollectionViewCell {
             self.layoutIfNeeded()
         })
     }
+    
+    func changeHourlyViewData(data: HourlyWeatherData) {
+        self.hourlyWeatherData = data
+//
+//        print("-----")
+//        print(hourlyWeatherData?.hourlyWeatherList)
+        timeZoneWeatherCollectionView.reloadData()
+    }
 }
 
 //MARK: - 주석 종류
@@ -94,7 +106,7 @@ extension MainBottomCVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch (collectionView) {
         case timeZoneWeatherCollectionView:
-            return 24
+            return hourlyWeatherData?.hourlyWeatherList.count ?? 0
         case weeklyWeatherCollectionView:
             return 7
         case detailWeatherCollectionView:
@@ -109,7 +121,10 @@ extension MainBottomCVC: UICollectionViewDataSource {
         switch (collectionView) {
         case timeZoneWeatherCollectionView:
             guard let cell = timeZoneWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: "TImezoneWeatherCVC", for: indexPath) as? TImezoneWeatherCVC else {return UICollectionViewCell()}
-            
+            if let hourly = hourlyWeatherData?.hourlyWeatherList {
+                cell.setTimezoneWeatherData(hourlyData: hourly[indexPath.row], idx: indexPath.row)
+            }
+
             cell.setCell()
             return cell
         case weeklyWeatherCollectionView:

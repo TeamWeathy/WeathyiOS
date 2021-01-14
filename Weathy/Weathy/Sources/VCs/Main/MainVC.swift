@@ -13,6 +13,7 @@ class MainVC: UIViewController {
 
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
+    var hourlyWeatherData: HourlyWeatherData?
     
     //MARK: - IBOutlets
     
@@ -27,14 +28,13 @@ class MainVC: UIViewController {
     //MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        UserDefaults.standard.setValue("62:YDMYXAMVWtyiAbVYNy2X1RDQLYMNiN", forKey: "token")
+        UserDefaults.standard.setValue("62:JFM1BVoNgbAtJJBSmLgoX5LMNlWL3V", forKey: "token")
         UserDefaults.standard.setValue("이내옹", forKey: "nickname")
         UserDefaults.standard.setValue(62, forKey: "userId")
         
         getLocationWeather()
         getRecommendedWeathy()
-        
-        weatherCollectionView.reloadData()
+        getHourlyWeather()
     }
     
     override func viewDidLoad() {
@@ -122,6 +122,25 @@ class MainVC: UIViewController {
         }
     }
     
+    func getHourlyWeather() {
+        MainService.shared.getHourlyWeather() { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? HourlyWeatherData {
+                    self.hourlyWeatherData = response
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
+    }
+    
     func fallingSnow() {
         let flakeEmitterCell = CAEmitterCell()
         flakeEmitterCell.contents = UIImage(named: "snow")?.cgImage
@@ -177,6 +196,28 @@ class MainVC: UIViewController {
         
         mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
     }
+    
+    //MARK: - IBActions
+    
+    @IBAction func touchUpSetting(_ sender: Any) {
+        print("setting")
+        let storyB = UIStoryboard.init(name: "Setting", bundle: nil)
+        
+        guard let vc = storyB.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
+
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func touchUpSearch(_ sender: Any) {
+        print("search")
+        let storyB = UIStoryboard.init(name: "MainSearch", bundle: nil)
+        
+        guard let vc = storyB.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
+        
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
 }
 
 //MARK: - UICollectionViewDelegate
@@ -219,28 +260,6 @@ extension MainVC: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastContentOffset = scrollView.contentOffset.y
     }
-    
-    //MARK: - IBActions
-    
-    @IBAction func touchUpSetting(_ sender: Any) {
-        print("setting")
-        let storyB = UIStoryboard.init(name: "Setting", bundle: nil)
-        
-        guard let vc = storyB.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
-
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
-    }
-    
-    @IBAction func touchUpSearch(_ sender: Any) {
-        print("search")
-        let storyB = UIStoryboard.init(name: "MainSearch", bundle: nil)
-        
-        guard let vc = storyB.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
-        
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
-    }
 }
 
 
@@ -259,11 +278,19 @@ extension MainVC: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainTopCVC", for: indexPath) as? MainTopCVC else {return UICollectionViewCell()}
+            if let recommend = recommenedWeathyData,
+               let location = locationWeatherData {
+                cell.changeWeathyViewData(data: recommend)
+                cell.changeWeatherViewData(data: location)
+            }
             
             cell.setCell()
             return cell
         case 1:
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainBottomCVC", for: indexPath) as? MainBottomCVC else {return UICollectionViewCell()}
+            if let hourly = hourlyWeatherData {
+                cell.changeHourlyViewData(data: hourly)
+            }
             
             cell.setCell()
             return cell

@@ -75,7 +75,7 @@ struct MainService {
     
     func getHourlyWeather(completion: @escaping ((NetworkResult<Any>) -> (Void))) {
         guard let locationCode = UserDefaults.standard.string(forKey: "locationCode") else {return}
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
         
         let url: String = APIConstants.getHourlyWeatherURL(code: locationCode, date: dateFormatter.string(from: currDate))
         let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
