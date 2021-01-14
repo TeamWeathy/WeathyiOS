@@ -24,7 +24,7 @@ class ModifyWeathyTagVC: UIViewController {
     var titleIndex: Int = 0 // 현재 선택된 태그 카테고리
     
     var visitedFlag: Bool = false // 다음 뷰로 넘어간 적이 있는지 판단
-    var dvc = RecordRateVC()
+    var dvc = ModifyWeathyRateVC()
     
     var myClothesTagData: ClothesTagData?
     var localizedClothesTagData: [TagCategoryData] = []
@@ -117,8 +117,8 @@ class ModifyWeathyTagVC: UIViewController {
     @IBAction func nextBtnTap(_ sender: Any) {
         
         if visitedFlag == false {
-            let nextStoryboard = UIStoryboard(name: "RecordRate", bundle: nil)
-            self.dvc = (nextStoryboard.instantiateViewController(identifier: "RecordRateVC") as? RecordRateVC)!
+            let nextStoryboard = UIStoryboard(name: "ModifyWeathyRate", bundle: nil)
+            self.dvc = (nextStoryboard.instantiateViewController(identifier: "ModifyWeathyRateVC") as? ModifyWeathyRateVC)!
             
             visitedFlag = true
         }

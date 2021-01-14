@@ -26,6 +26,9 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="ic_back"/>
+                                <connections>
+                                    <action selector="backBtnTap:" destination="C3C-Id-gfr" eventType="touchUpInside" id="nJh-Oj-lE0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHW-h0-kZG">
                                 <rect key="frame" x="217.5" y="791.5" width="160" height="60.5"/>
@@ -33,6 +36,9 @@
                                     <constraint firstAttribute="width" secondItem="bHW-h0-kZG" secondAttribute="height" multiplier="145:55" id="fUR-Ug-Dwy"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextBtnTap:" destination="C3C-Id-gfr" eventType="touchUpInside" id="iVN-m1-juf"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fx5-uu-HVu">
                                 <rect key="frame" x="36.5" y="109" width="42" height="21"/>
