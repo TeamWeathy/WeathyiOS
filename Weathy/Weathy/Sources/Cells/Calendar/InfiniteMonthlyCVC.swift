@@ -106,6 +106,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
                 var selectedComponent = DateComponents()
                 selectedComponent.day = indexPath.item - (selectedDate.firstWeekday - 1 + selectedDate.day)
                 selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeData"), object: selectedDate)
                 monthCellDelegate?.selectedMonthDateDidChange(selectedDate)
                 lastSelectedIdx = indexPath.item
             }

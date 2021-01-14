@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
+class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     //MARK: - Custom Properties
     let screen = UIScreen.main.bounds
@@ -58,7 +58,7 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
         setGesture()
         setStyle()
         initPicker()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(setSelected(_:)), name: NSNotification.Name("ChangeData"), object: nil)
         print("today",Calendar.current.dateComponents(in: TimeZone.current, from: selectedDate))
         
     }
@@ -140,7 +140,7 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
         
         picker.locale = Locale(identifier: "ko-KR")
         picker.backgroundColor = .white
-        picker.addTarget(self, action: #selector(pickerValueDidChange), for: .valueChanged)
+//        picker.addTarget(self, action: #selector(pickerValueDidChange), for: .valueChanged)
         
         ///피커뷰를 열었을때 선택된 날짜가 나오도록
         picker.date = selectedDate
@@ -190,6 +190,7 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
     
     func selectedDateDidChange(){
         print("selected")
+        picker.date = selectedDate
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: "ChangeDate"),object: selectedDate)
         let dateFormatter = DateFormatter()
@@ -386,8 +387,13 @@ class CalendarVC: UIViewController, WeekCellDelegate, MonthCellDelegate{
     @objc func closePicker(){
         view.endEditing(true)
     }
-    @objc func pickerValueDidChange(){
-        
+    @objc func pickerValueDidChange(_ noti: Notification){
+        selectedDate = noti.object as! Date
+        picker.date = selectedDate
+    }
+    @objc func setSelected(_ noti: Notification){
+        selectedDate = noti.object as! Date
+        selectedDateDidChange()
     }
     
     //MARK: - IBActions
