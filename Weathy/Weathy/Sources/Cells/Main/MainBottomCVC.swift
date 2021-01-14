@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum ExtraType: String {
+    case rain
+    case wind
+    case humidity
+}
+
 class MainBottomCVC: UICollectionViewCell {
     //MARK: - Custom Variables
     
@@ -151,7 +157,16 @@ extension MainBottomCVC: UICollectionViewDataSource {
         case extraWeatherCollectionView:
             guard let cell = extraWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: ExtraWeatherCVC.identifier, for: indexPath) as? ExtraWeatherCVC else {return UICollectionViewCell()}
             if let extra = extraWeatherData {
-                cell.setExtraWeatherData(data: extra.extraWeather, idx: indexPath.row)
+                switch indexPath.row {
+                case 0:
+                    cell.setExtraWeatherData(data: extra.extraWeather.rain, type: ExtraType.rain)
+                case 1:
+                    cell.setExtraWeatherData(data: extra.extraWeather.humidity, type: ExtraType.humidity)
+                case 2:
+                    cell.setExtraWeatherData(data: extra.extraWeather.wind, type: ExtraType.wind)
+                default:
+                    break
+                }
             }
             
             cell.setCell()

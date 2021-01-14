@@ -32,10 +32,76 @@ class ExtraWeatherCVC: UICollectionViewCell {
         detailRatingLabel.characterSpacing = -0.65
     }
     
-    func setExtraWeatherData(data: ExtraWeather, idx: Int) {
-        detailPropertyImage.image = UIImage(named: "icRainfall")
-        detailPropertyLabel.text = "강수량"
-        detailValueLabel.text = "\(data.humidity.value)"
-        detailRatingLabel.text = "\(data.humidity.value) m/s"
+    func setExtraWeatherData(data: ExtraData, type: ExtraType) {
+        switch type {
+        case .rain:
+            detailRatingLabel.text = "\(data.value)mm"
+            detailPropertyLabel.text = "강수량"
+            detailPropertyImage.image = UIImage(named: "icRainfall")
+        case .wind:
+            detailRatingLabel.text = "\(data.value)m/s"
+            detailPropertyLabel.text = "풍속"
+            detailPropertyImage.image = UIImage(named: "icWiindspeed")
+        case .humidity:
+            detailRatingLabel.text = "\(data.value)%"
+            detailPropertyLabel.text = "습도"
+            detailPropertyImage.image = UIImage(named: "icHumidity")
+        }
+        
+        detailValueLabel.text = getWeatherDegree(rating: data.rating, type: type)
+    }
+    
+    func getWeatherDegree(rating: Int, type: ExtraType) -> String {
+        switch type {
+        case .rain:
+            switch rating {
+            case 1:
+                return "매우 조금"
+            case 2:
+                return "조금"
+            case 3:
+                return "보통"
+            case 4:
+                return "다소 많음"
+            case 5:
+                return "많음"
+            case 6:
+                return "매우 많음"
+            default:
+                return ""
+            }
+        case .wind:
+            switch rating {
+            case 1:
+                return "매우 약함"
+            case 2:
+                return "약함"
+            case 3:
+                return "보통"
+            case 4:
+                return "다소 강함"
+            case 5:
+                return "강함"
+            case 6:
+                return "매우 강함"
+            default:
+                return ""
+            }
+        case .humidity:
+            switch rating {
+            case 1:
+                return "매우 건조"
+            case 2:
+                return "건조"
+            case 3:
+                return "적정"
+            case 4:
+                return "습함"
+            case 5:
+                return "매우 습함"
+            default:
+                return ""
+            }
+        }
     }
 }

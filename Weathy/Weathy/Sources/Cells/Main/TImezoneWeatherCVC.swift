@@ -44,7 +44,7 @@ class TImezoneWeatherCVC: UICollectionViewCell {
         timeLabel.text = "\(hourlyData.time!)"
         scrollNowImage.alpha = 0
         climateImage.image = UIImage(named: "ic_fewclouds_day")
-        popLabel.text = "\(hourlyData.pop)"
+        popLabel.text = "\(hourlyData.pop)%"
         temperatureLabel.text = "\(hourlyData.temperature!)°"
         
         if (idx == 0) {

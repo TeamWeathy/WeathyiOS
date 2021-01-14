@@ -15,11 +15,11 @@ struct ExtraWeatherData: Codable {
 
 // MARK: - ExtraWeather
 struct ExtraWeather: Codable {
-    let rain, humidity, wind: Humidity
+    let rain, humidity, wind: ExtraData
 }
 
-// MARK: - Humidity
-struct Humidity: Codable {
+// MARK: - ExtraType
+struct ExtraData: Codable {
     let value: Double
     let rating: Int
 }
