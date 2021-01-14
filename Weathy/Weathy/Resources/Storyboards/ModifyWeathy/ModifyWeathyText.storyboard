@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="20" id="Tw6-fL-y8J"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="ic_close"/>
+                                <state key="normal" image="ic_back"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsz-Cg-hLR">
                                 <rect key="frame" x="36.5" y="108" width="42" height="21"/>
@@ -130,11 +130,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9C-mG-JaA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191" y="95"/>
+            <point key="canvasLocation" x="-191.30434782608697" y="94.419642857142847"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ic_close" width="20" height="20"/>
+        <image name="ic_back" width="20" height="20"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
