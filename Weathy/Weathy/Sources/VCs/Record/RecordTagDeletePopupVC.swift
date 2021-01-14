@@ -80,7 +80,7 @@ extension RecordTagDeletePopupVC {
     }
     
     func callDeleteTagService() {
-        RecordTagService.shared.deleteTag(userId: 63, token: "63:63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", clothArray: selectedTags) { (networkResult) -> (Void) in
+        RecordTagService.shared.deleteTag(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", clothArray: selectedTags) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
 //                print(">>> success")
@@ -96,14 +96,18 @@ extension RecordTagDeletePopupVC {
             case .requestErr(let msg):
                 print("requestErr")
                 if let message = msg as? String {
+                    self.showToast(message: "예기치 못한 오류, 다시 시도하세요.")
                     print(message)
                 }
             case .pathErr:
                 print("pathErr")
+                self.showToast(message: "예기치 못한 오류, 다시 시도하세요.")
             case .serverErr:
                 print("serverErr")
+                self.showToast(message: "예기치 못한 오류, 다시 시도하세요.")
             case .networkFail:
                 print("networkFail")
+                self.showToast(message: "예기치 못한 오류, 다시 시도하세요.")
             }
         }
     }
