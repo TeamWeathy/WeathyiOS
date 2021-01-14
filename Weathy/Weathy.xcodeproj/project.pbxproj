@@ -41,6 +41,7 @@
 		37222EAF25B1061600577FEE /* ModifyWeathyRateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222EAE25B1061600577FEE /* ModifyWeathyRateVC.swift */; };
 		37222EB225B10A5C00577FEE /* ModifyWeathyTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222EB125B10A5C00577FEE /* ModifyWeathyTextVC.swift */; };
 		37222EB525B10A6D00577FEE /* ModifyWeathyText.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37222EB425B10A6D00577FEE /* ModifyWeathyText.storyboard */; };
+		37222EBD25B10E1600577FEE /* ModifyWeathyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222EBC25B10E1600577FEE /* ModifyWeathyService.swift */; };
 		3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */; };
 		3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */; };
 		3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */; };
@@ -146,6 +147,7 @@
 		37222EAE25B1061600577FEE /* ModifyWeathyRateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyRateVC.swift; sourceTree = "<group>"; };
 		37222EB125B10A5C00577FEE /* ModifyWeathyTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyTextVC.swift; sourceTree = "<group>"; };
 		37222EB425B10A6D00577FEE /* ModifyWeathyText.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModifyWeathyText.storyboard; sourceTree = "<group>"; };
+		37222EBC25B10E1600577FEE /* ModifyWeathyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyService.swift; sourceTree = "<group>"; };
 		3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTagDelete.storyboard; sourceTree = "<group>"; };
 		3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagDeleteVC.swift; sourceTree = "<group>"; };
 		3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -624,6 +626,7 @@
 				0E6E9A6E25AF7E8200702706 /* AuthorizationAPI */,
 				0E75F66E25AF3C4700D98633 /* UserAPI */,
 				0E6E9A7525AF9E7700702706 /* searchService.swift */,
+				37222EBC25B10E1600577FEE /* ModifyWeathyService.swift */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
 				ABBA9CAF25A22C93008785BD /* MainTopCVC.swift in Sources */,
 				0E6E9A8025AFA1FC00702706 /* SearchWeatherInformation.swift in Sources */,
+				37222EBD25B10E1600577FEE /* ModifyWeathyService.swift in Sources */,
 				6354ED9C25AE0B3700C5CAC5 /* MonthlyCalendarCVC.swift in Sources */,
 				374D48D4259CEC0500152B9A /* RecordStartVC.swift in Sources */,
 				6354ED9B25AE0B3700C5CAC5 /* WeeklyCalendarCVC.swift in Sources */,
