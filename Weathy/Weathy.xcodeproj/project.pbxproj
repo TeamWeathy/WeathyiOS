@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3133F725A4EB5C0059028C /* RecentTVC.swift */; };
-		0E31344225A724570059028C /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E31344125A724570059028C /* OnBoarding.storyboard */; };
 		0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344425A724A80059028C /* OnBoardingFirstVC.swift */; };
 		0E6E9A6925AF5CFF00702706 /* modifyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */; };
 		0E6E9A7125AF7EE300702706 /* autoLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7025AF7EE300702706 /* autoLoginService.swift */; };
@@ -22,13 +21,11 @@
 		0E75F67925AF3E5600D98633 /* createUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F67825AF3E5600D98633 /* createUserService.swift */; };
 		0E8C003125A1B7A200A31295 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8C003025A1B7A200A31295 /* Tabbar.storyboard */; };
 		0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003425A1B7CE00A31295 /* TabbarVC.swift */; };
-		0E8C004225A2498200A31295 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8C004125A2498200A31295 /* Setting.storyboard */; };
 		0E8C004725A249B900A31295 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C004625A249B900A31295 /* SettingVC.swift */; };
 		0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C004A25A2514B00A31295 /* ChangeNickNameVC.swift */; };
 		0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005125A2585C00A31295 /* SettingNVC.swift */; };
 		0E8C005625A2598800A31295 /* DevelopersInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005525A2598800A31295 /* DevelopersInfoVC.swift */; };
 		0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C005825A2F64900A31295 /* AskForVC.swift */; };
-		0E9152DC25A399EA0048E226 /* MainSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9152DB25A399EA0048E226 /* MainSearch.storyboard */; };
 		0E9152E025A39A1F0048E226 /* MainSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9152DF25A39A1F0048E226 /* MainSearchVC.swift */; };
 		3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */; };
 		3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */; };
@@ -87,6 +84,9 @@
 		AB09371B25AE48F800F69220 /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09371A25AE48F800F69220 /* MainService.swift */; };
 		AB09371F25AF526700F69220 /* RecommededWeathy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09371E25AF526700F69220 /* RecommededWeathy.swift */; };
 		AB09372325AFC61A00F69220 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09372225AFC61A00F69220 /* Emoji.swift */; };
+		AB3D206625AFD4DE0030514B /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3D206525AFD4DE0030514B /* OnBoarding.storyboard */; };
+		AB3D206A25AFD4F90030514B /* MainSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3D206925AFD4F90030514B /* MainSearch.storyboard */; };
+		AB3D206E25AFD5040030514B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3D206D25AFD5030030514B /* Setting.storyboard */; };
 		AB4E1C8725A6FE48002F3B79 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C8625A6FE48002F3B79 /* UIViewController+Extensions.swift */; };
 		AB4E1C9225A9D440002F3B79 /* TImezoneWeatherCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C9125A9D440002F3B79 /* TImezoneWeatherCVC.swift */; };
 		AB4E1C9525A9ED4C002F3B79 /* WeeklyWeatherCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C9425A9ED4C002F3B79 /* WeeklyWeatherCVC.swift */; };
@@ -99,7 +99,6 @@
 
 /* Begin PBXFileReference section */
 		0E3133F725A4EB5C0059028C /* RecentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTVC.swift; sourceTree = "<group>"; };
-		0E31344125A724570059028C /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
 		0E31344425A724A80059028C /* OnBoardingFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFirstVC.swift; sourceTree = "<group>"; };
 		0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modifyUserService.swift; sourceTree = "<group>"; };
 		0E6E9A7025AF7EE300702706 /* autoLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autoLoginService.swift; sourceTree = "<group>"; };
@@ -113,13 +112,11 @@
 		0E75F67825AF3E5600D98633 /* createUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createUserService.swift; sourceTree = "<group>"; };
 		0E8C003025A1B7A200A31295 /* Tabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabbar.storyboard; sourceTree = "<group>"; };
 		0E8C003425A1B7CE00A31295 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
-		0E8C004125A2498200A31295 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		0E8C004625A249B900A31295 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		0E8C004A25A2514B00A31295 /* ChangeNickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNickNameVC.swift; sourceTree = "<group>"; };
 		0E8C005125A2585C00A31295 /* SettingNVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNVC.swift; sourceTree = "<group>"; };
 		0E8C005525A2598800A31295 /* DevelopersInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersInfoVC.swift; sourceTree = "<group>"; };
 		0E8C005825A2F64900A31295 /* AskForVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForVC.swift; sourceTree = "<group>"; };
-		0E9152DB25A399EA0048E226 /* MainSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainSearch.storyboard; sourceTree = "<group>"; };
 		0E9152DF25A39A1F0048E226 /* MainSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchVC.swift; sourceTree = "<group>"; };
 		3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTagDelete.storyboard; sourceTree = "<group>"; };
 		3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagDeleteVC.swift; sourceTree = "<group>"; };
@@ -180,6 +177,9 @@
 		AB09371A25AE48F800F69220 /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
 		AB09371E25AF526700F69220 /* RecommededWeathy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommededWeathy.swift; sourceTree = "<group>"; };
 		AB09372225AFC61A00F69220 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		AB3D206525AFD4DE0030514B /* OnBoarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
+		AB3D206925AFD4F90030514B /* MainSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainSearch.storyboard; sourceTree = "<group>"; };
+		AB3D206D25AFD5030030514B /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		AB4E1C8625A6FE48002F3B79 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		AB4E1C9125A9D440002F3B79 /* TImezoneWeatherCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImezoneWeatherCVC.swift; sourceTree = "<group>"; };
 		AB4E1C9425A9ED4C002F3B79 /* WeeklyWeatherCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWeatherCVC.swift; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 		0E75F66825AF171A00D98633 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				0E8C004125A2498200A31295 /* Setting.storyboard */,
+				AB3D206D25AFD5030030514B /* Setting.storyboard */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 		0E75F66925AF172C00D98633 /* MainSearch */ = {
 			isa = PBXGroup;
 			children = (
-				0E9152DB25A399EA0048E226 /* MainSearch.storyboard */,
+				AB3D206925AFD4F90030514B /* MainSearch.storyboard */,
 			);
 			path = MainSearch;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 		0E75F66A25AF174200D98633 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				0E31344125A724570059028C /* OnBoarding.storyboard */,
+				AB3D206525AFD4DE0030514B /* OnBoarding.storyboard */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -443,7 +443,6 @@
 		6339843D259A2B6C00339615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				0E8C002F25A1B79500A31295 /* Tabbar */,
 				37FB8AA525AE4F85001A6287 /* Splash */,
 				0E75F66A25AF174200D98633 /* OnBoarding */,
 				ABBA9CAC25A22B31008785BD /* Main */,
@@ -451,9 +450,6 @@
 				0E75F66825AF171A00D98633 /* Setting */,
 				6354ED8125AE0A2D00C5CAC5 /* Calendar.storyboard */,
 				374D48CE259CEBD300152B9A /* Record */,
-				0E8C004125A2498200A31295 /* Setting.storyboard */,
-				0E9152DB25A399EA0048E226 /* MainSearch.storyboard */,
-				0E31344125A724570059028C /* OnBoarding.storyboard */,
 				0E8C002F25A1B79500A31295 /* Tabbar */,
 				6339842D2599B1F600339615 /* LaunchScreen.storyboard */,
 			);
@@ -710,17 +706,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				374D48E3259D366500152B9A /* RecordText.storyboard in Resources */,
+				AB3D206625AFD4DE0030514B /* OnBoarding.storyboard in Resources */,
 				0E8C003125A1B7A200A31295 /* Tabbar.storyboard in Resources */,
 				63DEB295259CF67200A94488 /* AppleSDGothicNeoSB.ttf in Resources */,
 				ABBA9CA925A22254008785BD /* Main.storyboard in Resources */,
 				374D48D8259D1CA600152B9A /* RecordRate.storyboard in Resources */,
 				63DEB294259CF67200A94488 /* AppleSDGothicNeoR.ttf in Resources */,
-				0E31344225A724570059028C /* OnBoarding.storyboard in Resources */,
-				0E9152DC25A399EA0048E226 /* MainSearch.storyboard in Resources */,
 				6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */,
 				374D48D1259CEBF000152B9A /* RecordStart.storyboard in Resources */,
 				6339842C2599B1F600339615 /* Assets.xcassets in Resources */,
+				AB3D206E25AFD5040030514B /* Setting.storyboard in Resources */,
 				63DEB293259CF67200A94488 /* AppleSDGothicNeoB.ttf in Resources */,
+				AB3D206A25AFD4F90030514B /* MainSearch.storyboard in Resources */,
 				63DEB291259CF67200A94488 /* Roboto-Light.ttf in Resources */,
 				3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */,
 				374D48EA259D49CA00152B9A /* RecordTag.storyboard in Resources */,
@@ -728,7 +725,6 @@
 				37FB8AAF25AE52E1001A6287 /* 스플래시.json in Resources */,
 				63DEB290259CF67200A94488 /* Roboto-Medium.ttf in Resources */,
 				6354ED8225AE0A2E00C5CAC5 /* Calendar.storyboard in Resources */,
-				0E8C004225A2498200A31295 /* Setting.storyboard in Resources */,
 				63DEB292259CF67200A94488 /* AppleSDGothicNeoM.ttf in Resources */,
 				37FB8AA825AE4FA5001A6287 /* Splash.storyboard in Resources */,
 			);
@@ -990,14 +986,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 966AMBK56G;
+				DEVELOPMENT_TEAM = G7SD8523Y3;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Team.Weathy.02;
+				PRODUCT_BUNDLE_IDENTIFIER = Team.Weathy.01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1011,14 +1007,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 966AMBK56G;
+				DEVELOPMENT_TEAM = G7SD8523Y3;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Team.Weathy.02;
+				PRODUCT_BUNDLE_IDENTIFIER = Team.Weathy.01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
