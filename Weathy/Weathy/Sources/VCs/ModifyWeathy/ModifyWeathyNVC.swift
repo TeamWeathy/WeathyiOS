@@ -9,7 +9,7 @@ import UIKit
 
 class ModifyWeathyNVC: UINavigationController {
     
-    static let identifier = "RecordNVC"
+    static let identifier = "ModifyWeathyNVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()

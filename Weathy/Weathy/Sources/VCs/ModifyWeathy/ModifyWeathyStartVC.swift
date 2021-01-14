@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecordStartVC: UIViewController {
+class ModifyWeathyStartVC: UIViewController {
 
     //MARK: - Custom Variables
     
@@ -93,7 +93,7 @@ class RecordStartVC: UIViewController {
 
 //MARK: - Style
 
-extension RecordStartVC {
+extension ModifyWeathyStartVC {
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
@@ -210,4 +210,11 @@ extension RecordStartVC {
     
 }
 
+
+//MARK: - UIGestureRecognizerDelegate
+
+extension UIViewController : UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool { return true
+    }
+}
 

@@ -32,7 +32,7 @@
 		37222E7025AFA09000577FEE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E6F25AFA09000577FEE /* UIViewController+Extension.swift */; };
 		37222E7325AFA83B00577FEE /* RecordWeathyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E7225AFA83B00577FEE /* RecordWeathyService.swift */; };
 		37222E7625AFAA4700577FEE /* RecordWeathyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E7525AFAA4700577FEE /* RecordWeathyData.swift */; };
-		37222E8725B0D6BA00577FEE /* ModifyWeathyStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E8625B0D6BA00577FEE /* ModifyWeathyStart.swift */; };
+		37222E8725B0D6BA00577FEE /* ModifyWeathyStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E8625B0D6BA00577FEE /* ModifyWeathyStartVC.swift */; };
 		37222E8A25B0D6EA00577FEE /* ModifyWeathyStart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37222E8925B0D6EA00577FEE /* ModifyWeathyStart.storyboard */; };
 		37222E8E25B0DE4200577FEE /* ModifyWeathyNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */; };
 		3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */; };
@@ -131,7 +131,7 @@
 		37222E6F25AFA09000577FEE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		37222E7225AFA83B00577FEE /* RecordWeathyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWeathyService.swift; sourceTree = "<group>"; };
 		37222E7525AFAA4700577FEE /* RecordWeathyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWeathyData.swift; sourceTree = "<group>"; };
-		37222E8625B0D6BA00577FEE /* ModifyWeathyStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyStart.swift; sourceTree = "<group>"; };
+		37222E8625B0D6BA00577FEE /* ModifyWeathyStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyStartVC.swift; sourceTree = "<group>"; };
 		37222E8925B0D6EA00577FEE /* ModifyWeathyStart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModifyWeathyStart.storyboard; sourceTree = "<group>"; };
 		37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyNVC.swift; sourceTree = "<group>"; };
 		3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTagDelete.storyboard; sourceTree = "<group>"; };
@@ -359,7 +359,7 @@
 		37222E8525B0D65900577FEE /* ModifyWeathy */ = {
 			isa = PBXGroup;
 			children = (
-				37222E8625B0D6BA00577FEE /* ModifyWeathyStart.swift */,
+				37222E8625B0D6BA00577FEE /* ModifyWeathyStartVC.swift */,
 				37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */,
 			);
 			path = ModifyWeathy;
@@ -832,7 +832,7 @@
 				6354ED9D25AE0B3700C5CAC5 /* InfiniteMonthlyCVC.swift in Sources */,
 				374D48FE259F678200152B9A /* RecordTagCVC.swift in Sources */,
 				6354EDA125AE0B6700C5CAC5 /* Date+Extensions.swift in Sources */,
-				37222E8725B0D6BA00577FEE /* ModifyWeathyStart.swift in Sources */,
+				37222E8725B0D6BA00577FEE /* ModifyWeathyStartVC.swift in Sources */,
 				374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */,
 				ABBA9CA225A2217F008785BD /* MainVC.swift in Sources */,
 				6339846C259A431100339615 /* UIView+Extensions.swift in Sources */,
@@ -1042,14 +1042,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G7SD8523Y3;
+				DEVELOPMENT_TEAM = J92QJ4K4KU;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Team.Weathy.01;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sopt.weathy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1063,14 +1063,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G7SD8523Y3;
+				DEVELOPMENT_TEAM = J92QJ4K4KU;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Team.Weathy.01;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sopt.weathy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
