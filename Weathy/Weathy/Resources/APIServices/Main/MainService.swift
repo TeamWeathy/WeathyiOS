@@ -172,7 +172,7 @@ struct MainService {
     
     private func judgeDailyWeatherData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(DaliyWeatherData.self, from: data) else {return .pathErr}
+        guard let decodedData = try? decoder.decode(DailyWeatherData.self, from: data) else {return .pathErr}
         
         switch status {
         case 200:

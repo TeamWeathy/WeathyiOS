@@ -14,7 +14,7 @@ class MainVC: UIViewController {
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
-    var dailyWeatherData: MainDailyWeather?
+    var dailyWeatherData: DailyWeatherData?
     
     //MARK: - IBOutlets
     
@@ -36,6 +36,7 @@ class MainVC: UIViewController {
         getLocationWeather()
         getRecommendedWeathy()
         getHourlyWeather()
+        getDailyWeather()
     }
     
     override func viewDidLoad() {
@@ -146,8 +147,8 @@ class MainVC: UIViewController {
         MainService.shared.getDailyWeather() { (result) -> (Void) in
             switch result {
             case .success(let data):
-                if let response = data as? HourlyWeatherData {
-                    self.hourlyWeatherData = response
+                if let response = data as? DailyWeatherData {
+                    self.dailyWeatherData = response
                 }
             case .requestErr(let msg):
                 print(msg)
@@ -310,6 +311,12 @@ extension MainVC: UICollectionViewDataSource {
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainBottomCVC", for: indexPath) as? MainBottomCVC else {return UICollectionViewCell()}
             if let hourly = hourlyWeatherData {
                 cell.changeHourlyViewData(data: hourly)
+//                cell.timeZoneWeatherCollectionView.reloadData()
+            }
+            
+            if let daily = dailyWeatherData {
+                cell.changeDailyViewData(data: daily)
+//                cell.weeklyWeatherCollectionView.reloadData()
             }
             
             cell.setCell()

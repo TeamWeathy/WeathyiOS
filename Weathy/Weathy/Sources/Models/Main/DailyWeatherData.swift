@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - DaliyWeatherData
-struct DaliyWeatherData: Codable {
+// MARK: - DailyWeatherData
+struct DailyWeatherData: Codable {
     let dailyWeatherList: [MainDailyWeather]
     let message: String
 }

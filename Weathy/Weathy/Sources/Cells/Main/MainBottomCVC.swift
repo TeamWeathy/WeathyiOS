@@ -11,6 +11,7 @@ class MainBottomCVC: UICollectionViewCell {
     //MARK: - Custom Variables
     
     var hourlyWeatherData: HourlyWeatherData?
+    var dailyWeatherData: DailyWeatherData?
     
     //MARK: - IBOutlet
     
@@ -93,10 +94,14 @@ class MainBottomCVC: UICollectionViewCell {
     
     func changeHourlyViewData(data: HourlyWeatherData) {
         self.hourlyWeatherData = data
-//
-//        print("-----")
-//        print(hourlyWeatherData?.hourlyWeatherList)
+
         timeZoneWeatherCollectionView.reloadData()
+    }
+    
+    func changeDailyViewData(data: DailyWeatherData) {
+        self.dailyWeatherData = data
+
+        weeklyWeatherCollectionView.reloadData()
     }
 }
 
@@ -129,8 +134,12 @@ extension MainBottomCVC: UICollectionViewDataSource {
             return cell
         case weeklyWeatherCollectionView:
             guard let cell = weeklyWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: "WeeklyWeatherCVC", for: indexPath) as? WeeklyWeatherCVC else {return UICollectionViewCell()}
+            if let daily = dailyWeatherData {
+                cell.setWeeklyWeatherData(data: daily.dailyWeatherList[indexPath.row], idx: indexPath.row)
+            }
             
             cell.setCell()
+        
             return cell
         case detailWeatherCollectionView:
             guard let cell = detailWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: DetailWeatherCVC.identifier, for: indexPath) as? DetailWeatherCVC else {return UICollectionViewCell()}
