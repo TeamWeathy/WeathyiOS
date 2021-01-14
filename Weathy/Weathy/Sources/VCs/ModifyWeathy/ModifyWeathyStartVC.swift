@@ -24,7 +24,7 @@ class ModifyWeathyStartVC: UIViewController {
     var minTemp: Int = -20
     
     var visitedFlag: Bool = false
-    var dvc = RecordTagVC()
+    var dvc = ModifyWeathyTagVC()
     
     
     //MARK: - IBOutlets
@@ -77,8 +77,8 @@ class ModifyWeathyStartVC: UIViewController {
     @IBAction func nextBtnTap(_ sender: Any) {
         
         if visitedFlag == false {
-            let nextStoryboard = UIStoryboard(name: "RecordTag", bundle: nil)
-            self.dvc = (nextStoryboard.instantiateViewController(identifier: "RecordTagVC") as? RecordTagVC)!
+            let nextStoryboard = UIStoryboard(name: "ModifyWeathyTag", bundle: nil)
+            self.dvc = ((nextStoryboard.instantiateViewController(identifier: "ModifyWeathyTagVC") as? ModifyWeathyTagVC)!)
             
             visitedFlag = true
         }
