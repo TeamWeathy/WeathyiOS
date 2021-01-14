@@ -75,7 +75,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.async(execute: { [self] in
-            print("$$setOffset")
             self.infiniteMonthlyCV.contentOffset.x = calendarWidth
             self.infiniteWeeklyCV.contentOffset.x = calendarWidth
         })
@@ -86,8 +85,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //MARK: - Custom Methods
     
     func setStyle(){
-//        self.view.clipsToBounds = true
-        
         yearMonthTextView.font = UIFont(name: "Roboto-Medium", size: 25)
         yearMonthTextView.textColor = .mainGrey
         
@@ -325,7 +322,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
                     self.infiniteWeeklyCV.alpha = 0
                 }
                 
-//                self.view.layoutSubviews()
                 recognizer.setTranslation(CGPoint.zero, in: self.view)
                 self.isCovered = true
                 
@@ -344,7 +340,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
                     self.infiniteMonthlyCV.alpha = 0
                     self.infiniteWeeklyCV.alpha = 1
                 }
-//                self.view.layoutSubviews()
                 recognizer.setTranslation(CGPoint.zero, in: self.view)
                 self.isCovered = false
                 
@@ -454,15 +449,15 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if scrollView == infiniteWeeklyCV{
-            if let infiCVC = infiniteWeeklyCV.cellForItem(at: [0,0]) as? InfiniteWeeklyCVC{
-                if let weekCVC = infiCVC.weeklyCalendarCV.cellForItem(at: [0,selectedDate.weekday]) as? WeeklyCalendarCVC{
-                    weekCVC.selectedView.alpha = 0
-                }
-            }
-        }
-    }
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        if scrollView == infiniteWeeklyCV{
+//            if let infiCVC = infiniteWeeklyCV.cellForItem(at: [0,0]) as? InfiniteWeeklyCVC{
+//                if let weekCVC = infiCVC.weeklyCalendarCV.cellForItem(at: [0,selectedDate.weekday]) as? WeeklyCalendarCVC{
+//                    weekCVC.selectedView.alpha = 0
+//                }
+//            }
+//        }
+//    }
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        let x = scrollView.contentOffset.x
 //        if x < calendarWidth{

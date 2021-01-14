@@ -101,7 +101,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
                 selectedComponent.day = indexPath.item - selectedDate.weekday
                 selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
                 weekCellDelegate?.selectedWeekDateDidChange(selectedDate)
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeData"), object: selectedDate)
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeData"), object: selectedDate)
                 lastSelectedIdx = indexPath.item
             }
         }

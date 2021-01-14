@@ -11,7 +11,7 @@ struct MonthlyWeathyService{
     static let shared = MonthlyWeathyService()
     
     func makeURL(userID: Int, startDate: String, endDate: String) -> String{
-        var url = APIConstants.calendarURL.replacingOccurrences(of: ":user-id", with: String(userID))
+        var url = APIConstants.monthlyWeathyURL.replacingOccurrences(of: ":user-id", with: String(userID))
         url = url.replacingOccurrences(of: "{start_date}", with: startDate)
         url = url.replacingOccurrences(of: "{end_date}", with: endDate)
         return url
@@ -20,7 +20,7 @@ struct MonthlyWeathyService{
     func getMonthlyCalendar(userID: Int, startDate: String, endDate: String, completion: @escaping (NetworkResult<Any>) -> (Void)){
         let url = makeURL(userID: userID, startDate: startDate, endDate: endDate)
 //        let token = UserDefaults.standard.string(forKey: "token")
-        let token = "61:kGDecQDeFZKJ6cF9M9Ac3aLPDHZ63s"
+        let token = "61:pP7qRpVnD10RpBBCrhoYXIKBEsWgSg"
         let header: HTTPHeaders = [
             "Content-Type": "application/json",
             "x-access-token": token

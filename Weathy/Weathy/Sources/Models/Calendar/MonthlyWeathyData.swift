@@ -8,7 +8,7 @@
 import Foundation
 
 struct MonthlyWeathyData: Codable {
-    var calendarOverviewList: [CalendarOverview?]
+    var calendarOverviewList: [CalendarOverview?]?
     var message: String
 }
 

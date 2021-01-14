@@ -106,7 +106,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
                 var selectedComponent = DateComponents()
                 selectedComponent.day = indexPath.item - (selectedDate.firstWeekday - 1 + selectedDate.day)
                 selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeData"), object: selectedDate)
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeData"), object: selectedDate)
                 monthCellDelegate?.selectedMonthDateDidChange(selectedDate)
                 lastSelectedIdx = indexPath.item
             }
@@ -182,7 +182,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
         }
         
         ///데이터 표시
-        if monthlyWeathyList.count != 0{
+        if monthlyWeathyList.count == 7{
             if let data = monthlyWeathyList[indexPath.item]{
                 cell.setData(high: data.temperature.maxTemp, low: data.temperature.minTemp)
             }
