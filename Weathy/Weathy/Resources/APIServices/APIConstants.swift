@@ -22,7 +22,6 @@ struct APIConstants{
     
     /// Search Weather 관련
     static let searchURL = baseURL + "/weather/overviews?keyword={keyword}&date={date}"
-    
   
     // Main Card View 관련
     static func getRecommendedWeathyURL(userId: Int, code: String, date: String) -> String {

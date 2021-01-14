@@ -74,7 +74,6 @@ struct MainService {
     }
     
     func getHourlyWeather(completion: @escaping ((NetworkResult<Any>) -> (Void))) {
-        guard let userId = Int(UserDefaults.standard.string(forKey: "userId") ?? "0") else {return}
         guard let locationCode = UserDefaults.standard.string(forKey: "locationCode") else {return}
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
@@ -88,7 +87,7 @@ struct MainService {
                 guard let statusCode = response.response?.statusCode else {return}
                 guard let data = response.value else {return}
                 
-                completion(judgeRecommendedWeathyData(status: statusCode, data: data))
+                completion(judgeHourlyWeatherData(status: statusCode, data: data))
             case .failure(let err):
                 print(err)
                 completion(.networkFail)
@@ -115,6 +114,22 @@ struct MainService {
     private func judgeRecommendedWeathyData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(RecommendedWeathyData.self, from: data) else {return .pathErr}
+        
+        switch status {
+        case 200:
+            return .success(decodedData)
+        case 400..<500:
+            return .requestErr(decodedData.message)
+        case 500:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
+    
+    private func judgeHourlyWeatherData(status: Int, data: Data) -> NetworkResult<Any> {
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(HourlyWeatherData.self, from: data) else {return .pathErr}
         
         switch status {
         case 200:

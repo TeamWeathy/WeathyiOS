@@ -87,6 +87,7 @@
 		AB3D206625AFD4DE0030514B /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3D206525AFD4DE0030514B /* OnBoarding.storyboard */; };
 		AB3D206A25AFD4F90030514B /* MainSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3D206925AFD4F90030514B /* MainSearch.storyboard */; };
 		AB3D206E25AFD5040030514B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3D206D25AFD5030030514B /* Setting.storyboard */; };
+		AB3D207225B047DD0030514B /* HourlyWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D207125B047DD0030514B /* HourlyWeatherData.swift */; };
 		AB4E1C8725A6FE48002F3B79 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C8625A6FE48002F3B79 /* UIViewController+Extensions.swift */; };
 		AB4E1C9225A9D440002F3B79 /* TImezoneWeatherCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C9125A9D440002F3B79 /* TImezoneWeatherCVC.swift */; };
 		AB4E1C9525A9ED4C002F3B79 /* WeeklyWeatherCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C9425A9ED4C002F3B79 /* WeeklyWeatherCVC.swift */; };
@@ -180,6 +181,7 @@
 		AB3D206525AFD4DE0030514B /* OnBoarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
 		AB3D206925AFD4F90030514B /* MainSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainSearch.storyboard; sourceTree = "<group>"; };
 		AB3D206D25AFD5030030514B /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		AB3D207125B047DD0030514B /* HourlyWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherData.swift; sourceTree = "<group>"; };
 		AB4E1C8625A6FE48002F3B79 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		AB4E1C9125A9D440002F3B79 /* TImezoneWeatherCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImezoneWeatherCVC.swift; sourceTree = "<group>"; };
 		AB4E1C9425A9ED4C002F3B79 /* WeeklyWeatherCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWeatherCVC.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 			children = (
 				AB09370F25AE446B00F69220 /* LocationWeatherData.swift */,
 				AB09371E25AF526700F69220 /* RecommededWeathy.swift */,
+				AB3D207125B047DD0030514B /* HourlyWeatherData.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				374D48DB259D1CB600152B9A /* RecordRateVC.swift in Sources */,
 				633984202599B1F400339615 /* AppDelegate.swift in Sources */,
 				374D4904259F68EE00152B9A /* TagFlowLayout.swift in Sources */,
+				AB3D207225B047DD0030514B /* HourlyWeatherData.swift in Sources */,
 				0E75F67925AF3E5600D98633 /* createUserService.swift in Sources */,
 				63D3C53925A4A57500E5FDFE /* SpacedLabel.swift in Sources */,
 				3735AE3425A8F24C00E71DC3 /* RecordTagAddPopupVC.swift in Sources */,
