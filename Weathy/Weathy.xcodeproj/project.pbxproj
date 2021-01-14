@@ -126,7 +126,7 @@
 		37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		37FB8AA725AE4FA5001A6287 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		37FB8AAA25AE4FB7001A6287 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
-		37FB8AAE25AE52E1001A6287 /* 스플래시.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "스플래시.json"; path = "../../../../../../../../Downloads/스플래시.json"; sourceTree = "<group>"; };
+		37FB8AAE25AE52E1001A6287 /* 스플래시.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "스플래시.json"; sourceTree = "<group>"; };
 		6339841C2599B1F400339615 /* Weathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339841F2599B1F400339615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		633984212599B1F400339615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
