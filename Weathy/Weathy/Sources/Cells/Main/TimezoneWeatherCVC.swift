@@ -17,7 +17,6 @@ class TimezoneWeatherCVC: UICollectionViewCell {
     @IBOutlet weak var climateImage: UIImageView!
     @IBOutlet weak var popLabel: SpacedLabel!
     @IBOutlet weak var temperatureLabel: SpacedLabel!
-    @IBOutlet weak var scrollNowImage: UIImageView!
     
     //MARK: - LifeCycle Methods
     
@@ -35,22 +34,21 @@ class TimezoneWeatherCVC: UICollectionViewCell {
         temperatureLabel.font = UIFont.RobotoRegular16
         temperatureLabel.textColor = UIColor.subGrey1
         temperatureLabel.characterSpacing = -0.8
-
-        scrollNowImage.image = UIImage(named: "mainscrollIcNow")
-        scrollNowImage.alpha = 0
     }
     
     func setTimezoneWeatherData(hourlyData: MainHourlyWeather, idx: Int) {
-        timeLabel.alpha = 1
-        timeLabel.text = "\(hourlyData.time!)"
-        scrollNowImage.alpha = 0
+        if let time = hourlyData.time,
+           let temp = hourlyData.temperature {
+            timeLabel.alpha = 1
+            timeLabel.text = "\(time)"
+            temperatureLabel.text = "\(temp)°"
+        }
         climateImage.image = UIImage(named: "ic_fewclouds_day")
         popLabel.text = "\(hourlyData.pop)%"
-        temperatureLabel.text = "\(hourlyData.temperature!)°"
         
         if (idx == 0) {
-            scrollNowImage.alpha = 1
-            timeLabel.alpha = 0
+            timeLabel.text = "●"
+            timeLabel.textColor = UIColor.mintMain
         }
     }
 }

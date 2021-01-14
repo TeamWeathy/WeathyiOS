@@ -50,6 +50,7 @@ class WeeklyWeatherCVC: UICollectionViewCell {
         
         if (idx == 0) {
             dayOfWeekLabel.textColor = UIColor.mintIcon
+            dayOfWeekLabel.font = UIFont.SDGothicSemiBold13
             dayOfWeekLabel.text = "오늘"
         }
     }

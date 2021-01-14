@@ -477,16 +477,8 @@
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainscrollIcNow" translatesAutoresizingMaskIntoConstraints="NO" id="zth-mc-x5X">
-                                                                                                <rect key="frame" x="53" y="0.0" width="9" height="9"/>
-                                                                                                <constraints>
-                                                                                                    <constraint firstAttribute="width" secondItem="zth-mc-x5X" secondAttribute="height" multiplier="1:1" id="lja-oc-gtx"/>
-                                                                                                    <constraint firstAttribute="width" constant="9" id="w2k-Ft-Ehn"/>
-                                                                                                </constraints>
-                                                                                            </imageView>
                                                                                         </subviews>
                                                                                         <constraints>
-                                                                                            <constraint firstItem="zth-mc-x5X" firstAttribute="top" secondItem="EpN-0Y-EDZ" secondAttribute="top" id="3Lw-Qe-Tso"/>
                                                                                             <constraint firstItem="fGf-7A-c4P" firstAttribute="centerX" secondItem="LQb-Gq-HzE" secondAttribute="centerX" id="ChC-iU-HM8"/>
                                                                                             <constraint firstItem="Vex-6e-hsI" firstAttribute="centerX" secondItem="fGf-7A-c4P" secondAttribute="centerX" id="FqN-ga-40S"/>
                                                                                             <constraint firstItem="HcH-N7-Eem" firstAttribute="centerX" secondItem="Vex-6e-hsI" secondAttribute="centerX" id="J4X-21-o0B"/>
@@ -494,7 +486,6 @@
                                                                                             <constraint firstItem="LQb-Gq-HzE" firstAttribute="top" secondItem="EpN-0Y-EDZ" secondAttribute="top" id="MjM-Vg-fcY"/>
                                                                                             <constraint firstItem="fGf-7A-c4P" firstAttribute="top" secondItem="LQb-Gq-HzE" secondAttribute="bottom" constant="15" id="SKh-tH-5FO"/>
                                                                                             <constraint firstItem="LQb-Gq-HzE" firstAttribute="centerX" secondItem="EpN-0Y-EDZ" secondAttribute="centerX" id="WXr-9F-Q7t"/>
-                                                                                            <constraint firstItem="zth-mc-x5X" firstAttribute="centerX" secondItem="EpN-0Y-EDZ" secondAttribute="centerX" id="f48-qe-Vfm"/>
                                                                                             <constraint firstItem="Vex-6e-hsI" firstAttribute="top" secondItem="fGf-7A-c4P" secondAttribute="bottom" constant="6" id="p9A-fU-PBP"/>
                                                                                         </constraints>
                                                                                     </collectionViewCellContentView>
@@ -502,7 +493,6 @@
                                                                                     <connections>
                                                                                         <outlet property="climateImage" destination="fGf-7A-c4P" id="5fj-s9-AZI"/>
                                                                                         <outlet property="popLabel" destination="Vex-6e-hsI" id="jJ1-Xo-XHJ"/>
-                                                                                        <outlet property="scrollNowImage" destination="zth-mc-x5X" id="BAf-9r-sVf"/>
                                                                                         <outlet property="temperatureLabel" destination="HcH-N7-Eem" id="P8c-i9-tx5"/>
                                                                                         <outlet property="timeLabel" destination="LQb-Gq-HzE" id="d18-of-ag8"/>
                                                                                     </connections>
@@ -914,7 +904,6 @@
         <image name="ic_search" width="20" height="20"/>
         <image name="ic_settings" width="20" height="20"/>
         <image name="mainImgFewcloudsDay" width="230" height="300"/>
-        <image name="mainscrollIcNow" width="9" height="9"/>
         <image name="mainscroll_img_logo" width="102" height="29"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

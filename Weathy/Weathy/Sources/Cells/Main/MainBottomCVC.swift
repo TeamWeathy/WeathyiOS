@@ -139,22 +139,26 @@ extension MainBottomCVC: UICollectionViewDataSource {
         switch (collectionView) {
         case timeZoneWeatherCollectionView:
             guard let cell = timeZoneWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: TimezoneWeatherCVC.idenfier, for: indexPath) as? TimezoneWeatherCVC else {return UICollectionViewCell()}
+            cell.setCell()
+            
             if let hourly = hourlyWeatherData?.hourlyWeatherList {
                 cell.setTimezoneWeatherData(hourlyData: hourly[indexPath.row], idx: indexPath.row)
             }
-
-            cell.setCell()
+            
             return cell
         case weeklyWeatherCollectionView:
             guard let cell = weeklyWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: WeeklyWeatherCVC.identifier, for: indexPath) as? WeeklyWeatherCVC else {return UICollectionViewCell()}
+            cell.setCell()
+            
             if let daily = dailyWeatherData {
                 cell.setWeeklyWeatherData(data: daily.dailyWeatherList[indexPath.row], idx: indexPath.row)
             }
             
-            cell.setCell()
             return cell
         case extraWeatherCollectionView:
             guard let cell = extraWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: ExtraWeatherCVC.identifier, for: indexPath) as? ExtraWeatherCVC else {return UICollectionViewCell()}
+            cell.setCell()
+            
             if let extra = extraWeatherData {
                 switch indexPath.row {
                 case 0:
@@ -168,7 +172,6 @@ extension MainBottomCVC: UICollectionViewDataSource {
                 }
             }
             
-            cell.setCell()
             return cell
         default:
             return UICollectionViewCell()
