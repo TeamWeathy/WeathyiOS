@@ -229,7 +229,7 @@ extension RecordTextVC {
     }
     
     func callRecordWeathyService() {
-        RecordWeathyService.shared.recordWeathy(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", date: "2021-01-14", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
+        RecordWeathyService.shared.recordWeathy(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {
