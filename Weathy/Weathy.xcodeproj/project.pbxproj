@@ -34,6 +34,7 @@
 		37222E7625AFAA4700577FEE /* RecordWeathyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E7525AFAA4700577FEE /* RecordWeathyData.swift */; };
 		37222E8725B0D6BA00577FEE /* ModifyWeathyStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E8625B0D6BA00577FEE /* ModifyWeathyStart.swift */; };
 		37222E8A25B0D6EA00577FEE /* ModifyWeathyStart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37222E8925B0D6EA00577FEE /* ModifyWeathyStart.storyboard */; };
+		37222E8E25B0DE4200577FEE /* ModifyWeathyNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */; };
 		3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */; };
 		3735AE1E25A87F8B00E71DC3 /* RecordTagDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */; };
 		3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */; };
@@ -132,6 +133,7 @@
 		37222E7525AFAA4700577FEE /* RecordWeathyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWeathyData.swift; sourceTree = "<group>"; };
 		37222E8625B0D6BA00577FEE /* ModifyWeathyStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyStart.swift; sourceTree = "<group>"; };
 		37222E8925B0D6EA00577FEE /* ModifyWeathyStart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModifyWeathyStart.storyboard; sourceTree = "<group>"; };
+		37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWeathyNVC.swift; sourceTree = "<group>"; };
 		3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordTagDelete.storyboard; sourceTree = "<group>"; };
 		3735AE1D25A87F8B00E71DC3 /* RecordTagDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagDeleteVC.swift; sourceTree = "<group>"; };
 		3735AE2E25A8EA4300E71DC3 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				37222E8625B0D6BA00577FEE /* ModifyWeathyStart.swift */,
+				37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */,
 			);
 			path = ModifyWeathy;
 			sourceTree = "<group>";
@@ -880,6 +883,7 @@
 				63D3C53925A4A57500E5FDFE /* SpacedLabel.swift in Sources */,
 				3735AE3425A8F24C00E71DC3 /* RecordTagAddPopupVC.swift in Sources */,
 				63DEB261259CD49700A94488 /* DummyCell.swift in Sources */,
+				37222E8E25B0DE4200577FEE /* ModifyWeathyNVC.swift in Sources */,
 				3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */,
 				37222E7625AFAA4700577FEE /* RecordWeathyData.swift in Sources */,
 				37222E7025AFA09000577FEE /* UIViewController+Extension.swift in Sources */,
