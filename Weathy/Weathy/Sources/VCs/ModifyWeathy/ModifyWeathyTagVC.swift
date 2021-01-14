@@ -46,6 +46,7 @@ class ModifyWeathyTagVC: UIViewController {
     @IBOutlet var tagCollectionView: UICollectionView!
     
     @IBOutlet var nextBtn: UIButton!
+    @IBOutlet var finishBtn: UIButton!
     
     
     
@@ -127,7 +128,9 @@ class ModifyWeathyTagVC: UIViewController {
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
     
-    
+    @IBAction func finishBtnDidTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 
@@ -153,6 +156,12 @@ extension ModifyWeathyTagVC {
         
         indicatorCircle[2].layer.cornerRadius = 4.5
         indicatorCircle[2].backgroundColor = UIColor.subGrey7
+        
+        finishBtn.backgroundColor = .mintMain
+        finishBtn.setTitle("수정완료", for: .normal)
+        finishBtn.setTitleColor(.white, for: .normal)
+        finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        finishBtn.layer.cornerRadius = 30
     }
     
     func setTitleLabel() {
