@@ -129,7 +129,15 @@ class ModifyWeathyTagVC: UIViewController {
     }
     
     @IBAction func finishBtnDidTap(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
+            tagTitles[3].count >= 1 {
+            self.dismiss(animated: true, completion: nil)
+        }
+        else {
+            self.showToast(message: "태그를 한 개 이상 선택해주세요.")
+        }
+        
+        
     }
 }
 
