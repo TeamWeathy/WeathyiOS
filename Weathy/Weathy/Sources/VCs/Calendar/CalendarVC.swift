@@ -577,7 +577,8 @@ extension CalendarVC: UICollectionViewDataSource{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteWeeklyCVC.identifier, for: indexPath) as? InfiniteWeeklyCVC else { return UICollectionViewCell() }
             cell.weekCellDelegate = self
             cell.selectedDate = infiniteWeekList[indexPath.item]
-            cell.weeklyCalendarCV.reloadData()
+            cell.callWeeklyWeathy()
+//            cell.weeklyCalendarCV.reloadData()
             return cell
         }
         

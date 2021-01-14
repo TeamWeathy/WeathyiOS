@@ -16,7 +16,9 @@ struct MonthlyWeathyData: Codable {
 struct CalendarOverview: Codable {
     var id: Int
     var date: String
+    var stampId: Int
     var temperature: CalendarTemperature
+
 }
 
 // MARK: - Temperature

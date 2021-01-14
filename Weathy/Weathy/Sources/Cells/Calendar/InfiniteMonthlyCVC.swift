@@ -101,7 +101,6 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
         if lastSelectedIdx != indexPath.item{
             if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? MonthlyCalendarCVC{
                 cell.isSelected = false
-                
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? MonthlyCalendarCVC{
                 var selectedComponent = DateComponents()

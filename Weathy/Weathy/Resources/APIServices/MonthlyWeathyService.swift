@@ -20,7 +20,7 @@ struct MonthlyWeathyService{
     func getMonthlyCalendar(userID: Int, startDate: String, endDate: String, completion: @escaping (NetworkResult<Any>) -> (Void)){
         let url = makeURL(userID: userID, startDate: startDate, endDate: endDate)
 //        let token = UserDefaults.standard.string(forKey: "token")
-        let token = "61:ANMOxNiC2Nx6IyM1ONWOJShhAMzuvu"
+        let token = "61:kGDecQDeFZKJ6cF9M9Ac3aLPDHZ63s"
         let header: HTTPHeaders = [
             "Content-Type": "application/json",
             "x-access-token": token
