@@ -12,4 +12,27 @@ struct APIConstants{
     
     ///calendar url
     static let calendarURL = baseURL + "/users/:user-id/calendar?start={start_date}&end={end_date}"
+  
+    // Main WeatherByLocation
+    static let getWeatherByLocationURL = baseURL + "/weather/overview"
+  
+    /// Create User Post 관련 (weathy 첫 이용시)
+    static let createUserURL = baseURL + "/users"
+    static let modifyUserURL = baseURL + "/users/:user-id"
+
+    /// Login Post 관련
+    static let loginURL = baseURL + "/auth/login"
+    
+    /// Search Weather 관련
+    static let searchURL = baseURL + "/weather/overviews?keyword={keyword}&date={date}"
+    
+  
+    // Main Card View 관련
+    static func getRecommendedWeathyURL(userId: Int, code: String, date: String) -> String {
+        return baseURL + "/users/\(userId)/weathy/recommend?code=\(code)&date=\(date)"
+    }
+    
+    static func getHourlyWeatherURL(code: String, date: String) -> String {
+        return baseURL + "/weather/forecast/hourly?code=\(code)&date=\(date)"
+    }
 }

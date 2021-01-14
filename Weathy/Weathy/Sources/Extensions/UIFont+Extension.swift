@@ -72,8 +72,20 @@ extension UIFont {
     
     
     /// Roboto Regular
+    class var RobotoRegular11: UIFont {
+        return UIFont(name: "Roboto-Regular", size: 11)!
+    }
+    
+    class var RobotoRegular12: UIFont {
+        return UIFont(name: "Roboto-Regular", size: 12)!
+    }
+    
     class var RobotoRegular15: UIFont{
         return UIFont(name: "Roboto-Regular", size: 15)!
+    }
+    
+    class var RobotoRegular16: UIFont{
+        return UIFont(name: "Roboto-Regular", size: 16)!
     }
     
     class var RobotoRegular18: UIFont{
@@ -88,6 +100,23 @@ extension UIFont {
         return UIFont(name: "Roboto-Regular", size: 60)!
     }
     
+    class var RobotoLight23: UIFont {
+        return UIFont(name: "Roboto-Light", size: 23)!
+    }
     
+    class var RobotoLight25: UIFont {
+        return UIFont(name: "Roboto-Light", size: 25)!
+    }
     
+    class var RobotoLight30: UIFont {
+        return UIFont(name: "Roboto-Light", size: 30)!
+    }
+    
+    class var RobotoLight50: UIFont {
+        return UIFont(name: "Roboto-Light", size: 50)!
+    }
+    
+    class var RobotoLight60: UIFont {
+        return UIFont(name: "Roboto-Light", size: 60)!
+    }
 }
