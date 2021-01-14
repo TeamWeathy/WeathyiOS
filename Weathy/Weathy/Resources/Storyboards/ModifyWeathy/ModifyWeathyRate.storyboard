@@ -26,6 +26,9 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="ic_back"/>
+                                <connections>
+                                    <action selector="backBtnTap:" destination="KVg-KU-NcL" eventType="touchUpInside" id="8zI-gs-UAL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qll-zD-3hf" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="35.5" y="108" width="42" height="21"/>
@@ -79,6 +82,9 @@
                                     <constraint firstAttribute="width" secondItem="ZBO-7X-qzc" secondAttribute="height" multiplier="309:55" id="QzQ-fm-dFu"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextBtnTap:" destination="KVg-KU-NcL" eventType="touchUpInside" id="oB1-Cu-yaT"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RcS-rQ-OR6">
                                 <rect key="frame" x="25.5" y="212" width="363" height="557"/>
