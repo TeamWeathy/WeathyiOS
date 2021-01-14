@@ -14,6 +14,7 @@ class MainVC: UIViewController {
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
+    var dailyWeatherData: MainDailyWeather?
     
     //MARK: - IBOutlets
     
@@ -124,6 +125,25 @@ class MainVC: UIViewController {
     
     func getHourlyWeather() {
         MainService.shared.getHourlyWeather() { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? HourlyWeatherData {
+                    self.hourlyWeatherData = response
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
+    }
+    
+    func getDailyWeather() {
+        MainService.shared.getDailyWeather() { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? HourlyWeatherData {

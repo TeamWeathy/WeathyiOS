@@ -55,7 +55,10 @@ class MainTopCVC: UICollectionViewCell {
         currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature!)°"
         maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.minTemp)°"
-        climateLabel.text = "\(data.overviewWeather.hourlyWeather.climate.climateDescription)"
+        
+        if let desc = data.overviewWeather.hourlyWeather.climate.climateDescription {
+            climateLabel.text = "\(desc)"
+        }
     }
     
     func changeWeathyViewData(data: RecommendedWeathyData) {
@@ -72,8 +75,13 @@ class MainTopCVC: UICollectionViewCell {
         closetOuterLabel.text = insertSeparatorInArray(data.weathy.closet.outer.clothes)
         closetBottomLabel.text = insertSeparatorInArray(data.weathy.closet.bottom.clothes)
         closetEtcLabel.text = insertSeparatorInArray(data.weathy.closet.etc.clothes)
-
-        weathyDateLabel.text = "\(data.weathy.dailyWeather.date.year)년 \(data.weathy.dailyWeather.date.month)월 \(data.weathy.dailyWeather.date.day)일"
+        
+        if let year: Int = data.weathy.dailyWeather.date.year {
+            let month: Int = data.weathy.dailyWeather.date.month
+            let day: Int = data.weathy.dailyWeather.date.day
+            weathyDateLabel.text = "\(year)년 \(month)월 \(day)일"
+        }
+        
         weathyClimateImage.image = UIImage(named: "ic_fewclouds_day")
 //        weathyClimateLabel.text = "\(data.weathy)"
         weathyMaxTempLabel.text = "\(data.weathy.dailyWeather.temperature.maxTemp)°"

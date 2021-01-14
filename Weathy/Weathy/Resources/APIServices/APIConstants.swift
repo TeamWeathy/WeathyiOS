@@ -31,4 +31,8 @@ struct APIConstants{
     static func getHourlyWeatherURL(code: String, date: String) -> String {
         return baseURL + "/weather/forecast/hourly?code=\(code)&date=\(date)"
     }
+    
+    static func getDailyWeatherURL(code: String, date: String) -> String {
+        return baseURL + "/weather/forecast/daily?code=\(code)&date=\(date)"
+    }
 }

@@ -27,6 +27,8 @@ struct MainService {
         dateFormatter.dateFormat = "yyyy-MM-dd"
     }
     
+    //MARK: - Network
+    
     func getWeatherByLocation(completion: @escaping (NetworkResult<Any>) -> (Void)) {
         //weather/overview?lat={latitude}&lon={longitude}&code={code}&date={date}
         guard let token = UserDefaults.standard.string(forKey: "token") else {return}
@@ -95,6 +97,31 @@ struct MainService {
         }
     }
     
+    func getDailyWeather(completion: @escaping (((NetworkResult<Any>) -> (Void)))) {
+    guard let locationCode = UserDefaults.standard.string(forKey: "locationCode") else {return}
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    
+    let url: String = APIConstants.getDailyWeatherURL(code: locationCode, date: dateFormatter.string(from: currDate))
+    let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
+
+    let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
+    dataRequest.responseData { (response) in
+        switch response.result {
+        case .success:
+            guard let statusCode = response.response?.statusCode else {return}
+            guard let data = response.value else {return}
+            
+            completion(judgeDailyWeatherData(status: statusCode, data: data))
+        case .failure(let err):
+            print(err)
+            completion(.networkFail)
+        }
+    }
+
+    }
+    
+    //MARK: - Judge func
+    
     private func judgeWeatherByLocationData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(LocationWeatherData.self, from: data) else {return .pathErr}
@@ -142,4 +169,21 @@ struct MainService {
             return .networkFail
         }
     }
+    
+    private func judgeDailyWeatherData(status: Int, data: Data) -> NetworkResult<Any> {
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(DaliyWeatherData.self, from: data) else {return .pathErr}
+        
+        switch status {
+        case 200:
+            return .success(decodedData)
+        case 400..<500:
+            return .requestErr(decodedData.message)
+        case 500:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
+
 }
