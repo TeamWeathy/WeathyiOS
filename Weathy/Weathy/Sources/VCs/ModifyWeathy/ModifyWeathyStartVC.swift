@@ -43,6 +43,7 @@ class ModifyWeathyStartVC: UIViewController {
     @IBOutlet var minTempLabel: UILabel!
     @IBOutlet var modifyBtn: UIButton!
     @IBOutlet var nextBtn: UIButton!
+    @IBOutlet var finishBtn: UIButton!
     
     
     
@@ -89,6 +90,10 @@ class ModifyWeathyStartVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func finishBtnDidTap(_ sender: Any) {
+        // 서버 처리
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 //MARK: - Style
@@ -183,6 +188,11 @@ extension ModifyWeathyStartVC {
         nextBtn.layer.cornerRadius = 30
         nextBtn.setBorder(borderColor: .mintMain, borderWidth: 1)
         
+        finishBtn.backgroundColor = .mintMain
+        finishBtn.setTitle("수정완료", for: .normal)
+        finishBtn.setTitleColor(.white, for: .normal)
+        finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        finishBtn.layer.cornerRadius = 30
     }
     
     func initPosition() {
