@@ -52,17 +52,17 @@ struct Emoji{
     static func getEmojiTextColor(stampId: Int) -> UIColor {
         switch (stampId) {
         case Emoji.veryHot:
-            return UIColor.imojiVeryHot
+            return UIColor.imojiVeryHotText
         case Emoji.hot:
-            return UIColor.imojiHot
+            return UIColor.imojiHotText
         case Emoji.good:
-            return UIColor.imojiGood
+            return UIColor.imojiGootText
         case Emoji.cold:
-            return UIColor.imojiCold
+            return UIColor.imojiColdText
         case Emoji.veryCold:
-            return UIColor.imojiVeryCold
+            return UIColor.imojiVeryColdText
         default:
-            return UIColor.imojiGood
+            return UIColor.imojiGootText
         }
     }
 }
