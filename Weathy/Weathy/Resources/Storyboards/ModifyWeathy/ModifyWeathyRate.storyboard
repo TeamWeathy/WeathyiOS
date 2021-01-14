@@ -77,9 +77,9 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBO-7X-qzc">
-                                <rect key="frame" x="33" y="790" width="348" height="62"/>
+                                <rect key="frame" x="218.5" y="791.5" width="160" height="60.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ZBO-7X-qzc" secondAttribute="height" multiplier="309:55" id="QzQ-fm-dFu"/>
+                                    <constraint firstAttribute="width" secondItem="ZBO-7X-qzc" secondAttribute="height" multiplier="145:55" id="QzQ-fm-dFu"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -87,7 +87,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RcS-rQ-OR6">
-                                <rect key="frame" x="25.5" y="212" width="363" height="557"/>
+                                <rect key="frame" x="25.5" y="212" width="363" height="558.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CoD-o3-zFV">
                                     <size key="itemSize" width="347" height="80"/>
@@ -152,35 +152,51 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuM-8S-QAh">
+                                <rect key="frame" x="35.5" y="791.5" width="160" height="60.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HuM-8S-QAh" secondAttribute="height" multiplier="145:55" id="LKE-s1-MzB"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextBtnTap:" destination="KVg-KU-NcL" eventType="touchUpInside" id="6GC-Uu-xaq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bUf-9H-HVD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ZBO-7X-qzc" firstAttribute="width" secondItem="AlI-9m-hC9" secondAttribute="width" multiplier="145:375" id="0h6-ks-vbt"/>
                             <constraint firstItem="Y7E-7V-MGK" firstAttribute="trailing" secondItem="RcS-rQ-OR6" secondAttribute="trailing" constant="-25" id="2Ih-F4-cf5"/>
+                            <constraint firstItem="HuM-8S-QAh" firstAttribute="width" secondItem="HuM-8S-QAh" secondAttribute="height" multiplier="145:55" id="2VW-v4-WbI"/>
                             <constraint firstItem="RcS-rQ-OR6" firstAttribute="width" secondItem="AlI-9m-hC9" secondAttribute="width" multiplier="329:375" id="32s-G6-peL"/>
                             <constraint firstItem="fch-Vq-3ln" firstAttribute="top" secondItem="bUf-9H-HVD" secondAttribute="top" constant="13" id="79v-VU-DEx"/>
                             <constraint firstItem="Y7E-7V-MGK" firstAttribute="leading" secondItem="VA8-O6-T6C" secondAttribute="trailing" constant="7" id="8Pt-5B-P2y"/>
                             <constraint firstItem="fch-Vq-3ln" firstAttribute="leading" secondItem="RcS-rQ-OR6" secondAttribute="leading" constant="10" id="9K0-3V-XbS"/>
                             <constraint firstItem="VA8-O6-T6C" firstAttribute="leading" secondItem="sfh-ys-NJ6" secondAttribute="trailing" constant="9" id="A4U-eK-Ejp"/>
                             <constraint firstItem="sfh-ys-NJ6" firstAttribute="centerY" secondItem="VA8-O6-T6C" secondAttribute="centerY" id="BRR-cR-sdS"/>
+                            <constraint firstItem="HuM-8S-QAh" firstAttribute="width" secondItem="ZBO-7X-qzc" secondAttribute="width" id="Bmy-Mz-VW9"/>
+                            <constraint firstItem="ZBO-7X-qzc" firstAttribute="trailing" secondItem="RcS-rQ-OR6" secondAttribute="trailing" constant="-10" id="FD5-0H-k8T"/>
                             <constraint firstItem="Qll-zD-3hf" firstAttribute="leading" secondItem="RcS-rQ-OR6" secondAttribute="leading" constant="10" id="IeU-R8-Aqq"/>
                             <constraint firstItem="RcS-rQ-OR6" firstAttribute="centerX" secondItem="AlI-9m-hC9" secondAttribute="centerX" id="PVu-rV-2rg"/>
-                            <constraint firstItem="bUf-9H-HVD" firstAttribute="trailing" secondItem="ZBO-7X-qzc" secondAttribute="trailing" constant="33" id="QkE-ea-lQf"/>
-                            <constraint firstItem="ZBO-7X-qzc" firstAttribute="leading" secondItem="bUf-9H-HVD" secondAttribute="leading" constant="33" id="Ros-P5-mPW"/>
                             <constraint firstItem="xrn-4L-Oxa" firstAttribute="leading" secondItem="RcS-rQ-OR6" secondAttribute="leading" constant="10" id="ZXr-fE-JOM"/>
                             <constraint firstItem="RcS-rQ-OR6" firstAttribute="top" secondItem="xrn-4L-Oxa" secondAttribute="bottom" constant="52" id="cBP-4m-rTA"/>
                             <constraint firstItem="VA8-O6-T6C" firstAttribute="centerY" secondItem="Y7E-7V-MGK" secondAttribute="centerY" id="clA-WY-Ptf"/>
+                            <constraint firstItem="HuM-8S-QAh" firstAttribute="centerY" secondItem="ZBO-7X-qzc" secondAttribute="centerY" id="dbf-7o-iXp"/>
                             <constraint firstItem="xrn-4L-Oxa" firstAttribute="top" secondItem="Qll-zD-3hf" secondAttribute="bottom" constant="10" id="fVB-ZV-ycp"/>
                             <constraint firstItem="Qll-zD-3hf" firstAttribute="top" secondItem="fch-Vq-3ln" secondAttribute="bottom" constant="31" id="few-gn-5qv"/>
+                            <constraint firstItem="HuM-8S-QAh" firstAttribute="height" secondItem="ZBO-7X-qzc" secondAttribute="height" id="jX9-5l-5bL"/>
                             <constraint firstItem="Y7E-7V-MGK" firstAttribute="top" secondItem="Qll-zD-3hf" secondAttribute="top" constant="12" id="jb0-Q6-hen"/>
                             <constraint firstItem="ZBO-7X-qzc" firstAttribute="top" secondItem="RcS-rQ-OR6" secondAttribute="bottom" constant="21" id="jxv-uA-Tcm"/>
                             <constraint firstItem="bUf-9H-HVD" firstAttribute="bottom" secondItem="ZBO-7X-qzc" secondAttribute="bottom" constant="10" id="xZ8-qy-PMx"/>
+                            <constraint firstItem="HuM-8S-QAh" firstAttribute="leading" secondItem="RcS-rQ-OR6" secondAttribute="leading" constant="10" id="zUn-gs-n8x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9l3-pl-2bE"/>
                     <connections>
                         <outlet property="backBtn" destination="fch-Vq-3ln" id="qyV-Ts-752"/>
                         <outlet property="explanationLabel" destination="xrn-4L-Oxa" id="V6r-jY-En3"/>
+                        <outlet property="finishBtn" destination="HuM-8S-QAh" id="XB2-Lc-g8z"/>
                         <outlet property="nextBtn" destination="ZBO-7X-qzc" id="aVX-F8-JjC"/>
                         <outlet property="rateCollectionView" destination="RcS-rQ-OR6" id="lnC-Ox-Lap"/>
                         <outlet property="titleLabel" destination="Qll-zD-3hf" id="GXS-kC-bci"/>
