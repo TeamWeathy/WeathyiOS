@@ -29,7 +29,6 @@ struct MainService {
     
     func getWeatherByLocation(completion: @escaping (NetworkResult<Any>) -> (Void)) {
         //weather/overview?lat={latitude}&lon={longitude}&code={code}&date={date}
-        // fix: location, token 구하는 코드 여기로 변경
         guard let token = UserDefaults.standard.string(forKey: "token") else {return}
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
         
@@ -57,6 +56,29 @@ struct MainService {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let url: String = APIConstants.getRecommendedWeathyURL(userId: userId, code: locationCode, date: "2021-01-14")
+        let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
+
+        let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
+        dataRequest.responseData { (response) in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else {return}
+                guard let data = response.value else {return}
+                
+                completion(judgeRecommendedWeathyData(status: statusCode, data: data))
+            case .failure(let err):
+                print(err)
+                completion(.networkFail)
+            }
+        }
+    }
+    
+    func getHourlyWeather(completion: @escaping ((NetworkResult<Any>) -> (Void))) {
+        guard let userId = Int(UserDefaults.standard.string(forKey: "userId") ?? "0") else {return}
+        guard let locationCode = UserDefaults.standard.string(forKey: "locationCode") else {return}
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let url: String = APIConstants.getHourlyWeatherURL(code: locationCode, date: dateFormatter.string(from: currDate))
         let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
 
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
