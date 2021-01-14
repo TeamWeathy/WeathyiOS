@@ -13,6 +13,7 @@ class CalendarDetailVC: UIViewController {
     
     let screen = UIScreen.main.bounds
     let dateFormatter = DateFormatter()
+    let noDataDate = "2020-12-13"
     var clothesTopList = ["기모맨투맨투맨","히트텍하트","폴로니트니트니","메종 마르지엘라 사줘","이인애바보"]
     var clothesBottomList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애요지랄"]
     var clothesOuterList = ["기모맨투맨","히트텍","마","메종 마르지엘라 사줘","이인애"]
@@ -130,8 +131,9 @@ class CalendarDetailVC: UIViewController {
         switch state{
             case .beforeContent:
                 recordButton.alpha = 0
+                print("before")
                 detailEmptyImageView.image = UIImage(named: "calendarImgBeforeCloud")
-            case . noContent:
+            case .noContent:
                 recordButton.alpha = 1
                 detailEmptyImageView.image = UIImage(named: "calendarImgNoContentCloud")
         }
@@ -140,6 +142,7 @@ class CalendarDetailVC: UIViewController {
         contentScrollView.alpha = 1
     }
     func setData(){
+        setContent()
         let month = dailyWeathy?.dailyWeather.date.month
         let day = dailyWeathy?.dailyWeather.date.day
         let weekday = dailyWeathy?.dailyWeather.date.dayOfWeek
@@ -167,6 +170,8 @@ class CalendarDetailVC: UIViewController {
         clothesTagLabels[3].text = insertSeparatorInArray(clothesEtcList ?? [])
         commentLabel.text = comment
         dateLabel.text = dateFormatter.string(from: selectedDate)
+        
+        
     }
     
     
@@ -277,7 +282,15 @@ class CalendarDetailVC: UIViewController {
                 case .networkFail:
                     print(">>networknetworkFaildaily")
                 case .pathErr:
-                    print(">>networkpathErrdaily")
+                    print("[daily] pathErr - No content")
+                    
+                    if self.selectedDate.compare(dateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
+                        print("Before Content")
+                        self.setEmptyView(state: .beforeContent)
+                    }
+                    else{
+                        self.setEmptyView(state: .noContent)
+                    }
             }
         }
     }
