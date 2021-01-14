@@ -135,12 +135,9 @@ class ModifyWeathyTagVC: UIViewController {
 
 extension ModifyWeathyTagVC {
     func setHeader() {
-        titleLabel.text = "\(name)님은 오늘\n어떤 옷을 입었나요?"
-        titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
-        titleLabel.textColor = UIColor.mainGrey
         titleLabel.numberOfLines = 2
         
-        explanationLabel.text = "옷은 길게 눌러 삭제하고, +를 눌러 추가할 수 있어요."
+        explanationLabel.text = "수정하기에서는 태그를 삭제할 수 없어요."
         explanationLabel.font = UIFont.SDGothicRegular16
         explanationLabel.textColor = UIColor.subGrey6
         
