@@ -307,7 +307,7 @@ extension RecordTagVC {
     }
     
     func callDisplayTagService() {
-        RecordTagService.shared.displayTag(userId: 63, token: "63:wckgTPK2NtG7JoM0p207XwsmDxOmM7") { (networkResult) -> (Void) in
+        RecordTagService.shared.displayTag(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M") { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? ClothesTagData {

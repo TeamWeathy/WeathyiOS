@@ -80,7 +80,7 @@ extension RecordTagDeletePopupVC {
     }
     
     func callDeleteTagService() {
-        RecordTagService.shared.deleteTag(userId: 63, token: "63:wckgTPK2NtG7JoM0p207XwsmDxOmM7", clothArray: selectedTags) { (networkResult) -> (Void) in
+        RecordTagService.shared.deleteTag(userId: 63, token: "63:63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", clothArray: selectedTags) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
 //                print(">>> success")
