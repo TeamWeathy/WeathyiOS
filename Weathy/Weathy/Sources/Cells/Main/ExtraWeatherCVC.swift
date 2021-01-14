@@ -29,7 +29,7 @@ class ExtraWeatherCVC: UICollectionViewCell {
         
         detailRatingLabel.font = UIFont.RobotoRegular11
         detailRatingLabel.textColor = UIColor.subGrey6
-        detailRatingLabel.characterSpacing = -0.65
+        detailRatingLabel.characterSpacing = -0.55
     }
     
     func setExtraWeatherData(data: ExtraData, type: ExtraType) {
