@@ -182,7 +182,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
         }
         
         ///데이터 표시
-        if monthlyWeathyList.count == 7{
+        if monthlyWeathyList.count > 0 && (monthlyWeathyList.count == selectedDate.monthlyLines*7){
             if let data = monthlyWeathyList[indexPath.item]{
                 cell.setData(high: data.temperature.maxTemp, low: data.temperature.minTemp)
             }
