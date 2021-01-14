@@ -25,9 +25,6 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="ic_close"/>
-                                <connections>
-                                    <action selector="backBtnTap:" destination="Hzd-4a-iS3" eventType="touchUpInside" id="M46-Sq-2QP"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsz-Cg-hLR">
                                 <rect key="frame" x="36.5" y="108" width="42" height="21"/>
@@ -52,9 +49,6 @@
                                     <constraint firstAttribute="width" secondItem="gtD-ZA-fA4" secondAttribute="height" multiplier="309:55" id="eYE-0P-Osg"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="nextBtnTap:" destination="Hzd-4a-iS3" eventType="touchUpInside" id="Igm-DV-2uI"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPK-Ho-pdd" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="344.5" y="372.5" width="33" height="21"/>
@@ -124,14 +118,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backBtn" destination="8UY-Al-RFB" id="uIf-Pc-eV7"/>
-                        <outlet property="finishBtn" destination="gtD-ZA-fA4" id="iXR-8c-XRq"/>
-                        <outlet property="maxWordLabel" destination="FPK-Ho-pdd" id="I1M-lb-vlY"/>
-                        <outlet property="recordTextView" destination="OjH-El-fyf" id="2eY-Yt-jqm"/>
-                        <outlet property="subTitleLabel" destination="BnT-QO-Qps" id="EPW-ym-hje"/>
-                        <outlet property="textViewSurroundingView" destination="hP2-zc-k30" id="axH-15-pCg"/>
-                        <outlet property="titleLabel" destination="bsz-Cg-hLR" id="aLh-ez-bAp"/>
-                        <outlet property="wordCountLabel" destination="e5t-0T-XtA" id="mWA-q3-BXS"/>
+                        <outlet property="backBtn" destination="8UY-Al-RFB" id="Wfg-f8-Phq"/>
+                        <outlet property="finishBtn" destination="gtD-ZA-fA4" id="7z6-4O-dL2"/>
+                        <outlet property="maxWordLabel" destination="FPK-Ho-pdd" id="3n2-Z2-u23"/>
+                        <outlet property="recordTextView" destination="OjH-El-fyf" id="2OZ-Cs-EJk"/>
+                        <outlet property="subTitleLabel" destination="BnT-QO-Qps" id="HRP-1l-jrx"/>
+                        <outlet property="textViewSurroundingView" destination="hP2-zc-k30" id="mjH-tl-vuE"/>
+                        <outlet property="titleLabel" destination="bsz-Cg-hLR" id="yl2-Gw-sW3"/>
+                        <outlet property="wordCountLabel" destination="e5t-0T-XtA" id="c9Q-Nx-49z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9C-mG-JaA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

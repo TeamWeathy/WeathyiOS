@@ -66,8 +66,8 @@ class ModifyWeathyRateVC: UIViewController {
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        let nextStoryboard = UIStoryboard(name: "RecordText", bundle: nil)
-        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
+        let nextStoryboard = UIStoryboard(name: "ModifyWeathyText", bundle: nil)
+        guard let dvc = nextStoryboard.instantiateViewController(identifier: "ModifyWeathyTextVC") as? ModifyWeathyTextVC else {
             return
         }
         
