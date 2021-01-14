@@ -1,19 +1,18 @@
 //
-//  ChangeNickNameVC.swift
+//  NickNameVC.swift
 //  Weathy
 //
-//  Created by 송황호 on 2021/01/04.
+//  Created by 송황호 on 2021/01/12.
 //
 
 import UIKit
 
-class ChangeNickNameVC: UIViewController {
-    
+class NickNameVC: UIViewController {
+
     //MARK: - Custom Variables
     
     var textCount = 0
     var changBool = false
-    var nickName : String?
     
     //MARK: - IBOutlets
     
@@ -33,8 +32,6 @@ class ChangeNickNameVC: UIViewController {
         countLabel.text = "\(textCount)"
         clearButton.isHidden = true
         nickNameTextField.delegate = self
-        nickName = UserDefaults.standard.string(forKey: "nickname")
-        self.nickNameTextField.placeholder = nickName
         
         //MARK: - LifeCycle Methods
         
@@ -52,9 +49,15 @@ class ChangeNickNameVC: UIViewController {
     
     /// 변경하기 aleart  생성
     func simpleAlert() {
-        let alert = UIAlertController(title: "닉네임을 변경 하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "닉네임을 설정 하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
         let noButton = UIAlertAction(title: "아니요", style: UIAlertAction.Style.default, handler: nil)
-        let yesButton = UIAlertAction(title: "네", style: UIAlertAction.Style.default, handler: { _ in        self.navigationController?.popViewController(animated: true)})
+        let yesButton = UIAlertAction(title: "네", style: UIAlertAction.Style.default, handler: { _ in
+                UserDefaults.standard.set(true, forKey: "onboarding")
+                let story = UIStoryboard.init(name: "Tabbar", bundle: nil)
+                guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
+                                        
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)})
         
         alert.addAction(noButton)
         alert.addAction(yesButton)
@@ -65,17 +68,12 @@ class ChangeNickNameVC: UIViewController {
 
     //MARK: - IBActions
     
-    @IBAction func backButtonDidTap(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     // TODO: BG 탭했을때, 키보드 내려오게 하기
     @IBAction func tapBG(_ sender: Any) {
         nickNameTextField.resignFirstResponder()
     }
     
     @IBAction func NickTextFieldDidTap(_ sender: Any) {
-        /// 최대길이 설정
         checkMaxLength(textField: nickNameTextField, maxLength: 6)
     }
     
@@ -86,7 +84,7 @@ class ChangeNickNameVC: UIViewController {
         } else {
             changBool = false
             clearButton.isHidden = true
-            self.changeButton.setImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
+            self.changeButton.setImage(UIImage(named: "nickname_btn_start"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             countLabel.textColor = UIColor.black
             countLabel.text = "0"
@@ -94,21 +92,29 @@ class ChangeNickNameVC: UIViewController {
         }
     }
     
-    /// 변경하기 눌렀을 때 Aleart
+    /// 변경하기 눌렀을 때 서버 연결 코드
     @IBAction func changeButtonDidTap(_ sender: Any) {
         
         guard let nickName = nickNameTextField.text else { return }
         
+         let uuid = UUID().uuidString
+        
+//        let UUID : String = UUID().
         /// 서버 연결!
-        modifyUserService.shared.modifyUserPut(nickname: nickName){(NetworkResult) -> (Void) in
+        createUserService.shared.createUserPost(uuid: uuid, nickname: nickName){(NetworkResult) -> (Void) in
             switch NetworkResult{
             case .success(let data):
                 
-                if let modifyData = data as? UserInformation{
-                    UserDefaults.standard.setValue(modifyData.user.nickname, forKey: "nickname")
+                if let createData = data as? UserInformation {
+                    UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
+                    UserDefaults.standard.set(createData.token, forKey: "token")
+                    UserDefaults.standard.set(createData.user.id, forKey: "userID")
+                    UserDefaults.standard.set(uuid, forKey: "UUID")
+
+//                    print("userID ---> \(UserDefaults.standard.string(forKey: "userID"))")
+//                    print("token ---> \(UserDefaults.standard.string(forKey: "token"))")
                     
-                    self.nickName = modifyData.user.nickname
-                    
+//                    print("---> 뭐니 넌\(self.changBool)")
                     /// 닉네임 설정 했을 때 aleart 띄우기
                     if self.changBool == true {
                         self.simpleAlert()
@@ -129,7 +135,7 @@ class ChangeNickNameVC: UIViewController {
 
 //MARK: - UITextFieldDelegate
 
-extension ChangeNickNameVC: UITextFieldDelegate{
+extension NickNameVC: UITextFieldDelegate{
     
     /// textField 길이 수 재한 및 개수 count
     func checkMaxLength(textField: UITextField!, maxLength: Int) {
@@ -143,13 +149,13 @@ extension ChangeNickNameVC: UITextFieldDelegate{
         /// 글자 개수에 따른 "변경하기" 버튼 이미지 변경
         if nickNameTextField.text?.count == 0{
             self.changBool = false
-            self.changeButton.setImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
+            self.changeButton.setImage(UIImage(named: "nickname_btn_start"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             clearButton.isHidden = true
             countLabel.textColor = UIColor.black
         }else{
             self.changBool = true
-            self.changeButton.setImage(UIImage(named: "settingBtnEditSelected"), for: .normal)
+            self.changeButton.setImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
             clearButton.isHidden = false
             countLabel.textColor = UIColor.mintMain
@@ -159,7 +165,7 @@ extension ChangeNickNameVC: UITextFieldDelegate{
 
 //MARK: extension ketBoardAction 추가
 
-extension ChangeNickNameVC {
+extension NickNameVC {
     
     func keyBoardAction(){
         // TODO: 키보드 디텍션
