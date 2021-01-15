@@ -1,9 +1,9 @@
 {
   "images" : [
     {
-      "scale" : "1x",
       "idiom" : "universal",
-      "filename" : "mainImgYellowstar.png"
+      "filename" : "mainImgYellowstar.png",
+      "scale" : "1x"
     },
     {
       "scale" : "2x",
@@ -12,8 +12,8 @@
     },
     {
       "filename" : "mainImgYellowstar@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "idiom" : "universal"
     }
   ],
   "info" : {

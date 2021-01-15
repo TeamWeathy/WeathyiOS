@@ -25,11 +25,13 @@ struct MainOverviewWeather: Codable {
 struct MainDailyWeather: Codable {
     let date: MainDateClass
     let temperature: MainTemperature
+    let climate: MainClimate?
 }
 
 // MARK: - DateClass
 struct MainDateClass: Codable {
-    let year, month, day: Int
+    let year: Int?
+    var month, day: Int
     let dayOfWeek: String
 }
 
@@ -49,7 +51,7 @@ struct MainHourlyWeather: Codable {
 // MARK: - Climate
 struct MainClimate: Codable {
     let iconID: Int
-    let climateDescription: String
+    let climateDescription: String?
 
     enum CodingKeys: String, CodingKey {
         case iconID = "iconId"

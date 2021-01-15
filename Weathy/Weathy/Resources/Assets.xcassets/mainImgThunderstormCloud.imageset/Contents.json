@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "mainImgThunderstormCloud.png"
-    },
-    {
-      "filename" : "mainImgThunderstormCloud@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "mainImgThunderstormCloud@3x.png",
-      "scale" : "3x",
+      "filename" : "mainImgThunderstormCloud.png",
       "idiom" : "universal"
+    },
+    {
+      "scale" : "2x",
+      "idiom" : "universal",
+      "filename" : "mainImgThunderstormCloud@2x.png"
+    },
+    {
+      "scale" : "3x",
+      "idiom" : "universal",
+      "filename" : "mainImgThunderstormCloud@3x.png"
     }
   ],
   "info" : {

@@ -11,7 +11,7 @@ import Alamofire
 struct searchService {
     static let shared = searchService()
     
-    /// encoding 된 String을 넘기기 위해서!!  (그냥 한글만 넘기면 networking fail이 뜨더라구요.)
+    /// encoding 된 String을 넘기기 위해서!!  (그냥 한글만 넘기면 networking fail이 뜹니다!.)
     func makeStringKoreanEncoded(_ string: String) -> String {
         return string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? string
     }

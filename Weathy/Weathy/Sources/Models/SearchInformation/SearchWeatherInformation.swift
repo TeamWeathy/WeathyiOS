@@ -9,55 +9,55 @@ import Foundation
 
 // MARK: - SearchWeatherInformation
 struct SearchWeatherInformation: Codable {
-    let overviewWeatherList: [SearchOverviewWeatherList]
+    let overviewWeatherList: [OverviewWeatherList]
     let message: String
 }
 
 // MARK: - OverviewWeatherList
-struct SearchOverviewWeatherList: Codable {
-    let region: SearchRegion
-    let dailyWeather: SearchDailyWeather
-    let hourlyWeather: SearchHourlyWeather
+struct OverviewWeatherList: Codable {
+    let region: searchRegion
+    let dailyWeather: searchDailyWeather
+    let hourlyWeather: searchHourlyWeather
 }
 
 // MARK: - DailyWeather
-struct SearchDailyWeather: Codable {
-    let date: SearchData
-    let temperature: SearchTemperature
+struct searchDailyWeather: Codable {
+    let date: searchDateClass
+    let temperature: searchTemperature
 }
 
 // MARK: - DateClass
-struct SearchData: Codable {
+struct searchDateClass: Codable {
     let year, month, day: Int
     let dayOfWeek: String
 }
 
 // MARK: - Temperature
-struct SearchTemperature: Codable {
+struct searchTemperature: Codable {
     let maxTemp, minTemp: Int
 }
 
 // MARK: - HourlyWeather
-struct SearchHourlyWeather: Codable {
+struct searchHourlyWeather: Codable {
     let time: String
     let temperature: Int
-    let climate: SearchClimate
+    let climate: Climate
     let pop: Int
 }
 
 // MARK: - Climate
-struct SearchClimate: Codable {
+struct Climate: Codable {
     let iconID: Int
     let climateDescription: String
 
-    enum SearchCodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case iconID = "iconId"
         case climateDescription = "description"
     }
 }
 
 // MARK: - Region
-struct SearchRegion: Codable {
-    let code: Int
+struct searchRegion: Codable {
+    let code: CLong
     let name: String
 }
