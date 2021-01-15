@@ -413,10 +413,25 @@ extension ModifyWeathyTagVC {
             tagTitles[3].count >= 1 {
             setNextBtnActivated()
         }
+        
+        isInitialVisit = false
     }
     
     func setMaintainedData() {
+        var currentTag = -1
         
+        if selectedTags != [] {
+            for i in 0...selectedTags.count - 1 {
+                currentTag = selectedTags[i]
+                
+                for b in 0...tagTitles[0].tagTab.count - 1 {
+                    if tagTitles[0].tagTab[b].id == currentTag {
+                        tagTitles[0].tagTab[b].isSelected = true
+                        break
+                    }
+                }
+            }
+        }
     }
 }
 
