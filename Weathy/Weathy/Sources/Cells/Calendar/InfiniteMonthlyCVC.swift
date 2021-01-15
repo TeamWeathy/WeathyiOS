@@ -33,10 +33,15 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
         super.awakeFromNib()
         monthlyCalendarCV.delegate = self
         monthlyCalendarCV.dataSource = self
+                
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        monthlyCalendarCV.isPrefetchingEnabled = true
         selectedDateDidChange(selectedDate)
         monthlyWeathyList = []
         callMonthlyWeathy()
-        
+
     }
     
     //MARK: - Network
@@ -120,7 +125,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(Int((308*screen.width/375)/7)), height: CGFloat(516/CGFloat(selectedDate.monthlyLines)))
+        return CGSize(width: CGFloat(Int((308*screen.width/375)/7)), height: CGFloat(522/selectedDate.monthlyLines))
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -139,6 +144,15 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthlyCalendarCVC.identifier, for: indexPath) as? MonthlyCalendarCVC else { return UICollectionViewCell() }
+        if selectedDate.monthlyLines == 4{
+            cell.layoutTopConstraint.constant = 21
+        }
+        else if selectedDate.monthlyLines == 5{
+            cell.layoutTopConstraint.constant = 10
+        }
+        else if selectedDate.monthlyLines == 6{
+            cell.layoutTopConstraint.constant = 2
+        }
         cell.setDay()
         ///이번달
         if indexPath.item >= selectedDate.firstWeekday && indexPath.item < selectedDate.firstWeekday+selectedDate.numberOfMonth{
@@ -158,12 +172,11 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
             ///현재달이 오늘을 포함하고 있는 경우
             if selectedDate.currentYearMonth == Date().currentYearMonth{
                 if indexPath.item-selectedDate.firstWeekday+1 == Date().day{
+                    cell.isToday = true
                     cell.setToday()
                 }
             }
         }
-        
-        
         
         ///이전달
         else if indexPath.item < selectedDate.firstWeekday{
@@ -186,11 +199,12 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
             if let data = monthlyWeathyList[indexPath.item]{
                 cell.setData(high: data.temperature.maxTemp, low: data.temperature.minTemp)
             }
-            
-            
         }
         
-        
+        ///달력 디바이더
+        if indexPath.item>=(selectedDate.monthlyLines-1)*7{
+            cell.dividerView.alpha = 0
+        }
         return cell
         
     }

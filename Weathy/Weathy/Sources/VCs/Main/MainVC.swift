@@ -10,7 +10,7 @@ import UIKit
 class MainVC: UIViewController {
     //MARK: - Custom Variables
     var lastContentOffset: CGFloat = 0.0
-    var mainDeliverSearchInfo: SearchRecentInfo?
+    var mainDeliverSearchInfo : OverviewWeatherList?
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
@@ -38,7 +38,6 @@ class MainVC: UIViewController {
 //        UserDefaults.standard.setValue("이내옹", forKey: "nickname")
 //        UserDefaults.standard.setValue(62, forKey: "userId")
 //
-
         if let location = UserDefaults.standard.string(forKey: "locationCode") {
             // search에서 넘어온 데이터가 없는 경우에만 서버 통신
             if (self.deliveredSearchData == nil) {

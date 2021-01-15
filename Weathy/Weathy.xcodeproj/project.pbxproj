@@ -70,7 +70,6 @@
 		6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 633984282599B1F400339615 /* Weathy.xcdatamodeld */; };
 		6339842C2599B1F600339615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6339842B2599B1F600339615 /* Assets.xcassets */; };
 		6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6339842D2599B1F600339615 /* LaunchScreen.storyboard */; };
-		63398462259A425200339615 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63398461259A425200339615 /* GenericResponse.swift */; };
 		6339846C259A431100339615 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339846B259A431100339615 /* UIView+Extensions.swift */; };
 		6339846F259A433400339615 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339846E259A433400339615 /* UIColor+Extensions.swift */; };
 		63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63398471259A435400339615 /* UIImageView+Extensions.swift */; };
@@ -187,7 +186,6 @@
 		6339842B2599B1F600339615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6339842E2599B1F600339615 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		633984302599B1F600339615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63398461259A425200339615 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		6339846B259A431100339615 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		6339846E259A433400339615 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		63398471259A435400339615 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
@@ -401,11 +399,11 @@
 		374D48CE259CEBD300152B9A /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				374D48D0259CEBF000152B9A /* RecordStart.storyboard */,
 				374D48E9259D49CA00152B9A /* RecordTag.storyboard */,
 				3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */,
 				374D48D7259D1CA600152B9A /* RecordRate.storyboard */,
 				374D48E2259D366500152B9A /* RecordText.storyboard */,
-				374D48D0259CEBF000152B9A /* RecordStart.storyboard */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -413,6 +411,7 @@
 		374D48CF259CEBE100152B9A /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				0E75F66525AF149500D98633 /* RecordNVC.swift */,
 				374D48D3259CEC0500152B9A /* RecordStartVC.swift */,
 				374D48EC259D49DB00152B9A /* RecordTagVC.swift */,
 				3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */,
@@ -420,7 +419,6 @@
 				3735AE3625A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift */,
 				374D48DA259D1CB600152B9A /* RecordRateVC.swift */,
 				374D48E5259D368600152B9A /* RecordTextVC.swift */,
-				0E75F66525AF149500D98633 /* RecordNVC.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -458,6 +456,14 @@
 				37FB8AAE25AE52E1001A6287 /* 스플래시.json */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		632FF84225B21150000C1A95 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				6354ED8125AE0A2D00C5CAC5 /* Calendar.storyboard */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		633984132599B1F400339615 = {
@@ -518,12 +524,12 @@
 		6339843D259A2B6C00339615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				632FF84225B21150000C1A95 /* Calendar */,
 				37FB8AA525AE4F85001A6287 /* Splash */,
 				0E75F66A25AF174200D98633 /* OnBoarding */,
 				ABBA9CAC25A22B31008785BD /* Main */,
 				0E75F66925AF172C00D98633 /* MainSearch */,
 				0E75F66825AF171A00D98633 /* Setting */,
-				6354ED8125AE0A2D00C5CAC5 /* Calendar.storyboard */,
 				374D48CE259CEBD300152B9A /* Record */,
 				37222E8425B0D60E00577FEE /* ModifyWeathy */,
 				0E8C002F25A1B79500A31295 /* Tabbar */,
@@ -595,7 +601,6 @@
 				37FB8AAD25AE52BD001A6287 /* Splash */,
 				0E75F67325AF3D4E00D98633 /* UserInformation */,
 				0E6E9A7A25AFA1A600702706 /* SearchInformation */,
-				63398461259A425200339615 /* GenericResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -928,7 +933,6 @@
 				37222E6725AE657C00577FEE /* RecordTagService.swift in Sources */,
 				0E8C004725A249B900A31295 /* SettingVC.swift in Sources */,
 				0E9152E025A39A1F0048E226 /* MainSearchVC.swift in Sources */,
-				63398462259A425200339615 /* GenericResponse.swift in Sources */,
 				ABE2B93025B0D98D007F878C /* ExtraWeatherData.swift in Sources */,
 				37FB8AAB25AE4FB7001A6287 /* SplashVC.swift in Sources */,
 				AB4E1C9525A9ED4C002F3B79 /* WeeklyWeatherCVC.swift in Sources */,
