@@ -55,12 +55,22 @@ class ModifyWeathyTextVC: UIViewController {
         textViewSurroundingView.layer.borderWidth = 1
         textViewSurroundingView.layer.cornerRadius = 15
         
-        wordCountLabel.text = "0"
-        wordCountLabel.font = UIFont.SDGothicRegular13
-        wordCountLabel.textColor = UIColor.subGrey6
-        
         originalText = weathyData?.feedback ?? ""
+        recordTextView.text = originalText
 
+        
+        wordCountLabel.font = UIFont.SDGothicRegular13
+        /// 원래 입력된 텍스트가 없으면
+        if originalText.isEmpty {
+            wordCountLabel.text = "0"
+            wordCountLabel.textColor = UIColor.subGrey6
+        }
+        /// 원래 입력된 텍스트가 있으면
+        else {
+            wordCountLabel.text = "\(originalText.count)"
+            wordCountLabel.textColor = UIColor.mintIcon
+        }
+        
         
     }
     
@@ -78,13 +88,13 @@ class ModifyWeathyTextVC: UIViewController {
     @IBAction func backBtnTap(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: false)
         self.enteredText = originalText
-        callModifyWeathyService()
+//        callModifyWeathyService()
 //        self.showToast(message: "웨디에 내용이 추가되었어요!")
+        self.navigationController?.popViewController(animated: false)
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
         callModifyWeathyService()
-//        self.showToast(message: "웨디에 내용이 추가되었어요!")
     }
     
     //MARK: - @objc methods
@@ -210,11 +220,13 @@ extension ModifyWeathyTextVC {
     
     func callModifyWeathyService() {
         ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+            print(self.weathyData?.weathyId ?? -1)
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {
                     print(loadData)
                 }
+                self.dismiss(animated: true, completion: nil)
                 self.showToast(message: "웨디에 내용이 추가되었어요!")
                 
             case .requestErr(let msg):

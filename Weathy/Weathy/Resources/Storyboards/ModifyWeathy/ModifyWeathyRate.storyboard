@@ -159,7 +159,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="nextBtnTap:" destination="KVg-KU-NcL" eventType="touchUpInside" id="6GC-Uu-xaq"/>
+                                    <action selector="finishBtnDidTap:" destination="KVg-KU-NcL" eventType="touchUpInside" id="iXC-ox-3jC"/>
                                 </connections>
                             </button>
                         </subviews>

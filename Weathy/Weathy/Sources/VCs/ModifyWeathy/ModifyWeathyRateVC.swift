@@ -45,7 +45,7 @@ class ModifyWeathyRateVC: UIViewController {
         super.viewDidLoad()
         
         setAboveCollection()
-        setNextBtnDisabled()
+        setNextBtnEnabled()
         setTitleLabel()
         setCV()
         
@@ -66,6 +66,11 @@ class ModifyWeathyRateVC: UIViewController {
     
     @IBAction func backBtnTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: false)
+    }
+    
+    @IBAction func finishBtnDidTap(_ sender: Any) {
+        callModifyWeathyService()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
@@ -197,8 +202,36 @@ extension ModifyWeathyRateVC {
     }
     
     func setRecordedData() {
-        let recordedStamp: Int = weathyData!.stampId
+        let recordedStamp: Int = weathyData!.stampId - 1
         rate[recordedStamp].isSelected = true
+    }
+    
+    func callModifyWeathyService() {
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp , feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+            print(self.weathyData?.weathyId ?? -1)
+            switch networkResult {
+            case .success(let data):
+                if let loadData = data as? RecordWeathyData {
+                    print(loadData)
+                }
+        
+                self.dismiss(animated: true, completion: nil)
+                
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                    self.showToast(message: message)
+                }
+                
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
 }
 

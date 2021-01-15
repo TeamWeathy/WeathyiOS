@@ -28,6 +28,8 @@ class ModifyWeathyTagVC: UIViewController {
     var visitedFlag: Bool = false // 다음 뷰로 넘어간 적이 있는지 판단
     var dvc = ModifyWeathyRateVC()
     
+    var isInitialVisit: Bool = true
+    
     var myClothesTagData: ClothesTagData?
     var localizedClothesTagData: [TagCategoryData] = []
     var selectedTags: [Int] = []
@@ -134,7 +136,8 @@ class ModifyWeathyTagVC: UIViewController {
     @IBAction func finishBtnDidTap(_ sender: Any) {
         if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
             tagTitles[3].count >= 1 {
-            self.dismiss(animated: true, completion: nil)
+            callModifyWeathyService()
+//            self.dismiss(animated: true, completion: nil)
         }
         else {
             self.showToast(message: "태그를 한 개 이상 선택해주세요.")
@@ -213,7 +216,14 @@ extension ModifyWeathyTagVC {
     
     func setNextBtnActivated() {
         nextBtn.isUserInteractionEnabled = true
+        finishBtn.isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.5, animations: {
+            self.finishBtn.backgroundColor = .mintMain
+            self.finishBtn.setTitle("수정완료", for: .normal)
+            self.finishBtn.setTitleColor(.white, for: .normal)
+            self.finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+            self.finishBtn.layer.cornerRadius = 30
+            
             self.nextBtn.backgroundColor = .white
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.mintIcon, for: .normal)
@@ -225,7 +235,14 @@ extension ModifyWeathyTagVC {
     
     func setNextBtnDeactivated() {
         nextBtn.isUserInteractionEnabled = false
+        finishBtn.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.5, animations: {
+            self.finishBtn.backgroundColor = .subGrey3
+            self.finishBtn.setTitle("수정완료", for: .normal)
+            self.finishBtn.setTitleColor(.white, for: .normal)
+            self.finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+            self.finishBtn.layer.cornerRadius = 30
+            
             self.nextBtn.backgroundColor = .white
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.subGrey3, for: .normal)
@@ -319,16 +336,22 @@ extension ModifyWeathyTagVC {
             }
         }
         
-        setRecordedData()
+        if isInitialVisit == true {
+            setInitialRecordedData()
+        }
+        else {
+            setMaintainedData()
+        }
 
     }
     
-    func setRecordedData() {
+    /// 뷰 진입이 처음일 때 수정 전 등록해놨던 태그 유지
+    func setInitialRecordedData() {
         
         var currentTag: Int = -1
         
         /// 이미 선택돼있는 태그 id 값 비교해 isSelected 변경 (상의)
-        if weathyData?.closet.top.clothes != nil {
+        if weathyData?.closet.top.clothes.count != 0 {
             for i in 0...(weathyData?.closet.top.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.top.clothes[i].id)!
                 
@@ -336,15 +359,112 @@ extension ModifyWeathyTagVC {
                     if tagTitles[0].tagTab[b].id == currentTag {
                         tagTitles[0].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
+                        tagTitles[0].count += 1
                         break
                     }
                 }
             }
         }
-        // -> 이거 잘 되면 복붙하기
         
+        if weathyData?.closet.bottom.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.bottom.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.bottom.clothes[i].id)!
+                
+                for b in 0...tagTitles[1].tagTab.count {
+                    if tagTitles[1].tagTab[b].id == currentTag {
+                        tagTitles[1].tagTab[b].isSelected = true
+                        selectedTags.append(currentTag)
+                        tagTitles[1].count += 1
+                        break
+                    }
+                }
+            }
+        }
         
+        if weathyData?.closet.outer.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.outer.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.outer.clothes[i].id)!
+                
+                for b in 0...tagTitles[2].tagTab.count {
+                    if tagTitles[2].tagTab[b].id == currentTag {
+                        tagTitles[2].tagTab[b].isSelected = true
+                        selectedTags.append(currentTag)
+                        tagTitles[2].count += 1
+                        break
+                    }
+                }
+            }
+        }
         
+        if weathyData?.closet.etc.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.etc.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.etc.clothes[i].id)!
+                
+                for b in 0...tagTitles[3].tagTab.count {
+                    if tagTitles[3].tagTab[b].id == currentTag {
+                        tagTitles[3].tagTab[b].isSelected = true
+                        selectedTags.append(currentTag)
+                        tagTitles[3].count += 1
+                        break
+                    }
+                }
+            }
+        }
+        
+        if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
+            tagTitles[3].count >= 1 {
+            setNextBtnActivated()
+        }
+        
+        isInitialVisit = false
+    }
+    
+    /// 뷰 진입이 처음이 아닐 때 원래 선택돼있던 태그 유지
+    func setMaintainedData() {
+        var currentTag = -1
+        
+        if selectedTags != [] {
+            for i in 0...selectedTags.count - 1 {
+                currentTag = selectedTags[i]
+                for j in 0...3 {
+                    for b in 0...tagTitles[j].tagTab.count - 1 {
+                        if tagTitles[j].tagTab[b].id == currentTag {
+                            tagTitles[j].tagTab[b].isSelected = true
+                            tagTitles[j].count += 1
+                            break
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func callModifyWeathyService() {
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+            print(self.weathyData?.weathyId ?? -1)
+            switch networkResult {
+            case .success(let data):
+                if let loadData = data as? RecordWeathyData {
+                    print(loadData)
+                }
+        
+                self.dismiss(animated: true, completion: nil)
+                
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                    self.showToast(message: message)
+                }
+                
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
 }
 

@@ -67,11 +67,16 @@
                                     <constraint firstAttribute="height" constant="9" id="jq6-OF-k1a"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5Q-cS-gZ3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5Q-cS-gZ3" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="36.5" y="109" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                        <real key="value" value="-1.25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Py-ug-KUq" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="36.5" y="139" width="42" height="21"/>
@@ -127,11 +132,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchImgSunnycloud" translatesAutoresizingMaskIntoConstraints="NO" id="0Tk-Zf-E7Y">
-                                        <rect key="frame" x="10" y="95" width="110" height="85"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Tk-Zf-E7Y">
+                                        <rect key="frame" x="25" y="99" width="84" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="km5-In-1MP"/>
-                                            <constraint firstAttribute="height" constant="85" id="y0A-cS-K2T"/>
+                                            <constraint firstAttribute="width" constant="84" id="km5-In-1MP"/>
+                                            <constraint firstAttribute="height" constant="60" id="y0A-cS-K2T"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -142,13 +147,13 @@
                                     <constraint firstItem="gm1-y0-AqJ" firstAttribute="top" secondItem="6Xv-jt-BnR" secondAttribute="bottom" constant="3" id="A6q-k8-cYp"/>
                                     <constraint firstItem="x94-J6-mlk" firstAttribute="bottom" secondItem="Nas-Q3-0bj" secondAttribute="bottom" constant="-10" id="B9m-1b-H64"/>
                                     <constraint firstItem="6Xv-jt-BnR" firstAttribute="top" secondItem="tEV-K0-a2K" secondAttribute="top" constant="23" id="Ejx-Nv-y4m"/>
-                                    <constraint firstItem="0Tk-Zf-E7Y" firstAttribute="leading" secondItem="tEV-K0-a2K" secondAttribute="leading" constant="10" id="Ni9-vf-wTh"/>
-                                    <constraint firstAttribute="bottom" secondItem="0Tk-Zf-E7Y" secondAttribute="bottom" id="PNG-Xp-e1q"/>
                                     <constraint firstItem="KW2-qB-r3G" firstAttribute="bottom" secondItem="Nas-Q3-0bj" secondAttribute="bottom" id="WPG-0m-mUT"/>
+                                    <constraint firstItem="0Tk-Zf-E7Y" firstAttribute="leading" secondItem="gm1-y0-AqJ" secondAttribute="leading" id="YmP-wZ-Vmf"/>
                                     <constraint firstItem="Nas-Q3-0bj" firstAttribute="leading" secondItem="x94-J6-mlk" secondAttribute="trailing" constant="3" id="YyD-YF-Csj"/>
                                     <constraint firstItem="x94-J6-mlk" firstAttribute="leading" secondItem="KW2-qB-r3G" secondAttribute="trailing" constant="-3" id="eNQ-MB-BFL"/>
                                     <constraint firstAttribute="trailing" secondItem="Nas-Q3-0bj" secondAttribute="trailing" constant="25" id="n7Z-1D-iBv"/>
                                     <constraint firstAttribute="width" secondItem="tEV-K0-a2K" secondAttribute="height" multiplier="309:163" id="uve-NH-AwM"/>
+                                    <constraint firstItem="0Tk-Zf-E7Y" firstAttribute="bottom" secondItem="KW2-qB-r3G" secondAttribute="bottom" id="v0d-fS-N0o"/>
                                     <constraint firstItem="gm1-y0-AqJ" firstAttribute="leading" secondItem="6Xv-jt-BnR" secondAttribute="leading" id="vhb-nw-PeI"/>
                                 </constraints>
                             </view>
@@ -237,7 +242,6 @@
     </scenes>
     <resources>
         <image name="icClose" width="20" height="20"/>
-        <image name="searchImgSunnycloud" width="124" height="94.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
