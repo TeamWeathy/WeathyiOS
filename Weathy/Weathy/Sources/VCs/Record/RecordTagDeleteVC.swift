@@ -27,6 +27,7 @@ class RecordTagDeleteVC: UIViewController {
     var isInitialized: Bool = false
     
     var selectedTags: [Int] = []
+    var tagCount: Int = 1
     
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
@@ -57,9 +58,17 @@ class RecordTagDeleteVC: UIViewController {
         setTitleLabel()
         setCancelBtn()
         
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        blurView.alpha = 0
+        animationPrac()
+        
         /// + 자리에 있던 아이 삭제
         for i in 0...3 {
             tagTitles[i].tagTab.removeFirst()
+            tagTitles[i].count = 0
             
             if tagTitles[i].tagTab.count == 0 {
                 break
@@ -87,13 +96,7 @@ class RecordTagDeleteVC: UIViewController {
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
         
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        blurView.alpha = 0
-        animationPrac()
+//        print(">>>>>>", tagTitles)
     }
     
     
@@ -117,7 +120,6 @@ class RecordTagDeleteVC: UIViewController {
         for i in 0...3 {
             tagWillBeDeletedCount += tagTitles[i].count
         }
-        
         
         dvc.tagCount = tagWillBeDeletedCount
         dvc.selectedTags = selectedTags
@@ -311,14 +313,17 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
             collectionView.deselectItem(at: indexPath, animated: false)
             
             tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
+            
             if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
                 selectedTags.append(tagTitles[titleIndex].tagTab[indexPath.item].id)
                 tagTitles[titleIndex].count += 1
+                self.tagCount += 1
             } else {
                 let selectedId = tagTitles[titleIndex].tagTab[indexPath.item].id
                 let selectedIndex = selectedTags.firstIndex(of: selectedId)
                 selectedTags.remove(at: selectedIndex!)
                 tagTitles[titleIndex].count -= 1
+                self.tagCount -= 1
             }
             
             
