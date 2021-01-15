@@ -123,7 +123,6 @@ class MainSearchVC: UIViewController {
         //전달해줄 대상 뷰 컨트롤러
         let story = UIStoryboard.init(name: "Main", bundle: nil)
         guard let mainVC = story.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-        
         mainVC.mainDeliverSearchInfo = self.mainDeliverSearchInfo
         
         self.presentingViewController?.dismiss(animated: true)
@@ -277,10 +276,7 @@ extension MainSearchVC: UITableViewDelegate {
             }
             
             /// Main에 넘겨줄 데이터 넣기
-            let story = UIStoryboard.init(name: "Main", bundle: nil)
-            guard let mainVC = story.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-            mainVC.mainDeliverSearchInfo = searchInfos[indexPath.row]
-            
+            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData" ), object: searchInfos[indexPath.row])
             self.dismiss(animated: true, completion: nil)
             self.recentNonImage()
         }

@@ -10,7 +10,7 @@ import UIKit
 class MainVC: UIViewController {
     //MARK: - Custom Variables
     var lastContentOffset: CGFloat = 0.0
-    var mainDeliverSearchInfo : SearchRecentInfo?
+    var mainDeliverSearchInfo: SearchRecentInfo?
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
@@ -45,6 +45,8 @@ class MainVC: UIViewController {
         
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
     }
     
     //MARK: - Custom Method
@@ -250,6 +252,28 @@ class MainVC: UIViewController {
         mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
     }
     
+    @objc func setSearchData(_ notiData: NSNotification) {
+        if let hourlyData = notiData.object as? SearchRecentInfo {
+            print(hourlyData)
+            print(mainBackgroundImage.image)
+            let iconId: Int = 113
+            self.mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
+            self.topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
+            
+            print(ClimateImage.getClimateMainBgName(iconId))
+            print(mainBackgroundImage.image)
+            
+            view.reloadInputViews()
+            if (iconId % 100 == 13) {
+                fallingSnow()
+            } else if (iconId % 100 == 10) {
+                fallingRain()
+            }
+            
+            self.weatherCollectionView.reloadData()
+        }
+    }
+    
     //MARK: - IBActions
     
     @IBAction func touchUpSetting(_ sender: Any) {
@@ -259,7 +283,7 @@ class MainVC: UIViewController {
         guard let settingNVC = settingStoryboard.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
 
         settingNVC.modalPresentationStyle = .fullScreen
-        present(settingNVC, animated: true, completion: nil)
+        self.present(settingNVC, animated: true, completion: nil)
     }
     
     @IBAction func touchUpSearch(_ sender: Any) {

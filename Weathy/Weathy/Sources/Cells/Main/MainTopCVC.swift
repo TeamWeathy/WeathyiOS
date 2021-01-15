@@ -178,7 +178,7 @@ class MainTopCVC: UICollectionViewCell {
 
         weathyStampLabel.font = UIFont.SDGothicSemiBold23
         weathyStampLabel.textColor = UIColor.imojiColdText
-        weathyStampLabel.characterSpacing = -1.15
+        weathyStampLabel.characterSpacing = -1.15        
     }
 
     //MARK: - IBActions
