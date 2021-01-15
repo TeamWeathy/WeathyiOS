@@ -28,6 +28,8 @@ class ModifyWeathyStartVC: UIViewController {
     var visitedFlag: Bool = false
     var dvc = ModifyWeathyTagVC()
     
+    var selectedTag: [Int] = []
+    
     
     //MARK: - IBOutlets
     
@@ -60,6 +62,9 @@ class ModifyWeathyStartVC: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         setTitleLabel()
+        
+        /// 구조체 안에 담긴 옷 태그 데이터를 배열로 변환하는 함수
+        getClothesArray()
         
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.locale = Locale(identifier: "ko_KR")
@@ -218,7 +223,7 @@ extension ModifyWeathyStartVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: "2021-01-13", code: 1141000000, clothArray: [166], stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: "2021-01-13", code: 1141000000, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             print(self.weathyData?.weathyId ?? -1)
             switch networkResult {
             case .success(let data):
@@ -243,6 +248,45 @@ extension ModifyWeathyStartVC {
                 print("networkFail")
             }
         }
+    }
+    
+    func getClothesArray() {
+        var currentTag: Int = -1
+        
+        if weathyData?.closet.top.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.top.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.top.clothes[i].id)!
+                
+                selectedTag.append(currentTag)
+            }
+        }
+        
+        if weathyData?.closet.bottom.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.bottom.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.bottom.clothes[i].id)!
+                
+                selectedTag.append(currentTag)
+            }
+        }
+        
+        if weathyData?.closet.outer.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.outer.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.outer.clothes[i].id)!
+                
+                selectedTag.append(currentTag)
+            }
+        }
+        
+        if weathyData?.closet.etc.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.etc.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.etc.clothes[i].id)!
+                
+                selectedTag.append(currentTag)
+            }
+        }
+        
+        print(">>>>>", selectedTag)
+        
     }
     
     func getClimateAssetName(_ climateId: Int) -> String{
