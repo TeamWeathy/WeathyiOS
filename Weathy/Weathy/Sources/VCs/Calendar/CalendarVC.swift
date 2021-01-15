@@ -64,7 +64,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate, UICollect
         setStyle()
         initPicker()
         NotificationCenter.default.addObserver(self, selector: #selector(setSelected(_:)), name: NSNotification.Name("ChangeData"), object: nil)
-
         print("today",Calendar.current.dateComponents(in: TimeZone.current, from: selectedDate))
         
     }
@@ -294,6 +293,18 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate, UICollect
     }
     
     //MARK: - @objc methods
+    
+    @objc func setWeekday(_ noti: NSNotification){
+        if let flag = noti.object as? Int{
+            if flag == 7{
+                setWeekdayColor()
+            }
+            else{
+                weekdayLabelCollection[flag].textColor = .white
+            }
+        }
+
+    }
     
     @objc func tapGestureHandler(recognizer: UITapGestureRecognizer){
         print("tapped")

@@ -70,6 +70,7 @@ class CalendarDetailVC: UIViewController {
         setDefaultFormatter()
         selectedDateDidChange(nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recordChanged(_:)), name: NSNotification.Name(rawValue: "RecordUpdated"), object: nil)
         //        initGestureRecognizer()
         
     }
@@ -266,10 +267,13 @@ class CalendarDetailVC: UIViewController {
                     }
                 case .requestErr(let msg):
                     print("[Daily] requestErr",msg)
+                    self.setEmptyView(state: .beforeContent)
                 case .serverErr:
                     print("[Daily] serverErr")
+                    self.setEmptyView(state: .beforeContent)
                 case .networkFail:
                     print(">>[Daily] networkFail")
+                    self.setEmptyView(state: .beforeContent)
                 case .pathErr:
                     print("[Daily] pathErr - No content")
                     
@@ -285,6 +289,17 @@ class CalendarDetailVC: UIViewController {
     }
     
     //MARK: - @objc methods
+    
+    @objc func recordChanged(_ noti: NSNotification){
+        if let flag = noti.object as? Int{
+            if flag == 1{
+                self.showToast(message: "웨디 내용이 수정되었어요!")
+            }
+            else if flag == 0{
+                self.showToast(message: "웨디에 내용이 추가되었어요!")
+            }
+        }
+    }
     
     @objc func closeMoreMenu(_ sender: UITapGestureRecognizer?){
         self.moreViewHeightConstraint.constant = 0
