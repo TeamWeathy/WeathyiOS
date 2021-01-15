@@ -28,6 +28,8 @@ class ModifyWeathyStartVC: UIViewController {
     var visitedFlag: Bool = false
     var dvc = ModifyWeathyTagVC()
     
+    var selectedTag: [Int] = []
+    
     
     //MARK: - IBOutlets
     
@@ -60,6 +62,9 @@ class ModifyWeathyStartVC: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         setTitleLabel()
+        
+        /// 구조체 안에 담긴 옷 태그 데이터를 배열로 변환하는 함수
+        getClothesArray()
         
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.locale = Locale(identifier: "ko_KR")
@@ -95,7 +100,7 @@ class ModifyWeathyStartVC: UIViewController {
     }
     
     @IBAction func finishBtnDidTap(_ sender: Any) {
-        // 서버 처리
+        callModifyWeathyService()
         dismiss(animated: true, completion: nil)
     }
 }
@@ -108,6 +113,9 @@ extension ModifyWeathyStartVC {
         
 //        titleLabel.text = "\(todayMonth)월 \(todayDate)일의 웨디를\n기록해볼까요?"
         titleLabel.numberOfLines = 2
+        titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
+        titleLabel.textColor = .mainGrey
+        titleLabel.text = "\(weathyData?.dailyWeather.date.month ?? 0)월 \(weathyData?.dailyWeather.date.day ?? 0)일의 웨디를\n기록해볼까요?"
 //        titleLabel.font = UIFont.RobotoRegular25
         
         subTitleLabel.text = "기록할 위치와 날씨를 확인해 주세요."
@@ -126,24 +134,15 @@ extension ModifyWeathyStartVC {
     
     func setTitleLabel() {
         /// 기본 설정
-        let attributedString = NSMutableAttributedString(string: "\(weathyData?.dailyWeather.date.month ?? 0)월 \(weathyData?.dailyWeather.date.day ?? 0)일의 웨디를\n기록해볼까요?", attributes: [
-            .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
-            .foregroundColor: UIColor.mainGrey,
-            .kern: -1.25
-        ])
+        let attributedString = NSMutableAttributedString(string: titleLabel.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
+                                      value: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!, range: (titleLabel.text! as NSString).range(of: "웨디"))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.mintIcon, range: (titleLabel.text! as NSString).range(of: "웨디"))
         
-        /// 행간 조정
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         
-        /// 볼드 처리
-        attributedString.addAttributes([
-            .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
-            .foregroundColor: UIColor.mintIcon
-        ], range: NSRange(location: 7, length: 2))
-        
-        /// 스타일 적용
         titleLabel.attributedText = attributedString
     }
     
@@ -222,6 +221,74 @@ extension ModifyWeathyStartVC {
             self.subTitleLabel.frame = CGRect(x: self.subTitleLabel.frame.origin.x, y: self.subTitleLabel.frame.origin.y+10, width: self.subTitleLabel.frame.width, height: self.subTitleLabel.frame.height)
         })
     }
+    
+    func callModifyWeathyService() {
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: "2021-01-13", code: 1141000000, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+            print(self.weathyData?.weathyId ?? -1)
+            switch networkResult {
+            case .success(let data):
+                if let loadData = data as? RecordWeathyData {
+                    print(loadData)
+                }
+        
+                self.dismiss(animated: true, completion: nil)
+                
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                    self.showToast(message: message)
+                }
+                
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func getClothesArray() {
+        var currentTag: Int = -1
+        
+        if weathyData?.closet.top.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.top.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.top.clothes[i].id)!
+                
+                selectedTag.append(currentTag)
+            }
+        }
+        
+        if weathyData?.closet.bottom.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.bottom.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.bottom.clothes[i].id)!
+                
+                selectedTag.append(currentTag)
+            }
+        }
+        
+        if weathyData?.closet.outer.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.outer.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.outer.clothes[i].id)!
+                
+                selectedTag.append(currentTag)
+            }
+        }
+        
+        if weathyData?.closet.etc.clothes.count != 0 {
+            for i in 0...(weathyData?.closet.etc.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.etc.clothes[i].id)!
+                
+                selectedTag.append(currentTag)
+            }
+        }
+        
+        print(">>>>>", selectedTag)
+        
+    }
+    
 }
 
 

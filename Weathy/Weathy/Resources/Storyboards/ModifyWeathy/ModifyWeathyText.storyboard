@@ -25,6 +25,9 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="ic_back"/>
+                                <connections>
+                                    <action selector="backBtnTap:" destination="Hzd-4a-iS3" eventType="touchUpInside" id="NaT-mP-dnl"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsz-Cg-hLR">
                                 <rect key="frame" x="36.5" y="108" width="42" height="21"/>
@@ -49,6 +52,9 @@
                                     <constraint firstAttribute="width" secondItem="gtD-ZA-fA4" secondAttribute="height" multiplier="309:55" id="eYE-0P-Osg"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextBtnTap:" destination="Hzd-4a-iS3" eventType="touchUpInside" id="7i1-Rq-5iC"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPK-Ho-pdd" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="344.5" y="372.5" width="33" height="21"/>

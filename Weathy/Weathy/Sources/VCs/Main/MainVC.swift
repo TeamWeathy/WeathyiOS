@@ -17,6 +17,9 @@ class MainVC: UIViewController {
     var dailyWeatherData: DailyWeatherData?
     var extraWeatherData: ExtraWeatherData?
     
+    var serchBackImage : String = ""
+    var searchGradient : String = ""
+    
     //MARK: - IBOutlets
     
     @IBOutlet weak var mainBackgroundImage: UIImageView!
@@ -53,6 +56,9 @@ class MainVC: UIViewController {
         mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
         topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
 
+        serchBackImage = ClimateImage.getClimateMainBgName(iconId)
+        searchGradient = ClimateImage.getSearchClimateMainBlurBarName(iconId)
+        
         if (iconId % 100 == 13) {
             fallingSnow()
         } else if (iconId % 100 == 10) {
@@ -262,6 +268,8 @@ class MainVC: UIViewController {
         let storyB = UIStoryboard.init(name: "MainSearch", bundle: nil)
         
         guard let vc = storyB.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
+        vc.backImage = self.serchBackImage
+        vc.gradient = self.searchGradient
         
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
