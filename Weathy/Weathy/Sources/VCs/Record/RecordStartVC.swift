@@ -31,7 +31,7 @@ class RecordStartVC: UIViewController {
     
     var recordDeliverSearchInfo : OverviewWeatherList?
     
-    var locationCode: CLong = -1
+    var locationCode: CLong = 1141000000
     
     //MARK: - IBOutlets
     
@@ -72,10 +72,13 @@ class RecordStartVC: UIViewController {
         print(">>>>>", dateString)
         print(">>>>>", dateToday)
         
-//        locationCode = recordDeliverSearchInfo?.region.code ?? -1
-        locationCode = 1141000000
-        print(recordDeliverSearchInfo)
-        print(">>>>>>>", locationCode)
+        
+//        locationCode = 1141000000
+//        print(recordDeliverSearchInfo)
+//
+//        locationCode = recordDeliverSearchInfo?.region.code ?? 1141000000
+//        print(">>>>>>>", locationCode)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -88,6 +91,8 @@ class RecordStartVC: UIViewController {
     @objc func SearchInfo(_ notification: Notification){
         guard let userInfo = notification.userInfo as? [String: Any] else { return }
         guard let searchInfo = userInfo["mainDeliverSearchInfo"] as? OverviewWeatherList else { return}
+        
+        locationCode = searchInfo.region.code
 
         boxTimeLabel.text = "\(searchInfo.dailyWeather.date.month)월 \(searchInfo.dailyWeather.date.day)일 \(searchInfo.dailyWeather.date.dayOfWeek)"
         boxLocationLabel.text = searchInfo.region.name
