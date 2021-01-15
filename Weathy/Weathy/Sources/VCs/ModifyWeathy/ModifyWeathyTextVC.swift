@@ -11,6 +11,8 @@ class ModifyWeathyTextVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var weathyData: CalendarWeathy?
+    
     var selectedTags: [Int] = []
     var selectedStamp: Int = -1
     
@@ -19,6 +21,7 @@ class ModifyWeathyTextVC: UIViewController {
     var wordCount: Int = 0
     
     var enteredText: String?
+    var originalText: String = "가나다테스트"
     
     
     
@@ -55,6 +58,8 @@ class ModifyWeathyTextVC: UIViewController {
         wordCountLabel.text = "0"
         wordCountLabel.font = UIFont.SDGothicRegular13
         wordCountLabel.textColor = UIColor.subGrey6
+        
+        originalText = weathyData?.feedback ?? ""
 
         
     }
@@ -72,7 +77,7 @@ class ModifyWeathyTextVC: UIViewController {
     
     @IBAction func backBtnTap(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: false)
-        self.enteredText = ""
+        self.enteredText = originalText
         callModifyWeathyService()
 //        self.showToast(message: "웨디에 내용이 추가되었어요!")
     }
@@ -98,8 +103,6 @@ class ModifyWeathyTextVC: UIViewController {
 
 extension ModifyWeathyTextVC {
     func setUpper() {
-//        backBtn.setBackgroundImage(UIImage(named: <#T##String#>), for: .normal)
-//        dismissBtn.setBackgroundImage(UIImage(named: <#T##String#>), for: .normal)
         
         titleLabel.text = "오늘 날씨에 대해\n더 적고 싶은게 있으신가요?"
         titleLabel.numberOfLines = 2
@@ -131,6 +134,7 @@ extension ModifyWeathyTextVC {
     
     func setTextField() {
         recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
+        recordTextView.text = originalText
         
 //        wordCountLabel.text = "\(wordCount)/\(maxWordCount)"
 //        wordCountLabel.font = UIFont.SDGothicRegular13
@@ -205,7 +209,7 @@ extension ModifyWeathyTextVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {

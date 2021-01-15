@@ -12,8 +12,8 @@ struct ModifyWeathyService {
     static let shared = ModifyWeathyService()
     
     // MARK: - 웨디 기록하기
-    func modifyWeathy(userId:Int, token: String, date: String, code: Int, clothArray: [Int], stampId: Int, feedback: String, completion: @escaping (NetworkResult<Any>)->(Void)) {
-        let url = APIConstants.recordWeathyURL
+    func modifyWeathy(userId:Int, token: String, date: String, code: Int, clothArray: [Int], stampId: Int, feedback: String, weathyId: Int, completion: @escaping (NetworkResult<Any>)->(Void)) {
+        let url = APIConstants.recordWeathyURL + "\(weathyId)"
         
         let header: HTTPHeaders = [
             "Content-Type" : "application/json",

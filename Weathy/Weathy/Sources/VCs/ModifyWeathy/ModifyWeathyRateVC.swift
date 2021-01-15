@@ -76,6 +76,7 @@ class ModifyWeathyRateVC: UIViewController {
         
         dvc.selectedTags = selectedTags
         dvc.selectedStamp = selectedStamp
+        dvc.weathyData = weathyData
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }
