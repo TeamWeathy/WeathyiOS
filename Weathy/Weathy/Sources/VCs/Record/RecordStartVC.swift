@@ -72,7 +72,8 @@ class RecordStartVC: UIViewController {
         print(">>>>>", dateString)
         print(">>>>>", dateToday)
         
-        locationCode = recordDeliverSearchInfo?.region.code ?? -1
+//        locationCode = recordDeliverSearchInfo?.region.code ?? -1
+        locationCode = 1141000000
         print(recordDeliverSearchInfo)
         print(">>>>>>>", locationCode)
 
