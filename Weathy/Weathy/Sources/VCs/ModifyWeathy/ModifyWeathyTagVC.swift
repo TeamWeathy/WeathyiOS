@@ -344,6 +344,7 @@ extension ModifyWeathyTagVC {
 
     }
     
+    /// 뷰 진입이 처음일 때 수정 전 등록해놨던 태그 유지
     func setInitialRecordedData() {
         
         var currentTag: Int = -1
@@ -417,6 +418,7 @@ extension ModifyWeathyTagVC {
         isInitialVisit = false
     }
     
+    /// 뷰 진입이 처음이 아닐 때 원래 선택돼있던 태그 유지
     func setMaintainedData() {
         var currentTag = -1
         
@@ -433,8 +435,6 @@ extension ModifyWeathyTagVC {
                     }
                 }
             }
-            
-            
         }
     }
 }
