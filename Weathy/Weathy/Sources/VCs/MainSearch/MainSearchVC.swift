@@ -122,7 +122,6 @@ class MainSearchVC: UIViewController {
         //전달해줄 대상 뷰 컨트롤러
         let story = UIStoryboard.init(name: "Main", bundle: nil)
         guard let mainVC = story.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-        
         mainVC.mainDeliverSearchInfo = self.mainDeliverSearchInfo
         
         self.presentingViewController?.dismiss(animated: true)
@@ -233,6 +232,7 @@ extension MainSearchVC: UITableViewDataSource {
         }else{
             guard let searchCell = searchTableView.dequeueReusableCell(withIdentifier: SearchTVC.identifier, for: indexPath) as? SearchTVC else { return UITableViewCell() }
             
+            //            print("잘 받아왔어?\(self.searchInfos)")
             
             searchCell.bind(weatherDate:
                                 "\(self.searchInformations[indexPath.row].dailyWeather.date.month)월 \(self.searchInformations[indexPath.row].dailyWeather.date.day)일 \(self.searchInformations[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: self.searchInformations[indexPath.row].hourlyWeather.time, location: self.searchInformations[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(self.searchInformations[indexPath.row].hourlyWeather.climate.iconID), currentTemper: "\(self.searchInformations[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(self.searchInformations[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(self.searchInformations[indexPath.row].dailyWeather.temperature.minTemp)°")
@@ -272,9 +272,7 @@ extension MainSearchVC: UITableViewDelegate {
             }
             
             /// Main에 넘겨줄 데이터 넣기
-            let story = UIStoryboard.init(name: "Main", bundle: nil)
-            guard let mainVC = story.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-            mainVC.mainDeliverSearchInfo = self.searchInformations[indexPath.row]
+            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
             
             NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": self.searchInformations[indexPath.row]])
             
