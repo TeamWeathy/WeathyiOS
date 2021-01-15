@@ -67,6 +67,13 @@
 		6354ED9D25AE0B3700C5CAC5 /* InfiniteMonthlyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354ED9925AE0B3700C5CAC5 /* InfiniteMonthlyCVC.swift */; };
 		6354ED9E25AE0B3700C5CAC5 /* InfiniteWeeklyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354ED9A25AE0B3700C5CAC5 /* InfiniteWeeklyCVC.swift */; };
 		6354EDA125AE0B6700C5CAC5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354EDA025AE0B6700C5CAC5 /* Date+Extensions.swift */; };
+		6354EDAC25AE244600C5CAC5 /* MonthlyWeathyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354EDAB25AE244600C5CAC5 /* MonthlyWeathyData.swift */; };
+		6354EDB125AEEC0500C5CAC5 /* MonthlyWeathyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354EDB025AEEC0500C5CAC5 /* MonthlyWeathyService.swift */; };
+		63C756D025B023DB003DC9FA /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C756CF25B023DB003DC9FA /* Emoji.swift */; };
+		63C756D425B03F2A003DC9FA /* DailyWeathyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C756D325B03F2A003DC9FA /* DailyWeathyData.swift */; };
+		63C756D825B0452E003DC9FA /* DailyWeathyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C756D725B0452E003DC9FA /* DailyWeathyService.swift */; };
+		63C756E325B105F4003DC9FA /* DeleteWeathyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C756E225B105F4003DC9FA /* DeleteWeathyData.swift */; };
+		63C756E625B10716003DC9FA /* DeleteWeathyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C756E525B10716003DC9FA /* DeleteWeathyService.swift */; };
 		63D3C53925A4A57500E5FDFE /* SpacedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D3C53825A4A57500E5FDFE /* SpacedLabel.swift */; };
 		63DEB261259CD49700A94488 /* DummyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DEB260259CD49700A94488 /* DummyCell.swift */; };
 		63DEB264259CD4AD00A94488 /* DummyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DEB263259CD4AD00A94488 /* DummyClass.swift */; };
@@ -83,7 +90,6 @@
 		AB09371025AE446B00F69220 /* LocationWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09370F25AE446B00F69220 /* LocationWeatherData.swift */; };
 		AB09371B25AE48F800F69220 /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09371A25AE48F800F69220 /* MainService.swift */; };
 		AB09371F25AF526700F69220 /* RecommededWeathy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09371E25AF526700F69220 /* RecommededWeathy.swift */; };
-		AB09372325AFC61A00F69220 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09372225AFC61A00F69220 /* Emoji.swift */; };
 		AB3D206625AFD4DE0030514B /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3D206525AFD4DE0030514B /* OnBoarding.storyboard */; };
 		AB3D206A25AFD4F90030514B /* MainSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3D206925AFD4F90030514B /* MainSearch.storyboard */; };
 		AB3D206E25AFD5040030514B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3D206D25AFD5030030514B /* Setting.storyboard */; };
@@ -159,6 +165,13 @@
 		6354ED9925AE0B3700C5CAC5 /* InfiniteMonthlyCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteMonthlyCVC.swift; path = Calendar/InfiniteMonthlyCVC.swift; sourceTree = "<group>"; };
 		6354ED9A25AE0B3700C5CAC5 /* InfiniteWeeklyCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteWeeklyCVC.swift; path = Calendar/InfiniteWeeklyCVC.swift; sourceTree = "<group>"; };
 		6354EDA025AE0B6700C5CAC5 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		6354EDAB25AE244600C5CAC5 /* MonthlyWeathyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyWeathyData.swift; sourceTree = "<group>"; };
+		6354EDB025AEEC0500C5CAC5 /* MonthlyWeathyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyWeathyService.swift; sourceTree = "<group>"; };
+		63C756CF25B023DB003DC9FA /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		63C756D325B03F2A003DC9FA /* DailyWeathyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeathyData.swift; sourceTree = "<group>"; };
+		63C756D725B0452E003DC9FA /* DailyWeathyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeathyService.swift; sourceTree = "<group>"; };
+		63C756E225B105F4003DC9FA /* DeleteWeathyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWeathyData.swift; sourceTree = "<group>"; };
+		63C756E525B10716003DC9FA /* DeleteWeathyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWeathyService.swift; sourceTree = "<group>"; };
 		63D3C53825A4A57500E5FDFE /* SpacedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacedLabel.swift; sourceTree = "<group>"; };
 		63DEB260259CD49700A94488 /* DummyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCell.swift; sourceTree = "<group>"; };
 		63DEB263259CD4AD00A94488 /* DummyClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyClass.swift; sourceTree = "<group>"; };
@@ -176,7 +189,6 @@
 		AB09370F25AE446B00F69220 /* LocationWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWeatherData.swift; sourceTree = "<group>"; };
 		AB09371A25AE48F800F69220 /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
 		AB09371E25AF526700F69220 /* RecommededWeathy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommededWeathy.swift; sourceTree = "<group>"; };
-		AB09372225AFC61A00F69220 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		AB3D206525AFD4DE0030514B /* OnBoarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
 		AB3D206925AFD4F90030514B /* MainSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainSearch.storyboard; sourceTree = "<group>"; };
 		AB3D206D25AFD5030030514B /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
@@ -511,6 +523,7 @@
 		63398443259A2BE700339615 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				63C756D225B03902003DC9FA /* Calendar */,
 				AB09372125AFC58000F69220 /* Common */,
 				AB09370D25AE43DB00F69220 /* Main */,
 				37FB8AAD25AE52BD001A6287 /* Splash */,
@@ -549,12 +562,33 @@
 			name = Calendar;
 			sourceTree = "<group>";
 		};
+		63C756D225B03902003DC9FA /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				6354EDAB25AE244600C5CAC5 /* MonthlyWeathyData.swift */,
+				63C756D325B03F2A003DC9FA /* DailyWeathyData.swift */,
+				63C756E225B105F4003DC9FA /* DeleteWeathyData.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		63C756D625B0445E003DC9FA /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				6354EDB025AEEC0500C5CAC5 /* MonthlyWeathyService.swift */,
+				63C756D725B0452E003DC9FA /* DailyWeathyService.swift */,
+				63C756E525B10716003DC9FA /* DeleteWeathyService.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		63DEB251259CD3EF00A94488 /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
-				AB09371925AE47A300F69220 /* Main */,
 				63DEB26D259CD54100A94488 /* APIConstants.swift */,
 				63DEB271259CD55A00A94488 /* NetworkResult.swift */,
+				63C756D625B0445E003DC9FA /* Calendar */,
+				AB09371925AE47A300F69220 /* Main */,
 				0E6E9A6E25AF7E8200702706 /* AuthorizationAPI */,
 				0E75F66E25AF3C4700D98633 /* UserAPI */,
 				0E6E9A7525AF9E7700702706 /* searchService.swift */,
@@ -604,7 +638,7 @@
 		AB09372125AFC58000F69220 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				AB09372225AFC61A00F69220 /* Emoji.swift */,
+				63C756CF25B023DB003DC9FA /* Emoji.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -786,13 +820,16 @@
 				374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */,
 				ABBA9CA225A2217F008785BD /* MainVC.swift in Sources */,
 				6339846C259A431100339615 /* UIView+Extensions.swift in Sources */,
+				6354EDB125AEEC0500C5CAC5 /* MonthlyWeathyService.swift in Sources */,
 				6354ED9425AE0B0300C5CAC5 /* CalendarDetailVC.swift in Sources */,
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
 				0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */,
 				0E75F67525AF3DA100D98633 /* UserInformation.swift in Sources */,
+				63C756D825B0452E003DC9FA /* DailyWeathyService.swift in Sources */,
 				0E6E9A7625AF9E7700702706 /* searchService.swift in Sources */,
 				6339846C259A431100339615 /* UIView+Extensions.swift in Sources */,
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
+				63C756D025B023DB003DC9FA /* Emoji.swift in Sources */,
 				ABBA9CAF25A22C93008785BD /* MainTopCVC.swift in Sources */,
 				0E6E9A8025AFA1FC00702706 /* SearchWeatherInformation.swift in Sources */,
 				6354ED9C25AE0B3700C5CAC5 /* MonthlyCalendarCVC.swift in Sources */,
@@ -814,15 +851,18 @@
 				AB4E1C9525A9ED4C002F3B79 /* WeeklyWeatherCVC.swift in Sources */,
 				63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */,
 				63DEB272259CD55A00A94488 /* NetworkResult.swift in Sources */,
-				AB09372325AFC61A00F69220 /* Emoji.swift in Sources */,
+				63C756E625B10716003DC9FA /* DeleteWeathyService.swift in Sources */,
+				6354EDAC25AE244600C5CAC5 /* MonthlyWeathyData.swift in Sources */,
 				ABBA9CB225A22CBC008785BD /* MainBottomCVC.swift in Sources */,
 				AB4E1C9F25AA0BB5002F3B79 /* DetailWeatherCVC.swift in Sources */,
 				3735AE3725A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift in Sources */,
+				63C756D425B03F2A003DC9FA /* DailyWeathyData.swift in Sources */,
 				6339846F259A433400339615 /* UIColor+Extensions.swift in Sources */,
 				6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */,
 				0E6E9A7125AF7EE300702706 /* autoLoginService.swift in Sources */,
 				374D490B259F6CAD00152B9A /* RecordTagTitleCVC.swift in Sources */,
 				AB09371F25AF526700F69220 /* RecommededWeathy.swift in Sources */,
+				63C756E325B105F4003DC9FA /* DeleteWeathyData.swift in Sources */,
 				374D48DB259D1CB600152B9A /* RecordRateVC.swift in Sources */,
 				633984202599B1F400339615 /* AppDelegate.swift in Sources */,
 				374D4904259F68EE00152B9A /* TagFlowLayout.swift in Sources */,
@@ -986,7 +1026,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G7SD8523Y3;
+				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1007,7 +1047,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G7SD8523Y3;
+				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

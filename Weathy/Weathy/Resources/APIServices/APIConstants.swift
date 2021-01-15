@@ -9,6 +9,15 @@ import Foundation
 
 struct APIConstants{
     static let baseURL = "http://15.164.146.132:3000"
+    
+    ///monthly url
+    static let monthlyWeathyURL = baseURL + "/users/:user-id/calendar?start={start_date}&end={end_date}"
+    
+    ///weekly url
+    static let dailyWeathyURL = baseURL + "/weathy?date={date}"
+    
+    ///delete url
+    static let deleteWeathyURL = baseURL + "/weathy/:weathy-id"
   
     // Main WeatherByLocation
     static let getWeatherByLocationURL = baseURL + "/weather/overview"
@@ -32,4 +41,5 @@ struct APIConstants{
     static func getHourlyWeatherURL(code: String, date: String) -> String {
         return baseURL + "/weather/forecast/hourly?code=\(code)&date=\(date)"
     }
+    
 }

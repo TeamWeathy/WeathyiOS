@@ -12,9 +12,10 @@ protocol MonthCellDelegate{
 }
 
 class InfiniteMonthlyCVC: UICollectionViewCell {
+    
     static let identifier = "InfiniteMonthlyCVC"
+    
     let screen = UIScreen.main.bounds
-    var monthlyLines = 5
     var dateComponents = DateComponents()
     var lastComponents = DateComponents()
     var nextComponents = DateComponents()
@@ -24,7 +25,7 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     var selectedDate = Date()
     var monthCellDelegate: MonthCellDelegate?
     var lastSelectedIdx = Date().firstWeekday - 1 + Date().day
-    
+    var monthlyWeathyList: [CalendarOverview?] = []
     @IBOutlet weak var monthlyCalendarCV: UICollectionView!
     
     
@@ -32,16 +33,46 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
         super.awakeFromNib()
         monthlyCalendarCV.delegate = self
         monthlyCalendarCV.dataSource = self
-        initDate(selectedDate)
+        selectedDateDidChange(selectedDate)
+        monthlyWeathyList = []
+        callMonthlyWeathy()
+        
+    }
+    
+    //MARK: - Network
+    
+    func callMonthlyWeathy(){
+        MonthlyWeathyService.shared.getMonthlyCalendar(userID: 61, startDate: selectedDate.startDate, endDate: selectedDate.endDate){ (networkResult) -> (Void) in
+            switch networkResult {
+                case .success(let data):
+                    if let monthlyData = data as? [CalendarOverview?]{
+                        print(">>netsucess",monthlyData)
+                        self.monthlyWeathyList = monthlyData
+                        DispatchQueue.main.async {
+                            self.monthlyCalendarCV.reloadData()
+                        }
+                    }
+                    
+                case .requestErr(let msg):
+                    print(">>networkrequest",msg)
+                case .serverErr:
+                    print(">>networkserverErr")
+                case .networkFail:
+                    print(">>networknetworkFail")
+                case .pathErr:
+                    print(">>networkpathErr")
+                    
+            }
+            
+        }
     }
     
     //MARK: - Calendar Methods
-    func initDate(_ selected: Date){
+    
+    func selectedDateDidChange(_ selected: Date){
         self.selectedDate = selected
-        print("selected",selectedDate.month,selectedDate.firstWeekday)
         lastComponents.year = Calendar.current.component(.year, from: selectedDate)
         lastComponents.month = Calendar.current.component(.month, from: selectedDate)
-        print("last",lastComponents)
         if lastComponents.month == 1{
             lastComponents.year! -= 1
             lastComponents.month = 12
@@ -59,24 +90,6 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
             isThisMonth = false
         }
         
-        if selectedDate.firstWeekday == 0{
-            if selectedDate.month == 2 && selectedDate.isLeapMonth == false{
-                monthlyLines = 4
-            }
-            else{
-                monthlyLines = 5
-            }
-        }
-        else{
-            if selectedDate.firstWeekday == 6 || (selectedDate.firstWeekday == 5 && selectedDate.numberOfMonth == 31){
-                monthlyLines = 6
-            }
-            else{
-                monthlyLines = 5
-            }
-            
-        }
-        
     }
     
 }
@@ -88,12 +101,12 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
         if lastSelectedIdx != indexPath.item{
             if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? MonthlyCalendarCVC{
                 cell.isSelected = false
-                
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? MonthlyCalendarCVC{
                 var selectedComponent = DateComponents()
                 selectedComponent.day = indexPath.item - (selectedDate.firstWeekday - 1 + selectedDate.day)
                 selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeData"), object: selectedDate)
                 monthCellDelegate?.selectedMonthDateDidChange(selectedDate)
                 lastSelectedIdx = indexPath.item
             }
@@ -107,7 +120,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(Int((308*screen.width/375)/7)), height: CGFloat(516/CGFloat(monthlyLines)))
+        return CGSize(width: CGFloat(Int((308*screen.width/375)/7)), height: CGFloat(516/CGFloat(selectedDate.monthlyLines)))
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -120,16 +133,14 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
 
 extension InfiniteMonthlyCVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return monthlyLines*7
+        print(">>net",selectedDate,selectedDate.monthlyLines*7,monthlyWeathyList.count,monthlyWeathyList)
+        return selectedDate.monthlyLines*7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthlyCalendarCVC.identifier, for: indexPath) as? MonthlyCalendarCVC else { return UICollectionViewCell() }
-        print("===")
         cell.setDay()
         ///이번달
-        print("plz",selectedDate)
-        print("month",selectedDate.month,selectedDate.numberOfMonth)
         if indexPath.item >= selectedDate.firstWeekday && indexPath.item < selectedDate.firstWeekday+selectedDate.numberOfMonth{
             //현재 날짜(현재달)
             if indexPath.item % 7 == 0{
@@ -139,42 +150,48 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
                 cell.setSaturday()
             }
             cell.dayLabel.text = String(indexPath.item-selectedDate.firstWeekday+1)
-            print("plz",selectedDate.day)
- 
+            
             if indexPath.item-selectedDate.firstWeekday+1 == selectedDate.day{
-                print("why1")
                 cell.isSelected = true
             }
             
             ///현재달이 오늘을 포함하고 있는 경우
             if selectedDate.currentYearMonth == Date().currentYearMonth{
-                print("why2")
                 if indexPath.item-selectedDate.firstWeekday+1 == Date().day{
-                    print("why1")
                     cell.setToday()
                 }
             }
         }
-    
         
-    
-    ///이전달
-    else if indexPath.item < selectedDate.firstWeekday{
-    
-    let numberOfMonth = lastDate.numberOfMonth
-    cell.dayLabel.text = String(numberOfMonth-selectedDate.firstWeekday+1+indexPath.item)
-    cell.setNonCurrent()
-    
+        
+        
+        ///이전달
+        else if indexPath.item < selectedDate.firstWeekday{
+            
+            let numberOfMonth = lastDate.numberOfMonth
+            cell.dayLabel.text = String(numberOfMonth-selectedDate.firstWeekday+1+indexPath.item)
+            cell.setNonCurrent()
+            
+        }
+        ///다음달
+        else if indexPath.item >= selectedDate.firstWeekday+selectedDate.numberOfMonth{
+            ///indexPath.item == firstWeekday+numberOfMonth
+            cell.dayLabel.text = String(indexPath.item - (selectedDate.firstWeekday + selectedDate.numberOfMonth) + 1)
+            cell.setNonCurrent()
+            
+        }
+        
+        ///데이터 표시
+        if monthlyWeathyList.count > 0 && (monthlyWeathyList.count == selectedDate.monthlyLines*7){
+            if let data = monthlyWeathyList[indexPath.item]{
+                cell.setData(high: data.temperature.maxTemp, low: data.temperature.minTemp)
+            }
+            
+            
+        }
+        
+        
+        return cell
+        
     }
-    ///다음달
-    else if indexPath.item >= selectedDate.firstWeekday+selectedDate.numberOfMonth{
-    ///indexPath.item == firstWeekday+numberOfMonth
-    cell.dayLabel.text = String(indexPath.item - (selectedDate.firstWeekday + selectedDate.numberOfMonth) + 1)
-    cell.setNonCurrent()
-    
-    }
-    
-    return cell
-    
-}
 }
