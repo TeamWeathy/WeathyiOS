@@ -62,7 +62,7 @@ class MainTopCVC: UICollectionViewCell {
     }
     
     func changeWeathyViewData(data: RecommendedWeathyData) {
-        print(data.weathy)
+//        print(data.weathy)
         if (data.weathy == nil) {
             showEmptyView()
             return

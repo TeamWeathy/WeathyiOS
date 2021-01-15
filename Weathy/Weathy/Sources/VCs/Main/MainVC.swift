@@ -45,9 +45,6 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        fallingRain()
-        fallingSnow()
-        
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
     }
@@ -56,9 +53,16 @@ class MainVC: UIViewController {
     
     func setViewByData(data: LocationWeatherData) {
         // background 설정
-        mainBackgroundImage.image = UIImage(named: "main_bg_snowrain")
+        let iconId = data.overviewWeather.hourlyWeather.climate.iconID
+        mainBackgroundImage.image = UIImage(named: Climate.getClimateMainBgName(iconId))
+        topBlurView.image = UIImage(named: Climate.getClimateMainBlurBarName(iconId))
+
+        if (iconId % 100 == 13) {
+            fallingSnow()
+        } else if (iconId % 100 == 10) {
+            fallingRain()
+        }
         
-        topBlurView.image = UIImage(named: "mainscroll_box_topblur_snowrain")
         topBlurView.frame.origin.y -= topBlurView.bounds.height
         topBlurView.alpha = 0
         

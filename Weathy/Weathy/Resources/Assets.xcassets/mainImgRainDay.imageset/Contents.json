@@ -1,14 +1,14 @@
 {
   "images" : [
     {
-      "scale" : "1x",
+      "idiom" : "universal",
       "filename" : "mainImgRainDay.png",
-      "idiom" : "universal"
+      "scale" : "1x"
     },
     {
+      "filename" : "mainImgRainDay@2x.png",
       "scale" : "2x",
-      "idiom" : "universal",
-      "filename" : "mainImgRainDay@2x.png"
+      "idiom" : "universal"
     },
     {
       "filename" : "mainImgRainDay@3x.png",

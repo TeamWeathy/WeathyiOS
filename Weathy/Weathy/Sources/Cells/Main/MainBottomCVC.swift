@@ -56,7 +56,7 @@ class MainBottomCVC: UICollectionViewCell {
     //MARK: - Custom Methods
     func setCell() {
         // remove: 스크롤 후 배경 픽스된 것 없으면 삭제
-        cellBackgroundImage.image = UIImage(named: "search_bg_snowrain") 
+//        cellBackgroundImage.image = UIImage(named: "search_bg_snowrain") 
         
         timeZoneWeatherView.backgroundColor = .white
         timeZoneWeatherView.makeRounded(cornerRadius: 35)

@@ -17,7 +17,7 @@ struct Climate {
         case 3:
             return "ic_scatteredclouds"
         case 4:
-            return "ic_scatteredclouds"
+            return "ic_brokenclouds"
         case 9:
             return climateId < 100 ? "icShowerrainDay" : "icShowerrainNight"
         case 10:
@@ -26,8 +26,38 @@ struct Climate {
             return "ic_thunderstorm"
         case 13:
             return "ic_snow"
-        case 15:
+        case 50:
             return "ic_mist"
+        default:
+            return ""
+        }
+    }
+    
+    static func getClimateMainBgName(_ climateId: Int) -> String {
+        switch (climateId % 100) {
+        case 1, 2:
+            return climateId < 100 ? "mainBgMorningSun" : "mainBgNightStar"
+        case 3:
+            return climateId < 100 ? "main_bg_morning" : "mainBgNight"
+        case 4:
+            return climateId < 100 ? "mainBgCloudy" : "mainBgNight"
+        case 9:
+            return climateId < 100 ? "icShowerrainDay" : "icShowerrainNight"
+        case 10, 13:
+            return climateId < 100 ? "mainBgSnowrainDay" : "mainBgSnowrainNight"
+        case 11, 50:
+            return climateId < 100 ? "mainBgCloudy" : "mainBgNight"
+        default:
+            return ""
+        }
+    }
+    
+    static func getClimateMainBlurBarName(_ climateId: Int) -> String {
+        switch (climateId % 100) {
+        case 1, 2, 3:
+            return climateId < 100 ? "mainscroll_box_topblur_morning" : "mainscroll_box_topblur_night"
+        case 4, 9, 10, 11, 13, 50:
+            return climateId < 100 ? "mainscroll_box_topblur_snowrain" : "mainscroll_box_topblur_night"
         default:
             return ""
         }
