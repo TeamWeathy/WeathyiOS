@@ -10,15 +10,14 @@ import UIKit
 class MainVC: UIViewController {
     //MARK: - Custom Variables
     var lastContentOffset: CGFloat = 0.0
-    var mainDeliverSearchInfo : [SearchRecentInfo] = []
+    var mainDeliverSearchInfo : SearchRecentInfo?
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
     var dailyWeatherData: DailyWeatherData?
     var extraWeatherData: ExtraWeatherData?
-    
-    var serchBackImage : String = ""
-    var searchGradient : String = ""
+    var searchImage: String?
+    var searchGradient: String?
     
     //MARK: - IBOutlets
     
@@ -33,16 +32,12 @@ class MainVC: UIViewController {
     //MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        // fix: 닉네임 뷰에서 처리할 로직
-        UserDefaults.standard.setValue("62:CfL6LqDE3Y6aF3QA3IdUjpTAPbC0gI", forKey: "token")
-        UserDefaults.standard.setValue("이내옹", forKey: "nickname")
-        UserDefaults.standard.setValue(62, forKey: "userId")
-        
+    // fix: 닉네임 뷰에서 처리할 로직
+//        UserDefaults.standard.setValue("62:CfL6LqDE3Y6aF3QA3IdUjpTAPbC0gI", forKey: "token")
+//        UserDefaults.standard.setValue("이내옹", forKey: "nickname")
+//        UserDefaults.standard.setValue(62, forKey: "userId")
+//
         getLocationWeather()
-        getRecommendedWeathy()
-        getHourlyWeather()
-        getDailyWeather()
-        getExtraWeather()
     }
     
     override func viewDidLoad() {
@@ -60,7 +55,7 @@ class MainVC: UIViewController {
         mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
         topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
 
-        serchBackImage = ClimateImage.getClimateMainBgName(iconId)
+        searchImage = ClimateImage.getClimateMainBgName(iconId)
         searchGradient = ClimateImage.getSearchClimateMainBlurBarName(iconId)
         
         if (iconId % 100 == 13) {
@@ -99,6 +94,11 @@ class MainVC: UIViewController {
                     }
 
                     UserDefaults.standard.setValue(response.overviewWeather.region.code, forKey: "locationCode")
+                    
+                    self.getRecommendedWeathy()
+                    self.getHourlyWeather()
+                    self.getDailyWeather()
+                    self.getExtraWeather()
                 }
             case .requestErr(let msg):
                 print(msg)
@@ -254,24 +254,27 @@ class MainVC: UIViewController {
     
     @IBAction func touchUpSetting(_ sender: Any) {
         print("setting")
-        let storyB = UIStoryboard.init(name: "Setting", bundle: nil)
+        let settingStoryboard = UIStoryboard.init(name: "Setting", bundle: nil)
         
-        guard let vc = storyB.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
+        guard let settingNVC = settingStoryboard.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
 
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        settingNVC.modalPresentationStyle = .fullScreen
+        present(settingNVC, animated: true, completion: nil)
     }
     
     @IBAction func touchUpSearch(_ sender: Any) {
         print("search")
-        let storyB = UIStoryboard.init(name: "MainSearch", bundle: nil)
+        let mainSearchStoryboard = UIStoryboard.init(name: "MainSearch", bundle: nil)
+        guard let mainSearchVC = mainSearchStoryboard.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
         
-        guard let vc = storyB.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
-        vc.backImage = self.serchBackImage
-        vc.gradient = self.searchGradient
+        if let image = self.searchImage,
+           let gradient = self.searchGradient {
+            mainSearchVC.backImage = image
+            mainSearchVC.gradient = gradient
+        }
         
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        mainSearchVC.modalPresentationStyle = .fullScreen
+        self.present(mainSearchVC, animated: true, completion: nil)
     }
 }
 

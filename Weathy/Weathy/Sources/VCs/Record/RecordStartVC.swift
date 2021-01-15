@@ -11,6 +11,8 @@ class RecordStartVC: UIViewController {
 
     //MARK: - Custom Variables
     
+    var dateString: String = "0000-00-00"
+    
     var todayMonth: Int = 1
     var todayDate: Int = 1
     
