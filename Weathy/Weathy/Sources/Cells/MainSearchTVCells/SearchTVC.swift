@@ -61,7 +61,7 @@ class SearchTVC: UITableViewCell {
     func textFont(){
         weatherDate.font = UIFont.SDGothicRegular15
         weatherTime.font = UIFont.SDGothicRegular15
-        location.font = UIFont.SDGothicSemiBold17
+        location.font = UIFont.SDGothicRegular18
         currentTemper.font = UIFont.RobotoLight50
         highTemper.font = UIFont.RobotoLight23
         lowTemper.font = UIFont.RobotoLight23
