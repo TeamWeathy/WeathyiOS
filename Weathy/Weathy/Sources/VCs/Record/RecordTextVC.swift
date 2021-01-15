@@ -12,6 +12,7 @@ class RecordTextVC: UIViewController {
     //MARK: - Custom Variables
     
     var dateString: String = "0000-00-00"
+    var locationCode: CLong = -1
     
     var selectedTags: [Int] = []
     var selectedStamp: Int = -1
@@ -231,7 +232,8 @@ extension RecordTextVC {
     }
     
     func callRecordWeathyService() {
-        RecordWeathyService.shared.recordWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
+        RecordWeathyService.shared.recordWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
+            print(">>>>>>>", self.locationCode)
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {

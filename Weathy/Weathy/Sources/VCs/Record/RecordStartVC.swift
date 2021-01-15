@@ -31,6 +31,8 @@ class RecordStartVC: UIViewController {
     
     var recordDeliverSearchInfo : OverviewWeatherList?
     
+    var locationCode: CLong = -1
+    
     //MARK: - IBOutlets
     
     @IBOutlet var dismissBtn: UIButton!
@@ -69,6 +71,10 @@ class RecordStartVC: UIViewController {
         
         print(">>>>>", dateString)
         print(">>>>>", dateToday)
+        
+        locationCode = recordDeliverSearchInfo?.region.code ?? -1
+        print(recordDeliverSearchInfo)
+        print(">>>>>>>", locationCode)
 
         // Do any additional setup after loading the view.
     }
@@ -102,6 +108,7 @@ class RecordStartVC: UIViewController {
         }
         
         dvc.dateString = dateString
+        dvc.locationCode = locationCode
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }
