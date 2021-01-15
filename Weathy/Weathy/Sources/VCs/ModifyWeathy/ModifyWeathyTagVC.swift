@@ -341,7 +341,48 @@ extension ModifyWeathyTagVC {
                 }
             }
         }
-        // -> 이거 잘 되면 복붙하기
+        
+        if weathyData?.closet.bottom.clothes != nil {
+            for i in 0...(weathyData?.closet.bottom.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.bottom.clothes[i].id)!
+                
+                for b in 0...tagTitles[1].tagTab.count {
+                    if tagTitles[1].tagTab[b].id == currentTag {
+                        tagTitles[1].tagTab[b].isSelected = true
+                        selectedTags.append(currentTag)
+                        break
+                    }
+                }
+            }
+        }
+        
+        if weathyData?.closet.outer.clothes != nil {
+            for i in 0...(weathyData?.closet.outer.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.outer.clothes[i].id)!
+                
+                for b in 0...tagTitles[2].tagTab.count {
+                    if tagTitles[2].tagTab[b].id == currentTag {
+                        tagTitles[2].tagTab[b].isSelected = true
+                        selectedTags.append(currentTag)
+                        break
+                    }
+                }
+            }
+        }
+        
+        if weathyData?.closet.etc.clothes != nil {
+            for i in 0...(weathyData?.closet.etc.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.etc.clothes[i].id)!
+                
+                for b in 0...tagTitles[3].tagTab.count {
+                    if tagTitles[3].tagTab[b].id == currentTag {
+                        tagTitles[3].tagTab[b].isSelected = true
+                        selectedTags.append(currentTag)
+                        break
+                    }
+                }
+            }
+        }
         
         
         
