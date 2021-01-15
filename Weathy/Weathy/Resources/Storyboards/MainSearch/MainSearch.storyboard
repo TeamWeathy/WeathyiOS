@@ -478,9 +478,6 @@
                             <constraint firstItem="qok-ah-D0h" firstAttribute="trailing" secondItem="YTn-YA-9ib" secondAttribute="trailing" id="vZ7-9g-Max"/>
                             <constraint firstItem="qok-ah-D0h" firstAttribute="bottom" secondItem="tB8-eo-ezL" secondAttribute="bottom" id="yrF-34-vtc"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="H1P-WQ-81B" appends="YES" id="LyB-V3-DFq"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="backView" destination="s5z-ci-BAd" id="dS8-dq-BRJ"/>
@@ -496,11 +493,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJ3-SI-E1O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="H1P-WQ-81B">
-                    <connections>
-                        <action selector="backtextGR:" destination="X48-xn-HU0" id="XQa-5r-iWo"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="H1P-WQ-81B"/>
             </objects>
             <point key="canvasLocation" x="199.19999999999999" y="101.97044334975369"/>
         </scene>

@@ -17,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bre-w5-Y9h">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Nnl-Jr-muc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
@@ -96,10 +100,6 @@
                                     <constraint firstAttribute="width" constant="9" id="NQt-27-Ndn"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bre-w5-Y9h">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2UP-hJ-Rj1"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
@@ -120,6 +120,7 @@
                             <constraint firstItem="A4D-vv-KYn" firstAttribute="top" secondItem="Xdx-y9-Waj" secondAttribute="top" constant="88" id="LnK-3L-FqF"/>
                             <constraint firstAttribute="bottom" secondItem="Isq-6G-8RV" secondAttribute="bottom" constant="121" id="Nbf-NJ-oGB"/>
                             <constraint firstItem="BQt-41-9hc" firstAttribute="top" secondItem="ceg-9O-kML" secondAttribute="top" constant="80" id="OOw-em-r4Z"/>
+                            <constraint firstItem="Xdx-y9-Waj" firstAttribute="top" secondItem="mTK-dV-Mix" secondAttribute="bottom" constant="54" id="OtK-kq-u0Y"/>
                             <constraint firstItem="Bre-w5-Y9h" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="Tya-QZ-IS4"/>
                             <constraint firstAttribute="bottom" secondItem="Xdx-y9-Waj" secondAttribute="bottom" id="Uil-hr-U9f"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="A4D-vv-KYn" secondAttribute="trailing" constant="29" id="VJu-O8-zGk"/>
