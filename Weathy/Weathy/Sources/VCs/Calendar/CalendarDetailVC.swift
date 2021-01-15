@@ -354,8 +354,11 @@ class CalendarDetailVC: UIViewController {
     }
     @IBAction func editBtnDidTap(_ sender: Any) {
         
-                guard let recordEdit = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordVC") as? RecordVC else{ return }
-                self.navigationController?.pushViewController(recordEdit, animated: true)
+//        guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
+//        
+//        recordEdit.modalPresentationStyle = .fullScreen
+//        recordEdit.weathyData = dailyWeathy
+//        self.present(recordEdit, animated: true)
         
     }
     @IBAction func deleteBtnDidTap(_ sender: Any) {
