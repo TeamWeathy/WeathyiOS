@@ -16,6 +16,8 @@ class RecordNVC: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sendData()
 
         // Do any additional setup after loading the view.
     }

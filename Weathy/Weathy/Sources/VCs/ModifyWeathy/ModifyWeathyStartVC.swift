@@ -66,6 +66,8 @@ class ModifyWeathyStartVC: UIViewController {
         /// 구조체 안에 담긴 옷 태그 데이터를 배열로 변환하는 함수
         getClothesArray()
         
+        print(">>>>>", dateString)
+        
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.locale = Locale(identifier: "ko_KR")
 //        dateFormatter.dateFormat = "yyyy-MM-dd"

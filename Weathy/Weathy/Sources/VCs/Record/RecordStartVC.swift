@@ -65,6 +65,8 @@ class RecordStartVC: UIViewController {
 //        dateFormatter.locale = Locale(identifier: "ko_KR")
 //        dateFormatter.dateFormat = "yyyy-MM-dd"
 //        self.fullDate = dateFormatter.date(from: "2021-01-25")
+        
+        print(">>>>>", dateString)
 
         // Do any additional setup after loading the view.
     }

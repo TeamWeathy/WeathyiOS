@@ -40,8 +40,6 @@ class RecordTagDeleteVC: UIViewController {
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var nextBtn: UIButton!
     
-    
-    
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
