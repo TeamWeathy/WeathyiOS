@@ -20,7 +20,7 @@ struct MonthlyWeathyService{
     func getMonthlyCalendar(userID: Int, startDate: String, endDate: String, completion: @escaping (NetworkResult<Any>) -> (Void)){
         let url = makeURL(userID: userID, startDate: startDate, endDate: endDate)
 //        let token = UserDefaults.standard.string(forKey: "token")
-        let token = "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5"
+        let token = UserDefaults.standard.string(forKey: "token")!
         let header: HTTPHeaders = [
             "Content-Type": "application/json",
             "x-access-token": token
@@ -45,11 +45,11 @@ struct MonthlyWeathyService{
     }
     private func judgeMonthlyWeathyData(status: Int, data: Data,url: String) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
-        print(">> net status, data, url",status,data,url)
+//        print(">> net status, data, url",status,data,url)
         guard let decodedData = try? decoder.decode(MonthlyWeathyData.self, from: data) else{
             return .pathErr
         }
-        print(">>> net decodedData",decodedData.calendarOverviewList)
+//        print(">>> net decodedData",decodedData.calendarOverviewList)
         switch status{
             case 200:
                 return .success(decodedData.calendarOverviewList)

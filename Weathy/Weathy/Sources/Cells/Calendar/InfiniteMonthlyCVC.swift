@@ -47,11 +47,10 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     //MARK: - Network
     
     func callMonthlyWeathy(){
-        MonthlyWeathyService.shared.getMonthlyCalendar(userID: 63, startDate: selectedDate.startDate, endDate: selectedDate.endDate){ (networkResult) -> (Void) in
+        MonthlyWeathyService.shared.getMonthlyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), startDate: selectedDate.startDate, endDate: selectedDate.endDate){ (networkResult) -> (Void) in
             switch networkResult {
                 case .success(let data):
                     if let monthlyData = data as? [CalendarOverview?]{
-                        print(">>netsucess",monthlyData)
                         self.monthlyWeathyList = monthlyData
                         DispatchQueue.main.async {
                             self.monthlyCalendarCV.reloadData()
@@ -59,13 +58,13 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
                     }
                     
                 case .requestErr(let msg):
-                    print(">>networkrequest",msg)
+                    print("[Monthly] requestErr",msg)
                 case .serverErr:
-                    print(">>networkserverErr")
+                    print("[Monthly] serverErr")
                 case .networkFail:
-                    print(">>networknetworkFail")
+                    print("[Monthly] networkFail")
                 case .pathErr:
-                    print(">>networkpathErr")
+                    print("[Monthly] pathErr")
                     
             }
             
@@ -154,7 +153,6 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
 
 extension InfiniteMonthlyCVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(">>net",selectedDate,selectedDate.monthlyLines*7,monthlyWeathyList.count,monthlyWeathyList)
         return selectedDate.monthlyLines*7
     }
     

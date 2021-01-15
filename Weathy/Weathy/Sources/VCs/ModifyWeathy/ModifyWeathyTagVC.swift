@@ -357,7 +357,7 @@ extension ModifyWeathyTagVC {
             for i in 0...(weathyData?.closet.top.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.top.clothes[i].id)!
                 
-                for b in 0...tagTitles[0].tagTab.count {
+                for b in 0...tagTitles[0].tagTab.count - 1 {
                     if tagTitles[0].tagTab[b].id == currentTag {
                         tagTitles[0].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
@@ -372,7 +372,7 @@ extension ModifyWeathyTagVC {
             for i in 0...(weathyData?.closet.bottom.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.bottom.clothes[i].id)!
                 
-                for b in 0...tagTitles[1].tagTab.count {
+                for b in 0...tagTitles[1].tagTab.count - 1 {
                     if tagTitles[1].tagTab[b].id == currentTag {
                         tagTitles[1].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
@@ -387,7 +387,7 @@ extension ModifyWeathyTagVC {
             for i in 0...(weathyData?.closet.outer.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.outer.clothes[i].id)!
                 
-                for b in 0...tagTitles[2].tagTab.count {
+                for b in 0...tagTitles[2].tagTab.count - 1 {
                     if tagTitles[2].tagTab[b].id == currentTag {
                         tagTitles[2].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
@@ -402,7 +402,7 @@ extension ModifyWeathyTagVC {
             for i in 0...(weathyData?.closet.etc.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.etc.clothes[i].id)!
                 
-                for b in 0...tagTitles[3].tagTab.count {
+                for b in 0...tagTitles[3].tagTab.count - 1 {
                     if tagTitles[3].tagTab[b].id == currentTag {
                         tagTitles[3].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
@@ -442,7 +442,7 @@ extension ModifyWeathyTagVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5", date: dateString, code: 1141000000, clothArray: selectedTags, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: 1141000000, clothArray: selectedTags, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             print(self.weathyData?.weathyId ?? -1)
             switch networkResult {
             case .success(let data):
