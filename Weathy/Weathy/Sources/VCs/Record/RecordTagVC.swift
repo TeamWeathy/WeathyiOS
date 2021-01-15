@@ -27,6 +27,8 @@ class RecordTagVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var dateString: String = "0000-00-00"
+    
     var notificationGenerator: UIImpactFeedbackGenerator?
     
     var tagUpper: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
@@ -187,6 +189,7 @@ class RecordTagVC: UIViewController {
         }
         
         dvc.selectedTags = selectedTags
+        dvc.dateString = dateString
         
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }

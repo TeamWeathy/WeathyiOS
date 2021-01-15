@@ -11,8 +11,9 @@ class RecordStartVC: UIViewController {
 
     //MARK: - Custom Variables
     
+    var dateToday: CalendarDateClass?
     var dateString: String = "0000-00-00"
-    
+
     var todayMonth: Int = 1
     var todayDate: Int = 1
     
@@ -83,6 +84,8 @@ class RecordStartVC: UIViewController {
             
             visitedFlag = true
         }
+        
+        dvc.dateString = dateString
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }
