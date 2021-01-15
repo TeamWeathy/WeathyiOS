@@ -15,6 +15,9 @@ struct APIConstants{
     
     ///weekly url
     static let dailyWeathyURL = baseURL + "/weathy?date={date}"
+    
+    ///delete url
+    static let deleteWeathyURL = baseURL + "/weathy/:weathy-id"
   
     // Main WeatherByLocation
     static let getWeatherByLocationURL = baseURL + "/weather/overview"
@@ -38,4 +41,5 @@ struct APIConstants{
     static func getHourlyWeatherURL(code: String, date: String) -> String {
         return baseURL + "/weather/forecast/hourly?code=\(code)&date=\(date)"
     }
+    
 }

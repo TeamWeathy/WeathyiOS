@@ -27,7 +27,7 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
         weeklyCalendarCV.delegate = self
         weeklyCalendarCV.dataSource = self
         callWeeklyWeathy()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(setDeleted(_:)), name: NSNotification.Name("DeleteWeathy"), object: nil)
     }
     
     //MARK: - Network
@@ -72,6 +72,16 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
             
         }
     }
+    
+    @objc func setDeleted(_ noti: Notification){
+        if let idx = noti.object as? Int{
+            if let cell = weeklyCalendarCV.cellForItem(at:[0,idx]) as? WeeklyCalendarCVC{
+                cell.emotionView.alpha = 0
+            }
+        }
+        
+    }
+    
     
 }
 extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{

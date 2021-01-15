@@ -271,18 +271,18 @@ class CalendarDetailVC: UIViewController {
             switch networkResult{
                 case .success(let data):
                     if let dailyData = data as? CalendarWeathy{
-                        print(">>netsucessdaily",dailyData)
+                        print("[Daily]",dailyData)
                         self.dailyWeathy = dailyData
                         self.setData()
                     }
                 case .requestErr(let msg):
-                    print(">>networkrequestdaily",msg)
+                    print("[Daily] requestErr",msg)
                 case .serverErr:
-                    print(">>networkserverErrdaily")
+                    print("[Daily] serverErr")
                 case .networkFail:
-                    print(">>networknetworkFaildaily")
+                    print(">>[Daily] networkFail")
                 case .pathErr:
-                    print("[daily] pathErr - No content")
+                    print("[Daily] pathErr - No content")
                     
                     if self.selectedDate.compare(dateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
                         print("Before Content")
@@ -310,7 +310,27 @@ class CalendarDetailVC: UIViewController {
     }
     
     @objc func deleteAction(_ sender: Any){
-        self.parent?.view.addSubview(self.blurView)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko-Kr")
+        DeleteWeathyService.shared.deleteWeathy(weathyId: dailyWeathy!.weathyId){ (networkResult) -> (Void) in
+            switch networkResult{
+                case .success(let message):
+                    print("[Delete]",message)
+                    self.blurView.removeFromSuperview()
+                    self.selectedDateDidChange(nil)
+                    NotificationCenter.default.post(name: NSNotification.Name("DeleteWeathy"), object: self.selectedDate.weekday)
+                case .requestErr(let message):
+                    print("[Delete] requestErr",message)
+                case .networkFail:
+                    print("[Delete] networkFail")
+                case .pathErr:
+                    print("[Delete] pathErr")
+                case .serverErr:
+                    print("[Delete] serverErr")
+            }
+        }
+//        self.parent?.view.addSubview(self.blurView)
     }
     
     @objc func selectedDateDidChange(_ notification: NSNotification?){

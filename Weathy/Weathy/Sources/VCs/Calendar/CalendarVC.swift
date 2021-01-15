@@ -59,6 +59,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         setStyle()
         initPicker()
         NotificationCenter.default.addObserver(self, selector: #selector(setSelected(_:)), name: NSNotification.Name("ChangeData"), object: nil)
+
         print("today",Calendar.current.dateComponents(in: TimeZone.current, from: selectedDate))
         
     }
@@ -395,6 +396,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     @objc func setSelected(_ noti: Notification){
         selectedDate = noti.object as! Date
         selectedDateDidChange()
+    }
+    @objc func setDeleted(_ noti: Notification){
+//        week
     }
     
     //MARK: - IBActions
