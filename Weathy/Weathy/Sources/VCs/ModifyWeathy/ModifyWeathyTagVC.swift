@@ -7,25 +7,11 @@
 
 import UIKit
 
-//MARK: - struct
-
-struct Tag {
-    let id: Int
-    let name: String
-//        let tag: TagNameData
-    var isSelected: Bool
-}
-
-struct TagTitle {
-    let title: String
-    var count: Int
-    var isSelected: Bool
-    var tagTab: [Tag]
-}
-
-class RecordTagVC: UIViewController {
+class ModifyWeathyTagVC: UIViewController {
     
     //MARK: - Custom Variables
+    
+    var weathyData: CalendarWeathy?
     
     var notificationGenerator: UIImpactFeedbackGenerator?
     
@@ -40,7 +26,7 @@ class RecordTagVC: UIViewController {
     var titleIndex: Int = 0 // 현재 선택된 태그 카테고리
     
     var visitedFlag: Bool = false // 다음 뷰로 넘어간 적이 있는지 판단
-    var dvc = RecordRateVC()
+    var dvc = ModifyWeathyRateVC()
     
     var myClothesTagData: ClothesTagData?
     var localizedClothesTagData: [TagCategoryData] = []
@@ -62,6 +48,7 @@ class RecordTagVC: UIViewController {
     @IBOutlet var tagCollectionView: UICollectionView!
     
     @IBOutlet var nextBtn: UIButton!
+    @IBOutlet var finishBtn: UIButton!
     
     
     
@@ -82,15 +69,14 @@ class RecordTagVC: UIViewController {
         setTitleLabel()
         
         // 초기 상태 버튼 (애니메이션 안 들어가야 해서 따로 선언)
-        nextBtn.isUserInteractionEnabled = false
-        nextBtn.backgroundColor = UIColor.subGrey3
+        nextBtn.backgroundColor = .white
         nextBtn.setTitle("다음", for: .normal)
-        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.setTitleColor(.subGrey3, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
+        nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
         
         NotificationCenter.default.addObserver(self, selector: #selector(tagAdded(_:)), name: NSNotification.Name("TagAdded"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(tagDeleted(_:)), name: NSNotification.Name("TagDeleted"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,53 +110,6 @@ class RecordTagVC: UIViewController {
         self.showToast(message: "태그가 추가되었어요!")
     }
     
-    @objc func tagDeleted(_ noti : Notification){
-        let isDeleted = noti.object
-//        print(">>> received")
-        self.showToast(message: "태그가 삭제되었어요!")
-    }
-    
-    @objc func longTap(gesture : UILongPressGestureRecognizer!) {
-        if gesture.state != .ended {
-            
-            self.notificationGenerator = UIImpactFeedbackGenerator(style: .light)
-            self.notificationGenerator?.impactOccurred()
-            
-            let p = gesture.location(in: self.tagCollectionView)
-            
-            if let indexPath = self.tagCollectionView.indexPathForItem(at: p) {
-                // get the cell at indexPath (the one you long pressed)
-//                print(">>>", indexPath)
-//                let cell = self.tagCollectionView.cellForItem(at: indexPath)
-//                print("long press detected")
-                
-                if indexPath[1] == 0 {
-                    return
-                }
-                
-                let nextStoryboard = UIStoryboard(name: "RecordTagDelete", bundle: nil)
-                guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTagDeleteVC") as? RecordTagDeleteVC else {
-                    return
-                }
-                
-                dvc.initialTagTab = titleIndex
-                dvc.initialSelectedIdx = indexPath[1]
-                dvc.initialYOffset = scrollYOffset
-                dvc.tagTitles = tagTitles
-                
-                dvc.modalPresentationStyle = .fullScreen
-                
-                self.present(dvc, animated: false, completion: nil)
-            } else {
-                print("couldn't find index path")
-            }
-        }
-        
-        
-    }
-    
-    
-    
     //MARK: - IBActions
     
     @IBAction func backBtnTap(_ sender: Any) {
@@ -180,31 +119,42 @@ class RecordTagVC: UIViewController {
     @IBAction func nextBtnTap(_ sender: Any) {
         
         if visitedFlag == false {
-            let nextStoryboard = UIStoryboard(name: "RecordRate", bundle: nil)
-            self.dvc = (nextStoryboard.instantiateViewController(identifier: "RecordRateVC") as? RecordRateVC)!
+            let nextStoryboard = UIStoryboard(name: "ModifyWeathyRate", bundle: nil)
+            self.dvc = (nextStoryboard.instantiateViewController(identifier: "ModifyWeathyRateVC") as? ModifyWeathyRateVC)!
             
             visitedFlag = true
         }
         
         dvc.selectedTags = selectedTags
+        dvc.weathyData = weathyData
         
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
     
-    
+    @IBAction func finishBtnDidTap(_ sender: Any) {
+        if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
+            tagTitles[3].count >= 1 {
+            self.dismiss(animated: true, completion: nil)
+        }
+        else {
+            self.showToast(message: "태그를 한 개 이상 선택해주세요.")
+        }
+        
+        
+    }
 }
 
 
 //MARK: - Style
 
-extension RecordTagVC {
+extension ModifyWeathyTagVC {
     func setHeader() {
-        titleLabel.text = "\(name)님은 오늘\n어떤 옷을 입었나요?"
-        titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
-        titleLabel.textColor = UIColor.mainGrey
         titleLabel.numberOfLines = 2
+        titleLabel.text = "\(name)님\n어떤 옷을 입었나요?"
+        titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
+        titleLabel.textColor = .mainGrey
         
-        explanationLabel.text = "옷은 길게 눌러 삭제하고, +를 눌러 추가할 수 있어요."
+        explanationLabel.text = "수정하기에서는 태그를 삭제할 수 없어요."
         explanationLabel.font = UIFont.SDGothicRegular16
         explanationLabel.textColor = UIColor.subGrey6
         
@@ -217,23 +167,24 @@ extension RecordTagVC {
         
         indicatorCircle[2].layer.cornerRadius = 4.5
         indicatorCircle[2].backgroundColor = UIColor.subGrey7
+        
+        finishBtn.backgroundColor = .mintMain
+        finishBtn.setTitle("수정완료", for: .normal)
+        finishBtn.setTitleColor(.white, for: .normal)
+        finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        finishBtn.layer.cornerRadius = 30
     }
     
     func setTitleLabel() {
-        let attributedString = NSMutableAttributedString(string: "희지님\n어떤 옷을 입었나요?", attributes: [
-            .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
-            .foregroundColor: UIColor.mainGrey,
-            .kern: -1.25
-        ])
+        
+        let attributedString = NSMutableAttributedString(string: titleLabel.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
+                                      value: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!, range: (titleLabel.text! as NSString).range(of: "어떤 옷"))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.mintIcon, range: (titleLabel.text! as NSString).range(of: "어떤 옷"))
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
-        
-        attributedString.addAttributes([
-            .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
-            .foregroundColor: UIColor.mintIcon
-        ], range: NSRange(location: 4, length: 4))
         
         titleLabel.attributedText = attributedString
     }
@@ -263,22 +214,24 @@ extension RecordTagVC {
     func setNextBtnActivated() {
         nextBtn.isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.5, animations: {
-            self.nextBtn.backgroundColor = UIColor.mintMain
+            self.nextBtn.backgroundColor = .white
             self.nextBtn.setTitle("다음", for: .normal)
-            self.nextBtn.setTitleColor(.white, for: .normal)
+            self.nextBtn.setTitleColor(.mintIcon, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
             self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.setBorder(borderColor: .mintMain, borderWidth: 1)
         })
     }
     
     func setNextBtnDeactivated() {
         nextBtn.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.5, animations: {
-            self.nextBtn.backgroundColor = UIColor.subGrey3
+            self.nextBtn.backgroundColor = .white
             self.nextBtn.setTitle("다음", for: .normal)
-            self.nextBtn.setTitleColor(.white, for: .normal)
+            self.nextBtn.setTitleColor(.subGrey3, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
             self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
         })
     }
     
@@ -307,7 +260,7 @@ extension RecordTagVC {
     }
     
     func callDisplayTagService() {
-        RecordTagService.shared.displayTag(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M") { (networkResult) -> (Void) in
+        RecordTagService.shared.displayTag(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5") { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? ClothesTagData {
@@ -365,13 +318,39 @@ extension RecordTagVC {
                 }
             }
         }
+        
+        setRecordedData()
 
+    }
+    
+    func setRecordedData() {
+        
+        var currentTag: Int = -1
+        
+        /// 이미 선택돼있는 태그 id 값 비교해 isSelected 변경 (상의)
+        if weathyData?.closet.top.clothes != nil {
+            for i in 0...(weathyData?.closet.top.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.top.clothes[i].id)!
+                
+                for b in 0...tagTitles[0].tagTab.count {
+                    if tagTitles[0].tagTab[b].id == currentTag {
+                        tagTitles[0].tagTab[b].isSelected = true
+                        selectedTags.append(currentTag)
+                        break
+                    }
+                }
+            }
+        }
+        // -> 이거 잘 되면 복붙하기
+        
+        
+        
     }
 }
 
 //MARK: - UICollectionViewDataSource
 
-extension RecordTagVC: UICollectionViewDataSource {
+extension ModifyWeathyTagVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -405,33 +384,19 @@ extension RecordTagVC: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap))
-            cell.addGestureRecognizer(longPressGesture)
-            
             cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
-//            print(tagTitles[titleIndex].tagTab[indexPath.item].name)
+
             cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
             
             if indexPath.item == 0 {
-//                cell.tagLabel.font = UIFont.SDGothicRegular15
-//                cell.layer.borderWidth = 1
-//                cell.layer.cornerRadius = 19.5
-//                cell.layer.borderColor = UIColor.subGrey3.cgColor
-//                cell.tagLabel.textColor = .black
-//                cell.backgroundColor = .white
-                
                 cell.tagLabel.isHidden = true
                 cell.addTagImage.isHidden = false
                 cell.layer.borderWidth = 0
                 cell.backgroundColor = .white
-//                print(">>>", indexPath.item)
             }
             else {
                 
-//                print(">>>", tagTitles[titleIndex].tagTab.count, localizedClothesTagData[titleIndex].clothes!.count)
-                
                 if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
-//                    print(">>>", indexPath.item)
                     setTagUnselected(cell: cell)
                 }
                 else {
@@ -450,9 +415,6 @@ extension RecordTagVC: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             cell.setCell(title: tagTitles[indexPath.item].title, total: tagTitles[titleIndex].tagTab.count, count: tagTitles[indexPath.item].count, isSelected: tagTitles[indexPath.item].isSelected, isDeleteView: false)
-            
-            //            cell.layer.borderWidth = 1
-            //            cell.layer.borderColor = UIColor.black.cgColor
             
             return cell
         }
@@ -473,7 +435,9 @@ extension RecordTagVC: UICollectionViewDataSource {
 //                print("I'm chosen")
                 
                 if tagTitles[titleIndex].tagTab.count <= 50 {
-                    guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordTagAddPopupVC") as? RecordTagAddPopupVC else {
+                    let nextStoryboard = UIStoryboard(name: "RecordTag", bundle: nil)
+                    
+                    guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTagAddPopupVC") as? RecordTagAddPopupVC else {
                         return
                     }
                     
@@ -574,7 +538,7 @@ extension RecordTagVC: UICollectionViewDataSource {
 
 //MARK: - UICollectionViewDelegateFlowLayout
 
-extension RecordTagVC: UICollectionViewDelegateFlowLayout {
+extension ModifyWeathyTagVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

@@ -267,7 +267,7 @@ class CalendarDetailVC: UIViewController {
     func callDailyWeathy(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        DailyWeathyService.shared.getDailyCalendar(userID: 61, date: dateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
+        DailyWeathyService.shared.getDailyCalendar(userID: 63, date: dateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let data):
                     if let dailyData = data as? CalendarWeathy{
@@ -372,7 +372,7 @@ class CalendarDetailVC: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "ko-Kr")
         record.modalPresentationStyle = .fullScreen
-        record.dateString = dateFormatter.string(from: selectedDate)
+//        record.dateString = dateFormatter.string(from: selectedDate)
         self.present(record, animated: true)
     }
     

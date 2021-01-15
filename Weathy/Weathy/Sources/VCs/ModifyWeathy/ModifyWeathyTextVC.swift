@@ -7,9 +7,11 @@
 
 import UIKit
 
-class RecordTextVC: UIViewController {
+class ModifyWeathyTextVC: UIViewController {
     
     //MARK: - Custom Variables
+    
+    var weathyData: CalendarWeathy?
     
     var selectedTags: [Int] = []
     var selectedStamp: Int = -1
@@ -19,6 +21,7 @@ class RecordTextVC: UIViewController {
     var wordCount: Int = 0
     
     var enteredText: String?
+    var originalText: String = "가나다테스트"
     
     
     
@@ -47,15 +50,6 @@ class RecordTextVC: UIViewController {
         
         
         recordTextView.delegate = self
-//        recordTextView.addTarget(self, action: #selector(textViewDidChange(sender:)),for: .editingChanged)
-//        recordTextView.add
-        
-        finishBtn.isUserInteractionEnabled = false
-        finishBtn.backgroundColor = UIColor.subGrey3
-        finishBtn.setTitle("내용 추가하기", for: .normal)
-        finishBtn.setTitleColor(.white, for: .normal)
-        finishBtn.layer.cornerRadius = 30
-        finishBtn.titleLabel?.font = .SDGothicSemiBold16
         
         textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
         textViewSurroundingView.layer.borderWidth = 1
@@ -64,6 +58,8 @@ class RecordTextVC: UIViewController {
         wordCountLabel.text = "0"
         wordCountLabel.font = UIFont.SDGothicRegular13
         wordCountLabel.textColor = UIColor.subGrey6
+        
+        originalText = weathyData?.feedback ?? ""
 
         
     }
@@ -81,13 +77,13 @@ class RecordTextVC: UIViewController {
     
     @IBAction func backBtnTap(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: false)
-        self.enteredText = ""
-        callRecordWeathyService()
+        self.enteredText = originalText
+        callModifyWeathyService()
 //        self.showToast(message: "웨디에 내용이 추가되었어요!")
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        callRecordWeathyService()
+        callModifyWeathyService()
 //        self.showToast(message: "웨디에 내용이 추가되었어요!")
     }
     
@@ -105,10 +101,8 @@ class RecordTextVC: UIViewController {
 
 //MARK: - Style
 
-extension RecordTextVC {
+extension ModifyWeathyTextVC {
     func setUpper() {
-//        backBtn.setBackgroundImage(UIImage(named: <#T##String#>), for: .normal)
-//        dismissBtn.setBackgroundImage(UIImage(named: <#T##String#>), for: .normal)
         
         titleLabel.text = "오늘 날씨에 대해\n더 적고 싶은게 있으신가요?"
         titleLabel.numberOfLines = 2
@@ -140,6 +134,7 @@ extension RecordTextVC {
     
     func setTextField() {
         recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
+        recordTextView.text = originalText
         
 //        wordCountLabel.text = "\(wordCount)/\(maxWordCount)"
 //        wordCountLabel.font = UIFont.SDGothicRegular13
@@ -162,21 +157,14 @@ extension RecordTextVC {
     }
     
     func setFinishBtn() {
-        finishBtn.backgroundColor = UIColor.lightGray
-        finishBtn.setTitle("내용 추가하기", for: .normal)
+        finishBtn.backgroundColor = .mintMain
+        finishBtn.setTitle("수정완료", for: .normal)
         finishBtn.setTitleColor(.white, for: .normal)
+        finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         finishBtn.layer.cornerRadius = 30
     }
     
     func textExists() {
-        finishBtn.isUserInteractionEnabled = true
-        UIView.animate(withDuration: 0.5, animations: {
-            self.finishBtn.backgroundColor = UIColor.mintMain
-            self.finishBtn.setTitle("내용 추가하기", for: .normal)
-            self.finishBtn.setTitleColor(.white, for: .normal)
-            self.finishBtn.layer.cornerRadius = 30
-            self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
-        })
         
         textViewSurroundingView.layer.borderColor = UIColor.mintMain.cgColor
         textViewSurroundingView.layer.borderWidth = 1
@@ -187,14 +175,6 @@ extension RecordTextVC {
     }
     
     func textNotExists() {
-        finishBtn.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.5, animations: {
-            self.finishBtn.backgroundColor = UIColor.subGrey3
-            self.finishBtn.setTitle("내용 추가하기", for: .normal)
-            self.finishBtn.setTitleColor(.white, for: .normal)
-            self.finishBtn.layer.cornerRadius = 30
-            self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
-        })
         textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
         textViewSurroundingView.layer.borderWidth = 1
         textViewSurroundingView.layer.cornerRadius = 15
@@ -228,8 +208,8 @@ extension RecordTextVC {
         })
     }
     
-    func callRecordWeathyService() {
-        RecordWeathyService.shared.recordWeathy(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
+    func callModifyWeathyService() {
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {
@@ -258,7 +238,7 @@ extension RecordTextVC {
 
 //MARK: - UITextViewDelegate
 
-extension RecordTextVC: UITextViewDelegate {
+extension ModifyWeathyTextVC: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textViewSetupView()

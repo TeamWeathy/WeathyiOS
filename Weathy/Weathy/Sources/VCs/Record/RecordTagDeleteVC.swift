@@ -11,141 +11,10 @@ class RecordTagDeleteVC: UIViewController {
     
     //MARK: - Custom Variables
     
-    struct Tag {
-        var name: String
-        var isSelected: Bool
-    }
-    
-    struct TagTitle {
-        let title: String
-        var count: Int
-        var isSelected: Bool
-        var tagTab: [Tag]
-    }
-    
-    var tagUpper: [Tag] = [
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
-    
-    var tagUnder: [Tag] = [
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
-    
-    var tagOuter: [Tag] = [
-        Tag(name: "외투", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
-    
-    var tagEtc: [Tag] = [
-        Tag(name: "기타", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
+    var tagUpper: [Tag] = []
+    var tagUnder: [Tag] = []
+    var tagOuter: [Tag] = []
+    var tagEtc: [Tag] = []
     
     var tagTitles: [TagTitle] = []
     
@@ -153,6 +22,11 @@ class RecordTagDeleteVC: UIViewController {
     var titleIndex: Int = 0
     var initialTagTab: Int = 0
     var initialSelectedIdx: Int = 0
+    var initialYOffset: CGFloat = 0
+    
+    var isInitialized: Bool = false
+    
+    var selectedTags: [Int] = []
     
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
@@ -185,18 +59,28 @@ class RecordTagDeleteVC: UIViewController {
         setTitleLabel()
         setCancelBtn()
         
-        self.tagTitles = [
-            TagTitle(title: "상의", count: 0, isSelected: false, tagTab: tagUpper),
-            TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
-            TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
-            TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
-        ]
+        /// + 자리에 있던 아이 삭제
+        for i in 0...3 {
+            tagTitles[i].tagTab.removeFirst()
+            
+            if tagTitles[i].tagTab.count == 0 {
+                break
+            }
+            
+            /// isSelected 초기화
+            for j in 0...tagTitles[i].tagTab.count - 1 {
+                tagTitles[i].tagTab[j].isSelected = false
+            }
+        }
         
         /// 삭제 탭 부를 때 선택했던 셀은 기본적으로 선택돼있게
         titleIndex = initialTagTab
         tagTitles[initialTagTab].tagTab[initialSelectedIdx-1].isSelected = true
         tagTitles[initialTagTab].count = 1
         tagTitles[initialTagTab].isSelected = true
+        selectedTags.append(tagTitles[initialTagTab].tagTab[initialSelectedIdx-1].id)
+        print(initialYOffset)
+        tagCollectionView.contentOffset.y = self.initialYOffset
         
         nextBtn.isUserInteractionEnabled = true
         nextBtn.backgroundColor = UIColor.pink
@@ -205,11 +89,13 @@ class RecordTagDeleteVC: UIViewController {
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
         
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         blurView.alpha = 0
+        animationPrac()
     }
     
     
@@ -236,6 +122,7 @@ class RecordTagDeleteVC: UIViewController {
         
         
         dvc.tagCount = tagWillBeDeletedCount
+        dvc.selectedTags = selectedTags
         
         self.present(dvc, animated: false, completion: nil)
         
@@ -327,6 +214,30 @@ extension RecordTagDeleteVC {
         self.cancelBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         self.cancelBtn.layer.cornerRadius = 30
     }
+    
+    func initPosition() {
+        
+        titleLabel.alpha = 0
+        titleLabel.frame = CGRect(x: titleLabel.frame.origin.x, y: titleLabel.frame.origin.y-10, width: titleLabel.frame.width, height: titleLabel.frame.height)
+        
+        explanationLabel.alpha = 0
+        explanationLabel.frame = CGRect(x: explanationLabel.frame.origin.x, y: explanationLabel.frame.origin.y-10, width: explanationLabel.frame.width, height: explanationLabel.frame.height)
+        
+    }
+    
+    func animationPrac() {
+        self.initPosition()
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.titleLabel.alpha = 1
+            self.titleLabel.frame = CGRect(x: self.titleLabel.frame.origin.x, y: self.titleLabel.frame.origin.y+10, width: self.titleLabel.frame.width, height: self.titleLabel.frame.height)
+        })
+        
+        UIView.animate(withDuration: 1, delay: 0.5, animations: {
+            self.explanationLabel.alpha = 1
+            self.explanationLabel.frame = CGRect(x: self.explanationLabel.frame.origin.x, y: self.explanationLabel.frame.origin.y+10, width: self.explanationLabel.frame.width, height: self.explanationLabel.frame.height)
+        })
+    }
 }
 
 //MARK: - UICollectionViewDataSource
@@ -337,7 +248,7 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-            print(">>>", tagTitles[titleIndex].title ,tagTitles[titleIndex].tagTab.count)
+//            print(">>>", tagTitles[titleIndex].title ,tagTitles[titleIndex].tagTab.count)
             return tagTitles[titleIndex].tagTab.count
         }
         
@@ -357,6 +268,11 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecordTagCVC", for: indexPath) as? RecordTagCVC
             else {
                 return UICollectionViewCell()
+            }
+            
+            if isInitialized == false {
+                tagCollectionView.contentOffset.y = self.initialYOffset
+                isInitialized = true
             }
             
             cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
@@ -398,8 +314,12 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
             
             tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
             if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
+                selectedTags.append(tagTitles[titleIndex].tagTab[indexPath.item].id)
                 tagTitles[titleIndex].count += 1
             } else {
+                let selectedId = tagTitles[titleIndex].tagTab[indexPath.item].id
+                let selectedIndex = selectedTags.firstIndex(of: selectedId)
+                selectedTags.remove(at: selectedIndex!)
                 tagTitles[titleIndex].count -= 1
             }
             
@@ -430,7 +350,7 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
                     
                     if tagTitles[i].isSelected == true {
                         //                        self.titleIndex = i
-                        print("선택된 것 >> ", tagTitles[i].title)
+//                        print("선택된 것 >> ", tagTitles[i].title)
                     } else {
                         self.titleIndex = i
                         tagTitles[i].isSelected = !tagTitles[i].isSelected

@@ -7,9 +7,11 @@
 
 import UIKit
 
-class RecordRateVC: UIViewController {
+class ModifyWeathyRateVC: UIViewController {
     
     //MARK: - Custom Variables
+    
+    var weathyData: CalendarWeathy?
     
     struct Rates {
         let emoji: String
@@ -34,6 +36,7 @@ class RecordRateVC: UIViewController {
     @IBOutlet var indicatorCircle: [UIView]!
     @IBOutlet var rateCollectionView: UICollectionView!
     @IBOutlet var nextBtn: UIButton!
+    @IBOutlet var finishBtn: UIButton!
     
     
     //MARK: - LifeCycle Methods
@@ -56,6 +59,7 @@ class RecordRateVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         animationPrac()
+        setRecordedData()
     }
     
     //MARK: - IBActions
@@ -65,13 +69,14 @@ class RecordRateVC: UIViewController {
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        let nextStoryboard = UIStoryboard(name: "RecordText", bundle: nil)
-        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
+        let nextStoryboard = UIStoryboard(name: "ModifyWeathyText", bundle: nil)
+        guard let dvc = nextStoryboard.instantiateViewController(identifier: "ModifyWeathyTextVC") as? ModifyWeathyTextVC else {
             return
         }
         
         dvc.selectedTags = selectedTags
         dvc.selectedStamp = selectedStamp
+        dvc.weathyData = weathyData
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }
@@ -81,7 +86,7 @@ class RecordRateVC: UIViewController {
 
 //MARK: - Style
 
-extension RecordRateVC {
+extension ModifyWeathyRateVC {
     func setAboveCollection() {
 //        backBtn.setBackgroundImage(UIImage(named: <#T##String#>), for: .normal)
 //        dismissBtn.setBackgroundImage(UIImage(named: <#T##String#>), for: .normal)
@@ -104,6 +109,19 @@ extension RecordRateVC {
         
         indicatorCircle[2].layer.cornerRadius = 6.5
         indicatorCircle[2].backgroundColor = UIColor.mintMain
+        
+        nextBtn.backgroundColor = .white
+        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitleColor(.mintIcon, for: .normal)
+        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        nextBtn.layer.cornerRadius = 30
+        nextBtn.setBorder(borderColor: .mintMain, borderWidth: 1)
+        
+        finishBtn.backgroundColor = .mintMain
+        finishBtn.setTitle("수정완료", for: .normal)
+        finishBtn.setTitleColor(.white, for: .normal)
+        finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        finishBtn.layer.cornerRadius = 30
     }
     
     func setTitleLabel() {
@@ -130,26 +148,28 @@ extension RecordRateVC {
             Rates(emoji: "hot", title: "더웠어요", titleColor: "orange", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
             Rates(emoji: "good", title: "적당했어요", titleColor: "yellow", explanation: "딱 적당하게 입었어요.", isSelected: false),
             Rates(emoji: "cold", title: "추웠어요", titleColor: "green", explanation: "좀 더 따뜻하게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "verycold", title: "너무 추었어요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
+            Rates(emoji: "verycold", title: "너무 추웠어요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
         ]
     }
     
     func setNextBtnEnabled() {
         self.nextBtn.isUserInteractionEnabled = true
-        UIView.animate(withDuration: 0.5, animations: {
-            self.nextBtn.backgroundColor = UIColor.mintMain
-            self.nextBtn.setTitle("다음", for: .normal)
-            self.nextBtn.setTitleColor(.white, for: .normal)
-            self.nextBtn.layer.cornerRadius = 30
-        })
+        nextBtn.backgroundColor = .white
+        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitleColor(.mintIcon, for: .normal)
+        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        nextBtn.layer.cornerRadius = 30
+        nextBtn.setBorder(borderColor: .mintMain, borderWidth: 1)
     }
     
     func setNextBtnDisabled() {
         nextBtn.isUserInteractionEnabled = false
-        nextBtn.backgroundColor = UIColor.subGrey3
+        nextBtn.backgroundColor = .white
         nextBtn.setTitle("다음", for: .normal)
-        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.setTitleColor(.subGrey3, for: .normal)
+        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
+        nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
     }
     
     func initPosition() {
@@ -175,11 +195,16 @@ extension RecordRateVC {
             self.explanationLabel.frame = CGRect(x: self.explanationLabel.frame.origin.x, y: self.explanationLabel.frame.origin.y+10, width: self.explanationLabel.frame.width, height: self.explanationLabel.frame.height)
         })
     }
+    
+    func setRecordedData() {
+        let recordedStamp: Int = weathyData!.stampId
+        rate[recordedStamp].isSelected = true
+    }
 }
 
 //MARK: - UICollectionViewDataSource
 
-extension RecordRateVC: UICollectionViewDataSource {
+extension ModifyWeathyRateVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         rate.count
     }
@@ -253,7 +278,7 @@ extension RecordRateVC: UICollectionViewDataSource {
 
 //MARK: - UICollectionViewDelegate
 
-extension RecordRateVC: UICollectionViewDelegateFlowLayout {
+extension ModifyWeathyRateVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             
             let cellWidth : CGFloat = collectionView.frame.width - 20

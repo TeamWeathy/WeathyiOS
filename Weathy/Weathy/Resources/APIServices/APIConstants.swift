@@ -9,6 +9,11 @@ import Foundation
 
 struct APIConstants{
     static let baseURL = "http://15.164.146.132:3000"
+    // 기록뷰 - 태그, 태그 추가, 태그 삭제
+    static let clothesTagURL = baseURL + "/users/"
+    
+    // 웨디 기록
+    static let recordWeathyURL = baseURL + "/weathy"
     
     ///monthly url
     static let monthlyWeathyURL = baseURL + "/users/:user-id/calendar?start={start_date}&end={end_date}"
