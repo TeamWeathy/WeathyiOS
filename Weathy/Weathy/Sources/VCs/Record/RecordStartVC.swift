@@ -12,19 +12,19 @@ class RecordStartVC: UIViewController {
     //MARK: - Custom Variables
     
     var dateToday: Date?
-    var dateString: String = "0000-00-00"
+    var dateString: String = "2021-01-16"
 
     var todayMonth: Int = 1
     var todayDate: Int = 1
     
-    var fullDate: String = "2021-01-25"
+//    var fullDate: String = "2021-01-25"
     var month: Int = 12
     var date: Int = 20
     var day: String = "월"
-    var location: String = "서울시 서초구"
+    var location: String = "서울시 종로구"
     var currentTemp: Int = -2
-    var maxTemp: Int = 20
-    var minTemp: Int = -20
+    var maxTemp: Int = -2
+    var minTemp: Int = -8
     
     var visitedFlag: Bool = false
     var dvc = RecordTagVC()
@@ -142,7 +142,7 @@ extension RecordStartVC {
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
-        titleLabel.text = "\(dateToday?.month ?? 0)월 \(dateToday?.day ?? 0)일의 웨디를\n기록해볼까요?"
+        titleLabel.text = "\(dateToday?.month ?? 1)월 \(dateToday?.day ?? 16)일의 웨디를\n기록해볼까요?"
         titleLabel.numberOfLines = 2
         titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
         titleLabel.textColor = .mainGrey
@@ -180,7 +180,7 @@ extension RecordStartVC {
         boxView.layer.borderColor = UIColor.subGrey7.cgColor
         boxView.layer.cornerRadius = 35
         
-        boxTimeLabel.text = "\(dateToday?.month ?? 0)월 \(dateToday?.day ?? 0)일 \(getDayStringFromInt(dayInt: dateToday?.weekday ?? -1))"
+        boxTimeLabel.text = "\(dateToday?.month ?? 1)월 \(dateToday?.day ?? 16)일 \(getDayStringFromInt(dayInt: dateToday?.weekday ?? 6))"
         boxTimeLabel.font = UIFont.SDGothicRegular15
         boxTimeLabel.textColor = UIColor.subGrey1
         
