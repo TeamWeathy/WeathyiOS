@@ -16,6 +16,7 @@ struct SearchRecentInfo {
     var currentTemper: String
     var highTemper: String
     var lowTemper: String
+    /// 지역 코드
     
     init(date: String, time: String, location: String, weatherImage: Int, currentTemper: String, highTemper: String, lowTemper: String){
         

@@ -28,6 +28,7 @@ class RecordStartVC: UIViewController {
     var visitedFlag: Bool = false
     var dvc = RecordTagVC()
     
+    var recordDeliverSearchInfo : SearchRecentInfo?
     
     //MARK: - IBOutlets
     
@@ -69,8 +70,20 @@ class RecordStartVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         animationPrac()
+        NotificationCenter.default.addObserver(self, selector: #selector(SearchInfo), name: .init("record"), object: nil)
+    }
+    
+    @objc func SearchInfo(_ notification: Notification){
+        guard let userInfo = notification.userInfo as? [String: Any] else { return }
+        guard let searchInfo = userInfo["mainDeliverSearchInfo"] as? SearchRecentInfo else { return}
+        
+        boxTimeLabel.text = searchInfo.date
+        boxLocationLabel.text = searchInfo.location
+        boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateAssetName( searchInfo.weatherImage))
+        maxTempLabel.text = searchInfo.highTemper
+        minTempLabel.text = searchInfo.lowTemper
+        print("---> 뭐야 \(searchInfo)")
     }
     
     //MARK: - IBActions
@@ -90,6 +103,17 @@ class RecordStartVC: UIViewController {
     @IBAction func backButtonDidTap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func searchButtonDidTap(_ sender: Any) {
+        let searchStoryBoard = UIStoryboard.init(name: "MainSearch", bundle: nil)
+        
+        guard let searchVC = searchStoryBoard.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else {return}
+        
+        searchVC.modalPresentationStyle = .fullScreen
+        
+        present(searchVC, animated: true, completion: nil)
+    }
+    
     
 }
 
