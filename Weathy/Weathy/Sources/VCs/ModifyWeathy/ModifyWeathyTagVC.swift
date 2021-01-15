@@ -425,15 +425,18 @@ extension ModifyWeathyTagVC {
         if selectedTags != [] {
             for i in 0...selectedTags.count - 1 {
                 currentTag = selectedTags[i]
-                
-                for b in 0...tagTitles[0].tagTab.count - 1 {
-                    if tagTitles[0].tagTab[b].id == currentTag {
-                        tagTitles[0].tagTab[b].isSelected = true
-                        tagTitles[0].count += 1
-                        break
+                for j in 0...3 {
+                    for b in 0...tagTitles[j].tagTab.count - 1 {
+                        if tagTitles[j].tagTab[b].id == currentTag {
+                            tagTitles[j].tagTab[b].isSelected = true
+                            tagTitles[j].count += 1
+                            break
+                        }
                     }
                 }
             }
+            
+            
         }
         print(">>>>>", selectedTags.count, tagTitles[0].count, tagTitles[1].count, tagTitles[2].count, tagTitles[3].count)
     }
