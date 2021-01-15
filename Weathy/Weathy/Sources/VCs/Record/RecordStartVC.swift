@@ -85,7 +85,10 @@ class RecordStartVC: UIViewController {
         self.navigationController?.pushViewController(dvc, animated: false)
     }
     
-
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 //MARK: - Style
@@ -207,11 +210,4 @@ extension RecordStartVC {
     
 }
 
-
-//MARK: - UIGestureRecognizerDelegate
-
-extension UIViewController : UIGestureRecognizerDelegate {
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool { return true
-    }
-}
 

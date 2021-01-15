@@ -37,7 +37,8 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         dayLabel.clipsToBounds = true
         dayLabel.layer.cornerRadius = 11.5
         dayLabel.textColor = .mainGrey
-        
+        highLabel.text = ""
+        lowLabel.text = ""
         highLabel.alpha = 0
         
         lowLabel.alpha = 0
@@ -73,6 +74,10 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         dayLabel.textColor = .mainGrey
         highImageView.image = UIImage(named:"calendarImgHigh")
         lowImageView.image = UIImage(named: "calendarImgLow")
+        highImageView.alpha = 0
+        lowImageView.alpha = 0
+        highLabel.text = ""
+        lowLabel.text = ""
     }
     
     func setRedday(){
@@ -83,12 +88,14 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         dayLabel.textColor = .dateSaturday
     }
     
-    func setData(_ high: Int, _ low: Int){
+    func setData(high: Int, low: Int){
         highImageView.alpha = 1
         lowImageView.alpha = 1
         highLabel.alpha = 1
         lowLabel.alpha = 1
-        highLabel.text = "\(high)º"
-        lowLabel.text = "\(low)º"
+        highLabel.text = "\(high)°"
+        lowLabel.text = "\(low)°"
     }
+    
+    
 }
