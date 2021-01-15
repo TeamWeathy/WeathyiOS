@@ -130,7 +130,7 @@ extension RecordRateVC {
             Rates(emoji: "hot", title: "더웠어요", titleColor: "orange", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
             Rates(emoji: "good", title: "적당했어요", titleColor: "yellow", explanation: "딱 적당하게 입었어요.", isSelected: false),
             Rates(emoji: "cold", title: "추웠어요", titleColor: "green", explanation: "좀 더 따뜻하게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "verycold", title: "너무 추었어요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
+            Rates(emoji: "verycold", title: "너무 추웠어요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
         ]
     }
     
