@@ -23,6 +23,7 @@ class CalendarDetailVC: UIViewController {
     var calendarVC: CalendarVC!
     var dailyWeathy: CalendarWeathy?
     var isModified = false
+    var defaultDateFormatter = DateFormatter()
     
     //MARK: - IBOutlets
     
@@ -66,6 +67,7 @@ class CalendarDetailVC: UIViewController {
         //        }
         setStyle()
         setPopup()
+        setDefaultFormatter()
         selectedDateDidChange(nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
         //        initGestureRecognizer()
@@ -83,7 +85,15 @@ class CalendarDetailVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         closeMoreMenu(nil)
     }
+    
     //MARK: - Custom Methods
+    
+    func setDefaultFormatter(){
+        defaultDateFormatter.dateFormat = "yyyy-MM-dd"
+        defaultDateFormatter.locale = Locale(identifier: "ko-Kr")
+        dateFormatter.locale = Locale(identifier: "ko")
+        dateFormatter.dateFormat = "MM월 dd일 eeee"
+    }
     func initGestureRecognizer() {
         let moreBtnTap = UITapGestureRecognizer(target: self, action: #selector(closeMoreMenu(_:)))
         moreBtnTap.delegate = self
@@ -126,8 +136,7 @@ class CalendarDetailVC: UIViewController {
         moreViewHeightConstraint.constant = 0
         self.view.layoutIfNeeded()
         
-        dateFormatter.locale = Locale(identifier: "ko")
-        dateFormatter.dateFormat = "MM월 dd일 eeee"
+        
         
         commentLabel.font = .SDGothicRegular15
         commentLabel.lineSetting(kernValue: -0.75, lineSpacing: 0, lineHeightMultiple: 1.17)
@@ -278,9 +287,8 @@ class CalendarDetailVC: UIViewController {
     //MARK: - Network
     
     func callDailyWeathy(){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        DailyWeathyService.shared.getDailyCalendar(userID: 61, date: dateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
+
+        DailyWeathyService.shared.getDailyCalendar(userID: 61, date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let data):
                     if let dailyData = data as? CalendarWeathy{
@@ -297,7 +305,7 @@ class CalendarDetailVC: UIViewController {
                 case .pathErr:
                     print("[Daily] pathErr - No content")
                     
-                    if self.selectedDate.compare(dateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
+                    if self.selectedDate.compare(self.defaultDateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
                         print("Before Content")
                         self.setEmptyView(state: .beforeContent)
                     }
@@ -323,9 +331,6 @@ class CalendarDetailVC: UIViewController {
     }
     
     @objc func deleteAction(_ sender: Any){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "ko-Kr")
         DeleteWeathyService.shared.deleteWeathy(weathyId: dailyWeathy!.weathyId){ (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let message):
@@ -366,12 +371,12 @@ class CalendarDetailVC: UIViewController {
         }
     }
     @IBAction func editBtnDidTap(_ sender: Any) {
-        
-//        guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
-//
-//        recordEdit.modalPresentationStyle = .fullScreen
-//        recordEdit.weathyData = dailyWeathy
-//        self.present(recordEdit, animated: true)
+        guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
+
+        recordEdit.modalPresentationStyle = .fullScreen
+        recordEdit.dateString = defaultDateFormatter.string(from: selectedDate)
+        recordEdit.weathyData = dailyWeathy
+        self.present(recordEdit, animated: true)
         
     }
     @IBAction func deleteBtnDidTap(_ sender: Any) {
@@ -380,13 +385,10 @@ class CalendarDetailVC: UIViewController {
         
     }
     @IBAction func recordBtnDidTap(_ sender: Any) {
-//        guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        dateFormatter.locale = Locale(identifier: "ko-Kr")
-//        record.modalPresentationStyle = .fullScreen
-//        record.dateString = dateFormatter.string(from: selectedDate)
-//        self.present(record, animated: true)
+        guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
+        record.modalPresentationStyle = .fullScreen
+        record.dateString = defaultDateFormatter.string(from: selectedDate)
+        self.present(record, animated: true)
     }
     
 }
