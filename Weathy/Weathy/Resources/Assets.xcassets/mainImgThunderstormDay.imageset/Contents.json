@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "mainImgThunderstormDay.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "mainImgThunderstormDay.png"
     },
     {
-      "idiom" : "universal",
       "filename" : "mainImgThunderstormDay@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "idiom" : "universal"
     },
     {
-      "scale" : "3x",
+      "filename" : "mainImgThunderstormDay@3x.png",
       "idiom" : "universal",
-      "filename" : "mainImgThunderstormDay@3x.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

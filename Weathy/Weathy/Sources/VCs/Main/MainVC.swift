@@ -13,6 +13,9 @@ class MainVC: UIViewController {
     var mainDeliverSearchInfo : [SearchRecentInfo] = []
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
+    var hourlyWeatherData: HourlyWeatherData?
+    var dailyWeatherData: DailyWeatherData?
+    var extraWeatherData: ExtraWeatherData?
     
     //MARK: - IBOutlets
     
@@ -27,21 +30,20 @@ class MainVC: UIViewController {
     //MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        UserDefaults.standard.setValue("62:YDMYXAMVWtyiAbVYNy2X1RDQLYMNiN", forKey: "token")
+        // fix: 닉네임 뷰에서 처리할 로직
+        UserDefaults.standard.setValue("62:CfL6LqDE3Y6aF3QA3IdUjpTAPbC0gI", forKey: "token")
         UserDefaults.standard.setValue("이내옹", forKey: "nickname")
         UserDefaults.standard.setValue(62, forKey: "userId")
         
         getLocationWeather()
         getRecommendedWeathy()
-        
-        weatherCollectionView.reloadData()
+        getHourlyWeather()
+        getDailyWeather()
+        getExtraWeather()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        fallingRain()
-        fallingSnow()
         
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
@@ -51,9 +53,16 @@ class MainVC: UIViewController {
     
     func setViewByData(data: LocationWeatherData) {
         // background 설정
-        mainBackgroundImage.image = UIImage(named: "main_bg_snowrain")
+        let iconId = data.overviewWeather.hourlyWeather.climate.iconID
+        mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
+        topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
+
+        if (iconId % 100 == 13) {
+            fallingSnow()
+        } else if (iconId % 100 == 10) {
+            fallingRain()
+        }
         
-        topBlurView.image = UIImage(named: "mainscroll_box_topblur_snowrain")
         topBlurView.frame.origin.y -= topBlurView.bounds.height
         topBlurView.alpha = 0
         
@@ -112,6 +121,24 @@ class MainVC: UIViewController {
                 }
             case .requestErr(let msg):
                 print(msg)
+            case .pathErr, .serverErr, .networkFail:
+                print("No Recommended Data")
+                if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
+                    topCVC.showEmptyView()
+                }
+            }
+        }
+    }
+    
+    func getHourlyWeather() {
+        MainService.shared.getHourlyWeather() { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? HourlyWeatherData {
+                    self.hourlyWeatherData = response
+                }
+            case .requestErr(let msg):
+                print(msg)
             case .pathErr:
                 print("path Err")
             case .serverErr:
@@ -120,6 +147,45 @@ class MainVC: UIViewController {
                 print("network Fail")
             }
         }
+    }
+    
+    func getDailyWeather() {
+        MainService.shared.getDailyWeather() { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? DailyWeatherData {
+                    self.dailyWeatherData = response
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
+    }
+    
+    func getExtraWeather() {
+        MainService.shared.getExtraWeather() { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? ExtraWeatherData {
+                    self.extraWeatherData = response
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
+
     }
     
     func fallingSnow() {
@@ -177,6 +243,28 @@ class MainVC: UIViewController {
         
         mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
     }
+    
+    //MARK: - IBActions
+    
+    @IBAction func touchUpSetting(_ sender: Any) {
+        print("setting")
+        let storyB = UIStoryboard.init(name: "Setting", bundle: nil)
+        
+        guard let vc = storyB.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
+
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func touchUpSearch(_ sender: Any) {
+        print("search")
+        let storyB = UIStoryboard.init(name: "MainSearch", bundle: nil)
+        
+        guard let vc = storyB.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
+        
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
 }
 
 //MARK: - UICollectionViewDelegate
@@ -219,28 +307,6 @@ extension MainVC: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastContentOffset = scrollView.contentOffset.y
     }
-    
-    //MARK: - IBActions
-    
-    @IBAction func touchUpSetting(_ sender: Any) {
-        print("setting")
-        let storyB = UIStoryboard.init(name: "Setting", bundle: nil)
-        
-        guard let vc = storyB.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
-
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
-    }
-    
-    @IBAction func touchUpSearch(_ sender: Any) {
-        print("search")
-        let storyB = UIStoryboard.init(name: "MainSearch", bundle: nil)
-        
-        guard let vc = storyB.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
-        
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
-    }
 }
 
 
@@ -259,11 +325,27 @@ extension MainVC: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainTopCVC", for: indexPath) as? MainTopCVC else {return UICollectionViewCell()}
+            if let recommend = recommenedWeathyData,
+               let location = locationWeatherData {
+                cell.changeWeathyViewData(data: recommend)
+                cell.changeWeatherViewData(data: location)
+            }
             
             cell.setCell()
             return cell
         case 1:
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainBottomCVC", for: indexPath) as? MainBottomCVC else {return UICollectionViewCell()}
+            if let hourly = hourlyWeatherData {
+                cell.changeHourlyViewData(data: hourly)
+            }
+            
+            if let daily = dailyWeatherData {
+                cell.changeDailyViewData(data: daily)
+            }
+            
+            if let extra = extraWeatherData {
+                cell.changeExtraViewData(data: extra)
+            }
             
             cell.setCell()
             return cell

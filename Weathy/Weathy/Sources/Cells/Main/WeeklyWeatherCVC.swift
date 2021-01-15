@@ -9,6 +9,7 @@ import UIKit
 
 class WeeklyWeatherCVC: UICollectionViewCell {
     //MARK: - Custom Variables
+    static let identifier = "WeeklyWeatherCVC"
     
     //MARK: - IBOutlets
     
@@ -23,24 +24,37 @@ class WeeklyWeatherCVC: UICollectionViewCell {
     //MARK: - Custom Methods
     
     func setCell() {
-        dayOfWeekLabel.text = "오늘"
         dayOfWeekLabel.font = UIFont.SDGothicRegular13
         dayOfWeekLabel.textColor = UIColor.subGrey6
         dayOfWeekLabel.characterSpacing = -0.65
         
-        climateImage.image = UIImage(named: "ic_snow")
-        
-        maxTempLabel.text = "-1°"
         maxTempLabel.font = UIFont.RobotoRegular16
         maxTempLabel.textColor = UIColor.redTemp
         maxTempLabel.characterSpacing = -0.8
         
-        minTempLabel.text = "-18°"
         minTempLabel.font = UIFont.RobotoRegular16
         minTempLabel.textColor = UIColor.blueTemp
         minTempLabel.characterSpacing = -0.8
         
         tempDiffView.backgroundColor = UIColor.subGrey3
         tempDiffView.makeRounded(cornerRadius: 1)
+    }
+    
+    func setWeeklyWeatherData(data: MainDailyWeather, idx: Int) {
+        let dayOfWeek: String = data.date.dayOfWeek
+        
+        dayOfWeekLabel.text = "\(dayOfWeek.prefix(1))"
+        maxTempLabel.text = "\(data.temperature.maxTemp)°"
+        minTempLabel.text = "\(data.temperature.minTemp)°"
+        
+        if let iconId = data.climate?.iconID {
+            climateImage.image = UIImage(named: ClimateImage.getClimateAssetName(iconId))
+        }
+        
+        if (idx == 0) {
+            dayOfWeekLabel.textColor = UIColor.mintIcon
+            dayOfWeekLabel.font = UIFont.SDGothicSemiBold13
+            dayOfWeekLabel.text = "오늘"
+        }
     }
 }
