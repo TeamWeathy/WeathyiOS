@@ -356,7 +356,7 @@ class CalendarDetailVC: UIViewController {
         guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
         record.modalPresentationStyle = .fullScreen
 //        record.dateString = defaultDateFormatter.string(from: selectedDate)
-        record.dateToday = dailyWeathy?.dailyWeather.date
+//        record.dateToday = dailyWeathy?.dailyWeather.date
         self.present(record, animated: true)
     }
     
