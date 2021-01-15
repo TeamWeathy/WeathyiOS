@@ -257,7 +257,7 @@ class MainTopCVC: UICollectionViewCell {
             print("default true")
         } else {
             print("default false ")
-            // 
+            
         }
         
     }

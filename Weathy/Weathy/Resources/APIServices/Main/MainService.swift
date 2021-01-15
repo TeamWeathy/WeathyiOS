@@ -29,7 +29,7 @@ struct MainService {
     
     //MARK: - Network
     
-    func getWeatherByLocation(completion: @escaping (NetworkResult<Any>) -> (Void)) {
+    func getWeatherByLocation(code: String, completion: @escaping (NetworkResult<Any>) -> (Void)) {
         //weather/overview?lat={latitude}&lon={longitude}&code={code}&date={date}
         guard let token = UserDefaults.standard.string(forKey: "token") else {return}
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
