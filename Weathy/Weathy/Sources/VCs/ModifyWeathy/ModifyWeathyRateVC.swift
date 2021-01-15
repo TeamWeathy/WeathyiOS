@@ -45,7 +45,7 @@ class ModifyWeathyRateVC: UIViewController {
         super.viewDidLoad()
         
         setAboveCollection()
-        setNextBtnDisabled()
+        setNextBtnEnabled()
         setTitleLabel()
         setCV()
         
