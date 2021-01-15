@@ -414,8 +414,6 @@ extension ModifyWeathyTagVC {
             setNextBtnActivated()
         }
         
-        print(">>>>>", selectedTags.count, tagTitles[0].count, tagTitles[1].count, tagTitles[2].count, tagTitles[3].count)
-        
         isInitialVisit = false
     }
     
@@ -438,7 +436,6 @@ extension ModifyWeathyTagVC {
             
             
         }
-        print(">>>>>", selectedTags.count, tagTitles[0].count, tagTitles[1].count, tagTitles[2].count, tagTitles[3].count)
     }
 }
 
