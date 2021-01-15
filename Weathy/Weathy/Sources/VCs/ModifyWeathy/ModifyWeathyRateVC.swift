@@ -68,6 +68,11 @@ class ModifyWeathyRateVC: UIViewController {
         self.navigationController?.popViewController(animated: false)
     }
     
+    @IBAction func finishBtnDidTap(_ sender: Any) {
+        // 서버 연결
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func nextBtnTap(_ sender: Any) {
         let nextStoryboard = UIStoryboard(name: "ModifyWeathyText", bundle: nil)
         guard let dvc = nextStoryboard.instantiateViewController(identifier: "ModifyWeathyTextVC") as? ModifyWeathyTextVC else {
