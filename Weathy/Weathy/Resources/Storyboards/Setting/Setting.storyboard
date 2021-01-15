@@ -280,6 +280,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingImgDevinfo" translatesAutoresizingMaskIntoConstraints="NO" id="x0B-hh-TPB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ag1-Nj-iQu">
                                 <rect key="frame" x="33" y="59" width="20" height="22"/>
                                 <state key="normal" image="ic_back"/>
@@ -287,9 +290,6 @@
                                     <action selector="backButtonDidTap:" destination="CVR-9y-N3s" eventType="touchUpInside" id="yxU-aB-8PS"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingImgDevinfo" translatesAutoresizingMaskIntoConstraints="NO" id="x0B-hh-TPB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KUO-R6-C3H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
