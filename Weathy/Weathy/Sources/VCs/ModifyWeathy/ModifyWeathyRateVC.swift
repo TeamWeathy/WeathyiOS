@@ -197,7 +197,7 @@ extension ModifyWeathyRateVC {
     }
     
     func setRecordedData() {
-        let recordedStamp: Int = weathyData!.stampId
+        let recordedStamp: Int = weathyData!.stampId - 1
         rate[recordedStamp].isSelected = true
     }
 }
