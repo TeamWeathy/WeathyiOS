@@ -153,7 +153,6 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
 
 extension InfiniteMonthlyCVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(">>net",selectedDate,selectedDate.monthlyLines*7,monthlyWeathyList.count,monthlyWeathyList)
         return selectedDate.monthlyLines*7
     }
     
