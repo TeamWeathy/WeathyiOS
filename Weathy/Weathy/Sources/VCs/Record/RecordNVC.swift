@@ -11,23 +11,30 @@ class RecordNVC: UINavigationController {
 
     static let identifier = "RecordNVC"
     
+    var dateToday: Date?
     var dateString: String = "0000-00-00"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sendData()
 
         // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension RecordNVC {
+    
+    func sendData() {
+        
+        guard let root = self.viewControllers[0] as? RecordStartVC else {
+            return
+        }
+        
+        root.dateToday = dateToday
+        root.dateString = dateString
     }
-    */
-
+    
 }

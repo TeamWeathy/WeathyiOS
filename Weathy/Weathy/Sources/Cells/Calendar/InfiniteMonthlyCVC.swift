@@ -102,16 +102,32 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
 //MARK: UICollectionViewDelegate
 
 extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        if let cell = collectionView.cellForItem(at: indexPath) as? MonthlyCalendarCVC{
+            var selectedComponent = DateComponents()
+            
+            selectedComponent.day = indexPath.item - (selectedDate.firstWeekday - 1 + selectedDate.day)
+            let newSelectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+            if newSelectedDate.compare(Date()) == .orderedDescending{
+                return false
+            }
+            return true
+            
+        }
+        return true
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if lastSelectedIdx != indexPath.item{
+            ///전에 선택된 셀 선택 해제
             if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? MonthlyCalendarCVC{
                 cell.isSelected = false
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? MonthlyCalendarCVC{
                 var selectedComponent = DateComponents()
+                
                 selectedComponent.day = indexPath.item - (selectedDate.firstWeekday - 1 + selectedDate.day)
-                selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeData"), object: selectedDate)
+                let newSelectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+                selectedDate = newSelectedDate
                 monthCellDelegate?.selectedMonthDateDidChange(selectedDate)
                 lastSelectedIdx = indexPath.item
             }
@@ -174,6 +190,9 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
                 if indexPath.item-selectedDate.firstWeekday+1 == Date().day{
                     cell.isToday = true
                     cell.setToday()
+                }
+                else if indexPath.item-selectedDate.firstWeekday+1 > Date().day{
+                    cell.setNonCurrent()
                 }
             }
         }

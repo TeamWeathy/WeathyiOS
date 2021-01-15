@@ -76,7 +76,7 @@ class CalendarDetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if isModified{
-            // self.showToast(message: "웨디 내용이 수정되었어요!")
+            self.showToast(message: "웨디 내용이 수정되었어요!")
             selectedDateDidChange(nil)
             isModified = false
         }
@@ -148,13 +148,13 @@ class CalendarDetailVC: UIViewController {
         contentScrollView.alpha = 0
         
         switch state{
-            case .beforeContent:
-                recordButton.alpha = 0
-                print("before")
-                detailEmptyImageView.image = UIImage(named: "calendarImgBeforeCloud")
-            case .noContent:
-                recordButton.alpha = 1
-                detailEmptyImageView.image = UIImage(named: "calendarImgNoContentCloud")
+        case .beforeContent:
+            recordButton.alpha = 0
+            print("before")
+            detailEmptyImageView.image = UIImage(named: "calendarImgBeforeCloud")
+        case .noContent:
+            recordButton.alpha = 1
+            detailEmptyImageView.image = UIImage(named: "calendarImgNoContentCloud")
         }
     }
     func setContent(){
@@ -256,30 +256,30 @@ class CalendarDetailVC: UIViewController {
     //MARK: - Network
     
     func callDailyWeathy(){
-        DailyWeathyService.shared.getDailyCalendar(userID: 61, date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
+        DailyWeathyService.shared.getDailyCalendar(userID: 63, date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
             switch networkResult{
-                case .success(let data):
-                    if let dailyData = data as? CalendarWeathy{
-                        print("[Daily]",dailyData)
-                        self.dailyWeathy = dailyData
-                        self.setData()
-                    }
-                case .requestErr(let msg):
-                    print("[Daily] requestErr",msg)
-                case .serverErr:
-                    print("[Daily] serverErr")
-                case .networkFail:
-                    print(">>[Daily] networkFail")
-                case .pathErr:
-                    print("[Daily] pathErr - No content")
-                    
-                    if self.selectedDate.compare(self.defaultDateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
-                        print("Before Content")
-                        self.setEmptyView(state: .beforeContent)
-                    }
-                    else{
-                        self.setEmptyView(state: .noContent)
-                    }
+            case .success(let data):
+                if let dailyData = data as? CalendarWeathy{
+                    print("[Daily]",dailyData)
+                    self.dailyWeathy = dailyData
+                    self.setData()
+                }
+            case .requestErr(let msg):
+                print("[Daily] requestErr",msg)
+            case .serverErr:
+                print("[Daily] serverErr")
+            case .networkFail:
+                print(">>[Daily] networkFail")
+            case .pathErr:
+                print("[Daily] pathErr - No content")
+                
+                if self.selectedDate.compare(self.defaultDateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
+                    print("Before Content")
+                    self.setEmptyView(state: .beforeContent)
+                }
+                else{
+                    self.setEmptyView(state: .noContent)
+                }
             }
         }
     }
@@ -301,22 +301,22 @@ class CalendarDetailVC: UIViewController {
     @objc func deleteAction(_ sender: Any){
         DeleteWeathyService.shared.deleteWeathy(weathyId: dailyWeathy!.weathyId){ (networkResult) -> (Void) in
             switch networkResult{
-                case .success(let message):
-                    print("[Delete]",message)
-                    self.blurView.removeFromSuperview()
-                    self.selectedDateDidChange(nil)
-                    NotificationCenter.default.post(name: NSNotification.Name("DeleteWeathy"), object: self.selectedDate.weekday)
-                case .requestErr(let message):
-                    print("[Delete] requestErr",message)
-                case .networkFail:
-                    print("[Delete] networkFail")
-                case .pathErr:
-                    print("[Delete] pathErr")
-                case .serverErr:
-                    print("[Delete] serverErr")
+            case .success(let message):
+                print("[Delete]",message)
+                self.blurView.removeFromSuperview()
+                self.selectedDateDidChange(nil)
+                NotificationCenter.default.post(name: NSNotification.Name("DeleteWeathy"), object: self.selectedDate.weekday)
+            case .requestErr(let message):
+                print("[Delete] requestErr",message)
+            case .networkFail:
+                print("[Delete] networkFail")
+            case .pathErr:
+                print("[Delete] pathErr")
+            case .serverErr:
+                print("[Delete] serverErr")
             }
         }
-//        self.parent?.view.addSubview(self.blurView)
+        //        self.parent?.view.addSubview(self.blurView)
     }
     
     @objc func selectedDateDidChange(_ notification: NSNotification?){
@@ -340,9 +340,9 @@ class CalendarDetailVC: UIViewController {
     }
     @IBAction func editBtnDidTap(_ sender: Any) {
         guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
-
+        
         recordEdit.modalPresentationStyle = .fullScreen
-//        recordEdit.dateString = defaultDateFormatter.string(from: selectedDate)
+        recordEdit.dateString = defaultDateFormatter.string(from: selectedDate)
         recordEdit.weathyData = dailyWeathy
         self.present(recordEdit, animated: true)
         
@@ -355,8 +355,8 @@ class CalendarDetailVC: UIViewController {
     @IBAction func recordBtnDidTap(_ sender: Any) {
         guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
         record.modalPresentationStyle = .fullScreen
-//        record.dateString = defaultDateFormatter.string(from: selectedDate)
-//        record.dateToday = dailyWeathy?.dailyWeather.date
+        record.dateString = defaultDateFormatter.string(from: selectedDate)
+        record.dateToday = selectedDate
         self.present(record, animated: true)
     }
     

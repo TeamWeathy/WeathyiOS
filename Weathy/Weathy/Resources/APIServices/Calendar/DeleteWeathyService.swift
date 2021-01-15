@@ -20,7 +20,7 @@ struct DeleteWeathyService{
     func deleteWeathy(weathyId: Int, completion: @escaping (NetworkResult<Any>) -> (Void)){
         let url = makeURL(weathyId: weathyId)
 //        let token = UserDefaults.standard.string(forKey: "token")
-        let token = "61:vtk5hTe4IsXoHWHuw0lVZgwCY76SON"
+        let token = "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5"
         let header: HTTPHeaders = [
             "Content-Type": "application/json",
             "x-access-token": token

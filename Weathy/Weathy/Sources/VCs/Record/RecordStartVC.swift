@@ -11,8 +11,9 @@ class RecordStartVC: UIViewController {
 
     //MARK: - Custom Variables
     
+    var dateToday: Date?
     var dateString: String = "0000-00-00"
-    
+
     var todayMonth: Int = 1
     var todayDate: Int = 1
     
@@ -65,6 +66,9 @@ class RecordStartVC: UIViewController {
 //        dateFormatter.locale = Locale(identifier: "ko_KR")
 //        dateFormatter.dateFormat = "yyyy-MM-dd"
 //        self.fullDate = dateFormatter.date(from: "2021-01-25")
+        
+        print(">>>>>", dateString)
+        print(">>>>>", dateToday)
 
         // Do any additional setup after loading the view.
     }
@@ -97,6 +101,8 @@ class RecordStartVC: UIViewController {
             visitedFlag = true
         }
         
+        dvc.dateString = dateString
+        
         self.navigationController?.pushViewController(dvc, animated: false)
     }
     
@@ -123,9 +129,10 @@ extension RecordStartVC {
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
-        titleLabel.text = "\(todayMonth)월 \(todayDate)일의 웨디를\n기록해볼까요?"
+        titleLabel.text = "\(dateToday?.month ?? 0)월 \(dateToday?.day ?? 0)일의 웨디를\n기록해볼까요?"
         titleLabel.numberOfLines = 2
-        titleLabel.font = UIFont.RobotoRegular25
+        titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
+        titleLabel.textColor = .mainGrey
         
         subTitleLabel.text = "기록할 위치와 날씨를 확인해 주세요."
         subTitleLabel.font = UIFont.SDGothicRegular16
@@ -143,24 +150,15 @@ extension RecordStartVC {
     
     func setTitleLabel() {
         /// 기본 설정
-        let attributedString = NSMutableAttributedString(string: "1월 1일의 웨디를\n기록해볼까요?", attributes: [
-            .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
-            .foregroundColor: UIColor.mainGrey,
-            .kern: -1.25
-        ])
+        let attributedString = NSMutableAttributedString(string: titleLabel.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
+                                      value: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!, range: (titleLabel.text! as NSString).range(of: "웨디"))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.mintIcon, range: (titleLabel.text! as NSString).range(of: "웨디"))
         
-        /// 행간 조정
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         
-        /// 볼드 처리
-        attributedString.addAttributes([
-            .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
-            .foregroundColor: UIColor.mintIcon
-        ], range: NSRange(location: 7, length: 2))
-        
-        /// 스타일 적용
         titleLabel.attributedText = attributedString
     }
     
@@ -169,7 +167,7 @@ extension RecordStartVC {
         boxView.layer.borderColor = UIColor.subGrey7.cgColor
         boxView.layer.cornerRadius = 35
         
-        boxTimeLabel.text = "\(month)월 \(date)일 \(day)요일"
+        boxTimeLabel.text = "\(dateToday?.month ?? 0)월 \(dateToday?.day ?? 0)일 \(getDayStringFromInt(dayInt: dateToday?.weekday ?? -1))"
         boxTimeLabel.font = UIFont.SDGothicRegular15
         boxTimeLabel.textColor = UIColor.subGrey1
         
@@ -232,6 +230,31 @@ extension RecordStartVC {
             self.subTitleLabel.alpha = 1
             self.subTitleLabel.frame = CGRect(x: self.subTitleLabel.frame.origin.x, y: self.subTitleLabel.frame.origin.y+10, width: self.subTitleLabel.frame.width, height: self.subTitleLabel.frame.height)
         })
+    }
+    
+    func getDayStringFromInt(dayInt: Int) -> String {
+        if dayInt == 0 {
+            return "일요일"
+        }
+        if dayInt == 1 {
+            return "월요일"
+        }
+        if dayInt == 2 {
+            return "화요일"
+        }
+        if dayInt == 3 {
+            return "수요일"
+        }
+        if dayInt == 4 {
+            return "목요일"
+        }
+        if dayInt == 5 {
+            return "금요일"
+        }
+        if dayInt == 6 {
+            return "토요일"
+        }
+        return "땡요일"
     }
     
 }
