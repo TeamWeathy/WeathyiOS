@@ -485,6 +485,36 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
 //            }
 //        }
 //    }
+    
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print(infiniteWeeklyCV.isScrollEnabled)
+        let gesture = scrollView.panGestureRecognizer
+        if scrollView == infiniteMonthlyCV{
+            if gesture.velocity(in: scrollView).x < 0{
+                if selectedDate.month == Date().month{
+                    infiniteMonthlyCV.isScrollEnabled = false
+                }
+            }
+        }
+        else if scrollView == infiniteWeeklyCV{
+            if gesture.velocity(in: scrollView).x < 0{
+                var leftDateComponent = DateComponents()
+                leftDateComponent.day = -(selectedDate.weekday+1)
+                var rightDateComponent = DateComponents()
+                rightDateComponent.day = 7 - selectedDate.weekday
+                let leftDate = Calendar.current.date(byAdding: leftDateComponent, to: Date())
+                let rightDate = Calendar.current.date(byAdding: rightDateComponent, to: Date())
+                if leftDate!.compare(Date()) == .orderedAscending
+                    && rightDate!.compare(Date()) == .orderedDescending{
+//                    infiniteWeeklyCV.isScrollEnabled = falser
+                    infiniteWeeklyCV.isScrollEnabled = true
+                }
+            }
+        }
+        infiniteMonthlyCV.isScrollEnabled = true
+        
+    }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("#")
         let x = scrollView.contentOffset.x
