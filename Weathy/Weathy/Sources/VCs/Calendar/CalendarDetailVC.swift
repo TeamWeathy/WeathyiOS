@@ -342,7 +342,7 @@ class CalendarDetailVC: UIViewController {
         guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
 
         recordEdit.modalPresentationStyle = .fullScreen
-        recordEdit.dateString = defaultDateFormatter.string(from: selectedDate)
+//        recordEdit.dateString = defaultDateFormatter.string(from: selectedDate)
         recordEdit.weathyData = dailyWeathy
         self.present(recordEdit, animated: true)
         
@@ -355,7 +355,8 @@ class CalendarDetailVC: UIViewController {
     @IBAction func recordBtnDidTap(_ sender: Any) {
         guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
         record.modalPresentationStyle = .fullScreen
-        record.dateString = defaultDateFormatter.string(from: selectedDate)
+//        record.dateString = defaultDateFormatter.string(from: selectedDate)
+        record.dateToday = dailyWeathy?.dailyWeather.date
         self.present(record, animated: true)
     }
     
