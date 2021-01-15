@@ -234,12 +234,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ5-Qw-z9l">
-                                <rect key="frame" x="34" y="707" width="307" height="55"/>
+                                <rect key="frame" x="33" y="706.66666666666663" width="309" height="55.333333333333371"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="307" id="obd-pp-PUI"/>
-                                    <constraint firstAttribute="height" constant="55" id="sha-7A-e9n"/>
+                                    <constraint firstAttribute="width" secondItem="aJ5-Qw-z9l" secondAttribute="height" multiplier="307:55" id="Hm8-dm-9vP"/>
                                 </constraints>
-                                <state key="normal" image="nickname_btn_start"/>
+                                <state key="normal" backgroundImage="nickname_btn_start"/>
                                 <connections>
                                     <action selector="changeButtonDidTap:" destination="Umd-x9-smB" eventType="touchUpInside" id="bN1-6d-Q3l"/>
                                 </connections>
@@ -273,6 +272,7 @@
                             <constraint firstItem="mV5-11-TgQ" firstAttribute="leading" secondItem="jhf-WP-ltZ" secondAttribute="trailing" id="hH5-jm-CmR"/>
                             <constraint firstItem="b8W-gj-k3Z" firstAttribute="top" secondItem="zp6-pQ-ciQ" secondAttribute="bottom" constant="10" id="lSc-Rs-Zkg"/>
                             <constraint firstItem="zp6-pQ-ciQ" firstAttribute="top" secondItem="dyu-BG-B4h" secondAttribute="top" constant="65" id="rHz-ey-jAf"/>
+                            <constraint firstItem="aJ5-Qw-z9l" firstAttribute="width" secondItem="8CB-mU-8w1" secondAttribute="width" multiplier="309:375" id="x95-gp-pDB"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Kza-WO-8wv" appends="YES" id="wYA-Kq-CRQ"/>
@@ -288,6 +288,7 @@
                         <outlet property="nickNameTextField" destination="kRw-in-8ee" id="h4h-E5-w3c"/>
                         <outlet property="sentenceLabel" destination="b8W-gj-k3Z" id="Tl8-pn-abN"/>
                         <outlet property="textRadiusImage" destination="2Yv-Ig-uCl" id="UfF-7o-KHz"/>
+                        <outlet property="totalCountLabel" destination="mV5-11-TgQ" id="goX-Ml-WVc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJc-4f-qu4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
