@@ -28,6 +28,8 @@ class ModifyWeathyTagVC: UIViewController {
     var visitedFlag: Bool = false // 다음 뷰로 넘어간 적이 있는지 판단
     var dvc = ModifyWeathyRateVC()
     
+    var isInitialVisit: Bool = true
+    
     var myClothesTagData: ClothesTagData?
     var localizedClothesTagData: [TagCategoryData] = []
     var selectedTags: [Int] = []
@@ -333,11 +335,16 @@ extension ModifyWeathyTagVC {
             }
         }
         
-        setRecordedData()
+        if isInitialVisit == true {
+            setInitialRecordedData()
+        }
+        else {
+            setMaintainedData()
+        }
 
     }
     
-    func setRecordedData() {
+    func setInitialRecordedData() {
         
         var currentTag: Int = -1
         
@@ -406,8 +413,9 @@ extension ModifyWeathyTagVC {
             tagTitles[3].count >= 1 {
             setNextBtnActivated()
         }
-        
-        
+    }
+    
+    func setMaintainedData() {
         
     }
 }
