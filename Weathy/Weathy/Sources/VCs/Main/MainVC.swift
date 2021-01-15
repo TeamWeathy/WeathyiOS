@@ -39,9 +39,11 @@ class MainVC: UIViewController {
 //        UserDefaults.standard.setValue(62, forKey: "userId")
 //
 
-        // search에서 넘어온 데이터가 없는 경우에만 서버 통신
-        if (self.deliveredSearchData == nil) {
-            getLocationWeather()
+        if let location = UserDefaults.standard.string(forKey: "locationCode") {
+            // search에서 넘어온 데이터가 없는 경우에만 서버 통신
+            if (self.deliveredSearchData == nil) {
+                getLocationWeather(code: location)
+            }
         }
     }
     
@@ -88,7 +90,7 @@ class MainVC: UIViewController {
         logoImage.alpha = 0
     }
     
-    func getLocationWeather() {
+    func getLocationWeather(code: String) {
         MainService.shared.getWeatherByLocation() { (result) -> (Void) in
             switch result {
             case .success(let data):
@@ -102,10 +104,10 @@ class MainVC: UIViewController {
 
                     UserDefaults.standard.setValue(response.overviewWeather.region.code, forKey: "locationCode")
                     
-                    self.getRecommendedWeathy()
-                    self.getHourlyWeather()
-                    self.getDailyWeather()
-                    self.getExtraWeather()
+                    self.getRecommendedWeathy(code: String(response.overviewWeather.region.code))
+                    self.getHourlyWeather(code: String(response.overviewWeather.region.code))
+                    self.getDailyWeather(code: String(response.overviewWeather.region.code))
+                    self.getExtraWeather(code: String(response.overviewWeather.region.code))
                 }
             case .requestErr(let msg):
                 print(msg)
@@ -119,10 +121,10 @@ class MainVC: UIViewController {
         }
     }
     
-    func getRecommendedWeathy() {
+    func getRecommendedWeathy(code: String) {
         let userId: Int = UserDefaults.standard.integer(forKey: "userId")
         
-        MainService.shared.getRecommendedWeathy(userId: userId) { (result) -> (Void) in
+        MainService.shared.getRecommendedWeathy(userId: userId, code: code) { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? RecommendedWeathyData {
@@ -143,8 +145,8 @@ class MainVC: UIViewController {
         }
     }
     
-    func getHourlyWeather() {
-        MainService.shared.getHourlyWeather() { (result) -> (Void) in
+    func getHourlyWeather(code: String) {
+        MainService.shared.getHourlyWeather(code: code) { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? HourlyWeatherData {
@@ -162,8 +164,8 @@ class MainVC: UIViewController {
         }
     }
     
-    func getDailyWeather() {
-        MainService.shared.getDailyWeather() { (result) -> (Void) in
+    func getDailyWeather(code: String) {
+        MainService.shared.getDailyWeather(code: code) { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? DailyWeatherData {
@@ -181,8 +183,8 @@ class MainVC: UIViewController {
         }
     }
     
-    func getExtraWeather() {
-        MainService.shared.getExtraWeather() { (result) -> (Void) in
+    func getExtraWeather(code: String) {
+        MainService.shared.getExtraWeather(code: code) { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? ExtraWeatherData {
@@ -262,6 +264,8 @@ class MainVC: UIViewController {
             self.deliveredSearchData = hourlyData
             
             let iconId: Int = 113
+            let locationCode: String = "1141000000"
+
             self.mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
             self.topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
             
@@ -271,12 +275,13 @@ class MainVC: UIViewController {
                 fallingRain()
             }
             
-            self.getRecommendedWeathy()
-            self.getHourlyWeather()
-            self.getDailyWeather()
-            self.getExtraWeather()
+            self.getRecommendedWeathy(code: locationCode)
+            self.getHourlyWeather(code: locationCode)
+            self.getDailyWeather(code: locationCode)
+            self.getExtraWeather(code: locationCode)
             
-            print(extraWeatherData)
+            print("데이터 다시 가져오기**")
+            print(self.hourlyWeatherData)
             
             self.weatherCollectionView.reloadData()
         }
