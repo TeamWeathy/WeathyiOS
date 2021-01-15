@@ -152,7 +152,7 @@ extension RecordTagAddPopupVC {
     }
     
     func callAddTagService() {
-        RecordTagService.shared.addTag(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", category: tagIndex, tagName: tagNameTextField.text!) { (networkResult) -> (Void) in
+        RecordTagService.shared.addTag(userId: 63, token: "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5", category: tagIndex, tagName: tagNameTextField.text!) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 print(">>> success")
