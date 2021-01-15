@@ -45,13 +45,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_3" translatesAutoresizingMaskIntoConstraints="NO" id="DCe-Eb-WTe">
                                 <rect key="frame" x="29" y="425" width="317" height="300"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_logo_1" translatesAutoresizingMaskIntoConstraints="NO" id="BQt-41-9hc">
-                                <rect key="frame" x="144" y="80" width="87" height="53"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="I3c-bS-MlH"/>
-                                    <constraint firstAttribute="width" constant="87" id="J0K-1j-YXf"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ITY-1x-alH">
                                 <rect key="frame" x="115.33333333333333" y="160" width="144.66666666666669" height="27.666666666666657"/>
                                 <subviews>
@@ -96,6 +89,13 @@
                                     <constraint firstAttribute="width" constant="9" id="NQt-27-Ndn"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FpN-jA-KMv">
+                                <rect key="frame" x="144" y="80" width="87" height="53"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FpN-jA-KMv" secondAttribute="height" multiplier="87:53" id="BrH-92-PKV"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bre-w5-Y9h">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -111,21 +111,21 @@
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="DCe-Eb-WTe" secondAttribute="trailing" constant="29" id="7KY-H7-bdB"/>
                             <constraint firstItem="mTK-dV-Mix" firstAttribute="leading" secondItem="UgB-fn-TBp" secondAttribute="trailing" constant="7" id="7V2-j5-B1r"/>
                             <constraint firstItem="DCe-Eb-WTe" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="8sc-n4-DaR"/>
-                            <constraint firstItem="ITY-1x-alH" firstAttribute="top" secondItem="BQt-41-9hc" secondAttribute="bottom" constant="27" id="9aZ-zK-aH6"/>
                             <constraint firstItem="A4D-vv-KYn" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="9bl-If-GRP"/>
                             <constraint firstItem="ITY-1x-alH" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="BEJ-Do-umQ"/>
                             <constraint firstItem="UgB-fn-TBp" firstAttribute="centerY" secondItem="mTK-dV-Mix" secondAttribute="centerY" id="GpP-lz-Dly"/>
                             <constraint firstItem="Nnl-Jr-muc" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" id="Hho-89-Pn6"/>
                             <constraint firstItem="mTK-dV-Mix" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="L7h-qN-pl5"/>
                             <constraint firstItem="A4D-vv-KYn" firstAttribute="top" secondItem="Xdx-y9-Waj" secondAttribute="top" constant="88" id="LnK-3L-FqF"/>
+                            <constraint firstItem="ITY-1x-alH" firstAttribute="top" secondItem="FpN-jA-KMv" secondAttribute="bottom" constant="27" id="Mkc-TP-G2i"/>
                             <constraint firstAttribute="bottom" secondItem="Isq-6G-8RV" secondAttribute="bottom" constant="121" id="Nbf-NJ-oGB"/>
-                            <constraint firstItem="BQt-41-9hc" firstAttribute="top" secondItem="ceg-9O-kML" secondAttribute="top" constant="80" id="OOw-em-r4Z"/>
                             <constraint firstItem="Bre-w5-Y9h" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="Tya-QZ-IS4"/>
                             <constraint firstAttribute="bottom" secondItem="Xdx-y9-Waj" secondAttribute="bottom" constant="-10" id="Uil-hr-U9f"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="A4D-vv-KYn" secondAttribute="trailing" constant="29" id="VJu-O8-zGk"/>
                             <constraint firstItem="bKT-p6-Abv" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="WQk-zo-9wp"/>
+                            <constraint firstItem="FpN-jA-KMv" firstAttribute="top" secondItem="2UP-hJ-Rj1" secondAttribute="top" constant="36" id="WRI-Hd-895"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="Isq-6G-8RV" secondAttribute="trailing" constant="29" id="aga-qN-FeU"/>
-                            <constraint firstItem="BQt-41-9hc" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="b1l-gQ-4Yk"/>
+                            <constraint firstItem="FpN-jA-KMv" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="bqU-EZ-kMU"/>
                             <constraint firstItem="Xdx-y9-Waj" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="eME-Ed-Mth"/>
                             <constraint firstItem="Isq-6G-8RV" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="ef8-sq-0ks"/>
                             <constraint firstItem="Xdx-y9-Waj" firstAttribute="width" secondItem="ceg-9O-kML" secondAttribute="width" id="fuK-QX-qtw"/>
@@ -141,6 +141,7 @@
                             <constraint firstItem="w46-EK-5Zy" firstAttribute="leading" secondItem="mTK-dV-Mix" secondAttribute="trailing" constant="7" id="nqd-Fn-cLb"/>
                             <constraint firstItem="Nnl-Jr-muc" firstAttribute="top" secondItem="ceg-9O-kML" secondAttribute="top" id="oHY-v2-54a"/>
                             <constraint firstItem="bKT-p6-Abv" firstAttribute="width" secondItem="ceg-9O-kML" secondAttribute="width" multiplier="309:375" id="oHs-QA-Fyd"/>
+                            <constraint firstItem="FpN-jA-KMv" firstAttribute="width" secondItem="ceg-9O-kML" secondAttribute="width" multiplier="0.232" id="tKs-Eq-KPC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6Q2-FO-9HZ"/>
@@ -150,7 +151,7 @@
                         <outlet property="firstImage" destination="Isq-6G-8RV" id="91S-bC-Tkz"/>
                         <outlet property="firstWord" destination="136-AM-m6k" id="fHT-Ax-ZqI"/>
                         <outlet property="gestureStart" destination="c4O-7v-VU3" id="ZGr-tm-czw"/>
-                        <outlet property="lodingCloudImage" destination="BQt-41-9hc" id="Q0G-pu-m16"/>
+                        <outlet property="lodingCloudView" destination="FpN-jA-KMv" id="sYa-6r-Cby"/>
                         <outlet property="phoneImage" destination="Xdx-y9-Waj" id="hX3-g0-JeE"/>
                         <outlet property="secondDot" destination="mTK-dV-Mix" id="yQi-ut-1ap"/>
                         <outlet property="secondImage" destination="A4D-vv-KYn" id="dKi-Qd-5fa"/>
@@ -307,7 +308,6 @@
         <image name="onboarding_bg" width="375" height="812"/>
         <image name="onboarding_btn_start" width="309" height="55"/>
         <image name="onboarding_ic_circle" width="9" height="9"/>
-        <image name="onboarding_img_logo_1" width="87" height="53.333332061767578"/>
         <image name="onboarding_img_phone_1" width="375" height="547"/>
         <image name="onboarding_img_popup_1" width="317" height="118"/>
         <image name="onboarding_img_popup_2" width="314.33334350585938" height="145"/>

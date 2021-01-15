@@ -19,7 +19,7 @@ struct modifyUserService {
     
     func modifyUserPut(nickname: String, completion: @escaping (NetworkResult<Any>) -> () ){
         
-        let url = makeURL(userID: UserDefaults.standard.integer(forKey: "userID"))
+        let url = makeURL(userID: UserDefaults.standard.integer(forKey: "userId"))
         
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let header : HTTPHeaders = [ "x-access-token" : token, "Content-Type" : "application/json"]

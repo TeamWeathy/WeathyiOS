@@ -24,6 +24,7 @@ class ChangeNickNameVC: UIViewController {
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var totalCountLabel: UILabel!
     
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var changeButtonBottom: NSLayoutConstraint!
@@ -47,6 +48,10 @@ class ChangeNickNameVC: UIViewController {
     func labelFontSetting(){
         nickLabel.font = UIFont.SDGothicSemiBold25
         sentenceLabel.font = UIFont.SDGothicRegular16
+        countLabel.font = UIFont.SDGothicRegular13
+        countLabel.textColor = UIColor.subGrey6
+        totalCountLabel.font = UIFont.SDGothicRegular13
+        totalCountLabel.textColor = UIColor.subGrey6
         sentenceLabel.textColor = UIColor.subGrey6
     }
     
