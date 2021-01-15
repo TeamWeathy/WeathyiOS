@@ -23,6 +23,7 @@ class RecentTVC: UITableViewCell {
     @IBOutlet weak var currentTemper: UILabel!
     @IBOutlet weak var highTemper: UILabel!
     @IBOutlet weak var lowTemper: UILabel!
+    @IBOutlet weak var slashLabel: UILabel!
     
     //MARK: - Custom Variables
     
@@ -68,6 +69,7 @@ class RecentTVC: UITableViewCell {
         shadowSet()
         configureLayout()
         textColor()
+        textFont()
     }
 
     //MARK: - @objc Methods
@@ -83,7 +85,7 @@ class RecentTVC: UITableViewCell {
         self.weahterImage.image = UIImage(named: weatherImage)
         self.currentTemper.text = currentTemper
         self.highTemper.text = highTemper
-        self.lowTemper.text = lowTemper
+        self.lowTemper.text = " \(lowTemper)"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -95,6 +97,16 @@ class RecentTVC: UITableViewCell {
         radiusView.layer.cornerRadius = 35
         radiusView.backgroundColor  = .white
         radiusView.dropShadow(color: .gray, offSet: CGSize(width: 0, height: 0), opacity: 0.7, radius: 1.5)
+    }
+    
+    func textFont(){
+        weatherDate.font = UIFont.SDGothicRegular15
+        weatherTime.font = UIFont.SDGothicRegular15
+        location.font = UIFont.SDGothicSemiBold17
+        currentTemper.font = UIFont.RobotoLight50
+        highTemper.font = UIFont.RobotoLight23
+        lowTemper.font = UIFont.RobotoLight23
+//        slashLabel.font = UIFont.RobotoLight23
     }
     
     func textColor(){

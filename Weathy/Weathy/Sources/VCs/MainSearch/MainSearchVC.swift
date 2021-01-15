@@ -13,21 +13,26 @@ class MainSearchVC: UIViewController {
     //MARK: - Custom Variables
     
     static let identifier = "MainSearchVC"
-
-    var searchRecentInfos : [SearchRecentInfo] = []
+    
+    /// 최근 검색 배열을 사용하기 위해 appdelegate에서 전역변수 생성!!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var searchInfos : [SearchRecentInfo] = []
     var mainDeliverSearchInfo : [SearchRecentInfo] = []
-//    var
+
     
     var recentInformations : [OverviewWeatherList] = []
     var searchInformations : [OverviewWeatherList] = []
     var changBool = false
     
     let dateFormatter = DateFormatter()
+    
+    var backImage : String = ""
+    var gradient : String = ""
 
     //MARK: - IBOutlets
     
-    @IBOutlet weak var backView: UIImageView!
+    @IBOutlet weak var backView: UIImageView!       // 날씨에 따른 뒤 배경
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
     
@@ -35,12 +40,24 @@ class MainSearchVC: UIViewController {
     @IBOutlet weak var recentBackgroundView: UIView!
     @IBOutlet weak var recentNoneImage: UIImageView!
     @IBOutlet weak var recentTableView: UITableView!
+    @IBOutlet weak var recentLabel: UILabel!
     
     /// 현재 검색 관련
     @IBOutlet weak var gradientView: UIImageView!
     @IBOutlet weak var searchBackgroundView: UIView!
     @IBOutlet weak var searchNoneImage: UIImageView!
     @IBOutlet weak var searchTableView: UITableView!
+    
+    /// 키보드 내리기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.searchTextField.resignFirstResponder()
+        ///
+        if searchTextField.isSelected == false && searchTextField.text?.count == 0 {
+            recentBackgroundView.isHidden = false
+            searchBackgroundView.isHidden = true
+            searchTextField.isSelected = !searchTextField.isSelected
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,15 +78,23 @@ class MainSearchVC: UIViewController {
         searchTableView.delegate = self
         searchTableView.dataSource = self
         
+        backView.image = UIImage(named: self.backImage)
+        gradientView.image = UIImage(named: self.gradient)
+        
         //MARK: - LifeCycle Methods
 
         recentNonImage()
+        font()
+    }
+    
+    func font(){
+        recentLabel.font = UIFont.SDGothicSemiBold17
     }
     
     /// 촤근 검색 에 따른 이미지 변경
     func recentNonImage(){
         DispatchQueue.main.async {
-            if self.searchRecentInfos.count == 0{
+            if self.appDelegate.appDelegateRecentInfos.count == 0{
                 self.recentNoneImage.isHidden = false
             } else {
                 self.recentNoneImage.isHidden = true
@@ -81,8 +106,10 @@ class MainSearchVC: UIViewController {
     func searchNonImage(){
         DispatchQueue.main.async {
             if self.searchInfos.count == 0{
+                self.searchTableView.isHidden = true
                 self.searchNoneImage.isHidden = false
             } else {
+                self.searchTableView.isHidden = false
                 self.searchNoneImage.isHidden = true
             }
         }
@@ -174,15 +201,15 @@ class MainSearchVC: UIViewController {
         }
     }
     
-    /// Tap Gesture를 활용해서 최근 검색한 위치 숨기기
-    @IBAction func backtextGR(_ sender: Any) {
-        searchTextField.resignFirstResponder()
-        if searchTextField.isSelected == false && searchTextField.text?.count == 0 {
-            recentBackgroundView.isHidden = false
-            searchBackgroundView.isHidden = true
-            searchTextField.isSelected = !searchTextField.isSelected
-        }
-    }
+//    /// Tap Gesture를 활용해서 최근 검색한 위치 숨기기
+//    @IBAction func backtextGR(_ sender: Any) {
+//        searchTextField.resignFirstResponder()
+//        if searchTextField.isSelected == false && searchTextField.text?.count == 0 {
+//            recentBackgroundView.isHidden = false
+//            searchBackgroundView.isHidden = true
+//            searchTextField.isSelected = !searchTextField.isSelected
+//        }
+//    }
 }
 
 //MARK: - UITableView Datasource
@@ -190,7 +217,7 @@ class MainSearchVC: UIViewController {
 extension MainSearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == recentTableView{
-            return searchRecentInfos.count
+            return appDelegate.appDelegateRecentInfos.count
         }else{
             return searchInfos.count
         }
@@ -203,7 +230,7 @@ extension MainSearchVC: UITableViewDataSource {
             
             recentCell.selectionStyle = .none
             
-            recentCell.bind(weatherDate: searchRecentInfos[indexPath.row].date, weahterTime: searchRecentInfos[indexPath.row].time, location: searchRecentInfos[indexPath.row].location, weatherImage: searchRecentInfos[indexPath.row].weatherImage, currentTemper: "\(searchRecentInfos[indexPath.row].currentTemper)°", highTemper:  "\(searchRecentInfos[indexPath.row].highTemper)°", lowTemper: "\(searchRecentInfos[indexPath.row].lowTemper)°")
+            recentCell.bind(weatherDate: appDelegate.appDelegateRecentInfos[indexPath.row].date, weahterTime: appDelegate.appDelegateRecentInfos[indexPath.row].time, location: appDelegate.appDelegateRecentInfos[indexPath.row].location, weatherImage: appDelegate.appDelegateRecentInfos[indexPath.row].weatherImage, currentTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].currentTemper)°", highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].highTemper)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].lowTemper)°")
             
             recentCell.delegate = self
             recentCell.indexPath = indexPath    /// 해당 cell 위치 제공
@@ -235,17 +262,18 @@ extension MainSearchVC: UITableViewDelegate {
         if tableView == recentTableView {
             let cell = tableView.cellForRow(at: indexPath)
             cell?.backgroundColor = .clear
+            
         }else if tableView == searchTableView{
             let cell = tableView.cellForRow(at: indexPath)
             cell?.backgroundColor = .white
             print(indexPath.row)
             /// 최근 검색 기록에 데이터 넣기
-            if searchRecentInfos.count < 3{
-                searchRecentInfos.append(searchInfos[indexPath.row])
+            if appDelegate.appDelegateRecentInfos.count < 3{
+                appDelegate.appDelegateRecentInfos.append(searchInfos[indexPath.row])
                 self.recentTableView.reloadData()
             }else {
-                searchRecentInfos.remove(at: 0)
-                searchRecentInfos.append(searchInfos[indexPath.row])
+                appDelegate.appDelegateRecentInfos.remove(at: 0)
+                appDelegate.appDelegateRecentInfos.append(searchInfos[indexPath.row])
                 self.recentTableView.reloadData()
             }
             /// Main에 넘겨줄 데이터 넣기
@@ -305,7 +333,7 @@ extension MainSearchVC: CellDelegate {
     func swipeCell(indexPath: IndexPath) {
         print("-----> index \(indexPath)")
         
-        UIView.animate(withDuration: 0.3, animations: {            self.searchRecentInfos.remove(at: indexPath.row)
+        UIView.animate(withDuration: 0.3, animations: {            self.appDelegate.appDelegateRecentInfos.remove(at: indexPath.row)
                         self.recentTableView.deleteRows(at: [indexPath], with: .automatic)}, completion: {_ in self.recentTableView.reloadData()
                             self.recentNonImage()
                         })

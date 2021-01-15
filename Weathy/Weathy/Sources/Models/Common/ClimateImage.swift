@@ -63,6 +63,18 @@ struct ClimateImage {
         }
     }
     
+    static func getSearchClimateMainBlurBarName(_ climateId: Int) -> String {
+        switch (climateId % 100) {
+        case 1, 2, 3:
+            return climateId < 100 ? "search_box_topblur_morning" : "search_box_topblur_night"
+        case 4, 9, 10, 11, 13, 50:
+            return climateId < 100 ? "search_box_topblur_snowrain" : "search_box_topblur_night"
+        default:
+            return ""
+        }
+    }
+
+    
     static func getClimateMainIllust(_ climateId: Int) -> String {
         switch (climateId % 100) {
         case 1:

@@ -86,7 +86,7 @@ class ChangeNickNameVC: UIViewController {
         } else {
             changBool = false
             clearButton.isHidden = true
-            self.changeButton.setImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
+            self.changeButton.setBackgroundImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             countLabel.textColor = UIColor.black
             countLabel.text = "0"
@@ -143,8 +143,8 @@ extension ChangeNickNameVC: UITextFieldDelegate{
         /// 글자 개수에 따른 "변경하기" 버튼 이미지 변경
         if nickNameTextField.text?.count == 0{
             self.changBool = false
-            self.changeButton.setImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
-            self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
+            self.changeButton.setBackgroundImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
+            self.changeButton.setBackgroundImage(UIImage(named: "settingImgTextfieldUnselected"), for: .normal)
             clearButton.isHidden = true
             countLabel.textColor = UIColor.black
         }else{
