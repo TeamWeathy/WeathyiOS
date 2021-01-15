@@ -22,6 +22,7 @@ class CalendarDetailVC: UIViewController {
     var selectedDate = Date()
     var calendarVC: CalendarVC!
     var dailyWeathy: CalendarWeathy?
+    var isModified = false
     
     //MARK: - IBOutlets
     
@@ -68,6 +69,15 @@ class CalendarDetailVC: UIViewController {
         selectedDateDidChange(nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
         //        initGestureRecognizer()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if isModified{
+            // self.showToast(message: "웨디 내용이 수정되었어요!")
+            selectedDateDidChange(nil)
+            isModified = false
+        }
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
