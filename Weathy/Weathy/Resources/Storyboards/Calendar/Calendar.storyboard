@@ -389,27 +389,18 @@
                                     <constraint firstItem="OJS-Lx-AE2" firstAttribute="leading" secondItem="OjD-XH-60E" secondAttribute="leading" id="eOH-FQ-JEM"/>
                                 </constraints>
                             </scrollView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomNavibarBlur" translatesAutoresizingMaskIntoConstraints="NO" id="zZd-cs-jqb">
-                                <rect key="frame" x="0.0" y="724" width="375" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="zZd-cs-jqb" secondAttribute="height" multiplier="375:54" id="Dul-SS-VyR"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6NH-hq-cD8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zZd-cs-jqb" firstAttribute="trailing" secondItem="6NH-hq-cD8" secondAttribute="trailing" id="1Tq-qp-m5i"/>
                             <constraint firstItem="aVD-Qw-6W5" firstAttribute="centerX" secondItem="6NH-hq-cD8" secondAttribute="centerX" id="6IP-Nb-Vo7"/>
                             <constraint firstItem="6NH-hq-cD8" firstAttribute="bottom" secondItem="OjD-XH-60E" secondAttribute="bottom" id="6JY-6Q-1hh"/>
                             <constraint firstItem="Z3O-5L-M7h" firstAttribute="top" secondItem="aVD-Qw-6W5" secondAttribute="bottom" constant="17" id="6LN-YT-sih"/>
                             <constraint firstItem="OjD-XH-60E" firstAttribute="leading" secondItem="6NH-hq-cD8" secondAttribute="leading" id="Gpp-fS-oCf"/>
                             <constraint firstItem="aVD-Qw-6W5" firstAttribute="top" secondItem="6NH-hq-cD8" secondAttribute="top" multiplier="354:734" constant="354" id="See-3z-jWq"/>
                             <constraint firstItem="OjD-XH-60E" firstAttribute="top" secondItem="6NH-hq-cD8" secondAttribute="top" constant="213" id="Skx-lG-PYF"/>
-                            <constraint firstItem="zZd-cs-jqb" firstAttribute="leading" secondItem="6NH-hq-cD8" secondAttribute="leading" id="k08-bc-qo6"/>
                             <constraint firstItem="Z3O-5L-M7h" firstAttribute="centerX" secondItem="6NH-hq-cD8" secondAttribute="centerX" id="nJi-qI-Zjb"/>
                             <constraint firstItem="6NH-hq-cD8" firstAttribute="trailing" secondItem="OjD-XH-60E" secondAttribute="trailing" id="tf3-gF-Bl5"/>
-                            <constraint firstItem="zZd-cs-jqb" firstAttribute="bottom" secondItem="6NH-hq-cD8" secondAttribute="bottom" id="zRG-Xr-8E8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -891,7 +882,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bottomNavibarBlur" width="375" height="54"/>
         <image name="calendarBtnArrow" width="11" height="6.3333334922790527"/>
         <image name="calendarBtnRecord" width="96" height="48"/>
         <image name="calendarFrameGotoday" width="48" height="48"/>

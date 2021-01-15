@@ -79,7 +79,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         
     }
 
-    
     //MARK: - Custom Methods
     
     func setStyle(){
@@ -201,7 +200,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         lastMonthDate = dateFormatter.date(from:selectedDate.lastYearMonth)!
         infiniteMonthList = [lastMonthDate,selectedDate,nextMonthDate]
         infiniteWeekList = [lastWeekDate,selectedDate,nextWeekDate]
-        
+
             self.infiniteMonthlyCV.reloadData()
             self.infiniteWeeklyCV.reloadData()
         DispatchQueue.main.async(execute: { [self] in

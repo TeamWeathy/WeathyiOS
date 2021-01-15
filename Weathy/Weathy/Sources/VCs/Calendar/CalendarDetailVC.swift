@@ -297,6 +297,8 @@ class CalendarDetailVC: UIViewController {
                 self.showToast(message: "웨디에 내용이 추가되었어요!")
             }
             selectedDateDidChange(nil)
+            calendarVC.selectedDateDidChange()
+            calendarVC.view.layoutIfNeeded()
         }
     }
     
