@@ -213,7 +213,14 @@ extension ModifyWeathyTagVC {
     
     func setNextBtnActivated() {
         nextBtn.isUserInteractionEnabled = true
+        finishBtn.isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.5, animations: {
+            self.finishBtn.backgroundColor = .mintMain
+            self.finishBtn.setTitle("수정완료", for: .normal)
+            self.finishBtn.setTitleColor(.white, for: .normal)
+            self.finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+            self.finishBtn.layer.cornerRadius = 30
+            
             self.nextBtn.backgroundColor = .white
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.mintIcon, for: .normal)
@@ -225,7 +232,14 @@ extension ModifyWeathyTagVC {
     
     func setNextBtnDeactivated() {
         nextBtn.isUserInteractionEnabled = false
+        finishBtn.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.5, animations: {
+            self.finishBtn.backgroundColor = .subGrey3
+            self.finishBtn.setTitle("수정완료", for: .normal)
+            self.finishBtn.setTitleColor(.white, for: .normal)
+            self.finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+            self.finishBtn.layer.cornerRadius = 30
+            
             self.nextBtn.backgroundColor = .white
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.subGrey3, for: .normal)
