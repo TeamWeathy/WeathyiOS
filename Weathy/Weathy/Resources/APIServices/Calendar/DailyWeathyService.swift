@@ -21,7 +21,7 @@ struct DailyWeathyService{
     func getDailyCalendar(userID: Int, date: String, completion: @escaping (NetworkResult<Any>) -> (Void)){
         let url = makeURL(userID: userID, date: date)
 //        let token = UserDefaults.standard.string(forKey: "token")
-        let token = "61:QZAQpU5C82tsNOQ8kBS7fKANiOCiyN"
+        let token = "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5"
         let header: HTTPHeaders = [
             "Content-Type": "application/json",
             "x-access-token": token

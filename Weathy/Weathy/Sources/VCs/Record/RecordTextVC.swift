@@ -11,6 +11,8 @@ class RecordTextVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var dateString: String = "0000-00-00"
+    
     var selectedTags: [Int] = []
     var selectedStamp: Int = -1
     
@@ -65,7 +67,7 @@ class RecordTextVC: UIViewController {
         wordCountLabel.font = UIFont.SDGothicRegular13
         wordCountLabel.textColor = UIColor.subGrey6
 
-        
+        print(">>>>>", dateString)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -229,13 +231,16 @@ extension RecordTextVC {
     }
     
     func callRecordWeathyService() {
-        RecordWeathyService.shared.recordWeathy(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
+        RecordWeathyService.shared.recordWeathy(userId: 63, token: "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5", date: dateString, code: 1141000000, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {
                     print(loadData)
                 }
-                self.showToast(message: "웨디에 내용이 추가되었어요!")
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
+                }
+//                self.showToast(message: "웨디에 내용이 추가되었어요!")
                 
             case .requestErr(let msg):
                 print("requestErr")

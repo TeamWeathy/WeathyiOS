@@ -66,6 +66,8 @@ class ModifyWeathyStartVC: UIViewController {
         /// 구조체 안에 담긴 옷 태그 데이터를 배열로 변환하는 함수
         getClothesArray()
         
+        print(">>>>>", dateString)
+        
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.locale = Locale(identifier: "ko_KR")
 //        dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -224,7 +226,7 @@ extension ModifyWeathyStartVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: dateString, code: 1141000000, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5", date: dateString, code: 1141000000, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             print(self.weathyData?.weathyId ?? -1)
             switch networkResult {
             case .success(let data):
@@ -232,7 +234,9 @@ extension ModifyWeathyStartVC {
                     print(loadData)
                 }
         
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 1)
+                }
                 
             case .requestErr(let msg):
                 print("requestErr")
