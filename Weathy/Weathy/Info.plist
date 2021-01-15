@@ -55,7 +55,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>OnBoarding</string>
+					<string>Calendar</string>
 				</dict>
 			</array>
 		</dict>

@@ -30,7 +30,7 @@ extension ModifyWeathyNVC {
     
     func sendData() {
         
-        guard let root = self.storyboard?.instantiateViewController(identifier: "ModifyWeathyStartVC") as? ModifyWeathyStartVC else {
+        guard let root = self.viewControllers[0] as? ModifyWeathyStartVC else {
             return
         }
         
