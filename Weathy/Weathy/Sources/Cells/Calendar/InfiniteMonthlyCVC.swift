@@ -172,6 +172,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
             ///현재달이 오늘을 포함하고 있는 경우
             if selectedDate.currentYearMonth == Date().currentYearMonth{
                 if indexPath.item-selectedDate.firstWeekday+1 == Date().day{
+                    cell.isToday = true
                     cell.setToday()
                 }
             }
