@@ -32,6 +32,7 @@ extension ModifyWeathyNVC {
         }
         
         root.weathyData = weathyData
+        root.dateString = dateString
     }
     
 }
