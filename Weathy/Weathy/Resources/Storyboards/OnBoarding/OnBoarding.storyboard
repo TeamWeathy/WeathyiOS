@@ -17,15 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bre-w5-Y9h">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Nnl-Jr-muc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_phone_1" translatesAutoresizingMaskIntoConstraints="NO" id="Xdx-y9-Waj">
-                                <rect key="frame" x="0.0" y="305" width="375" height="507"/>
+                                <rect key="frame" x="0.0" y="315" width="375" height="507"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Xdx-y9-Waj" secondAttribute="height" multiplier="375:507" id="Unn-Le-SZf"/>
                                 </constraints>
@@ -44,10 +40,10 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_2" translatesAutoresizingMaskIntoConstraints="NO" id="A4D-vv-KYn">
-                                <rect key="frame" x="29" y="393" width="317" height="145"/>
+                                <rect key="frame" x="29" y="403" width="317" height="145"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_3" translatesAutoresizingMaskIntoConstraints="NO" id="DCe-Eb-WTe">
-                                <rect key="frame" x="29" y="415" width="317" height="300"/>
+                                <rect key="frame" x="29" y="425" width="317" height="300"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_logo_1" translatesAutoresizingMaskIntoConstraints="NO" id="BQt-41-9hc">
                                 <rect key="frame" x="144" y="80" width="87" height="53"/>
@@ -100,6 +96,10 @@
                                     <constraint firstAttribute="width" constant="9" id="NQt-27-Ndn"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bre-w5-Y9h">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2UP-hJ-Rj1"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
@@ -120,15 +120,15 @@
                             <constraint firstItem="A4D-vv-KYn" firstAttribute="top" secondItem="Xdx-y9-Waj" secondAttribute="top" constant="88" id="LnK-3L-FqF"/>
                             <constraint firstAttribute="bottom" secondItem="Isq-6G-8RV" secondAttribute="bottom" constant="121" id="Nbf-NJ-oGB"/>
                             <constraint firstItem="BQt-41-9hc" firstAttribute="top" secondItem="ceg-9O-kML" secondAttribute="top" constant="80" id="OOw-em-r4Z"/>
-                            <constraint firstItem="Xdx-y9-Waj" firstAttribute="top" secondItem="mTK-dV-Mix" secondAttribute="bottom" constant="54" id="OtK-kq-u0Y"/>
                             <constraint firstItem="Bre-w5-Y9h" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="Tya-QZ-IS4"/>
-                            <constraint firstAttribute="bottom" secondItem="Xdx-y9-Waj" secondAttribute="bottom" id="Uil-hr-U9f"/>
+                            <constraint firstAttribute="bottom" secondItem="Xdx-y9-Waj" secondAttribute="bottom" constant="-10" id="Uil-hr-U9f"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="A4D-vv-KYn" secondAttribute="trailing" constant="29" id="VJu-O8-zGk"/>
                             <constraint firstItem="bKT-p6-Abv" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="WQk-zo-9wp"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="Isq-6G-8RV" secondAttribute="trailing" constant="29" id="aga-qN-FeU"/>
                             <constraint firstItem="BQt-41-9hc" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="b1l-gQ-4Yk"/>
                             <constraint firstItem="Xdx-y9-Waj" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="eME-Ed-Mth"/>
                             <constraint firstItem="Isq-6G-8RV" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="29" id="ef8-sq-0ks"/>
+                            <constraint firstItem="Xdx-y9-Waj" firstAttribute="width" secondItem="ceg-9O-kML" secondAttribute="width" id="fuK-QX-qtw"/>
                             <constraint firstItem="mTK-dV-Mix" firstAttribute="top" secondItem="a69-LG-iOR" secondAttribute="bottom" constant="27" id="gYX-3n-TaL"/>
                             <constraint firstItem="Isq-6G-8RV" firstAttribute="centerX" secondItem="Xdx-y9-Waj" secondAttribute="centerX" id="h1G-1e-7SO"/>
                             <constraint firstAttribute="top" secondItem="Bre-w5-Y9h" secondAttribute="top" id="h20-Ov-H04"/>
