@@ -155,7 +155,7 @@ class ModifyWeathyTagVC: UIViewController {
 extension ModifyWeathyTagVC {
     func setHeader() {
         titleLabel.numberOfLines = 2
-        titleLabel.text = "\(name)님\n어떤 옷을 입었나요?"
+        titleLabel.text = "\(UserDefaults.standard.string(forKey: "nickname") ?? "웨디")님\n어떤 옷을 입었나요?"
         titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
         titleLabel.textColor = .mainGrey
         
