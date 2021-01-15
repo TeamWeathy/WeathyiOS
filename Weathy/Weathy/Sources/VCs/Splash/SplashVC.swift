@@ -18,8 +18,15 @@ class SplashVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         displaySplash()
+    }
+    
+    @objc func nextView() {
+        let nextStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
+        if let dvc = nextStoryboard.instantiateViewController(identifier: "OnBoardingFirstVC") as UIViewController? {
+            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
+        }
     }
     
     func displaySplash() {
@@ -30,6 +37,8 @@ class SplashVC: UIViewController {
         animationView.loopMode = .playOnce
         animationView.play()
         self.view.addSubview(animationView)
+        
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.nextView), userInfo: nil, repeats: false)
     }
 
 }
