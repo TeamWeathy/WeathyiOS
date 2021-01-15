@@ -70,7 +70,6 @@
 		6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 633984282599B1F400339615 /* Weathy.xcdatamodeld */; };
 		6339842C2599B1F600339615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6339842B2599B1F600339615 /* Assets.xcassets */; };
 		6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6339842D2599B1F600339615 /* LaunchScreen.storyboard */; };
-		63398462259A425200339615 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63398461259A425200339615 /* GenericResponse.swift */; };
 		6339846C259A431100339615 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339846B259A431100339615 /* UIView+Extensions.swift */; };
 		6339846F259A433400339615 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339846E259A433400339615 /* UIColor+Extensions.swift */; };
 		63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63398471259A435400339615 /* UIImageView+Extensions.swift */; };
@@ -187,7 +186,6 @@
 		6339842B2599B1F600339615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6339842E2599B1F600339615 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		633984302599B1F600339615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63398461259A425200339615 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		6339846B259A431100339615 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		6339846E259A433400339615 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		63398471259A435400339615 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
@@ -460,6 +458,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		632FF84225B21150000C1A95 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				6354ED8125AE0A2D00C5CAC5 /* Calendar.storyboard */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		633984132599B1F400339615 = {
 			isa = PBXGroup;
 			children = (
@@ -518,12 +524,12 @@
 		6339843D259A2B6C00339615 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				632FF84225B21150000C1A95 /* Calendar */,
 				37FB8AA525AE4F85001A6287 /* Splash */,
 				0E75F66A25AF174200D98633 /* OnBoarding */,
 				ABBA9CAC25A22B31008785BD /* Main */,
 				0E75F66925AF172C00D98633 /* MainSearch */,
 				0E75F66825AF171A00D98633 /* Setting */,
-				6354ED8125AE0A2D00C5CAC5 /* Calendar.storyboard */,
 				374D48CE259CEBD300152B9A /* Record */,
 				37222E8425B0D60E00577FEE /* ModifyWeathy */,
 				0E8C002F25A1B79500A31295 /* Tabbar */,
@@ -595,7 +601,6 @@
 				37FB8AAD25AE52BD001A6287 /* Splash */,
 				0E75F67325AF3D4E00D98633 /* UserInformation */,
 				0E6E9A7A25AFA1A600702706 /* SearchInformation */,
-				63398461259A425200339615 /* GenericResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -928,7 +933,6 @@
 				37222E6725AE657C00577FEE /* RecordTagService.swift in Sources */,
 				0E8C004725A249B900A31295 /* SettingVC.swift in Sources */,
 				0E9152E025A39A1F0048E226 /* MainSearchVC.swift in Sources */,
-				63398462259A425200339615 /* GenericResponse.swift in Sources */,
 				ABE2B93025B0D98D007F878C /* ExtraWeatherData.swift in Sources */,
 				37FB8AAB25AE4FB7001A6287 /* SplashVC.swift in Sources */,
 				AB4E1C9525A9ED4C002F3B79 /* WeeklyWeatherCVC.swift in Sources */,
@@ -1125,7 +1129,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.weathy.000;
+				PRODUCT_BUNDLE_IDENTIFIER = Weathy.weathy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

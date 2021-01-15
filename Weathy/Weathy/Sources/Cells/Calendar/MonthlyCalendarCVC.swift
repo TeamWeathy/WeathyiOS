@@ -10,11 +10,17 @@ import UIKit
 class MonthlyCalendarCVC: UICollectionViewCell {
     
     static let identifier = "MonthlyCalendarCVC"
-    
+    var isToday = false
     override var isSelected: Bool{
         didSet{
             if isSelected{
-                setSelectedDay()
+                if isToday{
+                    setToday()
+                }
+                else{
+                    setSelectedDay()
+                }
+                
             }
             else{
                 dayLabel.backgroundColor = .white
@@ -22,6 +28,7 @@ class MonthlyCalendarCVC: UICollectionViewCell {
             }
         }
     }
+    
     
     @IBOutlet weak var dayLabel: SpacedLabel!
     @IBOutlet weak var highImageView: UIImageView!
@@ -57,6 +64,7 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     }
     override func prepareForReuse() {
         super.prepareForReuse()
+        isToday = false
         dividerView.alpha = 1
         dayLabel.backgroundColor = .clear
         dayLabel.font = UIFont(name: "Roboto-Medium", size: 14)
