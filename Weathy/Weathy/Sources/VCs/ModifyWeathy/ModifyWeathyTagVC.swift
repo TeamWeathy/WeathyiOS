@@ -11,6 +11,8 @@ class ModifyWeathyTagVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var weathyData: CalendarWeathy?
+    
     var notificationGenerator: UIImpactFeedbackGenerator?
     
     var tagUpper: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
@@ -315,7 +317,33 @@ extension ModifyWeathyTagVC {
                 }
             }
         }
+        
+        setRecordedData()
 
+    }
+    
+    func setRecordedData() {
+        
+        var currentTag: Int = -1
+        
+        /// 이미 선택돼있는 태그 id 값 비교해 isSelected 변경 (상의)
+        if weathyData?.closet.top.clothes != nil {
+            for i in 0...(weathyData?.closet.top.clothes.count)! - 1 {
+                currentTag = (weathyData?.closet.top.clothes[i].id)!
+                
+                for b in 0...tagTitles[0].tagTab.count {
+                    if tagTitles[0].tagTab[b].id == currentTag {
+                        tagTitles[0].tagTab[b].isSelected = true
+                        selectedTags.append(currentTag)
+                        break
+                    }
+                }
+            }
+        }
+        // -> 이거 잘 되면 복붙하기
+        
+        
+        
     }
 }
 

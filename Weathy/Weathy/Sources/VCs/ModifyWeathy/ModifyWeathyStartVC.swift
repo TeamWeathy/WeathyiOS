@@ -85,6 +85,8 @@ class ModifyWeathyStartVC: UIViewController {
             visitedFlag = true
         }
         
+        dvc.weathyData = weathyData
+        
         self.navigationController?.pushViewController(dvc, animated: false)
     }
     
