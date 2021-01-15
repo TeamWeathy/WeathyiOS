@@ -95,7 +95,7 @@ class ModifyWeathyStartVC: UIViewController {
     }
     
     @IBAction func finishBtnDidTap(_ sender: Any) {
-        // 서버 처리
+        callModifyWeathyService()
         dismiss(animated: true, completion: nil)
     }
 }
@@ -215,6 +215,34 @@ extension ModifyWeathyStartVC {
             self.subTitleLabel.alpha = 1
             self.subTitleLabel.frame = CGRect(x: self.subTitleLabel.frame.origin.x, y: self.subTitleLabel.frame.origin.y+10, width: self.subTitleLabel.frame.width, height: self.subTitleLabel.frame.height)
         })
+    }
+    
+    func callModifyWeathyService() {
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: "2021-01-13", code: 1141000000, clothArray: [166], stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+            print(self.weathyData?.weathyId ?? -1)
+            switch networkResult {
+            case .success(let data):
+                if let loadData = data as? RecordWeathyData {
+                    print(loadData)
+                }
+        
+                self.dismiss(animated: true, completion: nil)
+                
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                    self.showToast(message: message)
+                }
+                
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     func getClimateAssetName(_ climateId: Int) -> String{
