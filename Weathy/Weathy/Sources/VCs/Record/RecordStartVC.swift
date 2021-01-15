@@ -84,7 +84,7 @@ class RecordStartVC: UIViewController {
 
         boxTimeLabel.text = "\(searchInfo.dailyWeather.date.month)월 \(searchInfo.dailyWeather.date.day)일 \(searchInfo.dailyWeather.date.dayOfWeek)"
         boxLocationLabel.text = searchInfo.region.name
-        boxWeatherImageView.image = UIImage(named:   ClimateImage.getClimateAssetName(searchInfo.hourlyWeather.climate.iconID))
+        boxWeatherImageView.image = UIImage(named:   ClimateImage.getClimateSearchIllust(searchInfo.hourlyWeather.climate.iconID))
         maxTempLabel.text = "\(searchInfo.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(searchInfo.dailyWeather.temperature.minTemp)°"
         print("---> 뭐야 \(searchInfo)")
