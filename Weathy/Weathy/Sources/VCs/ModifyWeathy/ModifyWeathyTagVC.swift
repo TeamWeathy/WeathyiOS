@@ -336,6 +336,7 @@ extension ModifyWeathyTagVC {
                     if tagTitles[0].tagTab[b].id == currentTag {
                         tagTitles[0].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
+                        tagTitles[0].count += 1
                         break
                     }
                 }
@@ -350,6 +351,7 @@ extension ModifyWeathyTagVC {
                     if tagTitles[1].tagTab[b].id == currentTag {
                         tagTitles[1].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
+                        tagTitles[1].count += 1
                         break
                     }
                 }
@@ -364,6 +366,7 @@ extension ModifyWeathyTagVC {
                     if tagTitles[2].tagTab[b].id == currentTag {
                         tagTitles[2].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
+                        tagTitles[2].count += 1
                         break
                     }
                 }
@@ -378,6 +381,7 @@ extension ModifyWeathyTagVC {
                     if tagTitles[3].tagTab[b].id == currentTag {
                         tagTitles[3].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
+                        tagTitles[3].count += 1
                         break
                     }
                 }
