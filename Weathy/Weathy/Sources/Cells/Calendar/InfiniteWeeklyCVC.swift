@@ -30,6 +30,11 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
         NotificationCenter.default.addObserver(self, selector: #selector(setDeleted(_:)), name: NSNotification.Name("DeleteWeathy"), object: nil)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        callWeeklyWeathy()
+    }
+    
     //MARK: - Network
     
     func callWeeklyWeathy(){
