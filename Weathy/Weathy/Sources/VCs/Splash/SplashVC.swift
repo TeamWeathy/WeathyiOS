@@ -31,5 +31,4 @@ class SplashVC: UIViewController {
         animationView.play()
         self.view.addSubview(animationView)
     }
-
 }
