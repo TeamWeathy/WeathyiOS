@@ -136,7 +136,8 @@ class ModifyWeathyTagVC: UIViewController {
     @IBAction func finishBtnDidTap(_ sender: Any) {
         if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
             tagTitles[3].count >= 1 {
-            self.dismiss(animated: true, completion: nil)
+            callModifyWeathyService()
+//            self.dismiss(animated: true, completion: nil)
         }
         else {
             self.showToast(message: "태그를 한 개 이상 선택해주세요.")
@@ -446,9 +447,8 @@ extension ModifyWeathyTagVC {
                 if let loadData = data as? RecordWeathyData {
                     print(loadData)
                 }
-                self.dismiss(animated: true) {
-                    self.showToast(message: "웨디에 내용이 추가되었어요!")
-                }
+        
+                self.dismiss(animated: true, completion: nil)
                 
             case .requestErr(let msg):
                 print("requestErr")
