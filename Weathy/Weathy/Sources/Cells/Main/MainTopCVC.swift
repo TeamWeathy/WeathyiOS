@@ -69,7 +69,9 @@ class MainTopCVC: UICollectionViewCell {
             return
         }
         
-        todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
+        if let nickname = UserDefaults.standard.string(forKey: "nickname") {
+            todayWeathyNicknameTextLabel.text = "\(nickname)님이 기억하는"
+        }
 
         closetTopLabel.text = insertSeparatorInArray(data.weathy.closet.top.clothes)
         closetOuterLabel.text = insertSeparatorInArray(data.weathy.closet.outer.clothes)
@@ -82,7 +84,7 @@ class MainTopCVC: UICollectionViewCell {
             weathyDateLabel.text = "\(year)년 \(month)월 \(day)일"
         }
         
-        weathyClimateImage.image = UIImage(named: "ic_fewclouds_day")
+        weathyClimateImage.image = UIImage(named: Climate.getClimateAssetName(data.weathy.hourlyWeather.climate.iconID))
         if let climateDesc = data.weathy.hourlyWeather.climate.climateDescription {
             weathyClimateLabel.text = "\(climateDesc)"
         }

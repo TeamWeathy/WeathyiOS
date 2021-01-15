@@ -46,7 +46,10 @@ class WeeklyWeatherCVC: UICollectionViewCell {
         dayOfWeekLabel.text = "\(dayOfWeek.prefix(1))"
         maxTempLabel.text = "\(data.temperature.maxTemp)°"
         minTempLabel.text = "\(data.temperature.minTemp)°"
-        climateImage.image = UIImage(named: "ic_snow")
+        
+        if let iconId = data.climate?.iconID {
+            climateImage.image = UIImage(named: Climate.getClimateAssetName(iconId))
+        }
         
         if (idx == 0) {
             dayOfWeekLabel.textColor = UIColor.mintIcon
