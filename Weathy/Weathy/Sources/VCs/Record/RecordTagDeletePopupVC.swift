@@ -80,17 +80,15 @@ extension RecordTagDeletePopupVC {
     }
     
     func callDeleteTagService() {
-        RecordTagService.shared.deleteTag(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M", clothArray: selectedTags) { (networkResult) -> (Void) in
+        RecordTagService.shared.deleteTag(userId: 63, token: "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5", clothArray: selectedTags) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
 //                print(">>> success")
                 if let loadData = data as? ClothesTagData {
                     self.isDeleted = true
-                    
-                    self.view.window!.rootViewController?.dismiss(animated: false) {
+                    self.presentingViewController?.presentingViewController?.dismiss(animated: false) {
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TagDeleted"), object: self.isDeleted)
                     }
-                    //                    self.presentingViewController?.viewWillAppear(false)
                 }
                 
             case .requestErr(let msg):
