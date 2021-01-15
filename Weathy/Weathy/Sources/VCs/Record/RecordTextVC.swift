@@ -237,7 +237,8 @@ extension RecordTextVC {
                 if let loadData = data as? RecordWeathyData {
                     print(loadData)
                 }
-                self.showToast(message: "웨디에 내용이 추가되었어요!")
+                self.dismiss(animated: true, completion: nil)
+//                self.showToast(message: "웨디에 내용이 추가되었어요!")
                 
             case .requestErr(let msg):
                 print("requestErr")
