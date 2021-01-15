@@ -11,6 +11,8 @@ class RecordRateVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var dateString: String = "0000-00-00"
+    
     struct Rates {
         let emoji: String
         let title: String
@@ -72,6 +74,7 @@ class RecordRateVC: UIViewController {
         
         dvc.selectedTags = selectedTags
         dvc.selectedStamp = selectedStamp
+        dvc.dateString = dateString
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }

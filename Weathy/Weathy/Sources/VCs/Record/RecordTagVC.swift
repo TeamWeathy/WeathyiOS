@@ -27,6 +27,8 @@ class RecordTagVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var dateString: String = "0000-00-00"
+    
     var notificationGenerator: UIImpactFeedbackGenerator?
     
     var tagUpper: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
@@ -187,6 +189,7 @@ class RecordTagVC: UIViewController {
         }
         
         dvc.selectedTags = selectedTags
+        dvc.dateString = dateString
         
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
@@ -307,7 +310,7 @@ extension RecordTagVC {
     }
     
     func callDisplayTagService() {
-        RecordTagService.shared.displayTag(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M") { (networkResult) -> (Void) in
+        RecordTagService.shared.displayTag(userId: 63, token: "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5") { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? ClothesTagData {
@@ -365,7 +368,27 @@ extension RecordTagVC {
                 }
             }
         }
-
+        
+        setMaintainedData()
+    }
+    
+    func setMaintainedData() {
+        var currentTag = -1
+        
+        if selectedTags != [] {
+            for i in 0...selectedTags.count - 1 {
+                currentTag = selectedTags[i]
+                for j in 0...3 {
+                    for b in 0...tagTitles[j].tagTab.count - 1 {
+                        if tagTitles[j].tagTab[b].id == currentTag {
+                            tagTitles[j].tagTab[b].isSelected = true
+                            tagTitles[j].count += 1
+                            break
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

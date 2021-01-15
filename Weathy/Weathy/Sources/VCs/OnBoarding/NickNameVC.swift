@@ -55,6 +55,7 @@ class NickNameVC: UIViewController {
         nickLabel.font = UIFont.SDGothicSemiBold25
         sentenceLabel.font = UIFont.SDGothicRegular16
         countLabel.font = UIFont.SDGothicRegular13
+        countLabel.textColor = UIColor.subGrey6
         totalCountLabel.font = UIFont.SDGothicRegular13
         totalCountLabel.textColor = UIColor.subGrey6
         sentenceLabel.textColor = UIColor.subGrey6
@@ -104,7 +105,7 @@ class NickNameVC: UIViewController {
             clearButton.isHidden = true
             self.changeButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
-            countLabel.textColor = UIColor.black
+            countLabel.textColor = UIColor.subGrey6
             countLabel.text = "0"
             nickNameTextField.text = ""
         }
@@ -170,7 +171,7 @@ extension NickNameVC: UITextFieldDelegate{
             self.changeButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             clearButton.isHidden = true
-            countLabel.textColor = UIColor.black
+            countLabel.textColor = UIColor.subGrey6
         }else{
             self.changBool = true
             self.changeButton.setBackgroundImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
