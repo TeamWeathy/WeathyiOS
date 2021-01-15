@@ -357,7 +357,7 @@ extension ModifyWeathyTagVC {
             for i in 0...(weathyData?.closet.top.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.top.clothes[i].id)!
                 
-                for b in 0...tagTitles[0].tagTab.count {
+                for b in 0...tagTitles[0].tagTab.count - 1 {
                     if tagTitles[0].tagTab[b].id == currentTag {
                         tagTitles[0].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
@@ -372,7 +372,7 @@ extension ModifyWeathyTagVC {
             for i in 0...(weathyData?.closet.bottom.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.bottom.clothes[i].id)!
                 
-                for b in 0...tagTitles[1].tagTab.count {
+                for b in 0...tagTitles[1].tagTab.count - 1 {
                     if tagTitles[1].tagTab[b].id == currentTag {
                         tagTitles[1].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
@@ -387,7 +387,7 @@ extension ModifyWeathyTagVC {
             for i in 0...(weathyData?.closet.outer.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.outer.clothes[i].id)!
                 
-                for b in 0...tagTitles[2].tagTab.count {
+                for b in 0...tagTitles[2].tagTab.count - 1 {
                     if tagTitles[2].tagTab[b].id == currentTag {
                         tagTitles[2].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
@@ -402,7 +402,7 @@ extension ModifyWeathyTagVC {
             for i in 0...(weathyData?.closet.etc.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.etc.clothes[i].id)!
                 
-                for b in 0...tagTitles[3].tagTab.count {
+                for b in 0...tagTitles[3].tagTab.count - 1 {
                     if tagTitles[3].tagTab[b].id == currentTag {
                         tagTitles[3].tagTab[b].isSelected = true
                         selectedTags.append(currentTag)
