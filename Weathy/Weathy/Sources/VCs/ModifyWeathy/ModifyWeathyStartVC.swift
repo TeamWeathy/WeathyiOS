@@ -11,6 +11,8 @@ class ModifyWeathyStartVC: UIViewController {
 
     //MARK: - Custom Variables
     
+    var weathyData: CalendarWeathy?
+    
     var todayMonth: Int = 1
     var todayDate: Int = 1
     
@@ -102,9 +104,9 @@ extension ModifyWeathyStartVC {
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
-        titleLabel.text = "\(todayMonth)월 \(todayDate)일의 웨디를\n기록해볼까요?"
+//        titleLabel.text = "\(todayMonth)월 \(todayDate)일의 웨디를\n기록해볼까요?"
         titleLabel.numberOfLines = 2
-        titleLabel.font = UIFont.RobotoRegular25
+//        titleLabel.font = UIFont.RobotoRegular25
         
         subTitleLabel.text = "기록할 위치와 날씨를 확인해 주세요."
         subTitleLabel.font = UIFont.SDGothicRegular16
@@ -122,7 +124,7 @@ extension ModifyWeathyStartVC {
     
     func setTitleLabel() {
         /// 기본 설정
-        let attributedString = NSMutableAttributedString(string: "1월 1일의 웨디를\n기록해볼까요?", attributes: [
+        let attributedString = NSMutableAttributedString(string: "\(weathyData?.dailyWeather.date.month ?? 0)월 \(weathyData?.dailyWeather.date.day ?? 0)일의 웨디를\n기록해볼까요?", attributes: [
             .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
             .foregroundColor: UIColor.mainGrey,
             .kern: -1.25
@@ -148,17 +150,17 @@ extension ModifyWeathyStartVC {
         boxView.layer.borderColor = UIColor.subGrey7.cgColor
         boxView.layer.cornerRadius = 35
         
-        boxTimeLabel.text = "\(month)월 \(date)일 \(day)요일"
+        boxTimeLabel.text = "\(weathyData?.dailyWeather.date.month ?? 0)월 \(weathyData?.dailyWeather.date.day ?? 0)일 \(weathyData?.dailyWeather.date.dayOfWeek ?? "땡요일")"
         boxTimeLabel.font = UIFont.SDGothicRegular15
         boxTimeLabel.textColor = UIColor.subGrey1
         
-        boxLocationLabel.text = "\(location)"
+        boxLocationLabel.text = "\(weathyData?.region.name ?? "땡땡시 땡땡구")"
         boxLocationLabel.font = UIFont.SDGothicSemiBold17
         boxLocationLabel.textColor = UIColor.subGrey1
         
         boxWeatherImageView.image = UIImage(named: "searchImgSunnycloud")
         
-        maxTempLabel.text = "\(maxTemp)°"
+        maxTempLabel.text = "\(weathyData?.dailyWeather.temperature.maxTemp ?? 0)°"
         maxTempLabel.font = UIFont(name: "Roboto-Light", size: 40)
         maxTempLabel.textColor = UIColor.redTemp
         maxTempLabel.baselineAdjustment = .alignBaselines
@@ -168,7 +170,7 @@ extension ModifyWeathyStartVC {
         slashLabel.textColor = UIColor(red: 107/255, green: 107/255, blue: 107/255, alpha: 1)
         slashLabel.baselineAdjustment = .alignBaselines
         
-        minTempLabel.text = "\(minTemp)°"
+        minTempLabel.text = "\(weathyData?.dailyWeather.temperature.minTemp ?? 0)°"
         minTempLabel.font = UIFont(name: "Roboto-Light", size: 40)
         minTempLabel.textColor = UIColor.blueTemp
         minTempLabel.baselineAdjustment = .alignBaselines

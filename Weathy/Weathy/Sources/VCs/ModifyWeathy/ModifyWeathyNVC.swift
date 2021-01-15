@@ -11,7 +11,7 @@ class ModifyWeathyNVC: UINavigationController {
     
     static let identifier = "ModifyWeathyNVC"
     
-    var dateString: String = ""
+    var weathyData: CalendarWeathy?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +29,12 @@ class ModifyWeathyNVC: UINavigationController {
 extension ModifyWeathyNVC {
     
     func sendData() {
+        
         guard let root = self.storyboard?.instantiateViewController(identifier: "ModifyWeathyStartVC") as? ModifyWeathyStartVC else {
             return
         }
         
-        root.fullDate = dateString
+        root.weathyData = weathyData
     }
     
 }
