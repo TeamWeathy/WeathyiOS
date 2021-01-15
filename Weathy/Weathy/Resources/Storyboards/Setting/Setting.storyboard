@@ -570,10 +570,9 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7X-JX-aly">
-                                <rect key="frame" x="34" y="707" width="307" height="55"/>
+                                <rect key="frame" x="33" y="706.66666666666663" width="309" height="55.333333333333371"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="307" id="1p9-hf-vRW"/>
-                                    <constraint firstAttribute="height" constant="55" id="RPi-cR-hgo"/>
+                                    <constraint firstAttribute="width" secondItem="i7X-JX-aly" secondAttribute="height" multiplier="307:55" id="QfN-jX-c4N"/>
                                 </constraints>
                                 <state key="normal" image="settingBtnEditUnselected"/>
                                 <connections>
@@ -597,6 +596,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="i7X-JX-aly" firstAttribute="width" secondItem="G8S-Yt-2sb" secondAttribute="width" multiplier="309:375" id="402-tj-mGl"/>
                             <constraint firstItem="6xh-y7-9IU" firstAttribute="top" secondItem="cJU-F3-1XE" secondAttribute="top" constant="15" id="4Su-Pd-3Fz"/>
                             <constraint firstItem="Eab-DD-lof" firstAttribute="top" secondItem="q95-EC-W4X" secondAttribute="bottom" constant="46" id="BA5-t6-VDp"/>
                             <constraint firstItem="2ui-HA-fmE" firstAttribute="leading" secondItem="cJU-F3-1XE" secondAttribute="leading" constant="34" id="CXH-bC-nqS"/>

@@ -24,6 +24,7 @@ class NickNameVC: UIViewController {
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var totalCountLabel: UILabel!
     
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var changeButtonBottom: NSLayoutConstraint!
@@ -53,7 +54,15 @@ class NickNameVC: UIViewController {
     func labelFontSetting(){
         nickLabel.font = UIFont.SDGothicSemiBold25
         sentenceLabel.font = UIFont.SDGothicRegular16
+        countLabel.font = UIFont.SDGothicRegular13
+        totalCountLabel.font = UIFont.SDGothicRegular13
+        totalCountLabel.textColor = UIColor.subGrey6
         sentenceLabel.textColor = UIColor.subGrey6
+        
+        let attr = NSMutableAttributedString(string: nickLabel.text!)
+        attr.addAttribute(NSAttributedString.Key.foregroundColor,
+                          value: UIColor.mintIcon, range: (nickLabel.text! as NSString).range(of: "닉네임")) // 글자 색깔
+        nickLabel.attributedText = attr
     }
     
     /// 변경하기 aleart  생성
@@ -93,7 +102,7 @@ class NickNameVC: UIViewController {
         } else {
             changBool = false
             clearButton.isHidden = true
-            self.changeButton.setImage(UIImage(named: "nickname_btn_start"), for: .normal)
+            self.changeButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             countLabel.textColor = UIColor.black
             countLabel.text = "0"
@@ -158,13 +167,13 @@ extension NickNameVC: UITextFieldDelegate{
         /// 글자 개수에 따른 "변경하기" 버튼 이미지 변경
         if nickNameTextField.text?.count == 0{
             self.changBool = false
-            self.changeButton.setImage(UIImage(named: "nickname_btn_start"), for: .normal)
+            self.changeButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             clearButton.isHidden = true
             countLabel.textColor = UIColor.black
         }else{
             self.changBool = true
-            self.changeButton.setImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
+            self.changeButton.setBackgroundImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
             self.textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
             clearButton.isHidden = false
             countLabel.textColor = UIColor.mintMain
@@ -190,7 +199,7 @@ extension NickNameVC {
             let adjustemnHeight = keyboardFrame.height - view.safeAreaInsets.bottom
             changeButtonBottom.constant = adjustemnHeight + 16
         }else {
-            changeButtonBottom.constant = 0
+            changeButtonBottom.constant = 16
         }
     }
 }
