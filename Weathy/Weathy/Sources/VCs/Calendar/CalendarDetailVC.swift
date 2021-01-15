@@ -256,7 +256,7 @@ class CalendarDetailVC: UIViewController {
     //MARK: - Network
     
     func callDailyWeathy(){
-        DailyWeathyService.shared.getDailyCalendar(userID: 61, date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
+        DailyWeathyService.shared.getDailyCalendar(userID: 63, date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
             switch networkResult{
             case .success(let data):
                 if let dailyData = data as? CalendarWeathy{
@@ -356,7 +356,7 @@ class CalendarDetailVC: UIViewController {
         guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
         record.modalPresentationStyle = .fullScreen
         record.dateString = defaultDateFormatter.string(from: selectedDate)
-        record.dateToday = dailyWeathy?.dailyWeather.date
+        record.dateToday = selectedDate
         self.present(record, animated: true)
     }
     

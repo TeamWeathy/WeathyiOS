@@ -11,7 +11,7 @@ class RecordNVC: UINavigationController {
 
     static let identifier = "RecordNVC"
     
-    var dateToday: CalendarDateClass?
+    var dateToday: Date?
     var dateString: String = "0000-00-00"
     
     override func viewDidLoad() {
