@@ -413,6 +413,7 @@
 		374D48CF259CEBE100152B9A /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				0E75F66525AF149500D98633 /* RecordNVC.swift */,
 				374D48D3259CEC0500152B9A /* RecordStartVC.swift */,
 				374D48EC259D49DB00152B9A /* RecordTagVC.swift */,
 				3735AE3325A8F24C00E71DC3 /* RecordTagAddPopupVC.swift */,
@@ -420,7 +421,6 @@
 				3735AE3625A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift */,
 				374D48DA259D1CB600152B9A /* RecordRateVC.swift */,
 				374D48E5259D368600152B9A /* RecordTextVC.swift */,
-				0E75F66525AF149500D98633 /* RecordNVC.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
