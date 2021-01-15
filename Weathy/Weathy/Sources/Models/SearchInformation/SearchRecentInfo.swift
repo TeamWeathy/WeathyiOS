@@ -12,12 +12,12 @@ struct SearchRecentInfo {
     var date: String
     var time: String
     var location: String
-    var weatherImage: String
+    var weatherImage: Int
     var currentTemper: String
     var highTemper: String
     var lowTemper: String
     
-    init(date: String, time: String, location: String, weatherImage: String, currentTemper: String, highTemper: String, lowTemper: String){
+    init(date: String, time: String, location: String, weatherImage: Int, currentTemper: String, highTemper: String, lowTemper: String){
         
         self.date = date
         self.time = time

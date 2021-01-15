@@ -162,7 +162,7 @@ class MainSearchVC: UIViewController {
                                 self.searchInformations = searchWeatherData.overviewWeatherList
                             }
                             for i in 0 ..< self.searchInformations.count{
-                                self.searchInfos.append(SearchRecentInfo.init(date: "\(self.searchInformations[i].dailyWeather.date.month)월 \(self.searchInformations[i].dailyWeather.date.day)일 \(self.searchInformations[i].dailyWeather.date.dayOfWeek)", time: self.searchInformations[i].hourlyWeather.time, location: self.searchInformations[i].region.name, weatherImage: " ", currentTemper: "\(self.searchInformations[i].hourlyWeather.temperature)", highTemper: "\(self.searchInformations[i].dailyWeather.temperature.maxTemp)", lowTemper: "\(self.searchInformations[i].dailyWeather.temperature.minTemp)"))
+                                self.searchInfos.append(SearchRecentInfo.init(date: "\(self.searchInformations[i].dailyWeather.date.month)월 \(self.searchInformations[i].dailyWeather.date.day)일 \(self.searchInformations[i].dailyWeather.date.dayOfWeek)", time: self.searchInformations[i].hourlyWeather.time, location: self.searchInformations[i].region.name, weatherImage: self.searchInformations[i].hourlyWeather.climate.iconID, currentTemper: "\(self.searchInformations[i].hourlyWeather.temperature)", highTemper: "\(self.searchInformations[i].dailyWeather.temperature.maxTemp)", lowTemper: "\(self.searchInformations[i].dailyWeather.temperature.minTemp)"))
                             }
                             print("잘 받아왔어?\(self.searchInfos)")
                             DispatchQueue.main.async {
@@ -230,7 +230,7 @@ extension MainSearchVC: UITableViewDataSource {
             
             recentCell.selectionStyle = .none
             
-            recentCell.bind(weatherDate: appDelegate.appDelegateRecentInfos[indexPath.row].date, weahterTime: appDelegate.appDelegateRecentInfos[indexPath.row].time, location: appDelegate.appDelegateRecentInfos[indexPath.row].location, weatherImage: appDelegate.appDelegateRecentInfos[indexPath.row].weatherImage, currentTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].currentTemper)°", highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].highTemper)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].lowTemper)°")
+            recentCell.bind(weatherDate: appDelegate.appDelegateRecentInfos[indexPath.row].date, weahterTime: appDelegate.appDelegateRecentInfos[indexPath.row].time, location: appDelegate.appDelegateRecentInfos[indexPath.row].location, weatherImage: ClimateImage.getClimateAssetName(appDelegate.appDelegateRecentInfos[indexPath.row].weatherImage), currentTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].currentTemper)°", highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].highTemper)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].lowTemper)°")
             
             recentCell.delegate = self
             recentCell.indexPath = indexPath    /// 해당 cell 위치 제공
@@ -241,7 +241,7 @@ extension MainSearchVC: UITableViewDataSource {
             
 //            print("잘 받아왔어?\(self.searchInfos)")
             
-            searchCell.bind(weatherDate: searchInfos[indexPath.row].date, weahterTime: searchInfos[indexPath.row].time, location: searchInfos[indexPath.row].location, weatherImage: searchInfos[indexPath.row].weatherImage, currentTemper: "\(searchInfos[indexPath.row].currentTemper)°", highTemper:  "\(searchInfos[indexPath.row].highTemper)°", lowTemper: "\(searchInfos[indexPath.row].lowTemper)°")
+            searchCell.bind(weatherDate: searchInfos[indexPath.row].date, weahterTime: searchInfos[indexPath.row].time, location: searchInfos[indexPath.row].location, weatherImage: ClimateImage.getClimateAssetName(self.searchInfos[indexPath.row].weatherImage), currentTemper: "\(searchInfos[indexPath.row].currentTemper)°", highTemper:  "\(searchInfos[indexPath.row].highTemper)°", lowTemper: "\(searchInfos[indexPath.row].lowTemper)°")
             
             return searchCell
         }
