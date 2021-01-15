@@ -55,13 +55,22 @@ class ModifyWeathyTextVC: UIViewController {
         textViewSurroundingView.layer.borderWidth = 1
         textViewSurroundingView.layer.cornerRadius = 15
         
-        wordCountLabel.text = "0"
-        wordCountLabel.font = UIFont.SDGothicRegular13
-        wordCountLabel.textColor = UIColor.subGrey6
-        
         originalText = weathyData?.feedback ?? ""
         recordTextView.text = originalText
 
+        
+        wordCountLabel.font = UIFont.SDGothicRegular13
+        /// 원래 입력된 텍스트가 없으면
+        if originalText.isEmpty {
+            wordCountLabel.text = "0"
+            wordCountLabel.textColor = UIColor.subGrey6
+        }
+        /// 원래 입력된 텍스트가 있으면
+        else {
+            wordCountLabel.text = "\(originalText.count)"
+            wordCountLabel.textColor = UIColor.mintIcon
+        }
+        
         
     }
     
