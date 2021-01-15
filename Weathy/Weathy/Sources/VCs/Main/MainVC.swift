@@ -10,7 +10,7 @@ import UIKit
 class MainVC: UIViewController {
     //MARK: - Custom Variables
     var lastContentOffset: CGFloat = 0.0
-    var mainDeliverSearchInfo : [SearchRecentInfo] = []
+    var mainDeliverSearchInfo : SearchRecentInfo?
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
