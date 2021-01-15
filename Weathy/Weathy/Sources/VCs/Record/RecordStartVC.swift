@@ -67,6 +67,7 @@ class RecordStartVC: UIViewController {
 //        self.fullDate = dateFormatter.date(from: "2021-01-25")
         
         print(">>>>>", dateString)
+        print(">>>>>", dateToday)
 
         // Do any additional setup after loading the view.
     }
@@ -104,9 +105,10 @@ extension RecordStartVC {
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
-        titleLabel.text = "\(todayMonth)월 \(todayDate)일의 웨디를\n기록해볼까요?"
+        titleLabel.text = "\(dateToday?.month ?? 0)월 \(dateToday?.day ?? 0)일의 웨디를\n기록해볼까요?"
         titleLabel.numberOfLines = 2
-        titleLabel.font = UIFont.RobotoRegular25
+        titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
+        titleLabel.textColor = .mainGrey
         
         subTitleLabel.text = "기록할 위치와 날씨를 확인해 주세요."
         subTitleLabel.font = UIFont.SDGothicRegular16
@@ -124,24 +126,15 @@ extension RecordStartVC {
     
     func setTitleLabel() {
         /// 기본 설정
-        let attributedString = NSMutableAttributedString(string: "1월 1일의 웨디를\n기록해볼까요?", attributes: [
-            .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
-            .foregroundColor: UIColor.mainGrey,
-            .kern: -1.25
-        ])
+        let attributedString = NSMutableAttributedString(string: titleLabel.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
+                                      value: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!, range: (titleLabel.text! as NSString).range(of: "웨디"))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.mintIcon, range: (titleLabel.text! as NSString).range(of: "웨디"))
         
-        /// 행간 조정
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         
-        /// 볼드 처리
-        attributedString.addAttributes([
-            .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
-            .foregroundColor: UIColor.mintIcon
-        ], range: NSRange(location: 7, length: 2))
-        
-        /// 스타일 적용
         titleLabel.attributedText = attributedString
     }
     
