@@ -60,6 +60,7 @@ class ModifyWeathyTextVC: UIViewController {
         wordCountLabel.textColor = UIColor.subGrey6
         
         originalText = weathyData?.feedback ?? ""
+        recordTextView.text = originalText
 
         
     }
