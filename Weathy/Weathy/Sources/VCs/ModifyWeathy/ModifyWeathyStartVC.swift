@@ -160,7 +160,7 @@ extension ModifyWeathyStartVC {
         boxLocationLabel.font = UIFont.SDGothicSemiBold17
         boxLocationLabel.textColor = UIColor.subGrey1
         
-        boxWeatherImageView.image = UIImage(named: "searchImgSunnycloud")
+        boxWeatherImageView.image = UIImage(named: getClimateAssetName(weathyData?.hourlyWeather.climate.iconId ?? -1))
         
         maxTempLabel.text = "\(weathyData?.dailyWeather.temperature.maxTemp ?? 0)°"
         maxTempLabel.font = UIFont(name: "Roboto-Light", size: 40)
@@ -221,6 +221,37 @@ extension ModifyWeathyStartVC {
             self.subTitleLabel.alpha = 1
             self.subTitleLabel.frame = CGRect(x: self.subTitleLabel.frame.origin.x, y: self.subTitleLabel.frame.origin.y+10, width: self.subTitleLabel.frame.width, height: self.subTitleLabel.frame.height)
         })
+    }
+    
+    func getClimateAssetName(_ climateId: Int) -> String{
+        if climateId % 100 == 1{
+            return climateId < 100 ? "ic_clearsky_day" : "ic_clearsky_night"
+        }
+        if climateId % 100 == 2{
+            return climateId < 100 ? "ic_fewclouds_day" : "ic_fewclouds_night"
+        }
+        if climateId % 100 == 3{
+            return "ic_scatteredclouds"
+        }
+        if climateId % 100 == 4{
+            return "ic_brokenclouds"
+        }
+        if climateId % 100 == 9{
+            return climateId < 100 ? "ic_showerrain_day" : "ic_showerrain_night"
+        }
+        if climateId % 100 == 10{
+            return "ic_rain"
+        }
+        if climateId % 100 == 11{
+            return "ic_thunderstorm"
+        }
+        if climateId % 100 == 13{
+            return "ic_snow"
+        }
+        if climateId % 100 == 50{
+            return "ic_mist"
+        }
+        return ""
     }
     
 }
