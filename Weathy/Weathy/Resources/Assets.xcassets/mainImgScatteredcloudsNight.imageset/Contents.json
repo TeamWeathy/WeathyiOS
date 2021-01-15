@@ -2,17 +2,17 @@
   "images" : [
     {
       "filename" : "mainImgScatteredcloudsNight.png",
-      "scale" : "1x",
-      "idiom" : "universal"
-    },
-    {
-      "scale" : "2x",
       "idiom" : "universal",
-      "filename" : "mainImgScatteredcloudsNight@2x.png"
+      "scale" : "1x"
     },
     {
-      "scale" : "3x",
+      "idiom" : "universal",
+      "filename" : "mainImgScatteredcloudsNight@2x.png",
+      "scale" : "2x"
+    },
+    {
       "filename" : "mainImgScatteredcloudsNight@3x.png",
+      "scale" : "3x",
       "idiom" : "universal"
     }
   ],

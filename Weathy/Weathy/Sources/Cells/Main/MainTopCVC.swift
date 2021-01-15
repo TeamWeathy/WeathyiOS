@@ -48,6 +48,7 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var helpButton: UIButton!
     @IBOutlet weak var emptyImage: UIImageView!
     @IBOutlet weak var downImage: UIImageView!
+    @IBOutlet weak var hourlyClimateImage: UIImageView!
     
     //MARK: - Custom Methods
     func changeWeatherViewData(data: LocationWeatherData!) {
@@ -55,27 +56,39 @@ class MainTopCVC: UICollectionViewCell {
         currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature!)°"
         maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.minTemp)°"
-        climateLabel.text = "\(data.overviewWeather.hourlyWeather.climate.climateDescription)"
+        hourlyClimateImage.image = UIImage(named: Climate.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconID))
+        
+        if let desc = data.overviewWeather.hourlyWeather.climate.climateDescription {
+            climateLabel.text = "\(desc)"
+        }
     }
     
     func changeWeathyViewData(data: RecommendedWeathyData) {
+//        print(data.weathy)
         if (data.weathy == nil) {
-            emptyImage.image = UIImage(named: "main_img_empty")
-            emptyImage.alpha = 1
-            
+            showEmptyView()
             return
         }
         
-        todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
+        if let nickname = UserDefaults.standard.string(forKey: "nickname") {
+            todayWeathyNicknameTextLabel.text = "\(nickname)님이 기억하는"
+        }
 
         closetTopLabel.text = insertSeparatorInArray(data.weathy.closet.top.clothes)
         closetOuterLabel.text = insertSeparatorInArray(data.weathy.closet.outer.clothes)
         closetBottomLabel.text = insertSeparatorInArray(data.weathy.closet.bottom.clothes)
         closetEtcLabel.text = insertSeparatorInArray(data.weathy.closet.etc.clothes)
-
-        weathyDateLabel.text = "\(data.weathy.dailyWeather.date.year)년 \(data.weathy.dailyWeather.date.month)월 \(data.weathy.dailyWeather.date.day)일"
-        weathyClimateImage.image = UIImage(named: "ic_fewclouds_day")
-//        weathyClimateLabel.text = "\(data.weathy)"
+        
+        if let year: Int = data.weathy.dailyWeather.date.year {
+            let month: Int = data.weathy.dailyWeather.date.month
+            let day: Int = data.weathy.dailyWeather.date.day
+            weathyDateLabel.text = "\(year)년 \(month)월 \(day)일"
+        }
+        
+        weathyClimateImage.image = UIImage(named: Climate.getClimateAssetName(data.weathy.hourlyWeather.climate.iconID))
+        if let climateDesc = data.weathy.hourlyWeather.climate.climateDescription {
+            weathyClimateLabel.text = "\(climateDesc)"
+        }
         weathyMaxTempLabel.text = "\(data.weathy.dailyWeather.temperature.maxTemp)°"
         weathyMinTempLabel.text = "\(data.weathy.dailyWeather.temperature.minTemp)°"
         
@@ -95,6 +108,11 @@ class MainTopCVC: UICollectionViewCell {
             self.downImage.alpha = 0
             self.downImage.alpha = 1
         }, completion: nil)
+    }
+    
+    func showEmptyView() {
+        emptyImage.image = UIImage(named: "main_img_empty")
+        emptyImage.alpha = 1
     }
 
     func setCell() {
