@@ -151,7 +151,6 @@ class CalendarDetailVC: UIViewController {
         switch state{
         case .beforeContent:
             recordButton.alpha = 0
-            print("before")
             detailEmptyImageView.image = UIImage(named: "calendarImgBeforeCloud")
         case .noContent:
             recordButton.alpha = 1
@@ -257,7 +256,7 @@ class CalendarDetailVC: UIViewController {
     //MARK: - Network
     
     func callDailyWeathy(){
-        DailyWeathyService.shared.getDailyCalendar(userID: 63, date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
+        DailyWeathyService.shared.getDailyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let data):
                     if let dailyData = data as? CalendarWeathy{

@@ -61,7 +61,6 @@ class WeeklyCalendarCVC: UICollectionViewCell {
     }
     func setEmotionView(emotionCode: Int){
         emotionView.alpha = 1
-        print("emoji")
         if emotionCode == Emoji.veryHot{
             emotionView.backgroundColor = .imojiVeryHot
         }

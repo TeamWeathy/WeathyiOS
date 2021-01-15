@@ -48,7 +48,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(screen)
         initDate()
         infiniteMonthlyCV.delegate = self
         infiniteMonthlyCV.dataSource = self
@@ -59,7 +58,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         setStyle()
         initPicker()
         NotificationCenter.default.addObserver(self, selector: #selector(setSelected(_:)), name: NSNotification.Name("ChangeData"), object: nil)
-        print("today",Calendar.current.dateComponents(in: TimeZone.current, from: selectedDate))
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -186,7 +184,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //MARK: - Custom Methods - Calendar
     
     func selectedDateDidChange(){
-        print("selected")
         picker.date = selectedDate
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: "ChangeDate"),object: selectedDate)
@@ -202,15 +199,12 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         lastWeekDate = Calendar.current.date(byAdding: lastComponent, to: selectedDate)
         nextMonthDate = dateFormatter.date(from: selectedDate.nextYearMonth)
         lastMonthDate = dateFormatter.date(from:selectedDate.lastYearMonth)!
-        print("last3",lastMonthDate.month,selectedDate.month,nextMonthDate.month)
         infiniteMonthList = [lastMonthDate,selectedDate,nextMonthDate]
         infiniteWeekList = [lastWeekDate,selectedDate,nextWeekDate]
-        print("last4", infiniteWeekList)
         
             self.infiniteMonthlyCV.reloadData()
             self.infiniteWeeklyCV.reloadData()
         DispatchQueue.main.async(execute: { [self] in
-            print("$$setOffset")
             self.infiniteMonthlyCV.contentOffset.x = calendarWidth
             self.infiniteWeeklyCV.contentOffset.x = calendarWidth
         })
@@ -235,10 +229,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         lastWeekDate = Calendar.current.date(byAdding: lastComponent, to: selectedDate)
         nextMonthDate = dateFormatter.date(from: selectedDate.nextYearMonth)
         lastMonthDate = dateFormatter.date(from:selectedDate.lastYearMonth)!
-        print("last3",lastMonthDate.month,selectedDate.month,nextMonthDate.month)
         infiniteMonthList = [lastMonthDate,selectedDate,nextMonthDate]
         infiniteWeekList = [lastWeekDate,selectedDate,nextWeekDate]
-        print("last4", infiniteWeekList)
     }
     
     func openDrawer(){
@@ -302,9 +294,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     @objc func tapGestureHandler(recognizer: UITapGestureRecognizer){
-        print("tapped")
+//        print("tapped")
         if isCovered == true{
-            print("covered and tapped")
+//            print("covered and tapped")
             self.view.frame = CGRect(x: 0, y: 0, width: self.screen.width, height: weeklyHeight)
             UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
             UIView.animate(withDuration: 0.3){
@@ -372,7 +364,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
                     self.shadowView.layoutIfNeeded()
                     
                 })
-                print("frame",self.calendarDrawerView.frame)
                 
                 
 //                self.view.layoutSubviews()
@@ -428,10 +419,10 @@ extension CalendarVC{
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if gestureRecognizer == self.tapGesture{
             if touch.view?.isDescendant(of: self.view) == true{
-                print("self.view is touched")
+//                print("self.view is touched")
             }
             if touch.view?.isDescendant(of: self.calendarDrawerView) == true{
-                print("calendarDrawerView is touched")
+//                print("calendarDrawerView is touched")
                 return false
             }
             else{
@@ -590,7 +581,6 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
 
 extension CalendarVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("numberItems")
         if collectionView == infiniteMonthlyCV{
             return 3
         }
