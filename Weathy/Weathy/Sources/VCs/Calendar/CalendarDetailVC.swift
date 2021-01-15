@@ -278,7 +278,6 @@ class CalendarDetailVC: UIViewController {
                     print("[Daily] pathErr - No content")
                     
                     if self.selectedDate.compare(self.defaultDateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
-                        print("Before Content")
                         self.setEmptyView(state: .beforeContent)
                     }
                     else{
@@ -298,6 +297,7 @@ class CalendarDetailVC: UIViewController {
             else if flag == 0{
                 self.showToast(message: "웨디에 내용이 추가되었어요!")
             }
+            selectedDateDidChange(nil)
         }
     }
     

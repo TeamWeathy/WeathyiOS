@@ -19,8 +19,8 @@ struct DeleteWeathyService{
     
     func deleteWeathy(weathyId: Int, completion: @escaping (NetworkResult<Any>) -> (Void)){
         let url = makeURL(weathyId: weathyId)
-//        let token = UserDefaults.standard.string(forKey: "token")
-        let token = "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5"
+        let token = UserDefaults.standard.string(forKey: "token")!
+//        let token = "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5"
         let header: HTTPHeaders = [
             "Content-Type": "application/json",
             "x-access-token": token
@@ -37,7 +37,7 @@ struct DeleteWeathyService{
                     }
                     completion(judgeDeleteWeathyData(status: statusCode, data: data, url: url))
                 case .failure(let err):
-                    print("deleteWeathy",err)
+//                    print("deleteWeathy",err)
                     completion(.networkFail)
                     
             }
@@ -45,14 +45,14 @@ struct DeleteWeathyService{
     }
     private func judgeDeleteWeathyData(status: Int, data: Data,url: String) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
-        print(">> delete status, data, url",status,data,url)
+//        print(">> delete status, data, url",status,data,url)
         if status == 204{
             return .requestErr("존재하지 않는 Weathy")
         }
         guard let decodedData = try? decoder.decode(DeleteWeathyData.self, from: data) else{
             return .pathErr
         }
-        print(">>> delete decodedData",decodedData.message)
+//        print(">>> delete decodedData",decodedData.message)
         switch status{
             case 200:
                 return .success(decodedData.message)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate, UICollectionViewDataSourcePrefetching{
+class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     //MARK: - Custom Properties
     let screen = UIScreen.main.bounds
@@ -43,23 +43,18 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate, UICollect
     @IBOutlet weak var yearMonthTextView: UITextView!
     @IBOutlet var weekdayLabelCollection: [UILabel]!
 
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print("#a",indexPaths)
-    
-    }
+
     //MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(screen)
         initDate()
-        //        selectedDateDidChange()
         infiniteMonthlyCV.delegate = self
         infiniteMonthlyCV.dataSource = self
         infiniteWeeklyCV.delegate = self
         infiniteWeeklyCV.dataSource = self
         infiniteMonthlyCV.isPrefetchingEnabled = true
-        infiniteMonthlyCV.prefetchDataSource = self
         setGesture()
         setStyle()
         initPicker()
@@ -527,9 +522,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("#")
         let x = scrollView.contentOffset.x
-        print("x",x)
         if scrollView == infiniteMonthlyCV{
             if x == 0{
                 yearMonthTextView.text = infiniteMonthList[0].currentYearMonth
@@ -577,9 +570,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 selectedDateDidChange()
                 
                 DispatchQueue.main.async(execute: { [self] in
-                    print("$$")
                     self.infiniteWeeklyCV.contentOffset.x = calendarWidth
-                    //                self.pickerTextView.alpha = 1
                 })
                 
             }
@@ -592,11 +583,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         }
         
     }
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if collectionView == infiniteMonthlyCV{
-            print("willDisplay")
-        }
-    }
+ 
 
 }
 

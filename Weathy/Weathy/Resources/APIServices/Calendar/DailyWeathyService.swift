@@ -20,8 +20,8 @@ struct DailyWeathyService{
     
     func getDailyCalendar(userID: Int, date: String, completion: @escaping (NetworkResult<Any>) -> (Void)){
         let url = makeURL(userID: userID, date: date)
-//        let token = UserDefaults.standard.string(forKey: "token")
-        let token = "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5"
+        let token = UserDefaults.standard.string(forKey: "token")!
+//        let token = "63:04nZVc9vUelbchZ6m8ALSOWbEyBIL5"
         let header: HTTPHeaders = [
             "Content-Type": "application/json",
             "x-access-token": token
@@ -38,7 +38,7 @@ struct DailyWeathyService{
                     }
                     completion(judgeDailyWeathyData(status: statusCode, data: data, url: url))
                 case .failure(let err):
-                    print("daily",err)
+//                    print("daily",err)
                     completion(.networkFail)
                     
             }
@@ -46,11 +46,11 @@ struct DailyWeathyService{
     }
     private func judgeDailyWeathyData(status: Int, data: Data,url: String) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
-        print(">> daily status, data, url",status,data,url)
+//        print(">> daily status, data, url",status,data,url)
         guard let decodedData = try? decoder.decode(DailyWeathyData.self, from: data) else{
             return .pathErr
         }
-        print(">>> daily decodedData",decodedData.weathy)
+//        print(">>> daily decodedData",decodedData.weathy)
         switch status{
             case 200:
                 return .success(decodedData.weathy)
