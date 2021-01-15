@@ -12,6 +12,7 @@ class ModifyWeathyNVC: UINavigationController {
     static let identifier = "ModifyWeathyNVC"
     
     var weathyData: CalendarWeathy?
+    var dateString: String = "0000-00-00"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +21,6 @@ class ModifyWeathyNVC: UINavigationController {
 
         // Do any additional setup after loading the view.
     }
-
-    
-    
-
 }
 
 extension ModifyWeathyNVC {
