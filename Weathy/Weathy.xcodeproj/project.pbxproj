@@ -401,11 +401,11 @@
 		374D48CE259CEBD300152B9A /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				374D48D0259CEBF000152B9A /* RecordStart.storyboard */,
 				374D48E9259D49CA00152B9A /* RecordTag.storyboard */,
 				3735AE1A25A87F6700E71DC3 /* RecordTagDelete.storyboard */,
 				374D48D7259D1CA600152B9A /* RecordRate.storyboard */,
 				374D48E2259D366500152B9A /* RecordText.storyboard */,
-				374D48D0259CEBF000152B9A /* RecordStart.storyboard */,
 			);
 			path = Record;
 			sourceTree = "<group>";
