@@ -23,6 +23,7 @@ class RecentTVC: UITableViewCell {
     @IBOutlet weak var currentTemper: UILabel!
     @IBOutlet weak var highTemper: UILabel!
     @IBOutlet weak var lowTemper: UILabel!
+    @IBOutlet weak var slashLabel: UILabel!
     
     //MARK: - Custom Variables
     
@@ -48,7 +49,7 @@ class RecentTVC: UITableViewCell {
         return stackView
     }()
     
-    let firstBtn: UIButton = {
+    let backButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("삭제", for: .normal)
         btn.setTitleColor(.black, for: .normal)
@@ -68,6 +69,7 @@ class RecentTVC: UITableViewCell {
         shadowSet()
         configureLayout()
         textColor()
+        textFont()
     }
 
     //MARK: - @objc Methods
@@ -83,7 +85,7 @@ class RecentTVC: UITableViewCell {
         self.weahterImage.image = UIImage(named: weatherImage)
         self.currentTemper.text = currentTemper
         self.highTemper.text = highTemper
-        self.lowTemper.text = lowTemper
+        self.lowTemper.text = " \(lowTemper)"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -95,6 +97,16 @@ class RecentTVC: UITableViewCell {
         radiusView.layer.cornerRadius = 35
         radiusView.backgroundColor  = .white
         radiusView.dropShadow(color: .gray, offSet: CGSize(width: 0, height: 0), opacity: 0.7, radius: 1.5)
+    }
+    
+    func textFont(){
+        weatherDate.font = UIFont.SDGothicRegular15
+        weatherTime.font = UIFont.SDGothicRegular15
+        location.font = UIFont.SDGothicSemiBold17
+        currentTemper.font = UIFont.RobotoLight50
+        highTemper.font = UIFont.RobotoLight23
+        lowTemper.font = UIFont.RobotoLight23
+//        slashLabel.font = UIFont.RobotoLight23
     }
     
     func textColor(){
@@ -135,6 +147,11 @@ class RecentTVC: UITableViewCell {
                 }
                 ///해당 cell을 지우기 위한 data 전송
                 didSwipe()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self.leadingConstraint.constant = 0
+                    self.layoutIfNeeded()
+                }
+                
             }else {
                 leadingConstraint.constant = 0
                 UIView.animate(withDuration: 0.3) {
@@ -151,7 +168,7 @@ class RecentTVC: UITableViewCell {
         backView.frame = self.bounds
         self.contentView.addSubview(backView)
         self.contentView.addSubview(buttonStack)
-        buttonStack.addArrangedSubview(firstBtn)
+        buttonStack.addArrangedSubview(backButton)
         
         addGesture()
     }

@@ -7,159 +7,48 @@
 
 import UIKit
 
+//MARK: - struct
+
+struct Tag {
+    let id: Int
+    let name: String
+//        let tag: TagNameData
+    var isSelected: Bool
+}
+
+struct TagTitle {
+    let title: String
+    var count: Int
+    var isSelected: Bool
+    var tagTab: [Tag]
+}
+
 class RecordTagVC: UIViewController {
     
     //MARK: - Custom Variables
     
     var notificationGenerator: UIImpactFeedbackGenerator?
     
-    struct Tag {
-        var name: String
-        var isSelected: Bool
-    }
+    var tagUpper: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
+    var tagUnder: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
+    var tagOuter: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
+    var tagEtc: [Tag] = [Tag(id: -1, name: "  ", isSelected: false)]
     
-    struct TagTitle {
-        let title: String
-        var count: Int
-        var isSelected: Bool
-        var tagTab: [Tag]
-    }
+    var tagTitles: [TagTitle] = [] // 태그 카테고리
     
-    var tagUpper: [Tag] = [
-        Tag(name: "  ", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
+    let name: String = "웨디" // 사용자 닉네임
+    var titleIndex: Int = 0 // 현재 선택된 태그 카테고리
     
-    var tagUnder: [Tag] = [
-        Tag(name: "  ", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false),
-        Tag(name: "후드티", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
-    
-    var tagOuter: [Tag] = [
-        Tag(name: "  ", isSelected: false),
-        Tag(name: "외투", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
-    
-    var tagEtc: [Tag] = [
-        Tag(name: "  ", isSelected: false),
-        Tag(name: "기타", isSelected: false),
-        Tag(name: "반팔티", isSelected: false),
-        Tag(name: "니트", isSelected: false),
-        Tag(name: "기모후드티", isSelected: false),
-        Tag(name: "폴로니트", isSelected: false),
-        Tag(name: "목폴라", isSelected: false),
-        Tag(name: "히트텍", isSelected: false),
-        Tag(name: "기모맨투맨(흰색)", isSelected: false)
-    ]
-    
-    var tagTitles: [TagTitle] = []
-    
-    let name: String = "웨디"
-    var titleIndex: Int = 0
-    var visitedFlag: Bool = false
-    
+    var visitedFlag: Bool = false // 다음 뷰로 넘어간 적이 있는지 판단
     var dvc = RecordRateVC()
+    
+    var myClothesTagData: ClothesTagData?
+    var localizedClothesTagData: [TagCategoryData] = []
+    var selectedTags: [Int] = []
+    
+    var isAdded: Bool = false
+    
+    var scrollYOffset: CGFloat = 0
     
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
@@ -192,15 +81,7 @@ class RecordTagVC: UIViewController {
         setHeader()
         setTitleLabel()
         
-        
-        self.tagTitles = [
-            TagTitle(title: "상의", count: 0, isSelected: true, tagTab: tagUpper),
-            TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
-            TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
-            TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
-        ]
-        
-        
+        // 초기 상태 버튼 (애니메이션 안 들어가야 해서 따로 선언)
         nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = UIColor.subGrey3
         nextBtn.setTitle("다음", for: .normal)
@@ -208,10 +89,13 @@ class RecordTagVC: UIViewController {
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
         
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(tagAdded(_:)), name: NSNotification.Name("TagAdded"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(tagDeleted(_:)), name: NSNotification.Name("TagDeleted"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+//        print("viewWillAppear called")
+        
         if tagCollectionView.contentOffset.y <= 30 {
             blurView.alpha = tagCollectionView.contentOffset.y / 30
         }
@@ -219,9 +103,32 @@ class RecordTagVC: UIViewController {
             blurView.alpha = 1
         }
         
+        // 타이틀 애니메이션
         animationPrac()
+        
+        // 초기화
+        self.tagTitles = [
+            TagTitle(title: "상의", count: 0, isSelected: false, tagTab: tagUpper),
+            TagTitle(title: "하의", count: 0, isSelected: false, tagTab: tagUnder),
+            TagTitle(title: "외투", count: 0, isSelected: false, tagTab: tagOuter),
+            TagTitle(title: "기타", count: 0, isSelected: false, tagTab: tagEtc)
+        ]
+        tagTitles[titleIndex].isSelected = true
+    
+        callDisplayTagService()
     }
     
+    @objc func tagAdded(_ noti : Notification){
+        let isAdded = noti.object
+        self.viewWillAppear(true)
+        self.showToast(message: "태그가 추가되었어요!")
+    }
+    
+    @objc func tagDeleted(_ noti : Notification){
+        let isDeleted = noti.object
+//        print(">>> received")
+        self.showToast(message: "태그가 삭제되었어요!")
+    }
     
     @objc func longTap(gesture : UILongPressGestureRecognizer!) {
         if gesture.state != .ended {
@@ -233,9 +140,9 @@ class RecordTagVC: UIViewController {
             
             if let indexPath = self.tagCollectionView.indexPathForItem(at: p) {
                 // get the cell at indexPath (the one you long pressed)
-                print(">>>", indexPath)
+//                print(">>>", indexPath)
 //                let cell = self.tagCollectionView.cellForItem(at: indexPath)
-                print("long press detected")
+//                print("long press detected")
                 
                 if indexPath[1] == 0 {
                     return
@@ -248,6 +155,8 @@ class RecordTagVC: UIViewController {
                 
                 dvc.initialTagTab = titleIndex
                 dvc.initialSelectedIdx = indexPath[1]
+                dvc.initialYOffset = scrollYOffset
+                dvc.tagTitles = tagTitles
                 
                 dvc.modalPresentationStyle = .fullScreen
                 
@@ -276,6 +185,8 @@ class RecordTagVC: UIViewController {
             
             visitedFlag = true
         }
+        
+        dvc.selectedTags = selectedTags
         
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
@@ -395,28 +306,67 @@ extension RecordTagVC {
         })
     }
     
-    func showToast(message: String) {
-        let width_variable: CGFloat = 33
-        let toastLabel = UILabel(frame: CGRect(x: width_variable, y: self.view.frame.size.height-165, width: view.frame.size.width-2*width_variable, height: 50))
-        // 뷰가 위치할 위치를 지정해준다. 여기서는 아래로부터 100만큼 떨어져있고, 너비는 양쪽에 10만큼 여백을 가지며, 높이는 35로
-        toastLabel.backgroundColor = UIColor(red: 202/255, green: 241/255, blue: 235/255, alpha: 0.6)
-        toastLabel.textColor = UIColor.mainGrey
-        toastLabel.textAlignment = .center;
-        toastLabel.font = UIFont.SDGothicRegular16
-        toastLabel.lineSetting(kernValue: -0.8)
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 29.5
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 2.0, delay: 1.0, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: { (isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
+    func callDisplayTagService() {
+        RecordTagService.shared.displayTag(userId: 63, token: "63:AYQ4nYLCCi2cvKQue0lS3C9UJ8PN2M") { (networkResult) -> (Void) in
+            switch networkResult {
+            case .success(let data):
+                if let loadData = data as? ClothesTagData {
+                    self.myClothesTagData = loadData
+                }
+                
+//                print(self.myClothesTagData)
+                self.processDataAtLocal()
+                
+                DispatchQueue.main.async {
+                    self.tagCollectionView.reloadData()
+                    self.tagTitleCollectionView.reloadData()
+                }
+                
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                }
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
+    
+    func processDataAtLocal() {
+        self.localizedClothesTagData = [
+            self.myClothesTagData!.top,
+            self.myClothesTagData!.bottom,
+            self.myClothesTagData!.outer,
+            self.myClothesTagData!.etc
+        ]
 
+        makeLocalTagData()
+    }
+    
+    func makeLocalTagData() {
+        
+        /// viewWillAppear에서 다시 호출되었을 경우를 대비한 분기처리
+        if localizedClothesTagData[titleIndex].clothes?.count != tagTitles[titleIndex].tagTab.count - 1 || localizedClothesTagData[titleIndex].clothes?.count == 0 {
+            
+            for j in 0...3 {
+                
+                if localizedClothesTagData[j].clothes?.count == 0 {
+                    break
+                }
+                else {
+                    for i in 0...localizedClothesTagData[j].clothes!.count - 1 {
+                        self.tagTitles[j].tagTab.append(Tag(id: localizedClothesTagData[j].clothes![i].id, name: localizedClothesTagData[j].clothes![i].name, isSelected: false))
+                    }
+                }
+            }
+        }
 
+    }
 }
 
 //MARK: - UICollectionViewDataSource
@@ -427,7 +377,13 @@ extension RecordTagVC: UICollectionViewDataSource {
         
         /// tagCollectionView
         if collectionView == tagCollectionView {
-            print(">>>", tagTitles[titleIndex].title ,tagTitles[titleIndex].tagTab.count)
+            
+//            print(">>> tag", titleIndex, tagTitles[titleIndex].tagTab.count)
+            
+            if tagTitles[titleIndex].tagTab.count == 1 {
+                return 1
+            }
+            
             return tagTitles[titleIndex].tagTab.count
         }
         
@@ -453,6 +409,7 @@ extension RecordTagVC: UICollectionViewDataSource {
             cell.addGestureRecognizer(longPressGesture)
             
             cell.tagLabel.text = tagTitles[titleIndex].tagTab[indexPath.item].name
+//            print(tagTitles[titleIndex].tagTab[indexPath.item].name)
             cell.tagLabel.preferredMaxLayoutWidth = collectionView.frame.width - 32
             
             if indexPath.item == 0 {
@@ -467,17 +424,20 @@ extension RecordTagVC: UICollectionViewDataSource {
                 cell.addTagImage.isHidden = false
                 cell.layer.borderWidth = 0
                 cell.backgroundColor = .white
+//                print(">>>", indexPath.item)
             }
             else {
+                
+//                print(">>>", tagTitles[titleIndex].tagTab.count, localizedClothesTagData[titleIndex].clothes!.count)
+                
                 if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == false {
+//                    print(">>>", indexPath.item)
                     setTagUnselected(cell: cell)
                 }
                 else {
                     setTagSelected(cell: cell)
                 }
             }
-            
-            
             
             return cell
         }
@@ -510,18 +470,25 @@ extension RecordTagVC: UICollectionViewDataSource {
             
             /// +가 선택됐을 경우
             if indexPath.item == 0 {
-                print("I'm chosen")
+//                print("I'm chosen")
                 
-                guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordTagAddPopupVC") as? RecordTagAddPopupVC else {
-                    return
+                if tagTitles[titleIndex].tagTab.count <= 50 {
+                    guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordTagAddPopupVC") as? RecordTagAddPopupVC else {
+                        return
+                    }
+                    
+                    dvc.tagIndex = titleIndex + 1
+                    dvc.tagCategory = tagTitles[titleIndex].title
+                    dvc.tagCount = tagTitles[titleIndex].tagTab.count-1
+                    
+                    dvc.modalPresentationStyle = .overCurrentContext
+                    
+                    self.present(dvc, animated: false, completion: nil)
+                }
+                else {
+                    showToast(message: "태그를 추가하려면 기존 태그를 삭제해주세요.")
                 }
                 
-                dvc.tagCategory = tagTitles[titleIndex].title
-                dvc.tagCount = tagTitles[titleIndex].tagTab.count-1
-                
-                dvc.modalPresentationStyle = .overCurrentContext
-                
-                self.present(dvc, animated: false, completion: nil)
                 
             }
             /// 태그가 선택됐을 경우
@@ -530,15 +497,25 @@ extension RecordTagVC: UICollectionViewDataSource {
                     collectionView.deselectItem(at: indexPath, animated: false)
                     tagTitles[titleIndex].tagTab[indexPath.item].isSelected = !tagTitles[titleIndex].tagTab[indexPath.item].isSelected
                     if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
+                        selectedTags.append(tagTitles[titleIndex].tagTab[indexPath.item].id)
                         tagTitles[titleIndex].count += 1
+//                        print(">>>", selectedTags)
                     } else {
+                        let selectedId = tagTitles[titleIndex].tagTab[indexPath.item].id
+                        let selectedIndex = selectedTags.firstIndex(of: selectedId)
+                        selectedTags.remove(at: selectedIndex!)
                         tagTitles[titleIndex].count -= 1
+//                        print(">>>", selectedTags)
                     }
                 }
                 else if tagTitles[titleIndex].count == 5 {
                     if tagTitles[titleIndex].tagTab[indexPath.item].isSelected == true {
                         tagTitles[titleIndex].tagTab[indexPath.item].isSelected = false
+                        let selectedId = tagTitles[titleIndex].tagTab[indexPath.item].id
+                        let selectedIndex = selectedTags.firstIndex(of: selectedId)
+                        selectedTags.remove(at: selectedIndex!)
                         tagTitles[titleIndex].count -= 1
+//                        print(">>>", selectedTags)
                     }
                     else {
                         showToast(message: "태그는 카테고리당 5개만 선택할 수 있어요.")
@@ -575,7 +552,7 @@ extension RecordTagVC: UICollectionViewDataSource {
                     
                     if tagTitles[i].isSelected == true {
                         //                        self.titleIndex = i
-                        print("선택된 것 >> ", tagTitles[i].title)
+//                        print("선택된 것 >> ", tagTitles[i].title)
                     } else {
                         self.titleIndex = i
                         tagTitles[i].isSelected = !tagTitles[i].isSelected
@@ -654,13 +631,15 @@ extension RecordTagVC: UICollectionViewDelegateFlowLayout {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y = scrollView.contentOffset.y
-        if y <= 30 {
-            blurView.alpha = y / 30
+        self.scrollYOffset = scrollView.contentOffset.y
+        if self.scrollYOffset <= 30 {
+            blurView.alpha = self.scrollYOffset / 30
         }
         else {
             blurView.alpha = 1
         }
     }
 }
+
+
 

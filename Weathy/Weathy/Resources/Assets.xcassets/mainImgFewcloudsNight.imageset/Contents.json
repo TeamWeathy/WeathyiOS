@@ -6,14 +6,14 @@
       "scale" : "1x"
     },
     {
-      "scale" : "2x",
       "filename" : "mainImgFewcloudsNight@2x.png",
+      "scale" : "2x",
       "idiom" : "universal"
     },
     {
+      "idiom" : "universal",
       "filename" : "mainImgFewcloudsNight@3x.png",
-      "scale" : "3x",
-      "idiom" : "universal"
+      "scale" : "3x"
     }
   ],
   "info" : {

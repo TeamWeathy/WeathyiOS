@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "mainImgShowerrainDay.png",
       "scale" : "1x",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "mainImgShowerrainDay.png"
     },
     {
-      "idiom" : "universal",
       "filename" : "mainImgShowerrainDay@2x.png",
+      "idiom" : "universal",
       "scale" : "2x"
     },
     {
       "filename" : "mainImgShowerrainDay@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "idiom" : "universal"
     }
   ],
   "info" : {

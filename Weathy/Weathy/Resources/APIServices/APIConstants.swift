@@ -9,6 +9,11 @@ import Foundation
 
 struct APIConstants{
     static let baseURL = "http://15.164.146.132:3000"
+    // 기록뷰 - 태그, 태그 추가, 태그 삭제
+    static let clothesTagURL = baseURL + "/users/"
+    
+    // 웨디 기록
+    static let recordWeathyURL = baseURL + "/weathy"
     
     ///monthly url
     static let monthlyWeathyURL = baseURL + "/users/:user-id/calendar?start={start_date}&end={end_date}"
@@ -31,7 +36,6 @@ struct APIConstants{
     
     /// Search Weather 관련
     static let searchURL = baseURL + "/weather/overviews?keyword={keyword}&date={date}"
-    
   
     // Main Card View 관련
     static func getRecommendedWeathyURL(userId: Int, code: String, date: String) -> String {
@@ -42,4 +46,11 @@ struct APIConstants{
         return baseURL + "/weather/forecast/hourly?code=\(code)&date=\(date)"
     }
     
+    static func getDailyWeatherURL(code: String, date: String) -> String {
+        return baseURL + "/weather/forecast/daily?code=\(code)&date=\(date)"
+    }
+    
+    static func getExtraWeatherURL(code: String, date: String) -> String {
+        return baseURL + "/weather/daily/extra?code=\(code)&date=\(date)"
+    }
 }
