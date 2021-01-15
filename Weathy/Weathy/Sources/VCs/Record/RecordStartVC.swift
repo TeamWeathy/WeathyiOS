@@ -143,7 +143,7 @@ extension RecordStartVC {
         boxView.layer.borderColor = UIColor.subGrey7.cgColor
         boxView.layer.cornerRadius = 35
         
-        boxTimeLabel.text = "\(month)월 \(date)일 \(day)요일"
+        boxTimeLabel.text = "\(dateToday?.month ?? 0)월 \(dateToday?.day ?? 0)일 \(getDayStringFromInt(dayInt: dateToday?.weekday ?? -1))"
         boxTimeLabel.font = UIFont.SDGothicRegular15
         boxTimeLabel.textColor = UIColor.subGrey1
         
@@ -206,6 +206,31 @@ extension RecordStartVC {
             self.subTitleLabel.alpha = 1
             self.subTitleLabel.frame = CGRect(x: self.subTitleLabel.frame.origin.x, y: self.subTitleLabel.frame.origin.y+10, width: self.subTitleLabel.frame.width, height: self.subTitleLabel.frame.height)
         })
+    }
+    
+    func getDayStringFromInt(dayInt: Int) -> String {
+        if dayInt == 0 {
+            return "일요일"
+        }
+        if dayInt == 1 {
+            return "월요일"
+        }
+        if dayInt == 2 {
+            return "화요일"
+        }
+        if dayInt == 3 {
+            return "수요일"
+        }
+        if dayInt == 4 {
+            return "목요일"
+        }
+        if dayInt == 5 {
+            return "금요일"
+        }
+        if dayInt == 6 {
+            return "토요일"
+        }
+        return "땡요일"
     }
     
 }
