@@ -320,6 +320,7 @@ class CalendarDetailVC: UIViewController {
                 self.blurView.removeFromSuperview()
                 self.selectedDateDidChange(nil)
                 NotificationCenter.default.post(name: NSNotification.Name("DeleteWeathy"), object: self.selectedDate.weekday)
+                self.showToast(message: "웨디가 삭제되었어요.")
             case .requestErr(let message):
                 print("[Delete] requestErr",message)
             case .networkFail:
