@@ -7,12 +7,12 @@
 
 import UIKit
 
-class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
+class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate, UICollectionViewDataSourcePrefetching{
     
     //MARK: - Custom Properties
     let screen = UIScreen.main.bounds
     let calendarWidth = 308*UIScreen.main.bounds.width/375
-    let calendarHeight = 516*UIScreen.main.bounds.width/375
+    let calendarHeight = 522*UIScreen.main.bounds.width/375
     let weeklyHeight = UIScreen.main.bounds.height*257/812 + 30
     let monthlyHeight = UIScreen.main.bounds.height*704/812 + 30
     var isCovered = false
@@ -43,7 +43,10 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     @IBOutlet weak var yearMonthTextView: UITextView!
     @IBOutlet var weekdayLabelCollection: [UILabel]!
 
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print("#a",indexPaths)
     
+    }
     //MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
@@ -55,6 +58,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         infiniteMonthlyCV.dataSource = self
         infiniteWeeklyCV.delegate = self
         infiniteWeeklyCV.dataSource = self
+        infiniteMonthlyCV.isPrefetchingEnabled = true
+        infiniteMonthlyCV.prefetchDataSource = self
         setGesture()
         setStyle()
         initPicker()
@@ -207,21 +212,20 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         infiniteMonthList = [lastMonthDate,selectedDate,nextMonthDate]
         infiniteWeekList = [lastWeekDate,selectedDate,nextWeekDate]
         print("last4", infiniteWeekList)
-//        UIView.performWithoutAnimation {
-//            infiniteMonthlyCV.reloadData()
-//            infiniteWeeklyCV.reloadData()
-//        }
-//        DispatchQueue.main.async(execute: { [self] in
-//            print("$$setOffset")
-//            self.infiniteMonthlyCV.contentOffset.x = calendarWidth
-//            self.infiniteWeeklyCV.contentOffset.x = calendarWidth
-//        })
-        infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadItems(at: [[0,1]])
+        
+            self.infiniteMonthlyCV.reloadData()
+            self.infiniteWeeklyCV.reloadData()
+        DispatchQueue.main.async(execute: { [self] in
+            print("$$setOffset")
             self.infiniteMonthlyCV.contentOffset.x = calendarWidth
-        }, completion: nil)
-        infiniteWeeklyCV.performBatchUpdates({self.infiniteWeeklyCV.reloadItems(at: [[0,1]])
             self.infiniteWeeklyCV.contentOffset.x = calendarWidth
-        }, completion: nil)
+        })
+//        infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadItems(at: [[0,1]])
+//            self.infiniteMonthlyCV.contentOffset.x = calendarWidth
+//        }, completion: nil)
+//        infiniteWeeklyCV.performBatchUpdates({self.infiniteWeeklyCV.reloadItems(at: [[0,1]])
+//            self.infiniteWeeklyCV.contentOffset.x = calendarWidth
+//        }, completion: nil)
     }
     
     func initDate(){
@@ -551,10 +555,8 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         if collectionView == infiniteMonthlyCV{
             print("willDisplay")
         }
-        
     }
-    
-    
+
 }
 
 

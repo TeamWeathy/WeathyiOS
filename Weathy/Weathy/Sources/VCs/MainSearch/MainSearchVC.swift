@@ -17,19 +17,18 @@ class MainSearchVC: UIViewController {
     /// 최근 검색 배열을 사용하기 위해 appdelegate에서 전역변수 생성!!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    var searchInfos : [SearchRecentInfo] = []
-    var mainDeliverSearchInfo : [SearchRecentInfo] = []
-
+    var searchInfos: [SearchRecentInfo] = []
+    var mainDeliverSearchInfo: SearchRecentInfo?
     
-    var recentInformations : [OverviewWeatherList] = []
-    var searchInformations : [OverviewWeatherList] = []
-    var changBool = false
+    var recentInformations: [OverviewWeatherList] = []
+    var searchInformations: [OverviewWeatherList] = []
+    var changBool: Bool = false
     
     let dateFormatter = DateFormatter()
     
-    var backImage : String = ""
-    var gradient : String = ""
-
+    var backImage: String = ""
+    var gradient: String = ""
+    
     //MARK: - IBOutlets
     
     @IBOutlet weak var backView: UIImageView!       // 날씨에 따른 뒤 배경
@@ -59,6 +58,8 @@ class MainSearchVC: UIViewController {
         }
     }
     
+    //MARK: - LifeCycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         clearButton.isHidden = true
@@ -81,8 +82,6 @@ class MainSearchVC: UIViewController {
         backView.image = UIImage(named: self.backImage)
         gradientView.image = UIImage(named: self.gradient)
         
-        //MARK: - LifeCycle Methods
-
         recentNonImage()
         font()
     }
@@ -133,7 +132,7 @@ class MainSearchVC: UIViewController {
     /// textField 눌렀을 때    
     @IBAction func textFieldDidTap(_ sender: Any) {
         checkTextCount(textField: searchTextField)
-     
+        
         /// 한국 시간으로 설정
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
@@ -169,7 +168,7 @@ class MainSearchVC: UIViewController {
                                 self.searchTableView.reloadData()
                                 self.searchNonImage()
                             }
-                           
+                            
                         case .requestErr:
                             print("requestErr")
                         case .pathErr:
@@ -201,15 +200,15 @@ class MainSearchVC: UIViewController {
         }
     }
     
-//    /// Tap Gesture를 활용해서 최근 검색한 위치 숨기기
-//    @IBAction func backtextGR(_ sender: Any) {
-//        searchTextField.resignFirstResponder()
-//        if searchTextField.isSelected == false && searchTextField.text?.count == 0 {
-//            recentBackgroundView.isHidden = false
-//            searchBackgroundView.isHidden = true
-//            searchTextField.isSelected = !searchTextField.isSelected
-//        }
-//    }
+    //    /// Tap Gesture를 활용해서 최근 검색한 위치 숨기기
+    //    @IBAction func backtextGR(_ sender: Any) {
+    //        searchTextField.resignFirstResponder()
+    //        if searchTextField.isSelected == false && searchTextField.text?.count == 0 {
+    //            recentBackgroundView.isHidden = false
+    //            searchBackgroundView.isHidden = true
+    //            searchTextField.isSelected = !searchTextField.isSelected
+    //        }
+    //    }
 }
 
 //MARK: - UITableView Datasource
@@ -239,7 +238,7 @@ extension MainSearchVC: UITableViewDataSource {
         }else{
             guard let searchCell = searchTableView.dequeueReusableCell(withIdentifier: SearchTVC.identifier, for: indexPath) as? SearchTVC else { return UITableViewCell() }
             
-//            print("잘 받아왔어?\(self.searchInfos)")
+            //            print("잘 받아왔어?\(self.searchInfos)")
             
             searchCell.bind(weatherDate: searchInfos[indexPath.row].date, weahterTime: searchInfos[indexPath.row].time, location: searchInfos[indexPath.row].location, weatherImage: ClimateImage.getClimateAssetName(self.searchInfos[indexPath.row].weatherImage), currentTemper: "\(searchInfos[indexPath.row].currentTemper)°", highTemper:  "\(searchInfos[indexPath.row].highTemper)°", lowTemper: "\(searchInfos[indexPath.row].lowTemper)°")
             
@@ -276,13 +275,13 @@ extension MainSearchVC: UITableViewDelegate {
                 appDelegate.appDelegateRecentInfos.append(searchInfos[indexPath.row])
                 self.recentTableView.reloadData()
             }
+            
             /// Main에 넘겨줄 데이터 넣기
-            if mainDeliverSearchInfo.count > 0 {
-                mainDeliverSearchInfo.remove(at: 0)
-                mainDeliverSearchInfo.append(searchInfos[indexPath.row])
-            }else{
-                mainDeliverSearchInfo.append(searchInfos[indexPath.row])
-            }
+            let story = UIStoryboard.init(name: "Main", bundle: nil)
+            guard let mainVC = story.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
+            mainVC.mainDeliverSearchInfo = searchInfos[indexPath.row]
+            
+            self.dismiss(animated: true, completion: nil)
             self.recentNonImage()
         }
     }

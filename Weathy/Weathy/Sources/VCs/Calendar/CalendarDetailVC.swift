@@ -22,6 +22,8 @@ class CalendarDetailVC: UIViewController {
     var selectedDate = Date()
     var calendarVC: CalendarVC!
     var dailyWeathy: CalendarWeathy?
+    var isModified = false
+    var defaultDateFormatter = DateFormatter()
     
     //MARK: - IBOutlets
     
@@ -65,15 +67,33 @@ class CalendarDetailVC: UIViewController {
         //        }
         setStyle()
         setPopup()
+        setDefaultFormatter()
         selectedDateDidChange(nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
         //        initGestureRecognizer()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if isModified{
+            // self.showToast(message: "웨디 내용이 수정되었어요!")
+            selectedDateDidChange(nil)
+            isModified = false
+        }
+        
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         closeMoreMenu(nil)
     }
+    
     //MARK: - Custom Methods
+    
+    func setDefaultFormatter(){
+        defaultDateFormatter.dateFormat = "yyyy-MM-dd"
+        defaultDateFormatter.locale = Locale(identifier: "ko-Kr")
+        dateFormatter.locale = Locale(identifier: "ko")
+        dateFormatter.dateFormat = "MM월 dd일 eeee"
+    }
     func initGestureRecognizer() {
         let moreBtnTap = UITapGestureRecognizer(target: self, action: #selector(closeMoreMenu(_:)))
         moreBtnTap.delegate = self
@@ -116,8 +136,7 @@ class CalendarDetailVC: UIViewController {
         moreViewHeightConstraint.constant = 0
         self.view.layoutIfNeeded()
         
-        dateFormatter.locale = Locale(identifier: "ko")
-        dateFormatter.dateFormat = "MM월 dd일 eeee"
+        
         
         commentLabel.font = .SDGothicRegular15
         commentLabel.lineSetting(kernValue: -0.75, lineSpacing: 0, lineHeightMultiple: 1.17)
@@ -160,6 +179,9 @@ class CalendarDetailVC: UIViewController {
         
         dateLabel.text = "\(month)월 \(day)일 \(weekday)"
         locationLabel.text = location
+        climateLabel.text = description
+        temperatureHighLabel.text = "\(maxTemp!)°"
+        temperatureLowLabel.text = "\(minTemp!)°"
         climateImageView.image = UIImage(named: ClimateImage.getClimateAssetName(climateId ?? 0))
         emojiImageView.image = UIImage(named: Emoji.getEmojiImageAsset(stampId: emojiId ?? 0))
         emojiLabel.text = Emoji.getEmojiText(stampId: emojiId ?? 0)
@@ -234,9 +256,7 @@ class CalendarDetailVC: UIViewController {
     //MARK: - Network
     
     func callDailyWeathy(){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        DailyWeathyService.shared.getDailyCalendar(userID: 63, date: dateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
+        DailyWeathyService.shared.getDailyCalendar(userID: 61, date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let data):
                     if let dailyData = data as? CalendarWeathy{
@@ -253,7 +273,7 @@ class CalendarDetailVC: UIViewController {
                 case .pathErr:
                     print("[Daily] pathErr - No content")
                     
-                    if self.selectedDate.compare(dateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
+                    if self.selectedDate.compare(self.defaultDateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
                         print("Before Content")
                         self.setEmptyView(state: .beforeContent)
                     }
@@ -279,9 +299,6 @@ class CalendarDetailVC: UIViewController {
     }
     
     @objc func deleteAction(_ sender: Any){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "ko-Kr")
         DeleteWeathyService.shared.deleteWeathy(weathyId: dailyWeathy!.weathyId){ (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let message):
@@ -322,10 +339,10 @@ class CalendarDetailVC: UIViewController {
         }
     }
     @IBAction func editBtnDidTap(_ sender: Any) {
-        
         guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
-        
+
         recordEdit.modalPresentationStyle = .fullScreen
+        recordEdit.dateString = defaultDateFormatter.string(from: selectedDate)
         recordEdit.weathyData = dailyWeathy
         self.present(recordEdit, animated: true)
         
@@ -337,11 +354,8 @@ class CalendarDetailVC: UIViewController {
     }
     @IBAction func recordBtnDidTap(_ sender: Any) {
         guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "ko-Kr")
         record.modalPresentationStyle = .fullScreen
-//        record.dateString = dateFormatter.string(from: selectedDate)
+        record.dateString = defaultDateFormatter.string(from: selectedDate)
         self.present(record, animated: true)
     }
     

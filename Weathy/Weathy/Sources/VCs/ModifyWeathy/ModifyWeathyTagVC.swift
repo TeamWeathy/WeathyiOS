@@ -12,6 +12,7 @@ class ModifyWeathyTagVC: UIViewController {
     //MARK: - Custom Variables
     
     var weathyData: CalendarWeathy?
+    var dateString: String = "0000-00-00"
     
     var notificationGenerator: UIImpactFeedbackGenerator?
     
@@ -129,6 +130,7 @@ class ModifyWeathyTagVC: UIViewController {
         
         dvc.selectedTags = selectedTags
         dvc.weathyData = weathyData
+        dvc.dateString = dateString
         
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
@@ -440,7 +442,7 @@ extension ModifyWeathyTagVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: dateString, code: 1141000000, clothArray: selectedTags, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             print(self.weathyData?.weathyId ?? -1)
             switch networkResult {
             case .success(let data):

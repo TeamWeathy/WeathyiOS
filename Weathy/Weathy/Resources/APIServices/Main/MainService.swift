@@ -53,7 +53,6 @@ struct MainService {
     }
     
     func getRecommendedWeathy(userId: Int, completion: @escaping ((NetworkResult<Any>) -> (Void))) {
-        guard let userId = Int(UserDefaults.standard.string(forKey: "userId") ?? "0") else {return}
         guard let locationCode = UserDefaults.standard.string(forKey: "locationCode") else {return}
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
