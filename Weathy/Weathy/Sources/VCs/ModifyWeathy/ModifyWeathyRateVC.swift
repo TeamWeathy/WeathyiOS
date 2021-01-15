@@ -12,6 +12,7 @@ class ModifyWeathyRateVC: UIViewController {
     //MARK: - Custom Variables
     
     var weathyData: CalendarWeathy?
+    var dateString: String = "0000-00-00"
     
     struct Rates {
         let emoji: String
@@ -82,6 +83,7 @@ class ModifyWeathyRateVC: UIViewController {
         dvc.selectedTags = selectedTags
         dvc.selectedStamp = selectedStamp
         dvc.weathyData = weathyData
+        dvc.dateString = dateString
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }
@@ -207,7 +209,7 @@ extension ModifyWeathyRateVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: "2021-01-13", code: 1141000000, clothArray: selectedTags, stampId: selectedStamp , feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: 63, token: "63:wGO5NhErgyg0JR9W6i0ZJcOHox0Bi5", date: dateString, code: 1141000000, clothArray: selectedTags, stampId: selectedStamp , feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             print(self.weathyData?.weathyId ?? -1)
             switch networkResult {
             case .success(let data):

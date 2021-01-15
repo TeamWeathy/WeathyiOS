@@ -47,7 +47,7 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     //MARK: - Network
     
     func callMonthlyWeathy(){
-        MonthlyWeathyService.shared.getMonthlyCalendar(userID: 63, startDate: selectedDate.startDate, endDate: selectedDate.endDate){ (networkResult) -> (Void) in
+        MonthlyWeathyService.shared.getMonthlyCalendar(userID: 61, startDate: selectedDate.startDate, endDate: selectedDate.endDate){ (networkResult) -> (Void) in
             switch networkResult {
                 case .success(let data):
                     if let monthlyData = data as? [CalendarOverview?]{
@@ -108,7 +108,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
             
             selectedComponent.day = indexPath.item - (selectedDate.firstWeekday - 1 + selectedDate.day)
             let newSelectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
-            if newSelectedDate.compare(selectedDate) == .orderedDescending{
+            if newSelectedDate.compare(Date()) == .orderedDescending{
                 return false
             }
             return true
