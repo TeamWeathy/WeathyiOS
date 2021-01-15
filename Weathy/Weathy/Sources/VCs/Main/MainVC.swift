@@ -5,7 +5,6 @@
 //  Created by inae Lee on 2021/01/04.
 //
 
-import CoreLocation
 import UIKit
 
 class MainVC: UIViewController {
@@ -46,32 +45,22 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
     // fix: 닉네임 뷰에서 처리할 로직
-        UserDefaults.standard.setValue("37.59311236609", forKey: "longitude")
-        UserDefaults.standard.setValue("126.9501814612", forKey: "latitude")
+        UserDefaults.standard.setValue("1141000000", forKey: "locationCode")
+        print(UserDefaults.standard.value(forKey: "token"))
         
-        if (self.deliveredSearchData == nil) {
-            if let location = UserDefaults.standard.string(forKey: "locationCode") {
-                print(location)
+        if let location = UserDefaults.standard.string(forKey: "locationCode") {
+            // search에서 넘어온 데이터가 없는 경우에만 서버 통신
+            if (self.deliveredSearchData == nil) {
                 getLocationWeather(code: location)
             } else {
-                print(UserDefaults.standard.string(forKey: "longitude"))
-                print(UserDefaults.standard.string(forKey: "latitude"))
+                print("#")
+                defaultLocationFlag = false
             }
-        } else {
-            print("#")
-            defaultLocationFlag = false
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let appDelegate = UIApplication.shared.delegate! as! AppDelegate
-        let locationManager = appDelegate.locationManager
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
         
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
@@ -435,34 +424,5 @@ extension MainVC: UICollectionViewDataSource {
 extension MainVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
-    }
-}
-
-//MARK: - 주석 종류
-
-extension MainVC: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location: CLLocation = locations[locations.count - 1]
-        let longitude: CLLocationDegrees = location.coordinate.longitude
-        let latitude: CLLocationDegrees = location.coordinate.latitude
-        let findLocation: CLLocation = CLLocation(latitude: latitude, longitude: longitude)
-        let geoCoder: CLGeocoder = CLGeocoder()
-        let local: Locale = Locale(identifier: "Ko-kr") // Korea
-        geoCoder.reverseGeocodeLocation(findLocation, preferredLocale: local) { (place, error) in
-          if let address: [CLPlacemark] = place {
-            let state = (address.last?.administrativeArea)!
-            let city = (address.last?.locality)!
-            print("(longitude, latitude) = (\(longitude), \(latitude))")
-            print("시(도): ", state)
-            print("구(군): ", city)
-            UserDefaults.standard.setValue(longitude, forKey: "longitude")
-            UserDefaults.standard.setValue(latitude, forKey: "latitude")
-          }
-        }
-    }
-    
-    ///Change
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print("Change")
     }
 }
