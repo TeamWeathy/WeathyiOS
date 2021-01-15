@@ -26,6 +26,9 @@ class MainSearchVC: UIViewController {
     var changBool = false
     
     let dateFormatter = DateFormatter()
+    
+    var backImage : String = ""
+    var gradient : String = ""
 
     //MARK: - IBOutlets
     
@@ -74,6 +77,9 @@ class MainSearchVC: UIViewController {
         recentTableView.delegate = self
         searchTableView.delegate = self
         searchTableView.dataSource = self
+        
+        backView.image = UIImage(named: self.backImage)
+        gradientView.image = UIImage(named: self.gradient)
         
         //MARK: - LifeCycle Methods
 
