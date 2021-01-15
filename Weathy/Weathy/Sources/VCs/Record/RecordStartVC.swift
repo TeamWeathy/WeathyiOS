@@ -14,6 +14,7 @@ class RecordStartVC: UIViewController {
     var todayMonth: Int = 1
     var todayDate: Int = 1
     
+    var fullDate: String = "2021-01-25"
     var month: Int = 12
     var date: Int = 20
     var day: String = "월"
@@ -56,6 +57,11 @@ class RecordStartVC: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         setTitleLabel()
+        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.locale = Locale(identifier: "ko_KR")
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        self.fullDate = dateFormatter.date(from: "2021-01-25")
 
         // Do any additional setup after loading the view.
     }
@@ -204,11 +210,4 @@ extension RecordStartVC {
     
 }
 
-
-//MARK: - UIGestureRecognizerDelegate
-
-extension UIViewController : UIGestureRecognizerDelegate {
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool { return true
-    }
-}
 

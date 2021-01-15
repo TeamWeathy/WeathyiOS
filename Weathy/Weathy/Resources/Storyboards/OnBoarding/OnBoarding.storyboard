@@ -200,7 +200,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임을 6자 이내로 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kRw-in-8ee">
                                         <rect key="frame" x="15" y="15.666666666666657" width="237" height="19"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         <connections>
                                             <action selector="NickTextFieldDidTap:" destination="Umd-x9-smB" eventType="editingChanged" id="q2S-ML-vdI"/>
                                         </connections>

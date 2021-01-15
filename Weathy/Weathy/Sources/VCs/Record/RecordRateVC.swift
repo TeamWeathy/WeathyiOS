@@ -18,6 +18,9 @@ class RecordRateVC: UIViewController {
         let explanation: String
         var isSelected: Bool
     }
+    
+    var selectedTags: [Int] = []
+    var selectedStamp: Int = -1
 
     var rate: [Rates] = []
     
@@ -66,6 +69,9 @@ class RecordRateVC: UIViewController {
         guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
             return
         }
+        
+        dvc.selectedTags = selectedTags
+        dvc.selectedStamp = selectedStamp
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }
@@ -120,11 +126,11 @@ extension RecordRateVC {
         rateCollectionView.bounces = true
         
         rate = [
-            Rates(emoji: "veryhot", title: "너무 더워요", titleColor: "imojiVeryHotText", explanation: "훨씬 얇게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "hot", title: "더워요", titleColor: "orange", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "good", title: "적당해요", titleColor: "yellow", explanation: "딱 적당하게 입었어요.", isSelected: false),
-            Rates(emoji: "cold", title: "추워요", titleColor: "green", explanation: "좀 더 따뜻하게 입을걸 그랬어요.", isSelected: false),
-            Rates(emoji: "verycold", title: "너무 추워요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
+            Rates(emoji: "veryhot", title: "너무 더웠어요", titleColor: "imojiVeryHotText", explanation: "훨씬 얇게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "hot", title: "더웠어요", titleColor: "orange", explanation: "좀 더 가볍게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "good", title: "적당했어요", titleColor: "yellow", explanation: "딱 적당하게 입었어요.", isSelected: false),
+            Rates(emoji: "cold", title: "추웠어요", titleColor: "green", explanation: "좀 더 따뜻하게 입을걸 그랬어요.", isSelected: false),
+            Rates(emoji: "verycold", title: "너무 추었어요", titleColor: "blue", explanation: "훨씬 두껍게 입을걸 그랬어요.", isSelected: false)
         ]
     }
     
@@ -207,9 +213,13 @@ extension RecordRateVC: UICollectionViewDataSource {
         
         /// 분기처리
         if rate[indexPath.item].isSelected == true {
-            cell.layer.borderColor = UIColor.mintMain.cgColor
+            
             cell.backgroundColor = .white
-            cell.dropShadow(color: UIColor(red: 129/255, green: 226/255, blue: 210/255, alpha: 1), offSet: CGSize(width: 0, height: 0), opacity: 0.4, radius: 10)
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                cell.layer.borderColor = UIColor.mintMain.cgColor
+                cell.dropShadow(color: UIColor(red: 129/255, green: 226/255, blue: 210/255, alpha: 1), offSet: CGSize(width: 0, height: 0), opacity: 0.4, radius: 10)
+            })
         } else {
             cell.layer.borderColor = UIColor.subGrey7.cgColor
             cell.layer.shadowRadius = 0
@@ -227,6 +237,8 @@ extension RecordRateVC: UICollectionViewDataSource {
             if i == indexPath.item {
                 if rate[i].isSelected == false {
                     rate[i].isSelected = !rate[i].isSelected
+                    /// stampId
+                    self.selectedStamp = indexPath.item + 1
                     self.setNextBtnEnabled()
                 }
             } else {

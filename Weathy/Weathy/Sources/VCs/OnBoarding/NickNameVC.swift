@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class NickNameVC: UIViewController {
 
@@ -32,6 +33,14 @@ class NickNameVC: UIViewController {
         countLabel.text = "\(textCount)"
         clearButton.isHidden = true
         nickNameTextField.delegate = self
+        
+//        let delegate = UIApplication.shared.delegate! as! AppDelegate
+//        var locationManager = delegate.locationManager
+//        locationManager.delegate = self
+//        //    locationManager.requestWhenInUseAuthorization()
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.startUpdatingLocation()
+//        print("$$",UserDefaults.standard.string(forKey: "authoriz $ation"))
         
         //MARK: - LifeCycle Methods
         
@@ -108,7 +117,7 @@ class NickNameVC: UIViewController {
                 if let createData = data as? UserInformation {
                     UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
                     UserDefaults.standard.set(createData.token, forKey: "token")
-                    UserDefaults.standard.set(createData.user.id, forKey: "userID")
+                    UserDefaults.standard.set(createData.user.id, forKey: "userId")
                     UserDefaults.standard.set(uuid, forKey: "UUID")
 
 //                    print("userID ---> \(UserDefaults.standard.string(forKey: "userID"))")
@@ -184,4 +193,29 @@ extension NickNameVC {
             changeButtonBottom.constant = 0
         }
     }
+}
+
+extension NickNameVC: CLLocationManagerDelegate{
+     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+          let location: CLLocation = locations[locations.count - 1]
+          let longitude: CLLocationDegrees = location.coordinate.longitude
+          let latitude: CLLocationDegrees = location.coordinate.latitude
+          let findLocation: CLLocation = CLLocation(latitude: latitude, longitude: longitude)
+          let geoCoder: CLGeocoder = CLGeocoder()
+        let local: Locale = Locale(identifier: "Ko-kr") // Korea
+          geoCoder.reverseGeocodeLocation(findLocation, preferredLocale: local) { (place, error) in
+            if let address: [CLPlacemark] = place {
+              let state = (address.last?.administrativeArea)!
+              let city = (address.last?.locality)!
+                print("(longitude, latitude) = (\(longitude), \(latitude))")
+              print("시(도):",state)
+              print("구(군):",city)
+            }
+          }
+        }
+      ///Change
+      func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print("Change")
+      }
 }
