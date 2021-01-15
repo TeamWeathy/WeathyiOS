@@ -48,6 +48,7 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var helpButton: UIButton!
     @IBOutlet weak var emptyImage: UIImageView!
     @IBOutlet weak var downImage: UIImageView!
+    @IBOutlet weak var hourlyClimateImage: UIImageView!
     
     //MARK: - Custom Methods
     func changeWeatherViewData(data: LocationWeatherData!) {
@@ -55,6 +56,7 @@ class MainTopCVC: UICollectionViewCell {
         currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature!)°"
         maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.minTemp)°"
+        hourlyClimateImage.image = UIImage(named: Climate.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconID))
         
         if let desc = data.overviewWeather.hourlyWeather.climate.climateDescription {
             climateLabel.text = "\(desc)"
