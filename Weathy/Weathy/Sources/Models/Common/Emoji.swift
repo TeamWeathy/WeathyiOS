@@ -38,13 +38,13 @@ struct Emoji {
         case Emoji.hot:
             return "더웠어요"
         case Emoji.good:
-            return "좋았어요"
+            return "적당했어요"
         case Emoji.cold:
             return "추웠어요"
         case Emoji.veryCold:
-            return "엄청 추웠어요"
+            return "너무 추웠어요"
         default:
-            return "모르겠어요"
+            return ""
         }
     }
 
