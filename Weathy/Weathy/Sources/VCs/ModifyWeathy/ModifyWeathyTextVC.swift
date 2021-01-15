@@ -88,13 +88,15 @@ class ModifyWeathyTextVC: UIViewController {
     @IBAction func backBtnTap(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: false)
         self.enteredText = originalText
-        callModifyWeathyService()
+//        callModifyWeathyService()
 //        self.showToast(message: "웨디에 내용이 추가되었어요!")
+        self.navigationController?.popViewController(animated: false)
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        callModifyWeathyService()
+//        callModifyWeathyService()
 //        self.showToast(message: "웨디에 내용이 추가되었어요!")
+        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - @objc methods
