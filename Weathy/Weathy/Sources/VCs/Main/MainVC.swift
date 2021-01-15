@@ -30,6 +30,7 @@ class MainVC: UIViewController {
     //MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
+        // fix: 닉네임 뷰에서 처리할 로직
         UserDefaults.standard.setValue("62:CfL6LqDE3Y6aF3QA3IdUjpTAPbC0gI", forKey: "token")
         UserDefaults.standard.setValue("이내옹", forKey: "nickname")
         UserDefaults.standard.setValue(62, forKey: "userId")
@@ -116,12 +117,11 @@ class MainVC: UIViewController {
                 }
             case .requestErr(let msg):
                 print(msg)
-            case .pathErr:
-                print("path Err")
-            case .serverErr:
-                print("server Err")
-            case .networkFail:
-                print("network Fail")
+            case .pathErr, .serverErr, .networkFail:
+                print("No Recommended Data")
+                if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
+                    topCVC.showEmptyView()
+                }
             }
         }
     }
@@ -333,12 +333,10 @@ extension MainVC: UICollectionViewDataSource {
             guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainBottomCVC", for: indexPath) as? MainBottomCVC else {return UICollectionViewCell()}
             if let hourly = hourlyWeatherData {
                 cell.changeHourlyViewData(data: hourly)
-//                cell.timeZoneWeatherCollectionView.reloadData()
             }
             
             if let daily = dailyWeatherData {
                 cell.changeDailyViewData(data: daily)
-//                cell.weeklyWeatherCollectionView.reloadData()
             }
             
             if let extra = extraWeatherData {

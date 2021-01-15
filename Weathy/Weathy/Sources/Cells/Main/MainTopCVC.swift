@@ -62,10 +62,9 @@ class MainTopCVC: UICollectionViewCell {
     }
     
     func changeWeathyViewData(data: RecommendedWeathyData) {
+        print(data.weathy)
         if (data.weathy == nil) {
-            emptyImage.image = UIImage(named: "main_img_empty")
-            emptyImage.alpha = 1
-            
+            showEmptyView()
             return
         }
         
@@ -107,6 +106,11 @@ class MainTopCVC: UICollectionViewCell {
             self.downImage.alpha = 0
             self.downImage.alpha = 1
         }, completion: nil)
+    }
+    
+    func showEmptyView() {
+        emptyImage.image = UIImage(named: "main_img_empty")
+        emptyImage.alpha = 1
     }
 
     func setCell() {

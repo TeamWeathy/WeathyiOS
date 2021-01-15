@@ -17,7 +17,7 @@ struct Emoji {
     static func getEmojiImageAsset(stampId: Int) -> String {
         switch (stampId) {
         case Emoji.veryHot:
-            return "veryHot"
+            return "veryhot"
         case Emoji.hot:
             return "hot"
         case Emoji.good:
