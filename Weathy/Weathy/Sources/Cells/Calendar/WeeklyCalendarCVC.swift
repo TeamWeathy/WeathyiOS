@@ -38,6 +38,7 @@ class WeeklyCalendarCVC: UICollectionViewCell {
         todayView.setBorder(borderColor: .mintBorder, borderWidth: 1)
         todayView.alpha = 0
         selectedView.alpha = 0
+        emotionView.alpha = 0
         
     }
     func setGreyDay(){
@@ -58,4 +59,25 @@ class WeeklyCalendarCVC: UICollectionViewCell {
     func setSaturday(){
         dayLabel.textColor = .dateSaturday
     }
+    func setEmotionView(emotionCode: Int){
+        emotionView.alpha = 1
+        print("emoji")
+        if emotionCode == Emoji.veryHot{
+            emotionView.backgroundColor = .imojiVeryHot
+        }
+        else if emotionCode == Emoji.hot{
+            emotionView.backgroundColor = .imojiHot
+        }
+        else if emotionCode == Emoji.good{
+            emotionView.backgroundColor = .imojiGood
+        }
+        else if emotionCode == Emoji.cold{
+            emotionView.backgroundColor = .imojiCold
+        }
+        else if emotionCode == Emoji.veryCold{
+            emotionView.backgroundColor = .imojiVeryCold
+        }
+    }
 }
+
+

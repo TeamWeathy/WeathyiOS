@@ -89,5 +89,81 @@ extension Date {
         return dateComponent.weekday! - 1
     }
     
+    public var monthlyLines: Int{
+        if firstWeekday == 0{
+            if month == 2 && isLeapMonth == false{
+                return 4
+            }
+            else{
+                return 5
+            }
+        }
+        else{
+            if firstWeekday == 6 || (firstWeekday == 5 && numberOfMonth == 31){
+                return 6
+            }
+            else{
+                return 5
+            }
+            
+        }
+    }
+    
+    public var startDate: String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if monthlyLines == 4{
+            var startYear = self.year
+            return "\(startYear)-02-01"
+        }
+        
+        else{
+            var firstComponent = DateComponents()
+            firstComponent.month = month
+            firstComponent.day = 1
+            firstComponent.year = year
+            
+            var firstDate = Calendar.current.date(from: firstComponent)!
+            
+            var startComponent = DateComponents()
+            startComponent.day = -(self.firstWeekday)
+            
+            var startDate = Calendar.current.date(byAdding: startComponent, to: firstDate)!
+            
+            return dateFormatter.string(from: startDate)
+        }
+
+    }
+    
+    public var endDate: String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if monthlyLines == 4{
+            var endYear = self.year
+            return "\(endYear)-02-28"
+        }
+        else{
+            var lastComponent = DateComponents()
+            lastComponent.month = month
+            lastComponent.day = numberOfMonth
+            lastComponent.year = year
+            
+            var lastDate = Calendar.current.date(from: lastComponent)!
+            
+            var endComponent = DateComponents()
+            
+            if monthlyLines == 5{
+                endComponent.day = 35 - firstWeekday - numberOfMonth
+            }
+            else if monthlyLines == 6{
+                endComponent.day = 42 - firstWeekday - numberOfMonth
+            }
+            
+            var endDate = Calendar.current.date(byAdding: endComponent, to: lastDate)!
+            
+            return dateFormatter.string(from: endDate)
+        }
+    }
     
 }
