@@ -388,6 +388,11 @@ extension ModifyWeathyTagVC {
             }
         }
         
+        if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
+            tagTitles[3].count >= 1 {
+            setNextBtnActivated()
+        }
+        
         
         
     }
