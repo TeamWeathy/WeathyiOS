@@ -66,38 +66,6 @@ class MainSearchVC: UIViewController {
         recentNonImage()
     }
     
-    /// 뒤 배경 이미지 변경
-    func getClimateAssetName(_ climateId: Int) -> String{
-            if climateId % 100 == 1{
-                return climateId < 100 ? "ic_clearsky_day" : "ic_clearsky_night"
-            }
-            if climateId % 100 == 2{
-                return climateId < 100 ? "ic_fewclouds_day" : "ic_fewclouds_night"
-            }
-            if climateId % 100 == 3{
-                return "ic_scatteredclouds"
-            }
-            if climateId % 100 == 4{
-                return "ic_brokenclouds"
-            }
-            if climateId % 100 == 9{
-                return climateId < 100 ? "ic_showerrain_day" : "ic_showerrain_night"
-            }
-            if climateId % 100 == 10{
-                return "ic_rain"
-            }
-            if climateId % 100 == 11{
-                return "ic_thunderstorm"
-            }
-            if climateId % 100 == 13{
-                return "ic_snow"
-            }
-            if climateId % 100 == 50{
-                return "ic_mist"
-            }
-            return ""
-        }
-    
     /// 촤근 검색 에 따른 이미지 변경
     func recentNonImage(){
         DispatchQueue.main.async {

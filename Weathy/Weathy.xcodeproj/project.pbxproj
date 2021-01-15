@@ -119,7 +119,7 @@
 		ABBA9CAF25A22C93008785BD /* MainTopCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA9CAE25A22C93008785BD /* MainTopCVC.swift */; };
 		ABBA9CB225A22CBC008785BD /* MainBottomCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA9CB125A22CBC008785BD /* MainBottomCVC.swift */; };
 		ABE2B93025B0D98D007F878C /* ExtraWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE2B92F25B0D98D007F878C /* ExtraWeatherData.swift */; };
-		ABE2B93525B10B4B007F878C /* Climate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE2B93425B10B4B007F878C /* Climate.swift */; };
+		ABE2B93525B10B4B007F878C /* ClimateImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE2B93425B10B4B007F878C /* ClimateImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -237,7 +237,7 @@
 		ABBA9CAE25A22C93008785BD /* MainTopCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTopCVC.swift; sourceTree = "<group>"; };
 		ABBA9CB125A22CBC008785BD /* MainBottomCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBottomCVC.swift; sourceTree = "<group>"; };
 		ABE2B92F25B0D98D007F878C /* ExtraWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraWeatherData.swift; sourceTree = "<group>"; };
-		ABE2B93425B10B4B007F878C /* Climate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climate.swift; sourceTree = "<group>"; };
+		ABE2B93425B10B4B007F878C /* ClimateImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateImage.swift; sourceTree = "<group>"; };
 		B97C9AB444242244F6D69B1C /* Pods-Weathy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathy.debug.xcconfig"; path = "Target Support Files/Pods-Weathy/Pods-Weathy.debug.xcconfig"; sourceTree = "<group>"; };
 		EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weathy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -710,7 +710,7 @@
 		AB09372125AFC58000F69220 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				ABE2B93425B10B4B007F878C /* Climate.swift */,
+				ABE2B93425B10B4B007F878C /* ClimateImage.swift */,
 				63C756CF25B023DB003DC9FA /* Emoji.swift */,
 			);
 			path = Common;
@@ -902,7 +902,7 @@
 				6354ED9425AE0B0300C5CAC5 /* CalendarDetailVC.swift in Sources */,
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
 				0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */,
-				ABE2B93525B10B4B007F878C /* Climate.swift in Sources */,
+				ABE2B93525B10B4B007F878C /* ClimateImage.swift in Sources */,
 				0E75F67525AF3DA100D98633 /* UserInformation.swift in Sources */,
 				63C756D825B0452E003DC9FA /* DailyWeathyService.swift in Sources */,
 				0E6E9A7625AF9E7700702706 /* searchService.swift in Sources */,
@@ -1118,14 +1118,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J92QJ4K4KU;
+				DEVELOPMENT_TEAM = G7SD8523Y3;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.sopt.weathy;
+				PRODUCT_BUNDLE_IDENTIFIER = org.weathy.01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1139,14 +1139,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J92QJ4K4KU;
+				DEVELOPMENT_TEAM = G7SD8523Y3;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.sopt.weathy;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sopt.weathy.01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

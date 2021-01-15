@@ -56,7 +56,7 @@ class MainTopCVC: UICollectionViewCell {
         currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature!)°"
         maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.minTemp)°"
-        hourlyClimateImage.image = UIImage(named: Climate.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconID))
+        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconID))
         
         if let desc = data.overviewWeather.hourlyWeather.climate.climateDescription {
             climateLabel.text = "\(desc)"
@@ -85,7 +85,7 @@ class MainTopCVC: UICollectionViewCell {
             weathyDateLabel.text = "\(year)년 \(month)월 \(day)일"
         }
         
-        weathyClimateImage.image = UIImage(named: Climate.getClimateAssetName(data.weathy.hourlyWeather.climate.iconID))
+        weathyClimateImage.image = UIImage(named: ClimateImage.getClimateAssetName(data.weathy.hourlyWeather.climate.iconID))
         if let climateDesc = data.weathy.hourlyWeather.climate.climateDescription {
             weathyClimateLabel.text = "\(climateDesc)"
         }

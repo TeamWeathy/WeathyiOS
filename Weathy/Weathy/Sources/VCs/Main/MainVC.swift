@@ -54,8 +54,8 @@ class MainVC: UIViewController {
     func setViewByData(data: LocationWeatherData) {
         // background 설정
         let iconId = data.overviewWeather.hourlyWeather.climate.iconID
-        mainBackgroundImage.image = UIImage(named: Climate.getClimateMainBgName(iconId))
-        topBlurView.image = UIImage(named: Climate.getClimateMainBlurBarName(iconId))
+        mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
+        topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
 
         if (iconId % 100 == 13) {
             fallingSnow()

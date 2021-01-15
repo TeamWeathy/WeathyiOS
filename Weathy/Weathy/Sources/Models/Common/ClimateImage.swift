@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Climate {
+struct ClimateImage {
     static func getClimateAssetName(_ climateId: Int) -> String{
         switch (climateId % 100) {
         case 1:
