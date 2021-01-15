@@ -30,16 +30,12 @@ class MainVC: UIViewController {
     //MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        // fix: 닉네임 뷰에서 처리할 로직
-        UserDefaults.standard.setValue("62:CfL6LqDE3Y6aF3QA3IdUjpTAPbC0gI", forKey: "token")
-        UserDefaults.standard.setValue("이내옹", forKey: "nickname")
-        UserDefaults.standard.setValue(62, forKey: "userId")
-        
+    // fix: 닉네임 뷰에서 처리할 로직
+//        UserDefaults.standard.setValue("62:CfL6LqDE3Y6aF3QA3IdUjpTAPbC0gI", forKey: "token")
+//        UserDefaults.standard.setValue("이내옹", forKey: "nickname")
+//        UserDefaults.standard.setValue(62, forKey: "userId")
+//
         getLocationWeather()
-        getRecommendedWeathy()
-        getHourlyWeather()
-        getDailyWeather()
-        getExtraWeather()
     }
     
     override func viewDidLoad() {
@@ -93,6 +89,11 @@ class MainVC: UIViewController {
                     }
 
                     UserDefaults.standard.setValue(response.overviewWeather.region.code, forKey: "locationCode")
+                    
+                    self.getRecommendedWeathy()
+                    self.getHourlyWeather()
+                    self.getDailyWeather()
+                    self.getExtraWeather()
                 }
             case .requestErr(let msg):
                 print(msg)
