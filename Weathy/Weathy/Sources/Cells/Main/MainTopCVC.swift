@@ -14,7 +14,7 @@ class MainTopCVC: UICollectionViewCell {
     var closetOuter: [String] = ["청바지", "청바지","청바지","청바지","청바지"]
     var closetBottom: [String] = ["롱패딩","루리스"]
     var closetEtc: [String] = ["목도리","장갑","귀마개","수면양말", "어쩌라","마마무"]
-    var defaultLocationFlag: Bool = true{
+    var defaultLocationFlag: Bool = true {
         didSet {
             // 값이 바뀔 때
             if (defaultLocationFlag) {
@@ -49,6 +49,7 @@ class MainTopCVC: UICollectionViewCell {
     @IBOutlet weak var emptyImage: UIImageView!
     @IBOutlet weak var downImage: UIImageView!
     @IBOutlet weak var hourlyClimateImage: UIImageView!
+    @IBOutlet weak var gpsButton: UIButton!
     
     //MARK: - Custom Methods
     func changeWeatherViewData(data: LocationWeatherData!) {
@@ -61,6 +62,15 @@ class MainTopCVC: UICollectionViewCell {
         if let desc = data.overviewWeather.hourlyWeather.climate.climateDescription {
             climateLabel.text = "\(desc)"
         }
+    }
+    
+    func changeWeatherViewBySearchData(data: OverviewWeatherList) {
+        locationLabel.text = "\(data.region.name)"
+        currTempLabel.text = "\(data.hourlyWeather.temperature)°"
+        maxTempLabel.text = "\(data.dailyWeather.temperature.maxTemp)°"
+        minTempLabel.text = "\(data.dailyWeather.temperature.minTemp)°"
+        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.hourlyWeather.climate.iconID))
+        climateLabel.text = "\(data.hourlyWeather.climate.climateDescription)"
     }
     
     func changeWeathyViewData(data: RecommendedWeathyData) {
@@ -178,7 +188,9 @@ class MainTopCVC: UICollectionViewCell {
 
         weathyStampLabel.font = UIFont.SDGothicSemiBold23
         weathyStampLabel.textColor = UIColor.imojiColdText
-        weathyStampLabel.characterSpacing = -1.15        
+        weathyStampLabel.characterSpacing = -1.15
+        
+        gpsButton.contentMode = .scaleAspectFit
     }
 
     //MARK: - IBActions
@@ -236,5 +248,17 @@ class MainTopCVC: UICollectionViewCell {
         }
         
         helpButton.isUserInteractionEnabled = true
+    }
+    
+    @IBAction func touchUpGpsButton(_ sender: Any) {
+        print("gps")
+        
+        if (self.defaultLocationFlag) {
+            print("default true")
+        } else {
+            print("default false ")
+            // 
+        }
+        
     }
 }

@@ -18,7 +18,18 @@ class MainVC: UIViewController {
     var extraWeatherData: ExtraWeatherData?
     var searchImage: String?
     var searchGradient: String?
-    var deliveredSearchData: SearchRecentInfo?
+    var deliveredSearchData: OverviewWeatherList?
+    var defaultLocationFlag: Bool = true{
+        didSet {
+            // 값이 바뀔 때
+            if (defaultLocationFlag) {
+                // 위치정보로
+                print("true")
+            } else {
+                print("false")
+            }
+        }
+    }
     
     //MARK: - IBOutlets
     
@@ -42,6 +53,9 @@ class MainVC: UIViewController {
             // search에서 넘어온 데이터가 없는 경우에만 서버 통신
             if (self.deliveredSearchData == nil) {
                 getLocationWeather(code: location)
+            } else {
+                print("#")
+                defaultLocationFlag = false
             }
         }
     }
@@ -259,11 +273,11 @@ class MainVC: UIViewController {
     }
     
     @objc func setSearchData(_ notiData: NSNotification) {
-        if let hourlyData = notiData.object as? SearchRecentInfo {
+        if let hourlyData = notiData.object as? OverviewWeatherList {
             self.deliveredSearchData = hourlyData
             
-            let iconId: Int = 113
-            let locationCode: String = "1141000000"
+            let iconId: Int = hourlyData.hourlyWeather.climate.iconID
+            let locationCode: String = String(hourlyData.region.code)
 
             self.mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
             self.topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
@@ -279,8 +293,12 @@ class MainVC: UIViewController {
             self.getDailyWeather(code: locationCode)
             self.getExtraWeather(code: locationCode)
             
-            print("데이터 다시 가져오기**")
-            print(self.hourlyWeatherData)
+            if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
+                topCVC.changeWeatherViewData(data: self.locationWeatherData!)
+                topCVC.changeWeatherViewBySearchData(data: hourlyData)
+                topCVC.gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
+                topCVC.defaultLocationFlag = false
+            }
             
             self.weatherCollectionView.reloadData()
         }

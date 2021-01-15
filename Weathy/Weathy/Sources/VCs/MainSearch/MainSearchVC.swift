@@ -272,9 +272,7 @@ extension MainSearchVC: UITableViewDelegate {
             }
             
             /// Main에 넘겨줄 데이터 넣기
-            let story = UIStoryboard.init(name: "Main", bundle: nil)
-            guard let mainVC = story.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-            mainVC.mainDeliverSearchInfo = self.searchInformations[indexPath.row]
+            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
             
             NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": self.searchInformations[indexPath.row]])
             
