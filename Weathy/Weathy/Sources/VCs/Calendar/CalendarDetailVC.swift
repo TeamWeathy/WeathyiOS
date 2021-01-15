@@ -354,11 +354,11 @@ class CalendarDetailVC: UIViewController {
     }
     @IBAction func editBtnDidTap(_ sender: Any) {
         
-//        guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
-//        
-//        recordEdit.modalPresentationStyle = .fullScreen
-//        recordEdit.weathyData = dailyWeathy
-//        self.present(recordEdit, animated: true)
+        guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
+        
+        recordEdit.modalPresentationStyle = .fullScreen
+        recordEdit.weathyData = dailyWeathy
+        self.present(recordEdit, animated: true)
         
     }
     @IBAction func deleteBtnDidTap(_ sender: Any) {
@@ -372,7 +372,7 @@ class CalendarDetailVC: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "ko-Kr")
         record.modalPresentationStyle = .fullScreen
-//        record.dateString = dateFormatter.string(from: selectedDate)
+        record.dateString = dateFormatter.string(from: selectedDate)
         self.present(record, animated: true)
     }
     
