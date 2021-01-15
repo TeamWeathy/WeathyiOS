@@ -28,6 +28,7 @@ class RecordTagVC: UIViewController {
     //MARK: - Custom Variables
     
     var dateString: String = "0000-00-00"
+    var locationCode: CLong = -1
     
     var notificationGenerator: UIImpactFeedbackGenerator?
     
@@ -93,6 +94,7 @@ class RecordTagVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(tagAdded(_:)), name: NSNotification.Name("TagAdded"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(tagDeleted(_:)), name: NSNotification.Name("TagDeleted"), object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -190,6 +192,7 @@ class RecordTagVC: UIViewController {
         
         dvc.selectedTags = selectedTags
         dvc.dateString = dateString
+        dvc.locationCode = locationCode
         
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
@@ -202,7 +205,7 @@ class RecordTagVC: UIViewController {
 
 extension RecordTagVC {
     func setHeader() {
-        titleLabel.text = "\(name)님은 오늘\n어떤 옷을 입었나요?"
+        titleLabel.text = "\(UserDefaults.standard.string(forKey: "nickname") ?? "웨디")님은 오늘\n어떤 옷을 입었나요?"
         titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
         titleLabel.textColor = UIColor.mainGrey
         titleLabel.numberOfLines = 2
@@ -223,20 +226,15 @@ extension RecordTagVC {
     }
     
     func setTitleLabel() {
-        let attributedString = NSMutableAttributedString(string: "희지님\n어떤 옷을 입었나요?", attributes: [
-            .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
-            .foregroundColor: UIColor.mainGrey,
-            .kern: -1.25
-        ])
+        /// 기본 설정
+        let attributedString = NSMutableAttributedString(string: titleLabel.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
+                                      value: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!, range: (titleLabel.text! as NSString).range(of: "어떤 옷"))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.mintIcon, range: (titleLabel.text! as NSString).range(of: "어떤 옷"))
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
-        
-        attributedString.addAttributes([
-            .font: UIFont(name: "AppleSDGothicNeoSB00", size: 25.0)!,
-            .foregroundColor: UIColor.mintIcon
-        ], range: NSRange(location: 4, length: 4))
         
         titleLabel.attributedText = attributedString
     }

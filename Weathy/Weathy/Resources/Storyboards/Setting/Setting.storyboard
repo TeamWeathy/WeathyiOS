@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IQb-Bj-cvv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IQb-Bj-cvv">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -280,6 +280,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingImgDevinfo" translatesAutoresizingMaskIntoConstraints="NO" id="x0B-hh-TPB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ag1-Nj-iQu">
                                 <rect key="frame" x="33" y="59" width="20" height="22"/>
                                 <state key="normal" image="ic_back"/>
@@ -287,219 +290,23 @@
                                     <action selector="backButtonDidTap:" destination="CVR-9y-N3s" eventType="touchUpInside" id="yxU-aB-8PS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개발자 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEU-YW-dxo">
-                                <rect key="frame" x="34.000000000000007" y="114" width="113.66666666666669" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기획" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2Y-SM-QBp">
-                                <rect key="frame" x="34" y="210" width="28" height="19.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="디자인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRo-WT-2g4">
-                                <rect key="frame" x="34" y="244.33333333333334" width="41.666666666666657" height="19.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXZ-tK-7l9">
-                                <rect key="frame" x="34" y="278.66666666666669" width="25.666666666666671" height="19.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안드로이드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiS-zY-yDG">
-                                <rect key="frame" x="33.999999999999993" y="313" width="69.333333333333314" height="19.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="백엔드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp9-IB-97b">
-                                <rect key="frame" x="34" y="347.33333333333331" width="41.666666666666657" height="19.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="노희지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAr-hP-jQS">
-                                <rect key="frame" x="120.00000000000001" y="209.66666666666666" width="41.666666666666671" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김수민" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6g-FM-Jur">
-                                <rect key="frame" x="171.66666666666666" y="209.66666666666666" width="41.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이혜인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZW-Cp-MEs">
-                                <rect key="frame" x="223.33333333333334" y="209.66666666666666" width="41.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이예슬" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GG-Ye-qIe">
-                                <rect key="frame" x="120.00000000000001" y="244" width="41.666666666666671" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="임정은" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrT-AX-PT6">
-                                <rect key="frame" x="171.66666666666666" y="244" width="41.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조승우" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ex1-iL-Yao">
-                                <rect key="frame" x="223.33333333333334" y="244" width="41.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이예슬" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tS0-dU-o4a">
-                                <rect key="frame" x="120.00000000000001" y="278.33333333333331" width="41.666666666666671" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="송황호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmB-4e-r2f">
-                                <rect key="frame" x="171.66666666666666" y="278.33333333333331" width="41.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이다은" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSm-aL-bXr">
-                                <rect key="frame" x="223.33333333333334" y="278.33333333333331" width="41.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문명주" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vf0-ki-uqI">
-                                <rect key="frame" x="120.00000000000001" y="312.66666666666669" width="41.666666666666671" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김희빈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDa-fV-XUv">
-                                <rect key="frame" x="171.66666666666666" y="312.66666666666669" width="41.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="박현지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4z-fW-bKY">
-                                <rect key="frame" x="223.33333333333334" y="312.66666666666669" width="41.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신연상" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m07-jY-huj">
-                                <rect key="frame" x="120.00000000000001" y="347" width="41.666666666666671" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김자현" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgr-P0-nSo">
-                                <rect key="frame" x="171.66666666666666" y="347" width="41.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최선욱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-xz-yxy">
-                                <rect key="frame" x="223.33333333333334" y="347" width="41.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이인애" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyd-M9-SH8">
-                                <rect key="frame" x="275" y="278.33333333333331" width="41.666666666666686" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KUO-R6-C3H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZSm-aL-bXr" firstAttribute="leading" secondItem="tmB-4e-r2f" secondAttribute="trailing" constant="10" id="0DF-za-jJY"/>
-                            <constraint firstItem="fDa-fV-XUv" firstAttribute="centerY" secondItem="vf0-ki-uqI" secondAttribute="centerY" id="19G-El-mWq"/>
-                            <constraint firstItem="m2Y-SM-QBp" firstAttribute="leading" secondItem="KUO-R6-C3H" secondAttribute="leading" constant="34" id="1ot-g6-chG"/>
-                            <constraint firstItem="tmB-4e-r2f" firstAttribute="centerY" secondItem="tS0-dU-o4a" secondAttribute="centerY" id="1uC-gD-Ap4"/>
                             <constraint firstItem="Ag1-Nj-iQu" firstAttribute="leading" secondItem="KUO-R6-C3H" secondAttribute="leading" constant="33" id="4Ll-IN-eO3"/>
-                            <constraint firstItem="Fyd-M9-SH8" firstAttribute="leading" secondItem="ZSm-aL-bXr" secondAttribute="trailing" constant="10" id="6sj-OW-DeA"/>
-                            <constraint firstItem="Ex1-iL-Yao" firstAttribute="centerY" secondItem="VrT-AX-PT6" secondAttribute="centerY" id="7Xd-Xx-f51"/>
-                            <constraint firstItem="SAr-hP-jQS" firstAttribute="leading" secondItem="m2Y-SM-QBp" secondAttribute="trailing" constant="58" id="8ZL-2p-q1u"/>
-                            <constraint firstItem="ZSm-aL-bXr" firstAttribute="centerY" secondItem="tmB-4e-r2f" secondAttribute="centerY" id="8bd-D3-Nj2"/>
-                            <constraint firstItem="zZW-Cp-MEs" firstAttribute="leading" secondItem="k6g-FM-Jur" secondAttribute="trailing" constant="10" id="8hf-Gy-enB"/>
-                            <constraint firstItem="tS0-dU-o4a" firstAttribute="leading" secondItem="4GG-Ye-qIe" secondAttribute="leading" id="8pa-3v-ox2"/>
-                            <constraint firstItem="hXZ-tK-7l9" firstAttribute="leading" secondItem="TRo-WT-2g4" secondAttribute="leading" id="C9U-eH-Bm6"/>
                             <constraint firstItem="Ag1-Nj-iQu" firstAttribute="top" secondItem="KUO-R6-C3H" secondAttribute="top" constant="15" id="DxC-B6-FIg"/>
-                            <constraint firstItem="4GG-Ye-qIe" firstAttribute="centerY" secondItem="TRo-WT-2g4" secondAttribute="centerY" id="FaO-DM-MDC"/>
-                            <constraint firstItem="fDa-fV-XUv" firstAttribute="leading" secondItem="vf0-ki-uqI" secondAttribute="trailing" constant="10" id="GYQ-wW-Lho"/>
-                            <constraint firstItem="Fyd-M9-SH8" firstAttribute="centerY" secondItem="ZSm-aL-bXr" secondAttribute="centerY" id="I4v-5P-ehK"/>
-                            <constraint firstItem="YEU-YW-dxo" firstAttribute="leading" secondItem="KUO-R6-C3H" secondAttribute="leading" constant="34" id="Ifg-0h-gEK"/>
-                            <constraint firstItem="cgr-P0-nSo" firstAttribute="leading" secondItem="m07-jY-huj" secondAttribute="trailing" constant="10" id="JdS-fq-Xic"/>
-                            <constraint firstItem="gp9-IB-97b" firstAttribute="top" secondItem="DiS-zY-yDG" secondAttribute="bottom" constant="15" id="KuP-2Z-lKf"/>
-                            <constraint firstItem="m07-jY-huj" firstAttribute="centerY" secondItem="gp9-IB-97b" secondAttribute="centerY" id="LeN-iY-lb2"/>
-                            <constraint firstItem="TRo-WT-2g4" firstAttribute="leading" secondItem="m2Y-SM-QBp" secondAttribute="leading" id="M0S-Z4-ZRR"/>
-                            <constraint firstItem="VrT-AX-PT6" firstAttribute="leading" secondItem="4GG-Ye-qIe" secondAttribute="trailing" constant="10" id="MOj-Zv-3S3"/>
-                            <constraint firstItem="e4z-fW-bKY" firstAttribute="centerY" secondItem="fDa-fV-XUv" secondAttribute="centerY" id="Mai-is-SFo"/>
-                            <constraint firstItem="TRo-WT-2g4" firstAttribute="top" secondItem="m2Y-SM-QBp" secondAttribute="bottom" constant="15" id="Ndj-SL-nlW"/>
-                            <constraint firstItem="Ex1-iL-Yao" firstAttribute="leading" secondItem="VrT-AX-PT6" secondAttribute="trailing" constant="10" id="OGs-V2-1J0"/>
-                            <constraint firstItem="vf0-ki-uqI" firstAttribute="leading" secondItem="tS0-dU-o4a" secondAttribute="leading" id="Ql1-Db-Kx4"/>
-                            <constraint firstItem="vf0-ki-uqI" firstAttribute="centerY" secondItem="DiS-zY-yDG" secondAttribute="centerY" id="SXW-Pq-I6l"/>
-                            <constraint firstItem="4GG-Ye-qIe" firstAttribute="leading" secondItem="SAr-hP-jQS" secondAttribute="leading" id="UW5-da-Nik"/>
-                            <constraint firstItem="k6g-FM-Jur" firstAttribute="leading" secondItem="SAr-hP-jQS" secondAttribute="trailing" constant="10" id="UnR-hz-Da1"/>
-                            <constraint firstItem="zZW-Cp-MEs" firstAttribute="centerY" secondItem="k6g-FM-Jur" secondAttribute="centerY" id="V30-Rm-naL"/>
-                            <constraint firstItem="m07-jY-huj" firstAttribute="leading" secondItem="vf0-ki-uqI" secondAttribute="leading" id="XSt-Wg-4uU"/>
-                            <constraint firstItem="DiS-zY-yDG" firstAttribute="leading" secondItem="hXZ-tK-7l9" secondAttribute="leading" id="Xwn-40-f8O"/>
-                            <constraint firstItem="DiS-zY-yDG" firstAttribute="top" secondItem="hXZ-tK-7l9" secondAttribute="bottom" constant="15" id="bDj-e3-W4m"/>
-                            <constraint firstItem="YEU-YW-dxo" firstAttribute="top" secondItem="Ag1-Nj-iQu" secondAttribute="bottom" constant="33" id="bDz-bs-GJN"/>
-                            <constraint firstItem="m2Y-SM-QBp" firstAttribute="top" secondItem="YEU-YW-dxo" secondAttribute="bottom" constant="66" id="gpl-Qs-qKk"/>
-                            <constraint firstItem="cgr-P0-nSo" firstAttribute="centerY" secondItem="m07-jY-huj" secondAttribute="centerY" id="iTJ-4q-LBM"/>
-                            <constraint firstItem="hXZ-tK-7l9" firstAttribute="top" secondItem="TRo-WT-2g4" secondAttribute="bottom" constant="15" id="jaN-p9-hYI"/>
-                            <constraint firstItem="tS0-dU-o4a" firstAttribute="centerY" secondItem="hXZ-tK-7l9" secondAttribute="centerY" id="kLF-OW-LIZ"/>
-                            <constraint firstItem="SAr-hP-jQS" firstAttribute="centerY" secondItem="m2Y-SM-QBp" secondAttribute="centerY" id="lgo-mL-oIT"/>
-                            <constraint firstItem="VrT-AX-PT6" firstAttribute="centerY" secondItem="4GG-Ye-qIe" secondAttribute="centerY" id="mGn-SD-BZT"/>
-                            <constraint firstItem="tmB-4e-r2f" firstAttribute="leading" secondItem="tS0-dU-o4a" secondAttribute="trailing" constant="10" id="n0B-0z-A0Y"/>
-                            <constraint firstItem="4Tc-xz-yxy" firstAttribute="centerY" secondItem="cgr-P0-nSo" secondAttribute="centerY" id="tjV-Dj-u9m"/>
-                            <constraint firstItem="gp9-IB-97b" firstAttribute="leading" secondItem="DiS-zY-yDG" secondAttribute="leading" id="uXd-cC-UDr"/>
-                            <constraint firstItem="e4z-fW-bKY" firstAttribute="leading" secondItem="fDa-fV-XUv" secondAttribute="trailing" constant="10" id="vh2-se-LWm"/>
-                            <constraint firstItem="k6g-FM-Jur" firstAttribute="centerY" secondItem="SAr-hP-jQS" secondAttribute="centerY" id="wEo-Dl-Ldi"/>
-                            <constraint firstItem="4Tc-xz-yxy" firstAttribute="leading" secondItem="cgr-P0-nSo" secondAttribute="trailing" constant="10" id="wkc-Vf-arc"/>
+                            <constraint firstItem="x0B-hh-TPB" firstAttribute="trailing" secondItem="KUO-R6-C3H" secondAttribute="trailing" id="NHJ-6O-N6J"/>
+                            <constraint firstAttribute="bottom" secondItem="x0B-hh-TPB" secondAttribute="bottom" id="fIv-5h-0v5"/>
+                            <constraint firstItem="x0B-hh-TPB" firstAttribute="leading" secondItem="KUO-R6-C3H" secondAttribute="leading" id="g1k-so-vDI"/>
+                            <constraint firstItem="x0B-hh-TPB" firstAttribute="top" secondItem="Siy-6D-Ptw" secondAttribute="top" id="gpz-32-IvF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AmF-nr-zqS"/>
-                    <connections>
-                        <outlet property="developersInfoLabel" destination="YEU-YW-dxo" id="nGH-rI-Qk2"/>
-                        <outletCollection property="nameLabels" destination="zZW-Cp-MEs" collectionClass="NSMutableArray" id="lrr-NX-QC5"/>
-                        <outletCollection property="nameLabels" destination="SAr-hP-jQS" collectionClass="NSMutableArray" id="VHf-hm-dhm"/>
-                        <outletCollection property="nameLabels" destination="k6g-FM-Jur" collectionClass="NSMutableArray" id="5o4-hM-HLL"/>
-                        <outletCollection property="nameLabels" destination="4GG-Ye-qIe" collectionClass="NSMutableArray" id="GYg-6K-EKu"/>
-                        <outletCollection property="nameLabels" destination="VrT-AX-PT6" collectionClass="NSMutableArray" id="2KU-Ne-tXE"/>
-                        <outletCollection property="nameLabels" destination="Ex1-iL-Yao" collectionClass="NSMutableArray" id="V1r-aM-8D1"/>
-                        <outletCollection property="nameLabels" destination="tS0-dU-o4a" collectionClass="NSMutableArray" id="vn4-Ih-qKr"/>
-                        <outletCollection property="nameLabels" destination="tmB-4e-r2f" collectionClass="NSMutableArray" id="Hx9-YR-CFn"/>
-                        <outletCollection property="nameLabels" destination="ZSm-aL-bXr" collectionClass="NSMutableArray" id="UDA-29-vRd"/>
-                        <outletCollection property="nameLabels" destination="Fyd-M9-SH8" collectionClass="NSMutableArray" id="k3l-CS-ZfH"/>
-                        <outletCollection property="nameLabels" destination="vf0-ki-uqI" collectionClass="NSMutableArray" id="UOh-f7-1Ny"/>
-                        <outletCollection property="nameLabels" destination="fDa-fV-XUv" collectionClass="NSMutableArray" id="C56-3F-eWw"/>
-                        <outletCollection property="nameLabels" destination="e4z-fW-bKY" collectionClass="NSMutableArray" id="ebm-gG-yLA"/>
-                        <outletCollection property="nameLabels" destination="m07-jY-huj" collectionClass="NSMutableArray" id="vYt-NT-MVc"/>
-                        <outletCollection property="nameLabels" destination="cgr-P0-nSo" collectionClass="NSMutableArray" id="0uZ-Zt-Rcs"/>
-                        <outletCollection property="nameLabels" destination="4Tc-xz-yxy" collectionClass="NSMutableArray" id="oID-Zc-mnx"/>
-                        <outletCollection property="partLalbels" destination="m2Y-SM-QBp" collectionClass="NSMutableArray" id="ybX-9h-2gj"/>
-                        <outletCollection property="partLalbels" destination="TRo-WT-2g4" collectionClass="NSMutableArray" id="gYt-EM-3aC"/>
-                        <outletCollection property="partLalbels" destination="hXZ-tK-7l9" collectionClass="NSMutableArray" id="zoM-Ur-Ler"/>
-                        <outletCollection property="partLalbels" destination="DiS-zY-yDG" collectionClass="NSMutableArray" id="gt7-hW-VeB"/>
-                        <outletCollection property="partLalbels" destination="gp9-IB-97b" collectionClass="NSMutableArray" id="8hJ-hV-6wv"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R5l-mf-ybC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="698" y="729"/>
+            <point key="canvasLocation" x="696.79999999999995" y="727.83251231527095"/>
         </scene>
         <!--Change Nick NameVC-->
         <scene sceneID="O3D-TY-ep7">
@@ -660,6 +467,7 @@
         <image name="ic_back" width="20" height="20"/>
         <image name="settingBtnEditUnselected" width="307" height="55"/>
         <image name="settingFrameArrow" width="48" height="48"/>
+        <image name="settingImgDevinfo" width="375" height="812"/>
         <image name="settingImgTextfieldUnselected" width="307" height="50"/>
         <image name="settings_btn_close" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
