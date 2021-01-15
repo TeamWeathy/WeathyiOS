@@ -99,4 +99,29 @@ struct ClimateImage {
             return ""
         }
     }
+    
+    static func getClimateSearchIllust(_ climateId: Int) -> String {
+        switch (climateId % 100) {
+        case 1:
+            return climateId < 100 ? "search_img_clearsky_day" : "search_img_clearsky_night"
+        case 2:
+            return climateId < 100 ? "search_img_fewclouds_day" : "search_img_fewclouds_night"
+        case 3:
+            return climateId < 100 ? "search_img_scatteredclouds" : "search_img_scatteredclouds"
+        case 4:
+            return climateId < 100 ? "search_img_brokenclouds" : "search_img_brokenclouds"
+        case 9:
+            return climateId < 100 ? "search_img_showerrain_day" : "search_img_showerrain_nigh"
+        case 10:
+            return climateId < 100 ? "search_img_rain" : "search_img_rain"
+        case 11:
+            return climateId < 100 ? "search_img_thunderstorm" : "search_img_thunderstorm"
+        case 13:
+            return "search_img_snow"
+        case 50:
+            return climateId < 100 ? "search_img_mist" : "search_img_mist"
+        default:
+            return ""
+        }
+    }
 }
