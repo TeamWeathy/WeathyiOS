@@ -126,6 +126,7 @@ class ModifyWeathyTagVC: UIViewController {
         }
         
         dvc.selectedTags = selectedTags
+        dvc.weathyData = weathyData
         
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }

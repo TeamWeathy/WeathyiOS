@@ -11,6 +11,8 @@ class ModifyWeathyRateVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var weathyData: CalendarWeathy?
+    
     struct Rates {
         let emoji: String
         let title: String
@@ -57,6 +59,7 @@ class ModifyWeathyRateVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         animationPrac()
+        setRecordedData()
     }
     
     //MARK: - IBActions
@@ -190,6 +193,11 @@ extension ModifyWeathyRateVC {
             self.explanationLabel.alpha = 1
             self.explanationLabel.frame = CGRect(x: self.explanationLabel.frame.origin.x, y: self.explanationLabel.frame.origin.y+10, width: self.explanationLabel.frame.width, height: self.explanationLabel.frame.height)
         })
+    }
+    
+    func setRecordedData() {
+        let recordedStamp: Int = weathyData!.stampId
+        rate[recordedStamp].isSelected = true
     }
 }
 
