@@ -17,8 +17,7 @@ class MainSearchVC: UIViewController {
     /// 최근 검색 배열을 사용하기 위해 appdelegate에서 전역변수 생성!!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    var searchInfos: [SearchRecentInfo] = []
-    var mainDeliverSearchInfo: SearchRecentInfo?
+    var mainDeliverSearchInfo: OverviewWeatherList?
     
     var recentInformations: [OverviewWeatherList] = []
     var searchInformations: [OverviewWeatherList] = []
@@ -104,7 +103,7 @@ class MainSearchVC: UIViewController {
     /// 검색 에 따른 이미지 변경
     func searchNonImage(){
         DispatchQueue.main.async {
-            if self.searchInfos.count == 0{
+            if self.searchInformations.count == 0{
                 self.searchTableView.isHidden = true
                 self.searchNoneImage.isHidden = false
             } else {
@@ -154,16 +153,12 @@ class MainSearchVC: UIViewController {
                         switch NetworkResult{
                         case .success(let data):
                             /// 원상복귀
-                            self.searchInfos = []
+                            self.searchInformations = []
                             
                             /// 데이터 넣기
                             if let searchWeatherData = data as? SearchWeatherInformation{
                                 self.searchInformations = searchWeatherData.overviewWeatherList
                             }
-                            for i in 0 ..< self.searchInformations.count{
-                                self.searchInfos.append(SearchRecentInfo.init(date: "\(self.searchInformations[i].dailyWeather.date.month)월 \(self.searchInformations[i].dailyWeather.date.day)일 \(self.searchInformations[i].dailyWeather.date.dayOfWeek)", time: self.searchInformations[i].hourlyWeather.time, location: self.searchInformations[i].region.name, weatherImage: self.searchInformations[i].hourlyWeather.climate.iconID, currentTemper: "\(self.searchInformations[i].hourlyWeather.temperature)", highTemper: "\(self.searchInformations[i].dailyWeather.temperature.maxTemp)", lowTemper: "\(self.searchInformations[i].dailyWeather.temperature.minTemp)"))
-                            }
-                            print("잘 받아왔어?\(self.searchInfos)")
                             DispatchQueue.main.async {
                                 self.searchTableView.reloadData()
                                 self.searchNonImage()
@@ -195,7 +190,7 @@ class MainSearchVC: UIViewController {
             searchTextField.text = ""
             changBool = false
             
-            self.searchInfos = []
+            self.searchInformations = []
             self.searchTableView.reloadData()
         }
     }
@@ -218,7 +213,7 @@ extension MainSearchVC: UITableViewDataSource {
         if tableView == recentTableView{
             return appDelegate.appDelegateRecentInfos.count
         }else{
-            return searchInfos.count
+            return searchInformations.count
         }
     }
     
@@ -229,7 +224,7 @@ extension MainSearchVC: UITableViewDataSource {
             
             recentCell.selectionStyle = .none
             
-            recentCell.bind(weatherDate: appDelegate.appDelegateRecentInfos[indexPath.row].date, weahterTime: appDelegate.appDelegateRecentInfos[indexPath.row].time, location: appDelegate.appDelegateRecentInfos[indexPath.row].location, weatherImage: ClimateImage.getClimateAssetName(appDelegate.appDelegateRecentInfos[indexPath.row].weatherImage), currentTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].currentTemper)°", highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].highTemper)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].lowTemper)°")
+            recentCell.bind(weatherDate: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.month)월 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.day)일 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.time, location: appDelegate.appDelegateRecentInfos[indexPath.row].region.name, weatherImage: ClimateImage.getClimateAssetName(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.climate.iconID), currentTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.minTemp)°")
             
             recentCell.delegate = self
             recentCell.indexPath = indexPath    /// 해당 cell 위치 제공
@@ -238,9 +233,9 @@ extension MainSearchVC: UITableViewDataSource {
         }else{
             guard let searchCell = searchTableView.dequeueReusableCell(withIdentifier: SearchTVC.identifier, for: indexPath) as? SearchTVC else { return UITableViewCell() }
             
-            //            print("잘 받아왔어?\(self.searchInfos)")
             
-            searchCell.bind(weatherDate: searchInfos[indexPath.row].date, weahterTime: searchInfos[indexPath.row].time, location: searchInfos[indexPath.row].location, weatherImage: ClimateImage.getClimateAssetName(self.searchInfos[indexPath.row].weatherImage), currentTemper: "\(searchInfos[indexPath.row].currentTemper)°", highTemper:  "\(searchInfos[indexPath.row].highTemper)°", lowTemper: "\(searchInfos[indexPath.row].lowTemper)°")
+            searchCell.bind(weatherDate:
+                                "\(self.searchInformations[indexPath.row].dailyWeather.date.month)월 \(self.searchInformations[indexPath.row].dailyWeather.date.day)일 \(self.searchInformations[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: self.searchInformations[indexPath.row].hourlyWeather.time, location: self.searchInformations[indexPath.row].region.name, weatherImage: ClimateImage.getClimateAssetName(self.searchInformations[indexPath.row].hourlyWeather.climate.iconID), currentTemper: "\(self.searchInformations[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(self.searchInformations[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(self.searchInformations[indexPath.row].dailyWeather.temperature.minTemp)°")
             
             return searchCell
         }
@@ -268,20 +263,20 @@ extension MainSearchVC: UITableViewDelegate {
             print(indexPath.row)
             /// 최근 검색 기록에 데이터 넣기
             if appDelegate.appDelegateRecentInfos.count < 3{
-                appDelegate.appDelegateRecentInfos.append(searchInfos[indexPath.row])
+                appDelegate.appDelegateRecentInfos.append(searchInformations[indexPath.row])
                 self.recentTableView.reloadData()
             }else {
                 appDelegate.appDelegateRecentInfos.remove(at: 0)
-                appDelegate.appDelegateRecentInfos.append(searchInfos[indexPath.row])
+                appDelegate.appDelegateRecentInfos.append(searchInformations[indexPath.row])
                 self.recentTableView.reloadData()
             }
             
             /// Main에 넘겨줄 데이터 넣기
             let story = UIStoryboard.init(name: "Main", bundle: nil)
             guard let mainVC = story.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-            mainVC.mainDeliverSearchInfo = self.searchInfos[indexPath.row]
+            mainVC.mainDeliverSearchInfo = self.searchInformations[indexPath.row]
             
-            NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": self.searchInfos[indexPath.row]])
+            NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": self.searchInformations[indexPath.row]])
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
             self.recentNonImage()

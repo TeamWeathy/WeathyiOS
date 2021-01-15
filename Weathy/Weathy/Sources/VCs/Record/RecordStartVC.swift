@@ -28,7 +28,7 @@ class RecordStartVC: UIViewController {
     var visitedFlag: Bool = false
     var dvc = RecordTagVC()
     
-    var recordDeliverSearchInfo : SearchRecentInfo?
+    var recordDeliverSearchInfo : OverviewWeatherList?
     
     //MARK: - IBOutlets
     
@@ -76,13 +76,13 @@ class RecordStartVC: UIViewController {
     
     @objc func SearchInfo(_ notification: Notification){
         guard let userInfo = notification.userInfo as? [String: Any] else { return }
-        guard let searchInfo = userInfo["mainDeliverSearchInfo"] as? SearchRecentInfo else { return}
-        
-        boxTimeLabel.text = searchInfo.date
-        boxLocationLabel.text = searchInfo.location
-        boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateAssetName( searchInfo.weatherImage))
-        maxTempLabel.text = searchInfo.highTemper
-        minTempLabel.text = searchInfo.lowTemper
+        guard let searchInfo = userInfo["mainDeliverSearchInfo"] as? OverviewWeatherList else { return}
+
+        boxTimeLabel.text = "\(searchInfo.dailyWeather.date.month)월 \(searchInfo.dailyWeather.date.day)일 \(searchInfo.dailyWeather.date.dayOfWeek)"
+        boxLocationLabel.text = searchInfo.region.name
+        boxWeatherImageView.image = UIImage(named:   ClimateImage.getClimateAssetName(searchInfo.hourlyWeather.climate.iconID))
+        maxTempLabel.text = "\(searchInfo.dailyWeather.temperature.maxTemp)°"
+        minTempLabel.text = "\(searchInfo.dailyWeather.temperature.minTemp)°"
         print("---> 뭐야 \(searchInfo)")
     }
     
