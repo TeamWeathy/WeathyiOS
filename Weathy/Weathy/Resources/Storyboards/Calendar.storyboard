@@ -612,33 +612,32 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bb2-V1-BIL">
-                                        <rect key="frame" x="33.666666666666657" y="95" width="308" height="516"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bb2-V1-BIL">
+                                        <rect key="frame" x="33.666666666666657" y="95" width="308" height="522"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="bb2-V1-BIL" secondAttribute="height" multiplier="77:129" id="eB1-uV-Fqb"/>
+                                            <constraint firstAttribute="width" secondItem="bb2-V1-BIL" secondAttribute="height" multiplier="308:522" id="eB1-uV-Fqb"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kia-Ri-fOm">
                                             <size key="itemSize" width="128" height="128"/>
-                                            <size key="estimatedItemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InfiniteMonthlyCVC" id="iQq-2C-PZG" customClass="InfiniteMonthlyCVC" customModule="Weathy" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="308" height="516"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="308" height="522"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jBc-tH-wE5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="308" height="516"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="308" height="522"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t1f-kf-2Bh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="308" height="516"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="308" height="522"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="308" id="VUA-Rh-bGT"/>
-                                                                <constraint firstAttribute="height" constant="516" id="aPV-w3-6bA"/>
+                                                                <constraint firstAttribute="height" constant="522" id="aPV-w3-6bA"/>
                                                             </constraints>
                                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1WX-JK-WHY">
                                                                 <size key="itemSize" width="44" height="105"/>
@@ -669,20 +668,20 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarImgHigh" translatesAutoresizingMaskIntoConstraints="NO" id="sQI-57-kK4">
-                                                                                <rect key="frame" x="3" y="29" width="37" height="27.333333333333329"/>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarImgHigh" translatesAutoresizingMaskIntoConstraints="NO" id="sQI-57-kK4">
+                                                                                <rect key="frame" x="3.3333333333333321" y="29" width="36.333333333333343" height="24.666666666666671"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" secondItem="sQI-57-kK4" secondAttribute="height" multiplier="19:14" id="FJq-xo-q2a"/>
+                                                                                    <constraint firstAttribute="width" secondItem="sQI-57-kK4" secondAttribute="height" multiplier="38:25.8" id="FJq-xo-q2a"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarImgLow" translatesAutoresizingMaskIntoConstraints="NO" id="oj3-3k-fZZ">
-                                                                                <rect key="frame" x="3" y="59.333333333333336" width="37" height="25.333333333333336"/>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarImgLow" translatesAutoresizingMaskIntoConstraints="NO" id="oj3-3k-fZZ">
+                                                                                <rect key="frame" x="3.3333333333333321" y="55.666666666666664" width="36.333333333333343" height="24.666666666666664"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" secondItem="oj3-3k-fZZ" secondAttribute="height" multiplier="19:13" id="9Qw-MA-bk2"/>
+                                                                                    <constraint firstAttribute="width" secondItem="oj3-3k-fZZ" secondAttribute="height" multiplier="38:25.8" id="9Qw-MA-bk2"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQ6-44-TyD" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                                                <rect key="frame" x="21.666666666666668" y="56.333333333333336" width="0.0" height="0.0"/>
+                                                                                <rect key="frame" x="21.666666666666668" y="53.666666666666664" width="0.0" height="0.0"/>
                                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -693,7 +692,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twg-iT-6Jz" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                                                <rect key="frame" x="21.666666666666668" y="62.333333333333336" width="0.0" height="0.0"/>
+                                                                                <rect key="frame" x="21.666666666666668" y="58.666666666666664" width="0.0" height="0.0"/>
                                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -703,16 +702,27 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ngs-EP-ByP">
+                                                                                <rect key="frame" x="0.0" y="85" width="43" height="1"/>
+                                                                                <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="1" id="Ses-VL-WrC"/>
+                                                                                </constraints>
+                                                                            </view>
                                                                         </subviews>
                                                                         <constraints>
                                                                             <constraint firstItem="sQI-57-kK4" firstAttribute="top" secondItem="HBi-qq-hlx" secondAttribute="bottom" constant="2" id="5c2-kE-kro"/>
+                                                                            <constraint firstItem="Ngs-EP-ByP" firstAttribute="leading" secondItem="Pc8-H0-0op" secondAttribute="leading" id="6Xt-r2-4Ng"/>
                                                                             <constraint firstItem="Twg-iT-6Jz" firstAttribute="top" secondItem="oj3-3k-fZZ" secondAttribute="top" constant="3" id="BqX-vj-OEt"/>
-                                                                            <constraint firstItem="sQI-57-kK4" firstAttribute="width" secondItem="Pc8-H0-0op" secondAttribute="width" multiplier="37:43" id="C1f-JB-lok"/>
-                                                                            <constraint firstItem="oj3-3k-fZZ" firstAttribute="top" secondItem="sQI-57-kK4" secondAttribute="bottom" constant="3" id="HhC-dy-rip"/>
+                                                                            <constraint firstItem="oj3-3k-fZZ" firstAttribute="top" secondItem="sQI-57-kK4" secondAttribute="bottom" constant="2" id="HhC-dy-rip"/>
                                                                             <constraint firstItem="oj3-3k-fZZ" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="KsM-xs-MMK"/>
                                                                             <constraint firstItem="sQI-57-kK4" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="QP7-sX-q8M"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="Ngs-EP-ByP" secondAttribute="bottom" id="T0P-Ey-eIG"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="sQI-57-kK4" secondAttribute="trailing" constant="3.3300000000000001" id="d1X-d5-ZpB"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="Ngs-EP-ByP" secondAttribute="trailing" id="d7p-bj-M0q"/>
                                                                             <constraint firstItem="oj3-3k-fZZ" firstAttribute="width" secondItem="sQI-57-kK4" secondAttribute="width" id="g2S-RF-NMH"/>
                                                                             <constraint firstItem="vQ6-44-TyD" firstAttribute="centerX" secondItem="sQI-57-kK4" secondAttribute="centerX" id="gBO-1q-CkB"/>
+                                                                            <constraint firstItem="sQI-57-kK4" firstAttribute="leading" secondItem="Pc8-H0-0op" secondAttribute="leading" constant="3.3300000000000001" id="gkt-1K-LL0"/>
                                                                             <constraint firstItem="HBi-qq-hlx" firstAttribute="top" secondItem="Pc8-H0-0op" secondAttribute="top" constant="4" id="jaH-uf-lNB"/>
                                                                             <constraint firstItem="Twg-iT-6Jz" firstAttribute="centerX" secondItem="oj3-3k-fZZ" secondAttribute="centerX" id="o2F-Bi-bMP"/>
                                                                             <constraint firstItem="HBi-qq-hlx" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="opI-cI-A1C"/>
@@ -722,8 +732,10 @@
                                                                     <size key="customSize" width="43" height="86"/>
                                                                     <connections>
                                                                         <outlet property="dayLabel" destination="HBi-qq-hlx" id="BPK-uT-bRt"/>
+                                                                        <outlet property="dividerView" destination="Ngs-EP-ByP" id="6WT-Vp-LJc"/>
                                                                         <outlet property="highImageView" destination="sQI-57-kK4" id="VGw-bK-QNw"/>
                                                                         <outlet property="highLabel" destination="vQ6-44-TyD" id="Gqf-QM-RKw"/>
+                                                                        <outlet property="layoutTopConstraint" destination="5c2-kE-kro" id="Ukh-8Z-ym4"/>
                                                                         <outlet property="lowImageView" destination="oj3-3k-fZZ" id="LU5-gQ-8du"/>
                                                                         <outlet property="lowLabel" destination="Twg-iT-6Jz" id="CwJ-YZ-iGe"/>
                                                                     </connections>
@@ -738,7 +750,7 @@
                                                         <constraint firstItem="t1f-kf-2Bh" firstAttribute="leading" secondItem="jBc-tH-wE5" secondAttribute="leading" id="WO4-5C-J13"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
-                                                <size key="customSize" width="308" height="516"/>
+                                                <size key="customSize" width="308" height="522"/>
                                                 <connections>
                                                     <outlet property="monthlyCalendarCV" destination="t1f-kf-2Bh" id="dAJ-2d-prN"/>
                                                 </connections>

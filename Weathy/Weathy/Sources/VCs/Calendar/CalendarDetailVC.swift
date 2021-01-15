@@ -160,6 +160,9 @@ class CalendarDetailVC: UIViewController {
         
         dateLabel.text = "\(month)월 \(day)일 \(weekday)"
         locationLabel.text = location
+        climateLabel.text = description
+        temperatureHighLabel.text = "\(maxTemp!)°"
+        temperatureLowLabel.text = "\(minTemp!)°"
         climateImageView.image = UIImage(named: getClimateAssetName(climateId ?? 0))
         emojiImageView.image = UIImage(named: Emoji.getEmojiImageAsset(stampId: emojiId ?? 0))
         emojiLabel.text = Emoji.getEmojiText(stampId: emojiId ?? 0)
@@ -354,11 +357,11 @@ class CalendarDetailVC: UIViewController {
     }
     @IBAction func editBtnDidTap(_ sender: Any) {
         
-        guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
-        
-        recordEdit.modalPresentationStyle = .fullScreen
-        recordEdit.weathyData = dailyWeathy
-        self.present(recordEdit, animated: true)
+//        guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
+//
+//        recordEdit.modalPresentationStyle = .fullScreen
+//        recordEdit.weathyData = dailyWeathy
+//        self.present(recordEdit, animated: true)
         
     }
     @IBAction func deleteBtnDidTap(_ sender: Any) {
@@ -367,13 +370,13 @@ class CalendarDetailVC: UIViewController {
         
     }
     @IBAction func recordBtnDidTap(_ sender: Any) {
-        guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "ko-Kr")
-        record.modalPresentationStyle = .fullScreen
-        record.dateString = dateFormatter.string(from: selectedDate)
-        self.present(record, animated: true)
+//        guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        dateFormatter.locale = Locale(identifier: "ko-Kr")
+//        record.modalPresentationStyle = .fullScreen
+//        record.dateString = dateFormatter.string(from: selectedDate)
+//        self.present(record, animated: true)
     }
     
 }

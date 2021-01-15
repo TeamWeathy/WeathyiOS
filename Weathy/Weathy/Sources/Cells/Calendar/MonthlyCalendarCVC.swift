@@ -28,10 +28,36 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     @IBOutlet weak var lowImageView: UIImageView!
     @IBOutlet weak var highLabel: SpacedLabel!
     @IBOutlet weak var lowLabel: SpacedLabel!
+    @IBOutlet weak var dividerView: UIView!
+    @IBOutlet weak var layoutTopConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        dayLabel.backgroundColor = .clear
+        dayLabel.font = UIFont(name: "Roboto-Medium", size: 14)
+        dayLabel.clipsToBounds = true
+        dayLabel.layer.cornerRadius = 11.5
+        dayLabel.textColor = .mainGrey
+        
+        highLabel.text = ""
+        highLabel.textColor = .white
+        lowLabel.text = ""
+        highLabel.alpha = 0
+        lowLabel.textColor = .white
+        lowLabel.alpha = 0
+        
+        highImageView.alpha = 0
+        highImageView.image = UIImage(named:"calendarImgHigh")
+        
+        lowImageView.alpha = 0
+        lowImageView.image = UIImage(named: "calendarImgLow")
+        
+        
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        dividerView.alpha = 1
         dayLabel.backgroundColor = .clear
         dayLabel.font = UIFont(name: "Roboto-Medium", size: 14)
         dayLabel.clipsToBounds = true
@@ -49,9 +75,7 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         lowImageView.alpha = 0
         lowImageView.image = UIImage(named: "calendarImgLow")
         
-        
     }
-
     func setSelectedDay(){
         dayLabel.backgroundColor = .subGrey5
         dayLabel.setBorder(borderColor: .greyBorder, borderWidth: 1)
