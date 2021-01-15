@@ -8,28 +8,12 @@
 import UIKit
 
 class CalendarDetailVC: UIViewController {
-    func selectedWeekDateDidChange(_ selectedDate: Date) {
-        print("week")
-        self.selectedDate = selectedDate
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko")
-        dateFormatter.dateFormat = "MM월 dd일 eeee"
-        dateLabel.text = dateFormatter.string(from: selectedDate)
-    }
-    
-    func selectedMonthDateDidChange(_ selectedDate: Date) {
-        self.selectedDate = selectedDate
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko")
-        dateFormatter.dateFormat = "MM월 dd일 eeee"
-        dateLabel.text = dateFormatter.string(from: selectedDate)
-    }
-    
     
     //MARK: - Custom Properties
     
     let screen = UIScreen.main.bounds
     let dateFormatter = DateFormatter()
+    let noDataDate = "2020-12-13"
     var clothesTopList = ["기모맨투맨투맨","히트텍하트","폴로니트니트니","메종 마르지엘라 사줘","이인애바보"]
     var clothesBottomList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애요지랄"]
     var clothesOuterList = ["기모맨투맨","히트텍","마","메종 마르지엘라 사줘","이인애"]
@@ -37,6 +21,7 @@ class CalendarDetailVC: UIViewController {
     var blurView = UIView()
     var selectedDate = Date()
     var calendarVC: CalendarVC!
+    var dailyWeathy: CalendarWeathy?
     
     //MARK: - IBOutlets
     
@@ -56,6 +41,8 @@ class CalendarDetailVC: UIViewController {
     @IBOutlet weak var moreViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var commentLabel: SpacedLabel!
+    @IBOutlet weak var contentScrollView: UIScrollView!
+    @IBOutlet weak var recordButton: UIButton!
     
     //MARK: - Lifecycle Methods
     
@@ -77,10 +64,10 @@ class CalendarDetailVC: UIViewController {
         //            }
         //        }
         setStyle()
-        setData()
         setPopup()
+        selectedDateDidChange(nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
-//        initGestureRecognizer()
+        //        initGestureRecognizer()
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -137,19 +124,61 @@ class CalendarDetailVC: UIViewController {
         commentLabel.textAlignment = .left
         
     }
-    
-    func setData(){
-        clothesTagLabels[0].text = insertSeparatorInArray(clothesTopList)
-        clothesTagLabels[1].text = insertSeparatorInArray(clothesBottomList)
-        clothesTagLabels[2].text = insertSeparatorInArray(clothesOuterList)
-        clothesTagLabels[3].text = insertSeparatorInArray(clothesEtcList)
+    func setEmptyView(state: EmptyState){
         
+        contentScrollView.alpha = 0
+        
+        switch state{
+            case .beforeContent:
+                recordButton.alpha = 0
+                print("before")
+                detailEmptyImageView.image = UIImage(named: "calendarImgBeforeCloud")
+            case .noContent:
+                recordButton.alpha = 1
+                detailEmptyImageView.image = UIImage(named: "calendarImgNoContentCloud")
+        }
+    }
+    func setContent(){
+        contentScrollView.alpha = 1
+    }
+    func setData(){
+        setContent()
+        let month = dailyWeathy?.dailyWeather.date.month
+        let day = dailyWeathy?.dailyWeather.date.day
+        let weekday = dailyWeathy?.dailyWeather.date.dayOfWeek
+        let location = dailyWeathy?.region.name
+        let climateId = dailyWeathy?.hourlyWeather.climate.iconId
+        let description = dailyWeathy?.hourlyWeather.climate.description
+        let maxTemp = dailyWeathy?.dailyWeather.temperature.maxTemp
+        let minTemp = dailyWeathy?.dailyWeather.temperature.minTemp
+        let emojiId = dailyWeathy?.stampId
+        let clothesTopList = dailyWeathy?.closet.top.clothes
+        let clothesBottomList = dailyWeathy?.closet.bottom.clothes
+        let clothesOuterList = dailyWeathy?.closet.outer.clothes
+        let clothesEtcList = dailyWeathy?.closet.etc.clothes
+        let comment = dailyWeathy?.feedback
+        
+        dateLabel.text = "\(month)월 \(day)일 \(weekday)"
+        locationLabel.text = location
+        climateImageView.image = UIImage(named: getClimateAssetName(climateId ?? 0))
+        emojiImageView.image = UIImage(named: Emoji.getEmojiImageAsset(stampId: emojiId ?? 0))
+        emojiLabel.text = Emoji.getEmojiText(stampId: emojiId ?? 0)
+        emojiLabel.textColor = Emoji.getEmojiTextColor(stampId: emojiId ?? 0)
+        clothesTagLabels[0].text = insertSeparatorInArray(clothesTopList ?? [])
+        clothesTagLabels[1].text = insertSeparatorInArray(clothesBottomList ?? [])
+        clothesTagLabels[2].text = insertSeparatorInArray(clothesOuterList ?? [])
+        clothesTagLabels[3].text = insertSeparatorInArray(clothesEtcList ?? [])
+        commentLabel.text = comment
         dateLabel.text = dateFormatter.string(from: selectedDate)
+        
+        
     }
     
     
-    func insertSeparatorInArray(_ arr: [String]) -> String {
-        return arr.joined(separator: "  ・  ")
+    func insertSeparatorInArray(_ arr: [Clothe]) -> String {
+        return arr.map({ (val) -> String in
+            "\(val.name)"
+        }).joined(separator: " ・ ")
     }
     
     func setPopup(){
@@ -202,6 +231,70 @@ class CalendarDetailVC: UIViewController {
         
     }
     
+    func getClimateAssetName(_ climateId: Int) -> String{
+        if climateId % 100 == 1{
+            return climateId < 100 ? "ic_clearsky_day" : "ic_clearsky_night"
+        }
+        if climateId % 100 == 2{
+            return climateId < 100 ? "ic_fewclouds_day" : "ic_fewclouds_night"
+        }
+        if climateId % 100 == 3{
+            return "ic_scatteredclouds"
+        }
+        if climateId % 100 == 4{
+            return "ic_brokenclouds"
+        }
+        if climateId % 100 == 9{
+            return climateId < 100 ? "ic_showerrain_day" : "ic_showerrain_night"
+        }
+        if climateId % 100 == 10{
+            return "ic_rain"
+        }
+        if climateId % 100 == 11{
+            return "ic_thunderstorm"
+        }
+        if climateId % 100 == 13{
+            return "ic_snow"
+        }
+        if climateId % 100 == 50{
+            return "ic_mist"
+        }
+        return ""
+    }
+    
+    //MARK: - Network
+    
+    func callDailyWeathy(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        DailyWeathyService.shared.getDailyCalendar(userID: 61, date: dateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
+            switch networkResult{
+                case .success(let data):
+                    if let dailyData = data as? CalendarWeathy{
+                        print("[Daily]",dailyData)
+                        self.dailyWeathy = dailyData
+                        self.setData()
+                    }
+                case .requestErr(let msg):
+                    print("[Daily] requestErr",msg)
+                case .serverErr:
+                    print("[Daily] serverErr")
+                case .networkFail:
+                    print(">>[Daily] networkFail")
+                case .pathErr:
+                    print("[Daily] pathErr - No content")
+                    
+                    if self.selectedDate.compare(dateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
+                        print("Before Content")
+                        self.setEmptyView(state: .beforeContent)
+                    }
+                    else{
+                        self.setEmptyView(state: .noContent)
+                    }
+            }
+        }
+    }
+    
     //MARK: - @objc methods
     
     @objc func closeMoreMenu(_ sender: UITapGestureRecognizer?){
@@ -217,12 +310,36 @@ class CalendarDetailVC: UIViewController {
     }
     
     @objc func deleteAction(_ sender: Any){
-        self.parent?.view.addSubview(self.blurView)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko-Kr")
+        DeleteWeathyService.shared.deleteWeathy(weathyId: dailyWeathy!.weathyId){ (networkResult) -> (Void) in
+            switch networkResult{
+                case .success(let message):
+                    print("[Delete]",message)
+                    self.blurView.removeFromSuperview()
+                    self.selectedDateDidChange(nil)
+                    NotificationCenter.default.post(name: NSNotification.Name("DeleteWeathy"), object: self.selectedDate.weekday)
+                case .requestErr(let message):
+                    print("[Delete] requestErr",message)
+                case .networkFail:
+                    print("[Delete] networkFail")
+                case .pathErr:
+                    print("[Delete] pathErr")
+                case .serverErr:
+                    print("[Delete] serverErr")
+            }
+        }
+//        self.parent?.view.addSubview(self.blurView)
     }
     
-    @objc func selectedDateDidChange(_ notification: NSNotification){
-        selectedDate = notification.object as! Date
+    @objc func selectedDateDidChange(_ notification: NSNotification?){
+        if let noti = notification{
+            selectedDate = noti.object as! Date
+        }
         dateLabel.text = dateFormatter.string(from: selectedDate)
+        callDailyWeathy()
+        
     }
     
     //MARK: - IBActions
@@ -246,6 +363,9 @@ class CalendarDetailVC: UIViewController {
         self.parent?.view.addSubview(blurView)
         
     }
+    @IBAction func recordBtnDidTap(_ sender: Any) {
+        
+    }
     
 }
 
@@ -260,4 +380,9 @@ extension CalendarDetailVC{
         }
         return false
     }
+}
+
+enum EmptyState{
+    case noContent
+    case beforeContent
 }

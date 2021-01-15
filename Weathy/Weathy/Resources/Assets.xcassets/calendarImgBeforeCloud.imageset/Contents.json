@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
       "filename" : "calendarImgBeforeCloud.png",
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "scale" : "2x",
       "filename" : "calendarImgBeforeCloud@2x.png",
+      "scale" : "2x",
       "idiom" : "universal"
     },
     {
       "idiom" : "universal",
-      "filename" : "calendarImgBeforeCloud@3x.png",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "calendarImgBeforeCloud@3x.png"
     }
   ],
   "info" : {

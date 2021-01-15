@@ -2,12 +2,13 @@
 //  Emoji.swift
 //  Weathy
 //
-//  Created by inae Lee on 2021/01/14.
+//  Created by 이예슬 on 2021/01/14.
 //
 
+import Foundation
 import UIKit
 
-struct Emoji {
+struct Emoji{
     static let veryHot: Int = 1
     static let hot = 2
     static let good = 3
@@ -51,18 +52,17 @@ struct Emoji {
     static func getEmojiTextColor(stampId: Int) -> UIColor {
         switch (stampId) {
         case Emoji.veryHot:
-            return UIColor.imojiVeryHot
+            return UIColor.imojiVeryHotText
         case Emoji.hot:
-            return UIColor.imojiHot
+            return UIColor.imojiHotText
         case Emoji.good:
-            return UIColor.imojiGood
+            return UIColor.imojiGootText
         case Emoji.cold:
-            return UIColor.imojiCold
+            return UIColor.imojiColdText
         case Emoji.veryCold:
-            return UIColor.imojiVeryCold
+            return UIColor.imojiVeryColdText
         default:
-            return UIColor.imojiGood
+            return UIColor.imojiGootText
         }
     }
 }
-
