@@ -48,7 +48,7 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
         endDate = Calendar.current.date(byAdding: endComponent, to: selectedDate)!
         end = dateFormatter.string(from: endDate)
         
-        MonthlyWeathyService.shared.getMonthlyCalendar(userID: 63, startDate: start, endDate: end){ (networkResult) -> (Void) in
+        MonthlyWeathyService.shared.getMonthlyCalendar(userID: 61, startDate: start, endDate: end){ (networkResult) -> (Void) in
             switch networkResult {
                 case .success(let data):
                     if let weeklyData = data as? [CalendarOverview?]{
@@ -99,12 +99,26 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        if let cell = collectionView.cellForItem(at: indexPath) as? WeeklyCalendarCVC{
+            var selectedComponent = DateComponents()
+            
+            selectedComponent.day = indexPath.item - selectedDate.weekday
+            let newSelectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+            if newSelectedDate.compare(Date()) == .orderedDescending{
+                return false
+            }
+            return true
+            
+        }
+        return true
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("weekly selected",indexPath)
         if lastSelectedIdx != indexPath.item{
             if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? WeeklyCalendarCVC{
                 cell.isSelected = false
-
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? WeeklyCalendarCVC{
                 var selectedComponent = DateComponents()
@@ -151,6 +165,9 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
                 print("today1",selectedDate)
                 cell.setToday()
             }
+        }
+        else if selectedDate.currentYearMonth > Date().currentYearMonth{
+            cell.setGreyDay()
         }
         ///현재달
         if 0 < tempIdx && tempIdx <= selectedDate.numberOfMonth{
