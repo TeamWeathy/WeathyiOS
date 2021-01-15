@@ -2,18 +2,18 @@
   "images" : [
     {
       "scale" : "1x",
-      "filename" : "mainImgBrokencloudsNight.png",
-      "idiom" : "universal"
-    },
-    {
-      "filename" : "mainImgBrokencloudsNight@2x.png",
-      "scale" : "2x",
-      "idiom" : "universal"
-    },
-    {
-      "scale" : "3x",
       "idiom" : "universal",
-      "filename" : "mainImgBrokencloudsNight@3x.png"
+      "filename" : "mainImgBrokencloudsNight.png"
+    },
+    {
+      "scale" : "2x",
+      "idiom" : "universal",
+      "filename" : "mainImgBrokencloudsNight@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "mainImgBrokencloudsNight@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

@@ -1,19 +1,19 @@
 {
   "images" : [
     {
+      "filename" : "mainImgMoon.png",
       "scale" : "1x",
-      "idiom" : "universal",
-      "filename" : "mainImgMoon.png"
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
+      "filename" : "mainImgMoon@2x.png",
       "scale" : "2x",
-      "filename" : "mainImgMoon@2x.png"
+      "idiom" : "universal"
     },
     {
       "scale" : "3x",
-      "idiom" : "universal",
-      "filename" : "mainImgMoon@3x.png"
+      "filename" : "mainImgMoon@3x.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
