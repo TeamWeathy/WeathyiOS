@@ -40,5 +40,4 @@ class SplashVC: UIViewController {
         
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.nextView), userInfo: nil, repeats: false)
     }
-
 }

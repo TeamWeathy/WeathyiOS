@@ -266,17 +266,10 @@
 		0E6E9A7A25AFA1A600702706 /* SearchInformation */ = {
 			isa = PBXGroup;
 			children = (
+				0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */,
 				0E6E9A7F25AFA1FC00702706 /* SearchWeatherInformation.swift */,
 			);
 			path = SearchInformation;
-			sourceTree = "<group>";
-		};
-		0E75F64E25AC1CA500D98633 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */,
-			);
-			path = Search;
 			sourceTree = "<group>";
 		};
 		0E75F66825AF171A00D98633 /* Setting */ = {
@@ -562,7 +555,6 @@
 		63398441259A2BD100339615 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0E75F64E25AC1CA500D98633 /* Search */,
 				63DEB263259CD4AD00A94488 /* DummyClass.swift */,
 				63D3C53825A4A57500E5FDFE /* SpacedLabel.swift */,
 			);

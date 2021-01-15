@@ -23,7 +23,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTn-YA-9ib">
                                 <rect key="frame" x="0.0" y="173" width="375" height="605"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wpK-8B-eQb">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_empty_img_empty" translatesAutoresizingMaskIntoConstraints="NO" id="wpK-8B-eQb">
                                         <rect key="frame" x="115" y="85" width="145" height="145"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="145" id="XJ0-Sz-Rhr"/>
@@ -512,6 +512,7 @@
         <image name="searchBgMorning" width="375" height="812"/>
         <image name="search_box_search" width="309" height="50"/>
         <image name="search_box_topblur_morning" width="375" height="228"/>
+        <image name="search_empty_img_empty" width="145" height="145"/>
         <image name="search_recent_empty_img_empty" width="173" height="174"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

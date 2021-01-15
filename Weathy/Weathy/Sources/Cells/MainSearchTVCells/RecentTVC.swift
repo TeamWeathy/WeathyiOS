@@ -48,7 +48,7 @@ class RecentTVC: UITableViewCell {
         return stackView
     }()
     
-    let firstBtn: UIButton = {
+    let backButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("삭제", for: .normal)
         btn.setTitleColor(.black, for: .normal)
@@ -135,6 +135,11 @@ class RecentTVC: UITableViewCell {
                 }
                 ///해당 cell을 지우기 위한 data 전송
                 didSwipe()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self.leadingConstraint.constant = 0
+                    self.layoutIfNeeded()
+                }
+                
             }else {
                 leadingConstraint.constant = 0
                 UIView.animate(withDuration: 0.3) {
@@ -151,7 +156,7 @@ class RecentTVC: UITableViewCell {
         backView.frame = self.bounds
         self.contentView.addSubview(backView)
         self.contentView.addSubview(buttonStack)
-        buttonStack.addArrangedSubview(firstBtn)
+        buttonStack.addArrangedSubview(backButton)
         
         addGesture()
     }
