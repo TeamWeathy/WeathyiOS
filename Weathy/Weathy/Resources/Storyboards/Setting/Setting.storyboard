@@ -433,6 +433,7 @@
                         <outlet property="nickNameTextField" destination="Lv4-7S-nDz" id="q9V-fg-OTh"/>
                         <outlet property="sentenceLabel" destination="q95-EC-W4X" id="5sC-f5-bvU"/>
                         <outlet property="textRadiusImage" destination="58n-Cx-0zT" id="5Po-it-3LC"/>
+                        <outlet property="totalCountLabel" destination="XfX-ks-T7T" id="64d-3x-OCz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwc-cj-Hfu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -13,6 +13,9 @@
 		0E6E9A7125AF7EE300702706 /* autoLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7025AF7EE300702706 /* autoLoginService.swift */; };
 		0E6E9A7625AF9E7700702706 /* searchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7525AF9E7700702706 /* searchService.swift */; };
 		0E6E9A8025AFA1FC00702706 /* SearchWeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7F25AFA1FC00702706 /* SearchWeatherInformation.swift */; };
+		0E6E9ABB25B2450000702706 /* 온보딩_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E6E9ABA25B2450000702706 /* 온보딩_1.json */; };
+		0E6E9ABE25B2450900702706 /* 온보딩_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E6E9ABD25B2450900702706 /* 온보딩_2.json */; };
+		0E6E9AC125B2450E00702706 /* 온보딩_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E6E9AC025B2450E00702706 /* 온보딩_3.json */; };
 		0E75F64C25AC1C9D00D98633 /* SearchRecentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */; };
 		0E75F65825AD800A00D98633 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F65725AD800A00D98633 /* SearchTVC.swift */; };
 		0E75F65B25AD984D00D98633 /* NickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F65A25AD984D00D98633 /* NickNameVC.swift */; };
@@ -128,6 +131,9 @@
 		0E6E9A7025AF7EE300702706 /* autoLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autoLoginService.swift; sourceTree = "<group>"; };
 		0E6E9A7525AF9E7700702706 /* searchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchService.swift; sourceTree = "<group>"; };
 		0E6E9A7F25AFA1FC00702706 /* SearchWeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWeatherInformation.swift; sourceTree = "<group>"; };
+		0E6E9ABA25B2450000702706 /* 온보딩_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "온보딩_1.json"; sourceTree = "<group>"; };
+		0E6E9ABD25B2450900702706 /* 온보딩_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "온보딩_2.json"; sourceTree = "<group>"; };
+		0E6E9AC025B2450E00702706 /* 온보딩_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "온보딩_3.json"; sourceTree = "<group>"; };
 		0E75F64B25AC1C9D00D98633 /* SearchRecentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecentInfo.swift; sourceTree = "<group>"; };
 		0E75F65725AD800A00D98633 /* SearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVC.swift; sourceTree = "<group>"; };
 		0E75F65A25AD984D00D98633 /* NickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameVC.swift; sourceTree = "<group>"; };
@@ -276,6 +282,16 @@
 				0E6E9A7F25AFA1FC00702706 /* SearchWeatherInformation.swift */,
 			);
 			path = SearchInformation;
+			sourceTree = "<group>";
+		};
+		0E6E9AB825B244CC00702706 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				0E6E9ABA25B2450000702706 /* 온보딩_1.json */,
+				0E6E9ABD25B2450900702706 /* 온보딩_2.json */,
+				0E6E9AC025B2450E00702706 /* 온보딩_3.json */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		0E75F66825AF171A00D98633 /* Setting */ = {
@@ -594,6 +610,7 @@
 		63398443259A2BE700339615 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0E6E9AB825B244CC00702706 /* OnBoarding */,
 				37222E6225AE649700577FEE /* Record */,
 				63C756D225B03902003DC9FA /* Calendar */,
 				AB09372125AFC58000F69220 /* Common */,
@@ -824,6 +841,8 @@
 				63DEB295259CF67200A94488 /* AppleSDGothicNeoSB.ttf in Resources */,
 				ABBA9CA925A22254008785BD /* Main.storyboard in Resources */,
 				37222E8A25B0D6EA00577FEE /* ModifyWeathyStart.storyboard in Resources */,
+				0E6E9AC125B2450E00702706 /* 온보딩_3.json in Resources */,
+				0E6E9ABE25B2450900702706 /* 온보딩_2.json in Resources */,
 				374D48D8259D1CA600152B9A /* RecordRate.storyboard in Resources */,
 				37222EAC25B1060300577FEE /* ModifyWeathyRate.storyboard in Resources */,
 				37222E9D25B0EB2200577FEE /* ModifyWeathyTag.storyboard in Resources */,
@@ -831,6 +850,7 @@
 				6339842F2599B1F600339615 /* LaunchScreen.storyboard in Resources */,
 				374D48D1259CEBF000152B9A /* RecordStart.storyboard in Resources */,
 				6339842C2599B1F600339615 /* Assets.xcassets in Resources */,
+				0E6E9ABB25B2450000702706 /* 온보딩_1.json in Resources */,
 				AB3D206E25AFD5040030514B /* Setting.storyboard in Resources */,
 				63DEB293259CF67200A94488 /* AppleSDGothicNeoB.ttf in Resources */,
 				AB3D206A25AFD4F90030514B /* MainSearch.storyboard in Resources */,

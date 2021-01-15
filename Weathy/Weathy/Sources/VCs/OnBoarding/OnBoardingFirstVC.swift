@@ -6,17 +6,19 @@
 //
 
 import UIKit
+import Lottie
 
 class OnBoardingFirstVC: UIViewController {
     
     //MARK: - Custom Variables
     var currentPage = 1
+    let animationView = AnimationView()
     
     //MARK: - IBOutlets
     
     @IBOutlet weak var blindView: UIView!
     /// label
-    @IBOutlet weak var lodingCloudImage: UIImageView!
+    @IBOutlet weak var lodingCloudView: UIView!
     @IBOutlet weak var firstWord: UILabel!
     @IBOutlet weak var secondWord: UILabel!
     @IBOutlet weak var subLabel: UILabel!
@@ -42,6 +44,7 @@ class OnBoardingFirstVC: UIViewController {
 
         firstImage.alpha = 0
         firstDot.image = UIImage(named: "onboarding_ic_circle_now")
+        displayFirstSplash()
         
         secondImage.isHidden = true
         secondImage.alpha = 0
@@ -102,6 +105,38 @@ class OnBoardingFirstVC: UIViewController {
     }
     
     //MARK: - Custom Methods
+    func displayFirstSplash() {
+        self.lodingCloudView.addSubview(animationView)
+        animationView.animation = Animation.named("온보딩_1")
+        animationView.frame = CGRect(x: -self.lodingCloudView.frame.width/2, y: -self.lodingCloudView.frame.height/2, width: self.lodingCloudView.frame.width*2, height: self.lodingCloudView.frame.height*2)
+        animationView.contentMode = .scaleAspectFill
+        NSLayoutConstraint.activate([
+                                        animationView.leadingAnchor.constraint(equalTo: self.lodingCloudView.leadingAnchor),  animationView.trailingAnchor.constraint(equalTo: self.lodingCloudView.trailingAnchor),  animationView.topAnchor.constraint(equalTo: self.lodingCloudView.topAnchor),  animationView.bottomAnchor.constraint(equalTo: self.lodingCloudView.bottomAnchor)])
+        animationView.loopMode = .playOnce
+        animationView.play()
+    }
+    
+    func displaySecondSplash() {
+        self.lodingCloudView.addSubview(animationView)
+        animationView.animation = Animation.named("온보딩_2")
+        animationView.frame = CGRect(x: -self.lodingCloudView.frame.width/2, y: -self.lodingCloudView.frame.height/2, width: self.lodingCloudView.frame.width*2, height: self.lodingCloudView.frame.height*2)
+        animationView.contentMode = .scaleAspectFill
+        NSLayoutConstraint.activate([
+            animationView.leadingAnchor.constraint(equalTo: lodingCloudView.leadingAnchor),  animationView.trailingAnchor.constraint(equalTo: lodingCloudView.trailingAnchor),  animationView.topAnchor.constraint(equalTo: lodingCloudView.topAnchor),  animationView.bottomAnchor.constraint(equalTo: lodingCloudView.bottomAnchor)])
+        animationView.loopMode = .playOnce
+        animationView.play()
+    }
+    
+    func displayThirdSplash() {
+        self.lodingCloudView.addSubview(animationView)
+        animationView.animation = Animation.named("온보딩_3")
+        animationView.frame = CGRect(x: -self.lodingCloudView.frame.width/2, y: -self.lodingCloudView.frame.height/2, width: self.lodingCloudView.frame.width*2, height: self.lodingCloudView.frame.height*2)
+        animationView.contentMode = .scaleAspectFill
+        NSLayoutConstraint.activate([
+            animationView.leadingAnchor.constraint(equalTo: lodingCloudView.leadingAnchor),  animationView.trailingAnchor.constraint(equalTo: lodingCloudView.trailingAnchor),  animationView.topAnchor.constraint(equalTo: lodingCloudView.topAnchor),  animationView.bottomAnchor.constraint(equalTo: lodingCloudView.bottomAnchor)])
+        animationView.loopMode = .playOnce
+        animationView.play()
+    }
     
     func makeGesture(){
         let right = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
@@ -129,7 +164,7 @@ class OnBoardingFirstVC: UIViewController {
         secondDot.image = UIImage(named: "onboarding_ic_circle")
         thridDot.image = UIImage(named: "onboarding_ic_circle")
 
-        lodingCloudImage.image = UIImage(named: "onboarding_img_logo_1")
+        displayFirstSplash()
         firstWord.text = "날씨를"
         secondWord.text = "기록해요"
         subLabel.text = "오늘 날씨에 대한 옷차림과 상태를 기록해요"
@@ -140,7 +175,7 @@ class OnBoardingFirstVC: UIViewController {
         firstDot.image = UIImage(named: "onboarding_ic_circle")
         secondDot.image = UIImage(named: "onboarding_ic_circle_now")
         thridDot.image = UIImage(named: "onboarding_ic_circle")
-        lodingCloudImage.image = UIImage(named: "onboarding_img_logo_2")
+        displaySecondSplash()
         firstWord.text = "기록을"
         secondWord.text = "모아봐요"
         subLabel.text = "캘린더에서 날씨 기록을 모아볼 수 있어요"
@@ -151,7 +186,7 @@ class OnBoardingFirstVC: UIViewController {
         firstDot.image = UIImage(named: "onboarding_ic_circle")
         secondDot.image = UIImage(named: "onboarding_ic_circle")
         thridDot.image = UIImage(named: "onboarding_ic_circle_now")
-        lodingCloudImage.image = UIImage(named: "onboarding_img_logo_3")
+        displayThirdSplash()
         firstWord.text = "나에게"
         secondWord.text = "돌아와요"
         subLabel.text = "기록한 날씨는 비슷한 날에 돌아와요"
