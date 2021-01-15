@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate, UICollectionViewDataSourcePrefetching{
+class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     //MARK: - Custom Properties
     let screen = UIScreen.main.bounds
@@ -43,28 +43,22 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate, UICollect
     @IBOutlet weak var yearMonthTextView: UITextView!
     @IBOutlet var weekdayLabelCollection: [UILabel]!
 
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print("#a",indexPaths)
-    
-    }
+
     //MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(screen)
         initDate()
-        //        selectedDateDidChange()
         infiniteMonthlyCV.delegate = self
         infiniteMonthlyCV.dataSource = self
         infiniteWeeklyCV.delegate = self
         infiniteWeeklyCV.dataSource = self
         infiniteMonthlyCV.isPrefetchingEnabled = true
-        infiniteMonthlyCV.prefetchDataSource = self
         setGesture()
         setStyle()
         initPicker()
         NotificationCenter.default.addObserver(self, selector: #selector(setSelected(_:)), name: NSNotification.Name("ChangeData"), object: nil)
-
         print("today",Calendar.current.dateComponents(in: TimeZone.current, from: selectedDate))
         
     }
@@ -295,6 +289,18 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate, UICollect
     
     //MARK: - @objc methods
     
+    @objc func setWeekday(_ noti: NSNotification){
+        if let flag = noti.object as? Int{
+            if flag == 7{
+                setWeekdayColor()
+            }
+            else{
+                weekdayLabelCollection[flag].textColor = .white
+            }
+        }
+
+    }
+    
     @objc func tapGestureHandler(recognizer: UITapGestureRecognizer){
         print("tapped")
         if isCovered == true{
@@ -485,10 +491,38 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
 //            }
 //        }
 //    }
+    
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print(infiniteWeeklyCV.isScrollEnabled)
+        let gesture = scrollView.panGestureRecognizer
+        if scrollView == infiniteMonthlyCV{
+            if gesture.velocity(in: scrollView).x < 0{
+                if selectedDate.month == Date().month{
+                    infiniteMonthlyCV.isScrollEnabled = false
+                }
+            }
+        }
+        else if scrollView == infiniteWeeklyCV{
+            if gesture.velocity(in: scrollView).x < 0{
+                var leftDateComponent = DateComponents()
+                leftDateComponent.day = -(selectedDate.weekday+1)
+                var rightDateComponent = DateComponents()
+                rightDateComponent.day = 7 - selectedDate.weekday
+                let leftDate = Calendar.current.date(byAdding: leftDateComponent, to: Date())
+                let rightDate = Calendar.current.date(byAdding: rightDateComponent, to: Date())
+                if leftDate!.compare(Date()) == .orderedAscending
+                    && rightDate!.compare(Date()) == .orderedDescending{
+//                    infiniteWeeklyCV.isScrollEnabled = falser
+                    infiniteWeeklyCV.isScrollEnabled = true
+                }
+            }
+        }
+        infiniteMonthlyCV.isScrollEnabled = true
+        
+    }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("#")
         let x = scrollView.contentOffset.x
-        print("x",x)
         if scrollView == infiniteMonthlyCV{
             if x == 0{
                 yearMonthTextView.text = infiniteMonthList[0].currentYearMonth
@@ -536,9 +570,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 selectedDateDidChange()
                 
                 DispatchQueue.main.async(execute: { [self] in
-                    print("$$")
                     self.infiniteWeeklyCV.contentOffset.x = calendarWidth
-                    //                self.pickerTextView.alpha = 1
                 })
                 
             }
@@ -551,11 +583,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         }
         
     }
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if collectionView == infiniteMonthlyCV{
-            print("willDisplay")
-        }
-    }
+ 
 
 }
 

@@ -70,6 +70,7 @@ class CalendarDetailVC: UIViewController {
         setDefaultFormatter()
         selectedDateDidChange(nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recordChanged(_:)), name: NSNotification.Name(rawValue: "RecordUpdated"), object: nil)
         //        initGestureRecognizer()
         
     }
@@ -258,33 +259,47 @@ class CalendarDetailVC: UIViewController {
     func callDailyWeathy(){
         DailyWeathyService.shared.getDailyCalendar(userID: 63, date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
             switch networkResult{
-            case .success(let data):
-                if let dailyData = data as? CalendarWeathy{
-                    print("[Daily]",dailyData)
-                    self.dailyWeathy = dailyData
-                    self.setData()
-                }
-            case .requestErr(let msg):
-                print("[Daily] requestErr",msg)
-            case .serverErr:
-                print("[Daily] serverErr")
-            case .networkFail:
-                print(">>[Daily] networkFail")
-            case .pathErr:
-                print("[Daily] pathErr - No content")
-                
-                if self.selectedDate.compare(self.defaultDateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
-                    print("Before Content")
+                case .success(let data):
+                    if let dailyData = data as? CalendarWeathy{
+                        print("[Daily]",dailyData)
+                        self.dailyWeathy = dailyData
+                        self.setData()
+                    }
+                case .requestErr(let msg):
+                    print("[Daily] requestErr",msg)
                     self.setEmptyView(state: .beforeContent)
-                }
-                else{
-                    self.setEmptyView(state: .noContent)
-                }
+                case .serverErr:
+                    print("[Daily] serverErr")
+                    self.setEmptyView(state: .beforeContent)
+                case .networkFail:
+                    print(">>[Daily] networkFail")
+                    self.setEmptyView(state: .beforeContent)
+                case .pathErr:
+                    print("[Daily] pathErr - No content")
+                    
+                    if self.selectedDate.compare(self.defaultDateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
+                        self.setEmptyView(state: .beforeContent)
+                    }
+                    else{
+                        self.setEmptyView(state: .noContent)
+                    }
             }
         }
     }
     
     //MARK: - @objc methods
+    
+    @objc func recordChanged(_ noti: NSNotification){
+        if let flag = noti.object as? Int{
+            if flag == 1{
+                self.showToast(message: "웨디 내용이 수정되었어요!")
+            }
+            else if flag == 0{
+                self.showToast(message: "웨디에 내용이 추가되었어요!")
+            }
+            selectedDateDidChange(nil)
+        }
+    }
     
     @objc func closeMoreMenu(_ sender: UITapGestureRecognizer?){
         self.moreViewHeightConstraint.constant = 0

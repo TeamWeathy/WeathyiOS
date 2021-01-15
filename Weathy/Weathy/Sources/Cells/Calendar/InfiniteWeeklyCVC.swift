@@ -48,11 +48,10 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
         endDate = Calendar.current.date(byAdding: endComponent, to: selectedDate)!
         end = dateFormatter.string(from: endDate)
         
-        MonthlyWeathyService.shared.getMonthlyCalendar(userID: 63, startDate: start, endDate: end){ (networkResult) -> (Void) in
+        MonthlyWeathyService.shared.getMonthlyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), startDate: start, endDate: end){ (networkResult) -> (Void) in
             switch networkResult {
                 case .success(let data):
                     if let weeklyData = data as? [CalendarOverview?]{
-                        print(">>netsucess",weeklyData)
                         self.weeklyWeathyList = weeklyData
                         DispatchQueue.main.async {
                             self.weeklyCalendarCV.reloadData()
@@ -60,13 +59,13 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
                     }
                     
                 case .requestErr(let msg):
-                    print(">>networkrequest",msg)
+                    print("[Monthly] requestErr",msg)
                 case .serverErr:
-                    print(">>networkserverErr")
+                    print("[Monthly] serverErr")
                 case .networkFail:
-                    print(">>networknetworkFail")
+                    print("[Monthly] networkFail")
                 case .pathErr:
-                    print(">>networkpathErr")
+                    print("[Monthly] pathErr")
                     
             }
             
@@ -115,7 +114,6 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
         return true
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("weekly selected",indexPath)
         if lastSelectedIdx != indexPath.item{
             if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? WeeklyCalendarCVC{
                 cell.isSelected = false
@@ -162,7 +160,6 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         ///현재주가 오늘을 포함하고 있는 경우
         if selectedDate.currentYearMonth == Date().currentYearMonth{
             if indexPath.item + selectedDate.day-(selectedDate.weekday) == Date().day{
-                print("today1",selectedDate)
                 cell.setToday()
             }
         }
