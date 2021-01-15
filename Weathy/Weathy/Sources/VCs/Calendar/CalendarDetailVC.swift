@@ -341,7 +341,7 @@ class CalendarDetailVC: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "ko-Kr")
         record.modalPresentationStyle = .fullScreen
-//        record.dateString = dateFormatter.string(from: selectedDate)
+        record.dateString = dateFormatter.string(from: selectedDate)
         self.present(record, animated: true)
     }
     
