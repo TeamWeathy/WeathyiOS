@@ -310,6 +310,9 @@
                                                                 <constraint firstAttribute="width" secondItem="VEz-AN-Xfj" secondAttribute="height" multiplier="1:1" id="F7o-0Y-xkc"/>
                                                             </constraints>
                                                             <state key="normal" image="ic_gps_shadow"/>
+                                                            <connections>
+                                                                <action selector="touchUpGpsButton:" destination="PZB-q1-BQA" eventType="touchUpInside" id="th6-04-Hw5"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nk-g4-658" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                             <rect key="frame" x="69" y="39.5" width="4.5" height="20"/>
@@ -382,6 +385,7 @@
                                             <outlet property="currTempLabel" destination="XFM-xw-3ZN" id="CIE-zt-3WF"/>
                                             <outlet property="downImage" destination="qR8-i0-Kyx" id="eyB-na-khb"/>
                                             <outlet property="emptyImage" destination="CTi-mP-foP" id="WCL-yX-E1e"/>
+                                            <outlet property="gpsButton" destination="VEz-AN-Xfj" id="Z21-GT-ENk"/>
                                             <outlet property="helpButton" destination="VRS-U2-Pfs" id="MUZ-8q-Cus"/>
                                             <outlet property="hourlyClimateImage" destination="igr-s5-HPi" id="wMs-xi-S7Y"/>
                                             <outlet property="locationLabel" destination="5nk-g4-658" id="Rb7-J9-T8E"/>

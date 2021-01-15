@@ -5,12 +5,13 @@
 //  Created by inae Lee on 2021/01/04.
 //
 
+import CoreLocation
 import UIKit
 
 class MainVC: UIViewController {
     //MARK: - Custom Variables
     var lastContentOffset: CGFloat = 0.0
-    var mainDeliverSearchInfo : SearchRecentInfo?
+    var mainDeliverSearchInfo : OverviewWeatherList?
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
@@ -18,6 +19,18 @@ class MainVC: UIViewController {
     var extraWeatherData: ExtraWeatherData?
     var searchImage: String?
     var searchGradient: String?
+    var deliveredSearchData: OverviewWeatherList?
+    var defaultLocationFlag: Bool = true{
+        didSet {
+            // 값이 바뀔 때
+            if (defaultLocationFlag) {
+                // 위치정보로
+                print("true")
+            } else {
+                print("false")
+            }
+        }
+    }
     
     //MARK: - IBOutlets
     
@@ -33,18 +46,37 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
     // fix: 닉네임 뷰에서 처리할 로직
-//        UserDefaults.standard.setValue("62:CfL6LqDE3Y6aF3QA3IdUjpTAPbC0gI", forKey: "token")
-//        UserDefaults.standard.setValue("이내옹", forKey: "nickname")
-//        UserDefaults.standard.setValue(62, forKey: "userId")
-//
-        getLocationWeather()
+        UserDefaults.standard.setValue("37.59311236609", forKey: "longitude")
+        UserDefaults.standard.setValue("126.9501814612", forKey: "latitude")
+        
+        if (self.deliveredSearchData == nil) {
+            if let location = UserDefaults.standard.string(forKey: "locationCode") {
+                print(location)
+                getLocationWeather(code: location)
+            } else {
+                print(UserDefaults.standard.string(forKey: "longitude"))
+                print(UserDefaults.standard.string(forKey: "latitude"))
+            }
+        } else {
+            print("#")
+            defaultLocationFlag = false
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+        let locationManager = appDelegate.locationManager
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
     }
     
     //MARK: - Custom Method
@@ -81,8 +113,8 @@ class MainVC: UIViewController {
         logoImage.alpha = 0
     }
     
-    func getLocationWeather() {
-        MainService.shared.getWeatherByLocation() { (result) -> (Void) in
+    func getLocationWeather(code: String) {
+        MainService.shared.getWeatherByLocation(code: code) { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? LocationWeatherData {
@@ -95,10 +127,10 @@ class MainVC: UIViewController {
 
                     UserDefaults.standard.setValue(response.overviewWeather.region.code, forKey: "locationCode")
                     
-                    self.getRecommendedWeathy()
-                    self.getHourlyWeather()
-                    self.getDailyWeather()
-                    self.getExtraWeather()
+                    self.getRecommendedWeathy(code: String(response.overviewWeather.region.code))
+                    self.getHourlyWeather(code: String(response.overviewWeather.region.code))
+                    self.getDailyWeather(code: String(response.overviewWeather.region.code))
+                    self.getExtraWeather(code: String(response.overviewWeather.region.code))
                 }
             case .requestErr(let msg):
                 print(msg)
@@ -112,10 +144,10 @@ class MainVC: UIViewController {
         }
     }
     
-    func getRecommendedWeathy() {
+    func getRecommendedWeathy(code: String) {
         let userId: Int = UserDefaults.standard.integer(forKey: "userId")
         
-        MainService.shared.getRecommendedWeathy(userId: userId) { (result) -> (Void) in
+        MainService.shared.getRecommendedWeathy(userId: userId, code: code) { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? RecommendedWeathyData {
@@ -136,8 +168,8 @@ class MainVC: UIViewController {
         }
     }
     
-    func getHourlyWeather() {
-        MainService.shared.getHourlyWeather() { (result) -> (Void) in
+    func getHourlyWeather(code: String) {
+        MainService.shared.getHourlyWeather(code: code) { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? HourlyWeatherData {
@@ -155,8 +187,8 @@ class MainVC: UIViewController {
         }
     }
     
-    func getDailyWeather() {
-        MainService.shared.getDailyWeather() { (result) -> (Void) in
+    func getDailyWeather(code: String) {
+        MainService.shared.getDailyWeather(code: code) { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? DailyWeatherData {
@@ -174,8 +206,8 @@ class MainVC: UIViewController {
         }
     }
     
-    func getExtraWeather() {
-        MainService.shared.getExtraWeather() { (result) -> (Void) in
+    func getExtraWeather(code: String) {
+        MainService.shared.getExtraWeather(code: code) { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? ExtraWeatherData {
@@ -250,6 +282,38 @@ class MainVC: UIViewController {
         mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
     }
     
+    @objc func setSearchData(_ notiData: NSNotification) {
+        if let hourlyData = notiData.object as? OverviewWeatherList {
+            self.deliveredSearchData = hourlyData
+            
+            let iconId: Int = hourlyData.hourlyWeather.climate.iconID
+            let locationCode: String = String(hourlyData.region.code)
+
+            self.mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
+            self.topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
+            
+            if (iconId % 100 == 13) {
+                fallingSnow()
+            } else if (iconId % 100 == 10) {
+                fallingRain()
+            }
+            
+            self.getRecommendedWeathy(code: locationCode)
+            self.getHourlyWeather(code: locationCode)
+            self.getDailyWeather(code: locationCode)
+            self.getExtraWeather(code: locationCode)
+            
+            if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
+                topCVC.changeWeatherViewData(data: self.locationWeatherData!)
+                topCVC.changeWeatherViewBySearchData(data: hourlyData)
+                topCVC.gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
+                topCVC.defaultLocationFlag = false
+            }
+            
+            self.weatherCollectionView.reloadData()
+        }
+    }
+    
     //MARK: - IBActions
     
     @IBAction func touchUpSetting(_ sender: Any) {
@@ -259,7 +323,7 @@ class MainVC: UIViewController {
         guard let settingNVC = settingStoryboard.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
 
         settingNVC.modalPresentationStyle = .fullScreen
-        present(settingNVC, animated: true, completion: nil)
+        self.present(settingNVC, animated: true, completion: nil)
     }
     
     @IBAction func touchUpSearch(_ sender: Any) {
@@ -371,5 +435,34 @@ extension MainVC: UICollectionViewDataSource {
 extension MainVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
+    }
+}
+
+//MARK: - 주석 종류
+
+extension MainVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location: CLLocation = locations[locations.count - 1]
+        let longitude: CLLocationDegrees = location.coordinate.longitude
+        let latitude: CLLocationDegrees = location.coordinate.latitude
+        let findLocation: CLLocation = CLLocation(latitude: latitude, longitude: longitude)
+        let geoCoder: CLGeocoder = CLGeocoder()
+        let local: Locale = Locale(identifier: "Ko-kr") // Korea
+        geoCoder.reverseGeocodeLocation(findLocation, preferredLocale: local) { (place, error) in
+          if let address: [CLPlacemark] = place {
+            let state = (address.last?.administrativeArea)!
+            let city = (address.last?.locality)!
+            print("(longitude, latitude) = (\(longitude), \(latitude))")
+            print("시(도): ", state)
+            print("구(군): ", city)
+            UserDefaults.standard.setValue(longitude, forKey: "longitude")
+            UserDefaults.standard.setValue(latitude, forKey: "latitude")
+          }
+        }
+    }
+    
+    ///Change
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print("Change")
     }
 }

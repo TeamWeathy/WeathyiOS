@@ -29,6 +29,7 @@ class RecordStartVC: UIViewController {
     var visitedFlag: Bool = false
     var dvc = RecordTagVC()
     
+    var recordDeliverSearchInfo : OverviewWeatherList?
     
     //MARK: - IBOutlets
     
@@ -73,8 +74,20 @@ class RecordStartVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         animationPrac()
+        NotificationCenter.default.addObserver(self, selector: #selector(SearchInfo), name: .init("record"), object: nil)
+    }
+    
+    @objc func SearchInfo(_ notification: Notification){
+        guard let userInfo = notification.userInfo as? [String: Any] else { return }
+        guard let searchInfo = userInfo["mainDeliverSearchInfo"] as? OverviewWeatherList else { return}
+
+        boxTimeLabel.text = "\(searchInfo.dailyWeather.date.month)월 \(searchInfo.dailyWeather.date.day)일 \(searchInfo.dailyWeather.date.dayOfWeek)"
+        boxLocationLabel.text = searchInfo.region.name
+        boxWeatherImageView.image = UIImage(named:   ClimateImage.getClimateSearchIllust(searchInfo.hourlyWeather.climate.iconID))
+        maxTempLabel.text = "\(searchInfo.dailyWeather.temperature.maxTemp)°"
+        minTempLabel.text = "\(searchInfo.dailyWeather.temperature.minTemp)°"
+        print("---> 뭐야 \(searchInfo)")
     }
     
     //MARK: - IBActions
@@ -96,6 +109,17 @@ class RecordStartVC: UIViewController {
     @IBAction func backButtonDidTap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func searchButtonDidTap(_ sender: Any) {
+        let searchStoryBoard = UIStoryboard.init(name: "MainSearch", bundle: nil)
+        
+        guard let searchVC = searchStoryBoard.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else {return}
+        
+        searchVC.modalPresentationStyle = .fullScreen
+        
+        present(searchVC, animated: true, completion: nil)
+    }
+    
     
 }
 
