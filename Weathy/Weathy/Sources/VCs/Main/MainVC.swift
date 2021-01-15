@@ -18,6 +18,7 @@ class MainVC: UIViewController {
     var extraWeatherData: ExtraWeatherData?
     var searchImage: String?
     var searchGradient: String?
+    var deliveredSearchData: SearchRecentInfo?
     
     //MARK: - IBOutlets
     
@@ -37,7 +38,11 @@ class MainVC: UIViewController {
 //        UserDefaults.standard.setValue("이내옹", forKey: "nickname")
 //        UserDefaults.standard.setValue(62, forKey: "userId")
 //
-        getLocationWeather()
+
+        // search에서 넘어온 데이터가 없는 경우에만 서버 통신
+        if (self.deliveredSearchData == nil) {
+            getLocationWeather()
+        }
     }
     
     override func viewDidLoad() {
@@ -254,21 +259,24 @@ class MainVC: UIViewController {
     
     @objc func setSearchData(_ notiData: NSNotification) {
         if let hourlyData = notiData.object as? SearchRecentInfo {
-            print(hourlyData)
-            print(mainBackgroundImage.image)
+            self.deliveredSearchData = hourlyData
+            
             let iconId: Int = 113
             self.mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
             self.topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
             
-            print(ClimateImage.getClimateMainBgName(iconId))
-            print(mainBackgroundImage.image)
-            
-            view.reloadInputViews()
             if (iconId % 100 == 13) {
                 fallingSnow()
             } else if (iconId % 100 == 10) {
                 fallingRain()
             }
+            
+            self.getRecommendedWeathy()
+            self.getHourlyWeather()
+            self.getDailyWeather()
+            self.getExtraWeather()
+            
+            print(extraWeatherData)
             
             self.weatherCollectionView.reloadData()
         }
