@@ -351,7 +351,7 @@ extension ModifyWeathyTagVC {
         var currentTag: Int = -1
         
         /// 이미 선택돼있는 태그 id 값 비교해 isSelected 변경 (상의)
-        if weathyData?.closet.top.clothes != nil {
+        if weathyData?.closet.top.clothes.count != 0 {
             for i in 0...(weathyData?.closet.top.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.top.clothes[i].id)!
                 
@@ -366,7 +366,7 @@ extension ModifyWeathyTagVC {
             }
         }
         
-        if weathyData?.closet.bottom.clothes != nil {
+        if weathyData?.closet.bottom.clothes.count != 0 {
             for i in 0...(weathyData?.closet.bottom.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.bottom.clothes[i].id)!
                 
@@ -381,7 +381,7 @@ extension ModifyWeathyTagVC {
             }
         }
         
-        if weathyData?.closet.outer.clothes != nil {
+        if weathyData?.closet.outer.clothes.count != 0 {
             for i in 0...(weathyData?.closet.outer.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.outer.clothes[i].id)!
                 
@@ -396,7 +396,7 @@ extension ModifyWeathyTagVC {
             }
         }
         
-        if weathyData?.closet.etc.clothes != nil {
+        if weathyData?.closet.etc.clothes.count != 0 {
             for i in 0...(weathyData?.closet.etc.clothes.count)! - 1 {
                 currentTag = (weathyData?.closet.etc.clothes[i].id)!
                 
