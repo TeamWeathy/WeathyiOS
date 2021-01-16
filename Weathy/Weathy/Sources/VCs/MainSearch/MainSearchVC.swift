@@ -255,6 +255,12 @@ extension MainSearchVC: UITableViewDelegate {
         
         if tableView == recentTableView {
             let cell = tableView.cellForRow(at: indexPath)
+            /// Main에 넘겨줄 데이터 넣기
+            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: appDelegate.appDelegateRecentInfos[indexPath.row])
+            
+            NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": appDelegate.appDelegateRecentInfos[indexPath.row]])
+            
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
             cell?.backgroundColor = .clear
             
         }else if tableView == searchTableView{
