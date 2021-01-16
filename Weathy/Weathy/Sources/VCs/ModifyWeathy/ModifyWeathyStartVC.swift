@@ -148,7 +148,7 @@ extension ModifyWeathyStartVC {
         titleLabel.numberOfLines = 2
         titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
         titleLabel.textColor = .mainGrey
-        titleLabel.text = "\(weathyData?.dailyWeather.date.month ?? 0)월 \(weathyData?.dailyWeather.date.day ?? 0)일의 웨디를\n기록해볼까요?"
+        titleLabel.text = "\(weathyData?.dailyWeather.date.month ?? 0)월 \(weathyData?.dailyWeather.date.day ?? 0)일의 웨디를\n수정해볼까요?"
 //        titleLabel.font = UIFont.RobotoRegular25
         
         subTitleLabel.text = "기록할 위치와 날씨를 확인해 주세요."

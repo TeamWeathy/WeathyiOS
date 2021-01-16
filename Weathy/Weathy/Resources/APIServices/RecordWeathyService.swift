@@ -19,7 +19,7 @@ struct RecordWeathyService {
             "Content-Type" : "application/json",
             "x-access-token" : token
         ]
-        
+            
         let body: Parameters = [
             "userId": userId,
             "date": date,
