@@ -30,6 +30,8 @@ class ModifyWeathyStartVC: UIViewController {
     
     var selectedTag: [Int] = []
     
+    var locationCode: CLong = 1141000000
+    
     
     //MARK: - IBOutlets
     
@@ -66,6 +68,8 @@ class ModifyWeathyStartVC: UIViewController {
         /// 구조체 안에 담긴 옷 태그 데이터를 배열로 변환하는 함수
         getClothesArray()
         
+        locationCode = weathyData?.region.code ?? 1141000000
+        
         print(">>>>>", dateString)
         
 //        let dateFormatter = DateFormatter()
@@ -79,6 +83,21 @@ class ModifyWeathyStartVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         animationPrac()
+        NotificationCenter.default.addObserver(self, selector: #selector(SearchInfo), name: .init("record"), object: nil)
+    }
+    
+    @objc func SearchInfo(_ notification: Notification){
+        guard let userInfo = notification.userInfo as? [String: Any] else { return }
+        guard let searchInfo = userInfo["mainDeliverSearchInfo"] as? OverviewWeatherList else { return}
+        
+        locationCode = searchInfo.region.code
+
+        boxTimeLabel.text = "\(searchInfo.dailyWeather.date.month)월 \(searchInfo.dailyWeather.date.day)일 \(searchInfo.dailyWeather.date.dayOfWeek)"
+        boxLocationLabel.text = searchInfo.region.name
+        boxWeatherImageView.image = UIImage(named:   ClimateImage.getClimateSearchIllust(searchInfo.hourlyWeather.climate.iconID))
+        maxTempLabel.text = "\(searchInfo.dailyWeather.temperature.maxTemp)°"
+        minTempLabel.text = "\(searchInfo.dailyWeather.temperature.minTemp)°"
+        print("---> 뭐야 \(searchInfo)")
     }
     
     //MARK: - IBActions
@@ -94,8 +113,19 @@ class ModifyWeathyStartVC: UIViewController {
         
         dvc.weathyData = weathyData
         dvc.dateString = dateString
+        dvc.locationCode = locationCode
         
         self.navigationController?.pushViewController(dvc, animated: false)
+    }
+    
+    @IBAction func modifyBtnDidTap(_ sender: Any) {
+        let searchStoryBoard = UIStoryboard.init(name: "MainSearch", bundle: nil)
+        
+        guard let searchVC = searchStoryBoard.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else {return}
+        
+        searchVC.modalPresentationStyle = .fullScreen
+        
+        present(searchVC, animated: true, completion: nil)
     }
     
     @IBAction func backButtonDidTap(_ sender: Any) {
@@ -226,7 +256,7 @@ extension ModifyWeathyStartVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: 1141000000, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             print(self.weathyData?.weathyId ?? -1)
             switch networkResult {
             case .success(let data):
