@@ -163,6 +163,9 @@
                                     <constraint firstAttribute="width" secondItem="axb-nK-Ry9" secondAttribute="height" multiplier="79:35" id="6ZG-oV-Lii"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="modifyBtnDidTap:" destination="xoM-Qd-vqy" eventType="touchUpInside" id="hgb-eJ-z4q"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xF6-np-AHP">
                                 <rect key="frame" x="217.5" y="791.5" width="160" height="60.5"/>
