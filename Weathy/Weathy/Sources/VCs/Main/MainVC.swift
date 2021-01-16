@@ -277,7 +277,7 @@ class MainVC: UIViewController {
             
             let iconId: Int = hourlyData.hourlyWeather.climate.iconID
             let locationCode: String = String(hourlyData.region.code)
-
+            
             self.mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
             self.topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
             
@@ -287,19 +287,20 @@ class MainVC: UIViewController {
                 fallingRain()
             }
             
-            self.getRecommendedWeathy(code: locationCode)
-            self.getHourlyWeather(code: locationCode)
-            self.getDailyWeather(code: locationCode)
-            self.getExtraWeather(code: locationCode)
+//            self.getRecommendedWeathy(code: locationCode)
+//            self.getHourlyWeather(code: locationCode)
+//            self.getDailyWeather(code: locationCode
+//            self.getExtraWeather(code: locationCode)
             
             if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-                topCVC.changeWeatherViewData(data: self.locationWeatherData!)
-                topCVC.changeWeatherViewBySearchData(data: hourlyData)
+                topCVC.locationLabel.text = hourlyData.region.name
+//                topCVC.changeWeatherViewData(data: self.locationWeatherData!)
+//                topCVC.changeWeatherViewBySearchData(data: hourlyData)
                 topCVC.gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
-                topCVC.defaultLocationFlag = false
+//                topCVC.defaultLocationFlag = false
             }
             
-            self.weatherCollectionView.reloadData()
+//            self.weatherCollectionView.reloadData()
         }
     }
     
