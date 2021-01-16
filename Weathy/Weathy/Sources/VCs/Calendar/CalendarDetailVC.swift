@@ -357,7 +357,7 @@ class CalendarDetailVC: UIViewController {
     }
     @IBAction func editBtnDidTap(_ sender: Any) {
         guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
-        
+        closeMoreMenu(nil)
         recordEdit.modalPresentationStyle = .fullScreen
         recordEdit.dateString = defaultDateFormatter.string(from: selectedDate)
         recordEdit.weathyData = dailyWeathy
