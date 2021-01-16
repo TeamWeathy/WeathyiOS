@@ -23,6 +23,7 @@ class RecordTextVC: UIViewController {
     
     var enteredText: String?
     
+    let appDelgate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
     
     //MARK: - IBOutlets
@@ -67,6 +68,12 @@ class RecordTextVC: UIViewController {
         wordCountLabel.text = "0"
         wordCountLabel.font = UIFont.SDGothicRegular13
         wordCountLabel.textColor = UIColor.subGrey6
+        
+        if dateString == "0000-00-00" {
+            if let date = appDelgate.overviewData {
+                dateString = "\(date.dailyWeather.date.year!)-\(String(format: "%02d", date.dailyWeather.date.month))-\(String(format: "%02d", date.dailyWeather.date.day))"
+            }
+        }
 
         print(">>>>>", dateString)
     }
