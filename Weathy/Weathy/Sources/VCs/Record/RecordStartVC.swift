@@ -33,6 +33,8 @@ class RecordStartVC: UIViewController {
     
     var locationCode: CLong = 1141000000
     
+    let appDelgate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     //MARK: - IBOutlets
     
     @IBOutlet var dismissBtn: UIButton!
@@ -69,6 +71,12 @@ class RecordStartVC: UIViewController {
 //        dateFormatter.dateFormat = "yyyy-MM-dd"
 //        self.fullDate = dateFormatter.date(from: "2021-01-25")
         
+        locationCode = appDelgate.overviewData?.region.code ?? 1141000000
+        location = appDelgate.overviewData?.region.name ?? "땡땡시 땡땡구"
+        
+        maxTemp = appDelgate.overviewData?.dailyWeather.temperature.maxTemp ?? 20
+        minTemp = appDelgate.overviewData?.dailyWeather.temperature.minTemp ?? -20
+        
         print(">>>>>", dateString)
         print(">>>>>", dateToday)
         
@@ -84,6 +92,7 @@ class RecordStartVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print(appDelgate.overviewData)
         animationPrac()
         NotificationCenter.default.addObserver(self, selector: #selector(SearchInfo), name: .init("record"), object: nil)
     }
@@ -142,7 +151,7 @@ extension RecordStartVC {
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
-        titleLabel.text = "\(dateToday?.month ?? 1)월 \(dateToday?.day ?? 16)일의 웨디를\n기록해볼까요?"
+        titleLabel.text = "\(appDelgate.overviewData?.dailyWeather.date.month ?? 0)월 \(appDelgate.overviewData?.dailyWeather.date.day ?? 0)일의 웨디를\n기록해볼까요?"
         titleLabel.numberOfLines = 2
         titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
         titleLabel.textColor = .mainGrey
@@ -180,7 +189,7 @@ extension RecordStartVC {
         boxView.layer.borderColor = UIColor.subGrey7.cgColor
         boxView.layer.cornerRadius = 35
         
-        boxTimeLabel.text = "\(dateToday?.month ?? 1)월 \(dateToday?.day ?? 16)일 \(getDayStringFromInt(dayInt: dateToday?.weekday ?? 6))"
+        boxTimeLabel.text = "\(appDelgate.overviewData?.dailyWeather.date.month ?? 1)월 \(appDelgate.overviewData?.dailyWeather.date.day ?? 16)일 \(appDelgate.overviewData?.dailyWeather.date.dayOfWeek ?? "땡요일")"
         boxTimeLabel.font = UIFont.SDGothicRegular15
         boxTimeLabel.textColor = UIColor.subGrey1
         
@@ -188,7 +197,7 @@ extension RecordStartVC {
         boxLocationLabel.font = UIFont.SDGothicSemiBold17
         boxLocationLabel.textColor = UIColor.subGrey1
         
-        boxWeatherImageView.image = UIImage(named: "searchImgSunnycloud")
+        boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateSearchIllust(appDelgate.overviewData?.hourlyWeather.climate.iconID ?? -1))
         
         maxTempLabel.text = "\(maxTemp)°"
         maxTempLabel.font = UIFont(name: "Roboto-Light", size: 40)
