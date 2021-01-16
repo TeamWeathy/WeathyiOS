@@ -9,6 +9,7 @@ import UIKit
 
 class MainVC: UIViewController {
     //MARK: - Custom Variables
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var lastContentOffset: CGFloat = 0.0
     var mainDeliverSearchInfo : OverviewWeatherList?
     var locationWeatherData: LocationWeatherData?
@@ -45,6 +46,8 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
     // fix: 닉네임 뷰에서 처리할 로직
+
+        
         UserDefaults.standard.setValue("1141000000", forKey: "locationCode")
         print(UserDefaults.standard.value(forKey: "token"))
         
@@ -109,7 +112,7 @@ class MainVC: UIViewController {
                 if let response = data as? LocationWeatherData {
                     self.locationWeatherData = response
                     self.setViewByData(data: response)
-                    
+                    self.appDelegate?.overviewData = response.overviewWeather
                     if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
                         topCVC.changeWeatherViewData(data: self.locationWeatherData!)
                     }
