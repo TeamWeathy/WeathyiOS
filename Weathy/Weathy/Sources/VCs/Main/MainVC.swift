@@ -298,7 +298,7 @@ class MainVC: UIViewController {
             if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
                 topCVC.locationLabel.text = hourlyData.region.name
 //                topCVC.changeWeatherViewData(data: self.locationWeatherData!)
-//                topCVC.changeWeatherViewBySearchData(data: hourlyData)
+                topCVC.changeWeatherViewBySearchData(data: hourlyData)
                 topCVC.gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
 //                topCVC.defaultLocationFlag = false
             }
