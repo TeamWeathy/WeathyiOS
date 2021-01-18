@@ -118,8 +118,8 @@ class NickNameVC: UIViewController {
         
 //         let uuid = UUID().uuidString
         let uuid = "010-8966-1467"
-        UserDefaults.standard.set("웨요", forKey: "nickname")
-                            UserDefaults.standard.set("50:tdefwmejKhIvSHaS8xIGeK6wz6UK4u", forKey: "token")
+        UserDefaults.standard.set(nickName, forKey: "nickname")
+                            UserDefaults.standard.set("50:d42ZGOnXFjyhk0e1oFFwpzeXPiz94g", forKey: "token")
                             UserDefaults.standard.set(50, forKey: "userId")
                             UserDefaults.standard.set("010-8966-1467", forKey: "UUID")
 //        let UUID : String = UUID().
