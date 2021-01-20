@@ -60,6 +60,9 @@ class MainVC: UIViewController {
                 defaultLocationFlag = false
             }
         }
+        if let topCVC = weatherCollectionView.cellForItem(at: [0,0]) as? MainTopCVC{
+            topCVC.todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
+        }
     }
     
     override func viewDidLoad() {
@@ -67,7 +70,6 @@ class MainVC: UIViewController {
         
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
-        
         NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
     }
     
@@ -398,7 +400,7 @@ extension MainVC: UICollectionViewDataSource {
                 cell.changeWeathyViewData(data: recommend)
                 cell.changeWeatherViewData(data: location)
             }
-            
+            cell.todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
             cell.setCell()
             return cell
         case 1:

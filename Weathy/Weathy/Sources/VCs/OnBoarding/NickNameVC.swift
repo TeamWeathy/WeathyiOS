@@ -116,26 +116,26 @@ class NickNameVC: UIViewController {
         
         guard let nickName = nickNameTextField.text else { return }
         
-//         let uuid = UUID().uuidString
-        let uuid = "010-8966-1467"
-        UserDefaults.standard.set(nickName, forKey: "nickname")
-                            UserDefaults.standard.set("50:d42ZGOnXFjyhk0e1oFFwpzeXPiz94g", forKey: "token")
-                            UserDefaults.standard.set(50, forKey: "userId")
-                            UserDefaults.standard.set("010-8966-1467", forKey: "UUID")
+         let uuid = UUID().uuidString
+//        let uuid = "010-8966-1467"
+//        UserDefaults.standard.set(nickName, forKey: "nickname")
+//                            UserDefaults.standard.set("50:d42ZGOnXFjyhk0e1oFFwpzeXPiz94g", forKey: "token")
+//                            UserDefaults.standard.set(50, forKey: "userId")
+//                            UserDefaults.standard.set("010-8966-1467", forKey: "UUID")
 //        let UUID : String = UUID().
         /// 서버 연결!
         if self.changBool == true {
-            self.simpleAlert()
+//            self.simpleAlert()
         }
-//        createUserService.shared.createUserPost(uuid: uuid, nickname: nickName){(NetworkResult) -> (Void) in
-//            switch NetworkResult{
-//            case .success(let data):
-//
-//                if let createData = data as? UserInformation {
-////                    UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
-////                    UserDefaults.standard.set(createData.token, forKey: "token")
-////                    UserDefaults.standard.set(createData.user.id, forKey: "userId")
-////                    UserDefaults.standard.set(uuid, forKey: "UUID")
+        createUserService.shared.createUserPost(uuid: uuid, nickname: nickName){(networkResult) -> (Void) in
+            switch networkResult{
+            case .success(let data):
+
+                if let createData = data as? UserInformation {
+                    UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
+                    UserDefaults.standard.set(createData.token, forKey: "token")
+                    UserDefaults.standard.set(createData.user.id, forKey: "userId")
+                    UserDefaults.standard.set(uuid, forKey: "UUID")
 //
 ////                    print("userID ---> \(UserDefaults.standard.string(forKey: "userID"))")
 ////                    print("token ---> \(UserDefaults.standard.string(forKey: "token"))")
@@ -145,17 +145,24 @@ class NickNameVC: UIViewController {
 //                    if self.changBool == true {
 //                        self.simpleAlert()
 //                    }
-//                }
-//            case .requestErr:
-//                print("requestErr")
-//            case .pathErr:
-//                print("pathErr")
-//            case .serverErr:
-//                print("serverErr")
-//            case .networkFail:
-//                print("networkFail")
-//            }
-//        }
+                    let story = UIStoryboard.init(name: "Tabbar", bundle: nil)
+                    guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
+                                            
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
+                }
+                
+                
+            case .requestErr:
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
 }
 
