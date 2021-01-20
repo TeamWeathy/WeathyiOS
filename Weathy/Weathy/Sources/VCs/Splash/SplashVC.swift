@@ -23,9 +23,17 @@ class SplashVC: UIViewController {
     }
     
     @objc func nextView() {
-        let nextStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
-        if let dvc = nextStoryboard.instantiateViewController(identifier: "OnBoardingFirstVC") as UIViewController? {
-            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
+        if UserDefaults.standard.integer(forKey: "userId") != 0{
+            let nextStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
+            if let dvc = nextStoryboard.instantiateViewController(identifier: "TabbarVC") as UIViewController? {
+                UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
+            }
+        }
+        else{
+            let nextStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
+            if let dvc = nextStoryboard.instantiateViewController(identifier: "OnBoardingFirstVC") as UIViewController? {
+                UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
+            }
         }
     }
     
