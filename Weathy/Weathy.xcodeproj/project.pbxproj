@@ -76,6 +76,7 @@
 		6339846C259A431100339615 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339846B259A431100339615 /* UIView+Extensions.swift */; };
 		6339846F259A433400339615 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339846E259A433400339615 /* UIColor+Extensions.swift */; };
 		63398472259A435400339615 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63398471259A435400339615 /* UIImageView+Extensions.swift */; };
+		634DBF5325C3E8F2002A72DA /* WeathyPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DBF5225C3E8F2002A72DA /* WeathyPopupView.swift */; };
 		6354ED8225AE0A2E00C5CAC5 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354ED8125AE0A2D00C5CAC5 /* Calendar.storyboard */; };
 		6354ED9325AE0B0300C5CAC5 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354ED9125AE0B0200C5CAC5 /* CalendarVC.swift */; };
 		6354ED9425AE0B0300C5CAC5 /* CalendarDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354ED9225AE0B0300C5CAC5 /* CalendarDetailVC.swift */; };
@@ -195,6 +196,7 @@
 		6339846B259A431100339615 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		6339846E259A433400339615 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		63398471259A435400339615 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		634DBF5225C3E8F2002A72DA /* WeathyPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeathyPopupView.swift; sourceTree = "<group>"; };
 		6354ED8125AE0A2D00C5CAC5 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		6354ED9125AE0B0200C5CAC5 /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarVC.swift; path = Calendar/CalendarVC.swift; sourceTree = "<group>"; };
 		6354ED9225AE0B0300C5CAC5 /* CalendarDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarDetailVC.swift; path = Calendar/CalendarDetailVC.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 			children = (
 				63DEB263259CD4AD00A94488 /* DummyClass.swift */,
 				63D3C53825A4A57500E5FDFE /* SpacedLabel.swift */,
+				634DBF5225C3E8F2002A72DA /* WeathyPopupView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				374D48E6259D368600152B9A /* RecordTextVC.swift in Sources */,
 				0E8C005225A2585C00A31295 /* SettingNVC.swift in Sources */,
 				374D48ED259D49DB00152B9A /* RecordTagVC.swift in Sources */,
+				634DBF5325C3E8F2002A72DA /* WeathyPopupView.swift in Sources */,
 				37222E6425AE64DA00577FEE /* ClothesTagData.swift in Sources */,
 				374D48DF259D236800152B9A /* RecordRateCVC.swift in Sources */,
 				37222E6725AE657C00577FEE /* RecordTagService.swift in Sources */,
