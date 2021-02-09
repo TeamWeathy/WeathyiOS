@@ -57,6 +57,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         setGesture()
         setStyle()
         initPicker()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(setSelected(_:)), name: NSNotification.Name("ChangeData"), object: nil)
         
     }
