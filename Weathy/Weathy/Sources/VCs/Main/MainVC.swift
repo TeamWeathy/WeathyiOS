@@ -9,6 +9,7 @@ import UIKit
 
 class MainVC: UIViewController {
     //MARK: - Custom Variables
+    
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var lastContentOffset: CGFloat = 0.0
     var mainDeliverSearchInfo : OverviewWeatherList?
@@ -31,16 +32,21 @@ class MainVC: UIViewController {
             }
         }
     }
+    var safeInsetTop: CGFloat = 0
+    var safeInsetBottom: CGFloat = 0
     
     //MARK: - IBOutlets
     
     @IBOutlet weak var mainBackgroundImage: UIImageView!
     @IBOutlet weak var topBlurView: UIImageView!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
-    @IBOutlet weak var settingIconImage: UIImageView!
-    @IBOutlet weak var searchIconImage: UIImageView!
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var todayDateTimeLabel: SpacedLabel!
+    @IBOutlet weak var mainNaviBarView: UIView!
+    @IBOutlet weak var mainTopView: UIView!
+    @IBOutlet weak var mainBottomView: UIView!
+    @IBOutlet weak var mainScrollView: UIScrollView!
+    @IBOutlet weak var mainViewHeightConstraint: NSLayoutConstraint!
     
     //MARK: - Life Cycle Methods
     
@@ -51,29 +57,49 @@ class MainVC: UIViewController {
         UserDefaults.standard.setValue("1141000000", forKey: "locationCode")
         print(UserDefaults.standard.value(forKey: "token"))
         
-        if let location = UserDefaults.standard.string(forKey: "locationCode") {
-            // search에서 넘어온 데이터가 없는 경우에만 서버 통신
-            if (self.deliveredSearchData == nil) {
-                getLocationWeather(code: location)
-            } else {
-                print("#")
-                defaultLocationFlag = false
-            }
-        }
-        if let topCVC = weatherCollectionView.cellForItem(at: [0,0]) as? MainTopCVC{
-            topCVC.todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
-        }
+//        if let location = UserDefaults.standard.string(forKey: "locationCode") {
+//            // search에서 넘어온 데이터가 없는 경우에만 서버 통신
+//            if (self.deliveredSearchData == nil) {
+//                getLocationWeather(code: location)
+//            } else {
+//                print("#")
+//                defaultLocationFlag = false
+//            }
+//        }
+//        if let topCVC = weatherCollectionView.cellForItem(at: [0,0]) as? MainTopCVC{
+//            topCVC.todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
+//        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weatherCollectionView.dataSource = self
-        weatherCollectionView.delegate = self
+        setView()
+//        weatherCollectionView.dataSource = self
+//        weatherCollectionView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
     }
     
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+
+        safeInsetTop = view.safeAreaInsets.top
+        safeInsetBottom = view.safeAreaInsets.bottom
+
+        let mainHeight = UIScreen.main.bounds.height
+        let viewHeight = mainHeight - (safeInsetTop + safeInsetBottom + mainNaviBarView.bounds.height) - 92
+        // 92: 하단 탭 바 높이
+
+        mainViewHeightConstraint.constant = viewHeight
+    }
+    
     //MARK: - Custom Method
+    
+    func setView() {
+        mainScrollView.isPagingEnabled = true
+        mainScrollView.backgroundColor = .clear
+        mainScrollView.showsVerticalScrollIndicator = false
+    }
     
     func setViewByData(data: LocationWeatherData) {
         // background 설정
@@ -311,16 +337,6 @@ class MainVC: UIViewController {
     
     //MARK: - IBActions
     
-    @IBAction func touchUpSetting(_ sender: Any) {
-        print("setting")
-        let settingStoryboard = UIStoryboard.init(name: "Setting", bundle: nil)
-        
-        guard let settingNVC = settingStoryboard.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
-
-        settingNVC.modalPresentationStyle = .fullScreen
-        self.present(settingNVC, animated: true, completion: nil)
-    }
-    
     @IBAction func touchUpSearch(_ sender: Any) {
         print("search")
         let mainSearchStoryboard = UIStoryboard.init(name: "MainSearch", bundle: nil)
@@ -334,6 +350,16 @@ class MainVC: UIViewController {
         
         mainSearchVC.modalPresentationStyle = .fullScreen
         self.present(mainSearchVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func touchUpSetting(_ sender: Any) {
+        print("setting")
+        let settingStoryboard = UIStoryboard.init(name: "Setting", bundle: nil)
+        
+        guard let settingNVC = settingStoryboard.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
+
+        settingNVC.modalPresentationStyle = .fullScreen
+        self.present(settingNVC, animated: true, completion: nil)
     }
 }
 
