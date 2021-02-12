@@ -71,7 +71,7 @@ class CalendarDetailVC: UIViewController {
         selectedDateDidChange(nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recordChanged(_:)), name: NSNotification.Name(rawValue: "RecordUpdated"), object: nil)
-        //        initGestureRecognizer()
+                initGestureRecognizer()
         
     }
     
@@ -381,13 +381,11 @@ class CalendarDetailVC: UIViewController {
 
 extension CalendarDetailVC{
     func gestureRecognizer(_ gestrueRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if (touch.view?.isDescendant(of: self.moreMenuView))! {
+        if (touch.view?.isDescendant(of: self.moreMenuView))! == false && (touch.view?.isDescendant(of: self.calendarVC.view))! == false{
             
             return true
         }
-        if (touch.view?.isDescendant(of: self.calendarVC.calendarDrawerView))!{
-            return true
-        }
+
         return false
     }
 }

@@ -118,9 +118,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func setGesture(){
         panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(panGestureHandler))
         tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tapGestureHandler))
-        tapGesture.delegate = self
+//        tapGesture.delegate = self
         self.calendarDrawerView.addGestureRecognizer(panGesture)
-        self.view.addGestureRecognizer(tapGesture)
+//        self.view.addGestureRecognizer(tapGesture)
     }
     
     ///initPicker
@@ -415,24 +415,24 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
 //MARK: - UIGestureRecognizer Delegate
 
 extension CalendarVC{
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if gestureRecognizer == self.tapGesture{
-            if touch.view?.isDescendant(of: self.view) == true{
-//                print("self.view is touched")
-            }
-            if touch.view?.isDescendant(of: self.calendarDrawerView) == true{
-//                print("calendarDrawerView is touched")
-                return false
-            }
-            else{
-                return true
-            }
-        }
-        return false
-    }
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
+//    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        if gestureRecognizer == self.tapGesture{
+//            if touch.view?.isDescendant(of: self.view) == true{
+////                print("self.view is touched")
+//            }
+//            if touch.view?.isDescendant(of: self.calendarDrawerView) == true{
+////                print("calendarDrawerView is touched")
+//                return false
+//            }
+//            else{
+//                return true
+//            }
+//        }
+//        return false
+//    }
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
 }
 
 //MARK: - UICollectionViewDelegate
