@@ -67,6 +67,17 @@ class MainVC: UIViewController {
     @IBOutlet var closetEtcLabel: SpacedLabel!
     @IBOutlet var emptyImage: UIImageView!
     @IBOutlet var downImage: UIImageView!
+    
+    // main bottom view
+    @IBOutlet var timeZoneWeatherView: UIView!
+    @IBOutlet var weeklyWeatherView: UIView!
+    @IBOutlet var extraWeatherView: UIView!
+    @IBOutlet var timeZoneCenterY: NSLayoutConstraint!
+    @IBOutlet var weeklyCenterY: NSLayoutConstraint!
+    @IBOutlet var extraCenterY: NSLayoutConstraint!
+    @IBOutlet var timeZoneWeatherCollectionView: UICollectionView!
+    @IBOutlet var weeklyWeatherCollectionView: UICollectionView!
+    @IBOutlet var extraWeatherCollectionView: UICollectionView!
 
     // MARK: - Life Cycle Methods
     
@@ -115,9 +126,108 @@ class MainVC: UIViewController {
     // MARK: - Custom Method
     
     func initMainView() {
+        // main top view
         mainScrollView.isPagingEnabled = true
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
+        
+        todayDateTimeLabel.font = UIFont.SDGothicRegular15
+        todayDateTimeLabel.textColor = UIColor.subGrey1
+//        todayDateTimeLabel.text = "\(data.overviewWeather.dailyWeather.date.month)월 \(data.overviewWeather.dailyWeather.date.day)일 \(data.overviewWeather.dailyWeather.date.dayOfWeek) • \(data.overviewWeather.hourlyWeather.time!)"
+        todayDateTimeLabel.text = "2월 14일 월요일 • 오후 9시"
+        todayDateTimeLabel.characterSpacing = -0.75
+
+        // top weathy view
+        closetTopLabel.font = UIFont.SDGothicRegular13
+        closetTopLabel.textColor = UIColor.black
+        closetTopLabel.characterSpacing = -0.65
+        closetTopLabel.text = "상의 • 냐옹.."
+
+        closetOuterLabel.font = UIFont.SDGothicRegular13
+        closetOuterLabel.textColor = UIColor.black
+        closetOuterLabel.characterSpacing = -0.65
+        closetOuterLabel.text = "상의 • 냐옹.."
+
+        closetBottomLabel.font = UIFont.SDGothicRegular13
+        closetBottomLabel.textColor = UIColor.black
+        closetBottomLabel.characterSpacing = -0.65
+        closetBottomLabel.text = "상의 • 냐옹.."
+        
+        closetEtcLabel.font = UIFont.SDGothicRegular13
+        closetEtcLabel.textColor = UIColor.black
+        closetEtcLabel.characterSpacing = -0.65
+        closetEtcLabel.text = "상의 • 냐옹.."
+
+        todayWeathyNicknameLabel.font = UIFont.SDGothicRegular16
+        todayWeathyNicknameLabel.characterSpacing = -0.8
+        todayWeathyNicknameLabel.text = "이내옹님이 기억하는"
+
+        todayWeathyView.makeRounded(cornerRadius: 35)
+        todayWeathyView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
+
+        locationLabel.font = UIFont.SDGothicSemiBold20
+        locationLabel.textColor = UIColor.mainGrey
+        locationLabel.characterSpacing = -1.0
+
+        currTempLabel.font = UIFont.RobotoLight50
+        currTempLabel.textColor = UIColor.subGrey1
+        currTempLabel.characterSpacing = -2.5
+        currTempLabel.text = "23°"
+
+        maxTempLabel.font = UIFont.RobotoLight23
+        maxTempLabel.textColor = UIColor.redTemp
+        maxTempLabel.characterSpacing = -1.15
+        maxTempLabel.text = "-4°"
+        
+        minTempLabel.font = UIFont.RobotoLight23
+        minTempLabel.textColor = UIColor.blueTemp
+        minTempLabel.characterSpacing = -1.15
+        maxTempLabel.text = "4°"
+
+        climateLabel.font = UIFont.SDGothicRegular16
+        climateLabel.textColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.58)
+        climateLabel.characterSpacing = -0.8
+        climateLabel.text = "조금 흐리지만\n햇살이 따스해요 :)"
+        
+        weathyDateLabel.font = UIFont.SDGothicRegular13
+        weathyDateLabel.textColor = UIColor.subGrey6
+        weathyDateLabel.characterSpacing = -0.65
+        weathyDateLabel.text = "2021년 2월 14일"
+        
+        weathyClimateLabel.font = UIFont.SDGothicMedium15
+        weathyClimateLabel.textColor = UIColor.subGrey1
+        weathyClimateLabel.characterSpacing = -0.75
+        weathyClimateLabel.text = "구름조금"
+
+        weathyMaxTempLabel.textColor = UIColor.redTemp
+        weathyMaxTempLabel.font = UIFont.RobotoLight30
+        weathyMaxTempLabel.characterSpacing = -1.5
+        weathyMaxTempLabel.text = "4°"
+
+        weathyMinTempLabel.textColor = UIColor.blueTemp
+        weathyMinTempLabel.font = UIFont.RobotoLight30
+        weathyMinTempLabel.characterSpacing = -1.5
+        weathyMinTempLabel.text = "-4°"
+
+        weathyStampLabel.font = UIFont.SDGothicSemiBold23
+        weathyStampLabel.textColor = UIColor.imojiColdText
+        weathyStampLabel.characterSpacing = -1.15
+        weathyStampLabel.text = "추웠어요"
+        
+        gpsButton.contentMode = .scaleAspectFit
+        
+        // main bottom view
+        timeZoneWeatherView.backgroundColor = .white
+        timeZoneWeatherView.makeRounded(cornerRadius: 35)
+        timeZoneWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
+        
+        weeklyWeatherView.backgroundColor = .white
+        weeklyWeatherView.makeRounded(cornerRadius: 35)
+        weeklyWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
+        
+        extraWeatherView.backgroundColor = .white
+        extraWeatherView.makeRounded(cornerRadius: 35)
+        extraWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
     }
     
     func setViewByData(data: LocationWeatherData) {

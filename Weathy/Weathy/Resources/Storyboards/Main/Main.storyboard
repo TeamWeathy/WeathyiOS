@@ -890,7 +890,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg_morning" translatesAutoresizingMaskIntoConstraints="NO" id="dsA-on-Koy">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainBgMorningSun" translatesAutoresizingMaskIntoConstraints="NO" id="dsA-on-Koy">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1466"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgJ-W2-vTI" userLabel="Main View">
@@ -919,7 +919,7 @@
                                                                                 <state key="normal" image="ic_gps_shadow"/>
                                                                             </button>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 서울시 도봉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLZ-w0-sYy" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                                                <rect key="frame" x="78" y="0.0" width="82.333333333333314" height="47"/>
+                                                                                <rect key="frame" x="69" y="0.0" width="82.333333333333314" height="47"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -954,10 +954,10 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3DN-Bz-mBS">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainImgFewcloudsDay" translatesAutoresizingMaskIntoConstraints="NO" id="3DN-Bz-mBS">
                                                                                 <rect key="frame" x="0.0" y="-19" width="230" height="300"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" secondItem="3DN-Bz-mBS" secondAttribute="height" multiplier="230:300" id="hMt-cn-9XQ"/>
+                                                                                    <constraint firstAttribute="width" secondItem="3DN-Bz-mBS" secondAttribute="height" multiplier="230:300" id="cmF-mw-Ofs"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                         </subviews>
@@ -965,6 +965,7 @@
                                                                         <constraints>
                                                                             <constraint firstItem="yLZ-w0-sYy" firstAttribute="top" secondItem="7pP-TA-qKm" secondAttribute="top" id="0dn-1X-2yF"/>
                                                                             <constraint firstAttribute="trailing" secondItem="L4V-RD-s5W" secondAttribute="trailing" constant="62" id="2Uw-eB-66d"/>
+                                                                            <constraint firstItem="3DN-Bz-mBS" firstAttribute="width" secondItem="7pP-TA-qKm" secondAttribute="width" multiplier="230:375" id="8AK-zW-WId"/>
                                                                             <constraint firstItem="3DN-Bz-mBS" firstAttribute="top" secondItem="7pP-TA-qKm" secondAttribute="top" constant="-19" id="A2t-lb-MkD"/>
                                                                             <constraint firstItem="znp-zm-fQh" firstAttribute="centerY" secondItem="5sP-UF-0Lv" secondAttribute="centerY" id="DQv-Ek-mZX"/>
                                                                             <constraint firstItem="aT6-uj-KmM" firstAttribute="top" secondItem="L4V-RD-s5W" secondAttribute="bottom" id="GwR-35-bcM"/>
@@ -979,7 +980,7 @@
                                                                             <constraint firstItem="znp-zm-fQh" firstAttribute="leading" secondItem="5sP-UF-0Lv" secondAttribute="trailing" constant="1" id="iPe-P2-txx"/>
                                                                             <constraint firstAttribute="width" secondItem="7pP-TA-qKm" secondAttribute="height" multiplier="375:225" id="jGb-fa-Y4x"/>
                                                                             <constraint firstItem="yLZ-w0-sYy" firstAttribute="centerY" secondItem="hfN-ac-zVr" secondAttribute="centerY" id="sbY-sm-nWj"/>
-                                                                            <constraint firstItem="yLZ-w0-sYy" firstAttribute="leading" secondItem="hfN-ac-zVr" secondAttribute="trailing" constant="9" id="sxf-LY-aDX"/>
+                                                                            <constraint firstItem="yLZ-w0-sYy" firstAttribute="leading" secondItem="hfN-ac-zVr" secondAttribute="trailing" id="sxf-LY-aDX"/>
                                                                             <constraint firstItem="aT6-uj-KmM" firstAttribute="leading" secondItem="L4V-RD-s5W" secondAttribute="leading" id="uGW-GF-Txy"/>
                                                                         </constraints>
                                                                     </view>
@@ -1198,7 +1199,6 @@
                                                                     <constraint firstItem="sG0-AA-Zzm" firstAttribute="top" secondItem="Ex7-87-cxZ" secondAttribute="bottom" constant="2" id="0fH-8i-JoG"/>
                                                                     <constraint firstItem="XDE-tv-aWT" firstAttribute="width" secondItem="pWU-wR-04A" secondAttribute="width" multiplier="111:375" id="8Xm-JR-2FJ"/>
                                                                     <constraint firstItem="Yen-xK-7Fn" firstAttribute="width" secondItem="pWU-wR-04A" secondAttribute="width" multiplier="309:375" id="DR9-PC-R61"/>
-                                                                    <constraint firstItem="3DN-Bz-mBS" firstAttribute="width" secondItem="pWU-wR-04A" secondAttribute="width" multiplier="230:375" id="F1x-Ad-yKy"/>
                                                                     <constraint firstItem="EUK-lb-A1U" firstAttribute="top" secondItem="Yen-xK-7Fn" secondAttribute="bottom" constant="19" id="Hny-fS-eQm"/>
                                                                     <constraint firstAttribute="trailing" secondItem="7pP-TA-qKm" secondAttribute="trailing" id="NNG-cF-eDd"/>
                                                                     <constraint firstItem="Yen-xK-7Fn" firstAttribute="width" secondItem="Yen-xK-7Fn" secondAttribute="height" multiplier="309:268" id="QUo-TB-YeM"/>
@@ -1248,7 +1248,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgO-LT-Vd2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="878"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZm-wP-aDg" userLabel="firstView">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZm-wP-aDg">
                                                                         <rect key="frame" x="33" y="69" width="309" height="216"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간대별 날씨" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WiP-Mh-TxB" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
@@ -1348,7 +1348,7 @@
                                                                             <constraint firstAttribute="bottom" secondItem="7U9-KX-hc2" secondAttribute="bottom" constant="30" id="tCC-a6-axw"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jet-gR-AGa" userLabel="secondView">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jet-gR-AGa">
                                                                         <rect key="frame" x="34" y="309" width="309" height="233"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주간날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRS-YO-gQy" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
@@ -1460,7 +1460,7 @@
                                                                             <constraint firstItem="SRS-YO-gQy" firstAttribute="top" secondItem="Jet-gR-AGa" secondAttribute="top" constant="18" id="m5g-Ai-ncJ"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCR-QC-8t8" userLabel="thirdView">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCR-QC-8t8">
                                                                         <rect key="frame" x="34" y="566" width="309" height="212"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상세날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbm-1l-PAk" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
@@ -1720,6 +1720,9 @@
                         <outlet property="currTempLabel" destination="L4V-RD-s5W" id="jxj-ze-8QM"/>
                         <outlet property="downImage" destination="EUK-lb-A1U" id="a5L-Nt-jWq"/>
                         <outlet property="emptyImage" destination="5F4-qv-YB2" id="4wc-pK-WLe"/>
+                        <outlet property="extraCenterY" destination="psE-d7-jVk" id="avv-zu-Lkl"/>
+                        <outlet property="extraWeatherCollectionView" destination="EuQ-ft-IXf" id="qU4-PA-lnQ"/>
+                        <outlet property="extraWeatherView" destination="wCR-QC-8t8" id="zWl-3q-LBE"/>
                         <outlet property="gpsButton" destination="hfN-ac-zVr" id="4YT-ro-ssH"/>
                         <outlet property="helpButton" destination="WCS-jc-8Vo" id="v82-N5-OlR"/>
                         <outlet property="hourlyClimateImage" destination="3DN-Bz-mBS" id="jHd-i2-1EB"/>
@@ -1735,6 +1738,9 @@
                         <outlet property="mainViewHeightConstraint" destination="dDQ-Wo-hZq" id="HWf-Ml-bZa"/>
                         <outlet property="maxTempLabel" destination="aT6-uj-KmM" id="wA4-Rf-oBO"/>
                         <outlet property="minTempLabel" destination="znp-zm-fQh" id="ZYZ-R9-9cy"/>
+                        <outlet property="timeZoneCenterY" destination="D2S-9f-1Q1" id="mxa-BO-Zbe"/>
+                        <outlet property="timeZoneWeatherCollectionView" destination="7U9-KX-hc2" id="7Gl-4Q-yeb"/>
+                        <outlet property="timeZoneWeatherView" destination="nZm-wP-aDg" id="Rbr-av-Flj"/>
                         <outlet property="todayDateTimeLabel" destination="GTr-Ee-hc7" id="2HO-Ma-4Qu"/>
                         <outlet property="todayWeathyNicknameLabel" destination="Ex7-87-cxZ" id="MHb-R2-fAT"/>
                         <outlet property="todayWeathyView" destination="Yen-xK-7Fn" id="usQ-eZ-Qsp"/>
@@ -1746,6 +1752,9 @@
                         <outlet property="weathyMinTempLabel" destination="aHY-MB-qSB" id="tja-ea-u5F"/>
                         <outlet property="weathyStampImage" destination="KfE-aB-E0j" id="HWI-qt-U2t"/>
                         <outlet property="weathyStampLabel" destination="2l3-JL-ALc" id="53e-gA-o5f"/>
+                        <outlet property="weeklyCenterY" destination="5TA-4R-Zcj" id="uYa-mU-jV8"/>
+                        <outlet property="weeklyWeatherCollectionView" destination="K38-os-iwx" id="IxJ-a1-3Xe"/>
+                        <outlet property="weeklyWeatherView" destination="Jet-gR-AGa" id="8T8-Hr-r7Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foA-Y7-Y3c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1760,7 +1769,8 @@
         <image name="ic_help" width="20" height="20"/>
         <image name="ic_search" width="20" height="20"/>
         <image name="ic_settings" width="20" height="20"/>
-        <image name="main_bg_morning" width="375" height="812"/>
+        <image name="mainBgMorningSun" width="375" height="812"/>
+        <image name="mainImgFewcloudsDay" width="230" height="300"/>
         <image name="mainscroll_img_logo" width="102" height="29"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
