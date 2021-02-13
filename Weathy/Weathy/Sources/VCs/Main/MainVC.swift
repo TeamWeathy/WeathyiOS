@@ -8,11 +8,11 @@
 import UIKit
 
 class MainVC: UIViewController {
-    //MARK: - Custom Variables
+    // MARK: - Custom Variables
     
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var lastContentOffset: CGFloat = 0.0
-    var mainDeliverSearchInfo : OverviewWeatherList?
+    var mainDeliverSearchInfo: OverviewWeatherList?
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
@@ -21,39 +21,58 @@ class MainVC: UIViewController {
     var searchImage: String?
     var searchGradient: String?
     var deliveredSearchData: OverviewWeatherList?
-    var defaultLocationFlag: Bool = true{
-        didSet {
-            // 값이 바뀔 때
-            if (defaultLocationFlag) {
-                // 위치정보로
-                print("true")
-            } else {
-                print("false")
-            }
-        }
-    }
+
     var safeInsetTop: CGFloat = 0
     var safeInsetBottom: CGFloat = 0
     
-    //MARK: - IBOutlets
+    // MARK: - IBOutlets
     
-    @IBOutlet weak var mainBackgroundImage: UIImageView!
-    @IBOutlet weak var topBlurView: UIImageView!
-    @IBOutlet weak var weatherCollectionView: UICollectionView!
-    @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var todayDateTimeLabel: SpacedLabel!
-    @IBOutlet weak var mainNaviBarView: UIView!
-    @IBOutlet weak var mainTopView: UIView!
-    @IBOutlet weak var mainBottomView: UIView!
-    @IBOutlet weak var mainScrollView: UIScrollView!
-    @IBOutlet weak var mainViewHeightConstraint: NSLayoutConstraint!
+    // main
+    @IBOutlet var mainBackgroundImage: UIImageView!
+    @IBOutlet var topBlurView: UIImageView!
+    @IBOutlet var weatherCollectionView: UICollectionView!
+    @IBOutlet var logoImage: UIImageView!
+    @IBOutlet var todayDateTimeLabel: SpacedLabel!
+    @IBOutlet var mainNaviBarView: UIView!
+    @IBOutlet var mainTopView: UIView!
+    @IBOutlet var mainBottomView: UIView!
+    @IBOutlet var mainScrollView: UIScrollView!
+    @IBOutlet var mainTopScrollView: UIScrollView!
+    @IBOutlet var mainBottomScrollView: UIScrollView!
+    @IBOutlet var mainViewHeightConstraint: NSLayoutConstraint!
     
-    //MARK: - Life Cycle Methods
+    // main top view
+    @IBOutlet var hourlyClimateImage: UIImageView!
+    @IBOutlet var gpsButton: UIButton!
+    @IBOutlet var currTempLabel: SpacedLabel!
+    @IBOutlet var maxTempLabel: SpacedLabel!
+    @IBOutlet var minTempLabel: SpacedLabel!
+    @IBOutlet var climateLabel: SpacedLabel!
+    @IBOutlet var locationLabel: SpacedLabel!
+    
+    // today weathy view
+    @IBOutlet var todayWeathyNicknameLabel: SpacedLabel!
+    @IBOutlet var helpButton: UIButton!
+    @IBOutlet var todayWeathyView: UIView!
+    @IBOutlet var weathyDateLabel: SpacedLabel!
+    @IBOutlet var weathyClimateImage: UIImageView!
+    @IBOutlet var weathyClimateLabel: SpacedLabel!
+    @IBOutlet var weathyMaxTempLabel: SpacedLabel!
+    @IBOutlet var weathyMinTempLabel: SpacedLabel!
+    @IBOutlet var weathyStampImage: UIImageView!
+    @IBOutlet var weathyStampLabel: SpacedLabel!
+    @IBOutlet var closetTopLabel: SpacedLabel!
+    @IBOutlet var closetBottomLabel: SpacedLabel!
+    @IBOutlet var closetOuterLabel: SpacedLabel!
+    @IBOutlet var closetEtcLabel: SpacedLabel!
+    @IBOutlet var emptyImage: UIImageView!
+    @IBOutlet var downImage: UIImageView!
+
+    // MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-    // fix: 닉네임 뷰에서 처리할 로직
+        // fix: 닉네임 뷰에서 처리할 로직
 
-        
         UserDefaults.standard.setValue("1141000000", forKey: "locationCode")
         print(UserDefaults.standard.value(forKey: "token"))
         
@@ -74,7 +93,7 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setView()
+        initMainView()
 //        weatherCollectionView.dataSource = self
 //        weatherCollectionView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
@@ -93,9 +112,9 @@ class MainVC: UIViewController {
         mainViewHeightConstraint.constant = viewHeight
     }
     
-    //MARK: - Custom Method
+    // MARK: - Custom Method
     
-    func setView() {
+    func initMainView() {
         mainScrollView.isPagingEnabled = true
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
@@ -110,9 +129,9 @@ class MainVC: UIViewController {
         searchImage = ClimateImage.getClimateMainBgName(iconId)
         searchGradient = ClimateImage.getSearchClimateMainBlurBarName(iconId)
         
-        if (iconId % 100 == 13) {
+        if iconId % 100 == 13 {
             fallingSnow()
-        } else if (iconId % 100 == 10) {
+        } else if iconId % 100 == 10 {
             fallingRain()
         }
         
@@ -134,7 +153,7 @@ class MainVC: UIViewController {
     }
     
     func getLocationWeather(code: String) {
-        MainService.shared.getWeatherByLocation(code: code) { (result) -> (Void) in
+        MainService.shared.getWeatherByLocation(code: code) { (result) -> Void in
             switch result {
             case .success(let data):
                 if let response = data as? LocationWeatherData {
@@ -167,7 +186,7 @@ class MainVC: UIViewController {
     func getRecommendedWeathy(code: String) {
         let userId: Int = UserDefaults.standard.integer(forKey: "userId")
         
-        MainService.shared.getRecommendedWeathy(userId: userId, code: code) { (result) -> (Void) in
+        MainService.shared.getRecommendedWeathy(userId: userId, code: code) { (result) -> Void in
             switch result {
             case .success(let data):
                 if let response = data as? RecommendedWeathyData {
@@ -189,7 +208,7 @@ class MainVC: UIViewController {
     }
     
     func getHourlyWeather(code: String) {
-        MainService.shared.getHourlyWeather(code: code) { (result) -> (Void) in
+        MainService.shared.getHourlyWeather(code: code) { (result) -> Void in
             switch result {
             case .success(let data):
                 if let response = data as? HourlyWeatherData {
@@ -208,7 +227,7 @@ class MainVC: UIViewController {
     }
     
     func getDailyWeather(code: String) {
-        MainService.shared.getDailyWeather(code: code) { (result) -> (Void) in
+        MainService.shared.getDailyWeather(code: code) { (result) -> Void in
             switch result {
             case .success(let data):
                 if let response = data as? DailyWeatherData {
@@ -227,7 +246,7 @@ class MainVC: UIViewController {
     }
     
     func getExtraWeather(code: String) {
-        MainService.shared.getExtraWeather(code: code) { (result) -> (Void) in
+        MainService.shared.getExtraWeather(code: code) { (result) -> Void in
             switch result {
             case .success(let data):
                 if let response = data as? ExtraWeatherData {
@@ -243,7 +262,6 @@ class MainVC: UIViewController {
                 print("network Fail")
             }
         }
-
     }
     
     func fallingSnow() {
@@ -296,7 +314,7 @@ class MainVC: UIViewController {
         snowEmitterLayer.timeOffset = 30
         snowEmitterLayer.emitterCells = [flakeEmitterCell]
         
-        snowEmitterLayer.setAffineTransform(CGAffineTransform(rotationAngle: .pi/24))
+        snowEmitterLayer.setAffineTransform(CGAffineTransform(rotationAngle: .pi / 24))
         snowEmitterLayer.opacity = 0.9
         
         mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
@@ -304,17 +322,17 @@ class MainVC: UIViewController {
     
     @objc func setSearchData(_ notiData: NSNotification) {
         if let hourlyData = notiData.object as? OverviewWeatherList {
-            self.deliveredSearchData = hourlyData
+            deliveredSearchData = hourlyData
             
             let iconId: Int = hourlyData.hourlyWeather.climate.iconID
-            let locationCode: String = String(hourlyData.region.code)
+            let locationCode = String(hourlyData.region.code)
             
-            self.mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
-            self.topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
+            mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
+            topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
             
-            if (iconId % 100 == 13) {
+            if iconId % 100 == 13 {
                 fallingSnow()
-            } else if (iconId % 100 == 10) {
+            } else if iconId % 100 == 10 {
                 fallingRain()
             }
             
@@ -323,7 +341,7 @@ class MainVC: UIViewController {
 //            self.getDailyWeather(code: locationCode
 //            self.getExtraWeather(code: locationCode)
             
-            if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
+            if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
                 topCVC.locationLabel.text = hourlyData.region.name
 //                topCVC.changeWeatherViewData(data: self.locationWeatherData!)
                 topCVC.changeWeatherViewBySearchData(data: hourlyData)
@@ -335,49 +353,102 @@ class MainVC: UIViewController {
         }
     }
     
-    //MARK: - IBActions
+    // MARK: - IBActions
     
     @IBAction func touchUpSearch(_ sender: Any) {
         print("search")
-        let mainSearchStoryboard = UIStoryboard.init(name: "MainSearch", bundle: nil)
+        let mainSearchStoryboard = UIStoryboard(name: "MainSearch", bundle: nil)
         guard let mainSearchVC = mainSearchStoryboard.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
         
-        if let image = self.searchImage,
-           let gradient = self.searchGradient {
+        if let image = searchImage,
+           let gradient = searchGradient
+        {
             mainSearchVC.backImage = image
             mainSearchVC.gradient = gradient
         }
         
         mainSearchVC.modalPresentationStyle = .fullScreen
-        self.present(mainSearchVC, animated: true, completion: nil)
+        present(mainSearchVC, animated: true, completion: nil)
     }
     
     @IBAction func touchUpSetting(_ sender: Any) {
         print("setting")
-        let settingStoryboard = UIStoryboard.init(name: "Setting", bundle: nil)
+        let settingStoryboard = UIStoryboard(name: "Setting", bundle: nil)
         
-        guard let settingNVC = settingStoryboard.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else {return}
+        guard let settingNVC = settingStoryboard.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else { return }
 
         settingNVC.modalPresentationStyle = .fullScreen
-        self.present(settingNVC, animated: true, completion: nil)
+        present(settingNVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func touchUpHelpButton(_ sender: UIButton) {
+        let screenWidth: CGFloat = UIScreen.main.bounds.width
+        let helpViewWidth: CGFloat = screenWidth * (286 / 375)
+        let helpViewHeight: CGFloat = 216 * (helpViewWidth / 286)
+        let topMargin: CGFloat = 8
+        let helpBoxImageXpos: CGFloat = helpButton.frame.origin.x - (screenWidth * (85 / 375))
+        let helpBoxImageYpos: CGFloat = helpButton.frame.origin.y + helpButton.bounds.height + topMargin + safeInsetTop + safeInsetBottom + 48 - mainTopScrollView.contentOffset.y
+        
+        let helpBackgroundImage = UIImageView(image: UIImage(named: "main_help_bg_grey"))
+        helpBackgroundImage.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        helpBackgroundImage.contentMode = .scaleToFill
+        helpBackgroundImage.tag = 101
+            
+        let helpBoxImage = UIImageView(image: UIImage(named: "main_help_box_help"))
+        helpBoxImage.frame = CGRect(x: helpBoxImageXpos, y: helpBoxImageYpos, width: helpViewWidth, height: helpViewHeight)
+        helpBoxImage.contentMode = .scaleToFill
+        helpBoxImage.tag = 102
+        
+        let closeButton = UIButton(frame: CGRect(x: helpBoxImage.frame.width + helpBoxImage.frame.origin.x - 48, y: helpBoxImage.frame.origin.y + 8, width: 48, height: 48))
+        closeButton.setImage(UIImage(named: "ic_close"), for: .normal)
+        closeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 19, bottom: 17, right: 18)
+        closeButton.tag = 103
+        
+        closeButton.addTarget(self, action: #selector(touchUpCloseHelpButton(_:)), for: .touchUpInside)
+        
+        mainScrollView.isScrollEnabled = false
+        mainTopScrollView.isScrollEnabled = false
+        if let superview = view.superview?.superview {
+            superview.addSubview(helpBackgroundImage)
+            superview.addSubview(helpBoxImage)
+            superview.addSubview(closeButton)
+        }
+        
+        helpButton.isUserInteractionEnabled = false
+    }
+        
+    @objc func touchUpCloseHelpButton(_ sender: Any) {
+        guard let superView = view.superview?.superview else { return }
+
+        if let helpBackgroundImage = superView.viewWithTag(101),
+           let helpBoxImage = superView.viewWithTag(102),
+           let closeButton = superView.viewWithTag(103)
+        {
+            helpBackgroundImage.removeFromSuperview()
+            helpBoxImage.removeFromSuperview()
+            closeButton.removeFromSuperview()
+        }
+  
+        mainScrollView.isScrollEnabled = true
+        mainTopScrollView.isScrollEnabled = true
+
+        helpButton.isUserInteractionEnabled = true
     }
 }
 
-//MARK: - UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 
 extension MainVC: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let bottomCVC = weatherCollectionView.cellForItem(at: [1, 0]) as? MainBottomCVC {
-            if (lastContentOffset < scrollView.contentOffset.y && scrollView.contentOffset.y >= 200) {
+            if lastContentOffset < scrollView.contentOffset.y, scrollView.contentOffset.y >= 200 {
                 bottomCVC.viewScrollDown()
-            }
-            
-            else if (lastContentOffset > scrollView.contentOffset.y && scrollView.contentOffset.y <= 500){
+            } else if lastContentOffset > scrollView.contentOffset.y, scrollView.contentOffset.y <= 500 {
                 bottomCVC.viewScrollUp()
             }
         }
 
-        if (scrollView.contentOffset.y >= 400) {
+        if scrollView.contentOffset.y >= 400 {
             UIView.animate(withDuration: 0.5, animations: {
                 self.logoImage.transform = CGAffineTransform(translationX: 0, y: 0)
                 self.todayDateTimeLabel.transform = CGAffineTransform(translationX: 0, y: -100)
@@ -405,24 +476,24 @@ extension MainVC: UICollectionViewDelegate {
     }
 }
 
-
-//MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension MainVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        1
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainTopCVC", for: indexPath) as? MainTopCVC else {return UICollectionViewCell()}
+            guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainTopCVC", for: indexPath) as? MainTopCVC else { return UICollectionViewCell() }
             if let recommend = recommenedWeathyData,
-               let location = locationWeatherData {
+               let location = locationWeatherData
+            {
                 cell.changeWeathyViewData(data: recommend)
                 cell.changeWeatherViewData(data: location)
             }
@@ -430,7 +501,7 @@ extension MainVC: UICollectionViewDataSource {
             cell.setCell()
             return cell
         case 1:
-            guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainBottomCVC", for: indexPath) as? MainBottomCVC else {return UICollectionViewCell()}
+            guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainBottomCVC", for: indexPath) as? MainBottomCVC else { return UICollectionViewCell() }
             if let hourly = hourlyWeatherData {
                 cell.changeHourlyViewData(data: hourly)
             }
@@ -451,10 +522,10 @@ extension MainVC: UICollectionViewDataSource {
     }
 }
 
-//MARK: - UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension MainVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
+        CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
     }
 }
