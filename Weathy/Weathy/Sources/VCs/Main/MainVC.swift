@@ -105,8 +105,22 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         
         initMainView()
-//        weatherCollectionView.dataSource = self
-//        weatherCollectionView.delegate = self
+        
+        timeZoneWeatherCollectionView.delegate = self
+        timeZoneWeatherCollectionView.dataSource = self
+        weeklyWeatherCollectionView.delegate = self
+        weeklyWeatherCollectionView.dataSource = self
+        extraWeatherCollectionView.delegate = self
+        extraWeatherCollectionView.dataSource = self
+        
+        mainScrollView.delegate = self
+        
+        timeZoneCenterY.constant = UIScreen.main.bounds.height
+        weeklyCenterY.constant = UIScreen.main.bounds.height
+        extraCenterY.constant = UIScreen.main.bounds.height
+
+        mainBottomView.layoutIfNeeded()
+
         NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
     }
     
@@ -130,6 +144,9 @@ class MainVC: UIViewController {
         mainScrollView.isPagingEnabled = true
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
+        
+        logoImage.frame.origin.y -= 100
+        logoImage.alpha = 0
         
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
@@ -168,6 +185,7 @@ class MainVC: UIViewController {
         locationLabel.font = UIFont.SDGothicSemiBold20
         locationLabel.textColor = UIColor.mainGrey
         locationLabel.characterSpacing = -1.0
+        locationLabel.text = "서울특별시 서대문구"
 
         currTempLabel.font = UIFont.RobotoLight50
         currTempLabel.textColor = UIColor.subGrey1
@@ -185,7 +203,7 @@ class MainVC: UIViewController {
         maxTempLabel.text = "4°"
 
         climateLabel.font = UIFont.SDGothicRegular16
-        climateLabel.textColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.58)
+        climateLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.58)
         climateLabel.characterSpacing = -0.8
         climateLabel.text = "조금 흐리지만\n햇살이 따스해요 :)"
         
@@ -258,8 +276,8 @@ class MainVC: UIViewController {
         todayDateTimeLabel.text = "\(data.overviewWeather.dailyWeather.date.month)월 \(data.overviewWeather.dailyWeather.date.day)일 \(data.overviewWeather.dailyWeather.date.dayOfWeek) • \(data.overviewWeather.hourlyWeather.time!)"
         todayDateTimeLabel.characterSpacing = -0.75
         
-        logoImage.frame.origin.y -= 100
-        logoImage.alpha = 0
+//        logoImage.frame.origin.y -= 100
+//        logoImage.alpha = 0
     }
     
     func getLocationWeather(code: String) {
@@ -392,7 +410,7 @@ class MainVC: UIViewController {
         flakeEmitterCell.spinRange = 1.0
         
         let snowEmitterLayer = CAEmitterLayer()
-        snowEmitterLayer.emitterPosition = CGPoint(x: view.bounds.width / 2.0, y: -50)
+        snowEmitterLayer.emitterPosition = CGPoint(x: view.bounds.width/2.0, y: -50)
         snowEmitterLayer.emitterSize = CGSize(width: view.bounds.width, height: 0)
         snowEmitterLayer.emitterShape = CAEmitterLayerEmitterShape.line
         snowEmitterLayer.beginTime = CACurrentMediaTime()
@@ -417,14 +435,14 @@ class MainVC: UIViewController {
         flakeEmitterCell.xAcceleration = 5
         
         let snowEmitterLayer = CAEmitterLayer()
-        snowEmitterLayer.emitterPosition = CGPoint(x: view.bounds.width / 2, y: -300)
+        snowEmitterLayer.emitterPosition = CGPoint(x: view.bounds.width/2, y: -300)
         snowEmitterLayer.emitterSize = CGSize(width: view.bounds.width * 2, height: 0)
         snowEmitterLayer.emitterShape = CAEmitterLayerEmitterShape.line
         snowEmitterLayer.beginTime = CACurrentMediaTime()
         snowEmitterLayer.timeOffset = 30
         snowEmitterLayer.emitterCells = [flakeEmitterCell]
         
-        snowEmitterLayer.setAffineTransform(CGAffineTransform(rotationAngle: .pi / 24))
+        snowEmitterLayer.setAffineTransform(CGAffineTransform(rotationAngle: .pi/24))
         snowEmitterLayer.opacity = 0.9
         
         mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
@@ -463,6 +481,34 @@ class MainVC: UIViewController {
         }
     }
     
+    func viewScrollUp() {
+        timeZoneCenterY.constant = UIScreen.main.bounds.height
+        weeklyCenterY.constant = UIScreen.main.bounds.height
+        extraCenterY.constant = UIScreen.main.bounds.height
+        
+        UIView.animate(withDuration: 1.2, delay: 0, options: [.curveLinear], animations: {
+            self.timeZoneWeatherView.alpha = 0
+            self.weeklyWeatherView.alpha = 0
+            self.extraWeatherView.alpha = 0
+                        
+            self.mainBottomView.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func viewScrollDown() {
+        timeZoneCenterY.constant = 21
+        weeklyCenterY.constant = 24
+        extraCenterY.constant = 24
+        
+        UIView.animate(withDuration: 1.2, delay: 0, options: [.overrideInheritedCurve], animations: {
+            self.timeZoneWeatherView.alpha = 1
+            self.weeklyWeatherView.alpha = 1
+            self.extraWeatherView.alpha = 1
+            
+            self.mainBottomView.layoutIfNeeded()
+        })
+    }
+    
     // MARK: - IBActions
     
     @IBAction func touchUpSearch(_ sender: Any) {
@@ -493,10 +539,10 @@ class MainVC: UIViewController {
     
     @IBAction func touchUpHelpButton(_ sender: UIButton) {
         let screenWidth: CGFloat = UIScreen.main.bounds.width
-        let helpViewWidth: CGFloat = screenWidth * (286 / 375)
-        let helpViewHeight: CGFloat = 216 * (helpViewWidth / 286)
+        let helpViewWidth: CGFloat = screenWidth * (286/375)
+        let helpViewHeight: CGFloat = 216 * (helpViewWidth/286)
         let topMargin: CGFloat = 8
-        let helpBoxImageXpos: CGFloat = helpButton.frame.origin.x - (screenWidth * (85 / 375))
+        let helpBoxImageXpos: CGFloat = helpButton.frame.origin.x - (screenWidth * (85/375))
         let helpBoxImageYpos: CGFloat = helpButton.frame.origin.y + helpButton.bounds.height + topMargin + safeInsetTop + safeInsetBottom + 48 - mainTopScrollView.contentOffset.y
         
         let helpBackgroundImage = UIImageView(image: UIImage(named: "main_help_bg_grey"))
@@ -546,16 +592,97 @@ class MainVC: UIViewController {
     }
 }
 
-// MARK: - UICollectionViewDelegate
+// MARK: - UICollectionViewDataSource
 
-extension MainVC: UICollectionViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if let bottomCVC = weatherCollectionView.cellForItem(at: [1, 0]) as? MainBottomCVC {
-            if lastContentOffset < scrollView.contentOffset.y, scrollView.contentOffset.y >= 200 {
-                bottomCVC.viewScrollDown()
-            } else if lastContentOffset > scrollView.contentOffset.y, scrollView.contentOffset.y <= 500 {
-                bottomCVC.viewScrollUp()
+extension MainVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch collectionView {
+        case timeZoneWeatherCollectionView:
+            return hourlyWeatherData?.hourlyWeatherList.count ?? 0
+        case weeklyWeatherCollectionView:
+            return 7
+        case extraWeatherCollectionView:
+            return 3
+        default:
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch collectionView {
+        case timeZoneWeatherCollectionView:
+            guard let cell = timeZoneWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: TimezoneWeatherCVC.idenfier, for: indexPath) as? TimezoneWeatherCVC else { return UICollectionViewCell() }
+            cell.setCell()
+            
+            if let hourly = hourlyWeatherData?.hourlyWeatherList {
+                cell.setTimezoneWeatherData(hourlyData: hourly[indexPath.row], idx: indexPath.row)
             }
+            
+            return cell
+        case weeklyWeatherCollectionView:
+            guard let cell = weeklyWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: WeeklyWeatherCVC.identifier, for: indexPath) as? WeeklyWeatherCVC else { return UICollectionViewCell() }
+            cell.setCell()
+            
+            if let daily = dailyWeatherData {
+                cell.setWeeklyWeatherData(data: daily.dailyWeatherList[indexPath.row], idx: indexPath.row)
+            }
+            
+            return cell
+        case extraWeatherCollectionView:
+            guard let cell = extraWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: ExtraWeatherCVC.identifier, for: indexPath) as? ExtraWeatherCVC else { return UICollectionViewCell() }
+            cell.setCell()
+            
+            if let extra = extraWeatherData {
+                switch indexPath.row {
+                case 0:
+                    cell.setExtraWeatherData(data: extra.extraWeather.rain, type: ExtraType.rain)
+                case 1:
+                    cell.setExtraWeatherData(data: extra.extraWeather.humidity, type: ExtraType.humidity)
+                case 2:
+                    cell.setExtraWeatherData(data: extra.extraWeather.wind, type: ExtraType.wind)
+                default:
+                    break
+                }
+            }
+            
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension MainVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch collectionView {
+        case timeZoneWeatherCollectionView, weeklyWeatherCollectionView:
+            return CGSize(width: collectionView.bounds.size.width/7, height: collectionView.bounds.size.height)
+        case extraWeatherCollectionView:
+            return CGSize(width: collectionView.bounds.size.width/3, height: collectionView.bounds.size.height)
+        default:
+            return CGSize(width: 0, height: 0)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension MainVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if lastContentOffset < scrollView.contentOffset.y, scrollView.contentOffset.y >= 200 {
+            viewScrollDown()
+        } else if lastContentOffset > scrollView.contentOffset.y, scrollView.contentOffset.y <= 500 {
+            viewScrollUp()
         }
 
         if scrollView.contentOffset.y >= 400 {
@@ -583,59 +710,5 @@ extension MainVC: UICollectionViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastContentOffset = scrollView.contentOffset.y
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension MainVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainTopCVC", for: indexPath) as? MainTopCVC else { return UICollectionViewCell() }
-            if let recommend = recommenedWeathyData,
-               let location = locationWeatherData
-            {
-                cell.changeWeathyViewData(data: recommend)
-                cell.changeWeatherViewData(data: location)
-            }
-            cell.todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
-            cell.setCell()
-            return cell
-        case 1:
-            guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "MainBottomCVC", for: indexPath) as? MainBottomCVC else { return UICollectionViewCell() }
-            if let hourly = hourlyWeatherData {
-                cell.changeHourlyViewData(data: hourly)
-            }
-            
-            if let daily = dailyWeatherData {
-                cell.changeDailyViewData(data: daily)
-            }
-            
-            if let extra = extraWeatherData {
-                cell.changeExtraViewData(data: extra)
-            }
-            
-            cell.setCell()
-            return cell
-        default:
-            return UICollectionViewCell()
-        }
-    }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension MainVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
     }
 }
