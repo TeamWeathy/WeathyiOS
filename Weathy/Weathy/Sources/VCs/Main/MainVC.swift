@@ -448,6 +448,14 @@ class MainVC: UIViewController {
         mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
     }
     
+    func removeFlakeEmitterCell() {
+        self.mainBackgroundImage.layer.sublayers?.removeAll()
+        
+        if var subLayers = self.mainBackgroundImage.layer.sublayers {
+            subLayers.removeAll()
+        }
+    }
+    
     @objc func setSearchData(_ notiData: NSNotification) {
         if let hourlyData = notiData.object as? OverviewWeatherList {
             deliveredSearchData = hourlyData
@@ -694,6 +702,7 @@ extension MainVC: UIScrollViewDelegate {
             UIView.animate(withDuration: 0.3, animations: {
                 self.logoImage.alpha = 1
                 self.topBlurView.alpha = 1
+                self.todayDateTimeLabel.alpha = 0
             })
         } else {
             UIView.animate(withDuration: 0.5, animations: {
@@ -704,6 +713,7 @@ extension MainVC: UIScrollViewDelegate {
             UIView.animate(withDuration: 0.3, animations: {
                 self.logoImage.alpha = 0
                 self.topBlurView.alpha = 0
+                self.todayDateTimeLabel.alpha = 1
             })
         }
     }
