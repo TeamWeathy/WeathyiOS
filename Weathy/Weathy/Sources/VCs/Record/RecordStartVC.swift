@@ -64,15 +64,6 @@ class RecordStartVC: UIViewController {
         
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        
-//        locationCode = 1141000000
-//        print(recordDeliverSearchInfo)
-//
-//        locationCode = recordDeliverSearchInfo?.region.code ?? 1141000000
-//        print(">>>>>>>", locationCode)
-        initialSetting()
-        print(dateString)
-        
         getLocationWeather()
         
         setAboveBox()
@@ -100,7 +91,6 @@ class RecordStartVC: UIViewController {
         boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateSearchIllust(searchInfo.hourlyWeather.climate.iconID))
         maxTempLabel.text = "\(searchInfo.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(searchInfo.dailyWeather.temperature.minTemp)°"
-        print("---> 뭐야 \(searchInfo)")
     }
     
     //MARK: - IBActions
@@ -140,13 +130,7 @@ class RecordStartVC: UIViewController {
 //MARK: - Style
 
 extension RecordStartVC {
-    func initialSetting() {
-//        locationCode = appDelegate.overviewData?.region.code ?? 1141000000
-//
-//        maxTemp = appDelegate.overviewData?.dailyWeather.temperature.maxTemp ?? 20
-//        minTemp = appDelegate.overviewData?.dailyWeather.temperature.minTemp ?? -20
-    }
-    
+
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
@@ -257,11 +241,9 @@ extension RecordStartVC {
             case .success(let data):
                 if let response = data as? LocationWeatherData {
                     self.locationWeatherData = response
-                    print(self.locationWeatherData)
+                    
                     self.maxTempLabel.text = "\(self.locationWeatherData!.overviewWeather.dailyWeather.temperature.maxTemp)°"
                     self.minTempLabel.text = "\(self.locationWeatherData!.overviewWeather.dailyWeather.temperature.minTemp)°"
-                    
-                    print(self.locationWeatherData!.overviewWeather.hourlyWeather.climate.iconID)
                     
                     self.boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateSearchIllust(self.locationWeatherData!.overviewWeather.hourlyWeather.climate.iconID))
                     
