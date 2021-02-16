@@ -17,7 +17,6 @@ class RecordStartVC: UIViewController {
     var todayMonth: Int = 1
     var todayDate: Int = 1
     
-//    var fullDate: String = "2021-01-25"
     var month: Int = 12
     var date: Int = 20
     var day: String = "월"
