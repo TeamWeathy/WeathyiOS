@@ -159,9 +159,7 @@ extension RecordTagAddPopupVC {
             case .success(let data):
                 print(">>> success")
                 if let loadData = data as? ClothesTagData {
-//                    print(">>> loadData", loadData)
-//                    self.dismiss(animated: false, completion: nil)
-//                    self.presentingViewController?.viewWillAppear(false)
+                    self.showToastOnTop(message: "태그가 추가되었습니다.")
                 }
                 
             case .requestErr(let msg):
