@@ -17,6 +17,9 @@ class RecordTagAddPopupVC: UIViewController {
     var tagCategory: String = "상의"
     
     var isAdded: Bool = false
+
+    var addCount: Int = 0
+    var placeholders: [String] = ["예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "태그 더 추가하기", "옷이 많군요?!", "혹시 더 있나요?", "옷장 구경 하고 싶네요"]
     
     //MARK: - @IBOutlets
     
@@ -160,6 +163,13 @@ extension RecordTagAddPopupVC {
                 print(">>> success")
                 if let loadData = data as? ClothesTagData {
                     self.showToastOnTop(message: "태그가 추가되었습니다.")
+                    self.tagNameTextField.text = ""
+                    self.wordCount = 0
+                    self.setTextNotExists()
+                    if self.addCount < self.placeholders.count {
+                        self.tagNameTextField.placeholder = self.placeholders[self.addCount]
+                        self.addCount += 1
+                    }
                 }
                 
             case .requestErr(let msg):
