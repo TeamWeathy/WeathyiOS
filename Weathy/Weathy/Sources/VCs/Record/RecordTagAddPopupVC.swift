@@ -19,7 +19,7 @@ class RecordTagAddPopupVC: UIViewController {
     var isAdded: Bool = false
 
     var addCount: Int = 0
-    var placeholders: [String] = ["예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "태그 더 추가하기", "옷이 많군요?!", "혹시 더 있나요?", "옷장 구경 하고 싶네요"]
+    var placeholders: [String] = ["예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "태그 더 추가하기", "옷이 많군요?!", "혹시 더 있나요?", "옷장 구경 하고 싶네요", "웨디 사랑해줘서 고마워요 '◡'"]
     
     //MARK: - @IBOutlets
     
@@ -163,13 +163,21 @@ extension RecordTagAddPopupVC {
                 print(">>> success")
                 if let loadData = data as? ClothesTagData {
                     self.showToastOnTop(message: "태그가 추가되었습니다.")
+                    
+                    /// 입력 완료 시 입력 돼있던 내용 삭제
                     self.tagNameTextField.text = ""
                     self.wordCount = 0
                     self.setTextNotExists()
+                    
+                    /// 이스터에그 - 한꺼번에 태그 많이 등록했을 때
                     if self.addCount < self.placeholders.count {
                         self.tagNameTextField.placeholder = self.placeholders[self.addCount]
                         self.addCount += 1
                     }
+                    
+                    /// 태그 개수 하나 추가, 타이틀에 반영
+                    self.tagCount += 1
+                    self.titleLabel.text = "\(self.tagCategory) 추가하기 (\(self.tagCount)/50)"
                 }
                 
             case .requestErr(let msg):
