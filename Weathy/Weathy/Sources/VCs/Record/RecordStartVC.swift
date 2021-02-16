@@ -78,7 +78,6 @@ class RecordStartVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(appDelgate.overviewData)
         animationPrac()
         NotificationCenter.default.addObserver(self, selector: #selector(SearchInfo), name: .init("record"), object: nil)
     }
@@ -183,7 +182,7 @@ extension RecordStartVC {
         boxView.layer.borderColor = UIColor.subGrey7.cgColor
         boxView.layer.cornerRadius = 35
         
-        boxTimeLabel.text = "\(dateToday?.month ?? 1)월 \(dateToday?.day ?? 16)일 \(getDayStringFromInt(dayInt: dateToday?.weekday ?? 6))"
+        boxTimeLabel.text = "\(dateToday?.month ?? 0)월 \(dateToday?.day ?? 0)일 \(getDayStringFromInt(dayInt: dateToday?.weekday ?? 6))"
         boxTimeLabel.font = UIFont.SDGothicRegular15
         boxTimeLabel.textColor = UIColor.subGrey1
         
