@@ -78,7 +78,13 @@ class RecordTagAddPopupVC: UIViewController {
     }
     
     @IBAction func addBtnTap(_ sender: Any) {
-        self.callAddTagService()
+        if tagCount < 50{
+            self.callAddTagService()
+        }
+        else {
+            showToastOnTop(message: "태그를 추가하려면 기존 태그를 삭제해주세요")
+        }
+        
     }
 }
 
