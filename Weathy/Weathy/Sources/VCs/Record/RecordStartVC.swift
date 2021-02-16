@@ -23,8 +23,8 @@ class RecordStartVC: UIViewController {
     var day: String = "월"
     var location: String = "서울시 종로구"
     var currentTemp: Int = -2
-    var maxTemp: Int = -2
-    var minTemp: Int = -8
+    var maxTemp: Int = 0
+    var minTemp: Int = 0
     
     var visitedFlag: Bool = false
     var dvc = RecordTagVC()
@@ -59,17 +59,8 @@ class RecordStartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setAboveBox()
-        setBox()
-        setBelowBox()
+        
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        
-        setTitleLabel()
-        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "ko_KR")
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        self.fullDate = dateFormatter.date(from: "2021-01-25")
         
         locationCode = appDelgate.overviewData?.region.code ?? 1141000000
         location = appDelgate.overviewData?.region.name ?? "땡땡시 땡땡구"
@@ -79,6 +70,7 @@ class RecordStartVC: UIViewController {
         
         print(">>>>>", dateString)
         print(">>>>>", dateToday)
+        print(">>>>>", maxTemp, appDelgate.overviewData?.dailyWeather.temperature.maxTemp ?? 20)
         
         
 //        locationCode = 1141000000
@@ -87,6 +79,11 @@ class RecordStartVC: UIViewController {
 //        locationCode = recordDeliverSearchInfo?.region.code ?? 1141000000
 //        print(">>>>>>>", locationCode)
         
+        setAboveBox()
+        setBox()
+        setBelowBox()
+        
+        setTitleLabel()
 
         // Do any additional setup after loading the view.
     }
