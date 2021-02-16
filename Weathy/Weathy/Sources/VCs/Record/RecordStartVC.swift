@@ -145,7 +145,7 @@ extension RecordStartVC {
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
-        titleLabel.text = "\(appDelgate.overviewData?.dailyWeather.date.month ?? 0)월 \(appDelgate.overviewData?.dailyWeather.date.day ?? 0)일의 웨디를\n기록해볼까요?"
+        titleLabel.text = "\(dateToday?.month ?? 0)월 \(dateToday?.day ?? 0)일의 웨디를\n기록해볼까요?"
         titleLabel.numberOfLines = 2
         titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
         titleLabel.textColor = .mainGrey
@@ -183,7 +183,7 @@ extension RecordStartVC {
         boxView.layer.borderColor = UIColor.subGrey7.cgColor
         boxView.layer.cornerRadius = 35
         
-        boxTimeLabel.text = "\(appDelgate.overviewData?.dailyWeather.date.month ?? 1)월 \(appDelgate.overviewData?.dailyWeather.date.day ?? 16)일 \(appDelgate.overviewData?.dailyWeather.date.dayOfWeek ?? "땡요일")"
+        boxTimeLabel.text = "\(dateToday?.month ?? 1)월 \(dateToday?.day ?? 16)일 \(getDayStringFromInt(dayInt: dateToday?.weekday ?? 6))"
         boxTimeLabel.font = UIFont.SDGothicRegular15
         boxTimeLabel.textColor = UIColor.subGrey1
         
