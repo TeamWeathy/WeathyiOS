@@ -59,18 +59,7 @@ class RecordStartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        
-        locationCode = appDelgate.overviewData?.region.code ?? 1141000000
-        location = appDelgate.overviewData?.region.name ?? "땡땡시 땡땡구"
-        
-        maxTemp = appDelgate.overviewData?.dailyWeather.temperature.maxTemp ?? 20
-        minTemp = appDelgate.overviewData?.dailyWeather.temperature.minTemp ?? -20
-        
-        print(">>>>>", dateString)
-        print(">>>>>", dateToday)
-        print(">>>>>", maxTemp, appDelgate.overviewData?.dailyWeather.temperature.maxTemp ?? 20)
         
         
 //        locationCode = 1141000000
@@ -78,6 +67,7 @@ class RecordStartVC: UIViewController {
 //
 //        locationCode = recordDeliverSearchInfo?.region.code ?? 1141000000
 //        print(">>>>>>>", locationCode)
+        initialSetting()
         
         setAboveBox()
         setBox()
@@ -145,6 +135,14 @@ class RecordStartVC: UIViewController {
 //MARK: - Style
 
 extension RecordStartVC {
+    func initialSetting() {
+        locationCode = appDelgate.overviewData?.region.code ?? 1141000000
+        location = appDelgate.overviewData?.region.name ?? "땡땡시 땡땡구"
+        
+        maxTemp = appDelgate.overviewData?.dailyWeather.temperature.maxTemp ?? 20
+        minTemp = appDelgate.overviewData?.dailyWeather.temperature.minTemp ?? -20
+    }
+    
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
