@@ -104,23 +104,9 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initMainView()
+        initMainTopView()
+        initMainBottomView()
         
-        timeZoneWeatherCollectionView.delegate = self
-        timeZoneWeatherCollectionView.dataSource = self
-        weeklyWeatherCollectionView.delegate = self
-        weeklyWeatherCollectionView.dataSource = self
-        extraWeatherCollectionView.delegate = self
-        extraWeatherCollectionView.dataSource = self
-        
-        mainScrollView.delegate = self
-        
-        timeZoneCenterY.constant = UIScreen.main.bounds.height
-        weeklyCenterY.constant = UIScreen.main.bounds.height
-        extraCenterY.constant = UIScreen.main.bounds.height
-
-        mainBottomView.layoutIfNeeded()
-
         NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
     }
     
@@ -139,14 +125,17 @@ class MainVC: UIViewController {
     
     // MARK: - Custom Method
     
-    func initMainView() {
+    func initMainTopView() {
         // main top view
         mainScrollView.isPagingEnabled = true
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
         
-        logoImage.frame.origin.y -= 100
+        logoImage.frame.origin.y += 100
         logoImage.alpha = 0
+        
+        topBlurView.frame.origin.y -= topBlurView.bounds.height
+        topBlurView.alpha = 0
         
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
@@ -248,6 +237,23 @@ class MainVC: UIViewController {
         extraWeatherView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.14, radius: 50)
     }
     
+    func initMainBottomView() {
+        timeZoneWeatherCollectionView.delegate = self
+        timeZoneWeatherCollectionView.dataSource = self
+        weeklyWeatherCollectionView.delegate = self
+        weeklyWeatherCollectionView.dataSource = self
+        extraWeatherCollectionView.delegate = self
+        extraWeatherCollectionView.dataSource = self
+        
+        mainScrollView.delegate = self
+        
+        timeZoneCenterY.constant = UIScreen.main.bounds.height
+        weeklyCenterY.constant = UIScreen.main.bounds.height
+        extraCenterY.constant = UIScreen.main.bounds.height
+
+        mainBottomView.layoutIfNeeded()
+    }
+    
     func setViewByData(data: LocationWeatherData) {
         // background 설정
         let iconId = data.overviewWeather.hourlyWeather.climate.iconID
@@ -262,13 +268,10 @@ class MainVC: UIViewController {
         } else if iconId % 100 == 10 {
             fallingRain()
         }
-        
-        topBlurView.frame.origin.y -= topBlurView.bounds.height
-        topBlurView.alpha = 0
-        
-        weatherCollectionView.backgroundColor = .clear
-        weatherCollectionView.isPagingEnabled = true
-        weatherCollectionView.decelerationRate = .fast
+                
+//        weatherCollectionView.backgroundColor = .clear
+//        weatherCollectionView.isPagingEnabled = true
+//        weatherCollectionView.decelerationRate = .fast
         
         // navigation bar
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
@@ -449,9 +452,7 @@ class MainVC: UIViewController {
     }
     
     func removeFlakeEmitterCell() {
-        self.mainBackgroundImage.layer.sublayers?.removeAll()
-        
-        if var subLayers = self.mainBackgroundImage.layer.sublayers {
+        if var subLayers = mainBackgroundImage.layer.sublayers {
             subLayers.removeAll()
         }
     }

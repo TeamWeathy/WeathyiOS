@@ -748,7 +748,7 @@
                                                         <constraint firstItem="OSI-QG-09X" firstAttribute="top" secondItem="ph0-hb-Tpn" secondAttribute="top" id="2te-4k-fe2"/>
                                                         <constraint firstAttribute="trailing" secondItem="OSI-QG-09X" secondAttribute="trailing" id="4Pv-6O-WxS"/>
                                                         <constraint firstItem="OSI-QG-09X" firstAttribute="width" secondItem="ph0-hb-Tpn" secondAttribute="width" id="O5K-k8-pYH"/>
-                                                        <constraint firstItem="OSI-QG-09X" firstAttribute="height" secondItem="ph0-hb-Tpn" secondAttribute="height" priority="750" id="QtA-9g-Eph"/>
+                                                        <constraint firstItem="OSI-QG-09X" firstAttribute="height" secondItem="ph0-hb-Tpn" secondAttribute="height" priority="250" id="QtA-9g-Eph"/>
                                                         <constraint firstItem="OSI-QG-09X" firstAttribute="leading" secondItem="ph0-hb-Tpn" secondAttribute="leading" id="ykQ-rs-QHh"/>
                                                         <constraint firstAttribute="bottom" secondItem="OSI-QG-09X" secondAttribute="bottom" id="z8y-au-6Wu"/>
                                                     </constraints>
@@ -1623,7 +1623,7 @@
                                     <constraint firstItem="thR-o6-Rye" firstAttribute="leading" secondItem="KgJ-W2-vTI" secondAttribute="leading" id="xJv-IS-6jn"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HLM-e2-b4K">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainscrollBoxTopblurMorning" translatesAutoresizingMaskIntoConstraints="NO" id="HLM-e2-b4K">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="151" id="Iug-I9-dEf"/>
@@ -1771,6 +1771,7 @@
         <image name="ic_settings" width="20" height="20"/>
         <image name="mainBgMorningSun" width="375" height="812"/>
         <image name="mainImgFewcloudsDay" width="230" height="300"/>
+        <image name="mainscrollBoxTopblurMorning" width="375" height="151"/>
         <image name="mainscroll_img_logo" width="102" height="29"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
