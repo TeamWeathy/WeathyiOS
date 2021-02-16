@@ -68,6 +68,8 @@ class RecordTagAddPopupVC: UIViewController {
     }
     
     @IBAction func closeBtnTap(_ sender: Any) {
+        self.isAdded = true
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TagAdded"), object: self.isAdded)
         self.dismiss(animated: false, completion: nil)
 //        self.presentingViewController?.viewWillAppear(false)
     }
@@ -158,9 +160,7 @@ extension RecordTagAddPopupVC {
                 print(">>> success")
                 if let loadData = data as? ClothesTagData {
 //                    print(">>> loadData", loadData)
-                    self.isAdded = true
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TagAdded"), object: self.isAdded)
-                    self.dismiss(animated: false, completion: nil)
+//                    self.dismiss(animated: false, completion: nil)
 //                    self.presentingViewController?.viewWillAppear(false)
                 }
                 
@@ -189,6 +189,11 @@ extension RecordTagAddPopupVC: UITextFieldDelegate {
         if(textField.text?.count ?? 0 > maxLength) {
             textField.deleteBackward()
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

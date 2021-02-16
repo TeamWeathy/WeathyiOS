@@ -125,7 +125,6 @@ class RecordTagVC: UIViewController {
     @objc func tagAdded(_ noti : Notification){
         let isAdded = noti.object
         self.viewWillAppear(true)
-        self.showToast(message: "태그가 추가되었어요!")
     }
     
     @objc func tagDeleted(_ noti : Notification){
