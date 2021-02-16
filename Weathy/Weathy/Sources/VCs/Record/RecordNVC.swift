@@ -15,12 +15,11 @@ class RecordNVC: UINavigationController {
     var dateToday: Date?
     var dateString: String = "0000-00-00"
     
-    let appDelgate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        judgeWhereFrom()
+        origin = .plusRecord
+        judgeWhereFrom()
         sendData()
         
         // Do any additional setup after loading the view.
@@ -36,7 +35,18 @@ extension RecordNVC {
         case .plusRecord:
             print("플러스 버튼에서의 접근")
             /// 앱 델리게이트에서 년, 월, 일을 받아와 문자열로 변환
+            let appDelgate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            
             dateString = "\(String((appDelgate.overviewData?.dailyWeather.date.year)!))-\(String(format: "%02d", appDelgate.overviewData!.dailyWeather.date.month))-\(String(format: "%02d", appDelgate.overviewData!.dailyWeather.date.day))"
+            
+            /// 년, 월, 일을 Date 형식으로 변환
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "ko-Kr")
+            
+            let dateTimeString: String = "\(dateString) 00:00:00"
+            dateToday = dateFormatter.date(from: dateTimeString)
+            
         case .calendarRecord:
             print("캘린더에서의 접근")
         case .none:
@@ -52,6 +62,7 @@ extension RecordNVC {
             return
         }
         
+        root.dateToday = dateToday
         root.dateString = dateString
     }
     
