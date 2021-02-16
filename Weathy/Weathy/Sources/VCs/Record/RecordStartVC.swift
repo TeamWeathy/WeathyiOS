@@ -258,8 +258,8 @@ extension RecordStartVC {
                 if let response = data as? LocationWeatherData {
                     self.locationWeatherData = response
                     print(self.locationWeatherData)
-                    self.maxTempLabel.text = "\(self.locationWeatherData!.overviewWeather.dailyWeather.temperature.maxTemp)"
-                    self.minTempLabel.text = "\(self.locationWeatherData!.overviewWeather.dailyWeather.temperature.minTemp)"
+                    self.maxTempLabel.text = "\(self.locationWeatherData!.overviewWeather.dailyWeather.temperature.maxTemp)°"
+                    self.minTempLabel.text = "\(self.locationWeatherData!.overviewWeather.dailyWeather.temperature.minTemp)°"
                     
                     print(self.locationWeatherData!.overviewWeather.hourlyWeather.climate.iconID)
                     

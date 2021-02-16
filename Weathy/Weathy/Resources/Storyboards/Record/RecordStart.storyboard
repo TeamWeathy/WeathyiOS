@@ -122,7 +122,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glp-RZ-lUG">
-                                        <rect key="frame" x="188" y="138" width="42" height="21"/>
+                                        <rect key="frame" x="190" y="138" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -138,7 +138,7 @@
                                 <constraints>
                                     <constraint firstItem="82E-LE-4z7" firstAttribute="top" secondItem="uK9-5M-D6V" secondAttribute="top" constant="23" id="6Yb-Fh-K0d"/>
                                     <constraint firstAttribute="trailing" secondItem="NOh-vW-Qvo" secondAttribute="trailing" constant="25" id="8zL-Dg-YFI"/>
-                                    <constraint firstItem="uKf-u9-Kts" firstAttribute="leading" secondItem="glp-RZ-lUG" secondAttribute="trailing" constant="-1" id="Etd-ds-RYG"/>
+                                    <constraint firstItem="uKf-u9-Kts" firstAttribute="leading" secondItem="glp-RZ-lUG" secondAttribute="trailing" constant="-3" id="Etd-ds-RYG"/>
                                     <constraint firstItem="NOh-vW-Qvo" firstAttribute="leading" secondItem="uKf-u9-Kts" secondAttribute="trailing" constant="3" id="FCY-VG-PtR"/>
                                     <constraint firstItem="gQe-4h-Eln" firstAttribute="height" secondItem="uK9-5M-D6V" secondAttribute="height" multiplier="93:163" id="GZ3-ni-RNG"/>
                                     <constraint firstItem="UzI-BB-PxQ" firstAttribute="top" secondItem="82E-LE-4z7" secondAttribute="bottom" constant="3" id="IHv-2d-Wb2"/>
