@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Alamofire
+
 class RecordStartVC: UIViewController {
 
     //MARK: - Custom Variables
@@ -28,11 +30,13 @@ class RecordStartVC: UIViewController {
     var visitedFlag: Bool = false
     var dvc = RecordTagVC()
     
-    var recordDeliverSearchInfo : OverviewWeatherList?
+    var recordDeliverSearchInfo: OverviewWeatherList?
+    
+    var locationWeatherData: LocationWeatherData?
     
     var locationCode: CLong = 1141000000
     
-    let appDelgate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
     //MARK: - IBOutlets
     
@@ -67,6 +71,9 @@ class RecordStartVC: UIViewController {
 //        locationCode = recordDeliverSearchInfo?.region.code ?? 1141000000
 //        print(">>>>>>>", locationCode)
         initialSetting()
+        print(dateString)
+        
+        getLocationWeather()
         
         setAboveBox()
         setBox()
@@ -90,7 +97,7 @@ class RecordStartVC: UIViewController {
 
         boxTimeLabel.text = "\(searchInfo.dailyWeather.date.month)월 \(searchInfo.dailyWeather.date.day)일 \(searchInfo.dailyWeather.date.dayOfWeek)"
         boxLocationLabel.text = searchInfo.region.name
-        boxWeatherImageView.image = UIImage(named:   ClimateImage.getClimateSearchIllust(searchInfo.hourlyWeather.climate.iconID))
+        boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateSearchIllust(searchInfo.hourlyWeather.climate.iconID))
         maxTempLabel.text = "\(searchInfo.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(searchInfo.dailyWeather.temperature.minTemp)°"
         print("---> 뭐야 \(searchInfo)")
@@ -134,11 +141,10 @@ class RecordStartVC: UIViewController {
 
 extension RecordStartVC {
     func initialSetting() {
-        locationCode = appDelgate.overviewData?.region.code ?? 1141000000
-        location = appDelgate.overviewData?.region.name ?? "땡땡시 땡땡구"
-        
-        maxTemp = appDelgate.overviewData?.dailyWeather.temperature.maxTemp ?? 20
-        minTemp = appDelgate.overviewData?.dailyWeather.temperature.minTemp ?? -20
+//        locationCode = appDelegate.overviewData?.region.code ?? 1141000000
+//
+//        maxTemp = appDelegate.overviewData?.dailyWeather.temperature.maxTemp ?? 20
+//        minTemp = appDelegate.overviewData?.dailyWeather.temperature.minTemp ?? -20
     }
     
     func setAboveBox() {
@@ -186,11 +192,9 @@ extension RecordStartVC {
         boxTimeLabel.font = UIFont.SDGothicRegular15
         boxTimeLabel.textColor = UIColor.subGrey1
         
-        boxLocationLabel.text = "\(location)"
+        boxLocationLabel.text = "\(appDelegate.overviewData?.region.name ?? "땡땡시 땡땡구")"
         boxLocationLabel.font = UIFont.SDGothicSemiBold17
         boxLocationLabel.textColor = UIColor.subGrey1
-        
-        boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateSearchIllust(appDelgate.overviewData?.hourlyWeather.climate.iconID ?? -1))
         
         maxTempLabel.text = "\(maxTemp)°"
         maxTempLabel.font = UIFont(name: "Roboto-Light", size: 40)
@@ -245,6 +249,34 @@ extension RecordStartVC {
             self.subTitleLabel.alpha = 1
             self.subTitleLabel.frame = CGRect(x: self.subTitleLabel.frame.origin.x, y: self.subTitleLabel.frame.origin.y+10, width: self.subTitleLabel.frame.width, height: self.subTitleLabel.frame.height)
         })
+    }
+    
+    func getLocationWeather() {
+        RecordWeathyService.shared.getWeatherByLocation(dateString: dateString) { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? LocationWeatherData {
+                    self.locationWeatherData = response
+                    print(self.locationWeatherData)
+                    self.maxTempLabel.text = "\(self.locationWeatherData!.overviewWeather.dailyWeather.temperature.maxTemp)"
+                    self.minTempLabel.text = "\(self.locationWeatherData!.overviewWeather.dailyWeather.temperature.minTemp)"
+                    
+                    print(self.locationWeatherData!.overviewWeather.hourlyWeather.climate.iconID)
+                    
+                    self.boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateSearchIllust(self.locationWeatherData!.overviewWeather.hourlyWeather.climate.iconID))
+                    
+                    self.viewWillAppear(false)
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
     }
     
     func getDayStringFromInt(dayInt: Int) -> String {
