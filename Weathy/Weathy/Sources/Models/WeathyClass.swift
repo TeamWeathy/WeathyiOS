@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Weathy: Codable{
+struct WeathyClass: Codable{
     var region: Region
     var dailyWeather: DailyWeather
     var hourlyWeather: HourlyWeather

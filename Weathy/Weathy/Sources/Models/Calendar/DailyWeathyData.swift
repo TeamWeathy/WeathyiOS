@@ -8,6 +8,6 @@
 import Foundation
 
 struct DailyWeathyData: Codable{
-    var weathy: Weathy?
+    var weathy: WeathyClass?
     var message: String
 }
