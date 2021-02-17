@@ -49,15 +49,12 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         initDate()
-        infiniteMonthlyCV.delegate = self
-        infiniteMonthlyCV.dataSource = self
-        infiniteWeeklyCV.delegate = self
-        infiniteWeeklyCV.dataSource = self
+        initPicker()
+        initCollectionView()
+        initCollectionViewOffset()
         setGesture()
         setStyle()
-        initPicker()
-        initCalendarCVOffset()
-        NotificationCenter.default.addObserver(self, selector: #selector(setSelected(_:)), name: NSNotification.Name("ChangeData"), object: nil)
+        addNotificationObserver()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -175,12 +172,23 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         }
         
     }
-    func initCalendarCVOffset(){
+    func initCollectionView(){
+        infiniteMonthlyCV.delegate = self
+        infiniteMonthlyCV.dataSource = self
+        infiniteWeeklyCV.delegate = self
+        infiniteWeeklyCV.dataSource = self
+    }
+    func initCollectionViewOffset(){
         DispatchQueue.main.async(execute: { [self] in
             self.infiniteMonthlyCV.contentOffset.x = calendarWidth
             self.infiniteWeeklyCV.contentOffset.x = calendarWidth
         })
     }
+    
+    func addNotificationObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(setSelected(_:)), name: NSNotification.Name("ChangeData"), object: nil)
+    }
+    
     
     
     //MARK: - Custom Methods - Calendar
