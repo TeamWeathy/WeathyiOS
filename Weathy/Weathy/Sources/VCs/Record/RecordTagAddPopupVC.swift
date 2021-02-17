@@ -156,7 +156,7 @@ extension RecordTagAddPopupVC {
             switch networkResult {
             case .success(let data):
                 print(">>> success")
-                if let loadData = data as? ClothesTagData {
+                if let loadData = data as? Closet {
 //                    print(">>> loadData", loadData)
                     self.isAdded = true
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TagAdded"), object: self.isAdded)
