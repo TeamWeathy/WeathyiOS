@@ -11,7 +11,7 @@ class ModifyWeathyTagVC: UIViewController {
     
     //MARK: - Custom Variables
     
-    var weathyData: CalendarWeathy?
+    var weathyData: Weathy?
     var dateString: String = "0000-00-00"
     var locationCode: CLong = 1141000000
     
@@ -32,8 +32,8 @@ class ModifyWeathyTagVC: UIViewController {
     
     var isInitialVisit: Bool = true
     
-    var myClothesTagData: ClothesTagData?
-    var localizedClothesTagData: [TagCategoryData] = []
+    var myClothesTagData: Closet?
+    var localizedClothesTagData: [Category] = []
     var selectedTags: [Int] = []
     
     var isAdded: Bool = false
@@ -284,7 +284,7 @@ extension ModifyWeathyTagVC {
         RecordTagService.shared.displayTag(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "") { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
-                if let loadData = data as? ClothesTagData {
+                if let loadData = data as? Closet {
                     self.myClothesTagData = loadData
                 }
                 

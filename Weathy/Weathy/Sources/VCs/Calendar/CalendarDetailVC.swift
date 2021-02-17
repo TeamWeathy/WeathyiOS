@@ -21,7 +21,7 @@ class CalendarDetailVC: UIViewController {
     var blurView = UIView()
     var selectedDate = Date()
     var calendarVC: CalendarVC!
-    var dailyWeathy: CalendarWeathy?
+    var dailyWeathy: Weathy?
     var isModified = false
     var defaultDateFormatter = DateFormatter()
     
@@ -268,7 +268,7 @@ class CalendarDetailVC: UIViewController {
         DailyWeathyService.shared.getDailyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let data):
-                    if let dailyData = data as? CalendarWeathy{
+                    if let dailyData = data as? Weathy{
                         print("[Daily]",dailyData)
                         self.dailyWeathy = dailyData
                         self.setData()
