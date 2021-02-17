@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3133F725A4EB5C0059028C /* RecentTVC.swift */; };
 		0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344425A724A80059028C /* OnBoardingFirstVC.swift */; };
+		0E6463D825DD6ADD00A9E591 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6463D725DD6ADD00A9E591 /* User.swift */; };
 		0E6E9A6925AF5CFF00702706 /* modifyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */; };
 		0E6E9A7125AF7EE300702706 /* autoLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7025AF7EE300702706 /* autoLoginService.swift */; };
 		0E6E9A7625AF9E7700702706 /* searchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7525AF9E7700702706 /* searchService.swift */; };
@@ -129,6 +130,7 @@
 /* Begin PBXFileReference section */
 		0E3133F725A4EB5C0059028C /* RecentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTVC.swift; sourceTree = "<group>"; };
 		0E31344425A724A80059028C /* OnBoardingFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFirstVC.swift; sourceTree = "<group>"; };
+		0E6463D725DD6ADD00A9E591 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modifyUserService.swift; sourceTree = "<group>"; };
 		0E6E9A7025AF7EE300702706 /* autoLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autoLoginService.swift; sourceTree = "<group>"; };
 		0E6E9A7525AF9E7700702706 /* searchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchService.swift; sourceTree = "<group>"; };
@@ -624,6 +626,7 @@
 				0E75F67325AF3D4E00D98633 /* UserInformation */,
 				0E6E9A7A25AFA1A600702706 /* SearchInformation */,
 				37C301F825DD6B28008A30D7 /* Closet.swift */,
+				0E6463D725DD6ADD00A9E591 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -985,6 +988,7 @@
 				633984202599B1F400339615 /* AppDelegate.swift in Sources */,
 				374D4904259F68EE00152B9A /* TagFlowLayout.swift in Sources */,
 				AB3D207225B047DD0030514B /* HourlyWeatherData.swift in Sources */,
+				0E6463D825DD6ADD00A9E591 /* User.swift in Sources */,
 				0E75F67925AF3E5600D98633 /* createUserService.swift in Sources */,
 				63D3C53925A4A57500E5FDFE /* SpacedLabel.swift in Sources */,
 				3735AE3425A8F24C00E71DC3 /* RecordTagAddPopupVC.swift in Sources */,
