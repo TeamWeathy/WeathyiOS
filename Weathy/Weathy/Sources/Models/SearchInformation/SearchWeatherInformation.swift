@@ -45,17 +45,6 @@ struct searchHourlyWeather: Codable {
     let pop: Int
 }
 
-// MARK: - Climate
-struct Climate: Codable {
-    let iconID: Int
-    let climateDescription: String
-
-    enum CodingKeys: String, CodingKey {
-        case iconID = "iconId"
-        case climateDescription = "description"
-    }
-}
-
 // MARK: - Region
 struct searchRegion: Codable {
     let code: CLong

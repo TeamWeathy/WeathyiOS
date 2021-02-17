@@ -40,14 +40,14 @@ class WeeklyWeatherCVC: UICollectionViewCell {
         tempDiffView.makeRounded(cornerRadius: 1)
     }
     
-    func setWeeklyWeatherData(data: MainDailyWeather, idx: Int) {
+    func setWeeklyWeatherData(data: DailyWeather, idx: Int) {
         let dayOfWeek: String = data.date.dayOfWeek
         
         dayOfWeekLabel.text = "\(dayOfWeek.prefix(1))"
         maxTempLabel.text = "\(data.temperature.maxTemp)°"
         minTempLabel.text = "\(data.temperature.minTemp)°"
         
-        if let iconId = data.climate?.iconID {
+        if let iconId = data.climate?.iconId {
             climateImage.image = UIImage(named: ClimateImage.getClimateAssetName(iconId))
         }
         
