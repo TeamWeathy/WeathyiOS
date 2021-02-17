@@ -53,11 +53,10 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         infiniteMonthlyCV.dataSource = self
         infiniteWeeklyCV.delegate = self
         infiniteWeeklyCV.dataSource = self
-        infiniteMonthlyCV.isPrefetchingEnabled = true
         setGesture()
         setStyle()
         initPicker()
-        
+        initCalendarCVOffset()
         NotificationCenter.default.addObserver(self, selector: #selector(setSelected(_:)), name: NSNotification.Name("ChangeData"), object: nil)
         
     }
@@ -73,10 +72,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.async(execute: { [self] in
-            self.infiniteMonthlyCV.contentOffset.x = calendarWidth
-            self.infiniteWeeklyCV.contentOffset.x = calendarWidth
-        })
+        
         
     }
 
@@ -179,6 +175,12 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         }
         
     }
+    func initCalendarCVOffset(){
+        DispatchQueue.main.async(execute: { [self] in
+            self.infiniteMonthlyCV.contentOffset.x = calendarWidth
+            self.infiniteWeeklyCV.contentOffset.x = calendarWidth
+        })
+    }
     
     
     //MARK: - Custom Methods - Calendar
@@ -199,6 +201,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         lastWeekDate = Calendar.current.date(byAdding: lastComponent, to: selectedDate)
         nextMonthDate = dateFormatter.date(from: selectedDate.nextYearMonth)
         lastMonthDate = dateFormatter.date(from:selectedDate.lastYearMonth)!
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
         infiniteMonthList = [lastMonthDate,selectedDate,nextMonthDate]
         infiniteWeekList = [lastWeekDate,selectedDate,nextWeekDate]
 
@@ -207,6 +211,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         DispatchQueue.main.async(execute: { [self] in
             self.infiniteMonthlyCV.contentOffset.x = calendarWidth
             self.infiniteWeeklyCV.contentOffset.x = calendarWidth
+            CATransaction.commit()
         })
 //        infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadItems(at: [[0,1]])
 //            self.infiniteMonthlyCV.contentOffset.x = calendarWidth
@@ -486,6 +491,8 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print(infiniteWeeklyCV.isScrollEnabled)
+        
+        ///미래 날짜로 스크롤 disable 시킴
         let gesture = scrollView.panGestureRecognizer
         if scrollView == infiniteMonthlyCV{
             if gesture.velocity(in: scrollView).x < 0{
