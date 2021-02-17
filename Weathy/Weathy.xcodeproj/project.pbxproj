@@ -106,6 +106,8 @@
 		63DEB294259CF67200A94488 /* AppleSDGothicNeoR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28D259CF67200A94488 /* AppleSDGothicNeoR.ttf */; };
 		63DEB295259CF67200A94488 /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28E259CF67200A94488 /* AppleSDGothicNeoSB.ttf */; };
 		63DEB296259CF67200A94488 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63DEB28F259CF67200A94488 /* Roboto-Regular.ttf */; };
+		63E1A78425DD6E6800E5B41C /* Weathy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1A78325DD6E6800E5B41C /* Weathy.swift */; };
+		63E1A78725DD6FCB00E5B41C /* CalendarOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1A78625DD6FCB00E5B41C /* CalendarOverview.swift */; };
 		AB09371025AE446B00F69220 /* LocationWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09370F25AE446B00F69220 /* LocationWeatherData.swift */; };
 		AB09371B25AE48F800F69220 /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09371A25AE48F800F69220 /* MainService.swift */; };
 		AB09371F25AF526700F69220 /* RecommededWeathyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09371E25AF526700F69220 /* RecommededWeathyData.swift */; };
@@ -227,6 +229,8 @@
 		63DEB28D259CF67200A94488 /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
 		63DEB28E259CF67200A94488 /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
 		63DEB28F259CF67200A94488 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		63E1A78325DD6E6800E5B41C /* Weathy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weathy.swift; sourceTree = "<group>"; };
+		63E1A78625DD6FCB00E5B41C /* CalendarOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOverview.swift; sourceTree = "<group>"; };
 		79A77C707317896743084ED5 /* Pods-Weathy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathy.release.xcconfig"; path = "Target Support Files/Pods-Weathy/Pods-Weathy.release.xcconfig"; sourceTree = "<group>"; };
 		AB09370F25AE446B00F69220 /* LocationWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWeatherData.swift; sourceTree = "<group>"; };
 		AB09371A25AE48F800F69220 /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
@@ -615,6 +619,7 @@
 		63398443259A2BE700339615 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				63E1A78325DD6E6800E5B41C /* Weathy.swift */,
 				0E6E9AB825B244CC00702706 /* OnBoarding */,
 				37222E6225AE649700577FEE /* Record */,
 				63C756D225B03902003DC9FA /* Calendar */,
@@ -624,6 +629,7 @@
 				0E75F67325AF3D4E00D98633 /* UserInformation */,
 				0E6E9A7A25AFA1A600702706 /* SearchInformation */,
 				0E6463D725DD6ADD00A9E591 /* User.swift */,
+				63E1A78625DD6FCB00E5B41C /* CalendarOverview.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -924,6 +930,7 @@
 				0E6E9A6925AF5CFF00702706 /* modifyUserService.swift in Sources */,
 				6354ED9D25AE0B3700C5CAC5 /* InfiniteMonthlyCVC.swift in Sources */,
 				374D48FE259F678200152B9A /* RecordTagCVC.swift in Sources */,
+				63E1A78425DD6E6800E5B41C /* Weathy.swift in Sources */,
 				6354EDA125AE0B6700C5CAC5 /* Date+Extensions.swift in Sources */,
 				37222E8725B0D6BA00577FEE /* ModifyWeathyStartVC.swift in Sources */,
 				374D48F2259F2A9300152B9A /* UIFont+Extension.swift in Sources */,
@@ -959,6 +966,7 @@
 				374D48DF259D236800152B9A /* RecordRateCVC.swift in Sources */,
 				37222E6725AE657C00577FEE /* RecordTagService.swift in Sources */,
 				0E8C004725A249B900A31295 /* SettingVC.swift in Sources */,
+				63E1A78725DD6FCB00E5B41C /* CalendarOverview.swift in Sources */,
 				0E9152E025A39A1F0048E226 /* MainSearchVC.swift in Sources */,
 				ABE2B93025B0D98D007F878C /* ExtraWeatherData.swift in Sources */,
 				37FB8AAB25AE4FB7001A6287 /* SplashVC.swift in Sources */,

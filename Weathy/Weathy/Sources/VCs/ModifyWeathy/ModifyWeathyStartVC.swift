@@ -11,7 +11,7 @@ class ModifyWeathyStartVC: UIViewController {
 
     //MARK: - Custom Variables
     
-    var weathyData: CalendarWeathy?
+    var weathyData: Weathy?
     var dateString: String = "0000-00-00"
     
     var todayMonth: Int = 1
