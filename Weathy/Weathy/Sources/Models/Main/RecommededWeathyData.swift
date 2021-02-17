@@ -10,6 +10,6 @@ import Foundation
 // MARK: - RecommendedWeathyData
 
 struct RecommendedWeathyData: Codable {
-    let weathy: Weathy
+    let weathy: WeathyClass
     let message: String?
 }
