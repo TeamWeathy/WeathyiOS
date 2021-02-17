@@ -84,7 +84,7 @@ extension RecordTagDeletePopupVC {
             switch networkResult {
             case .success(let data):
 //                print(">>> success")
-                if let loadData = data as? ClothesTagData {
+                if let loadData = data as? Closet {
                     self.isDeleted = true
                     self.presentingViewController?.presentingViewController?.dismiss(animated: false) {
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TagDeleted"), object: self.isDeleted)

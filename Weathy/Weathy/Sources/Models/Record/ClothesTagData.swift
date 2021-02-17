@@ -9,36 +9,13 @@ import Foundation
 
 // MARK: - Welcome
 struct GetClothesArrayData: Codable {
-    let closet: ClothesTagData
+    let closet: Closet
     let message: String
 }
 
 
 //MARK: - Welcome
 struct AddClothesData: Codable{
-    let clothesList: ClothesTagData
+    let clothesList: Closet
     let message: String
-}
-
-// MARK: - Closet
-struct ClothesTagData: Codable {
-    let top, bottom, outer, etc: TagCategoryData
-}
-
-// MARK: - Bottom
-struct TagCategoryData: Codable {
-    let categoryID: Int
-    let clothes: [TagNameData]?
-
-    enum CodingKeys: String, CodingKey {
-        case categoryID = "categoryId"
-        case clothes
-    }
-}
-
-// MARK: - Clothe
-struct TagNameData: Codable {
-    let id: Int
-    let name: String
-//    var isSelected: Bool = false
 }
