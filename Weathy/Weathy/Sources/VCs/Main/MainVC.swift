@@ -99,6 +99,10 @@ class MainVC: UIViewController {
 //        if let topCVC = weatherCollectionView.cellForItem(at: [0,0]) as? MainTopCVC{
 //            topCVC.todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
 //        }
+        LocationManager.shared.startUpdateLocation()
+        
+        print(UserDefaults.standard.value(forKey: "locationLon"))
+        print(UserDefaults.standard.value(forKey: "locationLat"))
     }
     
     override func viewDidLoad() {
@@ -551,7 +555,7 @@ class MainVC: UIViewController {
         let helpViewWidth: CGFloat = screenWidth * (286/375)
         let helpViewHeight: CGFloat = 216 * (helpViewWidth/286)
         let topMargin: CGFloat = 8
-        let helpBoxImageXpos: CGFloat = helpButton.frame.origin.x - (screenWidth * (85/375))
+        let helpBoxImageXpos: CGFloat = helpButton.frame.origin.x - (screenWidth * (86/375))
         let helpBoxImageYpos: CGFloat = helpButton.frame.origin.y + helpButton.bounds.height + topMargin + safeInsetTop + safeInsetBottom + 48 - mainTopScrollView.contentOffset.y
         
         let helpBackgroundImage = UIImageView(image: UIImage(named: "main_help_bg_grey"))
