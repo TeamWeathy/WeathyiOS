@@ -40,7 +40,7 @@ class WeeklyWeatherCVC: UICollectionViewCell {
         tempDiffView.makeRounded(cornerRadius: 1)
     }
     
-    func setWeeklyWeatherData(data: MainDailyWeather, idx: Int) {
+    func setWeeklyWeatherData(data: DailyWeather, idx: Int) {
         let dayOfWeek: String = data.date.dayOfWeek
         
         dayOfWeekLabel.text = "\(dayOfWeek.prefix(1))"

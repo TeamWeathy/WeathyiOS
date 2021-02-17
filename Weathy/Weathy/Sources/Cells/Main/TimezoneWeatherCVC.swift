@@ -36,7 +36,7 @@ class TimezoneWeatherCVC: UICollectionViewCell {
         temperatureLabel.characterSpacing = -0.8
     }
     
-    func setTimezoneWeatherData(hourlyData: MainHourlyWeather, idx: Int) {
+    func setTimezoneWeatherData(hourlyData: HourlyWeather, idx: Int) {
         if let time = hourlyData.time,
            let temp = hourlyData.temperature {
             timeLabel.alpha = 1
