@@ -10,13 +10,6 @@ import Foundation
 // MARK: - UserInformation
 
 struct UserInformation: Codable {
-    let user: UserData
+    let user: User
     let token, message: String
-}
-
-// MARK: - User
-
-struct UserData: Codable {
-    let id: Int
-    let nickname: String
 }
