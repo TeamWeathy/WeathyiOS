@@ -31,9 +31,9 @@ struct MainWeathy: Codable {
 }
 
 // MARK: - Closet
-struct Closet: Codable {
-    let top, bottom, outer, etc: MainCategory
-}
+//struct Closet: Codable {
+//    let top, bottom, outer, etc: MainCategory
+//}
 
 // MARK: - Bottom
 struct MainCategory: Codable {
