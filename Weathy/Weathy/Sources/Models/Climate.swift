@@ -10,11 +10,6 @@ import Foundation
 // MARK: - Climate
 
 struct Climate: Codable {
-    let iconID: Int
+    let iconId: Int
     let description: String?
-
-    enum CodingKeys: String, CodingKey {
-        case iconID = "iconId"
-        case description
-    }
 }

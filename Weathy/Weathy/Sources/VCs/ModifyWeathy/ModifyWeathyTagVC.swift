@@ -11,7 +11,7 @@ class ModifyWeathyTagVC: UIViewController {
     
     //MARK: - Custom Variables
     
-    var weathyData: Weathy?
+    var weathyData: WeathyClass?
     var dateString: String = "0000-00-00"
     var locationCode: CLong = 1141000000
     
@@ -325,16 +325,16 @@ extension ModifyWeathyTagVC {
     func makeLocalTagData() {
         
         /// viewWillAppear에서 다시 호출되었을 경우를 대비한 분기처리
-        if localizedClothesTagData[titleIndex].clothes?.count != tagTitles[titleIndex].tagTab.count - 1 || localizedClothesTagData[titleIndex].clothes?.count == 0 {
+        if localizedClothesTagData[titleIndex].clothes.count != tagTitles[titleIndex].tagTab.count - 1 || localizedClothesTagData[titleIndex].clothes.count == 0 {
             
             for j in 0...3 {
                 
-                if localizedClothesTagData[j].clothes?.count == 0 {
+                if localizedClothesTagData[j].clothes.count == 0 {
                     break
                 }
                 else {
-                    for i in 0...localizedClothesTagData[j].clothes!.count - 1 {
-                        self.tagTitles[j].tagTab.append(Tag(id: localizedClothesTagData[j].clothes![i].id, name: localizedClothesTagData[j].clothes![i].name, isSelected: false))
+                    for i in 0...localizedClothesTagData[j].clothes.count - 1 {
+                        self.tagTitles[j].tagTab.append(Tag(id: localizedClothesTagData[j].clothes[i].id, name: localizedClothesTagData[j].clothes[i].name, isSelected: false))
                     }
                 }
             }

@@ -43,7 +43,7 @@ class TimezoneWeatherCVC: UICollectionViewCell {
             timeLabel.text = "\(time)"
             temperatureLabel.text = "\(temp)°"
         }
-        climateImage.image = UIImage(named: ClimateImage.getClimateAssetName(hourlyData.climate.iconID))
+        climateImage.image = UIImage(named: ClimateImage.getClimateAssetName(hourlyData.climate.iconId))
         popLabel.text = "\(hourlyData.pop)%"
         
         if (idx == 0) {

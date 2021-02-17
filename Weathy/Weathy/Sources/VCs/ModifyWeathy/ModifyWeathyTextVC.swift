@@ -11,7 +11,7 @@ class ModifyWeathyTextVC: UIViewController {
     
     //MARK: - Custom Variables
     
-    var weathyData: Weathy?
+    var weathyData: WeathyClass?
     var dateString: String = "0000-00-00"
     var locationCode: CLong = 1141000000
     

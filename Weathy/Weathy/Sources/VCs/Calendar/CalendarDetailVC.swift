@@ -21,7 +21,7 @@ class CalendarDetailVC: UIViewController {
     var blurView = UIView()
     var selectedDate = Date()
     var calendarVC: CalendarVC!
-    var dailyWeathy: Weathy?
+    var dailyWeathy: WeathyClass?
     var isModified = false
     var defaultDateFormatter = DateFormatter()
     
@@ -206,7 +206,7 @@ class CalendarDetailVC: UIViewController {
     }
     
     
-    func insertSeparatorInArray(_ arr: [Clothe]) -> String {
+    func insertSeparatorInArray(_ arr: [Clothes]) -> String {
         return arr.map({ (val) -> String in
             "\(val.name)"
         }).joined(separator: " ・ ")
@@ -268,7 +268,7 @@ class CalendarDetailVC: UIViewController {
         DailyWeathyService.shared.getDailyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let data):
-                    if let dailyData = data as? Weathy{
+                    if let dailyData = data as? WeathyClass{
                         print("[Daily]",dailyData)
                         self.dailyWeathy = dailyData
                         self.setData()

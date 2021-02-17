@@ -429,8 +429,8 @@
 		37222E8525B0D65900577FEE /* ModifyWeathy */ = {
 			isa = PBXGroup;
 			children = (
-				37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */,
 				37222E8625B0D6BA00577FEE /* ModifyWeathyStartVC.swift */,
+				37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */,
 				37222E9F25B0EBE100577FEE /* ModifyWeathyTagVC.swift */,
 				37222EAE25B1061600577FEE /* ModifyWeathyRateVC.swift */,
 				37222EB125B10A5C00577FEE /* ModifyWeathyTextVC.swift */,

@@ -47,7 +47,7 @@ class WeeklyWeatherCVC: UICollectionViewCell {
         maxTempLabel.text = "\(data.temperature.maxTemp)°"
         minTempLabel.text = "\(data.temperature.minTemp)°"
         
-        if let iconId = data.climate?.iconID {
+        if let iconId = data.climate?.iconId {
             climateImage.image = UIImage(named: ClimateImage.getClimateAssetName(iconId))
         }
         
