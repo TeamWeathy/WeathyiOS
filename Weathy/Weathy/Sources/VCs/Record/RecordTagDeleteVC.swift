@@ -71,7 +71,7 @@ class RecordTagDeleteVC: UIViewController {
             tagTitles[i].count = 0
             
             if tagTitles[i].tagTab.count == 0 {
-                break
+                continue
             }
             
             /// isSelected 초기화
