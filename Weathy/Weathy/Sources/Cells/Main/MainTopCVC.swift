@@ -57,9 +57,9 @@ class MainTopCVC: UICollectionViewCell {
         currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature!)°"
         maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.minTemp)°"
-        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconID))
+        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconId))
         
-        if let desc = data.overviewWeather.hourlyWeather.climate.climateDescription {
+        if let desc = data.overviewWeather.hourlyWeather.climate.description {
             climateLabel.text = "\(desc)"
         }
     }
@@ -69,8 +69,8 @@ class MainTopCVC: UICollectionViewCell {
         currTempLabel.text = "\(data.hourlyWeather.temperature)°"
         maxTempLabel.text = "\(data.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(data.dailyWeather.temperature.minTemp)°"
-        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.hourlyWeather.climate.iconID))
-        climateLabel.text = "\(data.hourlyWeather.climate.climateDescription)"
+        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.hourlyWeather.climate.iconId))
+        climateLabel.text = "\(data.hourlyWeather.climate.description)"
     }
     
     func changeWeathyViewData(data: RecommendedWeathyData) {
@@ -95,19 +95,19 @@ class MainTopCVC: UICollectionViewCell {
             weathyDateLabel.text = "\(year)년 \(month)월 \(day)일"
         }
         
-        weathyClimateImage.image = UIImage(named: ClimateImage.getClimateAssetName(data.weathy.hourlyWeather.climate.iconID))
-        if let climateDesc = data.weathy.hourlyWeather.climate.climateDescription {
+        weathyClimateImage.image = UIImage(named: ClimateImage.getClimateAssetName(data.weathy.hourlyWeather.climate.iconId))
+        if let climateDesc = data.weathy.hourlyWeather.climate.description {
             weathyClimateLabel.text = "\(climateDesc)"
         }
         weathyMaxTempLabel.text = "\(data.weathy.dailyWeather.temperature.maxTemp)°"
         weathyMinTempLabel.text = "\(data.weathy.dailyWeather.temperature.minTemp)°"
         
-        weathyStampImage.image = UIImage(named: Emoji.getEmojiImageAsset(stampId: data.weathy.stampID))
-        weathyStampLabel.text = Emoji.getEmojiText(stampId: data.weathy.stampID)
-        weathyStampLabel.textColor = Emoji.getEmojiTextColor(stampId: data.weathy.stampID)
+        weathyStampImage.image = UIImage(named: Emoji.getEmojiImageAsset(stampId: data.weathy.stampId))
+        weathyStampLabel.text = Emoji.getEmojiText(stampId: data.weathy.stampId)
+        weathyStampLabel.textColor = Emoji.getEmojiTextColor(stampId: data.weathy.stampId)
     }
         
-    func insertSeparatorInArray(_ arr: [Clothe]) -> String {
+    func insertSeparatorInArray(_ arr: [Clothes]) -> String {
         return arr.map({ (val) -> String in
             "\(val.name)"
         }).joined(separator: " ・ ")

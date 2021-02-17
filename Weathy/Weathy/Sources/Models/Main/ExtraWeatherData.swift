@@ -13,13 +13,3 @@ struct ExtraWeatherData: Codable {
     let message: String
 }
 
-// MARK: - ExtraWeather
-struct ExtraWeather: Codable {
-    let rain, humidity, wind: ExtraData
-}
-
-// MARK: - ExtraType
-struct ExtraData: Codable {
-    let value: Double
-    let rating: Int
-}

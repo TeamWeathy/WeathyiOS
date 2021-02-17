@@ -9,6 +9,6 @@ import Foundation
 
 // MARK: - HourlyWeatherData
 struct HourlyWeatherData: Codable {
-    let hourlyWeatherList: [MainHourlyWeather]
+    let hourlyWeatherList: [HourlyWeather]
     let message: String
 }
