@@ -10,10 +10,12 @@ import Foundation
 import Alamofire
 
 struct MainService {
+    // MARK: - Custom Variables
+
     static let shared = MainService()
     
     let dateFormatter = DateFormatter()
-    var currDate: Date = Date()
+    var currDate = Date()
     var lat: Double
     var lon: Double
     
@@ -27,22 +29,22 @@ struct MainService {
         dateFormatter.dateFormat = "yyyy-MM-dd"
     }
     
-    //MARK: - Network
+    // MARK: - Network
     
-    func getWeatherByLocation(code: String, completion: @escaping (NetworkResult<Any>) -> (Void)) {
-        //weather/overview?lat={latitude}&lon={longitude}&code={code}&date={date}
-        guard let token = UserDefaults.standard.string(forKey: "token") else {return}
+    // /weather/overview?lat={latitude}&lon={longitude}&code={code}&date={date}
+    func getWeatherByLocation(code: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
         
-        let url = APIConstants.getWeatherByLocationURL + "?lat=\(self.lat)&lon=\(self.lon)&date=\(dateFormatter.string(from: currDate))"
+        let url = APIConstants.getWeatherByLocationURL + "?lat=\(lat)&lon=\(lon)&date=\(dateFormatter.string(from: currDate))"
         let header: HTTPHeaders = ["x-access-token": token, "Content-Type": "application/json"]
         
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
-        dataRequest.responseData { (response) in
+        dataRequest.responseData { response in
             switch response.result {
             case .success:
-                guard let statusCode = response.response?.statusCode else {return}
-                guard let data = response.value else {return}
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.value else { return }
                 
                 completion(judgeWeatherByLocationData(status: statusCode, data: data))
             case .failure(let err):
@@ -52,18 +54,19 @@ struct MainService {
         }
     }
     
-    func getRecommendedWeathy(userId: Int, code: String, completion: @escaping ((NetworkResult<Any>) -> (Void))) {
+    // /users/:user-id/weathy/recommend?code={code}&date={date}
+    func getRecommendedWeathy(userId: Int, code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let url: String = APIConstants.getRecommendedWeathyURL(userId: userId, code: code, date: dateFormatter.string(from: currDate))
         let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
         
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
-        dataRequest.responseData { (response) in
+        dataRequest.responseData { response in
             switch response.result {
             case .success:
-                guard let statusCode = response.response?.statusCode else {return}
-                guard let data = response.value else {return}
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.value else { return }
                 
                 completion(judgeRecommendedWeathyData(status: statusCode, data: data))
             case .failure(let err):
@@ -73,18 +76,19 @@ struct MainService {
         }
     }
     
-    func getHourlyWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> (Void))) {
+    // /weather/forecast/hourly?code={code}&date={date}
+    func getHourlyWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
         
         let url: String = APIConstants.getHourlyWeatherURL(code: code, date: dateFormatter.string(from: currDate))
         let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
 
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
-        dataRequest.responseData { (response) in
+        dataRequest.responseData { response in
             switch response.result {
             case .success:
-                guard let statusCode = response.response?.statusCode else {return}
-                guard let data = response.value else {return}
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.value else { return }
                 
                 completion(judgeHourlyWeatherData(status: statusCode, data: data))
             case .failure(let err):
@@ -94,18 +98,19 @@ struct MainService {
         }
     }
     
-    func getDailyWeather(code: String, completion: @escaping (((NetworkResult<Any>) -> (Void)))) {
+    // /weather/forecast/daily?code={code}&date={date}
+    func getDailyWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let url: String = APIConstants.getDailyWeatherURL(code: code, date: dateFormatter.string(from: currDate))
         let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
         
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
-        dataRequest.responseData { (response) in
+        dataRequest.responseData { response in
             switch response.result {
             case .success:
-                guard let statusCode = response.response?.statusCode else {return}
-                guard let data = response.value else {return}
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.value else { return }
                 
                 completion(judgeDailyWeatherData(status: statusCode, data: data))
             case .failure(let err):
@@ -115,18 +120,19 @@ struct MainService {
         }
     }
     
-    func getExtraWeather(code: String, completion: @escaping (((NetworkResult<Any>) -> (Void)))) {
+    // /weather/daily/extra?code={code}&date={date}
+    func getExtraWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let url: String = APIConstants.getExtraWeatherURL(code: code, date: dateFormatter.string(from: currDate))
         let header: HTTPHeaders = ["x-access-token": UserDefaults.standard.string(forKey: "token")!, "Content-Type": "application/json"]
         
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
-        dataRequest.responseData { (response) in
+        dataRequest.responseData { response in
             switch response.result {
             case .success:
-                guard let statusCode = response.response?.statusCode else {return}
-                guard let data = response.value else {return}
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.value else { return }
                 
                 completion(judgeExtraWeatherData(status: statusCode, data: data))
             case .failure(let err):
@@ -136,11 +142,11 @@ struct MainService {
         }
     }
     
-    //MARK: - Judge func
+    // MARK: - Judge func
     
     private func judgeWeatherByLocationData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(LocationWeatherData.self, from: data) else {return .pathErr}
+        guard let decodedData = try? decoder.decode(LocationWeatherData.self, from: data) else { return .pathErr }
         
         switch status {
         case 200:
@@ -156,7 +162,7 @@ struct MainService {
     
     private func judgeRecommendedWeathyData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(RecommendedWeathyData.self, from: data) else {return .pathErr}
+        guard let decodedData = try? decoder.decode(RecommendedWeathyData.self, from: data) else { return .pathErr }
         
         switch status {
         case 200:
@@ -172,7 +178,7 @@ struct MainService {
     
     private func judgeHourlyWeatherData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(HourlyWeatherData.self, from: data) else {return .pathErr}
+        guard let decodedData = try? decoder.decode(HourlyWeatherData.self, from: data) else { return .pathErr }
         
         switch status {
         case 200:
@@ -188,7 +194,7 @@ struct MainService {
     
     private func judgeDailyWeatherData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(DailyWeatherData.self, from: data) else {return .pathErr}
+        guard let decodedData = try? decoder.decode(DailyWeatherData.self, from: data) else { return .pathErr }
         
         switch status {
         case 200:
@@ -204,7 +210,7 @@ struct MainService {
     
     private func judgeExtraWeatherData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(ExtraWeatherData.self, from: data) else {return .pathErr}
+        guard let decodedData = try? decoder.decode(ExtraWeatherData.self, from: data) else { return .pathErr }
         
         switch status {
         case 200:
