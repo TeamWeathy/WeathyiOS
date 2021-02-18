@@ -728,34 +728,36 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
 
 extension MainVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if lastContentOffset < scrollView.contentOffset.y, scrollView.contentOffset.y >= 200 {
-            viewScrollDown()
-        } else if lastContentOffset > scrollView.contentOffset.y, scrollView.contentOffset.y <= 500 {
-            viewScrollUp()
-        }
-
-        if scrollView.contentOffset.y >= 400 {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.logoImage.transform = CGAffineTransform(translationX: 0, y: 0)
-                self.todayDateTimeLabel.transform = CGAffineTransform(translationX: 0, y: -100)
-            })
+        if scrollView == mainScrollView {
+            if lastContentOffset < scrollView.contentOffset.y, scrollView.contentOffset.y >= 200 {
+                viewScrollDown()
+            } else if lastContentOffset > scrollView.contentOffset.y, scrollView.contentOffset.y <= 500 {
+                viewScrollUp()
+            }
             
-            UIView.animate(withDuration: 0.3, animations: {
-                self.logoImage.alpha = 1
-                self.topBlurView.alpha = 1
-                self.todayDateTimeLabel.alpha = 0
-            })
-        } else {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.logoImage.transform = CGAffineTransform(translationX: 0, y: 100)
-                self.todayDateTimeLabel.transform = .identity
-            })
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                self.logoImage.alpha = 0
-                self.topBlurView.alpha = 0
-                self.todayDateTimeLabel.alpha = 1
-            })
+            if scrollView.contentOffset.y >= 400 {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.logoImage.transform = CGAffineTransform(translationX: 0, y: 0)
+                    self.todayDateTimeLabel.transform = CGAffineTransform(translationX: 0, y: -100)
+                })
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.logoImage.alpha = 1
+                    self.topBlurView.alpha = 1
+                    self.todayDateTimeLabel.alpha = 0
+                })
+            } else {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.logoImage.transform = CGAffineTransform(translationX: 0, y: 100)
+                    self.todayDateTimeLabel.transform = .identity
+                })
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.logoImage.alpha = 0
+                    self.topBlurView.alpha = 0
+                    self.todayDateTimeLabel.alpha = 1
+                })
+            }
         }
     }
     
