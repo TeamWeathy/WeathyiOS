@@ -12,15 +12,18 @@ class MainVC: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var lastContentOffset: CGFloat = 0.0
-    var mainDeliverSearchInfo: OverviewWeatherList?
+    
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
     var dailyWeatherData: DailyWeatherData?
     var extraWeatherData: ExtraWeatherData?
+    
+    // search - main
+    var mainDeliverSearchInfo: OverviewWeatherList?
+    var deliveredSearchData: OverviewWeatherList?
     var searchImage: String?
     var searchGradient: String?
-    var deliveredSearchData: OverviewWeatherList?
 
     var safeInsetTop: CGFloat = 0
     var safeInsetBottom: CGFloat = 0
@@ -81,22 +84,24 @@ class MainVC: UIViewController {
 
     // MARK: - Life Cycle Methods
     
+    // FIXME: - LocationManager NicknameVC로 이전
     override func viewWillAppear(_ animated: Bool) {
-        // fix: 닉네임 뷰에서 처리할 로직
-
-        UserDefaults.standard.setValue("1141000000", forKey: "locationCode")
+//        UserDefaults.standard.setValue("1141000000", forKey: "locationCode")
         print(UserDefaults.standard.value(forKey: "token"))
-        
-//        if let location = UserDefaults.standard.string(forKey: "locationCode") {
-//            // search에서 넘어온 데이터가 없는 경우에만 서버 통신
-//            if (self.deliveredSearchData == nil) {
-//                getLocationWeather(code: location)
-//            } else {
-//                print("#")
+        print(UserDefaults.standard.value(forKey: "locationLat"))
+        print(UserDefaults.standard.value(forKey: "locationLon"))
+        LocationManager.shared.startUpdateLocation()
+
+        if let location = UserDefaults.standard.string(forKey: "locationCode") {
+            // search에서 넘어온 데이터가 없는 경우에만 서버 통신
+            if deliveredSearchData == nil {
+                getLocationWeather(code: location)
+            } else {
+                print("#")
 //                defaultLocationFlag = false
-//            }
-//        }
-//        if let topCVC = weatherCollectionView.cellForItem(at: [0,0]) as? MainTopCVC{
+            }
+        }
+//        if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
 //            topCVC.todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
 //        }
         
@@ -104,10 +109,8 @@ class MainVC: UIViewController {
         print(UserDefaults.standard.value(forKey: "locationLat"))
     }
     
-    // FIXME: - LocationManager NicknameVC로 이전
     override func viewDidLoad() {
         super.viewDidLoad()
-        LocationManager.shared.startUpdateLocation()
         
         initMainTopView()
         initMainBottomView()
@@ -259,7 +262,7 @@ class MainVC: UIViewController {
         mainBottomView.layoutIfNeeded()
     }
     
-    func setViewByData(data: LocationWeatherData) {
+    func setMainTopViewByData(data: LocationWeatherData) {
         // background 설정
         let iconId = data.overviewWeather.hourlyWeather.climate.iconID
         mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
@@ -289,23 +292,25 @@ class MainVC: UIViewController {
     }
     
     func getLocationWeather(code: String) {
-        MainService.shared.getWeatherByLocation(code: code) { (result) -> Void in
+        MainService.shared.getWeatherByLocation { (result) -> Void in
             switch result {
             case .success(let data):
                 if let response = data as? LocationWeatherData {
                     self.locationWeatherData = response
-                    self.setViewByData(data: response)
+                    self.setMainTopViewByData(data: response)
                     self.appDelegate?.overviewData = response.overviewWeather
-                    if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-                        topCVC.changeWeatherViewData(data: self.locationWeatherData!)
-                    }
+//                    if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
+//                        topCVC.changeWeatherViewData(data: self.locationWeatherData!)
+//                    }
 
+                    print(response)
+                    print("server========")
                     UserDefaults.standard.setValue(response.overviewWeather.region.code, forKey: "locationCode")
                     
-                    self.getRecommendedWeathy(code: String(response.overviewWeather.region.code))
-                    self.getHourlyWeather(code: String(response.overviewWeather.region.code))
-                    self.getDailyWeather(code: String(response.overviewWeather.region.code))
-                    self.getExtraWeather(code: String(response.overviewWeather.region.code))
+//                    self.getRecommendedWeathy(code: String(response.overviewWeather.region.code))
+//                    self.getHourlyWeather(code: String(response.overviewWeather.region.code))
+//                    self.getDailyWeather(code: String(response.overviewWeather.region.code))
+//                    self.getExtraWeather(code: String(response.overviewWeather.region.code))
                 }
             case .requestErr(let msg):
                 print(msg)

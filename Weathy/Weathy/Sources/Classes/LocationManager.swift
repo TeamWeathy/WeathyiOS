@@ -23,7 +23,6 @@ class LocationManager: NSObject {
 
     // FIXME: - info.plist에 Desc 문구 변경
     func startUpdateLocation() {
-        print("까꿍")
         let authorization = CLLocationManager.authorizationStatus()
         if authorization != .authorizedAlways, authorization != .authorizedWhenInUse {
             locationManager.requestWhenInUseAuthorization()

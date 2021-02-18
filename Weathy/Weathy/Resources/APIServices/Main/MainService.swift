@@ -32,7 +32,7 @@ struct MainService {
     // MARK: - Network
     
     // /weather/overview?lat={latitude}&lon={longitude}&code={code}&date={date}
-    func getWeatherByLocation(code: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+    func getWeatherByLocation(completion: @escaping (NetworkResult<Any>) -> Void) {
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
         
@@ -143,7 +143,8 @@ struct MainService {
     }
     
     // MARK: - Judge func
-    
+
+    // FIXME: - status 204 추가 처리 필요
     private func judgeWeatherByLocationData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(LocationWeatherData.self, from: data) else { return .pathErr }

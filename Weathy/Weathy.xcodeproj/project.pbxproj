@@ -117,6 +117,7 @@
 		AB4E1C9525A9ED4C002F3B79 /* WeeklyWeatherCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C9425A9ED4C002F3B79 /* WeeklyWeatherCVC.swift */; };
 		AB4E1C9F25AA0BB5002F3B79 /* ExtraWeatherCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E1C9E25AA0BB5002F3B79 /* ExtraWeatherCVC.swift */; };
 		AB9183C725B0B7BE00C3B022 /* DailyWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9183C625B0B7BE00C3B022 /* DailyWeatherData.swift */; };
+		ABB84F7125DC2368000D2BFB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB84F7025DC2368000D2BFB /* LocationManager.swift */; };
 		ABBA9CA225A2217F008785BD /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA9CA125A2217F008785BD /* MainVC.swift */; };
 		ABBA9CA925A22254008785BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABBA9CA825A22254008785BD /* Main.storyboard */; };
 		ABBA9CAF25A22C93008785BD /* MainTopCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA9CAE25A22C93008785BD /* MainTopCVC.swift */; };
@@ -238,6 +239,7 @@
 		AB4E1C9425A9ED4C002F3B79 /* WeeklyWeatherCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWeatherCVC.swift; sourceTree = "<group>"; };
 		AB4E1C9E25AA0BB5002F3B79 /* ExtraWeatherCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraWeatherCVC.swift; sourceTree = "<group>"; };
 		AB9183C625B0B7BE00C3B022 /* DailyWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherData.swift; sourceTree = "<group>"; };
+		ABB84F7025DC2368000D2BFB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		ABBA9CA125A2217F008785BD /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainVC.swift; path = Weathy/Sources/VCs/Main/MainVC.swift; sourceTree = SOURCE_ROOT; };
 		ABBA9CA825A22254008785BD /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ABBA9CAE25A22C93008785BD /* MainTopCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTopCVC.swift; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 				63DEB263259CD4AD00A94488 /* DummyClass.swift */,
 				63D3C53825A4A57500E5FDFE /* SpacedLabel.swift */,
 				634DBF5225C3E8F2002A72DA /* WeathyPopupView.swift */,
+				ABB84F7025DC2368000D2BFB /* LocationManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -989,6 +992,7 @@
 				3735AE2F25A8EA4300E71DC3 /* UILabel+Extension.swift in Sources */,
 				37222E7625AFAA4700577FEE /* RecordWeathyData.swift in Sources */,
 				37222E7025AFA09000577FEE /* UIViewController+Extension.swift in Sources */,
+				ABB84F7125DC2368000D2BFB /* LocationManager.swift in Sources */,
 				0E8C005925A2F64900A31295 /* AskForVC.swift in Sources */,
 				6354ED9325AE0B0300C5CAC5 /* CalendarVC.swift in Sources */,
 				63DEB264259CD4AD00A94488 /* DummyClass.swift in Sources */,
