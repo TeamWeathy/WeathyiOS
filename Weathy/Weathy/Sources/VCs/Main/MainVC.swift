@@ -264,7 +264,7 @@ class MainVC: UIViewController {
     
     func setMainTopViewByData(data: LocationWeatherData) {
         // background 설정
-        let iconId = data.overviewWeather.hourlyWeather.climate.iconID
+        let iconId = data.overviewWeather.hourlyWeather.climate.iconId
         mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
         topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
 
@@ -471,8 +471,8 @@ class MainVC: UIViewController {
         if let hourlyData = notiData.object as? OverviewWeatherList {
             deliveredSearchData = hourlyData
             
-            let iconId: Int = hourlyData.hourlyWeather.climate.iconID
-            let locationCode = String(hourlyData.region.code)
+            let iconId: Int = hourlyData.hourlyWeather.climate.iconId
+            let locationCode: String = String(hourlyData.region.code)
             
             mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
             topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))

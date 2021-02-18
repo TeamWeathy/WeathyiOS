@@ -21,7 +21,7 @@ class CalendarDetailVC: UIViewController {
     var blurView = UIView()
     var selectedDate = Date()
     var calendarVC: CalendarVC!
-    var dailyWeathy: CalendarWeathy?
+    var dailyWeathy: WeathyClass?
     var isModified = false
     var defaultDateFormatter = DateFormatter()
     
@@ -80,7 +80,7 @@ class CalendarDetailVC: UIViewController {
         selectedDateDidChange(nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recordChanged(_:)), name: NSNotification.Name(rawValue: "RecordUpdated"), object: nil)
-        //        initGestureRecognizer()
+                initGestureRecognizer()
         
     }
     
@@ -206,7 +206,7 @@ class CalendarDetailVC: UIViewController {
     }
     
     
-    func insertSeparatorInArray(_ arr: [Clothe]) -> String {
+    func insertSeparatorInArray(_ arr: [Clothes]) -> String {
         return arr.map({ (val) -> String in
             "\(val.name)"
         }).joined(separator: " ・ ")
@@ -268,7 +268,7 @@ class CalendarDetailVC: UIViewController {
         DailyWeathyService.shared.getDailyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let data):
-                    if let dailyData = data as? CalendarWeathy{
+                    if let dailyData = data as? WeathyClass{
                         print("[Daily]",dailyData)
                         self.dailyWeathy = dailyData
                         self.setData()
@@ -390,13 +390,11 @@ class CalendarDetailVC: UIViewController {
 
 extension CalendarDetailVC{
     func gestureRecognizer(_ gestrueRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if (touch.view?.isDescendant(of: self.moreMenuView))! {
+        if (touch.view?.isDescendant(of: self.moreMenuView))! == false && (touch.view?.isDescendant(of: self.calendarVC.view))! == false{
             
             return true
         }
-        if (touch.view?.isDescendant(of: self.calendarVC.calendarDrawerView))!{
-            return true
-        }
+
         return false
     }
 }

@@ -36,14 +36,14 @@ class TimezoneWeatherCVC: UICollectionViewCell {
         temperatureLabel.characterSpacing = -0.8
     }
     
-    func setTimezoneWeatherData(hourlyData: MainHourlyWeather, idx: Int) {
+    func setTimezoneWeatherData(hourlyData: HourlyWeather, idx: Int) {
         if let time = hourlyData.time,
            let temp = hourlyData.temperature {
             timeLabel.alpha = 1
             timeLabel.text = "\(time)"
             temperatureLabel.text = "\(temp)°"
         }
-        climateImage.image = UIImage(named: ClimateImage.getClimateAssetName(hourlyData.climate.iconID))
+        climateImage.image = UIImage(named: ClimateImage.getClimateAssetName(hourlyData.climate.iconId))
         popLabel.text = "\(hourlyData.pop)%"
         
         if (idx == 0) {

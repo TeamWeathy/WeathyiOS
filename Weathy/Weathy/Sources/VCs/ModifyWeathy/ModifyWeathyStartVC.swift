@@ -11,7 +11,7 @@ class ModifyWeathyStartVC: UIViewController {
 
     //MARK: - Custom Variables
     
-    var weathyData: CalendarWeathy?
+    var weathyData: WeathyClass?
     var dateString: String = "0000-00-00"
     
     var todayMonth: Int = 1
@@ -94,7 +94,7 @@ class ModifyWeathyStartVC: UIViewController {
 
         boxTimeLabel.text = "\(searchInfo.dailyWeather.date.month)월 \(searchInfo.dailyWeather.date.day)일 \(searchInfo.dailyWeather.date.dayOfWeek)"
         boxLocationLabel.text = searchInfo.region.name
-        boxWeatherImageView.image = UIImage(named:   ClimateImage.getClimateSearchIllust(searchInfo.hourlyWeather.climate.iconID))
+        boxWeatherImageView.image = UIImage(named:   ClimateImage.getClimateSearchIllust(searchInfo.hourlyWeather.climate.iconId))
         maxTempLabel.text = "\(searchInfo.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(searchInfo.dailyWeather.temperature.minTemp)°"
         print("---> 뭐야 \(searchInfo)")
