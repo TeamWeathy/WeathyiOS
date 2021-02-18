@@ -84,10 +84,10 @@ class MainTopCVC: UICollectionViewCell {
             todayWeathyNicknameTextLabel.text = "\(nickname)님이 기억하는"
         }
 
-        closetTopLabel.text = insertSeparatorInArray(data.weathy.closet.top.clothes)
-        closetOuterLabel.text = insertSeparatorInArray(data.weathy.closet.outer.clothes)
-        closetBottomLabel.text = insertSeparatorInArray(data.weathy.closet.bottom.clothes)
-        closetEtcLabel.text = insertSeparatorInArray(data.weathy.closet.etc.clothes)
+//        closetTopLabel.text = insertSeparatorInArray(data.weathy.closet.top.clothes)
+//        closetOuterLabel.text = insertSeparatorInArray(data.weathy.closet.outer.clothes)
+//        closetBottomLabel.text = insertSeparatorInArray(data.weathy.closet.bottom.clothes)
+//        closetEtcLabel.text = insertSeparatorInArray(data.weathy.closet.etc.clothes)
         
         if let year: Int = data.weathy.dailyWeather.date.year {
             let month: Int = data.weathy.dailyWeather.date.month
@@ -106,13 +106,7 @@ class MainTopCVC: UICollectionViewCell {
         weathyStampLabel.text = Emoji.getEmojiText(stampId: data.weathy.stampId)
         weathyStampLabel.textColor = Emoji.getEmojiTextColor(stampId: data.weathy.stampId)
     }
-        
-    func insertSeparatorInArray(_ arr: [Clothes]) -> String {
-        return arr.map({ (val) -> String in
-            "\(val.name)"
-        }).joined(separator: " ・ ")
-    }
-    
+            
     func blankDownImage() {
         UIView.animate(withDuration: 1.0, delay: 0, options: [.autoreverse, .repeat], animations: {
             self.downImage.alpha = 0

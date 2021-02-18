@@ -86,27 +86,21 @@ class MainVC: UIViewController {
     
     // FIXME: - LocationManager NicknameVC로 이전
     override func viewWillAppear(_ animated: Bool) {
-//        UserDefaults.standard.setValue("1141000000", forKey: "locationCode")
         print(UserDefaults.standard.value(forKey: "token"))
         print(UserDefaults.standard.value(forKey: "locationLat"))
         print(UserDefaults.standard.value(forKey: "locationLon"))
-        LocationManager.shared.startUpdateLocation()
-
-        if let location = UserDefaults.standard.string(forKey: "locationCode") {
-            // search에서 넘어온 데이터가 없는 경우에만 서버 통신
-            if deliveredSearchData == nil {
-                getLocationWeather(code: location)
-            } else {
-                print("#")
-//                defaultLocationFlag = false
-            }
-        }
-//        if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-//            topCVC.todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
-//        }
         
-        print(UserDefaults.standard.value(forKey: "locationLon"))
-        print(UserDefaults.standard.value(forKey: "locationLat"))
+//        LocationManager.shared.startUpdateLocation()
+
+        if deliveredSearchData == nil {
+            getLocationWeather()
+        } else {
+            print("#")
+        }
+
+        if let nickname = UserDefaults.standard.string(forKey: "nickname") {
+            todayWeathyNicknameLabel.text = "\(nickname)님이 기억하는"
+        }
     }
     
     override func viewDidLoad() {
@@ -118,6 +112,7 @@ class MainVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
     }
     
+    // FIXME: - 하단 탭바 높이 계산하기
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
 
@@ -147,34 +142,28 @@ class MainVC: UIViewController {
         
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
-//        todayDateTimeLabel.text = "\(data.overviewWeather.dailyWeather.date.month)월 \(data.overviewWeather.dailyWeather.date.day)일 \(data.overviewWeather.dailyWeather.date.dayOfWeek) • \(data.overviewWeather.hourlyWeather.time!)"
-        todayDateTimeLabel.text = "2월 14일 월요일 • 오후 9시"
         todayDateTimeLabel.characterSpacing = -0.75
 
         // top weathy view
         closetTopLabel.font = UIFont.SDGothicRegular13
         closetTopLabel.textColor = UIColor.black
         closetTopLabel.characterSpacing = -0.65
-        closetTopLabel.text = "상의 • 냐옹.."
 
         closetOuterLabel.font = UIFont.SDGothicRegular13
         closetOuterLabel.textColor = UIColor.black
         closetOuterLabel.characterSpacing = -0.65
-        closetOuterLabel.text = "상의 • 냐옹.."
 
         closetBottomLabel.font = UIFont.SDGothicRegular13
         closetBottomLabel.textColor = UIColor.black
         closetBottomLabel.characterSpacing = -0.65
-        closetBottomLabel.text = "상의 • 냐옹.."
         
         closetEtcLabel.font = UIFont.SDGothicRegular13
         closetEtcLabel.textColor = UIColor.black
         closetEtcLabel.characterSpacing = -0.65
-        closetEtcLabel.text = "상의 • 냐옹.."
 
         todayWeathyNicknameLabel.font = UIFont.SDGothicRegular16
         todayWeathyNicknameLabel.characterSpacing = -0.8
-        todayWeathyNicknameLabel.text = "이내옹님이 기억하는"
+        todayWeathyNicknameLabel.text = "님이 기억하는"
 
         todayWeathyView.makeRounded(cornerRadius: 35)
         todayWeathyView.dropShadow(color: UIColor(red: 44/255, green: 82/255, blue: 128/255, alpha: 1), offSet: CGSize(width: 0, height: 10), opacity: 0.21, radius: 50)
@@ -182,52 +171,42 @@ class MainVC: UIViewController {
         locationLabel.font = UIFont.SDGothicSemiBold20
         locationLabel.textColor = UIColor.mainGrey
         locationLabel.characterSpacing = -1.0
-        locationLabel.text = "서울특별시 서대문구"
 
         currTempLabel.font = UIFont.RobotoLight50
         currTempLabel.textColor = UIColor.subGrey1
         currTempLabel.characterSpacing = -2.5
-        currTempLabel.text = "23°"
 
         maxTempLabel.font = UIFont.RobotoLight23
         maxTempLabel.textColor = UIColor.redTemp
         maxTempLabel.characterSpacing = -1.15
-        maxTempLabel.text = "-4°"
         
         minTempLabel.font = UIFont.RobotoLight23
         minTempLabel.textColor = UIColor.blueTemp
         minTempLabel.characterSpacing = -1.15
-        maxTempLabel.text = "4°"
 
         climateLabel.font = UIFont.SDGothicRegular16
         climateLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.58)
         climateLabel.characterSpacing = -0.8
-        climateLabel.text = "조금 흐리지만\n햇살이 따스해요 :)"
         
         weathyDateLabel.font = UIFont.SDGothicRegular13
         weathyDateLabel.textColor = UIColor.subGrey6
         weathyDateLabel.characterSpacing = -0.65
-        weathyDateLabel.text = "2021년 2월 14일"
         
         weathyClimateLabel.font = UIFont.SDGothicMedium15
         weathyClimateLabel.textColor = UIColor.subGrey1
         weathyClimateLabel.characterSpacing = -0.75
-        weathyClimateLabel.text = "구름조금"
 
         weathyMaxTempLabel.textColor = UIColor.redTemp
         weathyMaxTempLabel.font = UIFont.RobotoLight30
         weathyMaxTempLabel.characterSpacing = -1.5
-        weathyMaxTempLabel.text = "4°"
 
         weathyMinTempLabel.textColor = UIColor.blueTemp
         weathyMinTempLabel.font = UIFont.RobotoLight30
         weathyMinTempLabel.characterSpacing = -1.5
-        weathyMinTempLabel.text = "-4°"
 
         weathyStampLabel.font = UIFont.SDGothicSemiBold23
         weathyStampLabel.textColor = UIColor.imojiColdText
         weathyStampLabel.characterSpacing = -1.15
-        weathyStampLabel.text = "추웠어요"
         
         gpsButton.contentMode = .scaleAspectFit
         
@@ -262,7 +241,7 @@ class MainVC: UIViewController {
         mainBottomView.layoutIfNeeded()
     }
     
-    func setMainTopViewByData(data: LocationWeatherData) {
+    func changeMainTopWeatherData(data: LocationWeatherData) {
         // background 설정
         let iconId = data.overviewWeather.hourlyWeather.climate.iconId
         mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
@@ -276,11 +255,7 @@ class MainVC: UIViewController {
         } else if iconId % 100 == 10 {
             fallingRain()
         }
-                
-//        weatherCollectionView.backgroundColor = .clear
-//        weatherCollectionView.isPagingEnabled = true
-//        weatherCollectionView.decelerationRate = .fast
-        
+
         // navigation bar
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
@@ -289,28 +264,70 @@ class MainVC: UIViewController {
         
 //        logoImage.frame.origin.y -= 100
 //        logoImage.alpha = 0
+        
+        locationLabel.text = "\(data.overviewWeather.region.name)"
+        currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature!)°"
+        maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
+        minTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.minTemp)°"
+        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconId))
+        
+        if let desc = data.overviewWeather.hourlyWeather.climate.description {
+            climateLabel.text = "\(desc)"
+        }
     }
     
-    func getLocationWeather(code: String) {
+    func changeWeathyViewData(data: RecommendedWeathyData) {
+        closetTopLabel.text = insertSeparatorInArray(data.weathy.closet.top.clothes)
+        closetOuterLabel.text = insertSeparatorInArray(data.weathy.closet.outer.clothes)
+        closetBottomLabel.text = insertSeparatorInArray(data.weathy.closet.bottom.clothes)
+        closetEtcLabel.text = insertSeparatorInArray(data.weathy.closet.etc.clothes)
+        
+        if let year: Int = data.weathy.dailyWeather.date.year {
+            let month: Int = data.weathy.dailyWeather.date.month
+            let day: Int = data.weathy.dailyWeather.date.day
+            weathyDateLabel.text = "\(year)년 \(month)월 \(day)일"
+        }
+        
+        weathyClimateImage.image = UIImage(named: ClimateImage.getClimateAssetName(data.weathy.hourlyWeather.climate.iconId))
+        if let climateDesc = data.weathy.hourlyWeather.climate.description {
+            weathyClimateLabel.text = "\(climateDesc)"
+        }
+        weathyMaxTempLabel.text = "\(data.weathy.dailyWeather.temperature.maxTemp)°"
+        weathyMinTempLabel.text = "\(data.weathy.dailyWeather.temperature.minTemp)°"
+        
+        weathyStampImage.image = UIImage(named: Emoji.getEmojiImageAsset(stampId: data.weathy.stampId))
+        weathyStampLabel.text = Emoji.getEmojiText(stampId: data.weathy.stampId)
+        weathyStampLabel.textColor = Emoji.getEmojiTextColor(stampId: data.weathy.stampId)
+    }
+    
+    func changeWeatherViewBySearchData(data: OverviewWeatherList) {
+        locationLabel.text = "\(data.region.name)"
+        currTempLabel.text = "\(data.hourlyWeather.temperature)°"
+        maxTempLabel.text = "\(data.dailyWeather.temperature.maxTemp)°"
+        minTempLabel.text = "\(data.dailyWeather.temperature.minTemp)°"
+        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.hourlyWeather.climate.iconId))
+        if let description = data.hourlyWeather.climate.description {
+            climateLabel.text = "\(description)"
+        }
+    }
+
+    func getLocationWeather() {
         MainService.shared.getWeatherByLocation { (result) -> Void in
             switch result {
             case .success(let data):
                 if let response = data as? LocationWeatherData {
                     self.locationWeatherData = response
-                    self.setMainTopViewByData(data: response)
                     self.appDelegate?.overviewData = response.overviewWeather
-//                    if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-//                        topCVC.changeWeatherViewData(data: self.locationWeatherData!)
-//                    }
-
-                    print(response)
-                    print("server========")
+                    let regionCode = String(response.overviewWeather.region.code)
+                    
                     UserDefaults.standard.setValue(response.overviewWeather.region.code, forKey: "locationCode")
                     
-//                    self.getRecommendedWeathy(code: String(response.overviewWeather.region.code))
-//                    self.getHourlyWeather(code: String(response.overviewWeather.region.code))
-//                    self.getDailyWeather(code: String(response.overviewWeather.region.code))
-//                    self.getExtraWeather(code: String(response.overviewWeather.region.code))
+                    self.changeMainTopWeatherData(data: response)
+                    
+                    self.getRecommendedWeathy(code: regionCode)
+                    self.getHourlyWeather(code: regionCode)
+                    self.getDailyWeather(code: regionCode)
+                    self.getExtraWeather(code: regionCode)
                 }
             case .requestErr(let msg):
                 print(msg)
@@ -332,18 +349,13 @@ class MainVC: UIViewController {
             case .success(let data):
                 if let response = data as? RecommendedWeathyData {
                     self.recommenedWeathyData = response
-                    
-                    if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-                        topCVC.changeWeathyViewData(data: self.recommenedWeathyData!)
-                    }
+                    self.changeWeathyViewData(data: response)
                 }
             case .requestErr(let msg):
                 print(msg)
             case .pathErr, .serverErr, .networkFail:
                 print("No Recommended Data")
-                if let topCVC = self.weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-                    topCVC.showEmptyView()
-                }
+                self.showEmptyView()
             }
         }
     }
@@ -354,6 +366,7 @@ class MainVC: UIViewController {
             case .success(let data):
                 if let response = data as? HourlyWeatherData {
                     self.hourlyWeatherData = response
+                    self.timeZoneWeatherCollectionView.reloadData()
                 }
             case .requestErr(let msg):
                 print(msg)
@@ -373,6 +386,7 @@ class MainVC: UIViewController {
             case .success(let data):
                 if let response = data as? DailyWeatherData {
                     self.dailyWeatherData = response
+                    self.weeklyWeatherCollectionView.reloadData()
                 }
             case .requestErr(let msg):
                 print(msg)
@@ -392,6 +406,7 @@ class MainVC: UIViewController {
             case .success(let data):
                 if let response = data as? ExtraWeatherData {
                     self.extraWeatherData = response
+                    self.extraWeatherCollectionView.reloadData()
                 }
             case .requestErr(let msg):
                 print(msg)
@@ -472,7 +487,7 @@ class MainVC: UIViewController {
             deliveredSearchData = hourlyData
             
             let iconId: Int = hourlyData.hourlyWeather.climate.iconId
-            let locationCode: String = String(hourlyData.region.code)
+            let locationCode = String(hourlyData.region.code)
             
             mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
             topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
@@ -483,23 +498,38 @@ class MainVC: UIViewController {
                 fallingRain()
             }
             
-//            self.getRecommendedWeathy(code: locationCode)
-//            self.getHourlyWeather(code: locationCode)
-//            self.getDailyWeather(code: locationCode
-//            self.getExtraWeather(code: locationCode)
+            getRecommendedWeathy(code: locationCode)
+            getHourlyWeather(code: locationCode)
+            getDailyWeather(code: locationCode)
+            getExtraWeather(code: locationCode)
             
-            if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-                topCVC.locationLabel.text = hourlyData.region.name
-//                topCVC.changeWeatherViewData(data: self.locationWeatherData!)
-                topCVC.changeWeatherViewBySearchData(data: hourlyData)
-                topCVC.gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
-//                topCVC.defaultLocationFlag = false
-            }
+            locationLabel.text = hourlyData.region.name
+            changeWeatherViewBySearchData(data: hourlyData)
+            gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
+            
+//            if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
+//                topCVC.locationLabel.text = hourlyData.region.name
+            ////                topCVC.changeWeatherViewData(data: self.locationWeatherData!)
+//                topCVC.changeWeatherViewBySearchData(data: hourlyData)
+//                topCVC.gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
+            ////                topCVC.defaultLocationFlag = false
+//            }
             
 //            self.weatherCollectionView.reloadData()
         }
     }
     
+    func insertSeparatorInArray(_ arr: [Clothes]) -> String {
+        arr.map { (val) -> String in
+            "\(val.name)"
+        }.joined(separator: " ・ ")
+    }
+
+    func showEmptyView() {
+        emptyImage.image = UIImage(named: "main_img_empty")
+        emptyImage.alpha = 1
+    }
+
     func viewScrollUp() {
         timeZoneCenterY.constant = UIScreen.main.bounds.height
         weeklyCenterY.constant = UIScreen.main.bounds.height
