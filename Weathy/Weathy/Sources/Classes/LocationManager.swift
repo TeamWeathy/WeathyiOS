@@ -15,19 +15,17 @@ class LocationManager: NSObject {
 
     override init() {
         locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.distanceFilter = 1500.0 // 해당 거리 이상 위치 변화가 생겼을 때 알림을 받음
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 3000 // 해당 거리 이상 위치 변화가 생겼을 때 알림을 받음
         super.init()
         locationManager.delegate = self
     }
 
     // FIXME: - info.plist에 Desc 문구 변경
     func startUpdateLocation() {
-        locationManager.requestLocation()
-
+        print("까꿍")
         let authorization = CLLocationManager.authorizationStatus()
-        if authorization != .authorizedAlways || authorization != .authorizedWhenInUse {
-//            locationManager.requestAlwaysAuthorization()
+        if authorization != .authorizedAlways, authorization != .authorizedWhenInUse {
             locationManager.requestWhenInUseAuthorization()
         }
 

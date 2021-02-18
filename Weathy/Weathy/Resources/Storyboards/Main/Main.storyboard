@@ -24,6 +24,7 @@
         <!--View Controller-->
         <scene sceneID="Z95-PQ-6Nz">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iEt-IS-0JS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="7lR-3u-MGA" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r4u-tI-w3d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -877,7 +878,6 @@
                         </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iEt-IS-0JS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="182.60869565217394" y="35.491071428571423"/>
         </scene>

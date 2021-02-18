@@ -99,14 +99,15 @@ class MainVC: UIViewController {
 //        if let topCVC = weatherCollectionView.cellForItem(at: [0,0]) as? MainTopCVC{
 //            topCVC.todayWeathyNicknameTextLabel.text = "\(UserDefaults.standard.string(forKey: "nickname")!)님이 기억하는"
 //        }
-        LocationManager.shared.startUpdateLocation()
         
         print(UserDefaults.standard.value(forKey: "locationLon"))
         print(UserDefaults.standard.value(forKey: "locationLat"))
     }
     
+    // FIXME: - LocationManager NicknameVC로 이전
     override func viewDidLoad() {
         super.viewDidLoad()
+        LocationManager.shared.startUpdateLocation()
         
         initMainTopView()
         initMainBottomView()
