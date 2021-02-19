@@ -148,6 +148,9 @@ class MainVC: UIViewController {
         todayDateTimeLabel.characterSpacing = -0.75
 
         // top weathy view
+        let weathyViewTabGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpTodayWeathyView))
+        todayWeathyView.addGestureRecognizer(weathyViewTabGesture)
+
         closetTopLabel.font = UIFont.SDGothicRegular13
         closetTopLabel.textColor = UIColor.black
         closetTopLabel.characterSpacing = -0.65
@@ -656,6 +659,12 @@ class MainVC: UIViewController {
             
             isOnGPS = true
             gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
+        }
+    }
+    
+    @objc func touchUpTodayWeathyView() {
+        if emptyImage.alpha == 1 {
+            print("터치 되는 것..")
         }
     }
 }
