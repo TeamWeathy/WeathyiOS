@@ -251,6 +251,7 @@ class MainVC: UIViewController {
         searchImage = ClimateImage.getClimateMainBgName(iconId)
         searchGradient = ClimateImage.getSearchClimateMainBlurBarName(iconId)
         
+        removeFlakeEmitterCell()
         if iconId % 100 == 13 {
             fallingSnow()
         } else if iconId % 100 == 10 {
@@ -491,6 +492,7 @@ class MainVC: UIViewController {
         }
     }
     
+    // FIXME: - changeMainTopView func랑 합칠 수 있을 것 같음
     @objc func setSearchData(_ notiData: NSNotification) {
         if let hourlyData = notiData.object as? OverviewWeatherList {
             deliveredSearchData = hourlyData
@@ -501,6 +503,7 @@ class MainVC: UIViewController {
             mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
             topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
             
+            removeFlakeEmitterCell()
             if iconId % 100 == 13 {
                 fallingSnow()
             } else if iconId % 100 == 10 {
