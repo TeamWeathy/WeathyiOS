@@ -15,6 +15,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     let calendarHeight = 522*UIScreen.main.bounds.width/375
     let weeklyHeight = UIScreen.main.bounds.height*257/812 + 30
     let monthlyHeight = UIScreen.main.bounds.height*704/812 + 30
+    let yearMonthDateFormatter = DateFormatter()
     var isCovered = false
     var panGesture = UIPanGestureRecognizer()
     var tapGesture = UITapGestureRecognizer()
@@ -49,6 +50,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDateFormatter()
         setMonthList()
         initDate()
         initPicker()
@@ -72,15 +74,17 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
 
     //MARK: - Custom Methods
+    
+    func setDateFormatter(){
+        yearMonthDateFormatter.dateFormat = "yyyy.MM"
+    }
     func setMonthList(){
-        infiniteMonthList = [Date()]
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM"
-        var currentMonth = Date()
+        infiniteMonthList = []
+        var currentMonth = yearMonthDateFormatter.date(from: Date().currentYearMonth)!
         var lastMonth = Date()
         for _ in 0..<50{
-            lastMonth = dateFormatter.date(from: currentMonth.lastYearMonth)!
-            infiniteMonthList.insert(lastMonth, at: 0)
+            infiniteMonthList.insert(currentMonth, at: 0)
+            lastMonth = yearMonthDateFormatter.date(from: currentMonth.lastYearMonth)!
             currentMonth = lastMonth
         }
         print("infinite",infiniteMonthList)
@@ -208,19 +212,19 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         picker.date = selectedDate
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: "ChangeDate"),object: selectedDate)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.dateFormat = "yyyy.MM"
-        yearMonthTextView.text = dateFormatter.string(from: selectedDate)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .none
+//        dateFormatter.dateFormat = "yyyy.MM"
+        yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
         var nextComponent = DateComponents()
         nextComponent.day = 7
         var lastComponent = DateComponents()
         lastComponent.day = -7
         nextWeekDate = Calendar.current.date(byAdding: nextComponent, to: selectedDate)
         lastWeekDate = Calendar.current.date(byAdding: lastComponent, to: selectedDate)
-        nextMonthDate = dateFormatter.date(from: selectedDate.nextYearMonth)
-        lastMonthDate = dateFormatter.date(from:selectedDate.lastYearMonth)!
-        lastlastMonthDate = dateFormatter.date(from:lastMonthDate.lastYearMonth)!
+        nextMonthDate = yearMonthDateFormatter.date(from: selectedDate.nextYearMonth)
+        lastMonthDate = yearMonthDateFormatter.date(from:selectedDate.lastYearMonth)!
+        lastlastMonthDate = yearMonthDateFormatter.date(from:lastMonthDate.lastYearMonth)!
         
 
 //            self.infiniteMonthlyCV.reloadData()
@@ -354,8 +358,12 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             if velocity.y>0{
                 
                 self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: monthlyHeight)
+//                print("@@",infiniteMonthList)
+//                print("@@",self.yearMonthDateFormatter.date(from: self.selectedDate.currentYearMonth)!)
+//                infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
+//                                                        self.infiniteMonthlyCV.contentOffset.x = 0})
                 infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
-                                                        self.infiniteMonthlyCV.contentOffset.x = self.calendarWidth*CGFloat((self.infiniteMonthList.count - 1))})
+                                                        self.infiniteMonthlyCV.contentOffset.x = self.calendarWidth*CGFloat(self.infiniteMonthList.lastIndex(of: self.yearMonthDateFormatter.date(from: self.selectedDate.currentYearMonth)!)!)})
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
                                 self.view.layoutIfNeeded()
 //                    self.shadowView.layoutIfNeeded()
@@ -572,12 +580,13 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             }
             else{
                 let currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
+                print("index",currentIndex)
                 yearMonthTextView.text = infiniteMonthList[currentIndex].currentYearMonth
                 if scrollDirection == .left{
-                    selectedDate = lastMonthDate
+                    selectedDate = infiniteMonthList[currentIndex]
                 }
                 else if scrollDirection == .right{
-                    selectedDate = nextMonthDate
+                    selectedDate = infiniteMonthList[currentIndex]
                 }
                 selectedDateDidChange()
                 CATransaction.begin()
