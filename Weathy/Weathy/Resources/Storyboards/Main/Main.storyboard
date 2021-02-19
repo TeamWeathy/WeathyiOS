@@ -24,7 +24,6 @@
         <!--View Controller-->
         <scene sceneID="Z95-PQ-6Nz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iEt-IS-0JS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="7lR-3u-MGA" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r4u-tI-w3d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -878,6 +877,7 @@
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iEt-IS-0JS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="182.60869565217394" y="35.491071428571423"/>
         </scene>
@@ -916,6 +916,9 @@
                                                                                     <constraint firstAttribute="width" secondItem="hfN-ac-zVr" secondAttribute="height" multiplier="1:1" id="zWF-b2-9dW"/>
                                                                                 </constraints>
                                                                                 <state key="normal" image="ic_gps_shadow"/>
+                                                                                <connections>
+                                                                                    <action selector="touchUpGPSButton:" destination="gGb-en-9sE" eventType="touchUpInside" id="dgm-WJ-kuZ"/>
+                                                                                </connections>
                                                                             </button>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 서울시 도봉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLZ-w0-sYy" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                                                 <rect key="frame" x="69" y="0.0" width="82.333333333333314" height="47"/>

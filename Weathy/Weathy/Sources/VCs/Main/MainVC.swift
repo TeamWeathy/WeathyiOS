@@ -13,6 +13,9 @@ class MainVC: UIViewController {
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var lastContentOffset: CGFloat = 0.0
     
+    // gps 버튼 활성화 여부
+    var isOnGPS: Bool = false
+    
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
     var hourlyWeatherData: HourlyWeatherData?
@@ -274,6 +277,10 @@ class MainVC: UIViewController {
         if let desc = data.overviewWeather.hourlyWeather.climate.description {
             climateLabel.text = "\(desc)"
         }
+        
+        // gps
+        isOnGPS = true
+        gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
     }
     
     func changeWeathyViewData(data: RecommendedWeathyData) {
@@ -505,6 +512,9 @@ class MainVC: UIViewController {
             
             locationLabel.text = hourlyData.region.name
             changeWeatherViewBySearchData(data: hourlyData)
+            
+            // gps
+            isOnGPS = false
             gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
             
 //            if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
@@ -638,6 +648,15 @@ class MainVC: UIViewController {
         mainTopScrollView.isScrollEnabled = true
 
         helpButton.isUserInteractionEnabled = true
+    }
+    
+    @IBAction func touchUpGPSButton(_ sender: Any) {
+        if !isOnGPS {
+            getLocationWeather()
+            
+            isOnGPS = true
+            gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
+        }
     }
 }
 
