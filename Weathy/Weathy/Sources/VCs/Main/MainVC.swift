@@ -102,6 +102,8 @@ class MainVC: UIViewController {
         if let nickname = UserDefaults.standard.string(forKey: "nickname") {
             todayWeathyNicknameLabel.text = "\(nickname)님이 기억하는"
         }
+        
+        blankDownImage()
     }
     
     override func viewDidLoad() {
@@ -134,6 +136,7 @@ class MainVC: UIViewController {
         mainScrollView.isPagingEnabled = true
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
+        mainTopScrollView.showsVerticalScrollIndicator = false
         
         logoImage.frame.origin.y += 100
         logoImage.alpha = 0
@@ -571,6 +574,13 @@ class MainVC: UIViewController {
             
             self.mainBottomView.layoutIfNeeded()
         })
+    }
+    
+    func blankDownImage() {
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.autoreverse, .repeat], animations: {
+            self.downImage.alpha = 0
+            self.downImage.alpha = 1
+        }, completion: nil)
     }
     
     // MARK: - IBActions
