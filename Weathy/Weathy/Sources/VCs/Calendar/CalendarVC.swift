@@ -19,7 +19,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     let dayDateFormatter: DateFormatter = DateFormatter()
     var isCovered = false
     var panGesture = UIPanGestureRecognizer()
-    var tapGesture = UITapGestureRecognizer()
     var picker = UIDatePicker()
     var pickerSelectedYear: Int!
     var pickerSelectedMonth: Int!
@@ -165,10 +164,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     func setGesture(){
         panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(panGestureHandler))
-        tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tapGestureHandler))
-//        tapGesture.delegate = self
         self.calendarDrawerView.addGestureRecognizer(panGesture)
-//        self.view.addGestureRecognizer(tapGesture)
     }
     
     ///initPicker
@@ -367,22 +363,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
 
     }
     
-    @objc func tapGestureHandler(recognizer: UITapGestureRecognizer){
-//        print("tapped")
-        if isCovered == true{
-//            print("covered and tapped")
-            self.view.frame = CGRect(x: 0, y: 0, width: self.screen.width, height: weeklyHeight)
-            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
-            UIView.animate(withDuration: 0.3){
-                self.infiniteMonthlyCV.alpha = 0
-                self.infiniteWeeklyCV.alpha = 1
-            }
-            
-            
-        }
-        
-        
-    }
     @objc func panGestureHandler(recognizer: UIPanGestureRecognizer){
         let translation = recognizer.translation(in: calendarDrawerView)
         let height = self.view.frame.maxY
@@ -393,10 +373,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             if velocity.y>0{
                 
                 self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: monthlyHeight)
-//                print("@@",infiniteMonthList)
-//                print("@@",self.yearMonthDateFormatter.date(from: self.selectedDate.currentYearMonth)!)
-//                infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
-//                                                        self.infiniteMonthlyCV.contentOffset.x = 0})
                 infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
                                                         self.infiniteMonthlyCV.contentOffset.x = self.calendarWidth*CGFloat(self.infiniteMonthList.lastIndex(of: self.yearMonthDateFormatter.date(from: self.selectedDate.currentYearMonth)!)!)})
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
@@ -421,7 +397,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
                 var firstComponent = DateComponents()
                 firstComponent.day = -selectedDate.weekday
                 var firstDateOfWeek = Calendar.current.date(byAdding: firstComponent, to: selectedDate)
-                print("##",infiniteWeekList)
                 for i in 0..<100{
                     if infiniteWeekList[i].currentYearMonth == firstDateOfWeek?.currentYearMonth{
                         if infiniteWeekList[i].day == firstDateOfWeek?.day{
@@ -502,29 +477,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         
     }
     
-}
-
-//MARK: - UIGestureRecognizer Delegate
-
-extension CalendarVC{
-//    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-//        if gestureRecognizer == self.tapGesture{
-//            if touch.view?.isDescendant(of: self.view) == true{
-////                print("self.view is touched")
-//            }
-//            if touch.view?.isDescendant(of: self.calendarDrawerView) == true{
-////                print("calendarDrawerView is touched")
-//                return false
-//            }
-//            else{
-//                return true
-//            }
-//        }
-//        return false
-//    }
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
 }
 
 //MARK: - UICollectionViewDelegate
