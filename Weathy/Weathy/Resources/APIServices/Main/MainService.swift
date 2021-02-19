@@ -22,8 +22,8 @@ struct MainService {
     init() {
         currDate = Date()
         
-        lat = 37.59311236609
-        lon = 126.9501814612
+        lat = 37.58656507040886
+        lon = 126.9748217266802
         
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy-MM-dd"

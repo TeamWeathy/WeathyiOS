@@ -90,8 +90,8 @@ class MainVC: UIViewController {
         print(UserDefaults.standard.value(forKey: "locationLat"))
         print(UserDefaults.standard.value(forKey: "locationLon"))
         
-//        LocationManager.shared.startUpdateLocation()
-
+        LocationManager.shared.startUpdateLocation()
+        
         if deliveredSearchData == nil {
             getLocationWeather()
         } else {
