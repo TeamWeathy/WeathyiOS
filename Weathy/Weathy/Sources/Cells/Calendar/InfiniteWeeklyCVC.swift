@@ -14,6 +14,7 @@ protocol WeekCellDelegate{
 class InfiniteWeeklyCVC: UICollectionViewCell {
     
     static let identifier = "InfiniteWeeklyCVC"
+    var standardDate = Date()
     var selectedDate = Date()
     var lastSelectedIdx = Date().weekday
     let screen = UIScreen.main.bounds
@@ -43,14 +44,14 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
         var startDate = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        startComponent.day = -selectedDate.weekday
-        startDate = Calendar.current.date(byAdding: startComponent, to: selectedDate)!
+        startComponent.day = -standardDate.weekday
+        startDate = Calendar.current.date(byAdding: startComponent, to: standardDate)!
         start = dateFormatter.string(from: startDate)
         var end = ""
         var endComponent = DateComponents()
         var endDate = Date()
-        endComponent.day = 7 - (selectedDate.weekday + 1)
-        endDate = Calendar.current.date(byAdding: endComponent, to: selectedDate)!
+        endComponent.day = 7 - (standardDate.weekday + 1)
+        endDate = Calendar.current.date(byAdding: endComponent, to: standardDate)!
         end = dateFormatter.string(from: endDate)
         
         MonthlyWeathyService.shared.getMonthlyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), startDate: start, endDate: end){ (networkResult) -> (Void) in
@@ -88,6 +89,9 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
     
     
 }
+
+//MARK: - UICollectionView Delegate
+
 extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
@@ -108,8 +112,8 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
         if let cell = collectionView.cellForItem(at: indexPath) as? WeeklyCalendarCVC{
             var selectedComponent = DateComponents()
             
-            selectedComponent.day = indexPath.item - selectedDate.weekday
-            let newSelectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+            selectedComponent.day = indexPath.item - standardDate.weekday
+            let newSelectedDate = Calendar.current.date(byAdding: selectedComponent, to: standardDate)!
             if newSelectedDate.compare(Date()) == .orderedDescending{
                 return false
             }
@@ -125,15 +129,17 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? WeeklyCalendarCVC{
                 var selectedComponent = DateComponents()
-                selectedComponent.day = indexPath.item - selectedDate.weekday
-                selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
-                weekCellDelegate?.selectedWeekDateDidChange(selectedDate)
+                selectedComponent.day = indexPath.item - standardDate.weekday
+                standardDate = Calendar.current.date(byAdding: selectedComponent, to: standardDate)!
+                weekCellDelegate?.selectedWeekDateDidChange(standardDate)
 //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeData"), object: selectedDate)
                 lastSelectedIdx = indexPath.item
             }
         }
     }
 }
+
+//MARK: - UICollectionView DataSource
 
 extension InfiniteWeeklyCVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -145,7 +151,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         cell.selectedView.alpha = 0
         cell.todayView.alpha = 0
         cell.emotionView.alpha = 0
-        let tempIdx = indexPath.item + selectedDate.day-(selectedDate.weekday)
+        let tempIdx = indexPath.item + standardDate.day-(standardDate.weekday)
         ///토요일
         if indexPath.item == 6{
             cell.setSaturday()
@@ -157,36 +163,37 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
             cell.dayLabel.textColor = .mainGrey
         }
         if indexPath.item == selectedDate.weekday{
+            cell.isSelected = true
             cell.setSelectedDay()
         }
-        else if indexPath.item > selectedDate.weekday{
+        else if indexPath.item > standardDate.weekday{
             cell.emotionView.alpha = 0
         }
         ///현재주가 오늘을 포함하고 있는 경우
-        if selectedDate.currentYearMonth == Date().currentYearMonth{
-            if indexPath.item + selectedDate.day-(selectedDate.weekday) == Date().day{
+        if standardDate.currentYearMonth == Date().currentYearMonth{
+            if indexPath.item + standardDate.day-(standardDate.weekday) == Date().day{
                 cell.setToday()
             }
         }
-        else if selectedDate.currentYearMonth > Date().currentYearMonth{
+        else if standardDate.currentYearMonth > Date().currentYearMonth{
             cell.setGreyDay()
         }
         ///현재달
-        if 0 < tempIdx && tempIdx <= selectedDate.numberOfMonth{
-            cell.dayLabel.text = String(indexPath.item + selectedDate.day-(selectedDate.weekday))
+        if 0 < tempIdx && tempIdx <= standardDate.numberOfMonth{
+            cell.dayLabel.text = String(indexPath.item + standardDate.day-(standardDate.weekday))
         }
         ///이전달
         else if tempIdx<=0{
             var last = Date()
             var lastComponent = DateComponents()
             lastComponent.month = -1
-            last = Calendar.current.date(byAdding: lastComponent, to: selectedDate)!
+            last = Calendar.current.date(byAdding: lastComponent, to: standardDate)!
             cell.dayLabel.text = String(last.numberOfMonth + tempIdx)
             cell.setGreyDay()
         }
         ///다음달
-        else if tempIdx > selectedDate.numberOfMonth{
-            cell.dayLabel.text = String(tempIdx - selectedDate.numberOfMonth)
+        else if tempIdx > standardDate.numberOfMonth{
+            cell.dayLabel.text = String(tempIdx - standardDate.numberOfMonth)
             cell.setGreyDay()
         }
         if weeklyWeathyList.count != 0{

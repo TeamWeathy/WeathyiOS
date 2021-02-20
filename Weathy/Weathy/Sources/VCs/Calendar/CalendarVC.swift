@@ -526,6 +526,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
 //        }
 //    }
     
+    //MARK: - UIScrollViewDelegate
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print(infiniteWeeklyCV.isScrollEnabled)
@@ -554,7 +555,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 let rightDate = Calendar.current.date(byAdding: rightDateComponent, to: Date())
                 if leftDate!.compare(Date()) == .orderedAscending
                     && rightDate!.compare(Date()) == .orderedDescending{
-//                    infiniteWeeklyCV.isScrollEnabled = falser
+//                    infiniteWeeklyCV.isScrollEnabled = false
                     infiniteWeeklyCV.isScrollEnabled = true
                 }
             }
@@ -562,6 +563,9 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         infiniteMonthlyCV.isScrollEnabled = true
         
     }
+    
+    ///캘린더를 왼쪽 or 오른쪽으로 스와이프 할 때
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let x = scrollView.contentOffset.x
         currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
@@ -571,16 +575,8 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 selectedDate = lastMonthDate
                 selectedDateDidChange()
                 insertLeftDate()
-                
-//                DispatchQueue.main.async(execute: { [self] in
-//                    print("$$")
-//                    self.infiniteMonthlyCV.contentOffset.x = calendarWidth
-//                    //                self.pickerTextView.alpha = 1
-//                })
-                
             }
             else{
-                print("index",currentIndex)
                 yearMonthTextView.text = infiniteMonthList[currentIndex].currentYearMonth
                 if scrollDirection == .left{
                     selectedDate = infiniteMonthList[currentIndex]
@@ -591,24 +587,12 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 selectedDateDidChange()
                 CATransaction.begin()
                 CATransaction.setDisableActions(true)
-//                infiniteMonthlyCV.reloadData()
-                
                 
                 if let cell = infiniteMonthlyCV.cellForItem(at: [0,currentIndex]) as? InfiniteMonthlyCVC{
                     cell.selectedDateDidChange(selectedDate)
                     cell.monthlyCalendarCV.reloadData()
                 }
-//                infiniteMonthlyCV.contentOffset.x = scrollView.frame.width * CGFloat(currentIndex)
                 CATransaction.commit()
-                
-                
-                
-//                DispatchQueue.main.async(execute: { [self] in
-//                    print("$$")
-//                    self.infiniteMonthlyCV.contentOffset.x = calendarWidth
-//                    //                self.pickerTextView.alpha = 1
-//                })
-                
             }
       
         }
@@ -620,13 +604,10 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             selectedDateDidChange()
             CATransaction.begin()
             CATransaction.setDisableActions(true)
-//                infiniteMonthlyCV.reloadData()
-            
-            
             if let cell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
+                cell.standardDate = selectedDate
                 cell.weeklyCalendarCV.reloadData()
             }
-//                infiniteMonthlyCV.contentOffset.x = scrollView.frame.width * CGFloat(currentIndex)
             CATransaction.commit()
 //            if x == 0{
 //                yearMonthTextView.text = infiniteWeekList[0].currentYearMonth
@@ -696,7 +677,7 @@ extension CalendarVC: UICollectionViewDataSource{
         else{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteWeeklyCVC.identifier, for: indexPath) as? InfiniteWeeklyCVC else { return UICollectionViewCell() }
             cell.weekCellDelegate = self
-            cell.selectedDate = self.selectedDate
+            cell.standardDate = infiniteWeekList[indexPath.item]
             cell.callWeeklyWeathy()
 //            cell.weeklyCalendarCV.reloadData()
             return cell
