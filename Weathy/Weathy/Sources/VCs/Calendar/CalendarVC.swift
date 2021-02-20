@@ -36,6 +36,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     var isFromBatch: Bool = false
     var scrollDirection: ScrollDirection = .left
     var currentIndex: Int = 0
+    var nextWeekComponent: DateComponents = DateComponents()
+    var lastWeekComponent: DateComponents = DateComponents()
     
     
     //MARK: - IBOutlets
@@ -53,6 +55,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         setDateFormatter()
+        setDateComponent()
         setMonthList()
         setWeekList()
         initDate()
@@ -99,6 +102,11 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         dayDateFormatter.dateFormat = "yyyy.MM.dd"
         
     }
+    
+    func setDateComponent(){
+        lastWeekComponent.day = -7
+        nextWeekComponent.day = 7
+    }
     func setMonthList(){
         infiniteMonthList = []
         var currentMonth = yearMonthDateFormatter.date(from: Date().currentYearMonth)!
@@ -115,15 +123,13 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         infiniteWeekList = []
         var currentWeek = Date()
         var lastWeek = Date()
-        var lastComponent = DateComponents()
         var firstComponent = DateComponents()
-        lastComponent.day = -7
         firstComponent.day = -currentWeek.weekday
         currentWeek = Calendar.current.date(byAdding: firstComponent, to: currentWeek)!
         
         for _ in 0..<100{
             infiniteWeekList.insert(currentWeek, at: 0)
-            lastWeek = Calendar.current.date(byAdding: lastComponent, to: currentWeek)!
+            lastWeek = Calendar.current.date(byAdding: lastWeekComponent, to: currentWeek)!
             currentWeek = lastWeek
         }
         print(infiniteWeekList)
@@ -251,12 +257,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
 //        dateFormatter.dateStyle = .none
 //        dateFormatter.dateFormat = "yyyy.MM"
         yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
-        var nextComponent = DateComponents()
-        nextComponent.day = 7
-        var lastComponent = DateComponents()
-        lastComponent.day = -7
-        nextWeekDate = Calendar.current.date(byAdding: nextComponent, to: selectedDate)
-        lastWeekDate = Calendar.current.date(byAdding: lastComponent, to: selectedDate)
+        nextWeekDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)
+        lastWeekDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)
         nextMonthDate = yearMonthDateFormatter.date(from: selectedDate.nextYearMonth)
         lastMonthDate = yearMonthDateFormatter.date(from:selectedDate.lastYearMonth)!
         lastlastMonthDate = yearMonthDateFormatter.date(from:lastMonthDate.lastYearMonth)!
@@ -290,12 +292,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     func initDate(){
         yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
-        var nextComponent = DateComponents()
-        nextComponent.day = 7
-        var lastComponent = DateComponents()
-        lastComponent.day = -7
-        nextWeekDate = Calendar.current.date(byAdding: nextComponent, to: selectedDate)
-        lastWeekDate = Calendar.current.date(byAdding: lastComponent, to: selectedDate)
+        nextWeekDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)
+        lastWeekDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)
         nextMonthDate = yearMonthDateFormatter.date(from: selectedDate.nextYearMonth)
         lastMonthDate = yearMonthDateFormatter.date(from: selectedDate.lastYearMonth)!
         lastlastMonthDate = yearMonthDateFormatter.date(from: lastMonthDate.lastYearMonth)!
@@ -600,12 +598,18 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         else{
             print("index",currentIndex)
             yearMonthTextView.text = infiniteWeekList[currentIndex].currentYearMonth
-            selectedDate = infiniteWeekList[currentIndex]
+            if scrollDirection == .left{
+                selectedDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)!
+            }
+            else if scrollDirection == .right{
+                selectedDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)!
+            }
             selectedDateDidChange()
             CATransaction.begin()
             CATransaction.setDisableActions(true)
             if let cell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
-                cell.standardDate = selectedDate
+                cell.standardDate = infiniteWeekList[currentIndex]
+                cell.selectedDate = selectedDate
                 cell.weeklyCalendarCV.reloadData()
             }
             CATransaction.commit()
