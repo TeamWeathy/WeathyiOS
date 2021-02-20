@@ -41,8 +41,7 @@ class RecordTextVC: UIViewController {
     @IBOutlet var photoView: UIView!
     @IBOutlet var photoBtn: UIButton!
     @IBOutlet var finishBtn: UIButton!
-    @IBOutlet var optionImageView: UIImageView!
-    
+    @IBOutlet var optionImageView: [UIImageView]!
     
     //MARK: - LifeCycle Methods
 
@@ -160,7 +159,7 @@ extension RecordTextVC {
         
 
         
-        optionImageView.image = UIImage(named: "icOption")
+        optionImageView[0].image = UIImage(named: "icOption")
         
         recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
         
@@ -199,6 +198,8 @@ extension RecordTextVC {
     }
     
     func setPhotoBox() {
+        optionImageView[1].image = UIImage(named: "icOption")
+        
         photoTitleLabel.text = "사진"
         photoTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
         photoTitleLabel.textColor = .subGrey1
