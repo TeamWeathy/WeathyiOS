@@ -31,11 +31,13 @@ class RecordTextVC: UIViewController {
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var textTitleLabel: UILabel!
     @IBOutlet var textViewSurroundingView: UIView!
     @IBOutlet var recordTextView: UITextView!
     @IBOutlet var wordCountLabel: UILabel!
     @IBOutlet var maxWordLabel: SpacedLabel!
     @IBOutlet var finishBtn: UIButton!
+    @IBOutlet var optionImageView: UIImageView!
     
     
     //MARK: - LifeCycle Methods
@@ -149,6 +151,13 @@ extension RecordTextVC {
     }
     
     func setTextField() {
+        
+        textTitleLabel.text = "텍스트"
+        textTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
+        textTitleLabel.textColor = .subGrey1
+        
+        optionImageView.image = UIImage(named: "icOption")
+        
         recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
         
 //        wordCountLabel.text = "\(wordCount)/\(maxWordCount)"

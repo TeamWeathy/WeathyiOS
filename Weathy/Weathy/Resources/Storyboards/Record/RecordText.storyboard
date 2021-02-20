@@ -100,22 +100,39 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjZ-EP-lOZ">
+                                <rect key="frame" x="36.5" y="194" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FdP-Mh-ZyB">
+                                <rect key="frame" x="83.5" y="197" width="30" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="94D-hw-PBx"/>
+                                    <constraint firstAttribute="height" constant="17" id="Zsi-ej-Qik"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bOC-i1-THr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2cZ-HM-yfi" firstAttribute="centerX" secondItem="OXM-SK-kBb" secondAttribute="centerX" id="0sS-2g-1zv"/>
+                            <constraint firstItem="vjZ-EP-lOZ" firstAttribute="leading" secondItem="2cZ-HM-yfi" secondAttribute="leading" id="6Nk-Kn-AOd"/>
                             <constraint firstItem="7Fp-vR-GCx" firstAttribute="leading" secondItem="oJY-0x-mJy" secondAttribute="trailing" id="C0C-LJ-3km"/>
                             <constraint firstItem="2cZ-HM-yfi" firstAttribute="width" secondItem="OXM-SK-kBb" secondAttribute="width" multiplier="309:375" id="G8R-nR-N4j"/>
                             <constraint firstAttribute="trailing" secondItem="W20-Yo-UYI" secondAttribute="trailing" constant="33" id="HH6-T9-8N2"/>
+                            <constraint firstItem="FdP-Mh-ZyB" firstAttribute="leading" secondItem="vjZ-EP-lOZ" secondAttribute="trailing" constant="5" id="IwT-DJ-1Cz"/>
                             <constraint firstItem="7Fp-vR-GCx" firstAttribute="trailing" secondItem="2cZ-HM-yfi" secondAttribute="trailing" id="K2v-O2-Mjs"/>
                             <constraint firstItem="W20-Yo-UYI" firstAttribute="leading" secondItem="bOC-i1-THr" secondAttribute="leading" constant="33" id="KNs-JO-7s4"/>
+                            <constraint firstItem="2cZ-HM-yfi" firstAttribute="top" secondItem="FdP-Mh-ZyB" secondAttribute="bottom" constant="9" id="LMC-1G-5Mo"/>
                             <constraint firstItem="IUj-sM-iqV" firstAttribute="top" secondItem="eck-6J-Cip" secondAttribute="bottom" constant="30" id="OTj-JK-4t4"/>
                             <constraint firstItem="eck-6J-Cip" firstAttribute="leading" secondItem="2cZ-HM-yfi" secondAttribute="leading" id="PFL-MO-ZII"/>
                             <constraint firstItem="7Fp-vR-GCx" firstAttribute="top" secondItem="2cZ-HM-yfi" secondAttribute="bottom" constant="5" id="QiL-vg-2dw"/>
                             <constraint firstItem="oJY-0x-mJy" firstAttribute="centerY" secondItem="7Fp-vR-GCx" secondAttribute="centerY" id="YJv-Ln-sNS"/>
                             <constraint firstItem="eck-6J-Cip" firstAttribute="top" secondItem="bOC-i1-THr" secondAttribute="top" constant="14" id="ant-Fg-gH8"/>
                             <constraint firstItem="cFJ-j5-X5e" firstAttribute="leading" secondItem="2cZ-HM-yfi" secondAttribute="leading" id="f36-PC-HCZ"/>
+                            <constraint firstItem="2cZ-HM-yfi" firstAttribute="top" secondItem="vjZ-EP-lOZ" secondAttribute="bottom" constant="8" id="gWi-bM-XbY"/>
                             <constraint firstItem="W20-Yo-UYI" firstAttribute="width" secondItem="W20-Yo-UYI" secondAttribute="height" multiplier="309:55" id="q0Z-ZB-4jO"/>
                             <constraint firstItem="2cZ-HM-yfi" firstAttribute="top" secondItem="cFJ-j5-X5e" secondAttribute="bottom" constant="63" id="r9F-CH-tt4"/>
                             <constraint firstItem="bOC-i1-THr" firstAttribute="bottom" secondItem="W20-Yo-UYI" secondAttribute="bottom" constant="10" id="t83-g6-Jx0"/>
@@ -127,8 +144,10 @@
                         <outlet property="backBtn" destination="eck-6J-Cip" id="tnM-sQ-Ijp"/>
                         <outlet property="finishBtn" destination="W20-Yo-UYI" id="kCa-e2-913"/>
                         <outlet property="maxWordLabel" destination="7Fp-vR-GCx" id="YFk-7u-A9X"/>
+                        <outlet property="optionImageView" destination="FdP-Mh-ZyB" id="ubd-lU-jCj"/>
                         <outlet property="recordTextView" destination="H2S-vH-8kf" id="qRq-Cd-pYu"/>
                         <outlet property="subTitleLabel" destination="cFJ-j5-X5e" id="5xd-C3-yGt"/>
+                        <outlet property="textTitleLabel" destination="vjZ-EP-lOZ" id="vAq-KQ-DLF"/>
                         <outlet property="textViewSurroundingView" destination="2cZ-HM-yfi" id="tRS-ft-pGa"/>
                         <outlet property="titleLabel" destination="IUj-sM-iqV" id="JyT-P8-bGs"/>
                         <outlet property="wordCountLabel" destination="oJY-0x-mJy" id="028-Cs-zEx"/>
