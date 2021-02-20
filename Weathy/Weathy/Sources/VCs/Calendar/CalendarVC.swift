@@ -317,8 +317,11 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     func closeDrawer(){
-        infiniteWeeklyCV.reloadData()
-        self.infiniteWeeklyCV.contentOffset.x = self.calendarWidth*CGFloat(findIndexFromSelectedDate())
+        let weeklyIndex = findIndexFromSelectedDate()
+        print("weeklyIndex", weeklyIndex)
+        self.infiniteWeeklyCV.contentOffset.x = self.calendarWidth*CGFloat(weeklyIndex)
+        print("why",infiniteWeeklyCV)
+
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: weeklyHeight)
         ///spring effect
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
@@ -329,6 +332,14 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         
         self.view.layoutSubviews()
         panGesture.setTranslation(CGPoint.zero, in: self.view)
+        if let cell = infiniteWeeklyCV.cellForItem(at: [0,weeklyIndex]) as? InfiniteWeeklyCVC{
+            cell.selectedDate = selectedDate
+            cell.standardDate = infiniteWeekList[weeklyIndex]
+            cell.weeklyCalendarCV.reloadData()
+        }
+        else{
+            return
+        }
         self.isCovered = false
     }
     
@@ -343,7 +354,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func selectedMonthDateDidChange(_ selectedDate: Date) {
         self.selectedDate = selectedDate
         selectedDateDidChange()
-        DispatchQueue.main.async(execute: {self.infiniteWeeklyCV.contentOffset.x = self.calendarWidth})
         closeDrawer()
     }
     
