@@ -28,7 +28,8 @@ class RecordTextVC: UIViewController {
     
     //MARK: - IBOutlets
     
-    @IBOutlet var backBtn: UIButton!
+    @IBOutlet var skipBtn: UIButton!
+    @IBOutlet var skipBtnUnderlineView: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
     @IBOutlet var textTitleLabel: UILabel!
@@ -36,6 +37,9 @@ class RecordTextVC: UIViewController {
     @IBOutlet var recordTextView: UITextView!
     @IBOutlet var wordCountLabel: UILabel!
     @IBOutlet var maxWordLabel: SpacedLabel!
+    @IBOutlet var photoTitleLabel: UILabel!
+    @IBOutlet var photoView: UIView!
+    @IBOutlet var photoBtn: UIButton!
     @IBOutlet var finishBtn: UIButton!
     @IBOutlet var optionImageView: UIImageView!
     
@@ -50,6 +54,8 @@ class RecordTextVC: UIViewController {
         setTextField()
         textViewSetupView()
         setFinishBtn()
+        setSkipBtn()
+        setPhotoBox()
         
         
         recordTextView.delegate = self
@@ -152,9 +158,7 @@ extension RecordTextVC {
     
     func setTextField() {
         
-        textTitleLabel.text = "텍스트"
-        textTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
-        textTitleLabel.textColor = .subGrey1
+
         
         optionImageView.image = UIImage(named: "icOption")
         
@@ -178,6 +182,30 @@ extension RecordTextVC {
             recordTextView.text = self.placeholder
             recordTextView.textColor = UIColor.lightGray
         }
+    }
+    
+    func setSkipBtn() {
+        
+        textTitleLabel.text = "텍스트"
+        textTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
+        textTitleLabel.textColor = .subGrey1
+        
+        skipBtn.setTitle("건너뛰기", for: .normal)
+        skipBtn.setTitleColor(.subGrey2, for: .normal)
+        skipBtn.titleLabel?.font = UIFont(name: "AppleSDGothicNeoSB00", size: 14)
+        
+        skipBtnUnderlineView.backgroundColor = .subGrey2
+        
+    }
+    
+    func setPhotoBox() {
+        photoTitleLabel.text = "사진"
+        photoTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
+        photoTitleLabel.textColor = .subGrey1
+        
+        photoView.setBorder(borderColor: .subGrey7, borderWidth: 1)
+        photoView.makeRounded(cornerRadius: 13)
+
     }
     
     func setFinishBtn() {
