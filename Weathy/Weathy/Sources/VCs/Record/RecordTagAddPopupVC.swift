@@ -190,13 +190,17 @@ extension RecordTagAddPopupVC {
                 print("requestErr")
                 if let message = msg as? String {
                     print(message)
+                    self.showToastOnTop(message: message)
                 }
             case .pathErr:
                 print("pathErr")
+                self.showToastOnTop(message: "다시 시도해주세요.")
             case .serverErr:
                 print("serverErr")
+                self.showToastOnTop(message: "다시 시도해주세요.")
             case .networkFail:
                 print("networkFail")
+                self.showToastOnTop(message: "네트워크 상태를 확인해주세요.")
             }
         }
     }
