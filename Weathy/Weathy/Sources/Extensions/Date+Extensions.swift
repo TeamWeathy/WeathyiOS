@@ -166,4 +166,11 @@ extension Date {
         }
     }
     
+    func getStringToDate(format: String, date: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+    
+        guard let date = dateFormatter.date(from: date) else { return Date() }
+        return date
+    }
 }

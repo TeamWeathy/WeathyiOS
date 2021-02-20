@@ -886,17 +886,17 @@
             <objects>
                 <viewController storyboardIdentifier="MainVC" id="gGb-en-9sE" customClass="MainVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MgC-4K-1ZN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainBgMorningSun" translatesAutoresizingMaskIntoConstraints="NO" id="dsA-on-Koy">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1466"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgJ-W2-vTI" userLabel="Main View">
-                                <rect key="frame" x="0.0" y="92" width="375" height="1374"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="686"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thR-o6-Rye">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1374"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="686"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCz-ny-pRZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
@@ -1678,7 +1678,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomNavibarBlur" translatesAutoresizingMaskIntoConstraints="NO" id="oH7-8G-h4I">
-                                <rect key="frame" x="0.0" y="1412" width="375" height="54"/>
+                                <rect key="frame" x="0.0" y="724" width="375" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oH7-8G-h4I" secondAttribute="height" multiplier="375:54" id="3rC-Cz-KZO"/>
                                 </constraints>
@@ -1709,7 +1709,6 @@
                             <constraint firstItem="Tuh-D5-OKo" firstAttribute="trailing" secondItem="KgJ-W2-vTI" secondAttribute="trailing" id="xs2-GD-fiu"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="climateLabel" destination="XDE-tv-aWT" id="zNc-ls-bBU"/>
                         <outlet property="closetBottomLabel" destination="Hy6-8V-qma" id="nRo-Ku-g1L"/>
@@ -1758,7 +1757,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foA-Y7-Y3c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="981.60000000000002" y="289.65517241379314"/>
+            <point key="canvasLocation" x="1114" y="50"/>
         </scene>
     </scenes>
     <resources>
