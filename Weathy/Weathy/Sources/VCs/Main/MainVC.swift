@@ -84,7 +84,9 @@ class MainVC: UIViewController {
     @IBOutlet var timeZoneWeatherCollectionView: UICollectionView!
     @IBOutlet var weeklyWeatherCollectionView: UICollectionView!
     @IBOutlet var extraWeatherCollectionView: UICollectionView!
-
+    @IBOutlet var timeZoneLeftBlurImage: UIImageView!
+    @IBOutlet var timeZoneRightBlurImage: UIImageView!
+    
     // MARK: - Life Cycle Methods
     
     // FIXME: - LocationManager NicknameVC로 이전
@@ -242,6 +244,10 @@ class MainVC: UIViewController {
         extraCenterY.constant = UIScreen.main.bounds.height
 
         mainBottomView.layoutIfNeeded()
+        
+        // blur image (이미지 에셋 좌우 반전)
+        timeZoneRightBlurImage.transform = CGAffineTransform(scaleX: -1, y: 1)
+        timeZoneLeftBlurImage.alpha = 0
     }
     
     func changeMainTopWeatherData(data: LocationWeatherData) {
@@ -743,9 +749,9 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UIScrollViewDelegate
+// MARK: - UICollectionViewDelegate
 
-extension MainVC: UIScrollViewDelegate {
+extension MainVC: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
             if lastContentOffset < scrollView.contentOffset.y, scrollView.contentOffset.y >= 200 {
@@ -776,6 +782,25 @@ extension MainVC: UIScrollViewDelegate {
                     self.topBlurView.alpha = 0
                     self.todayDateTimeLabel.alpha = 1
                 })
+            }
+        }
+        
+        if scrollView == timeZoneWeatherCollectionView {
+            let maxScroll: CGFloat = scrollView.contentSize.width - scrollView.bounds.width + scrollView.contentInset.right
+            let contentOffset: CGFloat = scrollView.contentOffset.x
+            let blurWidth: CGFloat = timeZoneLeftBlurImage.bounds.width
+            
+            if contentOffset < blurWidth/3 {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.timeZoneLeftBlurImage.alpha = 0
+                }, completion: nil)
+            } else if contentOffset > maxScroll - (blurWidth/3) {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.timeZoneRightBlurImage.alpha = 0
+                }, completion: nil)
+            } else {
+                timeZoneLeftBlurImage.alpha = 1
+                timeZoneRightBlurImage.alpha = 1
             }
         }
     }
