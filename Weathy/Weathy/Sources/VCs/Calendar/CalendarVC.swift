@@ -247,7 +247,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //MARK: - Custom Methods - Calendar
     
     func selectedDateDidChange(){
-        setWeekdayColor()
         picker.date = selectedDate
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: "ChangeDate"),object: selectedDate)
@@ -385,18 +384,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     //MARK: - @objc methods
     
-    @objc func setWeekday(_ noti: NSNotification){
-        if let flag = noti.object as? Int{
-            if flag == 7{
-                setWeekdayColor()
-            }
-            else{
-                weekdayLabelCollection[flag].textColor = .white
-            }
-        }
-
-    }
-    
     @objc func panGestureHandler(recognizer: UIPanGestureRecognizer){
         let translation = recognizer.translation(in: calendarDrawerView)
         let height = self.view.frame.maxY
@@ -409,7 +396,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             }
             ///going up
             else{
-//                selectedDate = dayDateFormatter.date(from: selectedDate.currentYearMonth + ".01")!
                 closeDrawer()
             }
         }
@@ -423,13 +409,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
                     self.shadowView.layoutIfNeeded()
                     
                 })
-                
-                
-//                self.view.layoutSubviews()
                 self.infiniteWeeklyCV.alpha = 0
                 self.infiniteMonthlyCV.alpha = (height+translation.y)/monthlyHeight
                 recognizer.setTranslation(CGPoint.zero, in: self.view)
-//                self.view.layoutSubviews()
             }
         }
         
@@ -522,7 +504,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
     //MARK: - UIScrollViewDelegate
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
+        setWeekdayColor()
         ///미래 날짜로 스크롤 disable 시킴
         let gesture = scrollView.panGestureRecognizer
         if scrollView == infiniteMonthlyCV{
