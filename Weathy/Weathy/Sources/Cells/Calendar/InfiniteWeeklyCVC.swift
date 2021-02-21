@@ -180,10 +180,11 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
             if indexDate.day == Date().day{
                 cell.setToday()
             }
+            else if indexDate.day > Date().day{
+                cell.setGreyDay()
+            }
         }
-        else if indexDate.currentYearMonth > Date().currentYearMonth{
-            cell.setGreyDay()
-        }
+        
     
         ///이전달 혹은 다음달
         if indexDate.month - selectedDate.month == -1 ||
