@@ -317,18 +317,25 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     func openDrawer(){
-        infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
-                                                self.infiniteMonthlyCV.contentOffset.x = self.calendarWidth*CGFloat((self.infiniteMonthList.count - 1))})
+        currentIndex = self.infiniteMonthList.lastIndex(of: self.yearMonthDateFormatter.date(from: self.selectedDate.currentYearMonth)!)!
+        if let cell = infiniteMonthlyCV.cellForItem(at: [0,currentIndex]) as? InfiniteMonthlyCVC{
+            cell.selectedDateDidChange(selectedDate)
+            cell.monthlyCalendarCV.reloadData()
+        }
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: monthlyHeight)
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()})
+        infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
+                                                self.infiniteMonthlyCV.contentOffset.x = self.calendarWidth*CGFloat(self.currentIndex)})
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+                        self.view.layoutIfNeeded()
+                        },
+                       completion: nil)
         UIView.animate(withDuration: 0.3){
             self.infiniteMonthlyCV.alpha = 1
             self.infiniteWeeklyCV.alpha = 0
         }
         
-        self.view.layoutSubviews()
-        panGesture.setTranslation(CGPoint.zero, in: self.view)
         self.isCovered = true
+        
     }
     
     func closeDrawer(){
@@ -395,53 +402,12 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         if recognizer.state == .ended{
             ///going down
             if velocity.y>0{
-                
-                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: monthlyHeight)
-                infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
-                                                        self.infiniteMonthlyCV.contentOffset.x = self.calendarWidth*CGFloat(self.infiniteMonthList.lastIndex(of: self.yearMonthDateFormatter.date(from: self.selectedDate.currentYearMonth)!)!)})
-                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
-                                self.view.layoutIfNeeded()
-//                    self.shadowView.layoutIfNeeded()
-                                },
-                               completion: nil)
-                UIView.animate(withDuration: 0.3){
-                    self.infiniteMonthlyCV.alpha = 1
-                    self.infiniteWeeklyCV.alpha = 0
-                }
-                
-//                recognizer.setTranslation(CGPoint.zero, in: self.view)
-                self.isCovered = true
-                
-                
-                
+                openDrawer()
             }
             ///going up
             else{
-//                infiniteWeeklyCV.reloadData()
-                var firstComponent = DateComponents()
-                firstComponent.day = -selectedDate.weekday
-                var firstDateOfWeek = Calendar.current.date(byAdding: firstComponent, to: selectedDate)
-                for i in 0..<100{
-                    if infiniteWeekList[i].currentYearMonth == firstDateOfWeek?.currentYearMonth{
-                        if infiniteWeekList[i].day == firstDateOfWeek?.day{
-                            currentIndex = i
-                            print(currentIndex)
-                            break
-                        }
-                    }
-                }
-                self.infiniteWeeklyCV.contentOffset.x = self.calendarWidth*CGFloat(findIndexFromSelectedDate())
-                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: weeklyHeight)
-                //spring effect
-                UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()
-                }, completion: nil)
-                UIView.animate(withDuration: 0.3){
-                    self.infiniteMonthlyCV.alpha = 0
-                    self.infiniteWeeklyCV.alpha = 1
-                }
-                recognizer.setTranslation(CGPoint.zero, in: self.view)
-                self.isCovered = false
-                
+                selectedDate = dayDateFormatter.date(from: selectedDate.currentYearMonth + ".01")!
+                closeDrawer()
             }
         }
         ///움직이는 중
@@ -598,6 +564,8 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let x = scrollView.contentOffset.x
         currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        
+        ///InfiniteMonthlyCV
         if scrollView == infiniteMonthlyCV{
             if x == infiniteMonthlyCV.frame.width{
                 yearMonthTextView.text = infiniteMonthList[1].currentYearMonth
