@@ -97,10 +97,9 @@ class RecordTextVC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func backBtnTap(_ sender: Any) {
-//        self.navigationController?.popViewController(animated: false)
-        self.enteredText = ""
-        callRecordWeathyService()
-//        self.showToast(message: "웨디에 내용이 추가되었어요!")
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
+        }
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
@@ -277,7 +276,7 @@ extension RecordTextVC {
     }
     
     func callRecordWeathyService() {
-        RecordWeathyService.shared.recordWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
+        RecordWeathyService.shared.recordWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: "") { (networkResult) -> (Void) in
             print(">>>>>>>", self.locationCode)
             switch networkResult {
             case .success(let data):

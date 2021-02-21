@@ -68,19 +68,7 @@ class RecordRateVC: UIViewController {
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        let nextStoryboard = UIStoryboard(name: "RecordText", bundle: nil)
-        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
-            return
-        }
-        
-        dvc.selectedTags = selectedTags
-        dvc.selectedStamp = selectedStamp
-        dvc.dateString = dateString
-        dvc.locationCode = locationCode
-        
-        dvc.modalPresentationStyle = .fullScreen
-//        self.navigationController?.pushViewController(dvc, animated: false)
-        self.present(dvc, animated: false, completion: nil)
+        callRecordWeathyService()
     }
     
 
@@ -181,6 +169,44 @@ extension RecordRateVC {
             self.explanationLabel.alpha = 1
             self.explanationLabel.frame = CGRect(x: self.explanationLabel.frame.origin.x, y: self.explanationLabel.frame.origin.y+10, width: self.explanationLabel.frame.width, height: self.explanationLabel.frame.height)
         })
+    }
+    
+    func callRecordWeathyService() {
+        RecordWeathyService.shared.recordWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: "") { (networkResult) -> (Void) in
+            print(">>>>>>>", self.locationCode)
+            switch networkResult {
+            case .success(let data):
+                print("success", data)
+                let nextStoryboard = UIStoryboard(name: "RecordText", bundle: nil)
+                guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
+                    return
+                }
+                
+                dvc.selectedTags = self.selectedTags
+                dvc.selectedStamp = self.selectedStamp
+                dvc.dateString = self.dateString
+                dvc.locationCode = self.locationCode
+                
+                print("I'm here")
+                
+                dvc.modalPresentationStyle = .fullScreen
+                self.present(dvc, animated: false, completion: nil)
+                
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                    self.showToast(message: message)
+                }
+                
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
 }
 
