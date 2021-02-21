@@ -152,7 +152,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         var addDateComponent = DateComponents()
         addDateComponent.day = indexPath.item
         let indexDate = Calendar.current.date(byAdding: addDateComponent, to: standardDate)!
-        
+        print("@",indexDate)
         cell.selectedView.alpha = 0
         cell.todayView.alpha = 0
         cell.emotionView.alpha = 0
@@ -189,8 +189,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         
     
         ///이전달 혹은 다음달
-        if indexDate.month - selectedDate.month == -1 ||
-            indexDate.month - selectedDate.month == 1{
+        if indexDate.month != selectedDate.month{
             cell.setGreyDay()
         }
 

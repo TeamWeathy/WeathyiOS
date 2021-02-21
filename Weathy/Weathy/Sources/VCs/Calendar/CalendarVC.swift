@@ -253,7 +253,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateStyle = .none
 //        dateFormatter.dateFormat = "yyyy.MM"
-//        yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
+        yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
         nextWeekDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)
         lastWeekDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)
         nextMonthDate = yearMonthDateFormatter.date(from: selectedDate.nextYearMonth)
@@ -557,7 +557,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 insertLeftDate()
             }
             else{
-                yearMonthTextView.text = infiniteMonthList[currentIndex].currentYearMonth
+//                yearMonthTextView.text = infiniteMonthList[currentIndex].currentYearMonth
                 if scrollDirection == .left{
                     selectedDate = infiniteMonthList[currentIndex]
                 }
