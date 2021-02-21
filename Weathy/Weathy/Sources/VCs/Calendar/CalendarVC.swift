@@ -278,9 +278,11 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     func weeklyCellDidSelected(){
         if let infiniteCell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
+            print(selectedDate)
             infiniteCell.standardDate = infiniteWeekList[currentIndex]
             infiniteCell.selectedDate = selectedDate
             infiniteCell.callWeeklyWeathy()
+            infiniteCell.weeklyCalendarCV.reloadData()
             infiniteCell.lastSelectedIdx = currentIndex
             infiniteCell.weeklyCalendarCV.selectItem(at: [0,currentIndex], animated: true, scrollPosition: .bottom)
             
@@ -367,6 +369,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func selectedWeekDateDidChange(_ selectedDate: Date) {
         self.selectedDate = selectedDate
         selectedDateDidChange()
+        weeklyCellDidSelected()
     }
     
     func selectedMonthDateDidChange(_ selectedDate: Date) {
@@ -594,15 +597,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             selectedDateDidChange()
 //            CATransaction.begin()
 //            CATransaction.setDisableActions(true)
-            if let infiniteCell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
-                infiniteCell.standardDate = infiniteWeekList[currentIndex]
-                infiniteCell.selectedDate = selectedDate
-                infiniteCell.callWeeklyWeathy()
-                infiniteCell.lastSelectedIdx = currentIndex
-                infiniteCell.weeklyCalendarCV.selectItem(at: [0,currentIndex], animated: true, scrollPosition: .bottom)
-//                cell.weeklyCalendarCV.reloadData()
-                
-            }
+            weeklyCellDidSelected()
 //            CATransaction.commit()
 //            if x == 0{
 //                yearMonthTextView.text = infiniteWeekList[0].currentYearMonth

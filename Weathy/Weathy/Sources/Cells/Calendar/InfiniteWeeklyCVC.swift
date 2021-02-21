@@ -148,10 +148,15 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeeklyCalendarCVC.identifier, for: indexPath) as? WeeklyCalendarCVC else { return UICollectionViewCell() }
+        var addDateComponent = DateComponents()
+        addDateComponent.day = indexPath.item
+        let indexDate = Calendar.current.date(byAdding: addDateComponent, to: standardDate)!
+        
         cell.selectedView.alpha = 0
         cell.todayView.alpha = 0
         cell.emotionView.alpha = 0
-        let tempIdx = indexPath.item + standardDate.day-(standardDate.weekday)
+        cell.dayLabel.text = String(indexDate.day)
+
         ///토요일
         if indexPath.item == 6{
             cell.setSaturday()
@@ -162,41 +167,30 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         else{
             cell.dayLabel.textColor = .mainGrey
         }
+        ///선택된 날짜
         if indexPath.item == selectedDate.weekday{
             cell.isSelected = true
             lastSelectedIdx = indexPath.item
-//            cell.setSelectedDay()
         }
-        else if indexPath.item > standardDate.weekday{
-            cell.emotionView.alpha = 0
-        }
+//        else if indexPath.item > standardDate.weekday{
+//            cell.emotionView.alpha = 0
+//        }
         ///현재주가 오늘을 포함하고 있는 경우
-        if standardDate.currentYearMonth == Date().currentYearMonth{
-            if indexPath.item + standardDate.day-(standardDate.weekday) == Date().day{
+        if indexDate.currentYearMonth == Date().currentYearMonth{
+            if indexDate.day == Date().day{
                 cell.setToday()
             }
         }
-        else if standardDate.currentYearMonth > Date().currentYearMonth{
+        else if indexDate.currentYearMonth > Date().currentYearMonth{
             cell.setGreyDay()
         }
-        ///현재달
-        if 0 < tempIdx && tempIdx <= standardDate.numberOfMonth{
-            cell.dayLabel.text = String(indexPath.item + standardDate.day-(standardDate.weekday))
-        }
-        ///이전달
-        else if tempIdx<=0{
-            var last = Date()
-            var lastComponent = DateComponents()
-            lastComponent.month = -1
-            last = Calendar.current.date(byAdding: lastComponent, to: standardDate)!
-            cell.dayLabel.text = String(last.numberOfMonth + tempIdx)
+    
+        ///이전달 혹은 다음달
+        if indexDate.month - selectedDate.month == -1 ||
+            indexDate.month - selectedDate.month == 1{
             cell.setGreyDay()
         }
-        ///다음달
-        else if tempIdx > standardDate.numberOfMonth{
-            cell.dayLabel.text = String(tempIdx - standardDate.numberOfMonth)
-            cell.setGreyDay()
-        }
+
         if weeklyWeathyList.count != 0{
             if let data = weeklyWeathyList[indexPath.item]{
                 cell.setEmotionView(emotionCode: weeklyWeathyList[indexPath.item]!.stampId)
