@@ -149,6 +149,9 @@ class MainVC: UIViewController {
         todayDateTimeLabel.characterSpacing = -0.75
 
         // top weathy view
+        let weathyViewTabGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpTodayWeathyView))
+        todayWeathyView.addGestureRecognizer(weathyViewTabGesture)
+
         closetTopLabel.font = UIFont.SDGothicRegular13
         closetTopLabel.textColor = UIColor.black
         closetTopLabel.characterSpacing = -0.65
@@ -319,6 +322,8 @@ class MainVC: UIViewController {
             climateLabel.text = "\(description)"
         }
     }
+
+    // MARK: - Network
 
     func getLocationWeather() {
         MainService.shared.getWeatherByLocation { (result) -> Void in
@@ -671,6 +676,30 @@ class MainVC: UIViewController {
             
             isOnGPS = true
             gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
+        }
+    }
+    
+    // FIXME: - 테스트용 데이터 주석 처리 제거
+    @objc func touchUpTodayWeathyView() {
+//        recommenedWeathyData = RecommendedWeathyData(weathy: WeathyClass(region: Region(code: 1324, name: "서울특별시"), dailyWeather: DailyWeather(date: DateClass(year: 2021, month: 1, day: 28, dayOfWeek: "월"), temperature: HighLowTemp(maxTemp: 16, minTemp: -2), climate: Climate(iconId: 101, description: "조금 춥고.."), climateID: 12), hourlyWeather: HourlyWeather(time: "17", temperature: 10, climate: Climate(iconId: 12, description: "조금 따뜻..?"), pop: 4), closet: Closet(top: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), bottom: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), outer: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), etc: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")])), weathyId: 2, stampId: 2, feedback: "조금 더 얇게"), message: "테스트용 데이터")
+        
+        if let data = recommenedWeathyData {
+            guard let tabBarVC = parent as? TabbarVC else { return }
+            guard let calendarDetailVC = tabBarVC.children[1] as? CalendarDetailVC else { return }
+            
+            let dailyWeathyDate: DateClass = data.weathy.dailyWeather.date
+            guard let dailyWeathyYear = dailyWeathyDate.year else { return }
+            
+            let weathyDate = "\(dailyWeathyYear)-\(dailyWeathyDate.month)-\(dailyWeathyDate.day)" // YYYY-MM-DD
+            calendarDetailVC.selectedDate = Date().getStringToDate(format: "YYYY-MM-DD", date: weathyDate)
+            
+            tabBarVC.mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
+            tabBarVC.calendarButton.setImage(UIImage(named: "ic_calendar_selected"), for: .normal)
+                
+            tabBarVC.calendarButtonBool = true
+            tabBarVC.mainButtonBool = false
+                
+            tabBarVC.scrollView.setContentOffset(CGPoint(x: tabBarVC.scrollView.frame.width, y: 0), animated: false)
         }
     }
 }
