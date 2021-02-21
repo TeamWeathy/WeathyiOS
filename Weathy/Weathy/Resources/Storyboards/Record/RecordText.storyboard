@@ -63,7 +63,7 @@
                                     <action selector="nextBtnTap:" destination="xjN-KD-4od" eventType="touchUpInside" id="dau-P3-tQB"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqM-i2-iUn">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YqM-i2-iUn">
                                 <rect key="frame" x="36.5" y="196" width="341" height="531"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Sv-tQ-paf">
