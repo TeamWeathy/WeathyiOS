@@ -143,7 +143,7 @@ extension RecordRateVC {
         self.nextBtn.isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.5, animations: {
             self.nextBtn.backgroundColor = UIColor.mintMain
-            self.nextBtn.setTitle("다음", for: .normal)
+            self.nextBtn.setTitle("완료", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.layer.cornerRadius = 30
         })
@@ -152,7 +152,7 @@ extension RecordRateVC {
     func setNextBtnDisabled() {
         nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = UIColor.subGrey3
-        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitle("완료", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.layer.cornerRadius = 30
     }
