@@ -21,7 +21,7 @@ class RecordTagDeleteVC: UIViewController {
     let name: String = "웨디"
     var titleIndex: Int = 0
     var initialTagTab: Int = 0
-    var initialSelectedIdx: Int = 0
+    var initialSelectedIdx: Int?
     var initialYOffset: CGFloat = 0
     
     var isInitialized: Bool = false
@@ -81,12 +81,14 @@ class RecordTagDeleteVC: UIViewController {
         }
         
         /// 삭제 탭 부를 때 선택했던 셀은 기본적으로 선택돼있게
+        if let selectedIdx = initialSelectedIdx {
+            tagTitles[initialTagTab].tagTab[selectedIdx-1].isSelected = true
+            selectedTags.append(tagTitles[initialTagTab].tagTab[selectedIdx-1].id)
+            tagTitles[initialTagTab].count = 1
+        }
+        
         titleIndex = initialTagTab
-        tagTitles[initialTagTab].tagTab[initialSelectedIdx-1].isSelected = true
-        tagTitles[initialTagTab].count = 1
         tagTitles[initialTagTab].isSelected = true
-        selectedTags.append(tagTitles[initialTagTab].tagTab[initialSelectedIdx-1].id)
-        print(initialYOffset)
         tagCollectionView.contentOffset.y = self.initialYOffset
         
         nextBtn.isUserInteractionEnabled = true

@@ -222,6 +222,9 @@
                                     <constraint firstAttribute="width" constant="40" id="jBk-tD-vPd"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="btnDelete"/>
+                                <connections>
+                                    <action selector="deleteBtnTap:" destination="OdZ-gP-p1Y" eventType="touchUpInside" id="fcW-Ma-G42"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icDeleteText" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-ZL-eHK">
                                 <rect key="frame" x="146" y="142" width="20" height="20"/>

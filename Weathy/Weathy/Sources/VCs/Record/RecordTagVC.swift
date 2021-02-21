@@ -137,7 +137,7 @@ class RecordTagVC: UIViewController {
     @objc func longTap(gesture : UILongPressGestureRecognizer!) {
         if gesture.state != .ended {
             
-            self.notificationGenerator = UIImpactFeedbackGenerator(style: .soft)
+            self.notificationGenerator = UIImpactFeedbackGenerator(style: .medium)
             self.notificationGenerator?.impactOccurred()
             
             let p = gesture.location(in: self.tagCollectionView)
@@ -197,6 +197,21 @@ class RecordTagVC: UIViewController {
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
     
+    @IBAction func deleteBtnTap(_ sender: Any) {
+        let nextStoryboard = UIStoryboard(name: "RecordTagDelete", bundle: nil)
+        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTagDeleteVC") as? RecordTagDeleteVC else {
+            return
+        }
+        
+        dvc.initialTagTab = titleIndex
+//        dvc.initialSelectedIdx = indexPath[1]
+        dvc.initialYOffset = scrollYOffset
+        dvc.tagTitles = tagTitles
+        
+        dvc.modalPresentationStyle = .fullScreen
+        
+        self.present(dvc, animated: false, completion: nil)
+    }
     
 }
 
