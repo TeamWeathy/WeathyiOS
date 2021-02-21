@@ -97,13 +97,13 @@ class MainVC: UIViewController {
         
         if deliveredSearchData == nil {
             getLocationWeather()
-        } else {
-            print("#")
         }
-
+        
         if let nickname = UserDefaults.standard.string(forKey: "nickname") {
             todayWeathyNicknameLabel.text = "\(nickname)님이 기억하는"
         }
+        
+        blankDownImage()
     }
     
     override func viewDidLoad() {
@@ -136,6 +136,7 @@ class MainVC: UIViewController {
         mainScrollView.isPagingEnabled = true
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
+        mainTopScrollView.showsVerticalScrollIndicator = false
         
         logoImage.frame.origin.y += 100
         logoImage.alpha = 0
@@ -253,6 +254,7 @@ class MainVC: UIViewController {
         searchImage = ClimateImage.getClimateMainBgName(iconId)
         searchGradient = ClimateImage.getSearchClimateMainBlurBarName(iconId)
         
+        removeFlakeEmitterCell()
         if iconId % 100 == 13 {
             fallingSnow()
         } else if iconId % 100 == 10 {
@@ -469,26 +471,31 @@ class MainVC: UIViewController {
         flakeEmitterCell.yAcceleration = 300
         flakeEmitterCell.xAcceleration = 5
         
-        let snowEmitterLayer = CAEmitterLayer()
-        snowEmitterLayer.emitterPosition = CGPoint(x: view.bounds.width/2, y: -300)
-        snowEmitterLayer.emitterSize = CGSize(width: view.bounds.width * 2, height: 0)
-        snowEmitterLayer.emitterShape = CAEmitterLayerEmitterShape.line
-        snowEmitterLayer.beginTime = CACurrentMediaTime()
-        snowEmitterLayer.timeOffset = 30
-        snowEmitterLayer.emitterCells = [flakeEmitterCell]
+        let rainEmitterLayer = CAEmitterLayer()
+        rainEmitterLayer.emitterPosition = CGPoint(x: view.bounds.width/2, y: -300)
+        rainEmitterLayer.emitterSize = CGSize(width: view.bounds.width * 2, height: 0)
+        rainEmitterLayer.emitterShape = CAEmitterLayerEmitterShape.line
+        rainEmitterLayer.beginTime = CACurrentMediaTime()
+        rainEmitterLayer.timeOffset = 30
+        rainEmitterLayer.emitterCells = [flakeEmitterCell]
         
-        snowEmitterLayer.setAffineTransform(CGAffineTransform(rotationAngle: .pi/24))
-        snowEmitterLayer.opacity = 0.9
+        rainEmitterLayer.setAffineTransform(CGAffineTransform(rotationAngle: .pi/24))
+        rainEmitterLayer.opacity = 0.9
         
-        mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
+        mainBackgroundImage.layer.addSublayer(rainEmitterLayer)
     }
     
     func removeFlakeEmitterCell() {
         if var subLayers = mainBackgroundImage.layer.sublayers {
+            for layer in subLayers {
+                layer.removeFromSuperlayer()
+            }
+            
             subLayers.removeAll()
         }
     }
     
+    // FIXME: - changeMainTopView func랑 합칠 수 있을 것 같음
     @objc func setSearchData(_ notiData: NSNotification) {
         if let hourlyData = notiData.object as? OverviewWeatherList {
             deliveredSearchData = hourlyData
@@ -499,6 +506,7 @@ class MainVC: UIViewController {
             mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
             topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
             
+            removeFlakeEmitterCell()
             if iconId % 100 == 13 {
                 fallingSnow()
             } else if iconId % 100 == 10 {
@@ -566,6 +574,13 @@ class MainVC: UIViewController {
             
             self.mainBottomView.layoutIfNeeded()
         })
+    }
+    
+    func blankDownImage() {
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.autoreverse, .repeat], animations: {
+            self.downImage.alpha = 0
+            self.downImage.alpha = 1
+        }, completion: nil)
     }
     
     // MARK: - IBActions
