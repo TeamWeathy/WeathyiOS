@@ -284,7 +284,7 @@ extension RecordTextVC {
                 if let loadData = data as? RecordWeathyData {
                     print(loadData)
                 }
-                self.dismiss(animated: true) {
+                self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
                 }
 //                self.showToast(message: "웨디에 내용이 추가되었어요!")
@@ -293,7 +293,7 @@ extension RecordTextVC {
                 print("requestErr")
                 if let message = msg as? String {
                     print(message)
-                    self.showToast(message: message)
+                    self.showToast(message: "이미 작성된 웨디가 존재합니다.")
                 }
                 
             case .pathErr:

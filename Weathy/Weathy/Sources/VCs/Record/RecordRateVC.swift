@@ -78,7 +78,9 @@ class RecordRateVC: UIViewController {
         dvc.dateString = dateString
         dvc.locationCode = locationCode
         
-        self.navigationController?.pushViewController(dvc, animated: false)
+        dvc.modalPresentationStyle = .fullScreen
+//        self.navigationController?.pushViewController(dvc, animated: false)
+        self.present(dvc, animated: false, completion: nil)
     }
     
 
