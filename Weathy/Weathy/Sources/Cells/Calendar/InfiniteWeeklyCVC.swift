@@ -40,18 +40,16 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
     
     func callWeeklyWeathy(){
         var start = ""
-        var startComponent = DateComponents()
-        var startDate = Date()
         let dateFormatter = DateFormatter()
+        var startDate = Date()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        startComponent.day = -standardDate.weekday
-        startDate = Calendar.current.date(byAdding: startComponent, to: standardDate)!
+        startDate = standardDate
         start = dateFormatter.string(from: startDate)
         var end = ""
         var endComponent = DateComponents()
         var endDate = Date()
-        endComponent.day = 7 - (standardDate.weekday + 1)
-        endDate = Calendar.current.date(byAdding: endComponent, to: standardDate)!
+        endComponent.day = 6
+        endDate = Calendar.current.date(byAdding: endComponent, to: startDate)!
         end = dateFormatter.string(from: endDate)
         
         MonthlyWeathyService.shared.getMonthlyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), startDate: start, endDate: end){ (networkResult) -> (Void) in
@@ -65,13 +63,13 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
                     }
                     
                 case .requestErr(let msg):
-                    print("[Monthly] requestErr",msg)
+                    print("[Weekly] requestErr",msg)
                 case .serverErr:
-                    print("[Monthly] serverErr")
+                    print("[Weekly] serverErr")
                 case .networkFail:
-                    print("[Monthly] networkFail")
+                    print("[Weekly] networkFail")
                 case .pathErr:
-                    print("[Monthly] pathErr")
+                    print("[Weekly] pathErr")
                     
             }
             
@@ -122,7 +120,9 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
         }
         return true
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        ///지금 선택한 셀이 이전에 선택된 셀과 다른 경우 이전 선택 셀 선택 취소
         if lastSelectedIdx != indexPath.item{
             if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? WeeklyCalendarCVC{
                 cell.isSelected = false
@@ -164,7 +164,8 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         }
         if indexPath.item == selectedDate.weekday{
             cell.isSelected = true
-            cell.setSelectedDay()
+            lastSelectedIdx = indexPath.item
+//            cell.setSelectedDay()
         }
         else if indexPath.item > standardDate.weekday{
             cell.emotionView.alpha = 0
