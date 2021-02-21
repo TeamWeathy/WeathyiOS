@@ -9,6 +9,7 @@ import UIKit
 
 protocol WeekCellDelegate{
     func selectedWeekDateDidChange(_ selectedDate: Date)
+    func todayViewDidAppear(_ weekday: Int)
 }
 
 class InfiniteWeeklyCVC: UICollectionViewCell {
@@ -129,9 +130,9 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? WeeklyCalendarCVC{
                 var selectedComponent = DateComponents()
-                selectedComponent.day = indexPath.item - standardDate.weekday
-                standardDate = Calendar.current.date(byAdding: selectedComponent, to: standardDate)!
-                weekCellDelegate?.selectedWeekDateDidChange(standardDate)
+                selectedComponent.day = indexPath.item
+                selectedDate = Calendar.current.date(byAdding: selectedComponent, to: standardDate)!
+                weekCellDelegate?.selectedWeekDateDidChange(selectedDate)
 //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeData"), object: selectedDate)
                 lastSelectedIdx = indexPath.item
             }
@@ -179,6 +180,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         if indexDate.currentYearMonth == Date().currentYearMonth{
             if indexDate.day == Date().day{
                 cell.setToday()
+                weekCellDelegate?.todayViewDidAppear(indexPath.item)
             }
             else if indexDate.day > Date().day{
                 cell.setGreyDay()

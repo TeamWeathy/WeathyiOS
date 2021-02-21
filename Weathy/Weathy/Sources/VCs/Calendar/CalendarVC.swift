@@ -247,6 +247,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //MARK: - Custom Methods - Calendar
     
     func selectedDateDidChange(){
+        setWeekdayColor()
         picker.date = selectedDate
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: "ChangeDate"),object: selectedDate)
@@ -376,6 +377,10 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         self.selectedDate = selectedDate
         selectedDateDidChange()
         closeDrawer()
+    }
+    
+    func todayViewDidAppear(_ weekday: Int){
+        weekdayLabelCollection[weekday].textColor = .white
     }
     
     //MARK: - @objc methods
