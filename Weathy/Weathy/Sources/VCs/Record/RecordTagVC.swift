@@ -59,6 +59,7 @@ class RecordTagVC: UIViewController {
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var deleteTextIconImageView: UIImageView!
     @IBOutlet var indicatorCircle: [UIView]!
     
     @IBOutlet var tagTitleCollectionView: UICollectionView!
@@ -136,7 +137,7 @@ class RecordTagVC: UIViewController {
     @objc func longTap(gesture : UILongPressGestureRecognizer!) {
         if gesture.state != .ended {
             
-            self.notificationGenerator = UIImpactFeedbackGenerator(style: .light)
+            self.notificationGenerator = UIImpactFeedbackGenerator(style: .soft)
             self.notificationGenerator?.impactOccurred()
             
             let p = gesture.location(in: self.tagCollectionView)
@@ -209,7 +210,7 @@ extension RecordTagVC {
         titleLabel.textColor = UIColor.mainGrey
         titleLabel.numberOfLines = 2
         
-        explanationLabel.text = "옷은 길게 눌러 삭제하고, +를 눌러 추가할 수 있어요."
+        explanationLabel.text = "+를 눌러 추가하고,       를 눌러 삭제할 수 있어요."
         explanationLabel.font = UIFont.SDGothicRegular16
         explanationLabel.textColor = UIColor.subGrey6
         
@@ -290,6 +291,8 @@ extension RecordTagVC {
         explanationLabel.alpha = 0
         explanationLabel.frame = CGRect(x: explanationLabel.frame.origin.x, y: explanationLabel.frame.origin.y-10, width: explanationLabel.frame.width, height: explanationLabel.frame.height)
         
+        deleteTextIconImageView.alpha = 0
+        deleteTextIconImageView.frame = CGRect(x: deleteTextIconImageView.frame.origin.x, y: deleteTextIconImageView.frame.origin.y-10, width: deleteTextIconImageView.frame.width, height: deleteTextIconImageView.frame.height)
     }
     
     func animationPrac() {
@@ -302,7 +305,9 @@ extension RecordTagVC {
         
         UIView.animate(withDuration: 1, delay: 0.5, animations: {
             self.explanationLabel.alpha = 1
+            self.deleteTextIconImageView.alpha = 1
             self.explanationLabel.frame = CGRect(x: self.explanationLabel.frame.origin.x, y: self.explanationLabel.frame.origin.y+10, width: self.explanationLabel.frame.width, height: self.explanationLabel.frame.height)
+            self.deleteTextIconImageView.frame = CGRect(x: self.deleteTextIconImageView.frame.origin.x, y: self.deleteTextIconImageView.frame.origin.y+10, width: self.deleteTextIconImageView.frame.width, height: self.deleteTextIconImageView.frame.height)
         })
     }
     

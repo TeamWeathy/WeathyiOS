@@ -1,19 +1,19 @@
 {
   "images" : [
     {
+      "filename" : "icDeleteText.png",
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "btnDelete.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "btnDelete@2x.png"
+      "filename" : "icDeleteText@2x.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "btnDelete@3x.png",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "icDeleteText@3x.png"
     }
   ],
   "info" : {
