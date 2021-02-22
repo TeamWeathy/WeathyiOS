@@ -336,6 +336,7 @@ extension RecordTextVC {
         print("library selected")
         
         picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
         
         present(picker, animated: false, completion: nil)
         
@@ -345,6 +346,7 @@ extension RecordTextVC {
         
         if(UIImagePickerController .isSourceTypeAvailable(.camera)){
             picker.sourceType = .camera
+            picker.allowsEditing = true
             present(picker, animated: false, completion: nil)
         }
 
