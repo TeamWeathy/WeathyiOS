@@ -99,13 +99,13 @@ class MainVC: UIViewController {
         
         if deliveredSearchData == nil {
             getLocationWeather()
-        } else {
-            print("#")
         }
-
+        
         if let nickname = UserDefaults.standard.string(forKey: "nickname") {
             todayWeathyNicknameLabel.text = "\(nickname)님이 기억하는"
         }
+        
+        blankDownImage()
     }
     
     override func viewDidLoad() {
@@ -138,6 +138,7 @@ class MainVC: UIViewController {
         mainScrollView.isPagingEnabled = true
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
+        mainTopScrollView.showsVerticalScrollIndicator = false
         
         logoImage.frame.origin.y += 100
         logoImage.alpha = 0
@@ -150,6 +151,9 @@ class MainVC: UIViewController {
         todayDateTimeLabel.characterSpacing = -0.75
 
         // top weathy view
+        let weathyViewTabGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpTodayWeathyView))
+        todayWeathyView.addGestureRecognizer(weathyViewTabGesture)
+
         closetTopLabel.font = UIFont.SDGothicRegular13
         closetTopLabel.textColor = UIColor.black
         closetTopLabel.characterSpacing = -0.65
@@ -260,6 +264,7 @@ class MainVC: UIViewController {
         searchImage = ClimateImage.getClimateMainBgName(iconId)
         searchGradient = ClimateImage.getSearchClimateMainBlurBarName(iconId)
         
+        removeFlakeEmitterCell()
         if iconId % 100 == 13 {
             fallingSnow()
         } else if iconId % 100 == 10 {
@@ -324,6 +329,8 @@ class MainVC: UIViewController {
             climateLabel.text = "\(description)"
         }
     }
+
+    // MARK: - Network
 
     func getLocationWeather() {
         MainService.shared.getWeatherByLocation { (result) -> Void in
@@ -476,26 +483,31 @@ class MainVC: UIViewController {
         flakeEmitterCell.yAcceleration = 300
         flakeEmitterCell.xAcceleration = 5
         
-        let snowEmitterLayer = CAEmitterLayer()
-        snowEmitterLayer.emitterPosition = CGPoint(x: view.bounds.width/2, y: -300)
-        snowEmitterLayer.emitterSize = CGSize(width: view.bounds.width * 2, height: 0)
-        snowEmitterLayer.emitterShape = CAEmitterLayerEmitterShape.line
-        snowEmitterLayer.beginTime = CACurrentMediaTime()
-        snowEmitterLayer.timeOffset = 30
-        snowEmitterLayer.emitterCells = [flakeEmitterCell]
+        let rainEmitterLayer = CAEmitterLayer()
+        rainEmitterLayer.emitterPosition = CGPoint(x: view.bounds.width/2, y: -300)
+        rainEmitterLayer.emitterSize = CGSize(width: view.bounds.width * 2, height: 0)
+        rainEmitterLayer.emitterShape = CAEmitterLayerEmitterShape.line
+        rainEmitterLayer.beginTime = CACurrentMediaTime()
+        rainEmitterLayer.timeOffset = 30
+        rainEmitterLayer.emitterCells = [flakeEmitterCell]
         
-        snowEmitterLayer.setAffineTransform(CGAffineTransform(rotationAngle: .pi/24))
-        snowEmitterLayer.opacity = 0.9
+        rainEmitterLayer.setAffineTransform(CGAffineTransform(rotationAngle: .pi/24))
+        rainEmitterLayer.opacity = 0.9
         
-        mainBackgroundImage.layer.addSublayer(snowEmitterLayer)
+        mainBackgroundImage.layer.addSublayer(rainEmitterLayer)
     }
     
     func removeFlakeEmitterCell() {
         if var subLayers = mainBackgroundImage.layer.sublayers {
+            for layer in subLayers {
+                layer.removeFromSuperlayer()
+            }
+            
             subLayers.removeAll()
         }
     }
     
+    // FIXME: - changeMainTopView func랑 합칠 수 있을 것 같음
     @objc func setSearchData(_ notiData: NSNotification) {
         if let hourlyData = notiData.object as? OverviewWeatherList {
             deliveredSearchData = hourlyData
@@ -506,6 +518,7 @@ class MainVC: UIViewController {
             mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
             topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
             
+            removeFlakeEmitterCell()
             if iconId % 100 == 13 {
                 fallingSnow()
             } else if iconId % 100 == 10 {
@@ -573,6 +586,13 @@ class MainVC: UIViewController {
             
             self.mainBottomView.layoutIfNeeded()
         })
+    }
+    
+    func blankDownImage() {
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.autoreverse, .repeat], animations: {
+            self.downImage.alpha = 0
+            self.downImage.alpha = 1
+        }, completion: nil)
     }
     
     // MARK: - IBActions
@@ -663,6 +683,30 @@ class MainVC: UIViewController {
             
             isOnGPS = true
             gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
+        }
+    }
+    
+    // FIXME: - 테스트용 데이터 주석 처리 제거
+    @objc func touchUpTodayWeathyView() {
+//        recommenedWeathyData = RecommendedWeathyData(weathy: WeathyClass(region: Region(code: 1324, name: "서울특별시"), dailyWeather: DailyWeather(date: DateClass(year: 2021, month: 1, day: 28, dayOfWeek: "월"), temperature: HighLowTemp(maxTemp: 16, minTemp: -2), climate: Climate(iconId: 101, description: "조금 춥고.."), climateID: 12), hourlyWeather: HourlyWeather(time: "17", temperature: 10, climate: Climate(iconId: 12, description: "조금 따뜻..?"), pop: 4), closet: Closet(top: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), bottom: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), outer: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), etc: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")])), weathyId: 2, stampId: 2, feedback: "조금 더 얇게"), message: "테스트용 데이터")
+        
+        if let data = recommenedWeathyData {
+            guard let tabBarVC = parent as? TabbarVC else { return }
+            guard let calendarDetailVC = tabBarVC.children[1] as? CalendarDetailVC else { return }
+            
+            let dailyWeathyDate: DateClass = data.weathy.dailyWeather.date
+            guard let dailyWeathyYear = dailyWeathyDate.year else { return }
+            
+            let weathyDate = "\(dailyWeathyYear)-\(dailyWeathyDate.month)-\(dailyWeathyDate.day)" // YYYY-MM-DD
+            calendarDetailVC.selectedDate = Date().getStringToDate(format: "YYYY-MM-DD", date: weathyDate)
+            
+            tabBarVC.mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
+            tabBarVC.calendarButton.setImage(UIImage(named: "ic_calendar_selected"), for: .normal)
+                
+            tabBarVC.calendarButtonBool = true
+            tabBarVC.mainButtonBool = false
+                
+            tabBarVC.scrollView.setContentOffset(CGPoint(x: tabBarVC.scrollView.frame.width, y: 0), animated: false)
         }
     }
 }
