@@ -12,7 +12,7 @@ class CalendarDetailVC: UIViewController {
     //MARK: - Custom Properties
     
     let screen = UIScreen.main.bounds
-    let dateFormatter = DateFormatter()
+    let koreanDateFormatter = DateFormatter()
     let noDataDate = "2020-12-13"
     var clothesTopList = ["기모맨투맨투맨","히트텍하트","폴로니트니트니","메종 마르지엘라 사줘","이인애바보"]
     var clothesBottomList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애요지랄"]
@@ -101,8 +101,8 @@ class CalendarDetailVC: UIViewController {
     func setDefaultFormatter(){
         defaultDateFormatter.dateFormat = "yyyy-MM-dd"
         defaultDateFormatter.locale = Locale(identifier: "ko-Kr")
-        dateFormatter.locale = Locale(identifier: "ko")
-        dateFormatter.dateFormat = "MM월 dd일 eeee"
+        koreanDateFormatter.locale = Locale(identifier: "ko")
+        koreanDateFormatter.dateFormat = "MM월 dd일 eeee"
     }
     func initGestureRecognizer() {
         let moreBtnTap = UITapGestureRecognizer(target: self, action: #selector(closeMoreMenu(_:)))
@@ -200,7 +200,7 @@ class CalendarDetailVC: UIViewController {
         clothesTagLabels[2].text = insertSeparatorInArray(clothesOuterList ?? [])
         clothesTagLabels[3].text = insertSeparatorInArray(clothesEtcList ?? [])
         commentLabel.text = comment
-        dateLabel.text = dateFormatter.string(from: selectedDate)
+        dateLabel.text = koreanDateFormatter.string(from: selectedDate)
         
         
     }
@@ -265,11 +265,11 @@ class CalendarDetailVC: UIViewController {
     //MARK: - Network
     
     func callDailyWeathy(){
-        DailyWeathyService.shared.getDailyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), date: defaultDateFormatter.string(from: selectedDate)){ (networkResult) -> (Void) in
+        DailyWeathyService.shared.getDailyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), date: defaultDateFormatter.string(from: selectedDate)){ [self] (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let data):
                     if let dailyData = data as? WeathyClass{
-                        print("[Daily]",dailyData)
+                        print("[Daily] success",koreanDateFormatter.string(from: self.selectedDate))
                         self.dailyWeathy = dailyData
                         self.setData()
                     }
@@ -349,7 +349,7 @@ class CalendarDetailVC: UIViewController {
         if let noti = notification{
             selectedDate = noti.object as! Date
         }
-        dateLabel.text = dateFormatter.string(from: selectedDate)
+        dateLabel.text = koreanDateFormatter.string(from: selectedDate)
         callDailyWeathy()
         
     }

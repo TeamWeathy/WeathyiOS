@@ -9,11 +9,13 @@ import UIKit
 
 protocol WeekCellDelegate{
     func selectedWeekDateDidChange(_ selectedDate: Date)
+    func todayViewDidAppear(_ weekday: Int)
 }
 
 class InfiniteWeeklyCVC: UICollectionViewCell {
     
     static let identifier = "InfiniteWeeklyCVC"
+    var standardDate = Date()
     var selectedDate = Date()
     var lastSelectedIdx = Date().weekday
     let screen = UIScreen.main.bounds
@@ -39,18 +41,16 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
     
     func callWeeklyWeathy(){
         var start = ""
-        var startComponent = DateComponents()
-        var startDate = Date()
         let dateFormatter = DateFormatter()
+        var startDate = Date()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        startComponent.day = -selectedDate.weekday
-        startDate = Calendar.current.date(byAdding: startComponent, to: selectedDate)!
+        startDate = standardDate
         start = dateFormatter.string(from: startDate)
         var end = ""
         var endComponent = DateComponents()
         var endDate = Date()
-        endComponent.day = 7 - (selectedDate.weekday + 1)
-        endDate = Calendar.current.date(byAdding: endComponent, to: selectedDate)!
+        endComponent.day = 6
+        endDate = Calendar.current.date(byAdding: endComponent, to: startDate)!
         end = dateFormatter.string(from: endDate)
         
         MonthlyWeathyService.shared.getMonthlyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), startDate: start, endDate: end){ (networkResult) -> (Void) in
@@ -64,13 +64,13 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
                     }
                     
                 case .requestErr(let msg):
-                    print("[Monthly] requestErr",msg)
+                    print("[Weekly] requestErr",msg)
                 case .serverErr:
-                    print("[Monthly] serverErr")
+                    print("[Weekly] serverErr")
                 case .networkFail:
-                    print("[Monthly] networkFail")
+                    print("[Weekly] networkFail")
                 case .pathErr:
-                    print("[Monthly] pathErr")
+                    print("[Weekly] pathErr")
                     
             }
             
@@ -88,6 +88,9 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
     
     
 }
+
+//MARK: - UICollectionView Delegate
+
 extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
@@ -108,8 +111,8 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
         if let cell = collectionView.cellForItem(at: indexPath) as? WeeklyCalendarCVC{
             var selectedComponent = DateComponents()
             
-            selectedComponent.day = indexPath.item - selectedDate.weekday
-            let newSelectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+            selectedComponent.day = indexPath.item - standardDate.weekday
+            let newSelectedDate = Calendar.current.date(byAdding: selectedComponent, to: standardDate)!
             if newSelectedDate.compare(Date()) == .orderedDescending{
                 return false
             }
@@ -118,15 +121,17 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
         }
         return true
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        ///지금 선택한 셀이 이전에 선택된 셀과 다른 경우 이전 선택 셀 선택 취소
         if lastSelectedIdx != indexPath.item{
             if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? WeeklyCalendarCVC{
                 cell.isSelected = false
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? WeeklyCalendarCVC{
                 var selectedComponent = DateComponents()
-                selectedComponent.day = indexPath.item - selectedDate.weekday
-                selectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+                selectedComponent.day = indexPath.item
+                selectedDate = Calendar.current.date(byAdding: selectedComponent, to: standardDate)!
                 weekCellDelegate?.selectedWeekDateDidChange(selectedDate)
 //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeData"), object: selectedDate)
                 lastSelectedIdx = indexPath.item
@@ -135,6 +140,8 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
     }
 }
 
+//MARK: - UICollectionView DataSource
+
 extension InfiniteWeeklyCVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
@@ -142,10 +149,15 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeeklyCalendarCVC.identifier, for: indexPath) as? WeeklyCalendarCVC else { return UICollectionViewCell() }
+        var addDateComponent = DateComponents()
+        addDateComponent.day = indexPath.item
+        let indexDate = Calendar.current.date(byAdding: addDateComponent, to: standardDate)!
+        print("@",indexDate)
         cell.selectedView.alpha = 0
         cell.todayView.alpha = 0
         cell.emotionView.alpha = 0
-        let tempIdx = indexPath.item + selectedDate.day-(selectedDate.weekday)
+        cell.dayLabel.text = String(indexDate.day)
+
         ///토요일
         if indexPath.item == 6{
             cell.setSaturday()
@@ -156,39 +168,31 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         else{
             cell.dayLabel.textColor = .mainGrey
         }
+        ///선택된 날짜
         if indexPath.item == selectedDate.weekday{
-            cell.setSelectedDay()
+            cell.isSelected = true
+            lastSelectedIdx = indexPath.item
         }
-        else if indexPath.item > selectedDate.weekday{
-            cell.emotionView.alpha = 0
-        }
+//        else if indexPath.item > standardDate.weekday{
+//            cell.emotionView.alpha = 0
+//        }
         ///현재주가 오늘을 포함하고 있는 경우
-        if selectedDate.currentYearMonth == Date().currentYearMonth{
-            if indexPath.item + selectedDate.day-(selectedDate.weekday) == Date().day{
+        if indexDate.currentYearMonth == Date().currentYearMonth{
+            if indexDate.day == Date().day{
                 cell.setToday()
+                weekCellDelegate?.todayViewDidAppear(indexPath.item)
+            }
+            else if indexDate.day > Date().day{
+                cell.setGreyDay()
             }
         }
-        else if selectedDate.currentYearMonth > Date().currentYearMonth{
+        
+    
+        ///이전달 혹은 다음달
+        if indexDate.month != selectedDate.month{
             cell.setGreyDay()
         }
-        ///현재달
-        if 0 < tempIdx && tempIdx <= selectedDate.numberOfMonth{
-            cell.dayLabel.text = String(indexPath.item + selectedDate.day-(selectedDate.weekday))
-        }
-        ///이전달
-        else if tempIdx<=0{
-            var last = Date()
-            var lastComponent = DateComponents()
-            lastComponent.month = -1
-            last = Calendar.current.date(byAdding: lastComponent, to: selectedDate)!
-            cell.dayLabel.text = String(last.numberOfMonth + tempIdx)
-            cell.setGreyDay()
-        }
-        ///다음달
-        else if tempIdx > selectedDate.numberOfMonth{
-            cell.dayLabel.text = String(tempIdx - selectedDate.numberOfMonth)
-            cell.setGreyDay()
-        }
+
         if weeklyWeathyList.count != 0{
             if let data = weeklyWeathyList[indexPath.item]{
                 cell.setEmotionView(emotionCode: weeklyWeathyList[indexPath.item]!.stampId)
