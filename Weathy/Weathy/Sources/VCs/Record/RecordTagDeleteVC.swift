@@ -91,6 +91,9 @@ class RecordTagDeleteVC: UIViewController {
         tagTitles[initialTagTab].isSelected = true
         tagCollectionView.contentOffset.y = self.initialYOffset
         
+//        /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
+//        self.view.layoutIfNeeded()
+        
         nextBtn.isUserInteractionEnabled = true
         nextBtn.backgroundColor = UIColor.pink
         nextBtn.setTitle("삭제하기", for: .normal)
@@ -209,6 +212,9 @@ extension RecordTagDeleteVC {
     }
     
     func setCancelBtn() {
+//        /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
+//        self.view.layoutIfNeeded()
+        
         self.cancelBtn.backgroundColor = UIColor.white
         self.cancelBtn.setBorder(borderColor: UIColor.subGrey2, borderWidth: 1)
         self.cancelBtn.setTitle("취소", for: .normal)

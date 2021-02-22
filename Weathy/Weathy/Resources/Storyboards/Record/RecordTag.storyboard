@@ -32,9 +32,6 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sx-kb-nIp">
                                 <rect key="frame" x="33" y="707" width="309" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="8Sx-kb-nIp" secondAttribute="height" multiplier="309:55" id="HDC-FP-Neq"/>
-                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="nextBtnTap:" destination="OdZ-gP-p1Y" eventType="touchUpInside" id="3Pv-ZH-hbY"/>

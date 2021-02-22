@@ -76,7 +76,7 @@ class RecordStartVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        animationPrac()
+        titleAnimation()
         NotificationCenter.default.addObserver(self, selector: #selector(SearchInfo), name: .init("record"), object: nil)
     }
     
@@ -214,6 +214,8 @@ extension RecordStartVC {
         startBtn.setTitle("다음", for: .normal)
         startBtn.setTitleColor(.white, for: .normal)
         startBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
+        self.view.layoutIfNeeded()
         startBtn.layer.cornerRadius = startBtn.frame.height / 2
         
     }
@@ -228,7 +230,7 @@ extension RecordStartVC {
         
     }
     
-    func animationPrac() {
+    func titleAnimation() {
         self.initPosition()
         
         UIView.animate(withDuration: 1, animations: {

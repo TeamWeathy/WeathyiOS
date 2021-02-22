@@ -51,11 +51,11 @@ class RecordTextVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initialSetting()
         setUpper()
         setTitleLabel()
         setTextField()
         textViewSetupView()
-        setFinishBtn()
         setSkipBtn()
         setPhotoBox()
         
@@ -65,29 +65,7 @@ class RecordTextVC: UIViewController {
         picker.delegate = self
 //        recordTextView.addTarget(self, action: #selector(textViewDidChange(sender:)),for: .editingChanged)
 //        recordTextView.add
-        
-        finishBtn.isUserInteractionEnabled = false
-        finishBtn.backgroundColor = UIColor.subGrey3
-        finishBtn.setTitle("내용 추가하기", for: .normal)
-        finishBtn.setTitleColor(.white, for: .normal)
-        finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
-        finishBtn.titleLabel?.font = .SDGothicSemiBold16
-        
-        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
-        textViewSurroundingView.layer.borderWidth = 1
-        textViewSurroundingView.layer.cornerRadius = 15
-        
-        wordCountLabel.text = "0"
-        wordCountLabel.font = UIFont.SDGothicRegular13
-        wordCountLabel.textColor = UIColor.subGrey6
-        
-        if dateString == "0000-00-00" {
-            if let date = appDelgate.overviewData {
-                dateString = "\(date.dailyWeather.date.year!)-\(String(format: "%02d", date.dailyWeather.date.month))-\(String(format: "%02d", date.dailyWeather.date.day))"
-            }
-        }
 
-        print(">>>>>", dateString)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -181,6 +159,30 @@ extension RecordTextVC {
         titleLabel.attributedText = attributedString
     }
     
+    func initialSetting() {
+        finishBtn.isUserInteractionEnabled = false
+        finishBtn.backgroundColor = UIColor.subGrey3
+        finishBtn.setTitle("내용 추가하기", for: .normal)
+        finishBtn.setTitleColor(.white, for: .normal)
+        self.view.layoutIfNeeded()
+        finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
+        finishBtn.titleLabel?.font = .SDGothicSemiBold16
+        
+        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
+        
+        wordCountLabel.text = "0"
+        wordCountLabel.font = UIFont.SDGothicRegular13
+        wordCountLabel.textColor = UIColor.subGrey6
+        
+        if dateString == "0000-00-00" {
+            if let date = appDelgate.overviewData {
+                dateString = "\(date.dailyWeather.date.year!)-\(String(format: "%02d", date.dailyWeather.date.month))-\(String(format: "%02d", date.dailyWeather.date.day))"
+            }
+        }
+    }
+    
     func setTextField() {
         
 
@@ -237,13 +239,6 @@ extension RecordTextVC {
         photoBtn.contentVerticalAlignment = .fill
         photoBtn.imageView?.contentMode = .scaleAspectFill
 
-    }
-    
-    func setFinishBtn() {
-        finishBtn.backgroundColor = UIColor.lightGray
-        finishBtn.setTitle("내용 추가하기", for: .normal)
-        finishBtn.setTitleColor(.white, for: .normal)
-        finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
     }
     
     func textExists() {
