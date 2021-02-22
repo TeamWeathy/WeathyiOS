@@ -246,7 +246,7 @@ class MainVC: UIViewController {
         mainBottomView.layoutIfNeeded()
         
         // blur image (이미지 에셋 좌우 반전)
-        timeZoneRightBlurImage.transform = CGAffineTransform(scaleX: -1, y: 1)
+        timeZoneLeftBlurImage.transform = CGAffineTransform(scaleX: -1, y: 1)
         timeZoneLeftBlurImage.alpha = 0
     }
     
