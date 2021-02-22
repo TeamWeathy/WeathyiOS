@@ -168,6 +168,7 @@ class MainVC: UIViewController {
 
         todayWeathyNicknameLabel.font = UIFont.SDGothicRegular16
         todayWeathyNicknameLabel.characterSpacing = -0.8
+        todayWeathyNicknameLabel.textColor = UIColor.mainGrey
         todayWeathyNicknameLabel.text = "님이 기억하는"
 
         todayWeathyView.makeRounded(cornerRadius: 35)
