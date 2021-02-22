@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IQb-Bj-cvv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IQb-Bj-cvv">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -280,7 +280,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingImgDevinfo" translatesAutoresizingMaskIntoConstraints="NO" id="x0B-hh-TPB">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingBgDevinfo" translatesAutoresizingMaskIntoConstraints="NO" id="x0B-hh-TPB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ag1-Nj-iQu">
@@ -290,16 +290,25 @@
                                     <action selector="backButtonDidTap:" destination="CVR-9y-N3s" eventType="touchUpInside" id="yxU-aB-8PS"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingImgDevinfoText" translatesAutoresizingMaskIntoConstraints="NO" id="5yR-6g-cTl">
+                                <rect key="frame" x="71.666666666666686" y="92.666666666666686" width="232" height="627"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5yR-6g-cTl" secondAttribute="height" multiplier="232:627" id="4hc-Rq-VCo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KUO-R6-C3H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ag1-Nj-iQu" firstAttribute="leading" secondItem="KUO-R6-C3H" secondAttribute="leading" constant="33" id="4Ll-IN-eO3"/>
+                            <constraint firstItem="5yR-6g-cTl" firstAttribute="centerY" secondItem="Siy-6D-Ptw" secondAttribute="centerY" id="CR0-9i-uMO"/>
                             <constraint firstItem="Ag1-Nj-iQu" firstAttribute="top" secondItem="KUO-R6-C3H" secondAttribute="top" constant="15" id="DxC-B6-FIg"/>
                             <constraint firstItem="x0B-hh-TPB" firstAttribute="trailing" secondItem="KUO-R6-C3H" secondAttribute="trailing" id="NHJ-6O-N6J"/>
+                            <constraint firstItem="5yR-6g-cTl" firstAttribute="width" secondItem="x0B-hh-TPB" secondAttribute="width" multiplier="232:375" id="bah-ec-46H"/>
                             <constraint firstAttribute="bottom" secondItem="x0B-hh-TPB" secondAttribute="bottom" id="fIv-5h-0v5"/>
                             <constraint firstItem="x0B-hh-TPB" firstAttribute="leading" secondItem="KUO-R6-C3H" secondAttribute="leading" id="g1k-so-vDI"/>
                             <constraint firstItem="x0B-hh-TPB" firstAttribute="top" secondItem="Siy-6D-Ptw" secondAttribute="top" id="gpz-32-IvF"/>
+                            <constraint firstItem="5yR-6g-cTl" firstAttribute="centerX" secondItem="Siy-6D-Ptw" secondAttribute="centerX" id="hjL-Ow-wPX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AmF-nr-zqS"/>
@@ -466,9 +475,10 @@
     <resources>
         <image name="btnDelete" width="16" height="16"/>
         <image name="ic_back" width="20" height="20"/>
+        <image name="settingBgDevinfo" width="375" height="812"/>
         <image name="settingBtnEditUnselected" width="307" height="55"/>
         <image name="settingFrameArrow" width="48" height="48"/>
-        <image name="settingImgDevinfo" width="375" height="812"/>
+        <image name="settingImgDevinfoText" width="232" height="627"/>
         <image name="settingImgTextfieldUnselected" width="307" height="50"/>
         <image name="settings_btn_close" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">

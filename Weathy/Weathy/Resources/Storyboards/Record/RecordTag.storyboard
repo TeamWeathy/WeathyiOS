@@ -221,7 +221,7 @@
                                     <constraint firstAttribute="height" constant="40" id="eOF-Fu-4Ab"/>
                                     <constraint firstAttribute="width" constant="40" id="jBk-tD-vPd"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="btnDelete"/>
+                                <state key="normal" title="Button" image="btnDeleteTrashCan"/>
                                 <connections>
                                     <action selector="deleteBtnTap:" destination="OdZ-gP-p1Y" eventType="touchUpInside" id="fcW-Ma-G42"/>
                                 </connections>
@@ -416,7 +416,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="btnDelete" width="40" height="40"/>
+        <image name="btnDeleteTrashCan" width="40" height="40"/>
         <image name="icDeleteText" width="20" height="20"/>
         <image name="ic_back" width="20" height="20"/>
         <image name="recordImgBottomblur" width="375" height="52"/>
