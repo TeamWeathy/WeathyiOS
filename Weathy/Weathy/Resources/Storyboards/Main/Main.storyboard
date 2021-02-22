@@ -51,7 +51,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 웨디" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="oC5-e9-Od0" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                    <rect key="frame" x="36.333333333333343" y="288.66666666666669" width="97" height="24.666666666666686"/>
+                                                    <rect key="frame" x="36.333333333333343" y="288.66666666666669" width="97" height="27.666666666666686"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeoSB00" family="AppleSDGothicNeoSB00" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTc-lH-swO">
-                                                    <rect key="frame" x="36.333333333333343" y="334.33333333333326" width="341.33333333333326" height="295.66666666666674"/>
+                                                    <rect key="frame" x="36.333333333333343" y="337.33333333333326" width="341.33333333333326" height="295.66666666666674"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eM-8I-BwY" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                             <rect key="frame" x="26" y="21" width="4.6666666666666679" height="21"/>
@@ -241,7 +241,7 @@
                                                     <rect key="frame" x="249.66666666666663" y="0.0" width="164.33333333333337" height="248.33333333333334"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFM-xw-3ZN" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                            <rect key="frame" x="8.6666666666666572" y="53" width="17" height="70"/>
+                                                            <rect key="frame" x="8.6666666666666572" y="53" width="15" height="70"/>
                                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="60"/>
                                                             <nil key="textColor"/>
@@ -334,14 +334,14 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRS-U2-Pfs">
-                                                    <rect key="frame" x="139.33333333333334" y="290" width="22" height="22"/>
+                                                    <rect key="frame" x="139.33333333333334" y="291.33333333333331" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="VRS-U2-Pfs" secondAttribute="height" multiplier="1:1" id="vSF-WB-mJx"/>
                                                     </constraints>
                                                     <state key="normal" image="ic_help"/>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_down" translatesAutoresizingMaskIntoConstraints="NO" id="qR8-i0-Kyx">
-                                                    <rect key="frame" x="196.66666666666666" y="645" width="20.666666666666657" height="21"/>
+                                                    <rect key="frame" x="196.66666666666666" y="648" width="20.666666666666657" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="qR8-i0-Kyx" secondAttribute="height" multiplier="1:1" id="Fee-tC-ifN"/>
                                                     </constraints>
@@ -1271,7 +1271,7 @@
                                                                             </view>
                                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7U9-KX-hc2">
                                                                                 <rect key="frame" x="25" y="76" width="257" height="110"/>
-                                                                                <color key="backgroundColor" red="0.84021832190000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cbs-AR-Snr">
                                                                                     <size key="itemSize" width="125" height="111.66666666666669"/>
                                                                                     <size key="estimatedItemSize" width="115" height="127.5"/>
@@ -1385,7 +1385,7 @@
                                                                             </view>
                                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K38-os-iwx" customClass="week">
                                                                                 <rect key="frame" x="25" y="71.333333333333243" width="257" height="131.66666666666663"/>
-                                                                                <color key="backgroundColor" red="0.23921568630000001" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yQF-Lk-Tqd">
                                                                                     <size key="itemSize" width="128" height="139"/>
                                                                                     <size key="estimatedItemSize" width="128" height="128"/>
@@ -1499,7 +1499,7 @@
                                                                             </view>
                                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EuQ-ft-IXf">
                                                                                 <rect key="frame" x="25" y="71.333333333333258" width="251" height="110.66666666666669"/>
-                                                                                <color key="backgroundColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Nfj-gy-d08">
                                                                                     <size key="itemSize" width="128" height="128"/>
                                                                                     <size key="estimatedItemSize" width="128" height="128"/>
