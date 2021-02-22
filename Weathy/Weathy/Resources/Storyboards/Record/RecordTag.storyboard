@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sx-kb-nIp">
-                                <rect key="frame" x="33" y="713" width="309" height="55"/>
+                                <rect key="frame" x="33" y="707" width="309" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8Sx-kb-nIp" secondAttribute="height" multiplier="309:55" id="HDC-FP-Neq"/>
                                 </constraints>
@@ -127,7 +127,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wiX-dK-HUU">
-                                <rect key="frame" x="33" y="261" width="309" height="447"/>
+                                <rect key="frame" x="33" y="261" width="309" height="441"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="swA-sO-s9M">
                                     <size key="itemSize" width="128" height="128"/>
@@ -204,7 +204,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recordImgBottomblur" translatesAutoresizingMaskIntoConstraints="NO" id="Rji-1N-CWU">
-                                <rect key="frame" x="0.0" y="661" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="655" width="375" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="qaJ-4o-rbw"/>
                                 </constraints>
@@ -255,7 +255,7 @@
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="top" secondItem="gPA-Vt-UcZ" secondAttribute="bottom" constant="60" id="bjm-K5-CcE"/>
                             <constraint firstItem="eay-L1-NoR" firstAttribute="trailing" secondItem="lOI-Su-7sH" secondAttribute="trailing" constant="-15" id="bzg-mE-whA"/>
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="leading" secondItem="wiX-dK-HUU" secondAttribute="leading" id="d6k-d6-oOa"/>
-                            <constraint firstItem="p2P-Xa-6hR" firstAttribute="bottom" secondItem="8Sx-kb-nIp" secondAttribute="bottom" constant="10" id="e6x-C0-j2A"/>
+                            <constraint firstItem="p2P-Xa-6hR" firstAttribute="bottom" secondItem="8Sx-kb-nIp" secondAttribute="bottom" constant="16" id="e6x-C0-j2A"/>
                             <constraint firstItem="3zE-UO-vCe" firstAttribute="centerY" secondItem="WDW-gH-0dZ" secondAttribute="centerY" id="fOo-Lj-pgp"/>
                             <constraint firstItem="Rji-1N-CWU" firstAttribute="trailing" secondItem="p2P-Xa-6hR" secondAttribute="trailing" id="gIa-sa-az8"/>
                             <constraint firstItem="8Sx-kb-nIp" firstAttribute="width" secondItem="8Sx-kb-nIp" secondAttribute="height" multiplier="309:55" id="geU-rX-PpQ"/>

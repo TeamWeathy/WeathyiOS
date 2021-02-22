@@ -163,7 +163,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bb9-ee-raV">
-                                <rect key="frame" x="33" y="790" width="348" height="62"/>
+                                <rect key="frame" x="33" y="784" width="348" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Bb9-ee-raV" secondAttribute="height" multiplier="309:55" id="QkP-XG-jWY"/>
                                 </constraints>
@@ -189,7 +189,7 @@
                             <constraint firstItem="uK9-5M-D6V" firstAttribute="centerX" secondItem="XaP-I9-n0b" secondAttribute="centerX" id="LkE-Qk-5R6"/>
                             <constraint firstItem="W5n-T4-FLd" firstAttribute="centerX" secondItem="uK9-5M-D6V" secondAttribute="centerX" id="Vhg-4y-ZOA"/>
                             <constraint firstItem="vhX-MO-VGO" firstAttribute="top" secondItem="uMe-eY-fNF" secondAttribute="bottom" constant="9" id="WK1-Rq-hYa"/>
-                            <constraint firstItem="4lq-qL-kGf" firstAttribute="bottom" secondItem="Bb9-ee-raV" secondAttribute="bottom" constant="10" id="X8G-PF-8su"/>
+                            <constraint firstItem="4lq-qL-kGf" firstAttribute="bottom" secondItem="Bb9-ee-raV" secondAttribute="bottom" constant="16" id="X8G-PF-8su"/>
                             <constraint firstItem="uMe-eY-fNF" firstAttribute="leading" secondItem="uK9-5M-D6V" secondAttribute="leading" id="ZQu-80-fih"/>
                             <constraint firstItem="a5b-WI-Cnz" firstAttribute="trailing" secondItem="uK9-5M-D6V" secondAttribute="trailing" constant="-15" id="acw-H5-jge"/>
                             <constraint firstItem="uK9-5M-D6V" firstAttribute="top" secondItem="vhX-MO-VGO" secondAttribute="bottom" constant="64" id="jYH-PO-qEh"/>
