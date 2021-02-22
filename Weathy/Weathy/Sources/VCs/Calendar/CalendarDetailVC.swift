@@ -353,6 +353,7 @@ class CalendarDetailVC: UIViewController {
         }
         if todayWeathyFlag{
             calendarVC.selectedDate = selectedDate
+            calendarVC.picker.date = selectedDate
             calendarVC.setWeekdayColor()
             calendarVC.closeDrawer()
             todayWeathyFlag = false
