@@ -22,8 +22,10 @@ class CalendarDetailVC: UIViewController {
     var selectedDate = Date()
     var calendarVC: CalendarVC!
     var dailyWeathy: WeathyClass?
-    var isModified = false
+    var isModified: Bool = false
+    var todayWeathyFlag: Bool = false
     var defaultDateFormatter = DateFormatter()
+    
     
     //MARK: - IBOutlets
     
@@ -348,6 +350,12 @@ class CalendarDetailVC: UIViewController {
     @objc func selectedDateDidChange(_ notification: NSNotification?){
         if let noti = notification{
             selectedDate = noti.object as! Date
+        }
+        if todayWeathyFlag{
+            calendarVC.selectedDate = selectedDate
+            calendarVC.setWeekdayColor()
+            calendarVC.closeDrawer()
+            todayWeathyFlag = false
         }
         dateLabel.text = koreanDateFormatter.string(from: selectedDate)
         callDailyWeathy()

@@ -698,7 +698,10 @@ class MainVC: UIViewController {
             guard let dailyWeathyYear = dailyWeathyDate.year else { return }
             
             let weathyDate = "\(dailyWeathyYear)-\(dailyWeathyDate.month)-\(dailyWeathyDate.day)" // YYYY-MM-DD
-            calendarDetailVC.selectedDate = Date().getStringToDate(format: "YYYY-MM-DD", date: weathyDate)
+//            calendarDetailVC.selectedDate = Date().getStringToDate(format: "YYYY-MM-DD", date: weathyDate)
+            calendarDetailVC.todayWeathyFlag = true
+            NotificationCenter.default.post(
+                name: NSNotification.Name(rawValue: "ChangeDate"),object: Date().getStringToDate(format: "yyyy-MM-dd", date: weathyDate))
             
             tabBarVC.mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
             tabBarVC.calendarButton.setImage(UIImage(named: "ic_calendar_selected"), for: .normal)

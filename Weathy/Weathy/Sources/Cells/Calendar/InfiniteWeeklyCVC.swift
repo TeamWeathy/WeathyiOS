@@ -152,7 +152,6 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         var addDateComponent = DateComponents()
         addDateComponent.day = indexPath.item
         let indexDate = Calendar.current.date(byAdding: addDateComponent, to: standardDate)!
-        print("@",indexDate)
         cell.selectedView.alpha = 0
         cell.todayView.alpha = 0
         cell.emotionView.alpha = 0
