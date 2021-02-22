@@ -256,7 +256,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     func weeklyCellDidSelected(){
         if let infiniteCell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
-            print("current",selectedDate)
             infiniteCell.standardDate = infiniteWeekList[currentIndex]
             infiniteCell.selectedDate = selectedDate
             infiniteCell.callWeeklyWeathy()
