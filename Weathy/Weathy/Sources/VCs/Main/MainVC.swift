@@ -792,18 +792,18 @@ extension MainVC: UICollectionViewDelegate {
             let blurWidth: CGFloat = timeZoneLeftBlurImage.bounds.width
             
             if contentOffset < blurWidth/3 {
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.5) {
                     self.timeZoneLeftBlurImage.alpha = 0
-                }, completion: nil)
+                }
             } else if contentOffset > maxScroll - (blurWidth/3) {
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.5) {
                     self.timeZoneRightBlurImage.alpha = 0
-                }, completion: nil)
+                }
             } else {
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.5) {
                     self.timeZoneLeftBlurImage.alpha = 1
                     self.timeZoneRightBlurImage.alpha = 1
-                }, completion: nil)
+                }
             }
         }
     }
