@@ -63,6 +63,9 @@ extension RecordTagDeletePopupVC {
         subTitleLabel.text = "삭제하면 되돌릴 수 없어요."
         subTitleLabel.lineSetting(kernValue: -0.8)
         
+        /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
+        self.view.layoutIfNeeded()
+        
         cancelBtn.setBorder(borderColor: .subGrey2, borderWidth: 1)
         cancelBtn.makeRounded(cornerRadius: 25)
         cancelBtn.setTitle("닫기", for: .normal)

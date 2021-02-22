@@ -77,7 +77,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8j-da-Hpf">
-                                <rect key="frame" x="33" y="790" width="348" height="62"/>
+                                <rect key="frame" x="33" y="784" width="348" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i8j-da-Hpf" secondAttribute="height" multiplier="309:55" id="afC-F6-wtp"/>
                                 </constraints>
@@ -87,7 +87,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TEz-Je-2hL">
-                                <rect key="frame" x="25.5" y="212" width="363" height="557"/>
+                                <rect key="frame" x="25.5" y="207" width="363" height="557"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YTD-qN-npG">
                                     <size key="itemSize" width="347" height="80"/>
@@ -156,14 +156,14 @@
                         <viewLayoutGuide key="safeArea" id="MLF-pb-L30"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MLF-pb-L30" firstAttribute="bottom" secondItem="i8j-da-Hpf" secondAttribute="bottom" constant="10" id="2Ib-fr-4I1"/>
-                            <constraint firstItem="i8j-da-Hpf" firstAttribute="top" secondItem="TEz-Je-2hL" secondAttribute="bottom" constant="21" id="30G-2w-qec"/>
+                            <constraint firstItem="MLF-pb-L30" firstAttribute="bottom" secondItem="i8j-da-Hpf" secondAttribute="bottom" constant="16" id="2Ib-fr-4I1"/>
+                            <constraint firstItem="i8j-da-Hpf" firstAttribute="top" secondItem="TEz-Je-2hL" secondAttribute="bottom" constant="20" id="30G-2w-qec"/>
                             <constraint firstItem="TEz-Je-2hL" firstAttribute="width" secondItem="m6x-WU-vaf" secondAttribute="width" multiplier="329:375" id="9lk-Ml-GmL"/>
                             <constraint firstItem="i8j-da-Hpf" firstAttribute="leading" secondItem="MLF-pb-L30" secondAttribute="leading" constant="33" id="CQh-75-uXO"/>
                             <constraint firstItem="MLF-pb-L30" firstAttribute="trailing" secondItem="i8j-da-Hpf" secondAttribute="trailing" constant="33" id="D6A-04-DIZ"/>
                             <constraint firstItem="Bnb-OS-G7U" firstAttribute="top" secondItem="jk2-WS-2BT" secondAttribute="top" constant="12" id="Gpz-db-BNM"/>
                             <constraint firstItem="R6c-xM-7fc" firstAttribute="leading" secondItem="TEz-Je-2hL" secondAttribute="leading" constant="10" id="HD7-Xa-i5d"/>
-                            <constraint firstItem="TEz-Je-2hL" firstAttribute="top" secondItem="R6c-xM-7fc" secondAttribute="bottom" constant="52" id="Ivb-aL-TJV"/>
+                            <constraint firstItem="TEz-Je-2hL" firstAttribute="top" secondItem="R6c-xM-7fc" secondAttribute="bottom" constant="47" id="Ivb-aL-TJV"/>
                             <constraint firstItem="Bnb-OS-G7U" firstAttribute="leading" secondItem="qoI-2D-5VO" secondAttribute="trailing" constant="7" id="JRj-jr-L0L"/>
                             <constraint firstItem="QkZ-YO-Jsj" firstAttribute="centerY" secondItem="qoI-2D-5VO" secondAttribute="centerY" id="LbX-td-JTU"/>
                             <constraint firstItem="TEz-Je-2hL" firstAttribute="centerX" secondItem="m6x-WU-vaf" secondAttribute="centerX" id="ShZ-L7-LPo"/>

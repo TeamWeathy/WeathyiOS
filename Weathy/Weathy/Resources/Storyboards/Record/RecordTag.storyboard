@@ -31,10 +31,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sx-kb-nIp">
-                                <rect key="frame" x="33" y="713" width="309" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="8Sx-kb-nIp" secondAttribute="height" multiplier="309:55" id="HDC-FP-Neq"/>
-                                </constraints>
+                                <rect key="frame" x="33" y="707" width="309" height="55"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="nextBtnTap:" destination="OdZ-gP-p1Y" eventType="touchUpInside" id="3Pv-ZH-hbY"/>
@@ -127,7 +124,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wiX-dK-HUU">
-                                <rect key="frame" x="33" y="261" width="309" height="447"/>
+                                <rect key="frame" x="33" y="261" width="309" height="441"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="swA-sO-s9M">
                                     <size key="itemSize" width="128" height="128"/>
@@ -204,7 +201,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recordImgBottomblur" translatesAutoresizingMaskIntoConstraints="NO" id="Rji-1N-CWU">
-                                <rect key="frame" x="0.0" y="661" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="655" width="375" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="qaJ-4o-rbw"/>
                                 </constraints>
@@ -213,6 +210,24 @@
                                 <rect key="frame" x="0.0" y="261" width="375" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="0mG-9M-KKP"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zE-UO-vCe">
+                                <rect key="frame" x="320" y="48" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eOF-Fu-4Ab"/>
+                                    <constraint firstAttribute="width" constant="40" id="jBk-tD-vPd"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="btnDeleteTrashCan"/>
+                                <connections>
+                                    <action selector="deleteBtnTap:" destination="OdZ-gP-p1Y" eventType="touchUpInside" id="fcW-Ma-G42"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icDeleteText" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-ZL-eHK">
+                                <rect key="frame" x="146" y="142" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="3qD-Aa-rDC"/>
+                                    <constraint firstAttribute="height" constant="20" id="NhG-rj-nrI"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -229,15 +244,19 @@
                             <constraint firstItem="WDW-gH-0dZ" firstAttribute="leading" secondItem="P9G-sT-4S1" secondAttribute="leading" id="Ium-LB-tCy"/>
                             <constraint firstItem="Pc2-TS-gDV" firstAttribute="top" secondItem="wiX-dK-HUU" secondAttribute="top" id="JHT-gK-ooe"/>
                             <constraint firstItem="8Sx-kb-nIp" firstAttribute="top" secondItem="Rji-1N-CWU" secondAttribute="bottom" id="RQm-nu-7i8"/>
+                            <constraint firstItem="p2P-Xa-6hR" firstAttribute="trailing" secondItem="3zE-UO-vCe" secondAttribute="trailing" constant="15" id="RaA-zV-6oc"/>
                             <constraint firstItem="Pc2-TS-gDV" firstAttribute="leading" secondItem="p2P-Xa-6hR" secondAttribute="leading" id="SRc-Xi-Raf"/>
                             <constraint firstItem="8Sx-kb-nIp" firstAttribute="top" secondItem="wiX-dK-HUU" secondAttribute="bottom" constant="5" id="Vjo-tG-wDX"/>
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="trailing" secondItem="wiX-dK-HUU" secondAttribute="trailing" id="XYO-to-zVJ"/>
+                            <constraint firstItem="bXL-ZL-eHK" firstAttribute="leading" secondItem="gPA-Vt-UcZ" secondAttribute="leading" constant="113" id="aZn-Uq-EXr"/>
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="top" secondItem="gPA-Vt-UcZ" secondAttribute="bottom" constant="60" id="bjm-K5-CcE"/>
                             <constraint firstItem="eay-L1-NoR" firstAttribute="trailing" secondItem="lOI-Su-7sH" secondAttribute="trailing" constant="-15" id="bzg-mE-whA"/>
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="leading" secondItem="wiX-dK-HUU" secondAttribute="leading" id="d6k-d6-oOa"/>
-                            <constraint firstItem="p2P-Xa-6hR" firstAttribute="bottom" secondItem="8Sx-kb-nIp" secondAttribute="bottom" constant="10" id="e6x-C0-j2A"/>
+                            <constraint firstItem="p2P-Xa-6hR" firstAttribute="bottom" secondItem="8Sx-kb-nIp" secondAttribute="bottom" constant="16" id="e6x-C0-j2A"/>
+                            <constraint firstItem="3zE-UO-vCe" firstAttribute="centerY" secondItem="WDW-gH-0dZ" secondAttribute="centerY" id="fOo-Lj-pgp"/>
                             <constraint firstItem="Rji-1N-CWU" firstAttribute="trailing" secondItem="p2P-Xa-6hR" secondAttribute="trailing" id="gIa-sa-az8"/>
                             <constraint firstItem="8Sx-kb-nIp" firstAttribute="width" secondItem="8Sx-kb-nIp" secondAttribute="height" multiplier="309:55" id="geU-rX-PpQ"/>
+                            <constraint firstItem="bXL-ZL-eHK" firstAttribute="bottom" secondItem="gPA-Vt-UcZ" secondAttribute="bottom" constant="1" id="h09-Vw-112"/>
                             <constraint firstItem="gPA-Vt-UcZ" firstAttribute="leading" secondItem="lOI-Su-7sH" secondAttribute="leading" id="hz0-Ek-E3B"/>
                             <constraint firstItem="wiX-dK-HUU" firstAttribute="centerX" secondItem="w0K-3M-6hx" secondAttribute="centerX" id="lC2-1t-hev"/>
                             <constraint firstItem="S6g-a8-t60" firstAttribute="leading" secondItem="ncI-hT-bUM" secondAttribute="trailing" constant="7" id="nNW-VA-07Y"/>
@@ -253,6 +272,7 @@
                     <connections>
                         <outlet property="backBtn" destination="WDW-gH-0dZ" id="WBT-Qg-WnX"/>
                         <outlet property="blurView" destination="Pc2-TS-gDV" id="d4o-bM-jNS"/>
+                        <outlet property="deleteTextIconImageView" destination="bXL-ZL-eHK" id="UwR-UV-ASP"/>
                         <outlet property="explanationLabel" destination="gPA-Vt-UcZ" id="636-cy-J5m"/>
                         <outlet property="nextBtn" destination="8Sx-kb-nIp" id="Tlm-XR-FDP"/>
                         <outlet property="tagCollectionView" destination="wiX-dK-HUU" id="6Cp-qE-CeY"/>
@@ -393,6 +413,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btnDeleteTrashCan" width="40" height="40"/>
+        <image name="icDeleteText" width="20" height="20"/>
         <image name="ic_back" width="20" height="20"/>
         <image name="recordImgBottomblur" width="375" height="52"/>
         <image name="recordImgTopblur" width="375" height="52"/>

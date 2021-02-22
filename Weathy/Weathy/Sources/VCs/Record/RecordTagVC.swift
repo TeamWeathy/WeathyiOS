@@ -27,6 +27,7 @@ class RecordTagVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var dateToday: Date?
     var dateString: String = "0000-00-00"
     var locationCode: CLong = -1
     
@@ -59,6 +60,7 @@ class RecordTagVC: UIViewController {
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var deleteTextIconImageView: UIImageView!
     @IBOutlet var indicatorCircle: [UIView]!
     
     @IBOutlet var tagTitleCollectionView: UICollectionView!
@@ -90,7 +92,7 @@ class RecordTagVC: UIViewController {
         nextBtn.setTitle("다음", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2
         
         NotificationCenter.default.addObserver(self, selector: #selector(tagAdded(_:)), name: NSNotification.Name("TagAdded"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(tagDeleted(_:)), name: NSNotification.Name("TagDeleted"), object: nil)
@@ -125,7 +127,6 @@ class RecordTagVC: UIViewController {
     @objc func tagAdded(_ noti : Notification){
         let isAdded = noti.object
         self.viewWillAppear(true)
-        self.showToast(message: "태그가 추가되었어요!")
     }
     
     @objc func tagDeleted(_ noti : Notification){
@@ -137,7 +138,7 @@ class RecordTagVC: UIViewController {
     @objc func longTap(gesture : UILongPressGestureRecognizer!) {
         if gesture.state != .ended {
             
-            self.notificationGenerator = UIImpactFeedbackGenerator(style: .light)
+            self.notificationGenerator = UIImpactFeedbackGenerator(style: .medium)
             self.notificationGenerator?.impactOccurred()
             
             let p = gesture.location(in: self.tagCollectionView)
@@ -190,6 +191,7 @@ class RecordTagVC: UIViewController {
             visitedFlag = true
         }
         
+        dvc.dateToday = dateToday
         dvc.selectedTags = selectedTags
         dvc.dateString = dateString
         dvc.locationCode = locationCode
@@ -197,6 +199,21 @@ class RecordTagVC: UIViewController {
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
     
+    @IBAction func deleteBtnTap(_ sender: Any) {
+        let nextStoryboard = UIStoryboard(name: "RecordTagDelete", bundle: nil)
+        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTagDeleteVC") as? RecordTagDeleteVC else {
+            return
+        }
+        
+        dvc.initialTagTab = titleIndex
+//        dvc.initialSelectedIdx = indexPath[1]
+        dvc.initialYOffset = scrollYOffset
+        dvc.tagTitles = tagTitles
+        
+        dvc.modalPresentationStyle = .fullScreen
+        
+        self.present(dvc, animated: false, completion: nil)
+    }
     
 }
 
@@ -210,7 +227,7 @@ extension RecordTagVC {
         titleLabel.textColor = UIColor.mainGrey
         titleLabel.numberOfLines = 2
         
-        explanationLabel.text = "옷은 길게 눌러 삭제하고, +를 눌러 추가할 수 있어요."
+        explanationLabel.text = "+를 눌러 추가하고,       를 눌러 삭제할 수 있어요."
         explanationLabel.font = UIFont.SDGothicRegular16
         explanationLabel.textColor = UIColor.subGrey6
         
@@ -268,7 +285,7 @@ extension RecordTagVC {
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         })
     }
     
@@ -279,7 +296,7 @@ extension RecordTagVC {
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         })
     }
     
@@ -291,6 +308,8 @@ extension RecordTagVC {
         explanationLabel.alpha = 0
         explanationLabel.frame = CGRect(x: explanationLabel.frame.origin.x, y: explanationLabel.frame.origin.y-10, width: explanationLabel.frame.width, height: explanationLabel.frame.height)
         
+        deleteTextIconImageView.alpha = 0
+        deleteTextIconImageView.frame = CGRect(x: deleteTextIconImageView.frame.origin.x, y: deleteTextIconImageView.frame.origin.y-10, width: deleteTextIconImageView.frame.width, height: deleteTextIconImageView.frame.height)
     }
     
     func animationPrac() {
@@ -303,7 +322,9 @@ extension RecordTagVC {
         
         UIView.animate(withDuration: 1, delay: 0.5, animations: {
             self.explanationLabel.alpha = 1
+            self.deleteTextIconImageView.alpha = 1
             self.explanationLabel.frame = CGRect(x: self.explanationLabel.frame.origin.x, y: self.explanationLabel.frame.origin.y+10, width: self.explanationLabel.frame.width, height: self.explanationLabel.frame.height)
+            self.deleteTextIconImageView.frame = CGRect(x: self.deleteTextIconImageView.frame.origin.x, y: self.deleteTextIconImageView.frame.origin.y+10, width: self.deleteTextIconImageView.frame.width, height: self.deleteTextIconImageView.frame.height)
         })
     }
     
@@ -340,10 +361,10 @@ extension RecordTagVC {
     
     func processDataAtLocal() {
         self.localizedClothesTagData = [
-            self.myClothesTagData!.top,
-            self.myClothesTagData!.bottom,
-            self.myClothesTagData!.outer,
-            self.myClothesTagData!.etc
+            self.myClothesTagData!.top.clothes.count != 0 ? self.myClothesTagData!.top : Category(categoryID: 1, clothes: []),
+            self.myClothesTagData!.bottom.clothes.count != 0 ? self.myClothesTagData!.bottom : Category(categoryID: 2, clothes: []),
+            self.myClothesTagData!.outer.clothes.count != 0 ? self.myClothesTagData!.outer : Category(categoryID: 3, clothes: []),
+            self.myClothesTagData!.etc.clothes.count != 0 ? self.myClothesTagData!.etc : Category(categoryID: 4, clothes: [])
         ]
 
         makeLocalTagData()
@@ -354,10 +375,11 @@ extension RecordTagVC {
         /// viewWillAppear에서 다시 호출되었을 경우를 대비한 분기처리
         if localizedClothesTagData[titleIndex].clothes.count != tagTitles[titleIndex].tagTab.count - 1 || localizedClothesTagData[titleIndex].clothes.count == 0 {
             
+            
             for j in 0...3 {
                 
                 if localizedClothesTagData[j].clothes.count == 0 {
-                    break
+                    continue
                 }
                 else {
                     for i in 0...localizedClothesTagData[j].clothes.count - 1 {
@@ -366,6 +388,7 @@ extension RecordTagVC {
                 }
             }
         }
+        
         
         setMaintainedData()
     }

@@ -25,57 +25,47 @@ class RecordTextVC: UIViewController {
     
     let appDelgate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    let picker = UIImagePickerController()
+    
     
     //MARK: - IBOutlets
     
-    @IBOutlet var backBtn: UIButton!
+    @IBOutlet var skipBtn: UIButton!
+    @IBOutlet var skipBtnUnderlineView: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var textTitleLabel: UILabel!
     @IBOutlet var textViewSurroundingView: UIView!
     @IBOutlet var recordTextView: UITextView!
     @IBOutlet var wordCountLabel: UILabel!
     @IBOutlet var maxWordLabel: SpacedLabel!
+    @IBOutlet var photoTitleLabel: UILabel!
+    @IBOutlet var photoView: UIView!
+    @IBOutlet var photoBtn: UIButton!
+    @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var finishBtn: UIButton!
-    
+    @IBOutlet var optionImageView: [UIImageView]!
     
     //MARK: - LifeCycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initialSetting()
         setUpper()
         setTitleLabel()
         setTextField()
         textViewSetupView()
-        setFinishBtn()
+        setSkipBtn()
+        setPhotoBox()
         
         
         recordTextView.delegate = self
+        
+        picker.delegate = self
 //        recordTextView.addTarget(self, action: #selector(textViewDidChange(sender:)),for: .editingChanged)
 //        recordTextView.add
-        
-        finishBtn.isUserInteractionEnabled = false
-        finishBtn.backgroundColor = UIColor.subGrey3
-        finishBtn.setTitle("내용 추가하기", for: .normal)
-        finishBtn.setTitleColor(.white, for: .normal)
-        finishBtn.layer.cornerRadius = 30
-        finishBtn.titleLabel?.font = .SDGothicSemiBold16
-        
-        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
-        textViewSurroundingView.layer.borderWidth = 1
-        textViewSurroundingView.layer.cornerRadius = 15
-        
-        wordCountLabel.text = "0"
-        wordCountLabel.font = UIFont.SDGothicRegular13
-        wordCountLabel.textColor = UIColor.subGrey6
-        
-        if dateString == "0000-00-00" {
-            if let date = appDelgate.overviewData {
-                dateString = "\(date.dailyWeather.date.year!)-\(String(format: "%02d", date.dailyWeather.date.month))-\(String(format: "%02d", date.dailyWeather.date.day))"
-            }
-        }
 
-        print(">>>>>", dateString)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,16 +79,37 @@ class RecordTextVC: UIViewController {
     
     //MARK: - IBActions
     
+    @IBAction func cameraBtnTap(_ sender: Any) {
+        let alert =  UIAlertController(title: "사진 추가하기", message: nil, preferredStyle: .actionSheet)
+        
+        
+        let library =  UIAlertAction(title: "앨범에서 사진 선택", style: .default) { (action) in self.openLibrary()
+        }
+        
+        
+        let camera =  UIAlertAction(title: "카메라 촬영", style: .default) { (action) in
+            self.openCamera()
+        }
+        
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        
+        alert.addAction(library)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func backBtnTap(_ sender: Any) {
-//        self.navigationController?.popViewController(animated: false)
-        self.enteredText = ""
-        callRecordWeathyService()
-//        self.showToast(message: "웨디에 내용이 추가되었어요!")
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
+        }
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        callRecordWeathyService()
-//        self.showToast(message: "웨디에 내용이 추가되었어요!")
+        callModifyWeathyService()
     }
     
     //MARK: - @objc methods
@@ -148,7 +159,36 @@ extension RecordTextVC {
         titleLabel.attributedText = attributedString
     }
     
+    func initialSetting() {
+        finishBtn.isUserInteractionEnabled = false
+        finishBtn.backgroundColor = UIColor.subGrey3
+        finishBtn.setTitle("내용 추가하기", for: .normal)
+        finishBtn.setTitleColor(.white, for: .normal)
+        self.view.layoutIfNeeded()
+        finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
+        finishBtn.titleLabel?.font = .SDGothicSemiBold16
+        
+        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
+        
+        wordCountLabel.text = "0"
+        wordCountLabel.font = UIFont.SDGothicRegular13
+        wordCountLabel.textColor = UIColor.subGrey6
+        
+        if dateString == "0000-00-00" {
+            if let date = appDelgate.overviewData {
+                dateString = "\(date.dailyWeather.date.year!)-\(String(format: "%02d", date.dailyWeather.date.month))-\(String(format: "%02d", date.dailyWeather.date.day))"
+            }
+        }
+    }
+    
     func setTextField() {
+        
+
+        
+        optionImageView[0].image = UIImage(named: "icOption")
+        
         recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
         
 //        wordCountLabel.text = "\(wordCount)/\(maxWordCount)"
@@ -171,11 +211,34 @@ extension RecordTextVC {
         }
     }
     
-    func setFinishBtn() {
-        finishBtn.backgroundColor = UIColor.lightGray
-        finishBtn.setTitle("내용 추가하기", for: .normal)
-        finishBtn.setTitleColor(.white, for: .normal)
-        finishBtn.layer.cornerRadius = 30
+    func setSkipBtn() {
+        
+        textTitleLabel.text = "텍스트"
+        textTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
+        textTitleLabel.textColor = .subGrey1
+        
+        skipBtn.setTitle("건너뛰기", for: .normal)
+        skipBtn.setTitleColor(.subGrey2, for: .normal)
+        skipBtn.titleLabel?.font = UIFont(name: "AppleSDGothicNeoSB00", size: 14)
+        
+        skipBtnUnderlineView.backgroundColor = .subGrey2
+        
+    }
+    
+    func setPhotoBox() {
+        optionImageView[1].image = UIImage(named: "icOption")
+        
+        photoTitleLabel.text = "사진"
+        photoTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
+        photoTitleLabel.textColor = .subGrey1
+        
+        photoView.setBorder(borderColor: .subGrey7, borderWidth: 1)
+        photoView.makeRounded(cornerRadius: 13)
+        
+        photoBtn.contentHorizontalAlignment = .fill
+        photoBtn.contentVerticalAlignment = .fill
+        photoBtn.imageView?.contentMode = .scaleAspectFill
+
     }
     
     func textExists() {
@@ -184,7 +247,7 @@ extension RecordTextVC {
             self.finishBtn.backgroundColor = UIColor.mintMain
             self.finishBtn.setTitle("내용 추가하기", for: .normal)
             self.finishBtn.setTitleColor(.white, for: .normal)
-            self.finishBtn.layer.cornerRadius = 30
+            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
             self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
         })
         
@@ -202,7 +265,7 @@ extension RecordTextVC {
             self.finishBtn.backgroundColor = UIColor.subGrey3
             self.finishBtn.setTitle("내용 추가하기", for: .normal)
             self.finishBtn.setTitleColor(.white, for: .normal)
-            self.finishBtn.layer.cornerRadius = 30
+            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
             self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
         })
         textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
@@ -238,34 +301,59 @@ extension RecordTextVC {
         })
     }
     
-    func callRecordWeathyService() {
-        RecordWeathyService.shared.recordWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "") { (networkResult) -> (Void) in
-            print(">>>>>>>", self.locationCode)
-            switch networkResult {
-            case .success(let data):
-                if let loadData = data as? RecordWeathyData {
-                    print(loadData)
-                }
-                self.dismiss(animated: true) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
-                }
-//                self.showToast(message: "웨디에 내용이 추가되었어요!")
-                
-            case .requestErr(let msg):
-                print("requestErr")
-                if let message = msg as? String {
-                    print(message)
-                    self.showToast(message: message)
-                }
-                
-            case .pathErr:
-                print("pathErr")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                print("networkFail")
-            }
+    func callModifyWeathyService() {
+//        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+//            print(self.weathyData?.weathyId ?? -1)
+//            switch networkResult {
+//            case .success(let data):
+//                if let loadData = data as? RecordWeathyData {
+//                    print(loadData)
+//                }
+//                self.dismiss(animated: true) {
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 1)
+//                }
+////                self.showToast(message: "웨디에 내용이 추가되었어요!")
+//
+//            case .requestErr(let msg):
+//                print("requestErr")
+//                if let message = msg as? String {
+//                    print(message)
+//                    self.showToast(message: message)
+//                }
+//
+//            case .pathErr:
+//                print("pathErr")
+//            case .serverErr:
+//                print("serverErr")
+//            case .networkFail:
+//                print("networkFail")
+//            }
+//        }
+    }
+    
+    func openLibrary() {
+        print("library selected")
+        
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        
+        present(picker, animated: false, completion: nil)
+        
+    }
+    
+    func openCamera() {
+        
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            picker.sourceType = .camera
+            picker.allowsEditing = true
+            present(picker, animated: false, completion: nil)
         }
+
+        else{
+            showToast(message: "현재 카메라를 사용할 수 없습니다.")
+        }
+        
+        print("camera selected")
     }
 }
 
@@ -311,6 +399,23 @@ extension RecordTextVC: UITextViewDelegate {
         }else{
             self.textExists()
         }
+    }
+    
+}
+
+//MARK: - UIImagePickerControllerDelegate
+
+extension RecordTextVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            photoImageView.image = image
+            print(info)
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
     }
     
 }
