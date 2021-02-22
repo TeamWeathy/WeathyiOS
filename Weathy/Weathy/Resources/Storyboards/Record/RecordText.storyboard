@@ -123,9 +123,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="But-ox-Mtd">
                                                 <rect key="frame" x="0.0" y="252.5" width="144.5" height="145"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c51-UZ-WOZ">
-                                                        <rect key="frame" x="45" y="48" width="54.5" height="49"/>
-                                                        <state key="normal" title="Button" image="btnAddphoto"/>
+                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c51-UZ-WOZ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="144.5" height="145"/>
+                                                        <state key="normal" image="btnAddphoto"/>
                                                         <connections>
                                                             <action selector="cameraBtnTap:" destination="xjN-KD-4od" eventType="touchUpInside" id="PDE-v7-8ay"/>
                                                         </connections>
@@ -136,14 +136,17 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="c51-UZ-WOZ" secondAttribute="trailing" id="0Oj-tY-ipG"/>
                                                     <constraint firstAttribute="width" secondItem="But-ox-Mtd" secondAttribute="height" multiplier="1:1" id="99Y-iK-qRQ"/>
-                                                    <constraint firstItem="c51-UZ-WOZ" firstAttribute="width" secondItem="But-ox-Mtd" secondAttribute="width" multiplier="49:131" id="GbR-aG-Ks8"/>
-                                                    <constraint firstItem="Vea-h8-FH3" firstAttribute="top" secondItem="But-ox-Mtd" secondAttribute="top" id="Met-Sp-42h"/>
+                                                    <constraint firstItem="Vea-h8-FH3" firstAttribute="leading" secondItem="But-ox-Mtd" secondAttribute="leading" id="BoW-HK-a5Z"/>
                                                     <constraint firstItem="c51-UZ-WOZ" firstAttribute="centerY" secondItem="But-ox-Mtd" secondAttribute="centerY" id="Rpu-2k-6wD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Vea-h8-FH3" secondAttribute="trailing" id="dIT-Tq-BXo"/>
+                                                    <constraint firstAttribute="bottom" secondItem="c51-UZ-WOZ" secondAttribute="bottom" id="WAO-Kh-J3z"/>
+                                                    <constraint firstItem="c51-UZ-WOZ" firstAttribute="leading" secondItem="But-ox-Mtd" secondAttribute="leading" id="faH-r0-gvg"/>
                                                     <constraint firstItem="c51-UZ-WOZ" firstAttribute="centerX" secondItem="But-ox-Mtd" secondAttribute="centerX" id="hqk-lD-nOB"/>
-                                                    <constraint firstItem="Vea-h8-FH3" firstAttribute="leading" secondItem="But-ox-Mtd" secondAttribute="leading" id="nUe-ZP-dtP"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Vea-h8-FH3" secondAttribute="bottom" id="sCG-lV-Icp"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Vea-h8-FH3" secondAttribute="bottom" id="isg-qw-gY0"/>
+                                                    <constraint firstItem="Vea-h8-FH3" firstAttribute="top" secondItem="But-ox-Mtd" secondAttribute="top" id="kgZ-Bw-yWD"/>
+                                                    <constraint firstItem="c51-UZ-WOZ" firstAttribute="top" secondItem="But-ox-Mtd" secondAttribute="top" id="mBC-oU-5cj"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Vea-h8-FH3" secondAttribute="trailing" id="xdP-iU-RMw"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhX-8F-8hm" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
@@ -248,7 +251,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="btnAddphoto" width="49" height="49"/>
+        <image name="btnAddphoto" width="131" height="131"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

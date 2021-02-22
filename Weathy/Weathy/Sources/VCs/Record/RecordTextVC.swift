@@ -232,6 +232,10 @@ extension RecordTextVC {
         
         photoView.setBorder(borderColor: .subGrey7, borderWidth: 1)
         photoView.makeRounded(cornerRadius: 13)
+        
+        photoBtn.contentHorizontalAlignment = .fill
+        photoBtn.contentVerticalAlignment = .fill
+        photoBtn.imageView?.contentMode = .scaleAspectFill
 
     }
     
