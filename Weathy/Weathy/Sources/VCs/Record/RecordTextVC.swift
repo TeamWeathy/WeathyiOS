@@ -96,6 +96,29 @@ class RecordTextVC: UIViewController {
     
     //MARK: - IBActions
     
+    @IBAction func cameraBtnTap(_ sender: Any) {
+        let alert =  UIAlertController(title: "사진 추가하기", message: nil, preferredStyle: .actionSheet)
+        
+        
+        let library =  UIAlertAction(title: "앨범에서 사진 선택", style: .default) { (action) in self.openLibrary()
+        }
+        
+        
+        let camera =  UIAlertAction(title: "카메라 촬영", style: .default) { (action) in
+            self.openCamera()
+        }
+        
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        
+        alert.addAction(library)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func backBtnTap(_ sender: Any) {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
@@ -104,7 +127,6 @@ class RecordTextVC: UIViewController {
     
     @IBAction func nextBtnTap(_ sender: Any) {
         callModifyWeathyService()
-//        self.showToast(message: "웨디에 내용이 추가되었어요!")
     }
     
     //MARK: - @objc methods
@@ -303,6 +325,23 @@ extension RecordTextVC {
 //                print("networkFail")
 //            }
 //        }
+    }
+    
+    func openLibrary() {
+        print("library selected")
+    }
+    
+    func openCamera() {
+//        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+//            picker.sourceType = .camera
+//            present(picker, animated: false, completion: nil)
+//        }
+//
+//        else{
+//            print("Camera not available")
+//        }
+        
+        print("camera selected")
     }
 }
 

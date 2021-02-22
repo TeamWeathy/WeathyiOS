@@ -126,6 +126,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c51-UZ-WOZ">
                                                         <rect key="frame" x="45" y="48" width="54.5" height="49"/>
                                                         <state key="normal" title="Button" image="btnAddphoto"/>
+                                                        <connections>
+                                                            <action selector="cameraBtnTap:" destination="xjN-KD-4od" eventType="touchUpInside" id="PDE-v7-8ay"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
