@@ -95,8 +95,6 @@ class MainVC: UIViewController {
         print(UserDefaults.standard.value(forKey: "locationLat"))
         print(UserDefaults.standard.value(forKey: "locationLon"))
         
-        LocationManager.shared.startUpdateLocation()
-        
         if deliveredSearchData == nil {
             getLocationWeather()
         }
@@ -106,6 +104,8 @@ class MainVC: UIViewController {
         }
         
         blankDownImage()
+        
+        print(UserDefaults.standard.value(forKey: "locationAuth"))
     }
     
     override func viewDidLoad() {
@@ -296,6 +296,8 @@ class MainVC: UIViewController {
     }
     
     func changeWeathyViewData(data: RecommendedWeathyData) {
+        emptyImage.alpha = 0
+        
         closetTopLabel.text = insertSeparatorInArray(data.weathy.closet.top.clothes)
         closetOuterLabel.text = insertSeparatorInArray(data.weathy.closet.outer.clothes)
         closetBottomLabel.text = insertSeparatorInArray(data.weathy.closet.bottom.clothes)
