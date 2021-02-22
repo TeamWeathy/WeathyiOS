@@ -136,6 +136,7 @@ extension RecordRateVC {
             self.nextBtn.backgroundColor = UIColor.mintMain
             self.nextBtn.setTitle("완료", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
+            self.nextBtn.titleLabel?.font = .SDGothicSemiBold16
             self.nextBtn.layer.cornerRadius = 30
         })
     }
@@ -145,6 +146,7 @@ extension RecordRateVC {
         nextBtn.backgroundColor = UIColor.subGrey3
         nextBtn.setTitle("완료", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
+        self.nextBtn.titleLabel?.font = .SDGothicSemiBold16
         nextBtn.layer.cornerRadius = 30
     }
     
