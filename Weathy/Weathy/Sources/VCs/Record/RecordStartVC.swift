@@ -112,7 +112,13 @@ class RecordStartVC: UIViewController {
     }
     
     @IBAction func backButtonDidTap(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordStartPopUpVC") as? RecordStartPopUpVC else {
+            return
+        }
+        
+        dvc.modalPresentationStyle = .overCurrentContext
+        
+        self.present(dvc, animated: false, completion: nil)
     }
     
     @IBAction func searchButtonDidTap(_ sender: Any) {
