@@ -103,7 +103,7 @@ class RecordTextVC: UIViewController {
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        callRecordWeathyService()
+        callModifyWeathyService()
 //        self.showToast(message: "웨디에 내용이 추가되었어요!")
     }
     
@@ -275,34 +275,34 @@ extension RecordTextVC {
         })
     }
     
-    func callRecordWeathyService() {
-        RecordWeathyService.shared.recordWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: "") { (networkResult) -> (Void) in
-            print(">>>>>>>", self.locationCode)
-            switch networkResult {
-            case .success(let data):
-                if let loadData = data as? RecordWeathyData {
-                    print(loadData)
-                }
-                self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
-                }
-//                self.showToast(message: "웨디에 내용이 추가되었어요!")
-                
-            case .requestErr(let msg):
-                print("requestErr")
-                if let message = msg as? String {
-                    print(message)
-                    self.showToast(message: "이미 작성된 웨디가 존재합니다.")
-                }
-                
-            case .pathErr:
-                print("pathErr")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                print("networkFail")
-            }
-        }
+    func callModifyWeathyService() {
+//        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+//            print(self.weathyData?.weathyId ?? -1)
+//            switch networkResult {
+//            case .success(let data):
+//                if let loadData = data as? RecordWeathyData {
+//                    print(loadData)
+//                }
+//                self.dismiss(animated: true) {
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 1)
+//                }
+////                self.showToast(message: "웨디에 내용이 추가되었어요!")
+//
+//            case .requestErr(let msg):
+//                print("requestErr")
+//                if let message = msg as? String {
+//                    print(message)
+//                    self.showToast(message: message)
+//                }
+//
+//            case .pathErr:
+//                print("pathErr")
+//            case .serverErr:
+//                print("serverErr")
+//            case .networkFail:
+//                print("networkFail")
+//            }
+//        }
     }
 }
 

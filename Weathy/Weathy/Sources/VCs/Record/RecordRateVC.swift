@@ -11,6 +11,7 @@ class RecordRateVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var dateToday: Date?
     var dateString: String = "0000-00-00"
     var locationCode: CLong = -1
     
@@ -187,7 +188,7 @@ extension RecordRateVC {
                 dvc.dateString = self.dateString
                 dvc.locationCode = self.locationCode
                 
-                print("I'm here")
+                self.compareRecentRecordDate()
                 
                 dvc.modalPresentationStyle = .fullScreen
                 self.present(dvc, animated: false, completion: nil)
@@ -207,6 +208,25 @@ extension RecordRateVC {
                 print("networkFail")
             }
         }
+    }
+    
+    func compareRecentRecordDate() {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko-kr")
+        
+        let dateInDateFormat = dateFormatter.date(from: UserDefaults.standard.string(forKey: "recentRecordDate") ?? "2000-01-01")
+        
+        /// 날짜 차이를 계산
+        let dateDifference = Calendar.current.dateComponents([.day], from: dateInDateFormat!, to: dateToday!)
+        
+        /// 저장돼있던 날짜가 현재 날짜 전이면 현재 날짜를 저장
+        if dateDifference.day! > 0 {
+            UserDefaults.standard.setValue(dateString, forKey: "recentRecordDate")
+            print(">>>>> setting complete")
+        }
+            
     }
 }
 

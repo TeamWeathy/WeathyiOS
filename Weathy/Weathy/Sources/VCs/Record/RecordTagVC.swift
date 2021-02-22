@@ -27,6 +27,7 @@ class RecordTagVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var dateToday: Date?
     var dateString: String = "0000-00-00"
     var locationCode: CLong = -1
     
@@ -190,6 +191,7 @@ class RecordTagVC: UIViewController {
             visitedFlag = true
         }
         
+        dvc.dateToday = dateToday
         dvc.selectedTags = selectedTags
         dvc.dateString = dateString
         dvc.locationCode = locationCode

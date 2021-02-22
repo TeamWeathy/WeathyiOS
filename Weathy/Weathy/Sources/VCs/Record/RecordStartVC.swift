@@ -104,6 +104,7 @@ class RecordStartVC: UIViewController {
             visitedFlag = true
         }
         
+        dvc.dateToday = dateToday
         dvc.dateString = dateString
         dvc.locationCode = locationCode
         
