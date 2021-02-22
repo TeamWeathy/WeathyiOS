@@ -799,8 +799,10 @@ extension MainVC: UICollectionViewDelegate {
                     self.timeZoneRightBlurImage.alpha = 0
                 }, completion: nil)
             } else {
-                timeZoneLeftBlurImage.alpha = 1
-                timeZoneRightBlurImage.alpha = 1
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.timeZoneLeftBlurImage.alpha = 1
+                    self.timeZoneRightBlurImage.alpha = 1
+                }, completion: nil)
             }
         }
     }
