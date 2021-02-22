@@ -130,13 +130,20 @@
                                                             <action selector="cameraBtnTap:" destination="xjN-KD-4od" eventType="touchUpInside" id="PDE-v7-8ay"/>
                                                         </connections>
                                                     </button>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-h8-FH3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="144.5" height="145"/>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="But-ox-Mtd" secondAttribute="height" multiplier="1:1" id="99Y-iK-qRQ"/>
                                                     <constraint firstItem="c51-UZ-WOZ" firstAttribute="width" secondItem="But-ox-Mtd" secondAttribute="width" multiplier="49:131" id="GbR-aG-Ks8"/>
+                                                    <constraint firstItem="Vea-h8-FH3" firstAttribute="top" secondItem="But-ox-Mtd" secondAttribute="top" id="Met-Sp-42h"/>
                                                     <constraint firstItem="c51-UZ-WOZ" firstAttribute="centerY" secondItem="But-ox-Mtd" secondAttribute="centerY" id="Rpu-2k-6wD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Vea-h8-FH3" secondAttribute="trailing" id="dIT-Tq-BXo"/>
                                                     <constraint firstItem="c51-UZ-WOZ" firstAttribute="centerX" secondItem="But-ox-Mtd" secondAttribute="centerX" id="hqk-lD-nOB"/>
+                                                    <constraint firstItem="Vea-h8-FH3" firstAttribute="leading" secondItem="But-ox-Mtd" secondAttribute="leading" id="nUe-ZP-dtP"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Vea-h8-FH3" secondAttribute="bottom" id="sCG-lV-Icp"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhX-8F-8hm" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
@@ -220,6 +227,7 @@
                         <outlet property="finishBtn" destination="W20-Yo-UYI" id="kCa-e2-913"/>
                         <outlet property="maxWordLabel" destination="ns0-ds-di3" id="YK4-pO-NiZ"/>
                         <outlet property="photoBtn" destination="c51-UZ-WOZ" id="pgl-hG-jaE"/>
+                        <outlet property="photoImageView" destination="Vea-h8-FH3" id="Mng-iE-viE"/>
                         <outlet property="photoTitleLabel" destination="ebf-3T-Gbp" id="y5J-Aw-sPm"/>
                         <outlet property="photoView" destination="But-ox-Mtd" id="oVL-mX-5QP"/>
                         <outlet property="recordTextView" destination="ZGN-tl-Y1K" id="8d4-fz-9Y7"/>

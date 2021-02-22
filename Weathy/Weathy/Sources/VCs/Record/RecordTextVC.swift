@@ -25,6 +25,8 @@ class RecordTextVC: UIViewController {
     
     let appDelgate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    let picker = UIImagePickerController()
+    
     
     //MARK: - IBOutlets
     
@@ -40,6 +42,7 @@ class RecordTextVC: UIViewController {
     @IBOutlet var photoTitleLabel: UILabel!
     @IBOutlet var photoView: UIView!
     @IBOutlet var photoBtn: UIButton!
+    @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var finishBtn: UIButton!
     @IBOutlet var optionImageView: [UIImageView]!
     
@@ -58,6 +61,8 @@ class RecordTextVC: UIViewController {
         
         
         recordTextView.delegate = self
+        
+        picker.delegate = self
 //        recordTextView.addTarget(self, action: #selector(textViewDidChange(sender:)),for: .editingChanged)
 //        recordTextView.add
         
@@ -329,17 +334,23 @@ extension RecordTextVC {
     
     func openLibrary() {
         print("library selected")
+        
+        picker.sourceType = .photoLibrary
+        
+        present(picker, animated: false, completion: nil)
+        
     }
     
     func openCamera() {
-//        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
-//            picker.sourceType = .camera
-//            present(picker, animated: false, completion: nil)
-//        }
-//
-//        else{
-//            print("Camera not available")
-//        }
+        
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            picker.sourceType = .camera
+            present(picker, animated: false, completion: nil)
+        }
+
+        else{
+            showToast(message: "현재 카메라를 사용할 수 없습니다.")
+        }
         
         print("camera selected")
     }
@@ -387,6 +398,23 @@ extension RecordTextVC: UITextViewDelegate {
         }else{
             self.textExists()
         }
+    }
+    
+}
+
+//MARK: - UIImagePickerControllerDelegate
+
+extension RecordTextVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            photoImageView.image = image
+            print(info)
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
     }
     
 }
