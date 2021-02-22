@@ -70,7 +70,7 @@ class RecordTextVC: UIViewController {
         finishBtn.backgroundColor = UIColor.subGrey3
         finishBtn.setTitle("내용 추가하기", for: .normal)
         finishBtn.setTitleColor(.white, for: .normal)
-        finishBtn.layer.cornerRadius = 30
+        finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
         finishBtn.titleLabel?.font = .SDGothicSemiBold16
         
         textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
@@ -243,7 +243,7 @@ extension RecordTextVC {
         finishBtn.backgroundColor = UIColor.lightGray
         finishBtn.setTitle("내용 추가하기", for: .normal)
         finishBtn.setTitleColor(.white, for: .normal)
-        finishBtn.layer.cornerRadius = 30
+        finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
     }
     
     func textExists() {
@@ -252,7 +252,7 @@ extension RecordTextVC {
             self.finishBtn.backgroundColor = UIColor.mintMain
             self.finishBtn.setTitle("내용 추가하기", for: .normal)
             self.finishBtn.setTitleColor(.white, for: .normal)
-            self.finishBtn.layer.cornerRadius = 30
+            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
             self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
         })
         
@@ -270,7 +270,7 @@ extension RecordTextVC {
             self.finishBtn.backgroundColor = UIColor.subGrey3
             self.finishBtn.setTitle("내용 추가하기", for: .normal)
             self.finishBtn.setTitleColor(.white, for: .normal)
-            self.finishBtn.layer.cornerRadius = 30
+            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
             self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
         })
         textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor

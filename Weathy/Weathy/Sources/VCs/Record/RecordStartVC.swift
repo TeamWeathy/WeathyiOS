@@ -202,13 +202,13 @@ extension RecordStartVC {
         modifyBtn.setTitle("변경하기", for: .normal)
         modifyBtn.setTitleColor(.black, for: .normal)
         modifyBtn.titleLabel?.font = UIFont.SDGothicRegular13
-        modifyBtn.layer.cornerRadius = 18
+        modifyBtn.layer.cornerRadius = modifyBtn.frame.height / 2
         
         startBtn.backgroundColor = UIColor.mintMain
         startBtn.setTitle("다음", for: .normal)
         startBtn.setTitleColor(.white, for: .normal)
         startBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        startBtn.layer.cornerRadius = 30
+        startBtn.layer.cornerRadius = startBtn.frame.height / 2
         
     }
     

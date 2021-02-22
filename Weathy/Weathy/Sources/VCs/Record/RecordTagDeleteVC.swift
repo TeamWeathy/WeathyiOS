@@ -96,7 +96,7 @@ class RecordTagDeleteVC: UIViewController {
         nextBtn.setTitle("삭제하기", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
+        nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         
 //        print(">>>>>>", tagTitles)
     }
@@ -193,7 +193,7 @@ extension RecordTagDeleteVC {
             self.nextBtn.setTitle("삭제하기", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         })
     }
     
@@ -204,7 +204,7 @@ extension RecordTagDeleteVC {
             self.nextBtn.setTitle("삭제하기", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         })
     }
     
@@ -214,7 +214,7 @@ extension RecordTagDeleteVC {
         self.cancelBtn.setTitle("취소", for: .normal)
         self.cancelBtn.setTitleColor(UIColor.subGrey6, for: .normal)
         self.cancelBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        self.cancelBtn.layer.cornerRadius = 30
+        self.cancelBtn.layer.cornerRadius = self.cancelBtn.frame.height / 2
     }
     
     func initPosition() {

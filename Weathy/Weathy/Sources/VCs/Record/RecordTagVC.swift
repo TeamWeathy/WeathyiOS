@@ -92,7 +92,7 @@ class RecordTagVC: UIViewController {
         nextBtn.setTitle("다음", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2
         
         NotificationCenter.default.addObserver(self, selector: #selector(tagAdded(_:)), name: NSNotification.Name("TagAdded"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(tagDeleted(_:)), name: NSNotification.Name("TagDeleted"), object: nil)
@@ -285,7 +285,7 @@ extension RecordTagVC {
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         })
     }
     
@@ -296,7 +296,7 @@ extension RecordTagVC {
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         })
     }
     

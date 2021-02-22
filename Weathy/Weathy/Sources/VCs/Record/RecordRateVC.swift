@@ -137,7 +137,7 @@ extension RecordRateVC {
             self.nextBtn.setTitle("완료", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = .SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         })
     }
     
@@ -146,8 +146,8 @@ extension RecordRateVC {
         nextBtn.backgroundColor = UIColor.subGrey3
         nextBtn.setTitle("완료", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
-        self.nextBtn.titleLabel?.font = .SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
+        nextBtn.titleLabel?.font = .SDGothicSemiBold16
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2
     }
     
     func initPosition() {
