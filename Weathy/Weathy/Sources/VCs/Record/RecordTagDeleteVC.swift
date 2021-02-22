@@ -58,50 +58,17 @@ class RecordTagDeleteVC: UIViewController {
         setTitleLabel()
         setCancelBtn()
         
+        initSetting()
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         blurView.alpha = 0
         animationPrac()
+//        initSetting()
         
-        /// + 자리에 있던 아이 삭제
-        for i in 0...3 {
-            tagTitles[i].tagTab.removeFirst()
-            tagTitles[i].count = 0
-            
-            if tagTitles[i].tagTab.count == 0 {
-                continue
-            }
-            
-            /// isSelected 초기화
-            for j in 0...tagTitles[i].tagTab.count - 1 {
-                tagTitles[i].tagTab[j].isSelected = false
-            }
-        }
-        
-        /// 삭제 탭 부를 때 선택했던 셀은 기본적으로 선택돼있게
-        if let selectedIdx = initialSelectedIdx {
-            tagTitles[initialTagTab].tagTab[selectedIdx-1].isSelected = true
-            selectedTags.append(tagTitles[initialTagTab].tagTab[selectedIdx-1].id)
-            tagTitles[initialTagTab].count = 1
-        }
-        
-        titleIndex = initialTagTab
-        tagTitles[initialTagTab].isSelected = true
-        tagCollectionView.contentOffset.y = self.initialYOffset
-        
-//        /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
-//        self.view.layoutIfNeeded()
-        
-        nextBtn.isUserInteractionEnabled = true
-        nextBtn.backgroundColor = UIColor.pink
-        nextBtn.setTitle("삭제하기", for: .normal)
-        nextBtn.setTitleColor(.white, for: .normal)
-        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
-        
-//        print(">>>>>>", tagTitles)
+
     }
     
     
@@ -140,6 +107,47 @@ class RecordTagDeleteVC: UIViewController {
 //MARK: - Style
 
 extension RecordTagDeleteVC {
+    
+    func initSetting() {
+        /// + 자리에 있던 아이 삭제
+        for i in 0...3 {
+            tagTitles[i].tagTab.removeFirst()
+            tagTitles[i].count = 0
+            
+            if tagTitles[i].tagTab.count == 0 {
+                continue
+            }
+            
+            /// isSelected 초기화
+            for j in 0...tagTitles[i].tagTab.count - 1 {
+                tagTitles[i].tagTab[j].isSelected = false
+            }
+        }
+        
+        /// 삭제 탭 부를 때 선택했던 셀은 기본적으로 선택돼있게
+        if let selectedIdx = initialSelectedIdx {
+            tagTitles[initialTagTab].tagTab[selectedIdx-1].isSelected = true
+            selectedTags.append(tagTitles[initialTagTab].tagTab[selectedIdx-1].id)
+            tagTitles[initialTagTab].count = 1
+        }
+        
+        titleIndex = initialTagTab
+        tagTitles[initialTagTab].isSelected = true
+        tagCollectionView.contentOffset.y = self.initialYOffset
+        
+        /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
+        self.view.layoutIfNeeded()
+        
+        nextBtn.isUserInteractionEnabled = true
+        nextBtn.backgroundColor = UIColor.pink
+        nextBtn.setTitle("삭제하기", for: .normal)
+        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
+        
+//        print(">>>>>>", tagTitles)
+    }
+    
     func setHeader() {
         titleLabel.numberOfLines = 2
         
