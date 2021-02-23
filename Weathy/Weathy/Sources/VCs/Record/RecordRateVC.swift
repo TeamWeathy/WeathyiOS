@@ -185,7 +185,20 @@ extension RecordRateVC {
                 print("success", data)
 //                let time = DispatchTime.now() + .seconds(3)
 //                DispatchQueue.main.asyncAfter(deadline: time, execute: {self.dodo()})
-                self.dodo()
+                let nextStoryboard = UIStoryboard(name: "RecordText", bundle: nil)
+                guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
+                    return
+                }
+                
+                dvc.selectedTags = self.selectedTags
+                dvc.selectedStamp = self.selectedStamp
+                dvc.dateString = self.dateString
+                dvc.locationCode = self.locationCode
+                
+                self.compareRecentRecordDate()
+                
+                dvc.modalPresentationStyle = .fullScreen
+                self.present(dvc, animated: false, completion: nil)
                 
             case .requestErr(let msg):
                 print("requestErr")
@@ -203,22 +216,7 @@ extension RecordRateVC {
             }
         }
     }
-    func dodo(){
-        let nextStoryboard = UIStoryboard(name: "RecordText", bundle: nil)
-        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
-            return
-        }
-        
-        dvc.selectedTags = self.selectedTags
-        dvc.selectedStamp = self.selectedStamp
-        dvc.dateString = self.dateString
-        dvc.locationCode = self.locationCode
-        
-        self.compareRecentRecordDate()
-        
-        dvc.modalPresentationStyle = .fullScreen
-        self.present(dvc, animated: false, completion: nil)
-    }
+
     func compareRecentRecordDate() {
         
         let dateFormatter = DateFormatter()
