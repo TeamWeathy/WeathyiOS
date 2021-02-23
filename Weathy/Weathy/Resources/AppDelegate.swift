@@ -11,9 +11,7 @@ import CoreData
 import CoreLocation
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
-    var locationManager = CLLocationManager()
-    
+class AppDelegate: UIResponder, UIApplicationDelegate {
     var appDelegateRecentInfos : [OverviewWeatherList] = []
     var overviewData: OverviewWeather?
     

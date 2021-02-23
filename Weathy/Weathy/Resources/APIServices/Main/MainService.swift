@@ -13,6 +13,7 @@ struct MainService {
     // MARK: - Custom Variables
 
     static let shared = MainService()
+    let defaultLocationCode: Int = 1100000000
     
     let dateFormatter = DateFormatter()
     var currDate = Date()
@@ -31,7 +32,7 @@ struct MainService {
     
     // MARK: - Network
     
-    // /weather/overview?lat={latitude}&lon={longitude}&code={code}&date={date}
+    /// /weather/overview?lat={latitude}&lon={longitude}&code={code}&date={date}
     func getWeatherByLocation(completion: @escaping (NetworkResult<Any>) -> Void) {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
 
@@ -57,7 +58,7 @@ struct MainService {
         }
     }
     
-    // /users/:user-id/weathy/recommend?code={code}&date={date}
+    /// /users/:user-id/weathy/recommend?code={code}&date={date}
     func getRecommendedWeathy(userId: Int, code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
@@ -71,7 +72,7 @@ struct MainService {
             case .success:
                 guard let statusCode = response.response?.statusCode else { return }
                 guard let data = response.value else { return }
-                
+
                 completion(judgeRecommendedWeathyData(status: statusCode, data: data))
             case .failure(let err):
                 print(err)
@@ -80,7 +81,7 @@ struct MainService {
         }
     }
     
-    // /weather/forecast/hourly?code={code}&date={date}
+    /// /weather/forecast/hourly?code={code}&date={date}
     func getHourlyWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
         
@@ -103,7 +104,7 @@ struct MainService {
         }
     }
     
-    // /weather/forecast/daily?code={code}&date={date}
+    /// /weather/forecast/daily?code={code}&date={date}
     func getDailyWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
@@ -126,7 +127,7 @@ struct MainService {
         }
     }
     
-    // /weather/daily/extra?code={code}&date={date}
+    /// /weather/daily/extra?code={code}&date={date}
     func getExtraWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
         let url: String = APIConstants.getExtraWeatherURL(code: code, date: dateFormatter.string(from: currDate))
