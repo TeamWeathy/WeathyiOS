@@ -57,9 +57,9 @@ class CalendarDetailVC: UIViewController {
         self.view.addSubview(calendarVC.view)
         calendarVC.didMove(toParent: self)
         calendarVC.view.backgroundColor = .clear
-        detailTopConstraint.constant = self.screen.height*213/812
-        let height = view.frame.height
-        let width = view.frame.width
+        detailTopConstraint.constant = self.screen.height*0.315 - 44
+        let height = screen.height
+        let width = screen.width
         calendarVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
         let popup = WeathyPopupView(frame: CGRect(x: 0, y: 0, width: screen.width, height: screen.height))
 //        self.parent?.view.addSubview(popup)
