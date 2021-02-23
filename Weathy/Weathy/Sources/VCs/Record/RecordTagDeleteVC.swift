@@ -57,8 +57,8 @@ class RecordTagDeleteVC: UIViewController {
         setHeader()
         setTitleLabel()
         setCancelBtn()
+        initialBtn()
         
-        initSetting()
         
         // Do any additional setup after loading the view.
     }
@@ -66,7 +66,7 @@ class RecordTagDeleteVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         blurView.alpha = 0
         animationPrac()
-//        initSetting()
+        initSetting()
         
 
     }
@@ -135,6 +135,15 @@ extension RecordTagDeleteVC {
         tagTitles[initialTagTab].isSelected = true
         tagCollectionView.contentOffset.y = self.initialYOffset
         
+        tagCollectionView.reloadData()
+        tagTitleCollectionView.reloadData()
+        
+        
+        
+//        print(">>>>>>", tagTitles)
+    }
+    
+    func initialBtn() {
         /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
         self.view.layoutIfNeeded()
         
@@ -144,8 +153,6 @@ extension RecordTagDeleteVC {
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
-        
-//        print(">>>>>>", tagTitles)
     }
     
     func setHeader() {
