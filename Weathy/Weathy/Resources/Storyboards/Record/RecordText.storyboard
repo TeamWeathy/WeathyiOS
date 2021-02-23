@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xjN-KD-4od">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,11 +12,11 @@
             <objects>
                 <viewController storyboardIdentifier="RecordTextVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xjN-KD-4od" customClass="RecordTextVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OXM-SK-kBb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJ8-Rd-C04">
-                                <rect key="frame" x="184.5" y="762" width="45" height="1"/>
+                                <rect key="frame" x="277.5" y="467" width="45" height="1"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="bhV-ww-a0m"/>
@@ -26,24 +24,24 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eck-6J-Cip">
-                                <rect key="frame" x="182" y="742" width="50" height="20"/>
+                                <rect key="frame" x="275" y="447" width="50" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="6Kd-o2-gRB"/>
                                     <constraint firstAttribute="width" constant="50" id="GBp-Yh-lWI"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="backBtnTap:" destination="xjN-KD-4od" eventType="touchUpInside" id="fny-Dp-biR"/>
+                                    <action selector="skipBtnTap:" destination="xjN-KD-4od" eventType="touchUpInside" id="fny-Dp-biR"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUj-sM-iqV">
-                                <rect key="frame" x="36.5" y="109" width="42" height="21"/>
+                                <rect key="frame" x="53" y="65" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFJ-j5-X5e" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                <rect key="frame" x="36.5" y="140" width="42" height="21"/>
+                                <rect key="frame" x="53" y="96" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,17 +52,17 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W20-Yo-UYI">
-                                <rect key="frame" x="33" y="784" width="348" height="62"/>
+                                <rect key="frame" x="33" y="489" width="534" height="95"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="nextBtnTap:" destination="xjN-KD-4od" eventType="touchUpInside" id="dau-P3-tQB"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YqM-i2-iUn">
-                                <rect key="frame" x="36.5" y="196" width="341" height="531"/>
+                                <rect key="frame" x="53" y="152" width="494" height="280"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Sv-tQ-paf">
-                                        <rect key="frame" x="0.0" y="0.0" width="341" height="480"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="494" height="610"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGy-vq-uCH">
                                                 <rect key="frame" x="0.0" y="0.0" width="41.5" height="21"/>
@@ -83,10 +81,10 @@
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGw-mi-vv1">
-                                                <rect key="frame" x="0.0" y="29" width="341" height="164.5"/>
+                                                <rect key="frame" x="0.0" y="29" width="494" height="229.5"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZGN-tl-Y1K">
-                                                        <rect key="frame" x="10" y="10" width="321" height="144.5"/>
+                                                        <rect key="frame" x="10" y="10" width="474" height="209.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -105,30 +103,30 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebf-3T-Gbp">
-                                                <rect key="frame" x="0.0" y="223.5" width="42" height="21"/>
+                                                <rect key="frame" x="0.0" y="288.5" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lyc-z9-VEj">
-                                                <rect key="frame" x="47" y="225.5" width="30" height="17"/>
+                                                <rect key="frame" x="47" y="290.5" width="30" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="2Xc-cz-jBJ"/>
                                                     <constraint firstAttribute="height" constant="17" id="3ai-eh-qFf"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="But-ox-Mtd">
-                                                <rect key="frame" x="0.0" y="252.5" width="144.5" height="145"/>
+                                                <rect key="frame" x="0.0" y="317.5" width="209.5" height="209.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c51-UZ-WOZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="144.5" height="145"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="209.5" height="209.5"/>
                                                         <state key="normal" image="btnAddphoto"/>
                                                         <connections>
                                                             <action selector="cameraBtnTap:" destination="xjN-KD-4od" eventType="touchUpInside" id="PDE-v7-8ay"/>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-h8-FH3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="144.5" height="145"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="209.5" height="209.5"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -147,7 +145,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhX-8F-8hm" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                <rect key="frame" x="266" y="199" width="42" height="20.5"/>
+                                                <rect key="frame" x="419" y="264" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -158,7 +156,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ns0-ds-di3" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                <rect key="frame" x="308" y="198.5" width="33" height="21"/>
+                                                <rect key="frame" x="461" y="263.5" width="33" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

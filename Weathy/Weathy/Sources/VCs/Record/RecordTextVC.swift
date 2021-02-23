@@ -102,10 +102,11 @@ class RecordTextVC: UIViewController {
         
     }
     
-    @IBAction func backBtnTap(_ sender: Any) {
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
-        }
+    @IBAction func skipBtnTap(_ sender: Any) {
+//        self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
+//        }
+        exitToCalendar()
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
@@ -359,6 +360,25 @@ extension RecordTextVC {
         }
         
         print("camera selected")
+    }
+    
+    func exitToCalendar() {
+        
+        if let tabBarVC = presentingViewController?.presentingViewController as? TabbarVC {
+            if let calendarVC = tabBarVC.children[1] as? CalendarDetailVC {
+//                calendarVC.recordViewFlag = true
+            }
+        }
+//        tabBarVC.calendarButtonBool = true
+//        tabBarVC.mainButtonBool = false
+        
+//        tabBarVC.scrollView.setContentOffset(CGPoint(x: tabBarVC.scrollView.frame.width, y: 0), animated: false)
+        
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
+            NotificationCenter.default.post(
+                name: NSNotification.Name(rawValue: "ChangeDate"),object: Date().getStringToDate(format: "yyyy-MM-dd", date: self.dateString))
+        }
     }
 }
 
