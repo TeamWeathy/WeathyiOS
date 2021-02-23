@@ -24,16 +24,26 @@ class TabbarVC: UIViewController {
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var tabbarView: UIView!
     
+    
+    //MARK: - LifeCycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.isScrollEnabled = false
         
         /// plusButton 그림자 주기
         plusButton.dropShadow(color: UIColor.mintIcon, offSet: CGSize(width: 0, height: 3), opacity: 0.6, radius: 6)
-        
-        //MARK: - LifeCycle Methods
 
         viewcontrollerSetting()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(recordSuccess(_:)), name: NSNotification.Name("RecordUpdated"), object: 0)
+    }
+    
+    @objc func recordSuccess(_ noti: Notification) {
+        calendarButtonBool = true
+        mainButtonBool = false
+        
+        scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: false)
     }
     
     //MARK: - Custom Methods
