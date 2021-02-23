@@ -337,6 +337,7 @@ extension RecordTextVC {
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         
+        picker.modalPresentationStyle = .fullScreen
         present(picker, animated: true, completion: nil)
         
     }
@@ -415,6 +416,7 @@ extension RecordTextVC: UIImagePickerControllerDelegate, UINavigationControllerD
         
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             photoImageView.image = image
+            photoImageView.contentMode = .scaleAspectFill
             print(info)
         }
         
