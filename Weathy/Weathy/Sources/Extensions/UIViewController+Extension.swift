@@ -19,12 +19,12 @@ extension UIViewController{
         toastLabel.lineSetting(kernValue: -0.8)
         toastLabel.text = message
         toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 29.5
+        toastLabel.layer.cornerRadius = 25
         toastLabel.clipsToBounds  =  true
         self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 2.0, delay: 1.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 1.0, delay: 1.5, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
-        }, completion: { (isCompleted) in
+        }, completion: { _ in
             toastLabel.removeFromSuperview()
         })
     }
@@ -40,12 +40,12 @@ extension UIViewController{
         toastLabel.lineSetting(kernValue: -0.8)
         toastLabel.text = message
         toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 29.5
+        toastLabel.layer.cornerRadius = 25
         toastLabel.clipsToBounds  =  true
         self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 2.0, delay: 1.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 1.0, delay: 1.5, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
-        }, completion: { (isCompleted) in
+        }, completion: { _ in
             toastLabel.removeFromSuperview()
             completion()
         })
@@ -62,12 +62,12 @@ extension UIViewController{
         toastLabel.lineSetting(kernValue: -0.8)
         toastLabel.text = message
         toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 29.5
+        toastLabel.layer.cornerRadius = 25
         toastLabel.clipsToBounds  =  true
         self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 2.0, delay: 1.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 1.0, delay: 1.5, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
-        }, completion: { (isCompleted) in
+        }, completion: { _ in
             toastLabel.removeFromSuperview()
         })
     }
