@@ -392,6 +392,7 @@ class CalendarDetailVC: UIViewController {
         record.modalPresentationStyle = .fullScreen
         record.dateString = defaultDateFormatter.string(from: selectedDate)
         record.dateToday = selectedDate
+        record.origin = .calendarRecord
         self.present(record, animated: true)
     }
     
