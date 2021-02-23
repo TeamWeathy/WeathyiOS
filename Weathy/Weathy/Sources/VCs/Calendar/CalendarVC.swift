@@ -10,12 +10,12 @@ import UIKit
 class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     //MARK: - Custom Properties
-    
+    let hasNotch = UIScreen.main.hasNotch
     let screen = UIScreen.main.bounds
     let calendarWidth = 308*UIScreen.main.bounds.width/375
     let calendarHeight = 522*UIScreen.main.bounds.width/375
-    let weeklyHeight = UIScreen.main.bounds.height*257/812 + 30
-    let monthlyHeight = UIScreen.main.bounds.height*704/812 + 30
+    var weeklyHeight = UIScreen.main.bounds.width/375*254 + 30
+    var monthlyHeight = UIScreen.main.bounds.width/375*706 + 30
     let yearMonthDateFormatter: DateFormatter = DateFormatter()
     let dayDateFormatter: DateFormatter = DateFormatter()
     let infiniteMax = 500
@@ -60,6 +60,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         setDateComponent()
         setMonthList()
         setWeekList()
+        initSize()
         initDate()
         initPicker()
         initCollectionView()
@@ -67,18 +68,23 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         setGesture()
         setStyle()
         addNotificationObserver()
+        closeDrawer()
+        self.view.layoutIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 0.3){
-            let frame = self.view.frame
-            let heightComponent = self.weeklyHeight
-            self.view.frame = CGRect(x: 0, y: 0, width: frame.width, height: heightComponent)
-        }
+        let frame = self.view.frame
+//        closeDrawer()
+//        UIView.animate(withDuration: 0.3){
+//            self.view.layoutIfNeeded()
+//        }
         self.infiniteMonthlyCV.alpha = 0
         self.infiniteWeeklyCV.alpha = 1
         weeklyCellDidSelected()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        closeDrawer()
     }
 
     //MARK: - Custom Methods
@@ -96,7 +102,12 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         }
         return -1
     }
-    
+    func initSize(){
+        if !hasNotch{
+            weeklyHeight -= 44
+            monthlyHeight -= 44
+        }
+    }
     func setDateFormatter(){
         yearMonthDateFormatter.dateFormat = "yyyy.MM"
         dayDateFormatter.dateFormat = "yyyy.MM.dd"

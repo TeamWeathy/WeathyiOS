@@ -10,10 +10,11 @@ import UIKit
 class CalendarDetailVC: UIViewController {
     
     //MARK: - Custom Properties
-    
+    let hasNotch = UIScreen.main.hasNotch
     let screen = UIScreen.main.bounds
     let koreanDateFormatter = DateFormatter()
     let noDataDate = "2020-12-13"
+    var weeklyHeight = UIScreen.main.bounds.width/375*254 + 30
     var clothesTopList = ["기모맨투맨투맨","히트텍하트","폴로니트니트니","메종 마르지엘라 사줘","이인애바보"]
     var clothesBottomList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애요지랄"]
     var clothesOuterList = ["기모맨투맨","히트텍","마","메종 마르지엘라 사줘","이인애"]
@@ -53,14 +54,21 @@ class CalendarDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         calendarVC = self.storyboard?.instantiateViewController(identifier: "CalendarVC") as? CalendarVC
+        calendarVC.view.frame = CGRect(x: 0, y: 0, width: screen.width, height: weeklyHeight)
         self.addChild(calendarVC)
         self.view.addSubview(calendarVC.view)
         calendarVC.didMove(toParent: self)
         calendarVC.view.backgroundColor = .clear
-        detailTopConstraint.constant = self.screen.height*0.315 - 44
-        let height = screen.height
-        let width = screen.width
-        calendarVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        detailTopConstraint.constant = weeklyHeight - 44
+        let height = view.frame.height
+        let width = view.frame.width
+        print("height",height)
+        
+        UIView.animate(withDuration: 0.1){
+            self.view.layoutIfNeeded()
+            self.calendarVC.view.layoutIfNeeded()
+        
+        }
         let popup = WeathyPopupView(frame: CGRect(x: 0, y: 0, width: screen.width, height: screen.height))
 //        self.parent?.view.addSubview(popup)
 //        popup.setPopup(titleText: "테스트 팝업", messageText: "이것은 테스트 팝업", yesHandler: { [weak self]
@@ -76,6 +84,7 @@ class CalendarDetailVC: UIViewController {
         //
         //            }
         //        }
+        initSize()
         setStyle()
         setPopup()
         setDefaultFormatter()
@@ -99,7 +108,13 @@ class CalendarDetailVC: UIViewController {
     }
     
     //MARK: - Custom Methods
-    
+    func initSize(){
+        if !hasNotch{
+            weeklyHeight -= 44
+            detailTopConstraint.constant = weeklyHeight 
+            print("weeklyHeight",weeklyHeight)
+        }
+    }
     func setDefaultFormatter(){
         defaultDateFormatter.dateFormat = "yyyy-MM-dd"
         defaultDateFormatter.locale = Locale(identifier: "ko-Kr")

@@ -467,7 +467,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarBtnArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Zop-PL-sAi">
-                                        <rect key="frame" x="226.33333333333334" y="32.666666666666671" width="11.666666666666657" height="6.6666666666666643"/>
+                                        <rect key="frame" x="227" y="33" width="11" height="6.3333333333333357"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Zop-PL-sAi" secondAttribute="height" multiplier="10.5:6" id="xFW-hg-Ww3"/>
                                         </constraints>
