@@ -13,7 +13,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     let hasNotch = UIScreen.main.hasNotch
     let screen = UIScreen.main.bounds
     let calendarWidth = 308*UIScreen.main.bounds.width/375
-    let calendarHeight = 522*UIScreen.main.bounds.width/375
+    var calendarHeight = 522*UIScreen.main.bounds.width/375
     var weeklyHeight = UIScreen.main.bounds.width/375*254 + 30
     var monthlyHeight = UIScreen.main.bounds.width/375*706 + 30
     let yearMonthDateFormatter: DateFormatter = DateFormatter()
@@ -45,6 +45,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     //MARK: - IBOutlets
     
+    @IBOutlet weak var monthlyCVRatio: NSLayoutConstraint!
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var infiniteMonthlyCV: UICollectionView!
     @IBOutlet weak var infiniteWeeklyCV: UICollectionView!
@@ -105,7 +106,10 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func initSize(){
         if !hasNotch{
             weeklyHeight -= 44
-            monthlyHeight -= 44
+            monthlyHeight = screen.height*0.9
+            calendarHeight = monthlyHeight*0.89
+            monthlyCVRatio.constant = 50
+            
         }
     }
     func setDateFormatter(){
@@ -146,7 +150,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func setStyle(){
         yearMonthTextView.font = UIFont(name: "Roboto-Medium", size: 25)
         yearMonthTextView.textColor = .mainGrey
-        
         calendarDrawerView.clipsToBounds = true
         calendarDrawerView.layer.cornerRadius = 35
         calendarDrawerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
@@ -445,7 +448,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == infiniteMonthlyCV{
-            return CGSize(width: calendarWidth, height: calendarHeight)
+            return CGSize(width: calendarWidth, height: infiniteMonthlyCV.frame.height)
         }
         ///infiniteWeeklyCV
         else{
@@ -563,6 +566,7 @@ extension CalendarVC: UICollectionViewDataSource{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteMonthlyCVC.identifier, for: indexPath) as? InfiniteMonthlyCVC else { return UICollectionViewCell() }
             cell.monthlyWeathyList = [] 
             cell.monthCellDelegate = self
+            cell.height = infiniteMonthlyCV.frame.height
             cell.selectedDateDidChange(infiniteMonthList[indexPath.item])
             cell.callMonthlyWeathy()
             CATransaction.begin()

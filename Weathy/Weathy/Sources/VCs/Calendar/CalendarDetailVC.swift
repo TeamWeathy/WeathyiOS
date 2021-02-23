@@ -59,7 +59,7 @@ class CalendarDetailVC: UIViewController {
         self.view.addSubview(calendarVC.view)
         calendarVC.didMove(toParent: self)
         calendarVC.view.backgroundColor = .clear
-        detailTopConstraint.constant = weeklyHeight - 44
+        detailTopConstraint.constant = weeklyHeight - 30
         let height = view.frame.height
         let width = view.frame.width
         print("height",height)
@@ -111,7 +111,7 @@ class CalendarDetailVC: UIViewController {
     func initSize(){
         if !hasNotch{
             weeklyHeight -= 44
-            detailTopConstraint.constant = weeklyHeight 
+            detailTopConstraint.constant = weeklyHeight - 30
             print("weeklyHeight",weeklyHeight)
         }
     }

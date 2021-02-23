@@ -14,7 +14,7 @@ protocol MonthCellDelegate{
 class InfiniteMonthlyCVC: UICollectionViewCell {
     
     static let identifier = "InfiniteMonthlyCVC"
-    
+    var height: CGFloat?
     let screen = UIScreen.main.bounds
     var dateComponents = DateComponents()
     var lastComponents = DateComponents()
@@ -140,7 +140,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(Int((308*screen.width/375)/7)), height: CGFloat(522/selectedDate.monthlyLines))
+        return CGSize(width: CGFloat(Int((308*screen.width/375)/7)), height: CGFloat(Int(height!)/selectedDate.monthlyLines))
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

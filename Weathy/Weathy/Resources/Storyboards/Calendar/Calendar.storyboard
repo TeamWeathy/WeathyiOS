@@ -398,7 +398,7 @@
                             <constraint firstItem="Z3O-5L-M7h" firstAttribute="top" secondItem="aVD-Qw-6W5" secondAttribute="bottom" constant="17" id="6LN-YT-sih"/>
                             <constraint firstItem="OjD-XH-60E" firstAttribute="leading" secondItem="6NH-hq-cD8" secondAttribute="leading" id="Gpp-fS-oCf"/>
                             <constraint firstItem="aVD-Qw-6W5" firstAttribute="top" secondItem="6NH-hq-cD8" secondAttribute="top" multiplier="354:734" constant="354" id="See-3z-jWq"/>
-                            <constraint firstItem="OjD-XH-60E" firstAttribute="top" secondItem="6NH-hq-cD8" secondAttribute="top" constant="213" id="Skx-lG-PYF"/>
+                            <constraint firstItem="OjD-XH-60E" firstAttribute="top" secondItem="WEm-SD-tmm" secondAttribute="top" constant="257" id="Skx-lG-PYF"/>
                             <constraint firstItem="Z3O-5L-M7h" firstAttribute="centerX" secondItem="6NH-hq-cD8" secondAttribute="centerX" id="nJi-qI-Zjb"/>
                             <constraint firstItem="6NH-hq-cD8" firstAttribute="trailing" secondItem="OjD-XH-60E" secondAttribute="trailing" id="tf3-gF-Bl5"/>
                         </constraints>
@@ -467,12 +467,12 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarBtnArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Zop-PL-sAi">
-                                        <rect key="frame" x="227" y="33" width="11" height="6.3333333333333357"/>
+                                        <rect key="frame" x="227" y="33" width="11" height="6"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Zop-PL-sAi" secondAttribute="height" multiplier="10.5:6" id="xFW-hg-Ww3"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="2021. 1" translatesAutoresizingMaskIntoConstraints="NO" id="MLH-qw-EFI" customClass="SpacedTextView" customModule="Weathy" customModuleProvider="target">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="2021. 1" translatesAutoresizingMaskIntoConstraints="NO" id="MLH-qw-EFI" customClass="SpacedTextView" customModule="Weathy" customModuleProvider="target">
                                         <rect key="frame" x="130" y="12" width="115" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MLH-qw-EFI" secondAttribute="height" multiplier="115:48" id="bZX-nQ-PUJ"/>
@@ -625,7 +625,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InfiniteMonthlyCVC" id="iQq-2C-PZG" customClass="InfiniteMonthlyCVC" customModule="Weathy" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" reuseIdentifier="InfiniteMonthlyCVC" id="iQq-2C-PZG" customClass="InfiniteMonthlyCVC" customModule="Weathy" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="308" height="522"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jBc-tH-wE5">
@@ -828,6 +828,7 @@
                                     <constraint firstItem="DUV-T1-txb" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="WQF-yh-pHJ"/>
                                     <constraint firstAttribute="trailing" secondItem="GZs-Aw-Oxd" secondAttribute="trailing" constant="26" id="YKl-hH-M0D"/>
                                     <constraint firstItem="DUV-T1-txb" firstAttribute="top" secondItem="MLH-qw-EFI" secondAttribute="bottom" id="b4o-Ct-OCu"/>
+                                    <constraint firstItem="Zop-PL-sAi" firstAttribute="width" secondItem="MLH-qw-EFI" secondAttribute="width" multiplier="0.0956522" id="ibf-8q-hxn"/>
                                     <constraint firstItem="uOT-xR-3sR" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="308:375" id="jyW-5g-Uar"/>
                                     <constraint firstItem="bb2-V1-BIL" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="0.821333" id="nok-iV-qce"/>
                                     <constraint firstItem="jUc-Bh-1hY" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="ogb-TP-h6Y"/>
@@ -865,6 +866,7 @@
                         <outlet property="calendarDrawerView" destination="j9k-NW-X9X" id="HPl-bX-3M6"/>
                         <outlet property="infiniteMonthlyCV" destination="bb2-V1-BIL" id="wQV-zo-XGv"/>
                         <outlet property="infiniteWeeklyCV" destination="uOT-xR-3sR" id="s61-zo-o4h"/>
+                        <outlet property="monthlyCVRatio" destination="eB1-uV-Fqb" id="ZvN-2S-Vsf"/>
                         <outlet property="shadowView" destination="qgf-h9-5Uv" id="ZVz-YD-NDG"/>
                         <outlet property="yearMonthTextView" destination="MLH-qw-EFI" id="Tqn-Nf-Ccn"/>
                         <outletCollection property="weekdayLabelCollection" destination="BGD-Gk-BMk" collectionClass="NSMutableArray" id="wia-1G-bje"/>
