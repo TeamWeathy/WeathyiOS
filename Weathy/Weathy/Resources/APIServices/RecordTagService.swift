@@ -98,19 +98,25 @@ struct RecordTagService {
     
     private func judgeAddTagService(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(AddClothesData.self, from: data) else {
-            return .pathErr }
-        
-        switch status {
-        case 200:
-            return .success(decodedData.clothesList)
-        case 400..<500:
-            return .requestErr(decodedData.message)
-        case 500:
-            return .serverErr
-        default:
-            return .networkFail
+        if let decodedData = try? decoder.decode(AddClothesData.self, from: data){
+            switch status {
+            case 200:
+                return .success(decodedData.clothesList)
+            case 400..<500:
+                return .requestErr(decodedData.message)
+            case 500:
+                return .serverErr
+            default:
+                return .networkFail
+            }
         }
+        else {
+            print(">>> [addTag] status code: ", status)
+            return .pathErr
+            
+        }
+        
+        
     }
     
     func deleteTag(userId:Int, token: String, clothArray: [Int], completion: @escaping (NetworkResult<Any>)->(Void)) {

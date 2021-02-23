@@ -337,7 +337,8 @@ extension RecordTextVC {
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         
-        present(picker, animated: false, completion: nil)
+        picker.modalPresentationStyle = .fullScreen
+        present(picker, animated: true, completion: nil)
         
     }
     
@@ -346,7 +347,11 @@ extension RecordTextVC {
         if(UIImagePickerController .isSourceTypeAvailable(.camera)){
             picker.sourceType = .camera
             picker.allowsEditing = true
-            present(picker, animated: false, completion: nil)
+            
+//            /// 사진을 jpeg 파일로
+//            picker.imageExportPreset = .compatible
+            
+            present(picker, animated: true, completion: nil)
         }
 
         else{
@@ -409,8 +414,9 @@ extension RecordTextVC: UIImagePickerControllerDelegate, UINavigationControllerD
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             photoImageView.image = image
+            photoImageView.contentMode = .scaleAspectFill
             print(info)
         }
         
