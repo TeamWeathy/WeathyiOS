@@ -337,7 +337,7 @@ extension RecordTextVC {
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         
-        present(picker, animated: false, completion: nil)
+        present(picker, animated: true, completion: nil)
         
     }
     
@@ -346,7 +346,11 @@ extension RecordTextVC {
         if(UIImagePickerController .isSourceTypeAvailable(.camera)){
             picker.sourceType = .camera
             picker.allowsEditing = true
-            present(picker, animated: false, completion: nil)
+            
+//            /// 사진을 jpeg 파일로
+//            picker.imageExportPreset = .compatible
+            
+            present(picker, animated: true, completion: nil)
         }
 
         else{
