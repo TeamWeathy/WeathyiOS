@@ -365,8 +365,9 @@ extension RecordTextVC {
     func exitToCalendar() {
         
         if let tabBarVC = presentingViewController?.presentingViewController as? TabbarVC {
-            if let calendarVC = tabBarVC.children[1] as? CalendarDetailVC {
-//                calendarVC.recordViewFlag = true
+            if let calendarDetailVC = tabBarVC.children[1] as? CalendarDetailVC {
+                calendarDetailVC.recordViewFlag = true
+                calendarDetailVC.selectedDate = Date().getStringToDate(format: "yyyy-MM-dd", dateString: self.dateString)
             }
         }
 //        tabBarVC.calendarButtonBool = true
@@ -376,8 +377,6 @@ extension RecordTextVC {
         
         self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
-            NotificationCenter.default.post(
-                name: NSNotification.Name(rawValue: "ChangeDate"),object: Date().getStringToDate(format: "yyyy-MM-dd", date: self.dateString))
         }
     }
 }
