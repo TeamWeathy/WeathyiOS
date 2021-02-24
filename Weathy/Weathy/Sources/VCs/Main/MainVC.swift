@@ -14,7 +14,15 @@ class MainVC: UIViewController {
     var lastContentOffset: CGFloat = 0.0
     
     // gps 버튼 활성화 여부
-    var isOnGPS: Bool = false
+    var isOnGPS: Bool = false {
+        didSet {
+            if isOnGPS {
+                gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
+            } else {
+                gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
+            }
+        }
+    }
     
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
@@ -89,16 +97,29 @@ class MainVC: UIViewController {
     
     // MARK: - Life Cycle Methods
     
-    // FIXME: - LocationManager NicknameVC로 이전
     override func viewWillAppear(_ animated: Bool) {
-        print(UserDefaults.standard.value(forKey: "token"))
-        print(UserDefaults.standard.value(forKey: "locationLat"))
-        print(UserDefaults.standard.value(forKey: "locationLon"))
-        
         LocationManager.shared.startUpdateLocation()
         
-        if deliveredSearchData == nil {
-            getLocationWeather()
+        if UserDefaults().isExistUserDefaults("searchLocationCode") {
+            // 검색 데이터 있음
+            isOnGPS = false
+            getLocationWeather(isDefault: true)
+        } else {
+            // 검색 데이터 없음
+            let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
+            
+            switch locationAuth {
+            case true:
+                // 위치 허용
+                print("현재 위치")
+                getLocationWeather(isDefault: false)
+                isOnGPS = true
+            case false:
+                // 위치 미허용
+                print("디폴트 위치")
+                getLocationWeather(isDefault: true)
+                isOnGPS = false
+            }
         }
         
         if let nickname = UserDefaults.standard.string(forKey: "nickname") {
@@ -113,8 +134,6 @@ class MainVC: UIViewController {
         
         initMainTopView()
         initMainBottomView()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
     }
     
     // FIXME: - 하단 탭바 높이 계산하기
@@ -277,9 +296,6 @@ class MainVC: UIViewController {
         todayDateTimeLabel.text = "\(data.overviewWeather.dailyWeather.date.month)월 \(data.overviewWeather.dailyWeather.date.day)일 \(data.overviewWeather.dailyWeather.date.dayOfWeek) • \(data.overviewWeather.hourlyWeather.time!)"
         todayDateTimeLabel.characterSpacing = -0.75
         
-//        logoImage.frame.origin.y -= 100
-//        logoImage.alpha = 0
-        
         locationLabel.text = "\(data.overviewWeather.region.name)"
         currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature!)°"
         maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
@@ -289,13 +305,11 @@ class MainVC: UIViewController {
         if let desc = data.overviewWeather.hourlyWeather.climate.description {
             climateLabel.text = "\(desc)"
         }
-        
-        // gps
-        isOnGPS = true
-        gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
     }
     
     func changeWeathyViewData(data: RecommendedWeathyData) {
+        emptyImage.alpha = 0
+        
         closetTopLabel.text = insertSeparatorInArray(data.weathy.closet.top.clothes)
         closetOuterLabel.text = insertSeparatorInArray(data.weathy.closet.outer.clothes)
         closetBottomLabel.text = insertSeparatorInArray(data.weathy.closet.bottom.clothes)
@@ -332,16 +346,15 @@ class MainVC: UIViewController {
 
     // MARK: - Network
 
-    func getLocationWeather() {
-        MainService.shared.getWeatherByLocation { (result) -> Void in
+    // FIXME: - code로 API 호출 시 code type Int로 수정
+    func getLocationWeather(isDefault: Bool) {
+        MainService.shared.getWeatherByLocation(isCode: isDefault) { (result) -> Void in
             switch result {
             case .success(let data):
                 if let response = data as? LocationWeatherData {
                     self.locationWeatherData = response
                     self.appDelegate?.overviewData = response.overviewWeather
-                    let regionCode = String(response.overviewWeather.region.code)
-                    
-                    UserDefaults.standard.setValue(response.overviewWeather.region.code, forKey: "locationCode")
+                    let regionCode = response.overviewWeather.region.code
                     
                     self.changeMainTopWeatherData(data: response)
                     
@@ -362,7 +375,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func getRecommendedWeathy(code: String) {
+    func getRecommendedWeathy(code: Int) {
         let userId: Int = UserDefaults.standard.integer(forKey: "userId")
         
         MainService.shared.getRecommendedWeathy(userId: userId, code: code) { (result) -> Void in
@@ -381,7 +394,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func getHourlyWeather(code: String) {
+    func getHourlyWeather(code: Int) {
         MainService.shared.getHourlyWeather(code: code) { (result) -> Void in
             switch result {
             case .success(let data):
@@ -401,7 +414,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func getDailyWeather(code: String) {
+    func getDailyWeather(code: Int) {
         MainService.shared.getDailyWeather(code: code) { (result) -> Void in
             switch result {
             case .success(let data):
@@ -421,7 +434,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func getExtraWeather(code: String) {
+    func getExtraWeather(code: Int) {
         MainService.shared.getExtraWeather(code: code) { (result) -> Void in
             switch result {
             case .success(let data):
@@ -504,48 +517,6 @@ class MainVC: UIViewController {
             }
             
             subLayers.removeAll()
-        }
-    }
-    
-    // FIXME: - changeMainTopView func랑 합칠 수 있을 것 같음
-    @objc func setSearchData(_ notiData: NSNotification) {
-        if let hourlyData = notiData.object as? OverviewWeatherList {
-            deliveredSearchData = hourlyData
-            
-            let iconId: Int = hourlyData.hourlyWeather.climate.iconId
-            let locationCode = String(hourlyData.region.code)
-            
-            mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
-            topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
-            
-            removeFlakeEmitterCell()
-            if iconId % 100 == 13 {
-                fallingSnow()
-            } else if iconId % 100 == 10 {
-                fallingRain()
-            }
-            
-            getRecommendedWeathy(code: locationCode)
-            getHourlyWeather(code: locationCode)
-            getDailyWeather(code: locationCode)
-            getExtraWeather(code: locationCode)
-            
-            locationLabel.text = hourlyData.region.name
-            changeWeatherViewBySearchData(data: hourlyData)
-            
-            // gps
-            isOnGPS = false
-            gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
-            
-//            if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-//                topCVC.locationLabel.text = hourlyData.region.name
-            ////                topCVC.changeWeatherViewData(data: self.locationWeatherData!)
-//                topCVC.changeWeatherViewBySearchData(data: hourlyData)
-//                topCVC.gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
-            ////                topCVC.defaultLocationFlag = false
-//            }
-            
-//            self.weatherCollectionView.reloadData()
         }
     }
     
@@ -679,17 +650,25 @@ class MainVC: UIViewController {
     
     @IBAction func touchUpGPSButton(_ sender: Any) {
         if !isOnGPS {
-            getLocationWeather()
+            let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
             
-            isOnGPS = true
-            gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
+            if locationAuth {
+                // 현재 위치 받아오기
+                getLocationWeather(isDefault: false)
+                UserDefaults.standard.removeObject(forKey: "searchLocationCode")
+                isOnGPS = true
+            } else {
+                // 팝업 띄우기
+                let alert = UIAlertController(title: nil, message: "권한이 없어요 (그런데 아직 팝업 뷰를 만들지 않았어요)", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                alert.addAction(cancel)
+                
+                present(alert, animated: true)
+            }
         }
     }
     
-    // FIXME: - 테스트용 데이터 주석 처리 제거
     @objc func touchUpTodayWeathyView() {
-//        recommenedWeathyData = RecommendedWeathyData(weathy: WeathyClass(region: Region(code: 1324, name: "서울특별시"), dailyWeather: DailyWeather(date: DateClass(year: 2021, month: 1, day: 28, dayOfWeek: "월"), temperature: HighLowTemp(maxTemp: 16, minTemp: -2), climate: Climate(iconId: 101, description: "조금 춥고.."), climateID: 12), hourlyWeather: HourlyWeather(time: "17", temperature: 10, climate: Climate(iconId: 12, description: "조금 따뜻..?"), pop: 4), closet: Closet(top: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), bottom: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), outer: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), etc: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")])), weathyId: 2, stampId: 2, feedback: "조금 더 얇게"), message: "테스트용 데이터")
-        
         if let data = recommenedWeathyData {
             guard let tabBarVC = parent as? TabbarVC else { return }
             guard let calendarDetailVC = tabBarVC.children[1] as? CalendarDetailVC else { return }
@@ -698,7 +677,6 @@ class MainVC: UIViewController {
             guard let dailyWeathyYear = dailyWeathyDate.year else { return }
             
             let weathyDate = "\(dailyWeathyYear)-\(dailyWeathyDate.month)-\(dailyWeathyDate.day)" // YYYY-MM-DD
-//            calendarDetailVC.selectedDate = Date().getStringToDate(format: "YYYY-MM-DD", date: weathyDate)
             calendarDetailVC.todayWeathyFlag = true
             NotificationCenter.default.post(
                 name: NSNotification.Name(rawValue: "ChangeDate"),object: Date().getStringToDate(format: "yyyy-MM-dd", dateString: weathyDate))
