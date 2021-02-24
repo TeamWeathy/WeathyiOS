@@ -173,4 +173,13 @@ extension Date {
         guard let date = dateFormatter.date(from: date) else { return Date() }
         return date
     }
+    
+    func getDateToString(format: String, date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+    
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
 }
