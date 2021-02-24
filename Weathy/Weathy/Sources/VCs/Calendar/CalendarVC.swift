@@ -27,6 +27,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     var pickerSelectedDay: Int!
     var selectedDate = Date()
     var infiniteScrollIdx = 1
+    var lastWeekIdx = Date().weekday
     
     /// infiniteMonthList
     
@@ -258,6 +259,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     func selectedDateDidChange(){
         picker.date = selectedDate
+        lastWeekIdx = selectedDate.weekday
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: "ChangeDate"),object: selectedDate)
         yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
@@ -518,12 +520,6 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             }
             else{
 //                yearMonthTextView.text = infiniteMonthList[currentIndex].currentYearMonth
-                if scrollDirection == .left{
-                    selectedDate = infiniteMonthList[currentIndex]
-                }
-                else if scrollDirection == .right{
-                    selectedDate = infiniteMonthList[currentIndex]
-                }
                 selectedDateDidChange()
                 CATransaction.begin()
                 CATransaction.setDisableActions(true)
@@ -535,12 +531,9 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         ///InfiniteWeeklyCV
         else if scrollView == infiniteWeeklyCV{
             yearMonthTextView.text = infiniteWeekList[currentIndex].currentYearMonth
-            if scrollDirection == .left{
-                selectedDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)!
-            }
-            else if scrollDirection == .right{
-                selectedDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)!
-            }
+            var addComponent = DateComponents()
+            addComponent.day = lastWeekIdx
+            selectedDate = Calendar.current.date(byAdding: addComponent, to: infiniteWeekList[currentIndex])!
             selectedDateDidChange()
             weeklyCellDidSelected()
         }
