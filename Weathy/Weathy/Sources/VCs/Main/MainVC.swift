@@ -102,14 +102,11 @@ class MainVC: UIViewController {
         
         if UserDefaults().isExistUserDefaults("searchLocationCode") {
             // 검색 데이터 있음
-            print(UserDefaults.standard.integer(forKey: "searchLocationCode"))
-            print(UserDefaults.standard.bool(forKey: "locationAuth"))
             isOnGPS = false
             getLocationWeather(isDefault: true)
         } else {
             // 검색 데이터 없음
             let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
-            print("locationAuth: ", locationAuth)
             
             switch locationAuth {
             case true:
@@ -137,8 +134,6 @@ class MainVC: UIViewController {
         
         initMainTopView()
         initMainBottomView()
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
     }
     
     // FIXME: - 하단 탭바 높이 계산하기
@@ -359,7 +354,7 @@ class MainVC: UIViewController {
                 if let response = data as? LocationWeatherData {
                     self.locationWeatherData = response
                     self.appDelegate?.overviewData = response.overviewWeather
-                    let regionCode = String(response.overviewWeather.region.code)
+                    let regionCode = response.overviewWeather.region.code
                     
                     self.changeMainTopWeatherData(data: response)
                     
@@ -380,7 +375,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func getRecommendedWeathy(code: String) {
+    func getRecommendedWeathy(code: Int) {
         let userId: Int = UserDefaults.standard.integer(forKey: "userId")
         
         MainService.shared.getRecommendedWeathy(userId: userId, code: code) { (result) -> Void in
@@ -399,7 +394,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func getHourlyWeather(code: String) {
+    func getHourlyWeather(code: Int) {
         MainService.shared.getHourlyWeather(code: code) { (result) -> Void in
             switch result {
             case .success(let data):
@@ -419,7 +414,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func getDailyWeather(code: String) {
+    func getDailyWeather(code: Int) {
         MainService.shared.getDailyWeather(code: code) { (result) -> Void in
             switch result {
             case .success(let data):
@@ -439,7 +434,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func getExtraWeather(code: String) {
+    func getExtraWeather(code: Int) {
         MainService.shared.getExtraWeather(code: code) { (result) -> Void in
             switch result {
             case .success(let data):
@@ -522,38 +517,6 @@ class MainVC: UIViewController {
             }
             
             subLayers.removeAll()
-        }
-    }
-    
-    // FIXME: - changeMainTopView func랑 합칠 수 있을 것 같음
-    @objc func setSearchData(_ notiData: NSNotification) {
-        if let hourlyData = notiData.object as? OverviewWeatherList {
-            deliveredSearchData = hourlyData
-            
-            let iconId: Int = hourlyData.hourlyWeather.climate.iconId
-            let locationCode = String(hourlyData.region.code)
-            
-            mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
-            topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
-            
-            removeFlakeEmitterCell()
-            if iconId % 100 == 13 {
-                fallingSnow()
-            } else if iconId % 100 == 10 {
-                fallingRain()
-            }
-            
-            getRecommendedWeathy(code: locationCode)
-            getHourlyWeather(code: locationCode)
-            getDailyWeather(code: locationCode)
-            getExtraWeather(code: locationCode)
-            
-            locationLabel.text = hourlyData.region.name
-            changeWeatherViewBySearchData(data: hourlyData)
-            
-            // gps
-            isOnGPS = false
-            UserDefaults.standard.set(hourlyData.region.code, forKey: "searchLocationCode")
         }
     }
     
@@ -705,10 +668,7 @@ class MainVC: UIViewController {
         }
     }
     
-    // FIXME: - 테스트용 데이터 주석 처리 제거
     @objc func touchUpTodayWeathyView() {
-//        recommenedWeathyData = RecommendedWeathyData(weathy: WeathyClass(region: Region(code: 1324, name: "서울특별시"), dailyWeather: DailyWeather(date: DateClass(year: 2021, month: 1, day: 28, dayOfWeek: "월"), temperature: HighLowTemp(maxTemp: 16, minTemp: -2), climate: Climate(iconId: 101, description: "조금 춥고.."), climateID: 12), hourlyWeather: HourlyWeather(time: "17", temperature: 10, climate: Climate(iconId: 12, description: "조금 따뜻..?"), pop: 4), closet: Closet(top: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), bottom: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), outer: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")]), etc: Category(categoryID: 1, clothes: [Clothes(id: 23, name: "후")])), weathyId: 2, stampId: 2, feedback: "조금 더 얇게"), message: "테스트용 데이터")
-        
         if let data = recommenedWeathyData {
             guard let tabBarVC = parent as? TabbarVC else { return }
             guard let calendarDetailVC = tabBarVC.children[1] as? CalendarDetailVC else { return }
@@ -717,10 +677,9 @@ class MainVC: UIViewController {
             guard let dailyWeathyYear = dailyWeathyDate.year else { return }
             
             let weathyDate = "\(dailyWeathyYear)-\(dailyWeathyDate.month)-\(dailyWeathyDate.day)" // YYYY-MM-DD
-//            calendarDetailVC.selectedDate = Date().getStringToDate(format: "YYYY-MM-DD", date: weathyDate)
             calendarDetailVC.todayWeathyFlag = true
             NotificationCenter.default.post(
-                name: NSNotification.Name(rawValue: "ChangeDate"),object: Date().getStringToDate(format: "yyyy-MM-dd", date: weathyDate))
+                name: NSNotification.Name(rawValue: "ChangeDate"), object: Date().getStringToDate(format: "yyyy-MM-dd", date: weathyDate))
             
             tabBarVC.mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
             tabBarVC.calendarButton.setImage(UIImage(named: "ic_calendar_selected"), for: .normal)

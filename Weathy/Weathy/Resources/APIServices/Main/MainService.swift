@@ -35,7 +35,6 @@ struct MainService {
         
         let query = isCode ? "?code=\(code)" : "?lat=\(lat)&lon=\(lon)"
         let url = APIConstants.getWeatherByLocationURL + query + "&date=\(dateFormatter.string(from: Date()))"
-        print(url)
         let header: HTTPHeaders = ["x-access-token": token, "Content-Type": "application/json"]
         
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
@@ -44,7 +43,6 @@ struct MainService {
             case .success:
                 guard let statusCode = response.response?.statusCode else { return }
                 guard let data = response.value else { return }
-                print(data)
                 
                 completion(judgeWeatherByLocationData(status: statusCode, data: data))
             case .failure(let err):
@@ -55,7 +53,7 @@ struct MainService {
     }
     
     /// /users/:user-id/weathy/recommend?code={code}&date={date}
-    func getRecommendedWeathy(userId: Int, code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
+    func getRecommendedWeathy(userId: Int, code: Int, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
@@ -78,7 +76,7 @@ struct MainService {
     }
     
     /// /weather/forecast/hourly?code={code}&date={date}
-    func getHourlyWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
+    func getHourlyWeather(code: Int, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
         
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
@@ -101,7 +99,7 @@ struct MainService {
     }
     
     /// /weather/forecast/daily?code={code}&date={date}
-    func getDailyWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
+    func getDailyWeather(code: Int, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
@@ -124,7 +122,7 @@ struct MainService {
     }
     
     /// /weather/daily/extra?code={code}&date={date}
-    func getExtraWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
+    func getExtraWeather(code: Int, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
         let url: String = APIConstants.getExtraWeatherURL(code: code, date: dateFormatter.string(from: Date()))
         let header: HTTPHeaders = ["x-access-token": token, "Content-Type": "application/json"]
