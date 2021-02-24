@@ -18,7 +18,6 @@ class RecordNVC: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        origin = .plusRecord
         judgeWhereFrom()
         sendData()
         

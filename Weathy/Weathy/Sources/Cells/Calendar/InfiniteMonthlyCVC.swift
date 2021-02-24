@@ -13,8 +13,10 @@ protocol MonthCellDelegate{
 
 class InfiniteMonthlyCVC: UICollectionViewCell {
     
-    static let identifier = "InfiniteMonthlyCVC"
+    //MARK:- Custom Properties
     
+    static let identifier = "InfiniteMonthlyCVC"
+    var height: CGFloat?
     let screen = UIScreen.main.bounds
     var dateComponents = DateComponents()
     var lastComponents = DateComponents()
@@ -26,8 +28,10 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     var monthCellDelegate: MonthCellDelegate?
     var lastSelectedIdx = Date().firstWeekday - 1 + Date().day
     var monthlyWeathyList: [CalendarOverview?] = []
-    @IBOutlet weak var monthlyCalendarCV: UICollectionView!
+        
+    //MARK: - IBOutlets
     
+    @IBOutlet weak var monthlyCalendarCV: UICollectionView!
     
     override func awakeFromNib(){
         super.awakeFromNib()
@@ -140,7 +144,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(Int((308*screen.width/375)/7)), height: CGFloat(522/selectedDate.monthlyLines))
+        return CGSize(width: CGFloat(Int((monthlyCalendarCV.frame.width)/7)), height: CGFloat(Int(height!)/selectedDate.monthlyLines))
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
