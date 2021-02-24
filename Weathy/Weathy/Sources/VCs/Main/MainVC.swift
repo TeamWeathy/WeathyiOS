@@ -14,7 +14,15 @@ class MainVC: UIViewController {
     var lastContentOffset: CGFloat = 0.0
     
     // gps 버튼 활성화 여부
-    var isOnGPS: Bool = false
+    var isOnGPS: Bool = false {
+        didSet {
+            if isOnGPS {
+                gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
+            } else {
+                gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
+            }
+        }
+    }
     
     var locationWeatherData: LocationWeatherData?
     var recommenedWeathyData: RecommendedWeathyData?
@@ -89,14 +97,32 @@ class MainVC: UIViewController {
     
     // MARK: - Life Cycle Methods
     
-    // FIXME: - LocationManager NicknameVC로 이전
     override func viewWillAppear(_ animated: Bool) {
-        print(UserDefaults.standard.value(forKey: "token"))
-        print(UserDefaults.standard.value(forKey: "locationLat"))
-        print(UserDefaults.standard.value(forKey: "locationLon"))
+        LocationManager.shared.startUpdateLocation()
         
-        if deliveredSearchData == nil {
-            getLocationWeather()
+        if UserDefaults().isExistUserDefaults("searchLocationCode") {
+            // 검색 데이터 있음
+            print(UserDefaults.standard.integer(forKey: "searchLocationCode"))
+            print(UserDefaults.standard.bool(forKey: "locationAuth"))
+            isOnGPS = false
+            getLocationWeather(isDefault: true)
+        } else {
+            // 검색 데이터 없음
+            let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
+            print("locationAuth: ", locationAuth)
+            
+            switch locationAuth {
+            case true:
+                // 위치 허용
+                print("현재 위치")
+                getLocationWeather(isDefault: false)
+                isOnGPS = true
+            case false:
+                // 위치 미허용
+                print("디폴트 위치")
+                getLocationWeather(isDefault: true)
+                isOnGPS = false
+            }
         }
         
         if let nickname = UserDefaults.standard.string(forKey: "nickname") {
@@ -104,8 +130,6 @@ class MainVC: UIViewController {
         }
         
         blankDownImage()
-        
-        print(UserDefaults.standard.value(forKey: "locationAuth"))
     }
     
     override func viewDidLoad() {
@@ -114,7 +138,7 @@ class MainVC: UIViewController {
         initMainTopView()
         initMainBottomView()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(setSearchData), name: NSNotification.Name("DeliverSearchData"), object: nil)
     }
     
     // FIXME: - 하단 탭바 높이 계산하기
@@ -277,9 +301,6 @@ class MainVC: UIViewController {
         todayDateTimeLabel.text = "\(data.overviewWeather.dailyWeather.date.month)월 \(data.overviewWeather.dailyWeather.date.day)일 \(data.overviewWeather.dailyWeather.date.dayOfWeek) • \(data.overviewWeather.hourlyWeather.time!)"
         todayDateTimeLabel.characterSpacing = -0.75
         
-//        logoImage.frame.origin.y -= 100
-//        logoImage.alpha = 0
-        
         locationLabel.text = "\(data.overviewWeather.region.name)"
         currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature!)°"
         maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
@@ -289,10 +310,6 @@ class MainVC: UIViewController {
         if let desc = data.overviewWeather.hourlyWeather.climate.description {
             climateLabel.text = "\(desc)"
         }
-        
-        // gps
-        isOnGPS = true
-        gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
     }
     
     func changeWeathyViewData(data: RecommendedWeathyData) {
@@ -334,16 +351,15 @@ class MainVC: UIViewController {
 
     // MARK: - Network
 
-    func getLocationWeather() {
-        MainService.shared.getWeatherByLocation { (result) -> Void in
+    // FIXME: - code로 API 호출 시 code type Int로 수정
+    func getLocationWeather(isDefault: Bool) {
+        MainService.shared.getWeatherByLocation(isCode: isDefault) { (result) -> Void in
             switch result {
             case .success(let data):
                 if let response = data as? LocationWeatherData {
                     self.locationWeatherData = response
                     self.appDelegate?.overviewData = response.overviewWeather
                     let regionCode = String(response.overviewWeather.region.code)
-                    
-                    UserDefaults.standard.setValue(response.overviewWeather.region.code, forKey: "locationCode")
                     
                     self.changeMainTopWeatherData(data: response)
                     
@@ -537,17 +553,7 @@ class MainVC: UIViewController {
             
             // gps
             isOnGPS = false
-            gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
-            
-//            if let topCVC = weatherCollectionView.cellForItem(at: [0, 0]) as? MainTopCVC {
-//                topCVC.locationLabel.text = hourlyData.region.name
-            ////                topCVC.changeWeatherViewData(data: self.locationWeatherData!)
-//                topCVC.changeWeatherViewBySearchData(data: hourlyData)
-//                topCVC.gpsButton.setImage(UIImage(named: "ic_otherplace_shadow"), for: .normal)
-            ////                topCVC.defaultLocationFlag = false
-//            }
-            
-//            self.weatherCollectionView.reloadData()
+            UserDefaults.standard.set(hourlyData.region.code, forKey: "searchLocationCode")
         }
     }
     
@@ -681,10 +687,21 @@ class MainVC: UIViewController {
     
     @IBAction func touchUpGPSButton(_ sender: Any) {
         if !isOnGPS {
-            getLocationWeather()
+            let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
             
-            isOnGPS = true
-            gpsButton.setImage(UIImage(named: "ic_gps_shadow"), for: .normal)
+            if locationAuth {
+                // 현재 위치 받아오기
+                getLocationWeather(isDefault: false)
+                UserDefaults.standard.removeObject(forKey: "searchLocationCode")
+                isOnGPS = true
+            } else {
+                // 팝업 띄우기
+                let alert = UIAlertController(title: nil, message: "권한이 없어요 (그런데 아직 팝업 뷰를 만들지 않았어요)", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                alert.addAction(cancel)
+                
+                present(alert, animated: true)
+            }
         }
     }
     

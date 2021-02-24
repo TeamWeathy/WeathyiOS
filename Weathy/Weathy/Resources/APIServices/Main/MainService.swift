@@ -13,19 +13,11 @@ struct MainService {
     // MARK: - Custom Variables
 
     static let shared = MainService()
-    let defaultLocationCode: Int = 1100000000
     
+    let defaultLocationCode: Int = 1100000000
     let dateFormatter = DateFormatter()
-    var currDate = Date()
-    var lat: Double
-    var lon: Double
     
     init() {
-        currDate = Date()
-        
-        lat = 37.58656507040886
-        lon = 126.9748217266802
-        
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy-MM-dd"
     }
@@ -33,14 +25,17 @@ struct MainService {
     // MARK: - Network
     
     /// /weather/overview?lat={latitude}&lon={longitude}&code={code}&date={date}
-    func getWeatherByLocation(completion: @escaping (NetworkResult<Any>) -> Void) {
+    func getWeatherByLocation(isCode: Bool, completion: @escaping (NetworkResult<Any>) -> Void) {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
 
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-        let lat = UserDefaults.standard.value(forKey: "locationLat") ?? self.lat
-        let lon = UserDefaults.standard.value(forKey: "locationLon") ?? self.lon
+        let lat = UserDefaults.standard.double(forKey: "locationLat")
+        let lon = UserDefaults.standard.double(forKey: "locationLon")
+        let code = UserDefaults().isExistUserDefaults("searchLocationCode") ? UserDefaults.standard.integer(forKey: "searchLocationCode") : defaultLocationCode
         
-        let url = APIConstants.getWeatherByLocationURL + "?lat=\(lat)&lon=\(lon)&date=\(dateFormatter.string(from: currDate))"
+        let query = isCode ? "?code=\(code)" : "?lat=\(lat)&lon=\(lon)"
+        let url = APIConstants.getWeatherByLocationURL + query + "&date=\(dateFormatter.string(from: Date()))"
+        print(url)
         let header: HTTPHeaders = ["x-access-token": token, "Content-Type": "application/json"]
         
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
@@ -49,6 +44,7 @@ struct MainService {
             case .success:
                 guard let statusCode = response.response?.statusCode else { return }
                 guard let data = response.value else { return }
+                print(data)
                 
                 completion(judgeWeatherByLocationData(status: statusCode, data: data))
             case .failure(let err):
@@ -63,7 +59,7 @@ struct MainService {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-        let url: String = APIConstants.getRecommendedWeathyURL(userId: userId, code: code, date: dateFormatter.string(from: currDate))
+        let url: String = APIConstants.getRecommendedWeathyURL(userId: userId, code: code, date: dateFormatter.string(from: Date()))
         let header: HTTPHeaders = ["x-access-token": token, "Content-Type": "application/json"]
         
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
@@ -86,7 +82,7 @@ struct MainService {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
         
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-        let url: String = APIConstants.getHourlyWeatherURL(code: code, date: dateFormatter.string(from: currDate))
+        let url: String = APIConstants.getHourlyWeatherURL(code: code, date: dateFormatter.string(from: Date()))
         let header: HTTPHeaders = ["x-access-token": token, "Content-Type": "application/json"]
 
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
@@ -109,7 +105,7 @@ struct MainService {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-        let url: String = APIConstants.getDailyWeatherURL(code: code, date: dateFormatter.string(from: currDate))
+        let url: String = APIConstants.getDailyWeatherURL(code: code, date: dateFormatter.string(from: Date()))
         let header: HTTPHeaders = ["x-access-token": token, "Content-Type": "application/json"]
         
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
@@ -130,7 +126,7 @@ struct MainService {
     /// /weather/daily/extra?code={code}&date={date}
     func getExtraWeather(code: String, completion: @escaping ((NetworkResult<Any>) -> Void)) {
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-        let url: String = APIConstants.getExtraWeatherURL(code: code, date: dateFormatter.string(from: currDate))
+        let url: String = APIConstants.getExtraWeatherURL(code: code, date: dateFormatter.string(from: Date()))
         let header: HTTPHeaders = ["x-access-token": token, "Content-Type": "application/json"]
         
         dateFormatter.dateFormat = "yyyy-MM-dd"

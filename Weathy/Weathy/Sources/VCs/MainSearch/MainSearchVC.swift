@@ -256,7 +256,8 @@ extension MainSearchVC: UITableViewDelegate {
         if tableView == recentTableView {
             let cell = tableView.cellForRow(at: indexPath)
             /// Main에 넘겨줄 데이터 넣기
-            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: appDelegate.appDelegateRecentInfos[indexPath.row])
+//            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: appDelegate.appDelegateRecentInfos[indexPath.row])
+            UserDefaults.standard.set(appDelegate.appDelegateRecentInfos[indexPath.row].region.code, forKey: "searchLocationCode")
             
             NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": appDelegate.appDelegateRecentInfos[indexPath.row]])
             
@@ -278,7 +279,8 @@ extension MainSearchVC: UITableViewDelegate {
             }
             
             /// Main에 넘겨줄 데이터 넣기
-            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
+//            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
+            UserDefaults.standard.set(searchInformations[indexPath.row].region.code, forKey: "searchLocationCode")
             
             NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": self.searchInformations[indexPath.row]])
             

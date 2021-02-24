@@ -35,7 +35,7 @@ class NickNameVC: UIViewController {
         clearButton.isHidden = true
         nickNameTextField.delegate = self
         
-        LocationManager.shared.startUpdateLocation()
+        LocationManager.shared.requestLocationAuth()
         
         // MARK: - LifeCycle Methods
         
