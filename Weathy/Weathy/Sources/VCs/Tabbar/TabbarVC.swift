@@ -100,6 +100,9 @@ class TabbarVC: UIViewController {
         
         let story = UIStoryboard.init(name: "RecordStart", bundle: nil)
         guard let vc = story.instantiateViewController(withIdentifier: RecordNVC.identifier) as? RecordNVC else {return}
+        
+        vc.origin = .plusRecord
+        
         vc.modalPresentationStyle = .fullScreen
         
         present(vc, animated: true, completion: nil)
