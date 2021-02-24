@@ -57,6 +57,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("111",CGFloat(Int(infiniteWeeklyCV.frame.width/7)*7),calendarWidth,infiniteWeeklyCV.frame.width)
         setDateFormatter()
         setDateComponent()
         setMonthList()
@@ -244,8 +245,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     func initCollectionViewOffset(){
         DispatchQueue.main.async(execute: { [self] in
-            self.infiniteMonthlyCV.contentOffset.x = calendarWidth*CGFloat((infiniteMonthList.count-1))
-            self.infiniteWeeklyCV.contentOffset.x = calendarWidth*CGFloat((infiniteWeekList.count-1))
+            self.infiniteMonthlyCV.contentOffset.x = infiniteMonthlyCV.frame.width*CGFloat(infiniteMonthList.count-1)
+            self.infiniteWeeklyCV.contentOffset.x = infiniteWeeklyCV.frame.width*CGFloat(infiniteWeekList.count-1)
         })
     }
     
@@ -315,7 +316,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         monthlyCellDidSelected()
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: monthlyHeight)
         infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
-                                                self.infiniteMonthlyCV.contentOffset.x = self.calendarWidth*CGFloat(self.currentIndex)})
+                                                self.infiniteMonthlyCV.contentOffset.x = self.infiniteMonthlyCV.frame.width*CGFloat(self.currentIndex)})
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
                         self.view.layoutIfNeeded()
                         },
@@ -332,7 +333,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func closeDrawer(){
         let weeklyIndex = findIndexFromSelectedDate()
         currentIndex = weeklyIndex
-        self.infiniteWeeklyCV.contentOffset.x = self.calendarWidth*CGFloat(weeklyIndex)
+        self.infiniteWeeklyCV.contentOffset.x = self.infiniteWeeklyCV.frame.width*CGFloat(weeklyIndex)
 
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: weeklyHeight)
         ///spring effect
@@ -447,12 +448,13 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        ///infiniteMonthlyCV
         if collectionView == infiniteMonthlyCV{
-            return CGSize(width: calendarWidth, height: infiniteMonthlyCV.frame.height)
+            return CGSize(width: infiniteMonthlyCV.frame.width, height: calendarHeight)
         }
         ///infiniteWeeklyCV
         else{
-            return CGSize(width: calendarWidth, height: 105*screen.width/375)
+            return CGSize(width: infiniteWeeklyCV.frame.width, height: infiniteWeeklyCV.frame.height)
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

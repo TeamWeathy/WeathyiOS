@@ -612,7 +612,7 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bb2-V1-BIL">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bb2-V1-BIL">
                                         <rect key="frame" x="33.666666666666657" y="95" width="308" height="522"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -635,10 +635,6 @@
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t1f-kf-2Bh">
                                                             <rect key="frame" x="0.0" y="0.0" width="308" height="522"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="308" id="VUA-Rh-bGT"/>
-                                                                <constraint firstAttribute="height" constant="522" id="aPV-w3-6bA"/>
-                                                            </constraints>
                                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1WX-JK-WHY">
                                                                 <size key="itemSize" width="44" height="105"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -830,7 +826,7 @@
                                     <constraint firstItem="DUV-T1-txb" firstAttribute="top" secondItem="MLH-qw-EFI" secondAttribute="bottom" id="b4o-Ct-OCu"/>
                                     <constraint firstItem="Zop-PL-sAi" firstAttribute="width" secondItem="MLH-qw-EFI" secondAttribute="width" multiplier="0.0956522" id="ibf-8q-hxn"/>
                                     <constraint firstItem="uOT-xR-3sR" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="308:375" id="jyW-5g-Uar"/>
-                                    <constraint firstItem="bb2-V1-BIL" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="0.821333" id="nok-iV-qce"/>
+                                    <constraint firstItem="bb2-V1-BIL" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="308:375" id="nok-iV-qce"/>
                                     <constraint firstItem="jUc-Bh-1hY" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="ogb-TP-h6Y"/>
                                     <constraint firstAttribute="bottom" secondItem="9Mq-yL-8s0" secondAttribute="bottom" id="prY-LM-ZcZ"/>
                                     <constraint firstItem="GZs-Aw-Oxd" firstAttribute="top" secondItem="j9k-NW-X9X" secondAttribute="top" constant="9" id="t3g-Jq-5Br"/>
