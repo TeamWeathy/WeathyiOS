@@ -100,7 +100,7 @@ extension InfiniteWeeklyCVC: UICollectionViewDelegateFlowLayout{
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 308*screen.width/375/7, height: 105*screen.width/375)
+        return CGSize(width: CGFloat(Int((weeklyCalendarCV.frame.width)/7)), height: self.frame.height)
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
