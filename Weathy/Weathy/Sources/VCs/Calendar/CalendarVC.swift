@@ -276,7 +276,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             infiniteCell.callWeeklyWeathy()
             infiniteCell.weeklyCalendarCV.reloadData()
             infiniteCell.lastSelectedIdx = currentIndex
-            infiniteCell.weeklyCalendarCV.selectItem(at: [0,currentIndex], animated: false, scrollPosition: .bottom)
+            infiniteCell.weeklyCalendarCV.selectItem(at: [0,selectedDate.weekday], animated: false, scrollPosition: .bottom)
             
         }
         else{
