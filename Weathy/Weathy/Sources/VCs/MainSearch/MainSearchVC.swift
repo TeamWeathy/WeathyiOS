@@ -261,7 +261,7 @@ extension MainSearchVC: UITableViewDelegate {
 //            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: appDelegate.appDelegateRecentInfos[indexPath.row])
             
             /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
-            if isFromRecord == false {
+            if !isFromRecord {
                 UserDefaults.standard.set(appDelegate.appDelegateRecentInfos[indexPath.row].region.code, forKey: "searchLocationCode")
             }
             
@@ -288,7 +288,7 @@ extension MainSearchVC: UITableViewDelegate {
 //            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
             
             /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
-            if isFromRecord == false {
+            if !isFromRecord {
                 UserDefaults.standard.set(searchInformations[indexPath.row].region.code, forKey: "searchLocationCode")
             }
             

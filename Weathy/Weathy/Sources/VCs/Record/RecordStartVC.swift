@@ -138,6 +138,7 @@ class RecordStartVC: UIViewController {
         guard let searchVC = searchStoryBoard.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else {return}
         
         searchVC.modalPresentationStyle = .fullScreen
+        searchVC.isFromRecord = true
         
         present(searchVC, animated: true, completion: nil)
     }
