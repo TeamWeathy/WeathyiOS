@@ -17,6 +17,9 @@ class RecordTagAddPopupVC: UIViewController {
     var tagCategory: String = "상의"
     
     var isAdded: Bool = false
+
+    var addCount: Int = 0
+    var placeholders: [String] = ["예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "태그 더 추가하기", "옷이 많군요?!", "혹시 더 있나요?", "옷장 구경 하고 싶네요", "웨디 사랑해줘서 고마워요 '◡'"]
     
     //MARK: - @IBOutlets
     
@@ -68,12 +71,20 @@ class RecordTagAddPopupVC: UIViewController {
     }
     
     @IBAction func closeBtnTap(_ sender: Any) {
+        self.isAdded = true
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TagAdded"), object: self.isAdded)
         self.dismiss(animated: false, completion: nil)
 //        self.presentingViewController?.viewWillAppear(false)
     }
     
     @IBAction func addBtnTap(_ sender: Any) {
-        self.callAddTagService()
+        if tagCount < 50{
+            self.callAddTagService()
+        }
+        else {
+            showToastOnTop(message: "태그를 추가하려면 기존 태그를 삭제해주세요")
+        }
+        
     }
 }
 
@@ -157,24 +168,39 @@ extension RecordTagAddPopupVC {
             case .success(let data):
                 print(">>> success")
                 if let loadData = data as? Closet {
-//                    print(">>> loadData", loadData)
-                    self.isAdded = true
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TagAdded"), object: self.isAdded)
-                    self.dismiss(animated: false, completion: nil)
-//                    self.presentingViewController?.viewWillAppear(false)
+                    self.showToastOnTop(message: "태그가 추가되었습니다.")
+                    
+                    /// 입력 완료 시 입력 돼있던 내용 삭제
+                    self.tagNameTextField.text = ""
+                    self.wordCount = 0
+                    self.setTextNotExists()
+                    
+                    /// 이스터에그 - 한꺼번에 태그 많이 등록했을 때
+                    if self.addCount < self.placeholders.count {
+                        self.tagNameTextField.placeholder = self.placeholders[self.addCount]
+                        self.addCount += 1
+                    }
+                    
+                    /// 태그 개수 하나 추가, 타이틀에 반영
+                    self.tagCount += 1
+                    self.titleLabel.text = "\(self.tagCategory) 추가하기 (\(self.tagCount)/50)"
                 }
                 
             case .requestErr(let msg):
                 print("requestErr")
                 if let message = msg as? String {
                     print(message)
+                    self.showToastOnTop(message: message)
                 }
             case .pathErr:
                 print("pathErr")
+                self.showToastOnTop(message: "다시 시도해주세요.")
             case .serverErr:
                 print("serverErr")
+                self.showToastOnTop(message: "다시 시도해주세요.")
             case .networkFail:
                 print("networkFail")
+                self.showToastOnTop(message: "네트워크 상태를 확인해주세요.")
             }
         }
     }
@@ -189,6 +215,11 @@ extension RecordTagAddPopupVC: UITextFieldDelegate {
         if(textField.text?.count ?? 0 > maxLength) {
             textField.deleteBackward()
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

@@ -26,6 +26,7 @@ class WeeklyCalendarCVC: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        isSelected = false
         dayLabel.font = UIFont(name: "Roboto-Medium", size: 14)
         dayLabel.textColor = .mainGrey
         selectedView.clipsToBounds = true
@@ -40,6 +41,13 @@ class WeeklyCalendarCVC: UICollectionViewCell {
         selectedView.alpha = 0
         emotionView.alpha = 0
         
+    }
+    
+    override func prepareForReuse() {
+        isSelected = false
+        selectedView.alpha = 0
+        todayView.alpha = 0
+        emotionView.alpha = 0
     }
     func setGreyDay(){
         dayLabel.textColor = .subGrey3

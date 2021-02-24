@@ -21,7 +21,7 @@ class RecordTagDeleteVC: UIViewController {
     let name: String = "웨디"
     var titleIndex: Int = 0
     var initialTagTab: Int = 0
-    var initialSelectedIdx: Int = 0
+    var initialSelectedIdx: Int?
     var initialYOffset: CGFloat = 0
     
     var isInitialized: Bool = false
@@ -57,6 +57,8 @@ class RecordTagDeleteVC: UIViewController {
         setHeader()
         setTitleLabel()
         setCancelBtn()
+        initialBtn()
+        
         
         // Do any additional setup after loading the view.
     }
@@ -64,39 +66,9 @@ class RecordTagDeleteVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         blurView.alpha = 0
         animationPrac()
+        initSetting()
         
-        /// + 자리에 있던 아이 삭제
-        for i in 0...3 {
-            tagTitles[i].tagTab.removeFirst()
-            tagTitles[i].count = 0
-            
-            if tagTitles[i].tagTab.count == 0 {
-                break
-            }
-            
-            /// isSelected 초기화
-            for j in 0...tagTitles[i].tagTab.count - 1 {
-                tagTitles[i].tagTab[j].isSelected = false
-            }
-        }
-        
-        /// 삭제 탭 부를 때 선택했던 셀은 기본적으로 선택돼있게
-        titleIndex = initialTagTab
-        tagTitles[initialTagTab].tagTab[initialSelectedIdx-1].isSelected = true
-        tagTitles[initialTagTab].count = 1
-        tagTitles[initialTagTab].isSelected = true
-        selectedTags.append(tagTitles[initialTagTab].tagTab[initialSelectedIdx-1].id)
-        print(initialYOffset)
-        tagCollectionView.contentOffset.y = self.initialYOffset
-        
-        nextBtn.isUserInteractionEnabled = true
-        nextBtn.backgroundColor = UIColor.pink
-        nextBtn.setTitle("삭제하기", for: .normal)
-        nextBtn.setTitleColor(.white, for: .normal)
-        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
-        
-//        print(">>>>>>", tagTitles)
+
     }
     
     
@@ -135,6 +107,54 @@ class RecordTagDeleteVC: UIViewController {
 //MARK: - Style
 
 extension RecordTagDeleteVC {
+    
+    func initSetting() {
+        /// + 자리에 있던 아이 삭제
+        for i in 0...3 {
+            tagTitles[i].tagTab.removeFirst()
+            tagTitles[i].count = 0
+            
+            if tagTitles[i].tagTab.count == 0 {
+                continue
+            }
+            
+            /// isSelected 초기화
+            for j in 0...tagTitles[i].tagTab.count - 1 {
+                tagTitles[i].tagTab[j].isSelected = false
+            }
+        }
+        
+        /// 삭제 탭 부를 때 선택했던 셀은 기본적으로 선택돼있게
+        if let selectedIdx = initialSelectedIdx {
+            tagTitles[initialTagTab].tagTab[selectedIdx-1].isSelected = true
+            selectedTags.append(tagTitles[initialTagTab].tagTab[selectedIdx-1].id)
+            tagTitles[initialTagTab].count = 1
+        }
+        
+        titleIndex = initialTagTab
+        tagTitles[initialTagTab].isSelected = true
+        tagCollectionView.contentOffset.y = self.initialYOffset
+        
+        tagCollectionView.reloadData()
+        tagTitleCollectionView.reloadData()
+        
+        
+        
+//        print(">>>>>>", tagTitles)
+    }
+    
+    func initialBtn() {
+        /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
+        self.view.layoutIfNeeded()
+        
+        nextBtn.isUserInteractionEnabled = true
+        nextBtn.backgroundColor = UIColor.pink
+        nextBtn.setTitle("삭제하기", for: .normal)
+        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
+    }
+    
     func setHeader() {
         titleLabel.numberOfLines = 2
         
@@ -191,7 +211,7 @@ extension RecordTagDeleteVC {
             self.nextBtn.setTitle("삭제하기", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         })
     }
     
@@ -202,17 +222,20 @@ extension RecordTagDeleteVC {
             self.nextBtn.setTitle("삭제하기", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         })
     }
     
     func setCancelBtn() {
+//        /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
+//        self.view.layoutIfNeeded()
+        
         self.cancelBtn.backgroundColor = UIColor.white
         self.cancelBtn.setBorder(borderColor: UIColor.subGrey2, borderWidth: 1)
         self.cancelBtn.setTitle("취소", for: .normal)
         self.cancelBtn.setTitleColor(UIColor.subGrey6, for: .normal)
         self.cancelBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        self.cancelBtn.layer.cornerRadius = 30
+        self.cancelBtn.layer.cornerRadius = self.cancelBtn.frame.height / 2
     }
     
     func initPosition() {

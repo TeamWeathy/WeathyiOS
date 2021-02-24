@@ -68,4 +68,47 @@ struct RecordWeathyService {
             return .networkFail
         }
     }
+    
+    // MARK: - 날씨 검색
+    
+    func getWeatherByLocation(dateString: String, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        guard let token = UserDefaults.standard.string(forKey: "token") else {return}
+        
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        print(appDelegate.overviewData!.region.code, dateString)
+        
+        let url = APIConstants.getWeatherByLocationURL + "?code=\(appDelegate.overviewData!.region.code)&date=\(dateString)"
+        let header: HTTPHeaders = ["x-access-token": token, "Content-Type": "application/json"]
+        
+        let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)
+        dataRequest.responseData { (response) in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else {return}
+                guard let data = response.value else {return}
+                
+                completion(judgeWeatherByLocationData(status: statusCode, data: data))
+            case .failure(let err):
+                print(err)
+                completion(.networkFail)
+            }
+        }
+    }
+    
+    private func judgeWeatherByLocationData(status: Int, data: Data) -> NetworkResult<Any> {
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(LocationWeatherData.self, from: data) else {return .pathErr}
+        
+        switch status {
+        case 200:
+            return .success(decodedData)
+        case 400..<500:
+            return .requestErr(decodedData.message)
+        case 500:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
 }

@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Alamofire
+
 class RecordStartVC: UIViewController {
 
     //MARK: - Custom Variables
@@ -17,23 +19,24 @@ class RecordStartVC: UIViewController {
     var todayMonth: Int = 1
     var todayDate: Int = 1
     
-//    var fullDate: String = "2021-01-25"
     var month: Int = 12
     var date: Int = 20
     var day: String = "월"
     var location: String = "서울시 종로구"
     var currentTemp: Int = -2
-    var maxTemp: Int = -2
-    var minTemp: Int = -8
+    var maxTemp: Int = 0
+    var minTemp: Int = 0
     
     var visitedFlag: Bool = false
     var dvc = RecordTagVC()
     
-    var recordDeliverSearchInfo : OverviewWeatherList?
+    var recordDeliverSearchInfo: OverviewWeatherList?
+    
+    var locationWeatherData: LocationWeatherData?
     
     var locationCode: CLong = 1141000000
     
-    let appDelgate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
     //MARK: - IBOutlets
     
@@ -59,41 +62,21 @@ class RecordStartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
+        getLocationWeather()
+        
         setAboveBox()
         setBox()
         setBelowBox()
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         setTitleLabel()
-        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "ko_KR")
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        self.fullDate = dateFormatter.date(from: "2021-01-25")
-        
-        locationCode = appDelgate.overviewData?.region.code ?? 1141000000
-        location = appDelgate.overviewData?.region.name ?? "땡땡시 땡땡구"
-        
-        maxTemp = appDelgate.overviewData?.dailyWeather.temperature.maxTemp ?? 20
-        minTemp = appDelgate.overviewData?.dailyWeather.temperature.minTemp ?? -20
-        
-        print(">>>>>", dateString)
-        print(">>>>>", dateToday)
-        
-        
-//        locationCode = 1141000000
-//        print(recordDeliverSearchInfo)
-//
-//        locationCode = recordDeliverSearchInfo?.region.code ?? 1141000000
-//        print(">>>>>>>", locationCode)
-        
 
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(appDelgate.overviewData)
-        animationPrac()
+        titleAnimation()
         NotificationCenter.default.addObserver(self, selector: #selector(SearchInfo), name: .init("record"), object: nil)
     }
     
@@ -105,10 +88,9 @@ class RecordStartVC: UIViewController {
 
         boxTimeLabel.text = "\(searchInfo.dailyWeather.date.month)월 \(searchInfo.dailyWeather.date.day)일 \(searchInfo.dailyWeather.date.dayOfWeek)"
         boxLocationLabel.text = searchInfo.region.name
-        boxWeatherImageView.image = UIImage(named:   ClimateImage.getClimateSearchIllust(searchInfo.hourlyWeather.climate.iconId))
+        boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateSearchIllust(searchInfo.hourlyWeather.climate.iconId))
         maxTempLabel.text = "\(searchInfo.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(searchInfo.dailyWeather.temperature.minTemp)°"
-        print("---> 뭐야 \(searchInfo)")
     }
     
     //MARK: - IBActions
@@ -122,6 +104,7 @@ class RecordStartVC: UIViewController {
             visitedFlag = true
         }
         
+        dvc.dateToday = dateToday
         dvc.dateString = dateString
         dvc.locationCode = locationCode
         
@@ -129,7 +112,13 @@ class RecordStartVC: UIViewController {
     }
     
     @IBAction func backButtonDidTap(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordStartPopUpVC") as? RecordStartPopUpVC else {
+            return
+        }
+        
+        dvc.modalPresentationStyle = .overCurrentContext
+        
+        self.present(dvc, animated: false, completion: nil)
     }
     
     @IBAction func searchButtonDidTap(_ sender: Any) {
@@ -149,10 +138,11 @@ class RecordStartVC: UIViewController {
 //MARK: - Style
 
 extension RecordStartVC {
+
     func setAboveBox() {
         dismissBtn.tintColor = UIColor(red: 86/255, green: 109/255, blue: 106/255, alpha: 1)
         
-        titleLabel.text = "\(appDelgate.overviewData?.dailyWeather.date.month ?? 0)월 \(appDelgate.overviewData?.dailyWeather.date.day ?? 0)일의 웨디를\n기록해볼까요?"
+        titleLabel.text = "\(dateToday?.month ?? 0)월 \(dateToday?.day ?? 0)일의 웨디를\n기록해볼까요?"
         titleLabel.numberOfLines = 2
         titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
         titleLabel.textColor = .mainGrey
@@ -190,15 +180,13 @@ extension RecordStartVC {
         boxView.layer.borderColor = UIColor.subGrey7.cgColor
         boxView.layer.cornerRadius = 35
         
-        boxTimeLabel.text = "\(appDelgate.overviewData?.dailyWeather.date.month ?? 1)월 \(appDelgate.overviewData?.dailyWeather.date.day ?? 16)일 \(appDelgate.overviewData?.dailyWeather.date.dayOfWeek ?? "땡요일")"
+        boxTimeLabel.text = "\(dateToday?.month ?? 0)월 \(dateToday?.day ?? 0)일 \(getDayStringFromInt(dayInt: dateToday?.weekday ?? 6))"
         boxTimeLabel.font = UIFont.SDGothicRegular15
         boxTimeLabel.textColor = UIColor.subGrey1
         
-        boxLocationLabel.text = "\(location)"
+        boxLocationLabel.text = "\(appDelegate.overviewData?.region.name ?? "땡땡시 땡땡구")"
         boxLocationLabel.font = UIFont.SDGothicSemiBold17
         boxLocationLabel.textColor = UIColor.subGrey1
-        
-        boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateSearchIllust(appDelgate.overviewData?.hourlyWeather.climate.iconId ?? -1))
         
         maxTempLabel.text = "\(maxTemp)°"
         maxTempLabel.font = UIFont(name: "Roboto-Light", size: 40)
@@ -221,13 +209,15 @@ extension RecordStartVC {
         modifyBtn.setTitle("변경하기", for: .normal)
         modifyBtn.setTitleColor(.black, for: .normal)
         modifyBtn.titleLabel?.font = UIFont.SDGothicRegular13
-        modifyBtn.layer.cornerRadius = 18
+        modifyBtn.layer.cornerRadius = modifyBtn.frame.height / 2
         
         startBtn.backgroundColor = UIColor.mintMain
         startBtn.setTitle("다음", for: .normal)
         startBtn.setTitleColor(.white, for: .normal)
         startBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        startBtn.layer.cornerRadius = 30
+        /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
+        self.view.layoutIfNeeded()
+        startBtn.layer.cornerRadius = startBtn.frame.height / 2
         
     }
     
@@ -241,7 +231,7 @@ extension RecordStartVC {
         
     }
     
-    func animationPrac() {
+    func titleAnimation() {
         self.initPosition()
         
         UIView.animate(withDuration: 1, animations: {
@@ -253,6 +243,32 @@ extension RecordStartVC {
             self.subTitleLabel.alpha = 1
             self.subTitleLabel.frame = CGRect(x: self.subTitleLabel.frame.origin.x, y: self.subTitleLabel.frame.origin.y+10, width: self.subTitleLabel.frame.width, height: self.subTitleLabel.frame.height)
         })
+    }
+    
+    func getLocationWeather() {
+        RecordWeathyService.shared.getWeatherByLocation(dateString: dateString) { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? LocationWeatherData {
+                    self.locationWeatherData = response
+                    
+                    self.maxTempLabel.text = "\(self.locationWeatherData!.overviewWeather.dailyWeather.temperature.maxTemp)°"
+                    self.minTempLabel.text = "\(self.locationWeatherData!.overviewWeather.dailyWeather.temperature.minTemp)°"
+                    
+                    self.boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateSearchIllust(self.locationWeatherData!.overviewWeather.hourlyWeather.climate.iconId))
+                    
+                    self.viewWillAppear(false)
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
     }
     
     func getDayStringFromInt(dayInt: Int) -> String {

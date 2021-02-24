@@ -11,6 +11,7 @@ class RecordRateVC: UIViewController {
     
     //MARK: - Custom Variables
     
+    var dateToday: Date?
     var dateString: String = "0000-00-00"
     var locationCode: CLong = -1
     
@@ -68,17 +69,7 @@ class RecordRateVC: UIViewController {
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
-        let nextStoryboard = UIStoryboard(name: "RecordText", bundle: nil)
-        guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
-            return
-        }
-        
-        dvc.selectedTags = selectedTags
-        dvc.selectedStamp = selectedStamp
-        dvc.dateString = dateString
-        dvc.locationCode = locationCode
-        
-        self.navigationController?.pushViewController(dvc, animated: false)
+        callRecordWeathyService()
     }
     
 
@@ -143,18 +134,20 @@ extension RecordRateVC {
         self.nextBtn.isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.5, animations: {
             self.nextBtn.backgroundColor = UIColor.mintMain
-            self.nextBtn.setTitle("다음", for: .normal)
+            self.nextBtn.setTitle("완료", for: .normal)
             self.nextBtn.setTitleColor(.white, for: .normal)
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.titleLabel?.font = .SDGothicSemiBold16
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
         })
     }
     
     func setNextBtnDisabled() {
         nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = UIColor.subGrey3
-        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitle("완료", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
-        nextBtn.layer.cornerRadius = 30
+        nextBtn.titleLabel?.font = .SDGothicSemiBold16
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2
     }
     
     func initPosition() {
@@ -179,6 +172,68 @@ extension RecordRateVC {
             self.explanationLabel.alpha = 1
             self.explanationLabel.frame = CGRect(x: self.explanationLabel.frame.origin.x, y: self.explanationLabel.frame.origin.y+10, width: self.explanationLabel.frame.width, height: self.explanationLabel.frame.height)
         })
+    }
+    
+    func callRecordWeathyService() {
+        let loadingView = WeathyLoadingView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        self.view.addSubview(loadingView)
+        
+        RecordWeathyService.shared.recordWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: "") { (networkResult) -> (Void) in
+            print(">>>>>>>", self.locationCode)
+            switch networkResult {
+            case .success(let data):
+                print("success", data)
+//                let time = DispatchTime.now() + .seconds(3)
+//                DispatchQueue.main.asyncAfter(deadline: time, execute: {self.dodo()})
+                let nextStoryboard = UIStoryboard(name: "RecordText", bundle: nil)
+                guard let dvc = nextStoryboard.instantiateViewController(identifier: "RecordTextVC") as? RecordTextVC else {
+                    return
+                }
+                
+                dvc.selectedTags = self.selectedTags
+                dvc.selectedStamp = self.selectedStamp
+                dvc.dateString = self.dateString
+                dvc.locationCode = self.locationCode
+                
+                self.compareRecentRecordDate()
+                
+                dvc.modalPresentationStyle = .fullScreen
+                self.present(dvc, animated: false, completion: nil)
+                
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                    self.showToast(message: message)
+                }
+                
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+
+    func compareRecentRecordDate() {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko-kr")
+        
+        let dateInDateFormat = dateFormatter.date(from: UserDefaults.standard.string(forKey: "recentRecordDate") ?? "2000-01-01")
+        
+        /// 날짜 차이를 계산
+        let dateDifference = Calendar.current.dateComponents([.day], from: dateInDateFormat!, to: dateToday!)
+        
+        /// 저장돼있던 날짜가 현재 날짜 전이면 현재 날짜를 저장
+        if dateDifference.day! > 0 {
+            UserDefaults.standard.setValue(dateString, forKey: "recentRecordDate")
+            print(">>>>> setting complete")
+        }
+            
     }
 }
 
