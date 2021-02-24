@@ -175,8 +175,8 @@ extension RecordRateVC {
     }
     
     func callRecordWeathyService() {
-        let loadingView = WeathyLoadingView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        self.view.addSubview(loadingView)
+//        let loadingView = WeathyLoadingView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+//        self.view.addSubview(loadingView)
         
         RecordWeathyService.shared.recordWeathy(userId: Int(UserDefaults.standard.string(forKey: "userId") ?? "") ?? 0, token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: "") { (networkResult) -> (Void) in
             print(">>>>>>>", self.locationCode)
