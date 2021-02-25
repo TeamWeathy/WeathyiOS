@@ -54,6 +54,8 @@ class ModifyWeathyRateVC: UIViewController {
         rateCollectionView.dataSource = self
         rateCollectionView.delegate = self
         
+        selectedStamp = weathyData?.stampId ?? -1
+        
 
 
         // Do any additional setup after loading the view.
