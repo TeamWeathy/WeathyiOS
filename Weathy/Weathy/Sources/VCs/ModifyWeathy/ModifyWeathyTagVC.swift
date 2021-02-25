@@ -13,7 +13,7 @@ class ModifyWeathyTagVC: UIViewController {
     
     var weathyData: WeathyClass?
     var dateString: String = "0000-00-00"
-    var locationCode: CLong = 1141000000
+    var locationCode: CLong = 1100000000
     
     var notificationGenerator: UIImpactFeedbackGenerator?
     

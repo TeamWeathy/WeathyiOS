@@ -13,7 +13,7 @@ class ModifyWeathyTextVC: UIViewController {
     
     var weathyData: WeathyClass?
     var dateString: String = "0000-00-00"
-    var locationCode: CLong = 1141000000
+    var locationCode: CLong = 1100000000
     
     var selectedTags: [Int] = []
     var selectedStamp: Int = -1
@@ -23,7 +23,7 @@ class ModifyWeathyTextVC: UIViewController {
     var wordCount: Int = 0
     
     var enteredText: String?
-    var originalText: String = "가나다테스트"
+    var originalText: String = "학교 종이 땡땡땡"
     
     
     
