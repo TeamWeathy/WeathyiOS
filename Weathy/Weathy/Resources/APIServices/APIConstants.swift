@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct APIConstants{
+struct APIConstants {
     static let baseURL = "http://15.164.146.132:3000"
     // 기록뷰 - 태그, 태그 추가, 태그 삭제
     static let clothesTagURL = baseURL + "/users/"
@@ -15,13 +15,13 @@ struct APIConstants{
     // 웨디 기록
     static let recordWeathyURL = baseURL + "/weathy"
     
-    ///monthly url
+    /// monthly url
     static let monthlyWeathyURL = baseURL + "/users/:user-id/calendar?start={start_date}&end={end_date}"
     
-    ///weekly url
+    /// weekly url
     static let dailyWeathyURL = baseURL + "/weathy?date={date}"
     
-    ///delete url
+    /// delete url
     static let deleteWeathyURL = baseURL + "/weathy/:weathy-id"
   
     // Main WeatherByLocation
@@ -38,19 +38,19 @@ struct APIConstants{
     static let searchURL = baseURL + "/weather/overviews?keyword={keyword}&date={date}"
   
     // Main Card View 관련
-    static func getRecommendedWeathyURL(userId: Int, code: String, date: String) -> String {
-        return baseURL + "/users/\(userId)/weathy/recommend?code=\(code)&date=\(date)"
+    static func getRecommendedWeathyURL(userId: Int, code: Int, date: String) -> String {
+        baseURL + "/users/\(userId)/weathy/recommend?code=\(String(code))&date=\(date)"
     }
     
-    static func getHourlyWeatherURL(code: String, date: String) -> String {
-        return baseURL + "/weather/forecast/hourly?code=\(code)&date=\(date)"
+    static func getHourlyWeatherURL(code: Int, date: String) -> String {
+        baseURL + "/weather/forecast/hourly?code=\(String(code))&date=\(date)"
     }
     
-    static func getDailyWeatherURL(code: String, date: String) -> String {
-        return baseURL + "/weather/forecast/daily?code=\(code)&date=\(date)"
+    static func getDailyWeatherURL(code: Int, date: String) -> String {
+        baseURL + "/weather/forecast/daily?code=\(String(code))&date=\(date)"
     }
     
-    static func getExtraWeatherURL(code: String, date: String) -> String {
-        return baseURL + "/weather/daily/extra?code=\(code)&date=\(date)"
+    static func getExtraWeatherURL(code: Int, date: String) -> String {
+        baseURL + "/weather/daily/extra?code=\(String(code))&date=\(date)"
     }
 }

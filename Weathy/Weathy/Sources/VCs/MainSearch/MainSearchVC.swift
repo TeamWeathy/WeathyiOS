@@ -28,6 +28,8 @@ class MainSearchVC: UIViewController {
     var backImage: String = ""
     var gradient: String = ""
     
+    var isFromRecord: Bool = false
+    
     //MARK: - IBOutlets
     
     @IBOutlet weak var backView: UIImageView!       // 날씨에 따른 뒤 배경
@@ -256,7 +258,12 @@ extension MainSearchVC: UITableViewDelegate {
         if tableView == recentTableView {
             let cell = tableView.cellForRow(at: indexPath)
             /// Main에 넘겨줄 데이터 넣기
-            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: appDelegate.appDelegateRecentInfos[indexPath.row])
+//            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: appDelegate.appDelegateRecentInfos[indexPath.row])
+            
+            /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
+            if !isFromRecord {
+                UserDefaults.standard.set(appDelegate.appDelegateRecentInfos[indexPath.row].region.code, forKey: "searchLocationCode")
+            }
             
             NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": appDelegate.appDelegateRecentInfos[indexPath.row]])
             
@@ -278,7 +285,12 @@ extension MainSearchVC: UITableViewDelegate {
             }
             
             /// Main에 넘겨줄 데이터 넣기
-            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
+//            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
+            
+            /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
+            if !isFromRecord {
+                UserDefaults.standard.set(searchInformations[indexPath.row].region.code, forKey: "searchLocationCode")
+            }
             
             NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": self.searchInformations[indexPath.row]])
             

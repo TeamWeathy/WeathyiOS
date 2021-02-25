@@ -71,14 +71,10 @@ struct RecordWeathyService {
     
     // MARK: - 날씨 검색
     
-    func getWeatherByLocation(dateString: String, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+    func getWeatherByLocation(dateString: String, regionCode: Int, completion: @escaping (NetworkResult<Any>) -> (Void)) {
         guard let token = UserDefaults.standard.string(forKey: "token") else {return}
         
-        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        print(appDelegate.overviewData!.region.code, dateString)
-        
-        let url = APIConstants.getWeatherByLocationURL + "?code=\(appDelegate.overviewData!.region.code)&date=\(dateString)"
+        let url = APIConstants.getWeatherByLocationURL + "?code=\(regionCode)&date=\(dateString)"
         let header: HTTPHeaders = ["x-access-token": token, "Content-Type": "application/json"]
         
         let dataRequest = AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header)

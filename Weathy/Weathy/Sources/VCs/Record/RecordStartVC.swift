@@ -127,6 +127,7 @@ class RecordStartVC: UIViewController {
         guard let searchVC = searchStoryBoard.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else {return}
         
         searchVC.modalPresentationStyle = .fullScreen
+        searchVC.isFromRecord = true
         
         present(searchVC, animated: true, completion: nil)
     }
@@ -245,7 +246,11 @@ extension RecordStartVC {
     }
     
     func getLocationWeather() {
-        RecordWeathyService.shared.getWeatherByLocation(dateString: dateString) { (result) -> (Void) in
+        
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        locationCode = appDelegate.overviewData?.region.code ?? 1100000000
+        
+        RecordWeathyService.shared.getWeatherByLocation(dateString: dateString, regionCode: locationCode) { (result) -> (Void) in
             switch result {
             case .success(let data):
                 if let response = data as? LocationWeatherData {

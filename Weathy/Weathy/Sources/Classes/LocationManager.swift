@@ -21,14 +21,12 @@ class LocationManager: NSObject {
         locationManager.delegate = self
     }
 
-    // FIXME: - info.plist에 Desc 문구 변경
     func startUpdateLocation() {
-        let authorization = CLLocationManager.authorizationStatus()
-        if authorization != .authorizedAlways, authorization != .authorizedWhenInUse {
-            locationManager.requestWhenInUseAuthorization()
-        }
-
         locationManager.startUpdatingLocation()
+    }
+
+    func requestLocationAuth() {
+        locationManager.requestAlwaysAuthorization()
     }
 
     func stopUpdateLocation() {
@@ -42,12 +40,14 @@ extension LocationManager: CLLocationManagerDelegate {
 
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
-            break
-        case .restricted, .notDetermined:
-            print(CLLocationManager.authorizationStatus())
-            locationManager.requestWhenInUseAuthorization()
-        case .denied: break
-//            UIApplication.shared.open(NSURL(string: UIApplication.openSettingsURLString)! as URL, completionHandler: nil)
+            print("true")
+            UserDefaults.standard.set(true, forKey: "locationAuth")
+
+            locationManager.startUpdatingLocation()
+            locationManager.requestLocation()
+        case .restricted, .notDetermined, .denied:
+            print("false")
+            UserDefaults.standard.set(false, forKey: "locationAuth")
         default:
             break
         }

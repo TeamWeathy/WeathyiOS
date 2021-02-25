@@ -47,7 +47,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtD-ZA-fA4">
-                                <rect key="frame" x="33" y="790" width="348" height="62"/>
+                                <rect key="frame" x="33" y="784" width="348" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gtD-ZA-fA4" secondAttribute="height" multiplier="309:55" id="eYE-0P-Osg"/>
                                 </constraints>
@@ -108,7 +108,7 @@
                             <constraint firstItem="BnT-QO-Qps" firstAttribute="top" secondItem="bsz-Cg-hLR" secondAttribute="bottom" constant="10" id="4Ni-m2-0jm"/>
                             <constraint firstAttribute="trailing" secondItem="gtD-ZA-fA4" secondAttribute="trailing" constant="33" id="5CZ-Em-8Bw"/>
                             <constraint firstItem="hP2-zc-k30" firstAttribute="width" secondItem="2Mr-TA-4j5" secondAttribute="width" multiplier="309:375" id="8ft-hE-5ud"/>
-                            <constraint firstItem="u2x-LL-744" firstAttribute="bottom" secondItem="gtD-ZA-fA4" secondAttribute="bottom" constant="10" id="Gs8-R9-NaT"/>
+                            <constraint firstItem="u2x-LL-744" firstAttribute="bottom" secondItem="gtD-ZA-fA4" secondAttribute="bottom" constant="16" id="Gs8-R9-NaT"/>
                             <constraint firstItem="hP2-zc-k30" firstAttribute="top" secondItem="BnT-QO-Qps" secondAttribute="bottom" constant="63" id="J8i-VU-L3h"/>
                             <constraint firstItem="bsz-Cg-hLR" firstAttribute="leading" secondItem="hP2-zc-k30" secondAttribute="leading" id="Jhk-Qm-B1d"/>
                             <constraint firstItem="bsz-Cg-hLR" firstAttribute="top" secondItem="8UY-Al-RFB" secondAttribute="bottom" constant="30" id="KqA-0J-BQY"/>
