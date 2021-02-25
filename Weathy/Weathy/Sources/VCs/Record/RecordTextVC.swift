@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class RecordTextVC: UIViewController {
     
@@ -26,7 +27,6 @@ class RecordTextVC: UIViewController {
     let appDelgate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
     let picker = UIImagePickerController()
-    
     
     //MARK: - IBOutlets
     
@@ -80,24 +80,20 @@ class RecordTextVC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func cameraBtnTap(_ sender: Any) {
+        
+        /// 하단 액션시트
         let alert =  UIAlertController(title: "사진 추가하기", message: nil, preferredStyle: .actionSheet)
-        
-        
         let library =  UIAlertAction(title: "앨범에서 사진 선택", style: .default) { (action) in self.openLibrary()
         }
-        
-        
         let camera =  UIAlertAction(title: "카메라 촬영", style: .default) { (action) in
             self.openCamera()
         }
-        
-        
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
         
         alert.addAction(library)
         alert.addAction(camera)
         alert.addAction(cancel)
+        
         present(alert, animated: true, completion: nil)
         
     }
@@ -345,14 +341,52 @@ extension RecordTextVC {
     
     func openCamera() {
         
+        /// 현재 카메라 사용 가능한지 검사
         if(UIImagePickerController .isSourceTypeAvailable(.camera)){
-            picker.sourceType = .camera
-            picker.allowsEditing = true
             
-//            /// 사진을 jpeg 파일로
-//            picker.imageExportPreset = .compatible
-            
-            present(picker, animated: true, completion: nil)
+            /// 카메라 접근 권한이 허용되었는지 검사
+            switch PHPhotoLibrary.authorizationStatus() {
+            /// 권한이 거부된 경우
+            case .denied:
+                print("denied")
+                /// 설정창에서 권한을 재설정 하게끔 유도한다
+                if let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String {
+                    let alert = UIAlertController(title: nil, message: "\(appName)이(가) 카메라 접근 허용되어 있지 않습니다.\n설정>Weathy>사진>읽기 및 쓰기를 클릭하여 변경 가능합니다.", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "취소", style: .default) { (action) in
+                        
+                    }
+                    let confirmAction = UIAlertAction(title: "설정", style: .default) { (action) in
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    }
+                    
+                    alert.addAction(cancelAction)
+                    alert.addAction(confirmAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            /// restricted
+            case .restricted:
+                print("restricted")
+                break
+            /// 권한이 허용된 경우
+            case .authorized:
+                print("authorized")
+                picker.sourceType = .camera
+                self.present(picker, animated: true, completion: nil)
+            /// 권한 허용을 묻기 전인 경우 (최초 1회)
+            case .notDetermined:
+                print("notDetermined")
+                PHPhotoLibrary.requestAuthorization({ state in
+                    if state == .authorized {
+                        self.picker.sourceType = .camera
+                        self.present(self.picker, animated: true, completion: nil)
+                    } else {
+//                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+            default:
+                print("break")
+                break
+            }
         }
 
         else{
@@ -444,3 +478,4 @@ extension RecordTextVC: UIImagePickerControllerDelegate, UINavigationControllerD
     }
     
 }
+
