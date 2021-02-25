@@ -168,7 +168,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xF6-np-AHP">
-                                <rect key="frame" x="217.5" y="791.5" width="160" height="60.5"/>
+                                <rect key="frame" x="217.5" y="785.5" width="160" height="60.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xF6-np-AHP" secondAttribute="height" multiplier="145:55" id="hcL-jZ-A6V"/>
                                 </constraints>
@@ -178,7 +178,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0Q-I8-EIg">
-                                <rect key="frame" x="36.5" y="791.5" width="160" height="60.5"/>
+                                <rect key="frame" x="36.5" y="785.5" width="160" height="60.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i0Q-I8-EIg" secondAttribute="height" multiplier="145:55" id="erC-nj-YW3"/>
                                 </constraints>
@@ -213,7 +213,7 @@
                             <constraint firstItem="EXZ-hl-lfa" firstAttribute="leading" secondItem="tEV-K0-a2K" secondAttribute="leading" id="mUm-rq-1C3"/>
                             <constraint firstItem="1Py-ug-KUq" firstAttribute="top" secondItem="o5Q-cS-gZ3" secondAttribute="bottom" constant="9" id="nVH-N0-DoQ"/>
                             <constraint firstItem="tEV-K0-a2K" firstAttribute="top" secondItem="1Py-ug-KUq" secondAttribute="bottom" constant="64" id="ojD-hx-5IT"/>
-                            <constraint firstItem="SJQ-vw-1S9" firstAttribute="bottom" secondItem="xF6-np-AHP" secondAttribute="bottom" constant="10" id="ru1-W8-bPk"/>
+                            <constraint firstItem="SJQ-vw-1S9" firstAttribute="bottom" secondItem="xF6-np-AHP" secondAttribute="bottom" constant="16" id="ru1-W8-bPk"/>
                             <constraint firstItem="i0Q-I8-EIg" firstAttribute="leading" secondItem="tEV-K0-a2K" secondAttribute="leading" id="xMd-GT-3xu"/>
                             <constraint firstItem="axb-nK-Ry9" firstAttribute="width" secondItem="maM-v6-g5k" secondAttribute="width" multiplier="79:375" id="xuf-Ot-6te"/>
                         </constraints>

@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHW-h0-kZG">
-                                <rect key="frame" x="217.5" y="791.5" width="160" height="60.5"/>
+                                <rect key="frame" x="217.5" y="785.5" width="160" height="60.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bHW-h0-kZG" secondAttribute="height" multiplier="145:55" id="fUR-Ug-Dwy"/>
                                 </constraints>
@@ -127,7 +127,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8QJ-l3-mLy">
-                                <rect key="frame" x="36.5" y="261" width="341" height="525.5"/>
+                                <rect key="frame" x="36.5" y="261" width="341" height="519.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vkW-Bi-zXc">
                                     <size key="itemSize" width="128" height="128"/>
@@ -204,7 +204,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recordImgBottomblur" translatesAutoresizingMaskIntoConstraints="NO" id="evr-mS-HdB">
-                                <rect key="frame" x="0.0" y="739.5" width="414" height="52"/>
+                                <rect key="frame" x="0.0" y="733.5" width="414" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="xAv-Ed-hvh"/>
                                 </constraints>
@@ -216,7 +216,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdP-dW-7UT">
-                                <rect key="frame" x="36.5" y="791.5" width="160" height="60.5"/>
+                                <rect key="frame" x="36.5" y="785.5" width="160" height="60.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RdP-dW-7UT" secondAttribute="height" multiplier="145:55" id="W00-6Q-mzl"/>
                                 </constraints>
@@ -245,7 +245,7 @@
                             <constraint firstItem="bHW-h0-kZG" firstAttribute="trailing" secondItem="8QJ-l3-mLy" secondAttribute="trailing" id="TQr-US-PcE"/>
                             <constraint firstItem="9oU-fl-CSM" firstAttribute="top" secondItem="Fx5-uu-HVu" secondAttribute="bottom" constant="10" id="XBd-Tp-ibz"/>
                             <constraint firstItem="Une-bK-CPx" firstAttribute="leading" secondItem="KYy-vQ-qjz" secondAttribute="trailing" constant="7" id="Yot-SN-pDK"/>
-                            <constraint firstItem="QLd-j5-CZr" firstAttribute="bottom" secondItem="bHW-h0-kZG" secondAttribute="bottom" constant="10" id="Z99-uQ-gQm"/>
+                            <constraint firstItem="QLd-j5-CZr" firstAttribute="bottom" secondItem="bHW-h0-kZG" secondAttribute="bottom" constant="16" id="Z99-uQ-gQm"/>
                             <constraint firstItem="evr-mS-HdB" firstAttribute="trailing" secondItem="QLd-j5-CZr" secondAttribute="trailing" id="afL-xU-Hli"/>
                             <constraint firstItem="6RF-Tk-K98" firstAttribute="leading" secondItem="Fx5-uu-HVu" secondAttribute="leading" id="b2b-TY-kjr"/>
                             <constraint firstItem="RdP-dW-7UT" firstAttribute="leading" secondItem="8QJ-l3-mLy" secondAttribute="leading" id="b7o-Iq-c2G"/>
