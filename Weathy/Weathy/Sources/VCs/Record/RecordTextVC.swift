@@ -371,6 +371,7 @@ extension RecordTextVC {
             case .authorized:
                 print("authorized")
                 picker.sourceType = .camera
+                picker.allowsEditing = true
                 self.present(picker, animated: true, completion: nil)
             /// 권한 허용을 묻기 전인 경우 (최초 1회)
             case .notDetermined:
@@ -378,6 +379,7 @@ extension RecordTextVC {
                 PHPhotoLibrary.requestAuthorization({ state in
                     if state == .authorized {
                         self.picker.sourceType = .camera
+                        self.picker.allowsEditing = true
                         self.present(self.picker, animated: true, completion: nil)
                     } else {
 //                        self.dismiss(animated: true, completion: nil)
