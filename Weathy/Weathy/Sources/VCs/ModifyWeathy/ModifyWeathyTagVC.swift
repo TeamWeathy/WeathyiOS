@@ -313,10 +313,10 @@ extension ModifyWeathyTagVC {
     
     func processDataAtLocal() {
         self.localizedClothesTagData = [
-            self.myClothesTagData!.top,
-            self.myClothesTagData!.bottom,
-            self.myClothesTagData!.outer,
-            self.myClothesTagData!.etc
+            self.myClothesTagData!.top.clothes.count != 0 ? self.myClothesTagData!.top : Category(categoryID: 1, clothes: []),
+            self.myClothesTagData!.bottom.clothes.count != 0 ? self.myClothesTagData!.bottom : Category(categoryID: 2, clothes: []),
+            self.myClothesTagData!.outer.clothes.count != 0 ? self.myClothesTagData!.outer : Category(categoryID: 3, clothes: []),
+            self.myClothesTagData!.etc.clothes.count != 0 ? self.myClothesTagData!.etc : Category(categoryID: 4, clothes: [])
         ]
 
         makeLocalTagData()
@@ -330,7 +330,7 @@ extension ModifyWeathyTagVC {
             for j in 0...3 {
                 
                 if localizedClothesTagData[j].clothes.count == 0 {
-                    break
+                    continue
                 }
                 else {
                     for i in 0...localizedClothesTagData[j].clothes.count - 1 {
