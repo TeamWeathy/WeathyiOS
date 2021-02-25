@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class ModifyWeathyTextVC: UIViewController {
     
@@ -13,7 +14,7 @@ class ModifyWeathyTextVC: UIViewController {
     
     var weathyData: WeathyClass?
     var dateString: String = "0000-00-00"
-    var locationCode: CLong = 1141000000
+    var locationCode: CLong = 1100000000
     
     var selectedTags: [Int] = []
     var selectedStamp: Int = -1
@@ -23,7 +24,9 @@ class ModifyWeathyTextVC: UIViewController {
     var wordCount: Int = 0
     
     var enteredText: String?
-    var originalText: String = "가나다테스트"
+    var originalText: String = "학교 종이 땡땡땡"
+    
+    let picker = UIImagePickerController()
     
     
     
@@ -32,11 +35,18 @@ class ModifyWeathyTextVC: UIViewController {
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var textTitleLabel: UILabel!
     @IBOutlet var textViewSurroundingView: UIView!
     @IBOutlet var recordTextView: UITextView!
     @IBOutlet var wordCountLabel: UILabel!
     @IBOutlet var maxWordLabel: SpacedLabel!
+    @IBOutlet var photoTitleLabel: UILabel!
+    @IBOutlet var photoView: UIView!
+    @IBOutlet var photoBtn: UIButton!
+    @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var finishBtn: UIButton!
+    @IBOutlet var optionImageView: [UIImageView]!
+    
     
     
     //MARK: - LifeCycle Methods
@@ -49,9 +59,10 @@ class ModifyWeathyTextVC: UIViewController {
         setTextField()
         textViewSetupView()
         setFinishBtn()
-        
+        setPhotoBox()
         
         recordTextView.delegate = self
+        picker.delegate = self
         
         textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
         textViewSurroundingView.layer.borderWidth = 1
@@ -93,6 +104,25 @@ class ModifyWeathyTextVC: UIViewController {
 //        callModifyWeathyService()
 //        self.showToast(message: "웨디에 내용이 추가되었어요!")
         self.navigationController?.popViewController(animated: false)
+    }
+    
+    @IBAction func cameraBtnTap(_ sender: Any) {
+        
+        /// 하단 액션시트
+        let alert =  UIAlertController(title: "사진 추가하기", message: nil, preferredStyle: .actionSheet)
+        let library =  UIAlertAction(title: "앨범에서 사진 선택", style: .default) { (action) in self.openLibrary()
+        }
+        let camera =  UIAlertAction(title: "카메라 촬영", style: .default) { (action) in
+            self.openCamera()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(library)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+        
     }
     
     @IBAction func nextBtnTap(_ sender: Any) {
@@ -145,6 +175,13 @@ extension ModifyWeathyTextVC {
     }
     
     func setTextField() {
+        
+        textTitleLabel.text = "텍스트"
+        textTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
+        textTitleLabel.textColor = .subGrey1
+        
+        optionImageView[0].image = UIImage(named: "icOption")
+        
         recordTextView.font = UIFont(name: "AppleSDGothicNeoR00", size: 16)
         recordTextView.text = originalText
         
@@ -166,6 +203,22 @@ extension ModifyWeathyTextVC {
             recordTextView.text = self.placeholder
             recordTextView.textColor = UIColor.lightGray
         }
+    }
+    
+    func setPhotoBox() {
+        optionImageView[1].image = UIImage(named: "icOption")
+        
+        photoTitleLabel.text = "사진"
+        photoTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
+        photoTitleLabel.textColor = .subGrey1
+        
+        photoView.setBorder(borderColor: .subGrey7, borderWidth: 1)
+        photoView.makeRounded(cornerRadius: 13)
+        
+        photoBtn.contentHorizontalAlignment = .fill
+        photoBtn.contentVerticalAlignment = .fill
+        photoBtn.imageView?.contentMode = .scaleAspectFill
+
     }
     
     func setFinishBtn() {
@@ -249,6 +302,76 @@ extension ModifyWeathyTextVC {
             }
         }
     }
+    
+    func openLibrary() {
+        print("library selected")
+        
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        
+        picker.modalPresentationStyle = .fullScreen
+        present(picker, animated: true, completion: nil)
+        
+    }
+    
+    func openCamera() {
+        
+        /// 현재 카메라 사용 가능한지 검사
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            
+            /// 카메라 접근 권한이 허용되었는지 검사
+            switch PHPhotoLibrary.authorizationStatus() {
+            /// 권한이 거부된 경우
+            case .denied:
+                print("denied")
+                /// 설정창에서 권한을 재설정 하게끔 유도한다
+                if let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String {
+                    let alert = UIAlertController(title: "설정", message: "\(appName)의 카메라 접근 권한이\n허용되어 있지 않습니다.\n설정>사진>읽기 및 쓰기를 클릭하여 변경 가능합니다.", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "취소", style: .default) { (action) in
+                        
+                    }
+                    let confirmAction = UIAlertAction(title: "설정", style: .default) { (action) in
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    }
+                    
+                    alert.addAction(cancelAction)
+                    alert.addAction(confirmAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            /// restricted
+            case .restricted:
+                print("restricted")
+                break
+            /// 권한이 허용된 경우
+            case .authorized:
+                print("authorized")
+                picker.sourceType = .camera
+                picker.allowsEditing = true
+                self.present(picker, animated: true, completion: nil)
+            /// 권한 허용을 묻기 전인 경우 (최초 1회)
+            case .notDetermined:
+                print("notDetermined")
+                PHPhotoLibrary.requestAuthorization({ state in
+                    if state == .authorized {
+                        self.picker.sourceType = .camera
+                        self.picker.allowsEditing = true
+                        self.present(self.picker, animated: true, completion: nil)
+                    } else {
+//                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+            default:
+                print("break")
+                break
+            }
+        }
+
+        else{
+            showToast(message: "현재 카메라를 사용할 수 없습니다.")
+        }
+        
+        print("camera selected")
+    }
 }
 
 
@@ -296,3 +419,22 @@ extension ModifyWeathyTextVC: UITextViewDelegate {
     }
     
 }
+
+//MARK: - UIImagePickerControllerDelegate
+
+extension ModifyWeathyTextVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            photoImageView.image = image
+            photoImageView.contentMode = .scaleAspectFill
+            print(info)
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+}
+
