@@ -12,13 +12,10 @@ import Foundation
 struct DailyWeather: Codable {
     let date: DateClass
     let temperature: HighLowTemp
-    let climate: Climate?
-    let climateID: Int?
+    let climateIconID: Int?
 
     enum CodingKeys: String, CodingKey {
-        case date
-        case temperature
-        case climate
-        case climateID = "climateId"
+        case date, temperature
+        case climateIconID = "climateIconId"
     }
 }
