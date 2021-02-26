@@ -12,6 +12,7 @@ class LocationManager: NSObject {
     static let shared = LocationManager()
 
     private let locationManager: CLLocationManager
+    private let opertationQueue = OperationQueue()
 
     override init() {
         locationManager = CLLocationManager()
@@ -19,14 +20,26 @@ class LocationManager: NSObject {
         locationManager.distanceFilter = 3000 // 해당 거리 이상 위치 변화가 생겼을 때 알림을 받음
         super.init()
         locationManager.delegate = self
+
+        opertationQueue.isSuspended = true
     }
 
     func startUpdateLocation() {
         locationManager.startUpdatingLocation()
     }
 
-    func requestLocationAuth() {
-        locationManager.requestAlwaysAuthorization()
+    func requestLocationAuth(completion: @escaping () -> Void) {
+        let auth = CLLocationManager.authorizationStatus()
+
+        if auth == .authorizedAlways || auth == .authorizedWhenInUse {
+            opertationQueue.isSuspended = false
+        } else {
+            locationManager.requestAlwaysAuthorization()
+        }
+
+        opertationQueue.addOperation {
+            completion()
+        }
     }
 
     func stopUpdateLocation() {
@@ -40,14 +53,15 @@ extension LocationManager: CLLocationManagerDelegate {
 
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
-            print("true")
+            opertationQueue.isSuspended = false
             UserDefaults.standard.set(true, forKey: "locationAuth")
 
             locationManager.startUpdatingLocation()
             locationManager.requestLocation()
-        case .restricted, .notDetermined, .denied:
-            print("false")
+        case .restricted, .denied:
+            opertationQueue.isSuspended = false
             UserDefaults.standard.set(false, forKey: "locationAuth")
+        case .notDetermined: break
         default:
             break
         }

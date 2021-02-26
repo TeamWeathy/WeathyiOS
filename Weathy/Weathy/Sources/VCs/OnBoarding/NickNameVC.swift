@@ -35,8 +35,6 @@ class NickNameVC: UIViewController {
         clearButton.isHidden = true
         nickNameTextField.delegate = self
         
-        LocationManager.shared.requestLocationAuth()
-        
         // MARK: - LifeCycle Methods
         
         labelFontSetting()
@@ -65,7 +63,6 @@ class NickNameVC: UIViewController {
         let alert = UIAlertController(title: "닉네임을 설정 하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
         let noButton = UIAlertAction(title: "아니요", style: UIAlertAction.Style.default, handler: nil)
         let yesButton = UIAlertAction(title: "네", style: UIAlertAction.Style.default, handler: { _ in
-//                UserDefaults.standard.set(true, forKey: "onboarding")
             let story = UIStoryboard(name: "Tabbar", bundle: nil)
             guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
                                         
@@ -111,49 +108,33 @@ class NickNameVC: UIViewController {
         guard let nickName = nickNameTextField.text else { return }
         
         let uuid = UUID().uuidString
-//        let uuid = "010-8966-1467"
-//        UserDefaults.standard.set(nickName, forKey: "nickname")
-//                            UserDefaults.standard.set("50:d42ZGOnXFjyhk0e1oFFwpzeXPiz94g", forKey: "token")
-//                            UserDefaults.standard.set(50, forKey: "userId")
-//                            UserDefaults.standard.set("010-8966-1467", forKey: "UUID")
-//        let UUID : String = UUID().
-        /// 서버 연결!
-        if changBool == true {
-//            self.simpleAlert()
-        }
-        createUserService.shared.createUserPost(uuid: uuid, nickname: nickName) { (networkResult) -> Void in
-            switch networkResult {
-            case .success(let data):
-
-                if let createData = data as? UserInformation {
-                    UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
-                    UserDefaults.standard.set(createData.token, forKey: "token")
-                    UserDefaults.standard.set(createData.user.id, forKey: "userId")
-                    UserDefaults.standard.set(uuid, forKey: "UUID")
-//
-                    ////                    print("userID ---> \(UserDefaults.standard.string(forKey: "userID"))")
-                    ////                    print("token ---> \(UserDefaults.standard.string(forKey: "token"))")
-//
-                    ////                    print("---> 뭐니 넌\(self.changBool)")
-//                    /// 닉네임 설정 했을 때 aleart 띄우기
-//                    if self.changBool == true {
-//                        self.simpleAlert()
-//                    }
-                    let story = UIStoryboard(name: "Tabbar", bundle: nil)
-                    guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
-                                            
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true, completion: nil)
+        
+        LocationManager.shared.requestLocationAuth {
+            createUserService.shared.createUserPost(uuid: uuid, nickname: nickName) { (networkResult) -> Void in
+                switch networkResult {
+                case .success(let data):
+                    if let createData = data as? UserInformation {
+                        UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
+                        UserDefaults.standard.set(createData.token, forKey: "token")
+                        UserDefaults.standard.set(createData.user.id, forKey: "userId")
+                        UserDefaults.standard.set(uuid, forKey: "UUID")
+                        
+                        let story = UIStoryboard(name: "Tabbar", bundle: nil)
+                        guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
+                                                
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: true, completion: nil)
+                    }
+                    
+                case .requestErr:
+                    print("requestErr")
+                case .pathErr:
+                    print("pathErr")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
                 }
-                
-            case .requestErr:
-                print("requestErr")
-            case .pathErr:
-                print("pathErr")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                print("networkFail")
             }
         }
     }
