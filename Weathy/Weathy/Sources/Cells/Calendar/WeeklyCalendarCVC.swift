@@ -48,9 +48,10 @@ class WeeklyCalendarCVC: UICollectionViewCell {
         selectedView.alpha = 0
         todayView.alpha = 0
         emotionView.alpha = 0
+        self.contentView.alpha = 1
     }
-    func setGreyDay(){
-        dayLabel.textColor = .subGrey3
+    func setNonCurrent(){
+        self.contentView.alpha = 0.4
     }
     func setToday(){
         dayLabel.textColor = .white
