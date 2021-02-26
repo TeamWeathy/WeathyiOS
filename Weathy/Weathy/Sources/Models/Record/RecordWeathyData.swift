@@ -10,4 +10,5 @@ import Foundation
 // MARK: - RecordWeathyData
 struct RecordWeathyData: Codable {
     let message: String
+    let weathyId: Int
 }
