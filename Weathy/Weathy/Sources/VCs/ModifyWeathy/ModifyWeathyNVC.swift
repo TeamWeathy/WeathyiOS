@@ -13,6 +13,8 @@ class ModifyWeathyNVC: UINavigationController {
     
     var weathyData: WeathyClass?
     var dateString: String = "0000-00-00"
+    
+    var selectedImage : UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,10 @@ extension ModifyWeathyNVC {
         
         root.weathyData = weathyData
         root.dateString = dateString
+        
+        if let image = selectedImage {
+            root.selectedImage = image
+        }
     }
     
 }

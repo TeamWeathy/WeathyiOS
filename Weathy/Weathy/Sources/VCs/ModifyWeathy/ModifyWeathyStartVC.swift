@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ModifyWeathyStartVC: UIViewController {
 
@@ -31,6 +32,8 @@ class ModifyWeathyStartVC: UIViewController {
     var selectedTag: [Int] = []
     
     var locationCode: CLong = 1100000000
+    
+    var selectedImage : UIImage?
     
     
     //MARK: - IBOutlets
@@ -114,6 +117,10 @@ class ModifyWeathyStartVC: UIViewController {
         dvc.weathyData = weathyData
         dvc.dateString = dateString
         dvc.locationCode = locationCode
+        
+        if let image = selectedImage {
+            root.selectedImage = image
+        }
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }
@@ -256,7 +263,7 @@ extension ModifyWeathyStartVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", img: nil, isDelete: false, weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", img: , isDelete: false, weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {

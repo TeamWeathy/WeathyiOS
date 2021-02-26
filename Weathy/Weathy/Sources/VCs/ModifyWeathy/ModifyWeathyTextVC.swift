@@ -28,6 +28,8 @@ class ModifyWeathyTextVC: UIViewController {
     
     let picker = UIImagePickerController()
     
+    var selectedImage : UIImage?
+    
     
     
     //MARK: - IBOutlets
