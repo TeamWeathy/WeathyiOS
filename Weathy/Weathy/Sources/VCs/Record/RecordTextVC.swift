@@ -28,6 +28,10 @@ class RecordTextVC: UIViewController {
     
     let picker = UIImagePickerController()
     
+    var weathyId: Int = 0
+    var imageSelected: UIImage?
+    var isDeleted: Bool = false
+    
     //MARK: - IBOutlets
     
     @IBOutlet var skipBtn: UIButton!
@@ -299,33 +303,32 @@ extension RecordTextVC {
     }
     
     func callModifyWeathyService() {
-//        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
-//            print(self.weathyData?.weathyId ?? -1)
-//            switch networkResult {
-//            case .success(let data):
-//                if let loadData = data as? RecordWeathyData {
-//                    print(loadData)
-//                }
-//                self.dismiss(animated: true) {
-//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 1)
-//                }
-////                self.showToast(message: "웨디에 내용이 추가되었어요!")
-//
-//            case .requestErr(let msg):
-//                print("requestErr")
-//                if let message = msg as? String {
-//                    print(message)
-//                    self.showToast(message: message)
-//                }
-//
-//            case .pathErr:
-//                print("pathErr")
-//            case .serverErr:
-//                print("serverErr")
-//            case .networkFail:
-//                print("networkFail")
-//            }
-//        }
+        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", img: imageSelected, isDelete: isDeleted, weathyId: weathyId) { (networkResult) -> (Void) in
+            switch networkResult {
+            case .success(let data):
+                if let loadData = data as? ModifyWeathyData {
+                    print(loadData)
+                }
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 1)
+                }
+//                self.showToast(message: "웨디에 내용이 추가되었어요!")
+
+            case .requestErr(let msg):
+                print("requestErr")
+                if let message = msg as? String {
+                    print(message)
+                    self.showToast(message: message)
+                }
+
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     func openLibrary() {
@@ -470,7 +473,8 @@ extension RecordTextVC: UIImagePickerControllerDelegate, UINavigationControllerD
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            photoImageView.image = image
+            imageSelected = image
+            photoImageView.image = imageSelected
             photoImageView.contentMode = .scaleAspectFill
             print(info)
         }

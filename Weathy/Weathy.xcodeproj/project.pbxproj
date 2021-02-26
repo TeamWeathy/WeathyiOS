@@ -65,6 +65,7 @@
 		374D4904259F68EE00152B9A /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D4903259F68EE00152B9A /* TagFlowLayout.swift */; };
 		374D490B259F6CAD00152B9A /* RecordTagTitleCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D490A259F6CAD00152B9A /* RecordTagTitleCVC.swift */; };
 		37613DB025E3EE63004590FD /* RecordStartPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37613DAF25E3EE63004590FD /* RecordStartPopUpVC.swift */; };
+		37613DD025E9700E004590FD /* ModifyWeathyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37613DCF25E9700E004590FD /* ModifyWeathyData.swift */; };
 		37C301F925DD6B29008A30D7 /* Closet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C301F825DD6B28008A30D7 /* Closet.swift */; };
 		37D3476F25ADB7BD0069247F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */; };
 		37FB8AA825AE4FA5001A6287 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FB8AA725AE4FA5001A6287 /* Splash.storyboard */; };
@@ -201,6 +202,7 @@
 		374D4903259F68EE00152B9A /* TagFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
 		374D490A259F6CAD00152B9A /* RecordTagTitleCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagTitleCVC.swift; sourceTree = "<group>"; };
 		37613DAF25E3EE63004590FD /* RecordStartPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStartPopUpVC.swift; sourceTree = "<group>"; };
+		37613DCF25E9700E004590FD /* ModifyWeathyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModifyWeathyData.swift; path = Weathy/Sources/Models/ModifyWeathyData.swift; sourceTree = SOURCE_ROOT; };
 		37C301F825DD6B28008A30D7 /* Closet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closet.swift; sourceTree = "<group>"; };
 		37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		37FB8AA725AE4FA5001A6287 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 		37222E6225AE649700577FEE /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				37613DCE25E96FC4004590FD /* ModifyWeathy */,
 				37222E6325AE64DA00577FEE /* ClothesTagData.swift */,
 				37222E7525AFAA4700577FEE /* RecordWeathyData.swift */,
 			);
@@ -485,6 +488,14 @@
 				374D4903259F68EE00152B9A /* TagFlowLayout.swift */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		37613DCE25E96FC4004590FD /* ModifyWeathy */ = {
+			isa = PBXGroup;
+			children = (
+				37613DCF25E9700E004590FD /* ModifyWeathyData.swift */,
+			);
+			path = ModifyWeathy;
 			sourceTree = "<group>";
 		};
 		37FB8AA525AE4F85001A6287 /* Splash */ = {
@@ -1032,6 +1043,7 @@
 				37222EB225B10A5C00577FEE /* ModifyWeathyTextVC.swift in Sources */,
 				3735AE3725A9F86B00E71DC3 /* RecordTagDeletePopupVC.swift in Sources */,
 				63EA612E25E5876500E8E74B /* UIScreen+Extensions.swift in Sources */,
+				37613DD025E9700E004590FD /* ModifyWeathyData.swift in Sources */,
 				37222EA025B0EBE100577FEE /* ModifyWeathyTagVC.swift in Sources */,
 				63C756D425B03F2A003DC9FA /* DailyWeathyData.swift in Sources */,
 				6339846F259A433400339615 /* UIColor+Extensions.swift in Sources */,
