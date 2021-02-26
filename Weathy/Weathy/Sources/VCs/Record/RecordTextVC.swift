@@ -311,7 +311,7 @@ extension RecordTextVC {
                     print(loadData)
                 }
                 self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 1)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
                 }
 //                self.showToast(message: "웨디에 내용이 추가되었어요!")
 
