@@ -27,7 +27,7 @@ class MainGPSPopupVC: UIViewController {
         backgroundView.backgroundColor = UIColor(white: 0, alpha: 0.4)
         
         popupView.makeRounded(cornerRadius: popupView.frame.height/15.86)
-        
+        popupView.dropShadow(color: UIColor(white: 39/255, alpha: 1), offSet: CGSize(width: 0, height: 3), opacity: 0.4, radius: 20)
         popupTitleLabel.font = .SDGothicSemiBold20
         popupTitleLabel.textColor = .mintIcon
         
