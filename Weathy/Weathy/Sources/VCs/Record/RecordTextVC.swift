@@ -243,15 +243,8 @@ extension RecordTextVC {
     }
     
     func textExists() {
-        finishBtn.isUserInteractionEnabled = true
-        UIView.animate(withDuration: 0.5, animations: {
-            self.finishBtn.backgroundColor = UIColor.mintMain
-            self.finishBtn.setTitle("내용 추가하기", for: .normal)
-            self.finishBtn.setTitleColor(.white, for: .normal)
-            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
-            self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
-        })
-        
+        finishBtnActivated()
+
         textViewSurroundingView.layer.borderColor = UIColor.mintMain.cgColor
         textViewSurroundingView.layer.borderWidth = 1
         textViewSurroundingView.layer.cornerRadius = 15
@@ -261,21 +254,39 @@ extension RecordTextVC {
     }
     
     func textNotExists() {
-//        finishBtn.isUserInteractionEnabled = false
-//        UIView.animate(withDuration: 0.5, animations: {
-//            self.finishBtn.backgroundColor = UIColor.subGrey3
-//            self.finishBtn.setTitle("내용 추가하기", for: .normal)
-//            self.finishBtn.setTitleColor(.white, for: .normal)
-//            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
-//            self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
-//        })
-//        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
-//        textViewSurroundingView.layer.borderWidth = 1
-//        textViewSurroundingView.layer.cornerRadius = 15
-//
-//        wordCountLabel.text = "0"
-//        wordCountLabel.font = UIFont.SDGothicRegular13
-//        wordCountLabel.textColor = UIColor.subGrey6
+        if photoImageView.image == nil {
+            finishBtnDeactivated()
+        }
+        
+        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
+
+        wordCountLabel.text = "0"
+        wordCountLabel.font = UIFont.SDGothicRegular13
+        wordCountLabel.textColor = UIColor.subGrey6
+    }
+    
+    func finishBtnActivated() {
+        finishBtn.isUserInteractionEnabled = true
+        UIView.animate(withDuration: 0.5, animations: {
+            self.finishBtn.backgroundColor = UIColor.mintMain
+            self.finishBtn.setTitle("내용 추가하기", for: .normal)
+            self.finishBtn.setTitleColor(.white, for: .normal)
+            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
+            self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
+        })
+    }
+    
+    func finishBtnDeactivated() {
+        finishBtn.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.5, animations: {
+            self.finishBtn.backgroundColor = UIColor.subGrey3
+            self.finishBtn.setTitle("내용 추가하기", for: .normal)
+            self.finishBtn.setTitleColor(.white, for: .normal)
+            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
+            self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
+        })
     }
     
     func initPosition() {
@@ -477,7 +488,7 @@ extension RecordTextVC: UIImagePickerControllerDelegate, UINavigationControllerD
             imageSelected = image
             photoImageView.image = imageSelected
             photoImageView.contentMode = .scaleAspectFill
-            print(info)
+            finishBtnActivated()
         }
         
         dismiss(animated: true, completion: nil)
