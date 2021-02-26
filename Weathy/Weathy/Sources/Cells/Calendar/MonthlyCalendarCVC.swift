@@ -10,7 +10,7 @@ import UIKit
 class MonthlyCalendarCVC: UICollectionViewCell {
     
     static let identifier = "MonthlyCalendarCVC"
-    var isToday = false
+    var isToday: Bool = false
     override var isSelected: Bool{
         didSet{
             if isSelected{
@@ -60,11 +60,15 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         setStyle()
         
     }
+    func setClimate(_ climateId: Int){
+        climateIconImageView.alpha = 1
+        climateIconImageView.image = UIImage(named: ClimateImage.getClimateAssetName(climateId))
+    }
     func setStyle(){
         dividerView.alpha = 1
         
         dayLabel.backgroundColor = .clear
-        dayLabel.font = UIFont(name: "Roboto-Medium", size: 14)
+        dayLabel.font = UIFont(name: "Roboto-Medium", size: 13)
         dayLabel.clipsToBounds = true
         dayLabel.layer.cornerRadius = dayLabel.frame.height / 2
         dayLabel.textColor = .mainGrey
@@ -80,6 +84,8 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         lowLabel.textColor = .blueTemp
         lowLabel.font = .RobotoRegular12
         lowLabel.characterSpacing = -0.6
+        
+        climateIconImageView.alpha = 0
     }
     func setSelectedDay(){
         dayLabel.backgroundColor = .subGrey5

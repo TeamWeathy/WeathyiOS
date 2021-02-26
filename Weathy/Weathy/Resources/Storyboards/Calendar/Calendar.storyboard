@@ -650,12 +650,12 @@
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBi-qq-hlx" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                                                <rect key="frame" x="11" y="4" width="21" height="21"/>
+                                                                                <rect key="frame" x="10.666666666666664" y="4" width="22" height="22"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="21" id="kl4-r0-kzd"/>
-                                                                                    <constraint firstAttribute="height" constant="21" id="lTh-yD-Vve"/>
+                                                                                    <constraint firstAttribute="width" secondItem="HBi-qq-hlx" secondAttribute="height" multiplier="23:23" id="K47-GX-poo"/>
+                                                                                    <constraint firstAttribute="width" constant="22" id="kl4-r0-kzd"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                                 <userDefinedRuntimeAttributes>
@@ -672,13 +672,13 @@
                                                                                 </constraints>
                                                                             </view>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_clearsky_day" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-72-5jW">
-                                                                                <rect key="frame" x="9" y="25" width="25" height="25"/>
+                                                                                <rect key="frame" x="9" y="28" width="25" height="25"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="oZJ-72-5jW" secondAttribute="height" multiplier="1:1" id="rCk-tA-xtc"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQK-rX-Jpl">
-                                                                                <rect key="frame" x="8" y="53.666666666666664" width="27" height="26.333333333333336"/>
+                                                                                <rect key="frame" x="8" y="59.666666666666664" width="27" height="26.333333333333336"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQ6-44-TyD" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                                                         <rect key="frame" x="13.333333333333332" y="0.0" width="0.0" height="0.0"/>
@@ -724,7 +724,7 @@
                                                                         </subviews>
                                                                         <constraints>
                                                                             <constraint firstItem="oZJ-72-5jW" firstAttribute="width" secondItem="Pc8-H0-0op" secondAttribute="width" multiplier="25:43" id="0ik-U2-9DV"/>
-                                                                            <constraint firstItem="gQK-rX-Jpl" firstAttribute="top" secondItem="oZJ-72-5jW" secondAttribute="bottom" constant="3.5" id="5R5-pZ-Lny"/>
+                                                                            <constraint firstItem="gQK-rX-Jpl" firstAttribute="top" secondItem="oZJ-72-5jW" secondAttribute="bottom" constant="6.5" id="5R5-pZ-Lny"/>
                                                                             <constraint firstItem="Ngs-EP-ByP" firstAttribute="leading" secondItem="Pc8-H0-0op" secondAttribute="leading" id="6Xt-r2-4Ng"/>
                                                                             <constraint firstItem="gQK-rX-Jpl" firstAttribute="width" secondItem="Pc8-H0-0op" secondAttribute="width" multiplier="0.627907" id="Hor-OU-Enh"/>
                                                                             <constraint firstAttribute="bottom" secondItem="Ngs-EP-ByP" secondAttribute="bottom" id="T0P-Ey-eIG"/>
@@ -732,7 +732,7 @@
                                                                             <constraint firstItem="gQK-rX-Jpl" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="Y2E-Es-dLX"/>
                                                                             <constraint firstAttribute="trailing" secondItem="Ngs-EP-ByP" secondAttribute="trailing" id="d7p-bj-M0q"/>
                                                                             <constraint firstItem="HBi-qq-hlx" firstAttribute="top" secondItem="Pc8-H0-0op" secondAttribute="top" constant="4" id="jaH-uf-lNB"/>
-                                                                            <constraint firstItem="oZJ-72-5jW" firstAttribute="top" secondItem="HBi-qq-hlx" secondAttribute="bottom" id="kWk-RJ-PHv"/>
+                                                                            <constraint firstItem="oZJ-72-5jW" firstAttribute="top" secondItem="HBi-qq-hlx" secondAttribute="bottom" constant="2" id="kWk-RJ-PHv"/>
                                                                             <constraint firstItem="HBi-qq-hlx" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="opI-cI-A1C"/>
                                                                         </constraints>
                                                                     </collectionViewCellContentView>

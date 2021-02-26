@@ -652,7 +652,6 @@
 		63398443259A2BE700339615 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				63E1A78325DD6E6800E5B41C /* WeathyClass.swift */,
 				0E6E9AB825B244CC00702706 /* OnBoarding */,
 				37222E6225AE649700577FEE /* Record */,
 				63C756D225B03902003DC9FA /* Calendar */,
@@ -662,6 +661,7 @@
 				0E75F67325AF3D4E00D98633 /* UserInformation */,
 				0E6E9A7A25AFA1A600702706 /* SearchInformation */,
 				ABB84F7425DD710D000D2BFB /* ExtraWeather.swift */,
+				63E1A78325DD6E6800E5B41C /* WeathyClass.swift */,
 				ABB84F7725DD713E000D2BFB /* Region.swift */,
 				ABB84F7A25DD7155000D2BFB /* Climate.swift */,
 				ABB84F7D25DD716A000D2BFB /* HourlyWeather.swift */,
