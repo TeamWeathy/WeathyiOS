@@ -32,11 +32,13 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     //MARK: - IBOutlets
     
     @IBOutlet weak var monthlyCalendarCV: UICollectionView!
+    @IBOutlet weak var monthlyCalendarHeightConstraint: NSLayoutConstraint!
     
     override func awakeFromNib(){
         super.awakeFromNib()
         monthlyCalendarCV.delegate = self
         monthlyCalendarCV.dataSource = self
+        
                 
     }
     override func prepareForReuse() {
@@ -144,7 +146,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(Int((monthlyCalendarCV.frame.width)/7)), height: CGFloat(Int(height!)/selectedDate.monthlyLines))
+        return CGSize(width: CGFloat(Int((monthlyCalendarCV.frame.width)/7)), height: CGFloat(Int(monthlyCalendarCV.frame.height)/selectedDate.monthlyLines))
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

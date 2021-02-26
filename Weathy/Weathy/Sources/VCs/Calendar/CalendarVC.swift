@@ -46,7 +46,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     //MARK: - IBOutlets
     
-    @IBOutlet weak var monthlyCVRatio: NSLayoutConstraint!
+    @IBOutlet weak var monthlyCalendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var infiniteMonthlyCV: UICollectionView!
     @IBOutlet weak var infiniteWeeklyCV: UICollectionView!
@@ -73,6 +73,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         addNotificationObserver()
         closeDrawer()
         self.view.layoutIfNeeded()
+        let flowlayout = UICollectionViewLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,10 +111,13 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         if !hasNotch{
             weeklyHeight -= 44
             monthlyHeight = screen.height*0.9
-            calendarHeight = monthlyHeight*0.89
-            monthlyCVRatio.constant = 50
-            
+            calendarHeight = monthlyHeight*0.75
+            monthlyCalendarHeightConstraint.constant = calendarHeight
         }
+        else{
+            monthlyCalendarHeightConstraint.constant = screen.width/375*522
+        }
+        
     }
     func setDateFormatter(){
         yearMonthDateFormatter.dateFormat = "yyyy.MM"
@@ -453,7 +457,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         ///infiniteMonthlyCV
         if collectionView == infiniteMonthlyCV{
-            return CGSize(width: infiniteMonthlyCV.frame.width, height: calendarHeight)
+            return CGSize(width: infiniteMonthlyCV.frame.width, height: infiniteMonthlyCV.frame.height)
         }
         ///infiniteWeeklyCV
         else{
@@ -568,7 +572,7 @@ extension CalendarVC: UICollectionViewDataSource{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteMonthlyCVC.identifier, for: indexPath) as? InfiniteMonthlyCVC else { return UICollectionViewCell() }
             cell.monthlyWeathyList = [] 
             cell.monthCellDelegate = self
-            cell.height = infiniteMonthlyCV.frame.height
+            cell.monthlyCalendarHeightConstraint.constant = calendarHeight
             cell.selectedDateDidChange(infiniteMonthList[indexPath.item])
             cell.callMonthlyWeathy()
             CATransaction.begin()
