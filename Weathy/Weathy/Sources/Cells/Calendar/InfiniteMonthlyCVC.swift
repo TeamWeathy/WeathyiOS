@@ -162,15 +162,15 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthlyCalendarCVC.identifier, for: indexPath) as? MonthlyCalendarCVC else { return UICollectionViewCell() }
-        if selectedDate.monthlyLines == 4{
-            cell.layoutTopConstraint.constant = 21
-        }
-        else if selectedDate.monthlyLines == 5{
-            cell.layoutTopConstraint.constant = 10
-        }
-        else if selectedDate.monthlyLines == 6{
-            cell.layoutTopConstraint.constant = 2
-        }
+//        if selectedDate.monthlyLines == 4{
+//            cell.layoutTopConstraint.constant = 21
+//        }
+//        else if selectedDate.monthlyLines == 5{
+//            cell.layoutTopConstraint.constant = 10
+//        }
+//        else if selectedDate.monthlyLines == 6{
+//            cell.layoutTopConstraint.constant = 2
+//        }
         cell.setDay()
         ///이번달
         if indexPath.item >= selectedDate.firstWeekday && indexPath.item < selectedDate.firstWeekday+selectedDate.numberOfMonth{
