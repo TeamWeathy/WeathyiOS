@@ -418,6 +418,7 @@ class CalendarDetailVC: UIViewController {
         recordEdit.modalPresentationStyle = .fullScreen
         recordEdit.dateString = defaultDateFormatter.string(from: selectedDate)
         recordEdit.weathyData = dailyWeathy
+        recordEdit.selectedImage = photoImageView.image ?? nil
         self.present(recordEdit, animated: true)
         
     }
