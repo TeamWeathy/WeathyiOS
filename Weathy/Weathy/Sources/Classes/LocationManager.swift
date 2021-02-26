@@ -34,7 +34,7 @@ class LocationManager: NSObject {
         if auth == .authorizedAlways || auth == .authorizedWhenInUse {
             opertationQueue.isSuspended = false
         } else {
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         }
 
         opertationQueue.addOperation {

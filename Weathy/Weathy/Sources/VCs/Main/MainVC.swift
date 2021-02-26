@@ -129,6 +129,7 @@ class MainVC: UIViewController {
         }
         
         blankDownImage()
+        moveWeatherImage()
     }
     
     override func viewDidLoad() {
@@ -136,6 +137,8 @@ class MainVC: UIViewController {
         
         initMainTopView()
         initMainBottomView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     // FIXME: - 하단 탭바 높이 계산하기
@@ -293,6 +296,9 @@ class MainVC: UIViewController {
         } else if iconId % 100 == 10 {
             fallingRain()
         }
+        
+        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconId))
+//        moveWeatherImage()
 
         // navigation bar
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
@@ -304,7 +310,6 @@ class MainVC: UIViewController {
         currTempLabel.text = "\(data.overviewWeather.hourlyWeather.temperature!)°"
         maxTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.maxTemp)°"
         minTempLabel.text = "\(data.overviewWeather.dailyWeather.temperature.minTemp)°"
-        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconId))
         
         if let desc = data.overviewWeather.hourlyWeather.climate.description {
             climateLabel.text = "\(desc)"
@@ -579,6 +584,13 @@ class MainVC: UIViewController {
         }, completion: nil)
     }
     
+    func moveWeatherImage() {
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.autoreverse, .repeat], animations: {
+            self.hourlyClimateImage.transform = CGAffineTransform(translationX: 0, y: 3)
+            self.hourlyClimateImage.transform = CGAffineTransform(translationX: 0, y: -6)
+        })
+    }
+    
     // MARK: - IBActions
     
     @IBAction func touchUpSearch(_ sender: Any) {
@@ -702,6 +714,10 @@ class MainVC: UIViewController {
                 
             tabBarVC.scrollView.setContentOffset(CGPoint(x: tabBarVC.scrollView.frame.width, y: 0), animated: false)
         }
+    }
+    
+    @objc func appMovedToForeground() {
+        moveWeatherImage()
     }
 }
 
