@@ -22,16 +22,22 @@ struct RecordWeathyService {
             "Content-Type" : "multipart/form-data"
         ]
             
-        let body: Parameters = [
+        let body = [
             "userId": userId,
             "date": date,
             "code": code,
             "clothes": clothArray,
             "stampId": stampId,
-            "feedback": feedback
-        ]
+            "feedback": feedback ?? NSNull()
+        ] as [String : Any]
+        
+        let data = try! JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        let jsonString = String(data: data, encoding: .utf8)!
 
-        AF.upload(multipartFormData: {multiPartFormData in
+        AF.upload(multipartFormData: { multiPartFormData in
+            
+            multiPartFormData.append(jsonString.data(using:String.Encoding.utf8)!, withName: "weathy")
+            
             /// 이미지 업로드
             if let image = img {
                 let imageData = image.jpegData(compressionQuality: 1.0)
@@ -39,30 +45,30 @@ struct RecordWeathyService {
                 print("imgData")
             }
             
-            /// 바디 하나하나 append 후 업로드
-            for (key,value) in body{
-                if value is String{
-                    let val = value as! String
-                    multiPartFormData.append(val.data(using:String.Encoding.utf8)!,withName:key)
-                    print(key)
-                }
-                else if value is Int{
-                    let val = value as! Int
-                    multiPartFormData.append("\(val)".data(using:String.Encoding.utf8)!, withName: key)
-                    print(key)
-                }
-                else if value is NSArray{
-                    let val = value as! NSArray
-                    val.forEach({ element in
-                        let keyObj = key + "[]"
-                        if let num = element as? Int {
-                            let value = "\(num)"
-                            multiPartFormData.append(value.data(using: .utf8)!, withName: keyObj)
-                            print(keyObj)
-                        }
-                    })
-                }
-            }
+//            /// 바디 하나하나 append 후 업로드
+//            for (key,value) in body{
+//                if value is String{
+//                    let val = value as! String
+//                    multiPartFormData.append(val.data(using:String.Encoding.utf8)!,withName:key)
+//                    print(key)
+//                }
+//                else if value is Int{
+//                    let val = value as! Int
+//                    multiPartFormData.append("\(val)".data(using:String.Encoding.utf8)!, withName: key)
+//                    print(key)
+//                }
+//                else if value is NSArray{
+//                    let val = value as! NSArray
+//                    val.forEach({ element in
+//                        let keyObj = key + "[]"
+//                        if let num = element as? Int {
+//                            let value = "\(num)"
+//                            multiPartFormData.append(value.data(using: .utf8)!, withName: keyObj)
+//                            print(keyObj)
+//                        }
+//                    })
+//                }
+//            }
 
         },to: APIConstants.recordWeathyURL, usingThreshold:UInt64.init(), method: .post, headers: header)
         .uploadProgress(queue: .main, closure: { progress in
@@ -71,7 +77,7 @@ struct RecordWeathyService {
         })
         .responseJSON(completionHandler: { result in
             switch result.result{
-            case .success(let upload):
+            case .success:
                 
                 guard let statusCode = result.response?.statusCode else {return}
                 guard let data = result.value else {return}
