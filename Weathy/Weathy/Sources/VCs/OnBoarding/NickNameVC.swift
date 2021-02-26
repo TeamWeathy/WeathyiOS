@@ -75,6 +75,37 @@ class NickNameVC: UIViewController {
         present(alert, animated: true)
     }
     
+    // MARK: - Network
+
+    func createUser(uuid: String, nickName: String) {
+        createUserService.shared.createUserPost(uuid: uuid, nickname: nickName) { (networkResult) -> Void in
+            switch networkResult {
+            case .success(let data):
+                if let createData = data as? UserInformation {
+                    UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
+                    UserDefaults.standard.set(createData.token, forKey: "token")
+                    UserDefaults.standard.set(createData.user.id, forKey: "userId")
+                    UserDefaults.standard.set(uuid, forKey: "UUID")
+                    
+                    let story = UIStoryboard(name: "Tabbar", bundle: nil)
+                    guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
+                                            
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
+                }
+                
+            case .requestErr:
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     // MARK: - @objc Methods
 
     // MARK: - IBActions
@@ -106,36 +137,10 @@ class NickNameVC: UIViewController {
     /// 변경하기 눌렀을 때 서버 연결 코드
     @IBAction func changeButtonDidTap(_ sender: Any) {
         guard let nickName = nickNameTextField.text else { return }
-        
         let uuid = UUID().uuidString
         
         LocationManager.shared.requestLocationAuth {
-            createUserService.shared.createUserPost(uuid: uuid, nickname: nickName) { (networkResult) -> Void in
-                switch networkResult {
-                case .success(let data):
-                    if let createData = data as? UserInformation {
-                        UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
-                        UserDefaults.standard.set(createData.token, forKey: "token")
-                        UserDefaults.standard.set(createData.user.id, forKey: "userId")
-                        UserDefaults.standard.set(uuid, forKey: "UUID")
-                        
-                        let story = UIStoryboard(name: "Tabbar", bundle: nil)
-                        guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
-                                                
-                        vc.modalPresentationStyle = .fullScreen
-                        self.present(vc, animated: true, completion: nil)
-                    }
-                    
-                case .requestErr:
-                    print("requestErr")
-                case .pathErr:
-                    print("pathErr")
-                case .serverErr:
-                    print("serverErr")
-                case .networkFail:
-                    print("networkFail")
-                }
-            }
+            self.createUser(uuid: uuid, nickName: nickName)
         }
     }
 }
