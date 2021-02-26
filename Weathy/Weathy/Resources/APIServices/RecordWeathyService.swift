@@ -80,9 +80,9 @@ struct RecordWeathyService {
             case .success:
                 
                 guard let statusCode = result.response?.statusCode else {return}
-                guard let data = result.value else {return}
+                guard let data = result.data else {return}
                 
-                completion(judgeRecordWeathyService(status: statusCode, data: data as! Data))
+                completion(judgeRecordWeathyService(status: statusCode, data: data))
 
             case .failure(let error):
                 print(error.localizedDescription)
