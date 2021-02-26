@@ -18,8 +18,8 @@ struct RecordWeathyService {
         let token = UserDefaults.standard.string(forKey:"token")!
         
         let header: HTTPHeaders = [
-            "x-access-token" : token
-            "Content-Type" : "application/json",
+            "x-access-token" : token,
+            "Content-Type" : "application/json"
         ]
             
         let body: Parameters = [
