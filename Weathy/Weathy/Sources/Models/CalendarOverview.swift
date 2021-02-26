@@ -11,5 +11,6 @@ struct CalendarOverview: Codable {
     var id: Int
     var date: String
     var stampId: Int
+    var climateIconId: Int?
     var temperature: HighLowTemp
 }

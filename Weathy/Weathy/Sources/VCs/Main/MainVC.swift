@@ -78,8 +78,8 @@ class MainVC: UIViewController {
     @IBOutlet var closetTopLabel: SpacedLabel!
     @IBOutlet var closetBottomLabel: SpacedLabel!
     @IBOutlet var closetOuterLabel: SpacedLabel!
-    @IBOutlet var weathyPhotoImage: UIImageView!
     @IBOutlet var weathyTextImage: UIImageView!
+    @IBOutlet var weathyPhotoImage: UIImageView!
     @IBOutlet var closetEtcLabel: SpacedLabel!
     @IBOutlet var emptyImage: UIImageView!
     @IBOutlet var downImage: UIImageView!
@@ -241,8 +241,8 @@ class MainVC: UIViewController {
         weathyStampLabel.font = UIFont.SDGothicSemiBold23
         weathyStampLabel.characterSpacing = -1.15
         
-        weathyPhotoImage.isHidden = false
         weathyTextImage.isHidden = false
+        weathyPhotoImage.isHidden = false
         
         gpsButton.contentMode = .scaleAspectFit
         
@@ -344,9 +344,15 @@ class MainVC: UIViewController {
         if data.weathy.imgUrl == nil {
             weathyPhotoImage.isHidden = true
         }
-
+        else{
+            weathyPhotoImage.isHidden = false
+        }
+        
         if data.weathy.feedback == nil {
             weathyTextImage.isHidden = true
+        }
+        else{
+            weathyTextImage.isHidden = false
         }
     }
     

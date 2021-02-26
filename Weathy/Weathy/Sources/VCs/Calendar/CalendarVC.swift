@@ -88,6 +88,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     override func viewDidAppear(_ animated: Bool) {
         closeDrawer()
+        print(UserDefaults.standard.string(forKey: "token"))
     }
     
     //MARK: - Custom Methods
