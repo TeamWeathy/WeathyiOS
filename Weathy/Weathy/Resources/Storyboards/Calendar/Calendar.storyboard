@@ -743,6 +743,7 @@
                                                                         <outlet property="dividerView" destination="Ngs-EP-ByP" id="6WT-Vp-LJc"/>
                                                                         <outlet property="highLabel" destination="vQ6-44-TyD" id="Gqf-QM-RKw"/>
                                                                         <outlet property="lowLabel" destination="Twg-iT-6Jz" id="CwJ-YZ-iGe"/>
+                                                                        <outlet property="temperatureDividerView" destination="pvp-YE-1Sc" id="BMe-G6-tpS"/>
                                                                         <outlet property="temperatureView" destination="gQK-rX-Jpl" id="88t-ft-IFp"/>
                                                                     </connections>
                                                                 </collectionViewCell>

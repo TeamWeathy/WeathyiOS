@@ -36,6 +36,7 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     @IBOutlet weak var highLabel: SpacedLabel!
     @IBOutlet weak var lowLabel: SpacedLabel!
     @IBOutlet weak var dividerView: UIView!
+    @IBOutlet weak var temperatureDividerView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -65,7 +66,11 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         climateIconImageView.image = UIImage(named: ClimateImage.getClimateAssetName(climateId))
     }
     func setStyle(){
+        self.contentView.alpha = 1
+        
         dividerView.alpha = 1
+        
+        temperatureDividerView.alpha = 0
         
         dayLabel.backgroundColor = .clear
         dayLabel.font = UIFont(name: "Roboto-Medium", size: 13)
@@ -98,8 +103,9 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     }
     
     func setNonCurrent(){
-
-        dayLabel.textColor = .subGrey3
+        
+//        dayLabel.textColor = .subGrey3
+        self.contentView.alpha = 0.4
 
     }
     
@@ -122,6 +128,8 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         lowLabel.alpha = 1
         highLabel.text = "\(high)°"
         lowLabel.text = "\(low)°"
+        
+        temperatureDividerView.alpha = 1
     }
     
     
