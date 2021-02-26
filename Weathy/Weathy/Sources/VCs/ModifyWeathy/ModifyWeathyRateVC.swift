@@ -54,6 +54,8 @@ class ModifyWeathyRateVC: UIViewController {
         rateCollectionView.dataSource = self
         rateCollectionView.delegate = self
         
+        selectedStamp = weathyData?.stampId ?? -1
+        
 
 
         // Do any additional setup after loading the view.
@@ -104,7 +106,7 @@ extension ModifyWeathyRateVC {
         titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
         titleLabel.textColor = UIColor.mainGrey
         
-        explanationLabel.text = "오늘 옷차림에 대한 느낌을 선택해주세요."
+        explanationLabel.text = "옷차림에 대한 느낌을 선택해주세요."
         explanationLabel.font = UIFont.SDGothicRegular16
         explanationLabel.textColor = UIColor.subGrey6
         

@@ -77,7 +77,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBO-7X-qzc">
-                                <rect key="frame" x="218.5" y="791.5" width="160" height="60.5"/>
+                                <rect key="frame" x="218.5" y="785.5" width="160" height="60.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZBO-7X-qzc" secondAttribute="height" multiplier="145:55" id="QzQ-fm-dFu"/>
                                 </constraints>
@@ -87,7 +87,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RcS-rQ-OR6">
-                                <rect key="frame" x="25.5" y="212" width="363" height="558.5"/>
+                                <rect key="frame" x="25.5" y="207" width="363" height="557.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CoD-o3-zFV">
                                     <size key="itemSize" width="347" height="80"/>
@@ -153,7 +153,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuM-8S-QAh">
-                                <rect key="frame" x="35.5" y="791.5" width="160" height="60.5"/>
+                                <rect key="frame" x="35.5" y="785.5" width="160" height="60.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HuM-8S-QAh" secondAttribute="height" multiplier="145:55" id="LKE-s1-MzB"/>
                                 </constraints>
@@ -180,7 +180,7 @@
                             <constraint firstItem="Qll-zD-3hf" firstAttribute="leading" secondItem="RcS-rQ-OR6" secondAttribute="leading" constant="10" id="IeU-R8-Aqq"/>
                             <constraint firstItem="RcS-rQ-OR6" firstAttribute="centerX" secondItem="AlI-9m-hC9" secondAttribute="centerX" id="PVu-rV-2rg"/>
                             <constraint firstItem="xrn-4L-Oxa" firstAttribute="leading" secondItem="RcS-rQ-OR6" secondAttribute="leading" constant="10" id="ZXr-fE-JOM"/>
-                            <constraint firstItem="RcS-rQ-OR6" firstAttribute="top" secondItem="xrn-4L-Oxa" secondAttribute="bottom" constant="52" id="cBP-4m-rTA"/>
+                            <constraint firstItem="RcS-rQ-OR6" firstAttribute="top" secondItem="xrn-4L-Oxa" secondAttribute="bottom" constant="47" id="cBP-4m-rTA"/>
                             <constraint firstItem="VA8-O6-T6C" firstAttribute="centerY" secondItem="Y7E-7V-MGK" secondAttribute="centerY" id="clA-WY-Ptf"/>
                             <constraint firstItem="HuM-8S-QAh" firstAttribute="centerY" secondItem="ZBO-7X-qzc" secondAttribute="centerY" id="dbf-7o-iXp"/>
                             <constraint firstItem="xrn-4L-Oxa" firstAttribute="top" secondItem="Qll-zD-3hf" secondAttribute="bottom" constant="10" id="fVB-ZV-ycp"/>
@@ -188,7 +188,7 @@
                             <constraint firstItem="HuM-8S-QAh" firstAttribute="height" secondItem="ZBO-7X-qzc" secondAttribute="height" id="jX9-5l-5bL"/>
                             <constraint firstItem="Y7E-7V-MGK" firstAttribute="top" secondItem="Qll-zD-3hf" secondAttribute="top" constant="12" id="jb0-Q6-hen"/>
                             <constraint firstItem="ZBO-7X-qzc" firstAttribute="top" secondItem="RcS-rQ-OR6" secondAttribute="bottom" constant="21" id="jxv-uA-Tcm"/>
-                            <constraint firstItem="bUf-9H-HVD" firstAttribute="bottom" secondItem="ZBO-7X-qzc" secondAttribute="bottom" constant="10" id="xZ8-qy-PMx"/>
+                            <constraint firstItem="bUf-9H-HVD" firstAttribute="bottom" secondItem="ZBO-7X-qzc" secondAttribute="bottom" constant="16" id="xZ8-qy-PMx"/>
                             <constraint firstItem="HuM-8S-QAh" firstAttribute="leading" secondItem="RcS-rQ-OR6" secondAttribute="leading" constant="10" id="zUn-gs-n8x"/>
                         </constraints>
                     </view>
