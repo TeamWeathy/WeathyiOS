@@ -38,6 +38,7 @@ extension ModifyWeathyNVC {
         
         if let image = selectedImage {
             root.selectedImage = image
+            print(selectedImage)
         }
     }
     

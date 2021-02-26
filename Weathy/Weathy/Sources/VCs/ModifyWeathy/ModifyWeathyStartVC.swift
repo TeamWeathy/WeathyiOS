@@ -73,7 +73,7 @@ class ModifyWeathyStartVC: UIViewController {
         
         locationCode = weathyData?.region.code ?? 1141000000
         
-        print(">>>>>", dateString)
+        print(">>>>>", selectedImage)
         
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.locale = Locale(identifier: "ko_KR")
@@ -119,7 +119,7 @@ class ModifyWeathyStartVC: UIViewController {
         dvc.locationCode = locationCode
         
         if let image = selectedImage {
-            root.selectedImage = image
+            dvc.selectedImage = image
         }
         
         self.navigationController?.pushViewController(dvc, animated: false)
@@ -263,7 +263,7 @@ extension ModifyWeathyStartVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", img: , isDelete: false, weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", img: selectedImage, isDelete: false, weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {
@@ -329,6 +329,7 @@ extension ModifyWeathyStartVC {
         print(">>>>>", selectedTag)
         
     }
+    
     
 }
 
