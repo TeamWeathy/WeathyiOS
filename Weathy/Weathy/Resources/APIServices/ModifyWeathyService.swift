@@ -12,54 +12,68 @@ struct ModifyWeathyService {
     static let shared = ModifyWeathyService()
     
     // MARK: - 웨디 기록하기
-    func modifyWeathy(userId:Int, token: String, date: String, code: Int, clothArray: [Int], stampId: Int, feedback: String, weathyId: Int, completion: @escaping (NetworkResult<Any>)->(Void)) {
+    func modifyWeathy(userId:Int, token: String, date: String, code: Int, clothArray: [Int], stampId: Int, feedback: String?, img: UIImage?, isDelete: Bool, weathyId: Int, completion: @escaping (NetworkResult<Any>)->(Void)) {
         let url = APIConstants.recordWeathyURL + "/\(weathyId)"
         
+        print(token)
+        
         let header: HTTPHeaders = [
-            "Content-Type" : "application/json",
-            "x-access-token" : token
+            "x-access-token" : token,
+            "Content-Type" : "multipart/form-data"
         ]
         
         let body: Parameters = [
-            "userId": userId,
-            "date": date,
             "code": code,
             "clothes": clothArray,
             "stampId": stampId,
-            "feedback": feedback
-        ]
+            "feedback": feedback ?? NSNull(),
+            "isDelete": isDelete
+        ] as [String : Any]
         
-        let dataRequest = AF.request(url,
-                                     method: .put,
-                                     parameters: body,
-                                     encoding: JSONEncoding.default,
-                                     headers: header)
+        let data = try! JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        let jsonString = String(data: data, encoding: .utf8)!
         
-        dataRequest.responseData { (response) in
-            switch response.result {
-            case .success :
-                guard let statusCode = response.response?.statusCode else {
-                    return
-                }
-                guard let data = response.value else {
-                    return
-                }
-                completion(judgeModifyWeathyService(status: statusCode, data: data))
-                
-            case .failure(let err) :
-                print(err)
+        AF.upload(multipartFormData: { multiPartFormData in
+            
+            multiPartFormData.append(jsonString.data(using:String.Encoding.utf8)!, withName: "weathy")
+            
+            /// 이미지 업로드
+            if let image = img {
+                let imageData = image.jpegData(compressionQuality: 1.0)
+                multiPartFormData.append(imageData!, withName:"img", fileName:"file.jpeg", mimeType:"image/jpeg")
+                print("imgData")
             }
-        }
+
+        },to: APIConstants.recordWeathyURL + "/\(weathyId)", usingThreshold:UInt64.init(), method: .put, headers: header)
+        .uploadProgress(queue: .main, closure: { progress in
+            //Current upload progress of file
+            print("Upload Progress: \(progress.fractionCompleted)")
+        })
+        .responseJSON(completionHandler: { result in
+            switch result.result{
+            case .success:
+                
+                guard let statusCode = result.response?.statusCode else {return}
+                guard let data = result.data else {return}
+                
+                completion(judgeModifyWeathyService(status: statusCode, data: data))
+
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(.networkFail) }
+        })
     }
     
     private func judgeModifyWeathyService(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(RecordWeathyData.self, from: data) else {
+        guard let decodedData = try? decoder.decode(ModifyWeathyData.self, from: data) else {
             return .pathErr }
+        
+        print(decodedData)
         
         switch status {
         case 200:
-            return .success(decodedData.message)
+            return .success(decodedData)
         case 400..<500:
             return .requestErr(decodedData.message)
         case 500:
