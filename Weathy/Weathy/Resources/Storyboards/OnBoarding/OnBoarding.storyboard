@@ -8,6 +8,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoR.ttf">
+            <string>AppleSDGothicNeoR00</string>
+        </array>
+        <array key="AppleSDGothicNeoSB.ttf">
+            <string>AppleSDGothicNeoSB00</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--OnBoardingFirstVC-->
         <scene sceneID="ayS-bd-XUP">
@@ -179,39 +187,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zp6-pQ-ciQ">
-                                <rect key="frame" x="33.999999999999986" y="109" width="227.66666666666663" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zp6-pQ-ciQ" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                <rect key="frame" x="32.999999999999986" y="109" width="227.66666666666663" height="60"/>
                                 <string key="text">웨디에서 사용할
 닉네임을 입력해주세요.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임은 설정에서 다시 변경할 수 있어요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8W-gj-k3Z">
-                                <rect key="frame" x="34" y="179" width="260.66666666666669" height="19.333333333333343"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임은 설정에서 다시 변경할 수 있어요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8W-gj-k3Z" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                <rect key="frame" x="33" y="179" width="260.66666666666669" height="19.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9H-eH-nea">
-                                <rect key="frame" x="34" y="244.33333333333337" width="307" height="50"/>
+                                <rect key="frame" x="33" y="262.33333333333331" width="309" height="55.333333333333314"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingImgTextfieldUnselected" translatesAutoresizingMaskIntoConstraints="NO" id="2Yv-Ig-uCl">
-                                        <rect key="frame" x="0.0" y="0.0" width="307" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="309" height="55.333333333333336"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임을 6자 이내로 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kRw-in-8ee">
-                                        <rect key="frame" x="15" y="15.666666666666657" width="237" height="19"/>
+                                        <rect key="frame" x="22" y="18.333333333333371" width="232" height="19"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         <connections>
-                                            <action selector="NickTextFieldDidTap:" destination="Umd-x9-smB" eventType="editingChanged" id="q2S-ML-vdI"/>
+                                            <action selector="nickTextFieldDidTap:" destination="Umd-x9-smB" eventType="editingChanged" id="q2S-ML-vdI"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdG-G6-S0u">
-                                        <rect key="frame" x="252" y="1" width="48" height="48"/>
+                                        <rect key="frame" x="254" y="3.6666666666666856" width="48" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="Oi4-um-oiE"/>
-                                            <constraint firstAttribute="height" constant="48" id="gMs-FP-Su7"/>
+                                            <constraint firstAttribute="width" secondItem="WdG-G6-S0u" secondAttribute="height" multiplier="1:1" id="Xq4-be-FlH"/>
                                         </constraints>
                                         <state key="normal" image="btnDelete"/>
                                         <connections>
@@ -224,12 +231,11 @@
                                     <constraint firstItem="WdG-G6-S0u" firstAttribute="centerY" secondItem="h9H-eH-nea" secondAttribute="centerY" id="0tG-Nb-W8O"/>
                                     <constraint firstItem="2Yv-Ig-uCl" firstAttribute="leading" secondItem="h9H-eH-nea" secondAttribute="leading" id="0zL-IG-r1O"/>
                                     <constraint firstItem="WdG-G6-S0u" firstAttribute="leading" secondItem="kRw-in-8ee" secondAttribute="trailing" id="6NE-W3-mMP"/>
+                                    <constraint firstItem="WdG-G6-S0u" firstAttribute="width" secondItem="h9H-eH-nea" secondAttribute="width" multiplier="48:309" id="Bgv-LO-N3C"/>
                                     <constraint firstAttribute="bottom" secondItem="2Yv-Ig-uCl" secondAttribute="bottom" id="CyX-EH-koO"/>
                                     <constraint firstItem="kRw-in-8ee" firstAttribute="centerY" secondItem="h9H-eH-nea" secondAttribute="centerY" id="KvA-XE-c9i"/>
                                     <constraint firstAttribute="trailing" secondItem="2Yv-Ig-uCl" secondAttribute="trailing" id="cot-nw-2xp"/>
-                                    <constraint firstAttribute="height" constant="50" id="kqA-l6-AIc"/>
-                                    <constraint firstItem="kRw-in-8ee" firstAttribute="leading" secondItem="h9H-eH-nea" secondAttribute="leading" constant="15" id="nrx-tK-yeN"/>
-                                    <constraint firstAttribute="width" constant="307" id="qMJ-WV-4RI"/>
+                                    <constraint firstItem="kRw-in-8ee" firstAttribute="leading" secondItem="h9H-eH-nea" secondAttribute="leading" constant="22" id="nrx-tK-yeN"/>
                                     <constraint firstItem="2Yv-Ig-uCl" firstAttribute="top" secondItem="h9H-eH-nea" secondAttribute="top" id="qy3-ky-F2b"/>
                                     <constraint firstAttribute="trailing" secondItem="WdG-G6-S0u" secondAttribute="trailing" constant="7" id="vQl-Ri-mKk"/>
                                 </constraints>
@@ -244,14 +250,14 @@
                                     <action selector="changeButtonDidTap:" destination="Umd-x9-smB" eventType="touchUpInside" id="bN1-6d-Q3l"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV5-11-TgQ">
-                                <rect key="frame" x="325" y="299.33333333333331" width="16" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV5-11-TgQ" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                <rect key="frame" x="326" y="322.66666666666669" width="16" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhf-WP-ltZ">
-                                <rect key="frame" x="283" y="299.33333333333331" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhf-WP-ltZ" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                <rect key="frame" x="284" y="322.66666666666669" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -262,14 +268,16 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="b8W-gj-k3Z" firstAttribute="leading" secondItem="zp6-pQ-ciQ" secondAttribute="leading" id="1pt-Eg-dKu"/>
+                            <constraint firstItem="h9H-eH-nea" firstAttribute="height" secondItem="aJ5-Qw-z9l" secondAttribute="height" id="6gl-0S-dOV"/>
                             <constraint firstItem="h9H-eH-nea" firstAttribute="centerX" secondItem="8CB-mU-8w1" secondAttribute="centerX" id="71t-o5-Mbw"/>
                             <constraint firstItem="mV5-11-TgQ" firstAttribute="top" secondItem="h9H-eH-nea" secondAttribute="bottom" constant="5" id="I6B-VU-mae"/>
-                            <constraint firstItem="h9H-eH-nea" firstAttribute="top" secondItem="b8W-gj-k3Z" secondAttribute="bottom" constant="46" id="Kk1-8j-qIK"/>
+                            <constraint firstItem="b8W-gj-k3Z" firstAttribute="leading" secondItem="2Yv-Ig-uCl" secondAttribute="leading" id="ImW-y5-nwY"/>
+                            <constraint firstItem="h9H-eH-nea" firstAttribute="top" secondItem="b8W-gj-k3Z" secondAttribute="bottom" constant="64" id="Kk1-8j-qIK"/>
+                            <constraint firstItem="h9H-eH-nea" firstAttribute="width" secondItem="aJ5-Qw-z9l" secondAttribute="width" id="LOC-S9-mFx"/>
                             <constraint firstItem="mV5-11-TgQ" firstAttribute="trailing" secondItem="2Yv-Ig-uCl" secondAttribute="trailing" id="T9X-Ue-eI9"/>
                             <constraint firstItem="jhf-WP-ltZ" firstAttribute="centerY" secondItem="mV5-11-TgQ" secondAttribute="centerY" id="TVk-Ag-oaa"/>
                             <constraint firstItem="aJ5-Qw-z9l" firstAttribute="centerX" secondItem="8CB-mU-8w1" secondAttribute="centerX" id="Xy3-Bb-nIn"/>
                             <constraint firstItem="dyu-BG-B4h" firstAttribute="bottom" secondItem="aJ5-Qw-z9l" secondAttribute="bottom" constant="16" id="dGi-wb-hfK"/>
-                            <constraint firstItem="zp6-pQ-ciQ" firstAttribute="leading" secondItem="dyu-BG-B4h" secondAttribute="leading" constant="34" id="dYD-TM-lSQ"/>
                             <constraint firstItem="mV5-11-TgQ" firstAttribute="leading" secondItem="jhf-WP-ltZ" secondAttribute="trailing" id="hH5-jm-CmR"/>
                             <constraint firstItem="b8W-gj-k3Z" firstAttribute="top" secondItem="zp6-pQ-ciQ" secondAttribute="bottom" constant="10" id="lSc-Rs-Zkg"/>
                             <constraint firstItem="zp6-pQ-ciQ" firstAttribute="top" secondItem="dyu-BG-B4h" secondAttribute="top" constant="65" id="rHz-ey-jAf"/>
@@ -285,24 +293,189 @@
                         <outlet property="changeButtonBottom" destination="dGi-wb-hfK" id="kRc-kR-FOf"/>
                         <outlet property="clearButton" destination="WdG-G6-S0u" id="Dl2-dl-bAy"/>
                         <outlet property="countLabel" destination="jhf-WP-ltZ" id="1PM-iE-PKF"/>
-                        <outlet property="nickLabel" destination="zp6-pQ-ciQ" id="tq7-O2-tzc"/>
+                        <outlet property="descriptionLabel" destination="b8W-gj-k3Z" id="Tl8-pn-abN"/>
                         <outlet property="nickNameTextField" destination="kRw-in-8ee" id="h4h-E5-w3c"/>
-                        <outlet property="sentenceLabel" destination="b8W-gj-k3Z" id="Tl8-pn-abN"/>
                         <outlet property="textRadiusImage" destination="2Yv-Ig-uCl" id="UfF-7o-KHz"/>
+                        <outlet property="titleLabel" destination="zp6-pQ-ciQ" id="tq7-O2-tzc"/>
                         <outlet property="totalCountLabel" destination="mV5-11-TgQ" id="goX-Ml-WVc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJc-4f-qu4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Kza-WO-8wv">
                     <connections>
-                        <action selector="tapBG:" destination="Umd-x9-smB" id="b19-So-S6N"/>
+                        <action selector="tapBackgroundView:" destination="Umd-x9-smB" id="b19-So-S6N"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2762" y="-342"/>
         </scene>
+        <!--Nick Name Pop UpVC-->
+        <scene sceneID="U6f-jP-IBT">
+            <objects>
+                <viewController storyboardIdentifier="NickNamePopUpVC" id="yzg-X3-QiZ" customClass="NickNamePopUpVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jnM-dA-jI4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMS-QX-6HZ">
+                                <rect key="frame" x="33" y="241" width="309" height="324"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="웨디 앱 접근 권한 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REt-B7-Gmn" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                        <rect key="frame" x="26" y="26" width="159.33333333333334" height="23.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeoSB00" family="AppleSDGothicNeoSB00" pointSize="18"/>
+                                        <color key="textColor" red="0.27843137254901962" green="0.75294117647058822" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                <real key="value" value="-0.90000000000000002"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accessCustomIcGps" translatesAutoresizingMaskIntoConstraints="NO" id="9uT-Zc-cxc">
+                                        <rect key="frame" x="26" y="78.666666666666686" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="9uT-Zc-cxc" secondAttribute="height" multiplier="1:1" id="pGK-7M-TmS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxh-Qz-pPS" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                        <rect key="frame" x="64" y="68.666666666666686" width="59" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                <real key="value" value="-0.75"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진/카메라" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJY-dp-3cw" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                        <rect key="frame" x="63.999999999999993" y="127.66666666666669" width="78.333333333333314" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                <real key="value" value="-0.75"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 위치를 중심으로 날씨 정보를 알려드려요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckR-kG-gMx" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                        <rect key="frame" x="63.999999999999986" y="95.666666666666686" width="251.66666666666663" height="18.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="14"/>
+                                        <color key="textColor" red="0.57647058823529407" green="0.57647058823529407" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                <real key="value" value="-0.65000000000000002"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨 기록에 사진을 등록할 수 있어요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-N4-Lwa" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                        <rect key="frame" x="64.000000000000014" y="154.66666666666669" width="203.33333333333337" height="17.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="14"/>
+                                        <color key="textColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                <real key="value" value="-0.65000000000000002"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accessCustomIcOption" translatesAutoresizingMaskIntoConstraints="NO" id="AzT-5R-T3f">
+                                        <rect key="frame" x="127" y="72.666666666666686" width="30" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="AzT-5R-T3f" secondAttribute="height" multiplier="30:17" id="fxg-0R-xed"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accessCustomIcOption" translatesAutoresizingMaskIntoConstraints="NO" id="EfO-bA-ewZ">
+                                        <rect key="frame" x="146.33333333333334" y="131.66666666666669" width="30" height="17"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accessCustomIcCamera" translatesAutoresizingMaskIntoConstraints="NO" id="UMY-jM-TwB">
+                                        <rect key="frame" x="26" y="137.66666666666669" width="28" height="28"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wag-Yj-fIP">
+                                        <rect key="frame" x="26" y="194" width="257" height="1"/>
+                                        <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="08w-UM-zER"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선택 항목은 허용하지 않더라도 앱 이용이 가능해요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX6-Ql-0WN" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                        <rect key="frame" x="24.666666666666657" y="208" width="259.66666666666674" height="16"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="13"/>
+                                        <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvo-47-unj">
+                                        <rect key="frame" x="26" y="250" width="257" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zvo-47-unj" secondAttribute="height" multiplier="257:47" id="hid-am-AqL"/>
+                                        </constraints>
+                                        <state key="normal" title="확인"/>
+                                        <connections>
+                                            <action selector="touchUpConfirmButton:" destination="yzg-X3-QiZ" eventType="touchUpInside" id="JKx-0h-fgl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Mfo-N4-Lwa" firstAttribute="top" secondItem="fJY-dp-3cw" secondAttribute="bottom" constant="6" id="1fa-sC-Nks"/>
+                                    <constraint firstItem="UMY-jM-TwB" firstAttribute="height" secondItem="9uT-Zc-cxc" secondAttribute="height" id="50n-Dv-vEZ"/>
+                                    <constraint firstItem="zvo-47-unj" firstAttribute="width" secondItem="wag-Yj-fIP" secondAttribute="width" id="526-bB-CrV"/>
+                                    <constraint firstItem="EfO-bA-ewZ" firstAttribute="bottom" secondItem="fJY-dp-3cw" secondAttribute="bottom" id="954-3q-qRu"/>
+                                    <constraint firstItem="9uT-Zc-cxc" firstAttribute="width" secondItem="vMS-QX-6HZ" secondAttribute="width" multiplier="28:309" id="9H0-b2-obX"/>
+                                    <constraint firstItem="REt-B7-Gmn" firstAttribute="leading" secondItem="9uT-Zc-cxc" secondAttribute="leading" id="CC3-Mb-HUK"/>
+                                    <constraint firstItem="zvo-47-unj" firstAttribute="top" secondItem="gX6-Ql-0WN" secondAttribute="bottom" constant="26" id="Cd5-rD-tvh"/>
+                                    <constraint firstItem="EfO-bA-ewZ" firstAttribute="width" secondItem="EfO-bA-ewZ" secondAttribute="height" multiplier="30:17" id="EFN-fM-BRL"/>
+                                    <constraint firstItem="fJY-dp-3cw" firstAttribute="top" secondItem="UMY-jM-TwB" secondAttribute="top" constant="-10" id="FMp-fb-7s6"/>
+                                    <constraint firstItem="zvo-47-unj" firstAttribute="centerX" secondItem="wag-Yj-fIP" secondAttribute="centerX" id="HDs-Fx-Rw0"/>
+                                    <constraint firstItem="UMY-jM-TwB" firstAttribute="top" secondItem="9uT-Zc-cxc" secondAttribute="bottom" constant="31" id="ITA-qL-Zxc"/>
+                                    <constraint firstItem="gX6-Ql-0WN" firstAttribute="top" secondItem="wag-Yj-fIP" secondAttribute="bottom" constant="13" id="JWT-Zv-Ou1"/>
+                                    <constraint firstItem="wag-Yj-fIP" firstAttribute="top" secondItem="Mfo-N4-Lwa" secondAttribute="bottom" constant="22" id="Jau-t3-ISw"/>
+                                    <constraint firstItem="wag-Yj-fIP" firstAttribute="width" secondItem="vMS-QX-6HZ" secondAttribute="width" multiplier="257:309" id="KQE-ae-CFZ"/>
+                                    <constraint firstItem="Mfo-N4-Lwa" firstAttribute="leading" secondItem="fJY-dp-3cw" secondAttribute="leading" id="MPJ-k7-17t"/>
+                                    <constraint firstItem="fJY-dp-3cw" firstAttribute="leading" secondItem="wxh-Qz-pPS" secondAttribute="leading" id="N0T-VC-7dH"/>
+                                    <constraint firstAttribute="width" secondItem="vMS-QX-6HZ" secondAttribute="height" multiplier="309:324" id="Ops-yp-le3"/>
+                                    <constraint firstItem="AzT-5R-T3f" firstAttribute="bottom" secondItem="wxh-Qz-pPS" secondAttribute="bottom" id="PvZ-Rl-5x4"/>
+                                    <constraint firstItem="UMY-jM-TwB" firstAttribute="width" secondItem="9uT-Zc-cxc" secondAttribute="width" id="RYK-tf-2UZ"/>
+                                    <constraint firstItem="ckR-kG-gMx" firstAttribute="top" secondItem="wxh-Qz-pPS" secondAttribute="bottom" constant="6" id="Rst-jj-jPz"/>
+                                    <constraint firstItem="wxh-Qz-pPS" firstAttribute="top" secondItem="9uT-Zc-cxc" secondAttribute="top" constant="-10" id="SI5-Fn-bea"/>
+                                    <constraint firstItem="9uT-Zc-cxc" firstAttribute="top" secondItem="REt-B7-Gmn" secondAttribute="bottom" constant="29" id="TyI-tv-PeW"/>
+                                    <constraint firstItem="wxh-Qz-pPS" firstAttribute="leading" secondItem="9uT-Zc-cxc" secondAttribute="trailing" constant="10" id="Y8q-WO-uVm"/>
+                                    <constraint firstItem="wag-Yj-fIP" firstAttribute="centerX" secondItem="vMS-QX-6HZ" secondAttribute="centerX" id="Yf9-bT-icm"/>
+                                    <constraint firstItem="UMY-jM-TwB" firstAttribute="leading" secondItem="9uT-Zc-cxc" secondAttribute="leading" id="ff7-gT-NxE"/>
+                                    <constraint firstItem="AzT-5R-T3f" firstAttribute="width" secondItem="vMS-QX-6HZ" secondAttribute="width" multiplier="30:309" id="kYm-OW-bBS"/>
+                                    <constraint firstItem="REt-B7-Gmn" firstAttribute="top" secondItem="vMS-QX-6HZ" secondAttribute="top" constant="26" id="n3b-0i-hIT"/>
+                                    <constraint firstItem="EfO-bA-ewZ" firstAttribute="leading" secondItem="fJY-dp-3cw" secondAttribute="trailing" constant="4" id="pL1-Jo-mUe"/>
+                                    <constraint firstItem="ckR-kG-gMx" firstAttribute="leading" secondItem="wxh-Qz-pPS" secondAttribute="leading" id="ro6-2P-V52"/>
+                                    <constraint firstItem="gX6-Ql-0WN" firstAttribute="centerX" secondItem="wag-Yj-fIP" secondAttribute="centerX" id="tq9-U5-O2v"/>
+                                    <constraint firstItem="AzT-5R-T3f" firstAttribute="leading" secondItem="wxh-Qz-pPS" secondAttribute="trailing" constant="4" id="vIe-9m-Oyb"/>
+                                    <constraint firstItem="UMY-jM-TwB" firstAttribute="leading" secondItem="wag-Yj-fIP" secondAttribute="leading" id="ziS-UA-nLD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WOG-U1-BaS"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vMS-QX-6HZ" firstAttribute="width" secondItem="jnM-dA-jI4" secondAttribute="width" multiplier="309:375" id="Jb2-gc-qlg"/>
+                            <constraint firstItem="vMS-QX-6HZ" firstAttribute="centerX" secondItem="WOG-U1-BaS" secondAttribute="centerX" id="Qzc-ol-6tL"/>
+                            <constraint firstItem="vMS-QX-6HZ" firstAttribute="top" secondItem="jnM-dA-jI4" secondAttribute="top" constant="241" id="eBK-BU-ui4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="zvo-47-unj" id="RiA-na-ZpI"/>
+                        <outlet property="popUpView" destination="vMS-QX-6HZ" id="OTB-3k-SqU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RUg-Cd-ocW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3596" y="-336.20689655172413"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="accessCustomIcCamera" width="28" height="28"/>
+        <image name="accessCustomIcGps" width="28" height="28"/>
+        <image name="accessCustomIcOption" width="30" height="17"/>
         <image name="btnDelete" width="16" height="16"/>
         <image name="nickname_btn_start" width="309" height="55"/>
         <image name="onboarding_bg" width="375" height="812"/>

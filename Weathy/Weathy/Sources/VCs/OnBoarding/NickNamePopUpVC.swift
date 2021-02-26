@@ -8,22 +8,32 @@
 import UIKit
 
 class NickNamePopUpVC: UIViewController {
+    // MARK: - IBOutlets
+
+    @IBOutlet var popUpView: UIView!
+    @IBOutlet var confirmButton: UIButton!
+
+    // MARK: - Life Cycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setView()
     }
-    
 
-    /*
-    // MARK: - Navigation
+    // MARK: - Custom Methods
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setView() {
+        popUpView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.4, radius: 20)
+        popUpView.makeRounded(cornerRadius: 15)
+
+        confirmButton.backgroundColor = UIColor.mintMain
+        confirmButton.makeRounded(cornerRadius: 30)
     }
-    */
 
+    // MARK: - IBActions
+
+    @IBAction func touchUpConfirmButton(_ sender: Any) {
+        print("확인")
+        dismiss(animated: true, completion: nil)
+    }
 }
