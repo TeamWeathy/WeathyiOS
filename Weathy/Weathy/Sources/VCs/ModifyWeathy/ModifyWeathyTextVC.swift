@@ -88,6 +88,8 @@ class ModifyWeathyTextVC: UIViewController {
             wordCountLabel.textColor = UIColor.mintIcon
         }
         
+        photoImageView.imageFromUrl(weathyData?.imgUrl)
+        
         if photoImageView.image == nil {
             photoDeleteBtn.isHidden = true
             photoDeleteBtn.isUserInteractionEnabled = false
