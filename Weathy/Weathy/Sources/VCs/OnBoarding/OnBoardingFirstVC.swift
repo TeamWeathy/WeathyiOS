@@ -5,35 +5,35 @@
 //  Created by 송황호 on 2021/01/07.
 //
 
-import UIKit
 import Lottie
+import UIKit
 
 class OnBoardingFirstVC: UIViewController {
-    
-    //MARK: - Custom Variables
+    // MARK: - Custom Variables
+
     var currentPage = 1
     let animationView = AnimationView()
     
-    //MARK: - IBOutlets
+    // MARK: - IBOutlets
     
-    @IBOutlet weak var blindView: UIView!
+    @IBOutlet var blindView: UIView!
     /// label
-    @IBOutlet weak var lodingCloudView: UIView!
-    @IBOutlet weak var firstWord: UILabel!
-    @IBOutlet weak var secondWord: UILabel!
-    @IBOutlet weak var subLabel: UILabel!
+    @IBOutlet var lodingCloudView: UIView!
+    @IBOutlet var firstWord: UILabel!
+    @IBOutlet var secondWord: UILabel!
+    @IBOutlet var subLabel: UILabel!
     
     /// dot
-    @IBOutlet weak var firstDot: UIImageView!
-    @IBOutlet weak var secondDot: UIImageView!
-    @IBOutlet weak var thridDot: UIImageView!
+    @IBOutlet var firstDot: UIImageView!
+    @IBOutlet var secondDot: UIImageView!
+    @IBOutlet var thridDot: UIImageView!
     
     /// image
-    @IBOutlet weak var phoneImage: UIImageView!
-    @IBOutlet weak var firstImage: UIImageView!
-    @IBOutlet weak var secondImage: UIImageView!
-    @IBOutlet weak var thirdImage: UIImageView!
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet var phoneImage: UIImageView!
+    @IBOutlet var firstImage: UIImageView!
+    @IBOutlet var secondImage: UIImageView!
+    @IBOutlet var thirdImage: UIImageView!
+    @IBOutlet var startButton: UIButton!
     
     @IBOutlet var gestureStart: UISwipeGestureRecognizer!
     
@@ -59,8 +59,8 @@ class OnBoardingFirstVC: UIViewController {
         let isUser = UserDefaults.standard.bool(forKey: "onboarding")
         blindView.isHidden = isUser ? false : true
 
+        // MARK: - LifeCycle Methods
         
-        //MARK: - LifeCycle Methods
         labelFont()
         makeGesture()
     }
@@ -77,16 +77,15 @@ class OnBoardingFirstVC: UIViewController {
         let isUser = UserDefaults.standard.bool(forKey: "onboarding")
         
         if isUser {
-            guard let uuid =  UserDefaults.standard.string(forKey: "UUID") else
-            { return }
-//            print("userID--->\(uuid)")
+            guard let uuid = UserDefaults.standard.string(forKey: "UUID")
+            else { return }
             
-            autoLoginService.shared.autoLoginPost(uuid: uuid) {(NetworkResult) -> (Void) in
-                switch NetworkResult{
+            autoLoginService.shared.autoLoginPost(uuid: uuid) { (NetworkResult) -> Void in
+                switch NetworkResult {
                 case .success:
-                    let story = UIStoryboard.init(name: "Tabbar", bundle: nil)
+                    let story = UIStoryboard(name: "Tabbar", bundle: nil)
                     
-                    guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier ) as? TabbarVC else { return }
+                    guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
                     
                     vc.modalPresentationStyle = .fullScreen
                     self.present(vc, animated: false, completion: nil)
@@ -104,53 +103,56 @@ class OnBoardingFirstVC: UIViewController {
         }
     }
     
-    //MARK: - Custom Methods
+    // MARK: - Custom Methods
+
     func displayFirstSplash() {
-        self.lodingCloudView.addSubview(animationView)
+        lodingCloudView.addSubview(animationView)
         animationView.animation = Animation.named("온보딩_1")
-        animationView.frame = CGRect(x: -self.lodingCloudView.frame.width/2, y: -self.lodingCloudView.frame.height/2, width: self.lodingCloudView.frame.width*2, height: self.lodingCloudView.frame.height*2)
+        animationView.frame = CGRect(x: -lodingCloudView.frame.width/2, y: -lodingCloudView.frame.height/2, width: lodingCloudView.frame.width*2, height: lodingCloudView.frame.height*2)
         animationView.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
-                                        animationView.leadingAnchor.constraint(equalTo: self.lodingCloudView.leadingAnchor),  animationView.trailingAnchor.constraint(equalTo: self.lodingCloudView.trailingAnchor),  animationView.topAnchor.constraint(equalTo: self.lodingCloudView.topAnchor),  animationView.bottomAnchor.constraint(equalTo: self.lodingCloudView.bottomAnchor)])
+            animationView.leadingAnchor.constraint(equalTo: lodingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: lodingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: lodingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: lodingCloudView.bottomAnchor),
+        ])
         animationView.loopMode = .playOnce
         animationView.play()
     }
     
     func displaySecondSplash() {
-        self.lodingCloudView.addSubview(animationView)
+        lodingCloudView.addSubview(animationView)
         animationView.animation = Animation.named("온보딩_2")
-        animationView.frame = CGRect(x: -self.lodingCloudView.frame.width/2, y: -self.lodingCloudView.frame.height/2, width: self.lodingCloudView.frame.width*2, height: self.lodingCloudView.frame.height*2)
+        animationView.frame = CGRect(x: -lodingCloudView.frame.width/2, y: -lodingCloudView.frame.height/2, width: lodingCloudView.frame.width*2, height: lodingCloudView.frame.height*2)
         animationView.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
-            animationView.leadingAnchor.constraint(equalTo: lodingCloudView.leadingAnchor),  animationView.trailingAnchor.constraint(equalTo: lodingCloudView.trailingAnchor),  animationView.topAnchor.constraint(equalTo: lodingCloudView.topAnchor),  animationView.bottomAnchor.constraint(equalTo: lodingCloudView.bottomAnchor)])
+            animationView.leadingAnchor.constraint(equalTo: lodingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: lodingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: lodingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: lodingCloudView.bottomAnchor),
+        ])
         animationView.loopMode = .playOnce
         animationView.play()
     }
     
     func displayThirdSplash() {
-        self.lodingCloudView.addSubview(animationView)
+        lodingCloudView.addSubview(animationView)
         animationView.animation = Animation.named("온보딩_3")
-        animationView.frame = CGRect(x: -self.lodingCloudView.frame.width/2, y: -self.lodingCloudView.frame.height/2, width: self.lodingCloudView.frame.width*2, height: self.lodingCloudView.frame.height*2)
+        animationView.frame = CGRect(x: -lodingCloudView.frame.width/2, y: -lodingCloudView.frame.height/2, width: lodingCloudView.frame.width*2, height: lodingCloudView.frame.height*2)
         animationView.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
-            animationView.leadingAnchor.constraint(equalTo: lodingCloudView.leadingAnchor),  animationView.trailingAnchor.constraint(equalTo: lodingCloudView.trailingAnchor),  animationView.topAnchor.constraint(equalTo: lodingCloudView.topAnchor),  animationView.bottomAnchor.constraint(equalTo: lodingCloudView.bottomAnchor)])
+            animationView.leadingAnchor.constraint(equalTo: lodingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: lodingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: lodingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: lodingCloudView.bottomAnchor),
+        ])
         animationView.loopMode = .playOnce
         animationView.play()
     }
     
-    func makeGesture(){
+    func makeGesture() {
         let right = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
         right.direction = .right
-        self.view.addGestureRecognizer(right)
-        
+        view.addGestureRecognizer(right)
         
         let left = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
         left.direction = .left
-        self.view.addGestureRecognizer(left)
+        view.addGestureRecognizer(left)
     }
     
     /// Font 및 색상 설정
-    private func labelFont(){
+    private func labelFont() {
         firstWord.font = UIFont.SDGothicSemiBold23
         secondWord.font = UIFont.SDGothicSemiBold23
         secondWord.textColor = .mintIcon
@@ -159,7 +161,7 @@ class OnBoardingFirstVC: UIViewController {
     }
     
     /// firstView -  Label & cloud Image 바꾸기
-    private func firstLabelAnimate(){
+    private func firstLabelAnimate() {
         firstDot.image = UIImage(named: "onboarding_ic_circle_now")
         secondDot.image = UIImage(named: "onboarding_ic_circle")
         thridDot.image = UIImage(named: "onboarding_ic_circle")
@@ -171,7 +173,7 @@ class OnBoardingFirstVC: UIViewController {
     }
     
     /// secondView -  Label & cloud Image 바꾸기
-    private func secondLabelAnimate(){
+    private func secondLabelAnimate() {
         firstDot.image = UIImage(named: "onboarding_ic_circle")
         secondDot.image = UIImage(named: "onboarding_ic_circle_now")
         thridDot.image = UIImage(named: "onboarding_ic_circle")
@@ -182,7 +184,7 @@ class OnBoardingFirstVC: UIViewController {
     }
     
     /// thirdView -  Label & cloud Image 바꾸기
-    private func thirdLabelAnimate(){
+    private func thirdLabelAnimate() {
         firstDot.image = UIImage(named: "onboarding_ic_circle")
         secondDot.image = UIImage(named: "onboarding_ic_circle")
         thridDot.image = UIImage(named: "onboarding_ic_circle_now")
@@ -193,73 +195,72 @@ class OnBoardingFirstVC: UIViewController {
     }
     
     /// firstView 움직임 넣기
-    private func firstViewAnimate(){
-        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.phoneImage.alpha = 1;         self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: {(finish) in
+    private func firstViewAnimate() {
+        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: { self.phoneImage.alpha = 1; self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10) }, completion: { _ in
             UIView.animate(withDuration: 1, animations: {
-                            self.firstImage.alpha = 1;
-                            self.firstImage.transform = CGAffineTransform(translationX: 0, y: -10)})
+                self.firstImage.alpha = 1
+                self.firstImage.transform = CGAffineTransform(translationX: 0, y: -10)
+            })
         })
     }
     
     /// firstView 원상 복귀
-    private func firstRestoration(){
+    private func firstRestoration() {
         phoneImage.alpha = 0
         firstImage.alpha = 0
-        UIView.animate(withDuration: 0, animations: {self.phoneImage.transform = .identity;
+        UIView.animate(withDuration: 0, animations: { self.phoneImage.transform = .identity
             self.firstImage.transform = .identity
         })
     }
     
     /// secondView 움직임 넣기
-    private func secondViewAnimate(){
-        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.phoneImage.alpha = 1;         self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: {(finish) in
+    private func secondViewAnimate() {
+        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: { self.phoneImage.alpha = 1; self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10) }, completion: { _ in
             UIView.animate(withDuration: 1, animations: {
-                            self.secondImage.alpha = 1;
-                            self.secondImage.transform = CGAffineTransform(translationX: 0, y: 10)})
+                self.secondImage.alpha = 1
+                self.secondImage.transform = CGAffineTransform(translationX: 0, y: 10)
+            })
         })
     }
     
     /// secondView 원상 복귀
-    private func secondRestoration(){
+    private func secondRestoration() {
         phoneImage.alpha = 0
         secondImage.alpha = 0
-        UIView.animate(withDuration: 0, animations: {self.phoneImage.transform = .identity;
+        UIView.animate(withDuration: 0, animations: { self.phoneImage.transform = .identity
             self.secondImage.transform = .identity
         })
     }
     
     /// thirdView 움직임 넣기
-    private func thirdViewAnimate(){
-        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {self.phoneImage.alpha = 1;         self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: {(finish) in
+    private func thirdViewAnimate() {
+        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: { self.phoneImage.alpha = 1; self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10) }, completion: { _ in
             UIView.animate(withDuration: 1, animations: {
-                            self.thirdImage.alpha = 1;
-                            self.thirdImage.transform = CGAffineTransform(translationX: 0, y: -10)}, completion:{ (finish) in
-                                UIView.animate(withDuration: 2, delay: 0, options: .allowUserInteraction, animations: {self.startButton.alpha = 1;         self.startButton.transform = CGAffineTransform(translationX: 0, y: -10)}, completion: nil)
-                            })
+                self.thirdImage.alpha = 1
+                self.thirdImage.transform = CGAffineTransform(translationX: 0, y: -10)
+            }, completion: { _ in
+                UIView.animate(withDuration: 2, delay: 0, options: .allowUserInteraction, animations: { self.startButton.alpha = 1; self.startButton.transform = CGAffineTransform(translationX: 0, y: -10) }, completion: nil)
+            })
         })
     }
     
     /// thirdView 원상 복귀
-    private func thirdRestoration(){
+    private func thirdRestoration() {
         phoneImage.alpha = 0
         thirdImage.alpha = 0
         startButton.alpha = 0
-        UIView.animate(withDuration: 0, animations: {self.phoneImage.transform = .identity;
+        UIView.animate(withDuration: 0, animations: { self.phoneImage.transform = .identity
             self.thirdImage.transform = .identity
         })
-        UIView.animate(withDuration: 0, animations: {self.startButton.transform = .identity})
+        UIView.animate(withDuration: 0, animations: { self.startButton.transform = .identity })
     }
     
-    
-    //MARK: - IBActions
+    // MARK: - IBActions
     
     @IBAction func actGesture(_ sender: UISwipeGestureRecognizer) {
-        
         if currentPage == 1 {
             /// 오른쪽 -> 왼쪽 스와이프
             if sender.direction == .left {
-                print("left")
-                
                 phoneImage.image = UIImage(named: "onboarding_img_phone_2")
                 
                 firstImage.isHidden = true
@@ -272,21 +273,12 @@ class OnBoardingFirstVC: UIViewController {
                 secondLabelAnimate()
                 secondViewAnimate()
 
-                self.currentPage = 2
+                currentPage = 2
             }
-            
-            /// 왼쪽 -> 오른쪽 스와이프
-            if sender.direction == .right {
-                print("안돼~")
-            }
-            
-        }else if currentPage == 2{
-            
+        } else if currentPage == 2 {
             if currentPage == 2 {
                 /// 오른쪽 -> 왼쪽 스와이프 (3번째 장으로 넘어갈 때)
                 if sender.direction == .left {
-                    print("left")
-                    
                     phoneImage.image = UIImage(named: "onboarding_img_phone_3")
                     
                     firstImage.isHidden = true
@@ -295,46 +287,36 @@ class OnBoardingFirstVC: UIViewController {
                     
                     startButton.isHidden = false
                     
-                    ///원상복귀
+                    /// 원상복귀
                     secondRestoration()
                     /// 에니메이션
                     thirdLabelAnimate()
                     thirdViewAnimate()
                     
-                    self.currentPage = 3
+                    currentPage = 3
                 }
                 
                 /// 왼쪽 -> 오른쪽 스와이프 (1번째 장으로 돌아갈 때)
                 if sender.direction == .right {
-                    print("안돼~")
-                    
                     phoneImage.image = UIImage(named: "onboarding_img_phone_1")
 
                     firstImage.isHidden = false
                     secondImage.isHidden = true
                     thirdImage.isHidden = true
                     
-                    ///원상복귀
+                    /// 원상복귀
                     secondRestoration()
                     /// 에니메이션
                     firstLabelAnimate()
                     firstViewAnimate()
                     
-                    self.currentPage = 1
+                    currentPage = 1
                 }
             }
-        } else{
-            
+        } else {
             if currentPage == 3 {
-                /// 오른쪽 -> 왼쪽 스와이프
-                if sender.direction == .left {
-                    print("안돼~")
-                }
-                
                 /// 왼쪽 -> 오른쪽 스와이프
                 if sender.direction == .right {
-                    print("안돼~")
-                    
                     phoneImage.image = UIImage(named: "onboarding_img_phone_2")
                     
                     firstImage.isHidden = true
@@ -342,14 +324,13 @@ class OnBoardingFirstVC: UIViewController {
                     thirdImage.isHidden = true
                     startButton.isHidden = true
                     
-                    ///원상복귀
+                    /// 원상복귀
                     thirdRestoration()
                     /// 에니메이션
                     secondLabelAnimate()
                     secondViewAnimate()
                          
-                    self.currentPage = 2
-
+                    currentPage = 2
                 }
             }
         }
@@ -357,12 +338,10 @@ class OnBoardingFirstVC: UIViewController {
     
     /// 닉네임 설정하기 화면으로 이동
     @IBAction func startButtonDidTap(_ sender: Any) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "NickNameVC") as? NickNameVC else { return }
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "NickNameVC") as? NickNameVC else { return }
         
         vc.modalPresentationStyle = .fullScreen
         
         present(vc, animated: true, completion: nil)
     }
 }
-
-
