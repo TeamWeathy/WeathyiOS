@@ -664,13 +664,6 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ngs-EP-ByP">
-                                                                                <rect key="frame" x="0.0" y="85" width="43" height="1"/>
-                                                                                <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="1" id="Ses-VL-WrC"/>
-                                                                                </constraints>
-                                                                            </view>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_clearsky_day" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-72-5jW">
                                                                                 <rect key="frame" x="9" y="28" width="25" height="25"/>
                                                                                 <constraints>
@@ -719,6 +712,13 @@
                                                                                     <constraint firstAttribute="width" secondItem="gQK-rX-Jpl" secondAttribute="height" multiplier="32:31.32" id="MFr-Mf-v35"/>
                                                                                     <constraint firstItem="vQ6-44-TyD" firstAttribute="top" secondItem="gQK-rX-Jpl" secondAttribute="top" id="Spt-ds-4EO"/>
                                                                                     <constraint firstItem="pvp-YE-1Sc" firstAttribute="centerX" secondItem="gQK-rX-Jpl" secondAttribute="centerX" constant="-0.5" id="v5c-y3-avA"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ngs-EP-ByP">
+                                                                                <rect key="frame" x="0.0" y="85" width="43" height="1"/>
+                                                                                <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="1" id="Ses-VL-WrC"/>
                                                                                 </constraints>
                                                                             </view>
                                                                         </subviews>

@@ -182,14 +182,14 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
                 weekCellDelegate?.todayViewDidAppear(indexPath.item)
             }
             else if indexDate.day > Date().day{
-                cell.setGreyDay()
+                cell.setNonCurrent()
             }
         }
         
     
         ///이전달 혹은 다음달
         if indexDate.month != selectedDate.month{
-            cell.setGreyDay()
+            cell.setNonCurrent()
         }
 
         if weeklyWeathyList.count != 0{
