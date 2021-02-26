@@ -13,7 +13,7 @@ class MainGPSPopupVC: UIViewController {
     
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var popupTitleLabel: UILabel!
+    @IBOutlet weak var popupTitleLabel: SpacedLabel!
     @IBOutlet weak var popupDescriptionLabel: UILabel!
     @IBOutlet weak var popupSmallerDesriptionLabel: UILabel!
     @IBOutlet weak var popupConfirmButton: UIButton!

@@ -1845,14 +1845,25 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QX5-SF-j76">
                                         <rect key="frame" x="33" y="287" width="309" height="238"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치 접근 권한을 허용해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lh2-YE-ZST">
-                                                <rect key="frame" x="49.666666666666686" y="40" width="210" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치 접근 권한을 허용해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lh2-YE-ZST" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="49.666666666666686" y="40" width="210" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="emX-K0-44Z"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                        <integer key="value" value="-1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOl-Jq-HAc">
-                                                <rect key="frame" x="50" y="67" width="209" height="40.666666666666657"/>
+                                                <rect key="frame" x="50" y="74" width="209" height="42"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="42" id="x98-ne-wGv"/>
+                                                </constraints>
                                                 <string key="text">현재 위치의 날씨를 확인하려면
 위치 접근 권한을 허용해주세요.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1860,7 +1871,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정 &gt; 개인정보보호 에서 설정 가능해요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lF-pT-jAw">
-                                                <rect key="frame" x="18.666666666666657" y="113.66666666666669" width="272" height="21"/>
+                                                <rect key="frame" x="18.666666666666657" y="122" width="272" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
