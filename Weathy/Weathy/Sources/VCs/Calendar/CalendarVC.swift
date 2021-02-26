@@ -53,7 +53,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     @IBOutlet weak var calendarDrawerView: UIView!
     @IBOutlet weak var yearMonthTextView: UITextView!
     @IBOutlet var weekdayLabelCollection: [UILabel]!
-
+    
     //MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
@@ -77,10 +77,10 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         let frame = self.view.frame
-//        closeDrawer()
-//        UIView.animate(withDuration: 0.3){
-//            self.view.layoutIfNeeded()
-//        }
+        //        closeDrawer()
+        //        UIView.animate(withDuration: 0.3){
+        //            self.view.layoutIfNeeded()
+        //        }
         self.infiniteMonthlyCV.alpha = 0
         self.infiniteWeeklyCV.alpha = 1
         weeklyCellDidSelected()
@@ -89,7 +89,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     override func viewDidAppear(_ animated: Bool) {
         closeDrawer()
     }
-
+    
     //MARK: - Custom Methods
     func findIndexFromSelectedDate() -> Int{
         var firstComponent = DateComponents()
@@ -263,12 +263,12 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: "ChangeDate"),object: selectedDate)
         yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
-//        nextWeekDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)
-//        lastWeekDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)
-//        nextMonthDate = yearMonthDateFormatter.date(from: selectedDate.nextYearMonth)
-//        lastMonthDate = yearMonthDateFormatter.date(from:selectedDate.lastYearMonth)!
-//        lastlastMonthDate = yearMonthDateFormatter.date(from:lastMonthDate.lastYearMonth)!
-
+        //        nextWeekDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)
+        //        lastWeekDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)
+        //        nextMonthDate = yearMonthDateFormatter.date(from: selectedDate.nextYearMonth)
+        //        lastMonthDate = yearMonthDateFormatter.date(from:selectedDate.lastYearMonth)!
+        //        lastlastMonthDate = yearMonthDateFormatter.date(from:lastMonthDate.lastYearMonth)!
+        
     }
     
     func weeklyCellDidSelected(){
@@ -293,24 +293,24 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         }
     }
     
-//    func insertLeftDate(){
-//        ///컬렉션뷰 리로드 할 때 0번 인덱스 다녀오지 않도록
-//        CATransaction.begin()
-//        CATransaction.setDisableActions(true)
-//        infiniteMonthList.insert(lastlastMonthDate, at: 0)
-//        isFromBatch = true
-//        infiniteMonthlyCV.performBatchUpdates({infiniteMonthlyCV.insertItems(at: [[0,0]])}, completion: {_ in self.infiniteMonthlyCV.contentOffset.x = self.infiniteMonthlyCV.frame.width*2
-//            CATransaction.commit()
-//        })
-//    }
+    //    func insertLeftDate(){
+    //        ///컬렉션뷰 리로드 할 때 0번 인덱스 다녀오지 않도록
+    //        CATransaction.begin()
+    //        CATransaction.setDisableActions(true)
+    //        infiniteMonthList.insert(lastlastMonthDate, at: 0)
+    //        isFromBatch = true
+    //        infiniteMonthlyCV.performBatchUpdates({infiniteMonthlyCV.insertItems(at: [[0,0]])}, completion: {_ in self.infiniteMonthlyCV.contentOffset.x = self.infiniteMonthlyCV.frame.width*2
+    //            CATransaction.commit()
+    //        })
+    //    }
     
     func initDate(){
         yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
-//        nextWeekDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)
-//        lastWeekDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)
-//        nextMonthDate = yearMonthDateFormatter.date(from: selectedDate.nextYearMonth)
-//        lastMonthDate = yearMonthDateFormatter.date(from: selectedDate.lastYearMonth)!
-//        lastlastMonthDate = yearMonthDateFormatter.date(from: lastMonthDate.lastYearMonth)!
+        //        nextWeekDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)
+        //        lastWeekDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)
+        //        nextMonthDate = yearMonthDateFormatter.date(from: selectedDate.nextYearMonth)
+        //        lastMonthDate = yearMonthDateFormatter.date(from: selectedDate.lastYearMonth)!
+        //        lastlastMonthDate = yearMonthDateFormatter.date(from: lastMonthDate.lastYearMonth)!
     }
     
     func openDrawer(){
@@ -320,9 +320,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
                                                 self.infiniteMonthlyCV.contentOffset.x = self.infiniteMonthlyCV.frame.width*CGFloat(self.currentIndex)})
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
-                        self.view.layoutIfNeeded()
-                        },
-                       completion: nil)
+            self.view.layoutIfNeeded()
+        },
+        completion: nil)
         UIView.animate(withDuration: 0.3){
             self.infiniteMonthlyCV.alpha = 1
             self.infiniteWeeklyCV.alpha = 0
@@ -336,7 +336,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         let weeklyIndex = findIndexFromSelectedDate()
         currentIndex = weeklyIndex
         self.infiniteWeeklyCV.contentOffset.x = self.infiniteWeeklyCV.frame.width*CGFloat(weeklyIndex)
-
+        
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: weeklyHeight)
         ///spring effect
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
@@ -383,7 +383,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             }
             ///going up
             else{
-//                self.infiniteWeeklyCV.reloadData()
+                //                self.infiniteWeeklyCV.reloadData()
                 closeDrawer()
             }
         }
@@ -392,8 +392,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             if weeklyHeight<=height+translation.y && height+translation.y <= monthlyHeight{
                 self.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: height+translation.y)
                 UIView.animate(withDuration: 0, animations: {
-                                self.view.layoutIfNeeded()
-                                self.calendarDrawerView.layoutIfNeeded()
+                    self.view.layoutIfNeeded()
+                    self.calendarDrawerView.layoutIfNeeded()
                     self.shadowView.layoutIfNeeded()
                     
                 })
@@ -424,7 +424,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         selectedDateDidChange()
     }
     @objc func setDeleted(_ noti: Notification){
-//        week
+        //        week
     }
     
     //MARK: - IBActions
@@ -474,7 +474,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             if gesture.velocity(in: scrollView).x < 0{
                 scrollDirection = .right
                 if selectedDate.month == Date().month{
-//                    infiniteMonthlyCV.isScrollEnabled = false
+                    //                    infiniteMonthlyCV.isScrollEnabled = false
                 }
             }
             else if gesture.velocity(in: scrollView).x > 0{
@@ -492,7 +492,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 let rightDate = Calendar.current.date(byAdding: rightDateComponent, to: Date())
                 if leftDate!.compare(Date()) == .orderedAscending
                     && rightDate!.compare(Date()) == .orderedDescending{
-//                    infiniteWeeklyCV.isScrollEnabled = false
+                    //                    infiniteWeeklyCV.isScrollEnabled = false
                     infiniteWeeklyCV.isScrollEnabled = true
                 }
             }
@@ -513,20 +513,26 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         ///InfiniteMonthlyCV
         if scrollView == infiniteMonthlyCV{
             if x == infiniteMonthlyCV.frame.width{
-//                yearMonthTextView.text = infiniteMonthList[1].currentYearMonth
-//                selectedDate = lastMonthDate
-//                selectedDateDidChange()
-//                insertLeftDate()
+                //                yearMonthTextView.text = infiniteMonthList[1].currentYearMonth
+                //                selectedDate = lastMonthDate
+                //                selectedDateDidChange()
+                //                insertLeftDate()
             }
             else{
-//                yearMonthTextView.text = infiniteMonthList[currentIndex].currentYearMonth
+                //                yearMonthTextView.text = infiniteMonthList[currentIndex].currentYearMonth
+                if scrollDirection == .left{
+                    selectedDate = infiniteMonthList[currentIndex]
+                }
+                else if scrollDirection == .right{
+                    selectedDate = infiniteMonthList[currentIndex]
+                }
                 selectedDateDidChange()
                 CATransaction.begin()
                 CATransaction.setDisableActions(true)
                 monthlyCellDidSelected()
                 CATransaction.commit()
             }
-      
+            
         }
         ///InfiniteWeeklyCV
         else if scrollView == infiniteWeeklyCV{
@@ -539,7 +545,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         }
         
     }
-
+    
 }
 
 

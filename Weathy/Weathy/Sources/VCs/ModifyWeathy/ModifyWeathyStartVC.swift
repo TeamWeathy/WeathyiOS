@@ -14,23 +14,23 @@ class ModifyWeathyStartVC: UIViewController {
     var weathyData: WeathyClass?
     var dateString: String = "0000-00-00"
     
-    var todayMonth: Int = 1
-    var todayDate: Int = 1
+    var todayMonth: Int = 0
+    var todayDate: Int = 0
     
-    var month: Int = 12
-    var date: Int = 20
-    var day: String = "월"
-    var location: String = "서울시 서초구"
-    var currentTemp: Int = -2
-    var maxTemp: Int = 20
-    var minTemp: Int = -20
+    var month: Int = 0
+    var date: Int = 0
+    var day: String = "땡"
+    var location: String = "땡땡시 땡땡구"
+    var currentTemp: Int = 0
+    var maxTemp: Int = 0
+    var minTemp: Int = 0
     
     var visitedFlag: Bool = false
     var dvc = ModifyWeathyTagVC()
     
     var selectedTag: [Int] = []
     
-    var locationCode: CLong = 1141000000
+    var locationCode: CLong = 1100000000
     
     
     //MARK: - IBOutlets

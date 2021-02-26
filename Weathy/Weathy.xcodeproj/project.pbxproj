@@ -439,8 +439,8 @@
 		37222E8525B0D65900577FEE /* ModifyWeathy */ = {
 			isa = PBXGroup;
 			children = (
-				37222E8625B0D6BA00577FEE /* ModifyWeathyStartVC.swift */,
 				37222E8D25B0DE4200577FEE /* ModifyWeathyNVC.swift */,
+				37222E8625B0D6BA00577FEE /* ModifyWeathyStartVC.swift */,
 				37222E9F25B0EBE100577FEE /* ModifyWeathyTagVC.swift */,
 				37222EAE25B1061600577FEE /* ModifyWeathyRateVC.swift */,
 				37222EB125B10A5C00577FEE /* ModifyWeathyTextVC.swift */,
@@ -1214,6 +1214,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1221,8 +1222,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weathy.weathy;
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weathy.weathy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1236,6 +1237,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1243,8 +1245,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weathy.weathy01;
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weathy.weathy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
