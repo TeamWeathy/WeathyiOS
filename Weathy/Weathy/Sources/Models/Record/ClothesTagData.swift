@@ -9,6 +9,7 @@ import Foundation
 
 // MARK: - Welcome
 struct GetClothesArrayData: Codable {
+    let clothesNum: Int
     let closet: Closet
     let message: String
 }
