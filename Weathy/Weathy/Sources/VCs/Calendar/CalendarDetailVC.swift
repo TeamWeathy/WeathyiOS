@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CalendarDetailVC: UIViewController {
     
@@ -15,6 +16,8 @@ class CalendarDetailVC: UIViewController {
     let koreanDateFormatter = DateFormatter()
     let noDataDate = "2020-12-13"
     var weeklyHeight = UIScreen.main.bounds.width/375*254 + 30
+    var photoWidth: CGFloat = UIScreen.main.bounds.width/375*285
+    var commentTop: CGFloat = 19.8
     var clothesTopList = ["기모맨투맨투맨","히트텍하트","폴로니트니트니","메종 마르지엘라 사줘","이인애바보"]
     var clothesBottomList = ["기모맨투맨","히트텍","폴로니트","메종 마르지엘라 사줘","이인애요지랄"]
     var clothesOuterList = ["기모맨투맨","히트텍","마","메종 마르지엘라 사줘","이인애"]
@@ -31,6 +34,8 @@ class CalendarDetailVC: UIViewController {
     
     //MARK: - IBOutlets
     
+    @IBOutlet weak var commentTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var photoWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var detailTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var climateImageView: UIImageView!
     @IBOutlet weak var detailEmptyImageView: UIImageView!
@@ -46,6 +51,7 @@ class CalendarDetailVC: UIViewController {
     @IBOutlet weak var moreMenuView: UIView!
     @IBOutlet weak var moreViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var moreBtn: UIButton!
+    @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var commentLabel: SpacedLabel!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var recordButton: UIButton!
@@ -202,7 +208,7 @@ class CalendarDetailVC: UIViewController {
         let clothesBottomList = dailyWeathy?.closet.bottom.clothes
         let clothesOuterList = dailyWeathy?.closet.outer.clothes
         let clothesEtcList = dailyWeathy?.closet.etc.clothes
-        let comment = dailyWeathy?.feedback
+        let comment: String? = dailyWeathy?.feedback
         
         dateLabel.text = "\(month)월 \(day)일 \(weekday)"
         locationLabel.text = location
@@ -217,12 +223,25 @@ class CalendarDetailVC: UIViewController {
         clothesTagLabels[1].text = insertSeparatorInArray(clothesBottomList ?? [])
         clothesTagLabels[2].text = insertSeparatorInArray(clothesOuterList ?? [])
         clothesTagLabels[3].text = insertSeparatorInArray(clothesEtcList ?? [])
-        commentLabel.text = comment
+        if dailyWeathy?.imgUrl == nil{
+            photoWidthConstraint.constant = 0
+            commentTopConstraint.constant = -3.9
+        }
+        else{
+            photoImageView.imageFromUrl(dailyWeathy?.imgUrl)
+            photoWidthConstraint.constant = photoWidth
+            commentTopConstraint.constant = commentTop
+        }
+        if comment == nil{
+            commentLabel.text = ""
+        }
+        else{
+            commentLabel.text = comment
+        }
         dateLabel.text = koreanDateFormatter.string(from: selectedDate)
         
         
     }
-    
     
     func insertSeparatorInArray(_ arr: [Clothes]) -> String {
         return arr.map({ (val) -> String in
