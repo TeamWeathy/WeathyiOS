@@ -12,12 +12,14 @@ struct RecordWeathyService {
     static let shared = RecordWeathyService()
     
     // MARK: - 웨디 기록하기
-    func recordWeathy(userId:Int, token: String, date: String, code: Int, clothArray: [Int], stampId: Int, feedback: String, completion: @escaping (NetworkResult<Any>)->(Void)) {
+    func recordWeathy(userId:Int, date: String, code: Int, clothArray: [Int], stampId: Int, feedback: String, completion: @escaping (NetworkResult<Any>)->(Void)) {
         let url = APIConstants.recordWeathyURL
         
+        let token = UserDefaults.standard.string(forKey:"token")!
+        
         let header: HTTPHeaders = [
-            "Content-Type" : "application/json",
             "x-access-token" : token
+            "Content-Type" : "application/json",
         ]
             
         let body: Parameters = [
