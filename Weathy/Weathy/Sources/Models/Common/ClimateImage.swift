@@ -8,8 +8,8 @@
 import UIKit
 
 struct ClimateImage {
-    static func getClimateAssetName(_ climateId: Int) -> String{
-        switch (climateId % 100) {
+    static func getClimateAssetName(_ climateId: Int) -> String {
+        switch climateId % 100 {
         case 1:
             return climateId < 100 ? "ic_clearsky_day" : "ic_clearsky_night"
         case 2:
@@ -32,18 +32,16 @@ struct ClimateImage {
             return ""
         }
     }
-    
+
     static func getClimateMainBgName(_ climateId: Int) -> String {
-        switch (climateId % 100) {
+        switch climateId % 100 {
         case 1, 2:
             return climateId < 100 ? "mainBgMorningSun" : "mainBgNightStar"
         case 3:
-            return climateId < 100 ? "main_bg_morning" : "mainBgNight"
+            return climateId < 100 ? "mainBgMorning" : "mainBgNight"
         case 4:
             return climateId < 100 ? "mainBgCloudy" : "mainBgNight"
-        case 9:
-            return climateId < 100 ? "icShowerrainDay" : "icShowerrainNight"
-        case 10, 13:
+        case 9, 10, 13:
             return climateId < 100 ? "mainBgSnowrainDay" : "mainBgSnowrainNight"
         case 11, 50:
             return climateId < 100 ? "mainBgCloudy" : "mainBgNight"
@@ -51,9 +49,9 @@ struct ClimateImage {
             return ""
         }
     }
-    
+
     static func getClimateMainBlurBarName(_ climateId: Int) -> String {
-        switch (climateId % 100) {
+        switch climateId % 100 {
         case 1, 2, 3:
             return climateId < 100 ? "mainscroll_box_topblur_morning" : "mainscroll_box_topblur_night"
         case 4, 9, 10, 11, 13, 50:
@@ -62,9 +60,9 @@ struct ClimateImage {
             return ""
         }
     }
-    
+
     static func getSearchClimateMainBlurBarName(_ climateId: Int) -> String {
-        switch (climateId % 100) {
+        switch climateId % 100 {
         case 1, 2, 3:
             return climateId < 100 ? "search_box_topblur_morning" : "search_box_topblur_night"
         case 4, 9, 10, 11, 13, 50:
@@ -74,9 +72,8 @@ struct ClimateImage {
         }
     }
 
-    
     static func getClimateMainIllust(_ climateId: Int) -> String {
-        switch (climateId % 100) {
+        switch climateId % 100 {
         case 1:
             return climateId < 100 ? "mainImgClearskyDay" : "mainImgClearskyNight"
         case 2:
@@ -86,7 +83,7 @@ struct ClimateImage {
         case 4:
             return climateId < 100 ? "mainImgBrokencloudsDay" : "mainImgBrokencloudsNight"
         case 9:
-            return climateId < 100 ? "icShowerrainDay" : "icShowerrainNight"
+            return climateId < 100 ? "mainBgSnowrainDay" : "mainBgSnowrainNight"
         case 10:
             return climateId < 100 ? "mainImgRainDay" : "mainImgRainNight"
         case 11:
@@ -99,9 +96,9 @@ struct ClimateImage {
             return ""
         }
     }
-    
+
     static func getClimateSearchIllust(_ climateId: Int) -> String {
-        switch (climateId % 100) {
+        switch climateId % 100 {
         case 1:
             return climateId < 100 ? "search_img_clearsky_day" : "search_img_clearsky_night"
         case 2:

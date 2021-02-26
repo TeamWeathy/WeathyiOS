@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct WeathyClass: Codable{
+struct WeathyClass: Codable {
     var region: Region
     var dailyWeather: DailyWeather
     var hourlyWeather: HourlyWeather
     var closet: Closet
     var weathyId, stampId: Int
-    var feedback: String
+    var feedback: String?
+    var imgUrl: String?
 }

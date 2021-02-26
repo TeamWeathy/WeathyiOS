@@ -78,6 +78,8 @@ class MainVC: UIViewController {
     @IBOutlet var closetTopLabel: SpacedLabel!
     @IBOutlet var closetBottomLabel: SpacedLabel!
     @IBOutlet var closetOuterLabel: SpacedLabel!
+    @IBOutlet var weathyPhotoImage: UIImageView!
+    @IBOutlet var weathyTextImage: UIImageView!
     @IBOutlet var closetEtcLabel: SpacedLabel!
     @IBOutlet var emptyImage: UIImageView!
     @IBOutlet var downImage: UIImageView!
@@ -234,8 +236,10 @@ class MainVC: UIViewController {
         weathyMinTempLabel.characterSpacing = -1.5
 
         weathyStampLabel.font = UIFont.SDGothicSemiBold23
-        weathyStampLabel.textColor = UIColor.imojiColdText
         weathyStampLabel.characterSpacing = -1.15
+        
+        weathyPhotoImage.isHidden = false
+        weathyTextImage.isHidden = false
         
         gpsButton.contentMode = .scaleAspectFit
         
@@ -331,6 +335,14 @@ class MainVC: UIViewController {
         weathyStampImage.image = UIImage(named: Emoji.getEmojiImageAsset(stampId: data.weathy.stampId))
         weathyStampLabel.text = Emoji.getEmojiText(stampId: data.weathy.stampId)
         weathyStampLabel.textColor = Emoji.getEmojiTextColor(stampId: data.weathy.stampId)
+        
+        if data.weathy.imgUrl == nil {
+            weathyPhotoImage.isHidden = true
+        }
+
+        if data.weathy.feedback == nil {
+            weathyTextImage.isHidden = true
+        }
     }
     
     func changeWeatherViewBySearchData(data: OverviewWeatherList) {
@@ -419,6 +431,7 @@ class MainVC: UIViewController {
             switch result {
             case .success(let data):
                 if let response = data as? DailyWeatherData {
+                    print(response)
                     self.dailyWeatherData = response
                     self.weeklyWeatherCollectionView.reloadData()
                 }
@@ -679,7 +692,7 @@ class MainVC: UIViewController {
             let weathyDate = "\(dailyWeathyYear)-\(dailyWeathyDate.month)-\(dailyWeathyDate.day)" // YYYY-MM-DD
             calendarDetailVC.todayWeathyFlag = true
             NotificationCenter.default.post(
-                name: NSNotification.Name(rawValue: "ChangeDate"),object: Date().getStringToDate(format: "yyyy-MM-dd", dateString: weathyDate))
+                name: NSNotification.Name(rawValue: "ChangeDate"), object: Date().getStringToDate(format: "yyyy-MM-dd", dateString: weathyDate))
             
             tabBarVC.mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
             tabBarVC.calendarButton.setImage(UIImage(named: "ic_calendar_selected"), for: .normal)
