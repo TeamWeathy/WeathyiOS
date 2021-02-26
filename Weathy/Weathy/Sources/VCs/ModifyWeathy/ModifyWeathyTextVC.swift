@@ -29,6 +29,7 @@ class ModifyWeathyTextVC: UIViewController {
     let picker = UIImagePickerController()
     
     var selectedImage : UIImage?
+    var isDeleted: Bool = false
     
     
     
@@ -46,6 +47,7 @@ class ModifyWeathyTextVC: UIViewController {
     @IBOutlet var photoView: UIView!
     @IBOutlet var photoBtn: UIButton!
     @IBOutlet var photoImageView: UIImageView!
+    @IBOutlet var photoDeleteBtn: UIButton!
     @IBOutlet var finishBtn: UIButton!
     @IBOutlet var optionImageView: [UIImageView]!
     
@@ -86,6 +88,13 @@ class ModifyWeathyTextVC: UIViewController {
             wordCountLabel.textColor = UIColor.mintIcon
         }
         
+        if photoImageView.image == nil {
+            photoDeleteBtn.isHidden = true
+            photoDeleteBtn.isUserInteractionEnabled = false
+        } else{
+            photoDeleteBtn.isHidden = false
+            photoDeleteBtn.isUserInteractionEnabled = true
+        }
         
     }
     
@@ -131,6 +140,13 @@ class ModifyWeathyTextVC: UIViewController {
         callModifyWeathyService()
     }
     
+    @IBAction func photoDeleteBtnTap(_ sender: Any) {
+        selectedImage = nil
+        photoImageView.image = nil
+        photoDeleteBtn.isHidden = true
+        photoDeleteBtn.isUserInteractionEnabled = false
+        isDeleted = true
+    }
     //MARK: - @objc methods
     
     @objc func textViewDidChange(sender:UITextView) {
@@ -276,7 +292,7 @@ extension ModifyWeathyTextVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", img: nil, isDelete: false, weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", img: selectedImage, isDelete: isDeleted, weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             print(self.weathyData?.weathyId ?? -1)
             switch networkResult {
             case .success(let data):
@@ -429,9 +445,10 @@ extension ModifyWeathyTextVC: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedImage = image
             photoImageView.image = image
             photoImageView.contentMode = .scaleAspectFill
-            print(info)
+            isDeleted = false
         }
         
         dismiss(animated: true, completion: nil)

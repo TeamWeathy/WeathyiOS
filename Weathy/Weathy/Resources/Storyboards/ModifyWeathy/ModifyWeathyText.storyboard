@@ -111,10 +111,24 @@
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9sr-HT-a7q">
                                                         <rect key="frame" x="0.0" y="0.0" width="144.5" height="145"/>
                                                     </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15b-7G-iHe">
+                                                        <rect key="frame" x="104.5" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="AUg-fi-YZA"/>
+                                                            <constraint firstAttribute="height" constant="40" id="ShJ-q2-svD"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="dvP-ZA-yf3"/>
+                                                            <constraint firstAttribute="width" constant="40" id="qCq-uX-PQd"/>
+                                                        </constraints>
+                                                        <state key="normal" image="btnPhotodelete"/>
+                                                        <connections>
+                                                            <action selector="photoDeleteBtnTap:" destination="MbY-T4-SOH" eventType="touchUpInside" id="r9c-1u-BZR"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="6Jq-Qt-pzQ" secondAttribute="trailing" id="1qJ-WK-xXK"/>
+                                                    <constraint firstItem="15b-7G-iHe" firstAttribute="top" secondItem="brE-Pg-2oe" secondAttribute="top" id="4Qk-DE-I2a"/>
                                                     <constraint firstAttribute="bottom" secondItem="6Jq-Qt-pzQ" secondAttribute="bottom" id="BSn-8g-zhX"/>
                                                     <constraint firstItem="6Jq-Qt-pzQ" firstAttribute="top" secondItem="brE-Pg-2oe" secondAttribute="top" id="E06-Yh-zSt"/>
                                                     <constraint firstAttribute="trailing" secondItem="9sr-HT-a7q" secondAttribute="trailing" id="Hkr-iu-eQa"/>
@@ -122,6 +136,7 @@
                                                     <constraint firstItem="9sr-HT-a7q" firstAttribute="leading" secondItem="brE-Pg-2oe" secondAttribute="leading" id="Mrz-ZH-NRU"/>
                                                     <constraint firstItem="9sr-HT-a7q" firstAttribute="top" secondItem="brE-Pg-2oe" secondAttribute="top" id="SKN-Ue-H1N"/>
                                                     <constraint firstAttribute="bottom" secondItem="9sr-HT-a7q" secondAttribute="bottom" id="cE4-g9-Aqf"/>
+                                                    <constraint firstAttribute="trailing" secondItem="15b-7G-iHe" secondAttribute="trailing" id="jAF-1r-ddx"/>
                                                     <constraint firstItem="6Jq-Qt-pzQ" firstAttribute="centerX" secondItem="brE-Pg-2oe" secondAttribute="centerX" id="oIW-8g-B4h"/>
                                                     <constraint firstItem="6Jq-Qt-pzQ" firstAttribute="leading" secondItem="brE-Pg-2oe" secondAttribute="leading" id="pKA-sd-Yig"/>
                                                     <constraint firstAttribute="width" secondItem="brE-Pg-2oe" secondAttribute="height" multiplier="1:1" id="t8J-bX-3gM"/>
@@ -219,6 +234,7 @@
                         <outlet property="finishBtn" destination="bgY-z6-lK4" id="Dff-5Z-WXx"/>
                         <outlet property="maxWordLabel" destination="9b5-0K-6T3" id="6eN-4a-hpG"/>
                         <outlet property="photoBtn" destination="6Jq-Qt-pzQ" id="Sc6-my-qAg"/>
+                        <outlet property="photoDeleteBtn" destination="15b-7G-iHe" id="kVN-rY-W4i"/>
                         <outlet property="photoImageView" destination="9sr-HT-a7q" id="OQA-eJ-05e"/>
                         <outlet property="photoTitleLabel" destination="lU3-aS-gdy" id="AMx-Fg-gtA"/>
                         <outlet property="photoView" destination="brE-Pg-2oe" id="gkj-wU-zP8"/>
@@ -239,6 +255,7 @@
     </scenes>
     <resources>
         <image name="btnAddphoto" width="131" height="131"/>
+        <image name="btnPhotodelete" width="40" height="40.5"/>
         <image name="ic_back" width="20" height="20"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
