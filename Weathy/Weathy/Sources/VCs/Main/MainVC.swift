@@ -339,9 +339,15 @@ class MainVC: UIViewController {
         if data.weathy.imgUrl == nil {
             weathyPhotoImage.isHidden = true
         }
+        else{
+            weathyPhotoImage.isHidden = false
+        }
         
-        if data.weathy.feedback == nil || data.weathy.feedback == "" {
+        if data.weathy.feedback == nil {
             weathyTextImage.isHidden = true
+        }
+        else{
+            weathyTextImage.isHidden = false
         }
     }
     
