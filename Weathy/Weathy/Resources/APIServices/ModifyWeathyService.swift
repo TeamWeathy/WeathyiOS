@@ -15,6 +15,8 @@ struct ModifyWeathyService {
     func modifyWeathy(userId:Int, token: String, date: String, code: Int, clothArray: [Int], stampId: Int, feedback: String?, img: UIImage?, isDelete: Bool, weathyId: Int, completion: @escaping (NetworkResult<Any>)->(Void)) {
         let url = APIConstants.recordWeathyURL + "/\(weathyId)"
         
+        print(token)
+        
         let header: HTTPHeaders = [
             "x-access-token" : token,
             "Content-Type" : "multipart/form-data"
@@ -42,7 +44,7 @@ struct ModifyWeathyService {
                 print("imgData")
             }
 
-        },to: APIConstants.recordWeathyURL, usingThreshold:UInt64.init(), method: .post, headers: header)
+        },to: APIConstants.recordWeathyURL + "/\(weathyId)", usingThreshold:UInt64.init(), method: .put, headers: header)
         .uploadProgress(queue: .main, closure: { progress in
             //Current upload progress of file
             print("Upload Progress: \(progress.fractionCompleted)")
@@ -64,12 +66,14 @@ struct ModifyWeathyService {
     
     private func judgeModifyWeathyService(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(RecordWeathyData.self, from: data) else {
+        guard let decodedData = try? decoder.decode(ModifyWeathyData.self, from: data) else {
             return .pathErr }
+        
+        print(decodedData)
         
         switch status {
         case 200:
-            return .success(decodedData.message)
+            return .success(decodedData)
         case 400..<500:
             return .requestErr(decodedData.message)
         case 500:

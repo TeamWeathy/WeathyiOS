@@ -261,21 +261,21 @@ extension RecordTextVC {
     }
     
     func textNotExists() {
-        finishBtn.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.5, animations: {
-            self.finishBtn.backgroundColor = UIColor.subGrey3
-            self.finishBtn.setTitle("내용 추가하기", for: .normal)
-            self.finishBtn.setTitleColor(.white, for: .normal)
-            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
-            self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
-        })
-        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
-        textViewSurroundingView.layer.borderWidth = 1
-        textViewSurroundingView.layer.cornerRadius = 15
-        
-        wordCountLabel.text = "0"
-        wordCountLabel.font = UIFont.SDGothicRegular13
-        wordCountLabel.textColor = UIColor.subGrey6
+//        finishBtn.isUserInteractionEnabled = false
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.finishBtn.backgroundColor = UIColor.subGrey3
+//            self.finishBtn.setTitle("내용 추가하기", for: .normal)
+//            self.finishBtn.setTitleColor(.white, for: .normal)
+//            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
+//            self.finishBtn.titleLabel?.font = .SDGothicSemiBold16
+//        })
+//        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
+//        textViewSurroundingView.layer.borderWidth = 1
+//        textViewSurroundingView.layer.cornerRadius = 15
+//
+//        wordCountLabel.text = "0"
+//        wordCountLabel.font = UIFont.SDGothicRegular13
+//        wordCountLabel.textColor = UIColor.subGrey6
     }
     
     func initPosition() {
@@ -304,12 +304,13 @@ extension RecordTextVC {
     
     func callModifyWeathyService() {
         ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", img: imageSelected, isDelete: isDeleted, weathyId: weathyId) { (networkResult) -> (Void) in
+            print("weathyId", self.weathyId)
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? ModifyWeathyData {
                     print(loadData)
                 }
-                self.dismiss(animated: true) {
+                self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 1)
                 }
 //                self.showToast(message: "웨디에 내용이 추가되었어요!")
