@@ -13,6 +13,19 @@ class NickNameVC: UIViewController {
     
     var textCount = 0
     var isChange = false
+//    var isClosePopUp = false {
+//        didSet {
+//            if isClosePopUp {
+//                LocationManager.shared.requestLocationAuth {
+//                    let story = UIStoryboard(name: "Tabbar", bundle: nil)
+//                    guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
+//                                            
+//                    vc.modalPresentationStyle = .fullScreen
+//                    self.present(vc, animated: true, completion: nil)
+//                }
+//            }
+//        }
+//    }
     
     // MARK: - IBOutlets
     
@@ -25,8 +38,8 @@ class NickNameVC: UIViewController {
     @IBOutlet var countLabel: SpacedLabel!
     @IBOutlet var totalCountLabel: SpacedLabel!
     
-    @IBOutlet var changeButton: UIButton!
-    @IBOutlet var changeButtonBottom: NSLayoutConstraint!
+    @IBOutlet var startButton: UIButton!
+    @IBOutlet var startButtonBottom: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,8 +131,9 @@ class NickNameVC: UIViewController {
             clearButton.isHidden = false
         } else {
             isChange = false
+            
             clearButton.isHidden = true
-            changeButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
+            startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
             textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             countLabel.textColor = UIColor.subGrey6
             countLabel.text = "0"
@@ -127,8 +141,7 @@ class NickNameVC: UIViewController {
         }
     }
     
-    /// 변경하기 눌렀을 때 서버 연결 코드
-    @IBAction func changeButtonDidTap(_ sender: Any) {
+    @IBAction func touchUpStartButton(_ sender: Any) {
         guard let nickName = nickNameTextField.text else { return }
         let uuid = UUID().uuidString
         
@@ -154,14 +167,14 @@ extension NickNameVC: UITextFieldDelegate {
         if nickNameTextField.text?.count == 0 {
             isChange = false
             
-            changeButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
+            startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
             textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             clearButton.isHidden = true
             countLabel.textColor = UIColor.subGrey6
         } else {
             isChange = true
             
-            changeButton.setBackgroundImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
+            startButton.setBackgroundImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
             textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
             clearButton.isHidden = false
             countLabel.textColor = UIColor.mintMain
@@ -169,7 +182,7 @@ extension NickNameVC: UITextFieldDelegate {
     }
 }
 
-// MARK: extension ketBoardAction 추가
+// MARK: keyBoardAction
 
 extension NickNameVC {
     func keyBoardAction() {
@@ -185,9 +198,9 @@ extension NickNameVC {
         
         if noti.name == UIResponder.keyboardWillShowNotification {
             let adjustemnHeight = keyboardFrame.height - view.safeAreaInsets.bottom
-            changeButtonBottom.constant = adjustemnHeight + 16
+            startButtonBottom.constant = adjustemnHeight + 16
         } else {
-            changeButtonBottom.constant = 16
+            startButtonBottom.constant = 16
         }
     }
 }
