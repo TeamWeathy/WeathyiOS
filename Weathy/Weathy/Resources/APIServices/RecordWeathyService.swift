@@ -97,7 +97,7 @@ struct RecordWeathyService {
         
         switch status {
         case 200:
-            return .success(decodedData.message)
+            return .success(decodedData)
         case 400..<500:
             return .requestErr(decodedData.message)
         case 500:

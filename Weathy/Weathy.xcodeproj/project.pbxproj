@@ -421,7 +421,6 @@
 		37222E6225AE649700577FEE /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				37613DCE25E96FC4004590FD /* ModifyWeathy */,
 				37222E6325AE64DA00577FEE /* ClothesTagData.swift */,
 				37222E7525AFAA4700577FEE /* RecordWeathyData.swift */,
 			);
@@ -667,6 +666,7 @@
 				0E6E9AB825B244CC00702706 /* OnBoarding */,
 				37222E6225AE649700577FEE /* Record */,
 				63C756D225B03902003DC9FA /* Calendar */,
+				37613DCE25E96FC4004590FD /* ModifyWeathy */,
 				AB09372125AFC58000F69220 /* Common */,
 				AB09370D25AE43DB00F69220 /* Main */,
 				37FB8AAD25AE52BD001A6287 /* Splash */,
