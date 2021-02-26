@@ -137,6 +137,8 @@ class MainVC: UIViewController {
         
         initMainTopView()
         initMainBottomView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     // FIXME: - 하단 탭바 높이 계산하기
@@ -712,6 +714,10 @@ class MainVC: UIViewController {
                 
             tabBarVC.scrollView.setContentOffset(CGPoint(x: tabBarVC.scrollView.frame.width, y: 0), animated: false)
         }
+    }
+    
+    @objc func appMovedToForeground() {
+        moveWeatherImage()
     }
 }
 
