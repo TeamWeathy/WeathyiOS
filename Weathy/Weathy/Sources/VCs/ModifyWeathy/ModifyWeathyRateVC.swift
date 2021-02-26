@@ -30,6 +30,8 @@ class ModifyWeathyRateVC: UIViewController {
     
     var visitedFlag: Bool = false
     
+    var selectedImage : UIImage?
+    
     
     //MARK: - IBOutlets
     @IBOutlet var backBtn: UIButton!
@@ -88,6 +90,10 @@ class ModifyWeathyRateVC: UIViewController {
         dvc.weathyData = weathyData
         dvc.dateString = dateString
         dvc.locationCode = locationCode
+
+        if let image = selectedImage {
+            dvc.selectedImage = image
+        }
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }

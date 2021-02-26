@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ModifyWeathyStartVC: UIViewController {
 
@@ -31,6 +32,8 @@ class ModifyWeathyStartVC: UIViewController {
     var selectedTag: [Int] = []
     
     var locationCode: CLong = 1100000000
+    
+    var selectedImage : UIImage?
     
     
     //MARK: - IBOutlets
@@ -70,7 +73,7 @@ class ModifyWeathyStartVC: UIViewController {
         
         locationCode = weathyData?.region.code ?? 1141000000
         
-        print(">>>>>", dateString)
+        print(">>>>>", selectedImage)
         
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.locale = Locale(identifier: "ko_KR")
@@ -114,6 +117,10 @@ class ModifyWeathyStartVC: UIViewController {
         dvc.weathyData = weathyData
         dvc.dateString = dateString
         dvc.locationCode = locationCode
+        
+        if let image = selectedImage {
+            dvc.selectedImage = image
+        }
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }
@@ -256,7 +263,7 @@ extension ModifyWeathyStartVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", img: nil, isDelete: false, weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token") ?? "", date: dateString, code: locationCode, clothArray: selectedTag, stampId: weathyData?.stampId ?? -1, feedback: weathyData?.feedback ?? "", img: selectedImage, isDelete: false, weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {
@@ -322,6 +329,7 @@ extension ModifyWeathyStartVC {
         print(">>>>>", selectedTag)
         
     }
+    
     
 }
 

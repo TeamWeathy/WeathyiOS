@@ -40,6 +40,8 @@ class ModifyWeathyTagVC: UIViewController {
     
     var scrollYOffset: CGFloat = 0
     
+    var selectedImage : UIImage?
+    
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
     
@@ -133,6 +135,10 @@ class ModifyWeathyTagVC: UIViewController {
         dvc.weathyData = weathyData
         dvc.dateString = dateString
         dvc.locationCode = locationCode
+        
+        if let image = selectedImage {
+            dvc.selectedImage = image
+        }
         
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
