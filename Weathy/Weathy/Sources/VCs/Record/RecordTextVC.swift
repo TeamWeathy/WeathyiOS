@@ -47,6 +47,7 @@ class RecordTextVC: UIViewController {
     @IBOutlet var photoView: UIView!
     @IBOutlet var photoBtn: UIButton!
     @IBOutlet var photoImageView: UIImageView!
+    @IBOutlet var photoDeleteBtn: UIButton!
     @IBOutlet var finishBtn: UIButton!
     @IBOutlet var optionImageView: [UIImageView]!
     
@@ -111,6 +112,16 @@ class RecordTextVC: UIViewController {
     
     @IBAction func nextBtnTap(_ sender: Any) {
         callModifyWeathyService()
+    }
+    
+    @IBAction func photoDeleteBtnTap(_ sender: Any) {
+        photoImageView.image = nil
+        photoDeleteBtn.isHidden = true
+        photoDeleteBtn.isUserInteractionEnabled = false
+        
+        if enteredText?.count == 0 {
+            finishBtnDeactivated()
+        }
     }
     
     //MARK: - @objc methods
@@ -182,6 +193,9 @@ extension RecordTextVC {
                 dateString = "\(date.dailyWeather.date.year!)-\(String(format: "%02d", date.dailyWeather.date.month))-\(String(format: "%02d", date.dailyWeather.date.day))"
             }
         }
+        
+        photoDeleteBtn.isHidden = true
+        photoDeleteBtn.isUserInteractionEnabled = false
     }
     
     func setTextField() {
@@ -488,6 +502,8 @@ extension RecordTextVC: UIImagePickerControllerDelegate, UINavigationControllerD
             imageSelected = image
             photoImageView.image = imageSelected
             photoImageView.contentMode = .scaleAspectFill
+            photoDeleteBtn.isHidden = false
+            photoDeleteBtn.isUserInteractionEnabled = true
             finishBtnActivated()
         }
         
