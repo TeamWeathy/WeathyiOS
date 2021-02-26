@@ -680,9 +680,9 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQK-rX-Jpl">
                                                                                 <rect key="frame" x="8" y="53.666666666666664" width="27" height="26.333333333333336"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQ6-44-TyD" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQ6-44-TyD" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                                                         <rect key="frame" x="13.333333333333332" y="0.0" width="0.0" height="0.0"/>
-                                                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                         <userDefinedRuntimeAttributes>
@@ -691,9 +691,9 @@
                                                                                             </userDefinedRuntimeAttribute>
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twg-iT-6Jz" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twg-iT-6Jz" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                                                         <rect key="frame" x="27" y="26.333333333333336" width="0.0" height="0.0"/>
-                                                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                         <userDefinedRuntimeAttributes>
@@ -702,8 +702,8 @@
                                                                                             </userDefinedRuntimeAttribute>
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </label>
-                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarTextDivider" translatesAutoresizingMaskIntoConstraints="NO" id="pvp-YE-1Sc">
-                                                                                        <rect key="frame" x="6.666666666666667" y="5.6666666666666705" width="12.666666666666664" height="10.666666666666664"/>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarDivTemp" translatesAutoresizingMaskIntoConstraints="NO" id="pvp-YE-1Sc">
+                                                                                        <rect key="frame" x="6.666666666666667" y="7.3333333333333348" width="12.666666666666664" height="10.666666666666664"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="pvp-YE-1Sc" secondAttribute="height" multiplier="15.32:12.86" id="ljv-DU-wuz"/>
                                                                                         </constraints>
@@ -713,11 +713,11 @@
                                                                                 <constraints>
                                                                                     <constraint firstItem="pvp-YE-1Sc" firstAttribute="width" secondItem="gQK-rX-Jpl" secondAttribute="width" multiplier="15.32:32" id="0Ng-Ax-eiz"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="Twg-iT-6Jz" secondAttribute="trailing" id="EMA-pf-eYj"/>
+                                                                                    <constraint firstItem="pvp-YE-1Sc" firstAttribute="top" secondItem="gQK-rX-Jpl" secondAttribute="top" constant="7.4699999999999998" id="FXa-7s-XzH"/>
                                                                                     <constraint firstItem="vQ6-44-TyD" firstAttribute="trailing" secondItem="pvp-YE-1Sc" secondAttribute="trailing" constant="-6.1600000000000001" id="J86-pb-jwp"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="Twg-iT-6Jz" secondAttribute="bottom" id="Lqt-Ls-2fD"/>
                                                                                     <constraint firstAttribute="width" secondItem="gQK-rX-Jpl" secondAttribute="height" multiplier="32:31.32" id="MFr-Mf-v35"/>
                                                                                     <constraint firstItem="vQ6-44-TyD" firstAttribute="top" secondItem="gQK-rX-Jpl" secondAttribute="top" id="Spt-ds-4EO"/>
-                                                                                    <constraint firstItem="pvp-YE-1Sc" firstAttribute="centerY" secondItem="gQK-rX-Jpl" secondAttribute="centerY" constant="-2" id="We3-l9-bwz"/>
                                                                                     <constraint firstItem="pvp-YE-1Sc" firstAttribute="centerX" secondItem="gQK-rX-Jpl" secondAttribute="centerX" constant="-0.5" id="v5c-y3-avA"/>
                                                                                 </constraints>
                                                                             </view>
@@ -892,6 +892,7 @@
     <resources>
         <image name="calendarBtnArrow" width="11" height="6.3333334922790527"/>
         <image name="calendarBtnRecord" width="96" height="48"/>
+        <image name="calendarDivTemp" width="16" height="14"/>
         <image name="calendarFrameGotoday" width="48" height="48"/>
         <image name="calendarFrameSlide" width="130" height="32"/>
         <image name="calendarIcCloudy" width="18" height="16.666666030883789"/>

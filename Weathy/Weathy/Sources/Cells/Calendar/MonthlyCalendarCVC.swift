@@ -9,8 +9,6 @@ import UIKit
 
 class MonthlyCalendarCVC: UICollectionViewCell {
     
-    @IBOutlet weak var climateIconImageView: UIImageView!
-    @IBOutlet weak var temperatureView: UIView!
     static let identifier = "MonthlyCalendarCVC"
     var isToday = false
     override var isSelected: Bool{
@@ -32,6 +30,8 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     }
     
     
+    @IBOutlet weak var climateIconImageView: UIImageView!
+    @IBOutlet weak var temperatureView: UIView!
     @IBOutlet weak var dayLabel: SpacedLabel!
     @IBOutlet weak var highLabel: SpacedLabel!
     @IBOutlet weak var lowLabel: SpacedLabel!
@@ -40,35 +40,46 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        dayLabel.backgroundColor = .clear
-        dayLabel.font = UIFont(name: "Roboto-Medium", size: 14)
-        dayLabel.clipsToBounds = true
-        dayLabel.layer.cornerRadius = 11.5
-        dayLabel.textColor = .mainGrey
-        
-        highLabel.text = ""
-        highLabel.textColor = .redTemp
-        lowLabel.text = ""
-        highLabel.alpha = 0
-        lowLabel.textColor = .blueTemp
-        lowLabel.alpha = 0
-        
+//        dayLabel.backgroundColor = .clear
+//        dayLabel.font = UIFont(name: "Roboto-Medium", size: 14)
+//        dayLabel.clipsToBounds = true
+//        dayLabel.layer.cornerRadius = 11.5
+//        dayLabel.textColor = .mainGrey
+//
+//        highLabel.text = ""
+//
+//        lowLabel.text = ""
+//        highLabel.alpha = 0
+//
+//        lowLabel.alpha = 0
+//
     }
     override func prepareForReuse() {
         super.prepareForReuse()
         isToday = false
+        setStyle()
+        
+    }
+    func setStyle(){
         dividerView.alpha = 1
+        
         dayLabel.backgroundColor = .clear
         dayLabel.font = UIFont(name: "Roboto-Medium", size: 14)
         dayLabel.clipsToBounds = true
-        dayLabel.layer.cornerRadius = 11.5
+        dayLabel.layer.cornerRadius = dayLabel.frame.height / 2
         dayLabel.textColor = .mainGrey
+        
         highLabel.text = ""
-        lowLabel.text = ""
         highLabel.alpha = 0
+        highLabel.textColor = .redTemp
+        highLabel.font = .RobotoRegular12
+        highLabel.characterSpacing = -0.6
         
+        lowLabel.text = ""
         lowLabel.alpha = 0
-        
+        lowLabel.textColor = .blueTemp
+        lowLabel.font = .RobotoRegular12
+        lowLabel.characterSpacing = -0.6
     }
     func setSelectedDay(){
         dayLabel.backgroundColor = .subGrey5
