@@ -387,6 +387,7 @@ class CalendarDetailVC: UIViewController {
                 print("[Delete]",message)
                 self.blurView.removeFromSuperview()
                 self.selectedDateDidChange(nil)
+                UserDefaults.standard.setValue("1800-01-01", forKey: "recentRecordDate")
                 NotificationCenter.default.post(name: NSNotification.Name("DeleteWeathy"), object: self.selectedDate.weekday)
                 self.showToast(message: "웨디가 삭제되었어요.")
             case .requestErr(let message):
