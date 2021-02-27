@@ -37,23 +37,14 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     @IBOutlet weak var lowLabel: SpacedLabel!
     @IBOutlet weak var dividerView: UIView!
     @IBOutlet weak var temperatureDividerView: UIImageView!
+    @IBOutlet weak var climateIconTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var temperatureViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var climateIconWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var temperatureWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-//        dayLabel.backgroundColor = .clear
-//        dayLabel.font = UIFont(name: "Roboto-Medium", size: 14)
-//        dayLabel.clipsToBounds = true
-//        dayLabel.layer.cornerRadius = 11.5
-//        dayLabel.textColor = .mainGrey
-//
-//        highLabel.text = ""
-//
-//        lowLabel.text = ""
-//        highLabel.alpha = 0
-//
-//        lowLabel.alpha = 0
-//
+
     }
     override func prepareForReuse() {
         super.prepareForReuse()
