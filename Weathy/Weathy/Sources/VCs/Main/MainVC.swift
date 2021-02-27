@@ -101,28 +101,7 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         LocationManager.shared.startUpdateLocation()
-        
-        if UserDefaults().isExistUserDefaults("searchLocationCode") {
-            // 검색 데이터 있음
-            isOnGPS = false
-            getLocationWeather(isDefault: true)
-        } else {
-            // 검색 데이터 없음
-            let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
-            
-            switch locationAuth {
-            case true:
-                // 위치 허용
-                print("현재 위치")
-                getLocationWeather(isDefault: false)
-                isOnGPS = true
-            case false:
-                // 위치 미허용
-                print("디폴트 위치")
-                getLocationWeather(isDefault: true)
-                isOnGPS = false
-            }
-        }
+        checkLocationAndGetWeatherData()
         
         if let nickname = UserDefaults.standard.string(forKey: "nickname") {
             todayWeathyNicknameLabel.text = "\(nickname)님이 기억하는"
@@ -364,6 +343,30 @@ class MainVC: UIViewController {
             climateLabel.text = "\(description)"
         }
     }
+    
+    func checkLocationAndGetWeatherData() {
+        if UserDefaults().isExistUserDefaults("searchLocationCode") {
+            // 검색 데이터 있음
+            isOnGPS = false
+            getLocationWeather(isDefault: true)
+        } else {
+            // 검색 데이터 없음
+            let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
+            
+            switch locationAuth {
+            case true:
+                // 위치 허용
+                print("현재 위치")
+                getLocationWeather(isDefault: false)
+                isOnGPS = true
+            case false:
+                // 위치 미허용
+                print("디폴트 위치")
+                getLocationWeather(isDefault: true)
+                isOnGPS = false
+            }
+        }
+    }
 
     // MARK: - Network
 
@@ -440,7 +443,6 @@ class MainVC: UIViewController {
             switch result {
             case .success(let data):
                 if let response = data as? DailyWeatherData {
-                    print(response)
                     self.dailyWeatherData = response
                     self.weeklyWeatherCollectionView.reloadData()
                 }
@@ -585,7 +587,7 @@ class MainVC: UIViewController {
         UIView.animate(withDuration: 1.0, delay: 0, options: [.autoreverse, .repeat], animations: {
             self.downImage.alpha = 0
             self.downImage.alpha = 1
-        }, completion: nil)
+        })
     }
     
     func moveWeatherImage() {
@@ -812,6 +814,18 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDelegate
 
 extension MainVC: UICollectionViewDelegate {
+    func initScrollView() {
+        mainBottomScrollView.contentOffset.y = 0
+        
+        timeZoneCenterY.constant = UIScreen.main.bounds.height
+        weeklyCenterY.constant = UIScreen.main.bounds.height
+        extraCenterY.constant = UIScreen.main.bounds.height
+    }
+    
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        initScrollView()
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
             if lastContentOffset < scrollView.contentOffset.y, scrollView.contentOffset.y >= 200 {
