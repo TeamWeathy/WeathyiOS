@@ -81,11 +81,14 @@ class ModifyWeathyTextVC: UIViewController {
         if originalText.isEmpty {
             wordCountLabel.text = "0"
             wordCountLabel.textColor = UIColor.subGrey6
+            recordTextView.text = placeholder
+            recordTextView.textColor = .subGrey8
         }
         /// 원래 입력된 텍스트가 있으면
         else {
             wordCountLabel.text = "\(originalText.count)"
             wordCountLabel.textColor = UIColor.mintIcon
+            textExists()
         }
         
         photoImageView.imageFromUrl(weathyData?.imgUrl)
