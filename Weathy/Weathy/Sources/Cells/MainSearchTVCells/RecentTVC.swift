@@ -20,14 +20,14 @@ class RecentTVC: UITableViewCell {
     
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var radiusView: UIView!
-    @IBOutlet weak var weatherDate: UILabel!
-    @IBOutlet weak var weatherTime: UILabel!
-    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var weatherDateLabel: SpacedLabel!
+    @IBOutlet weak var weatherTimeLabel: SpacedLabel!
+    @IBOutlet weak var location: SpacedLabel!
     @IBOutlet weak var weahterImage: UIImageView!
-    @IBOutlet weak var currentTemper: UILabel!
-    @IBOutlet weak var highTemper: UILabel!
-    @IBOutlet weak var lowTemper: UILabel!
-    @IBOutlet weak var slashLabel: UILabel!
+    @IBOutlet weak var currentTemper: SpacedLabel!
+    @IBOutlet weak var highTemper: SpacedLabel!
+    @IBOutlet weak var lowTemper: SpacedLabel!
+    @IBOutlet weak var slashLabel: SpacedLabel!
     
     //MARK: - Custom Variables
     
@@ -48,7 +48,7 @@ class RecentTVC: UITableViewCell {
         return stackView
     }()
     
-    let backButton: UIButton = {
+    let deleteButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("삭제", for: .normal)
         btn.setTitleColor(.black, for: .normal)
@@ -56,6 +56,7 @@ class RecentTVC: UITableViewCell {
         btn.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha:0.1)
         btn.layer.cornerRadius = 35
         btn.dropShadow(color: .black, offSet: CGSize(width: 0, height: 0), opacity: 0.7, radius: 1)
+        
         return btn
     }()
     
@@ -70,21 +71,21 @@ class RecentTVC: UITableViewCell {
         textColor()
         textFont()
     }
-
+    
     //MARK: - @objc Methods
     
     func didSwipe() {
-            delegate?.swipeCell(indexPath: indexPath!)
+        delegate?.swipeCell(indexPath: indexPath!)
     }
     
     func bind(weatherDate: String, weahterTime: String, location: String, weatherImage: String, currentTemper: String, highTemper: String, lowTemper: String){
-        self.weatherDate.text = weatherDate
-        self.weatherTime.text = weahterTime
+        self.weatherDateLabel.text = weatherDate
+        self.weatherTimeLabel.text = weahterTime
         self.location.text = location
         self.weahterImage.image = UIImage(named: weatherImage)
         self.currentTemper.text = currentTemper
         self.highTemper.text = highTemper
-        self.lowTemper.text = " \(lowTemper)"
+        self.lowTemper.text = "\(lowTemper)"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -99,20 +100,27 @@ class RecentTVC: UITableViewCell {
     }
     
     func textFont(){
-        weatherDate.font = UIFont.SDGothicRegular15
-        weatherDate.textColor = UIColor.subGrey1
+        weatherDateLabel.font = UIFont.SDGothicRegular15
         location.font = UIFont.SDGothicSemiBold17
-        location.textColor = UIColor.subGrey1
-        weatherTime.font = UIFont.SDGothicRegular15
+        weatherTimeLabel.font = UIFont.SDGothicRegular15
         currentTemper.font = UIFont.RobotoLight50
         highTemper.font = UIFont.RobotoLight23
         lowTemper.font = UIFont.RobotoLight23
-//        slashLabel.font = UIFont.RobotoLight23
+        //        slashLabel.font = UIFont.RobotoLight23
     }
     
     func textColor(){
+        weatherDateLabel.textColor = UIColor.subGrey1
+        location.textColor = UIColor.mainGrey
+        weatherTimeLabel.textColor = .subGrey1
+        currentTemper.textColor = .subGrey1
+        slashLabel.textColor = UIColor(red: 107/255, green: 107/255, blue: 107/255, alpha: 1)
         highTemper.textColor = .redTemp
         lowTemper.textColor = .blueTemp
+    }
+    
+    @objc func deleteAction(_ sender: Any){
+        didSwipe()
     }
     
     // MARK: - Action
@@ -129,7 +137,7 @@ class RecentTVC: UITableViewCell {
                 self.layoutIfNeeded()
             }
         }
-
+        
         switch sender.state {
         
         case .ended:
@@ -169,7 +177,7 @@ class RecentTVC: UITableViewCell {
         backView.frame = self.bounds
         self.contentView.addSubview(backView)
         self.contentView.addSubview(buttonStack)
-        buttonStack.addArrangedSubview(backButton)
+        buttonStack.addArrangedSubview(deleteButton)
         
         addGesture()
     }
@@ -177,6 +185,7 @@ class RecentTVC: UITableViewCell {
     private func addGesture() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPanAction(_:)))
         backView.addGestureRecognizer(panGesture)
+        deleteButton.addTarget(self, action: #selector(deleteAction(_:)), for: .touchUpInside)
     }
     
     // MARK: - Layout
@@ -185,7 +194,7 @@ class RecentTVC: UITableViewCell {
         leadingConstraint = backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
         
         deletTrailingConstraint = trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-
+        
         
         NSLayoutConstraint.activate([
             leadingConstraint,
