@@ -38,7 +38,6 @@ class MainGPSPopupVC: UIViewController {
         popupSmallerDesriptionLabel.textColor = .subGrey6
         
         popupConfirmButton.backgroundColor = .mintMain
-        print(popupConfirmButton.frame.height/2)
         popupConfirmButton.makeRounded(cornerRadius: popupConfirmButton.bounds.height/2)
         popupConfirmButton.setTitleColor(.white, for: .normal)
         popupConfirmButton.titleLabel?.font = .SDGothicRegular16
