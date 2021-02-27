@@ -55,6 +55,7 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
         MonthlyWeathyService.shared.getMonthlyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), startDate: selectedDate.startDate, endDate: selectedDate.endDate){ (networkResult) -> (Void) in
             switch networkResult {
                 case .success(let data):
+                    print("[Monthly] success")
                     if let monthlyData = data as? [CalendarOverview?]{
                         self.monthlyWeathyList = monthlyData
                         DispatchQueue.main.async {
@@ -62,8 +63,30 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
                         }
                     }
                     
-                case .requestErr(let msg):
-                    print("[Monthly] requestErr",msg)
+                case .requestErr(let statusCode):
+                    print("[Monthly] requestErr", statusCode)
+                    if let code = statusCode as? Int {
+                        print("[Monthly] requestErr", code)
+                        if code == 401{
+                            LoginService.shared.postLogin(uuid: UserDefaults.standard.string(forKey: "UUID") ?? ""){ (networkResult) -> (Void) in
+                                switch networkResult{
+                                    case .success(let data):
+                                        if let loginData = data as? UserData{
+                                            print("Token is renewed")
+                                            UserDefaults.standard.setValue(loginData.token, forKey: "token")
+                                        }
+                                    case .requestErr(let message):
+                                        print("[Login] requestErr", message)
+                                    case .pathErr:
+                                        print("[Login] pathErr")
+                                    case .serverErr:
+                                        print("[Login] serverErr")
+                                    case .networkFail:
+                                        print("[Login] networkFail")
+                                }
+                            }
+                        }
+                    }
                 case .serverErr:
                     print("[Monthly] serverErr")
                 case .networkFail:

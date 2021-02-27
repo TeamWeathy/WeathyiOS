@@ -109,7 +109,7 @@ class ChangeNickNameVC: UIViewController {
             switch NetworkResult{
             case .success(let data):
                 
-                if let modifyData = data as? UserInformation{
+                if let modifyData = data as? UserData{
                     UserDefaults.standard.setValue(modifyData.user.nickname, forKey: "nickname")
                     
                     self.nickName = modifyData.user.nickname

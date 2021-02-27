@@ -573,7 +573,6 @@ extension CalendarVC: UICollectionViewDataSource{
             cell.monthlyWeathyList = [] 
             cell.monthCellDelegate = self
             cell.selectedDateDidChange(infiniteMonthList[indexPath.item])
-            cell.callMonthlyWeathy()
             CATransaction.begin()
             CATransaction.setDisableActions (true)
             if isFromBatch{
