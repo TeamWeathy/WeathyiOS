@@ -32,7 +32,8 @@ class MainSearchVC: UIViewController {
     
     //MARK: - IBOutlets
     
-    @IBOutlet weak var backView: UIImageView!       // 날씨에 따른 뒤 배경
+    // 날씨에 따른 뒤 배경
+    @IBOutlet weak var backView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
     
@@ -213,7 +214,8 @@ extension MainSearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == recentTableView{
             return appDelegate.appDelegateRecentInfos.count
-        }else{
+        }
+        else{
             return searchInformations.count
         }
     }
@@ -232,14 +234,25 @@ extension MainSearchVC: UITableViewDataSource {
             
             return recentCell
         }else{
-            guard let searchCell = searchTableView.dequeueReusableCell(withIdentifier: SearchTVC.identifier, for: indexPath) as? SearchTVC else { return UITableViewCell() }
+            if isFromRecord == false {
+                guard let searchCell = searchTableView.dequeueReusableCell(withIdentifier: SearchTVC.identifier, for: indexPath) as? SearchTVC else { return UITableViewCell() }
+                
+                //            print("잘 받아왔어?\(self.searchInfos)")
+                
+                searchCell.bind(weatherDate:
+                                    "\(self.searchInformations[indexPath.row].dailyWeather.date.month)월 \(self.searchInformations[indexPath.row].dailyWeather.date.day)일 \(self.searchInformations[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: self.searchInformations[indexPath.row].hourlyWeather.time, location: self.searchInformations[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(self.searchInformations[indexPath.row].hourlyWeather.climate.iconId), currentTemper: "\(self.searchInformations[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(self.searchInformations[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(self.searchInformations[indexPath.row].dailyWeather.temperature.minTemp)°")
+                
+                return searchCell
+            } else { /// isFromRecord == true
+                print(">>> I'm here (isFromRecord)")
+                guard let searchCell = searchTableView.dequeueReusableCell(withIdentifier: RecordModifySearchTVC.identifier, for: indexPath) as? RecordModifySearchTVC else { return UITableViewCell() }
+                
+                searchCell.bind(weatherDate:
+                                    "\(self.searchInformations[indexPath.row].dailyWeather.date.month)월 \(self.searchInformations[indexPath.row].dailyWeather.date.day)일 \(self.searchInformations[indexPath.row].dailyWeather.date.dayOfWeek)", location: self.searchInformations[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(self.searchInformations[indexPath.row].hourlyWeather.climate.iconId), highTemper:  "\(self.searchInformations[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(self.searchInformations[indexPath.row].dailyWeather.temperature.minTemp)°")
+                
+                return searchCell
+            }
             
-            //            print("잘 받아왔어?\(self.searchInfos)")
-            
-            searchCell.bind(weatherDate:
-                                "\(self.searchInformations[indexPath.row].dailyWeather.date.month)월 \(self.searchInformations[indexPath.row].dailyWeather.date.day)일 \(self.searchInformations[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: self.searchInformations[indexPath.row].hourlyWeather.time, location: self.searchInformations[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(self.searchInformations[indexPath.row].hourlyWeather.climate.iconId), currentTemper: "\(self.searchInformations[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(self.searchInformations[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(self.searchInformations[indexPath.row].dailyWeather.temperature.minTemp)°")
-            
-            return searchCell
         }
     }
 }

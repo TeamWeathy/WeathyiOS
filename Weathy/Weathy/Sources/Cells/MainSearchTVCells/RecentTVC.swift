@@ -15,7 +15,11 @@ protocol CellDelegate {
 class RecentTVC: UITableViewCell {
     
     static let identifier = "RecentTVC"
-
+    
+    //MARK: - IBOutlets
+    
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var radiusView: UIView!
     @IBOutlet weak var weatherDate: UILabel!
     @IBOutlet weak var weatherTime: UILabel!
     @IBOutlet weak var location: UILabel!
@@ -31,11 +35,6 @@ class RecentTVC: UITableViewCell {
     var deletTrailingConstraint: NSLayoutConstraint!
     var indexPath: IndexPath?
     var delegate: CellDelegate?
-    
-    //MARK: - IBOutlets
-    
-    @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var radiusView: UIView!
     
     // MARK: - UI
     

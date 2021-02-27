@@ -8,10 +8,17 @@
 import UIKit
 
 class SearchTVC: UITableViewCell {
-
+    
+    //MARK: - Custom Variables
     
     static let identifier = "SearchTVC"
+    
+    var leadingConstraint: NSLayoutConstraint!
+    var deletTrailingConstraint: NSLayoutConstraint!
 
+    //MARK: - IBOutlets
+    
+    @IBOutlet weak var radiusView: UIView!
     @IBOutlet weak var weatherDate: UILabel!
     @IBOutlet weak var weatherTime: UILabel!
     @IBOutlet weak var location: UILabel!
@@ -21,19 +28,10 @@ class SearchTVC: UITableViewCell {
     @IBOutlet weak var lowTemper: UILabel!
     @IBOutlet weak var slashLabel: UILabel!
     
-    //MARK: - Custom Variables
-    
-    var leadingConstraint: NSLayoutConstraint!
-    var deletTrailingConstraint: NSLayoutConstraint!
-    
-    //MARK: - IBOutlets
-    
-    @IBOutlet weak var radiusView: UIView!
+    //MARK: - LifeCycle Methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //MARK: - LifeCycle Methods
         
         shadowSet()
         textColor()
@@ -67,7 +65,6 @@ class SearchTVC: UITableViewCell {
         currentTemper.font = UIFont.RobotoLight50
         highTemper.font = UIFont.RobotoLight23
         lowTemper.font = UIFont.RobotoLight23
-//        slashLabel.font = UIFont.RobotoLight23
     }
     
     func textColor(){

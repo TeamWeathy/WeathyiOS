@@ -66,6 +66,7 @@
 		374D490B259F6CAD00152B9A /* RecordTagTitleCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D490A259F6CAD00152B9A /* RecordTagTitleCVC.swift */; };
 		37613DB025E3EE63004590FD /* RecordStartPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37613DAF25E3EE63004590FD /* RecordStartPopUpVC.swift */; };
 		37613DD025E9700E004590FD /* ModifyWeathyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37613DCF25E9700E004590FD /* ModifyWeathyData.swift */; };
+		37613DE325EA8B43004590FD /* RecordModifySearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37613DE225EA8B43004590FD /* RecordModifySearchTVC.swift */; };
 		37C301F925DD6B29008A30D7 /* Closet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C301F825DD6B28008A30D7 /* Closet.swift */; };
 		37D3476F25ADB7BD0069247F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */; };
 		37FB8AA825AE4FA5001A6287 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FB8AA725AE4FA5001A6287 /* Splash.storyboard */; };
@@ -205,6 +206,7 @@
 		374D490A259F6CAD00152B9A /* RecordTagTitleCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagTitleCVC.swift; sourceTree = "<group>"; };
 		37613DAF25E3EE63004590FD /* RecordStartPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStartPopUpVC.swift; sourceTree = "<group>"; };
 		37613DCF25E9700E004590FD /* ModifyWeathyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModifyWeathyData.swift; path = Weathy/Sources/Models/ModifyWeathyData.swift; sourceTree = SOURCE_ROOT; };
+		37613DE225EA8B43004590FD /* RecordModifySearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModifySearchTVC.swift; sourceTree = "<group>"; };
 		37C301F825DD6B28008A30D7 /* Closet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closet.swift; sourceTree = "<group>"; };
 		37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		37FB8AA725AE4FA5001A6287 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 			children = (
 				0E3133F725A4EB5C0059028C /* RecentTVC.swift */,
 				0E75F65725AD800A00D98633 /* SearchTVC.swift */,
+				37613DE225EA8B43004590FD /* RecordModifySearchTVC.swift */,
 			);
 			path = MainSearchTVCells;
 			sourceTree = "<group>";
@@ -1067,6 +1070,7 @@
 				ABB84F7825DD713E000D2BFB /* Region.swift in Sources */,
 				AB3D207225B047DD0030514B /* HourlyWeatherData.swift in Sources */,
 				0E6463D825DD6ADD00A9E591 /* User.swift in Sources */,
+				37613DE325EA8B43004590FD /* RecordModifySearchTVC.swift in Sources */,
 				0E75F67925AF3E5600D98633 /* createUserService.swift in Sources */,
 				63D3C53925A4A57500E5FDFE /* SpacedLabel.swift in Sources */,
 				3735AE3425A8F24C00E71DC3 /* RecordTagAddPopupVC.swift in Sources */,
