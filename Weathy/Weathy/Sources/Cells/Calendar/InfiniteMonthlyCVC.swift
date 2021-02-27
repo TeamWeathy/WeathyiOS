@@ -32,8 +32,7 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     //MARK: - IBOutlets
     
     @IBOutlet weak var monthlyCalendarCV: UICollectionView!
-    @IBOutlet weak var monthlyCalendarHeightConstraint: NSLayoutConstraint!
-    
+
     override func awakeFromNib(){
         super.awakeFromNib()
         monthlyCalendarCV.delegate = self
@@ -164,15 +163,32 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthlyCalendarCVC.identifier, for: indexPath) as? MonthlyCalendarCVC else { return UICollectionViewCell() }
-//        if selectedDate.monthlyLines == 4{
-//            cell.layoutTopConstraint.constant = 21
-//        }
-//        else if selectedDate.monthlyLines == 5{
-//            cell.layoutTopConstraint.constant = 10
-//        }
-//        else if selectedDate.monthlyLines == 6{
-//            cell.layoutTopConstraint.constant = 2
-//        }
+        let hasNotch = UIScreen.main.hasNotch
+        if selectedDate.monthlyLines == 4{
+            cell.climateIconTopConstraint.constant = 3
+            cell.temperatureViewTopConstraint.constant = 7
+            if !hasNotch{
+                
+            }
+            
+        }
+        else if selectedDate.monthlyLines == 5{
+            cell.climateIconTopConstraint.constant = 2
+            cell.temperatureViewTopConstraint.constant = 6.5
+            if !hasNotch{
+                
+            }
+        }
+        else if selectedDate.monthlyLines == 6{
+            cell.climateIconTopConstraint.constant = 2
+            cell.temperatureViewTopConstraint.constant = 1.6
+            if !hasNotch{
+                cell.climateIconWidthConstraint.constant = 1
+                cell.temperatureViewTopConstraint.constant = 0.5
+                cell.temperatureWidthConstraint.constant = 27
+                cell.climateIconWidthConstraint.constant = 15
+            }
+        }
         cell.setDay()
         ///이번달
         if indexPath.item >= selectedDate.firstWeekday && indexPath.item < selectedDate.firstWeekday+selectedDate.numberOfMonth{

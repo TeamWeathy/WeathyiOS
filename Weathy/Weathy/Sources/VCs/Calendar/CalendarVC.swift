@@ -572,7 +572,6 @@ extension CalendarVC: UICollectionViewDataSource{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteMonthlyCVC.identifier, for: indexPath) as? InfiniteMonthlyCVC else { return UICollectionViewCell() }
             cell.monthlyWeathyList = [] 
             cell.monthCellDelegate = self
-            cell.monthlyCalendarHeightConstraint.constant = calendarHeight
             cell.selectedDateDidChange(infiniteMonthList[indexPath.item])
             cell.callMonthlyWeathy()
             CATransaction.begin()
