@@ -820,12 +820,12 @@ extension MainVC: UICollectionViewDelegate {
         extraCenterY.constant = UIScreen.main.bounds.height
     }
     
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        initScrollView()
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
-            if scrollView.contentOffset.y == .zero {
-                initScrollView()
-            }
-            
             if lastContentOffset < scrollView.contentOffset.y, scrollView.contentOffset.y >= 200 {
                 viewScrollDown()
             } else if lastContentOffset > scrollView.contentOffset.y, scrollView.contentOffset.y <= 500 {
