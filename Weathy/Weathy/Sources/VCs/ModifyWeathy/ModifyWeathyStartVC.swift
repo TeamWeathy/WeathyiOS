@@ -128,6 +128,7 @@ class ModifyWeathyStartVC: UIViewController {
         guard let searchVC = searchStoryBoard.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else {return}
         
         searchVC.isFromRecord = true
+        searchVC.dateFromRecord = dateString
         searchVC.modalPresentationStyle = .fullScreen
         
         present(searchVC, animated: true, completion: nil)

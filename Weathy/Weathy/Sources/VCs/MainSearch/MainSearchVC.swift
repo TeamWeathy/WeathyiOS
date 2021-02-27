@@ -29,6 +29,7 @@ class MainSearchVC: UIViewController {
     var gradient: String = ""
     
     var isFromRecord: Bool = false
+    var dateFromRecord: String = "0000-00-00"
     
     //MARK: - IBOutlets
     
@@ -151,7 +152,8 @@ class MainSearchVC: UIViewController {
                 /// 맨 마지막에 검색한 text만 서버에 연결하기 위해!
                 if searchText == self.searchTextField.text {
                     /// 서버 연결!
-                    searchService.shared.searchWheatherget(keyword: searchText, date: self.dateFormatter.string(from: Date())){(NetworkResult) -> (Void) in
+                    
+                    searchService.shared.searchWheatherget(keyword: searchText, date: self.isFromRecord == true ? self.dateFromRecord : self.dateFormatter.string(from: Date())){(NetworkResult) -> (Void) in
                         switch NetworkResult{
                         case .success(let data):
                             /// 원상복귀
