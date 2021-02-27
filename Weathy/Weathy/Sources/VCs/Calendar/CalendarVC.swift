@@ -474,7 +474,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
         setWeekdayColor()
         ///미래 날짜로 스크롤 disable 시킴
         let gesture = scrollView.panGestureRecognizer
-        if scrollView == infiniteMonthlyCV{
+        if scrollView == infiniteWeeklyCV{
             ///오른쪽 스크롤
             if gesture.velocity(in: scrollView).x < 0{
                 scrollDirection = .right
@@ -482,30 +482,27 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                     //                    infiniteMonthlyCV.isScrollEnabled = false
                 }
             }
-            else if gesture.velocity(in: scrollView).x > 0{
-                scrollDirection = .left
-            }
         }
-        else if scrollView == infiniteWeeklyCV{
-            if gesture.velocity(in: scrollView).x < 0{
-                scrollDirection = .right
-                var leftDateComponent = DateComponents()
-                leftDateComponent.day = -(selectedDate.weekday+1)
-                var rightDateComponent = DateComponents()
-                rightDateComponent.day = 7 - selectedDate.weekday
-                let leftDate = Calendar.current.date(byAdding: leftDateComponent, to: Date())
-                let rightDate = Calendar.current.date(byAdding: rightDateComponent, to: Date())
-                if leftDate!.compare(Date()) == .orderedAscending
-                    && rightDate!.compare(Date()) == .orderedDescending{
-                    //                    infiniteWeeklyCV.isScrollEnabled = false
-                    infiniteWeeklyCV.isScrollEnabled = true
-                }
-            }
-            else if gesture.velocity(in: scrollView).x > 0{
-                scrollDirection = .left
-            }
-        }
-        infiniteMonthlyCV.isScrollEnabled = true
+//        else if scrollView == infiniteWeeklyCV{
+//            if gesture.velocity(in: scrollView).x < 0{
+//                scrollDirection = .right
+//                var leftDateComponent = DateComponents()
+//                leftDateComponent.day = -(selectedDate.weekday+1)
+//                var rightDateComponent = DateComponents()
+//                rightDateComponent.day = 7 - selectedDate.weekday
+//                let leftDate = Calendar.current.date(byAdding: leftDateComponent, to: Date())
+//                let rightDate = Calendar.current.date(byAdding: rightDateComponent, to: Date())
+//                if leftDate!.compare(Date()) == .orderedAscending
+//                    && rightDate!.compare(Date()) == .orderedDescending{
+//                    //                    infiniteWeeklyCV.isScrollEnabled = false
+//                    infiniteWeeklyCV.isScrollEnabled = true
+//                }
+//            }
+//            else if gesture.velocity(in: scrollView).x > 0{
+//                scrollDirection = .left
+//            }
+//        }
+//        infiniteMonthlyCV.isScrollEnabled = true
         
     }
     
@@ -524,13 +521,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 //                insertLeftDate()
             }
             else{
-                //                yearMonthTextView.text = infiniteMonthList[currentIndex].currentYearMonth
-                if scrollDirection == .left{
-                    selectedDate = infiniteMonthList[currentIndex]
-                }
-                else if scrollDirection == .right{
-                    selectedDate = infiniteMonthList[currentIndex]
-                }
+                selectedDate = infiniteMonthList[currentIndex]
                 selectedDateDidChange()
                 CATransaction.begin()
                 CATransaction.setDisableActions(true)
@@ -544,7 +535,12 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             yearMonthTextView.text = infiniteWeekList[currentIndex].currentYearMonth
             var addComponent = DateComponents()
             addComponent.day = lastWeekIdx
-            selectedDate = Calendar.current.date(byAdding: addComponent, to: infiniteWeekList[currentIndex])!
+            if Date().compare(Calendar.current.date(byAdding: addComponent, to: infiniteWeekList[currentIndex])!) == .orderedAscending{
+                selectedDate = Date()
+            }
+            else{
+                selectedDate = Calendar.current.date(byAdding: addComponent, to: infiniteWeekList[currentIndex])!
+            }
             selectedDateDidChange()
             weeklyCellDidSelected()
         }
