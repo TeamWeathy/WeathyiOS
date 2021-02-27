@@ -165,6 +165,15 @@ extension Date {
             return dateFormatter.string(from: endDate)
         }
     }
+    public var isToday: Bool{
+        let today = Date()
+        if self.currentYearMonth == today.currentYearMonth{
+            if self.day == today.day{
+                return true
+            }
+        }
+        return false
+    }
     
     func getStringToDate(format: String, dateString: String) -> Date {
         let dateFormatter = DateFormatter()
