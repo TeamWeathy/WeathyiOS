@@ -472,42 +472,9 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         setWeekdayColor()
-        ///미래 날짜로 스크롤 disable 시킴
-        let gesture = scrollView.panGestureRecognizer
-        if scrollView == infiniteWeeklyCV{
-            ///오른쪽 스크롤
-            if gesture.velocity(in: scrollView).x < 0{
-                scrollDirection = .right
-                if selectedDate.month == Date().month{
-                    //                    infiniteMonthlyCV.isScrollEnabled = false
-                }
-            }
-        }
-//        else if scrollView == infiniteWeeklyCV{
-//            if gesture.velocity(in: scrollView).x < 0{
-//                scrollDirection = .right
-//                var leftDateComponent = DateComponents()
-//                leftDateComponent.day = -(selectedDate.weekday+1)
-//                var rightDateComponent = DateComponents()
-//                rightDateComponent.day = 7 - selectedDate.weekday
-//                let leftDate = Calendar.current.date(byAdding: leftDateComponent, to: Date())
-//                let rightDate = Calendar.current.date(byAdding: rightDateComponent, to: Date())
-//                if leftDate!.compare(Date()) == .orderedAscending
-//                    && rightDate!.compare(Date()) == .orderedDescending{
-//                    //                    infiniteWeeklyCV.isScrollEnabled = false
-//                    infiniteWeeklyCV.isScrollEnabled = true
-//                }
-//            }
-//            else if gesture.velocity(in: scrollView).x > 0{
-//                scrollDirection = .left
-//            }
-//        }
-//        infiniteMonthlyCV.isScrollEnabled = true
-        
     }
     
     ///캘린더를 왼쪽 or 오른쪽으로 스와이프 할 때
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let x = scrollView.contentOffset.x
         currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
