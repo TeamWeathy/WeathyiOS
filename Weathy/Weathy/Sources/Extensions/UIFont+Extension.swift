@@ -21,6 +21,10 @@ extension UIFont {
     class var SDGothicRegular16: UIFont{
         return UIFont(name: "AppleSDGothicNeoR00", size: 16)!
     }
+
+    class var SDGothicRegular17: UIFont{
+        return UIFont(name: "AppleSDGothicNeoR00", size: 17)!
+    }
     
     class var SDGothicRegular18: UIFont{
         return UIFont(name: "AppleSDGothicNeoR00", size: 18)!
@@ -28,6 +32,10 @@ extension UIFont {
     
     class var SDGothicRegular20: UIFont{
         return UIFont(name: "AppleSDGothicNeoR00", size: 20)!
+    }
+    
+    class var SDGothicRegular23: UIFont{
+        return UIFont(name: "AppleSDGothicNeoR00", size: 23)!
     }
     
     class var SDGothicRegular25: UIFont{
