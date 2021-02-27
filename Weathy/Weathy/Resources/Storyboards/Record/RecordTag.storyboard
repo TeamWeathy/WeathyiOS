@@ -230,6 +230,12 @@
                                     <constraint firstAttribute="height" constant="20" id="NhG-rj-nrI"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="vPW-ZK-52J">
+                                <rect key="frame" x="111" y="389.66666666666669" width="153" height="174.00000000000006"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vPW-ZK-52J" secondAttribute="height" multiplier="153:174" id="vk6-iK-jdX"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="p2P-Xa-6hR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -239,6 +245,8 @@
                             <constraint firstItem="gPA-Vt-UcZ" firstAttribute="top" secondItem="P9G-sT-4S1" secondAttribute="bottom" constant="10" id="8ny-Wz-GJv"/>
                             <constraint firstItem="P9G-sT-4S1" firstAttribute="top" secondItem="WDW-gH-0dZ" secondAttribute="bottom" constant="31" id="9O6-6R-Ecr"/>
                             <constraint firstItem="ncI-hT-bUM" firstAttribute="centerY" secondItem="S6g-a8-t60" secondAttribute="centerY" id="D6O-wJ-8ol"/>
+                            <constraint firstItem="vPW-ZK-52J" firstAttribute="centerY" secondItem="wiX-dK-HUU" secondAttribute="centerY" constant="-5" id="FI2-D2-v43"/>
+                            <constraint firstItem="vPW-ZK-52J" firstAttribute="width" secondItem="w0K-3M-6hx" secondAttribute="width" multiplier="153:375" id="GgG-Ij-vDz"/>
                             <constraint firstItem="eay-L1-NoR" firstAttribute="top" secondItem="P9G-sT-4S1" secondAttribute="top" constant="12" id="H87-Nf-gEv"/>
                             <constraint firstItem="wiX-dK-HUU" firstAttribute="width" secondItem="w0K-3M-6hx" secondAttribute="width" multiplier="309:375" id="Hq1-HO-t9h"/>
                             <constraint firstItem="WDW-gH-0dZ" firstAttribute="leading" secondItem="P9G-sT-4S1" secondAttribute="leading" id="Ium-LB-tCy"/>
@@ -249,6 +257,7 @@
                             <constraint firstItem="8Sx-kb-nIp" firstAttribute="top" secondItem="wiX-dK-HUU" secondAttribute="bottom" constant="5" id="Vjo-tG-wDX"/>
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="trailing" secondItem="wiX-dK-HUU" secondAttribute="trailing" id="XYO-to-zVJ"/>
                             <constraint firstItem="bXL-ZL-eHK" firstAttribute="leading" secondItem="gPA-Vt-UcZ" secondAttribute="leading" constant="113" id="aZn-Uq-EXr"/>
+                            <constraint firstItem="vPW-ZK-52J" firstAttribute="centerX" secondItem="wiX-dK-HUU" secondAttribute="centerX" id="abu-36-gze"/>
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="top" secondItem="gPA-Vt-UcZ" secondAttribute="bottom" constant="60" id="bjm-K5-CcE"/>
                             <constraint firstItem="eay-L1-NoR" firstAttribute="trailing" secondItem="lOI-Su-7sH" secondAttribute="trailing" constant="-15" id="bzg-mE-whA"/>
                             <constraint firstItem="lOI-Su-7sH" firstAttribute="leading" secondItem="wiX-dK-HUU" secondAttribute="leading" id="d6k-d6-oOa"/>
@@ -276,6 +285,7 @@
                         <outlet property="explanationLabel" destination="gPA-Vt-UcZ" id="636-cy-J5m"/>
                         <outlet property="nextBtn" destination="8Sx-kb-nIp" id="Tlm-XR-FDP"/>
                         <outlet property="tagCollectionView" destination="wiX-dK-HUU" id="6Cp-qE-CeY"/>
+                        <outlet property="tagEmptyImageView" destination="vPW-ZK-52J" id="Jvh-xM-v4S"/>
                         <outlet property="tagTitleCollectionView" destination="lOI-Su-7sH" id="Jdi-EP-wRy"/>
                         <outlet property="titleLabel" destination="P9G-sT-4S1" id="3dy-qE-Zm2"/>
                         <outletCollection property="indicatorCircle" destination="ncI-hT-bUM" collectionClass="NSMutableArray" id="FTE-4a-Oeh"/>
@@ -416,6 +426,7 @@
         <image name="btnDeleteTrashCan" width="40" height="40"/>
         <image name="icDeleteText" width="20" height="20"/>
         <image name="ic_back" width="20" height="20"/>
+        <image name="imgEmpty" width="153" height="174"/>
         <image name="recordImgBottomblur" width="375" height="52"/>
         <image name="recordImgTopblur" width="375" height="52"/>
         <systemColor name="systemBackgroundColor">

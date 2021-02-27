@@ -65,6 +65,7 @@ class RecordTagVC: UIViewController {
     
     @IBOutlet var tagTitleCollectionView: UICollectionView!
     @IBOutlet var tagCollectionView: UICollectionView!
+    @IBOutlet var tagEmptyImageView: UIImageView!
     
     @IBOutlet var nextBtn: UIButton!
     
