@@ -54,9 +54,14 @@ class TimezoneWeatherCVC: UICollectionViewCell {
         }
     }
     
+    /// not used
     func scrollUpAnimation() {
-        UIView.animate(withDuration: 0.8) {
-            self.popLabel.transform = CGAffineTransform(scaleX: 0, y: -30)
+        popLabel.transform = CGAffineTransform(translationX: 0, y: -5)
+        
+        UIView.animate(withDuration: 0.8, delay: 1) {
+            self.popLabel.alpha = 0
+            self.popLabel.transform = .identity
+            self.popLabel.alpha = 1
         }
     }
 }
