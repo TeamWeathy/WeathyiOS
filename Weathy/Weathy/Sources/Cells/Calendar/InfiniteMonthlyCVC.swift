@@ -62,8 +62,12 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
                         }
                     }
                     
-                case .requestErr(let msg):
-                    print("[Monthly] requestErr",msg)
+                case .requestErr(let statusCode):
+                    if let code = statusCode as? Int {
+                        if code == 401{
+                            
+                        }
+                    }
                 case .serverErr:
                     print("[Monthly] serverErr")
                 case .networkFail:

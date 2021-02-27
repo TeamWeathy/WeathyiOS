@@ -11,7 +11,7 @@
 		0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344425A724A80059028C /* OnBoardingFirstVC.swift */; };
 		0E6463D825DD6ADD00A9E591 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6463D725DD6ADD00A9E591 /* User.swift */; };
 		0E6E9A6925AF5CFF00702706 /* modifyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */; };
-		0E6E9A7125AF7EE300702706 /* autoLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7025AF7EE300702706 /* autoLoginService.swift */; };
+		0E6E9A7125AF7EE300702706 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7025AF7EE300702706 /* LoginService.swift */; };
 		0E6E9A7625AF9E7700702706 /* searchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7525AF9E7700702706 /* searchService.swift */; };
 		0E6E9A8025AFA1FC00702706 /* SearchWeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7F25AFA1FC00702706 /* SearchWeatherInformation.swift */; };
 		0E6E9ABB25B2450000702706 /* 온보딩_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E6E9ABA25B2450000702706 /* 온보딩_1.json */; };
@@ -150,7 +150,7 @@
 		0E31344425A724A80059028C /* OnBoardingFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFirstVC.swift; sourceTree = "<group>"; };
 		0E6463D725DD6ADD00A9E591 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modifyUserService.swift; sourceTree = "<group>"; };
-		0E6E9A7025AF7EE300702706 /* autoLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autoLoginService.swift; sourceTree = "<group>"; };
+		0E6E9A7025AF7EE300702706 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		0E6E9A7525AF9E7700702706 /* searchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchService.swift; sourceTree = "<group>"; };
 		0E6E9A7F25AFA1FC00702706 /* SearchWeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWeatherInformation.swift; sourceTree = "<group>"; };
 		0E6E9ABA25B2450000702706 /* 온보딩_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "온보딩_1.json"; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 		0E6E9A6E25AF7E8200702706 /* AuthorizationAPI */ = {
 			isa = PBXGroup;
 			children = (
-				0E6E9A7025AF7EE300702706 /* autoLoginService.swift */,
+				0E6E9A7025AF7EE300702706 /* LoginService.swift */,
 			);
 			path = AuthorizationAPI;
 			sourceTree = "<group>";
@@ -1057,7 +1057,7 @@
 				6339846F259A433400339615 /* UIColor+Extensions.swift in Sources */,
 				6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */,
 				37222E7325AFA83B00577FEE /* RecordWeathyService.swift in Sources */,
-				0E6E9A7125AF7EE300702706 /* autoLoginService.swift in Sources */,
+				0E6E9A7125AF7EE300702706 /* LoginService.swift in Sources */,
 				374D490B259F6CAD00152B9A /* RecordTagTitleCVC.swift in Sources */,
 				AB09371F25AF526700F69220 /* RecommededWeathyData.swift in Sources */,
 				63C756E325B105F4003DC9FA /* DeleteWeathyData.swift in Sources */,

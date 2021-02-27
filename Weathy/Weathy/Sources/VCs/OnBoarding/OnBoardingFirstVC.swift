@@ -80,7 +80,7 @@ class OnBoardingFirstVC: UIViewController {
             guard let uuid = UserDefaults.standard.string(forKey: "UUID")
             else { return }
             
-            autoLoginService.shared.autoLoginPost(uuid: uuid) { (NetworkResult) -> Void in
+            LoginService.shared.autoLoginPost(uuid: uuid) { (NetworkResult) -> Void in
                 switch NetworkResult {
                 case .success:
                     let story = UIStoryboard(name: "Tabbar", bundle: nil)
