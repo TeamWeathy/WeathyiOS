@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CalendarDetailVC: UIViewController {
+class CalendarDetailVC: UIViewController{
     
     //MARK: - Custom Properties
     let hasNotch = UIScreen.main.hasNotch
@@ -54,6 +54,7 @@ class CalendarDetailVC: UIViewController {
     @IBOutlet weak var commentLabel: SpacedLabel!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var detailBlurView: UIImageView!
     
     //MARK: - Lifecycle Methods
     
@@ -66,8 +67,6 @@ class CalendarDetailVC: UIViewController {
         calendarVC.didMove(toParent: self)
         calendarVC.view.backgroundColor = .clear
         detailTopConstraint.constant = weeklyHeight - 30
-        let height = view.frame.height
-        let width = view.frame.width
         
         UIView.animate(withDuration: 0.1){
             self.view.layoutIfNeeded()
@@ -97,7 +96,6 @@ class CalendarDetailVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recordChanged(_:)), name: NSNotification.Name(rawValue: "RecordUpdated"), object: nil)
                 initGestureRecognizer()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
