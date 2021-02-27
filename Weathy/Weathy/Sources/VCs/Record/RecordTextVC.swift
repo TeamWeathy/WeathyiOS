@@ -328,8 +328,10 @@ extension RecordTextVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", img: imageSelected, isDelete: isDeleted, weathyId: weathyId) { (networkResult) -> (Void) in
+        
+        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText, img: imageSelected, isDelete: isDeleted, weathyId: weathyId) { (networkResult) -> (Void) in
             print("weathyId", self.weathyId)
+            
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? ModifyWeathyData {
