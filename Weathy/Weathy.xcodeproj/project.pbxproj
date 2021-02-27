@@ -21,7 +21,7 @@
 		0E75F65825AD800A00D98633 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F65725AD800A00D98633 /* SearchTVC.swift */; };
 		0E75F65B25AD984D00D98633 /* NickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F65A25AD984D00D98633 /* NickNameVC.swift */; };
 		0E75F66625AF149500D98633 /* RecordNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F66525AF149500D98633 /* RecordNVC.swift */; };
-		0E75F67525AF3DA100D98633 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F67425AF3DA100D98633 /* UserInformation.swift */; };
+		0E75F67525AF3DA100D98633 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F67425AF3DA100D98633 /* UserData.swift */; };
 		0E75F67925AF3E5600D98633 /* createUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75F67825AF3E5600D98633 /* createUserService.swift */; };
 		0E8C003125A1B7A200A31295 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8C003025A1B7A200A31295 /* Tabbar.storyboard */; };
 		0E8C003525A1B7CE00A31295 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C003425A1B7CE00A31295 /* TabbarVC.swift */; };
@@ -160,7 +160,7 @@
 		0E75F65725AD800A00D98633 /* SearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVC.swift; sourceTree = "<group>"; };
 		0E75F65A25AD984D00D98633 /* NickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameVC.swift; sourceTree = "<group>"; };
 		0E75F66525AF149500D98633 /* RecordNVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordNVC.swift; sourceTree = "<group>"; };
-		0E75F67425AF3DA100D98633 /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
+		0E75F67425AF3DA100D98633 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		0E75F67825AF3E5600D98633 /* createUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createUserService.swift; sourceTree = "<group>"; };
 		0E8C003025A1B7A200A31295 /* Tabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabbar.storyboard; sourceTree = "<group>"; };
 		0E8C003425A1B7CE00A31295 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
@@ -370,12 +370,12 @@
 			path = UserAPI;
 			sourceTree = "<group>";
 		};
-		0E75F67325AF3D4E00D98633 /* UserInformation */ = {
+		0E75F67325AF3D4E00D98633 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				0E75F67425AF3DA100D98633 /* UserInformation.swift */,
+				0E75F67425AF3DA100D98633 /* UserData.swift */,
 			);
-			path = UserInformation;
+			path = User;
 			sourceTree = "<group>";
 		};
 		0E8C002F25A1B79500A31295 /* Tabbar */ = {
@@ -674,7 +674,7 @@
 				AB09372125AFC58000F69220 /* Common */,
 				AB09370D25AE43DB00F69220 /* Main */,
 				37FB8AAD25AE52BD001A6287 /* Splash */,
-				0E75F67325AF3D4E00D98633 /* UserInformation */,
+				0E75F67325AF3D4E00D98633 /* User */,
 				0E6E9A7A25AFA1A600702706 /* SearchInformation */,
 				ABB84F7425DD710D000D2BFB /* ExtraWeather.swift */,
 				63E1A78325DD6E6800E5B41C /* WeathyClass.swift */,
@@ -1002,7 +1002,7 @@
 				63DEB26A259CD4EF00A94488 /* DummyXib.swift in Sources */,
 				0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */,
 				ABE2B93525B10B4B007F878C /* ClimateImage.swift in Sources */,
-				0E75F67525AF3DA100D98633 /* UserInformation.swift in Sources */,
+				0E75F67525AF3DA100D98633 /* UserData.swift in Sources */,
 				63C756D825B0452E003DC9FA /* DailyWeathyService.swift in Sources */,
 				37C301F925DD6B29008A30D7 /* Closet.swift in Sources */,
 				0E6E9A7625AF9E7700702706 /* searchService.swift in Sources */,

@@ -38,7 +38,7 @@ struct createUserService {
     
     private func createUserData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(UserInformation.self, from: data) else {
+        guard let decodedData = try? decoder.decode(UserData.self, from: data) else {
             return .pathErr
         }
         switch status {
