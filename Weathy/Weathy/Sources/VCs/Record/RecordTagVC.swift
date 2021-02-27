@@ -65,6 +65,7 @@ class RecordTagVC: UIViewController {
     
     @IBOutlet var tagTitleCollectionView: UICollectionView!
     @IBOutlet var tagCollectionView: UICollectionView!
+    @IBOutlet var tagEmptyImageView: UIImageView!
     
     @IBOutlet var nextBtn: UIButton!
     
@@ -361,10 +362,10 @@ extension RecordTagVC {
     
     func processDataAtLocal() {
         self.localizedClothesTagData = [
-            self.myClothesTagData!.top.clothes.count != 0 ? self.myClothesTagData!.top : Category(categoryID: 1, clothes: []),
-            self.myClothesTagData!.bottom.clothes.count != 0 ? self.myClothesTagData!.bottom : Category(categoryID: 2, clothes: []),
-            self.myClothesTagData!.outer.clothes.count != 0 ? self.myClothesTagData!.outer : Category(categoryID: 3, clothes: []),
-            self.myClothesTagData!.etc.clothes.count != 0 ? self.myClothesTagData!.etc : Category(categoryID: 4, clothes: [])
+            self.myClothesTagData!.top.clothes.count != 0 ? self.myClothesTagData!.top : Category(categoryID: 1, clothesNum: 0, clothes: []),
+            self.myClothesTagData!.bottom.clothes.count != 0 ? self.myClothesTagData!.bottom : Category(categoryID: 2, clothesNum: 0, clothes: []),
+            self.myClothesTagData!.outer.clothes.count != 0 ? self.myClothesTagData!.outer : Category(categoryID: 3, clothesNum: 0, clothes: []),
+            self.myClothesTagData!.etc.clothes.count != 0 ? self.myClothesTagData!.etc : Category(categoryID: 4, clothesNum: 0, clothes: [])
         ]
 
         makeLocalTagData()
@@ -387,6 +388,12 @@ extension RecordTagVC {
                     }
                 }
             }
+        }
+        
+        if tagTitles[titleIndex].tagTab.count == 1 {
+            tagEmptyImageView.isHidden = false
+        } else {
+            tagEmptyImageView.isHidden = true
         }
         
         
@@ -606,6 +613,12 @@ extension RecordTagVC: UICollectionViewDataSource {
                 } else {
                     tagTitles[i].isSelected = false
                 }
+            }
+            
+            if tagTitles[titleIndex].tagTab.count == 1 {
+                tagEmptyImageView.isHidden = false
+            } else {
+                tagEmptyImageView.isHidden = true
             }
             
             self.tagTitleCollectionView.reloadData()

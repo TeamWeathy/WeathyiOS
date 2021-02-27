@@ -618,7 +618,6 @@
 				0E8C003325A1B7B900A31295 /* Tabbar */,
 				0E8C004525A249A900A31295 /* Setting */,
 				0E9152DE25A399FE0048E226 /* MainSearch */,
-				63EBBF0125E9946100BDCA40 /* MainGPSPopupVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -813,6 +812,7 @@
 			isa = PBXGroup;
 			children = (
 				ABBA9CA125A2217F008785BD /* MainVC.swift */,
+				63EBBF0125E9946100BDCA40 /* MainGPSPopupVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";

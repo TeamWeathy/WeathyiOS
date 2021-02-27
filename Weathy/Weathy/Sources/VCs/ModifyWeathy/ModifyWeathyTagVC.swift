@@ -319,10 +319,10 @@ extension ModifyWeathyTagVC {
     
     func processDataAtLocal() {
         self.localizedClothesTagData = [
-            self.myClothesTagData!.top.clothes.count != 0 ? self.myClothesTagData!.top : Category(categoryID: 1, clothes: []),
-            self.myClothesTagData!.bottom.clothes.count != 0 ? self.myClothesTagData!.bottom : Category(categoryID: 2, clothes: []),
-            self.myClothesTagData!.outer.clothes.count != 0 ? self.myClothesTagData!.outer : Category(categoryID: 3, clothes: []),
-            self.myClothesTagData!.etc.clothes.count != 0 ? self.myClothesTagData!.etc : Category(categoryID: 4, clothes: [])
+            self.myClothesTagData!.top.clothes.count != 0 ? self.myClothesTagData!.top : Category(categoryID: 1, clothesNum: 0, clothes: []),
+            self.myClothesTagData!.bottom.clothes.count != 0 ? self.myClothesTagData!.bottom : Category(categoryID: 2, clothesNum: 0, clothes: []),
+            self.myClothesTagData!.outer.clothes.count != 0 ? self.myClothesTagData!.outer : Category(categoryID: 3, clothesNum: 0, clothes: []),
+            self.myClothesTagData!.etc.clothes.count != 0 ? self.myClothesTagData!.etc : Category(categoryID: 4, clothesNum: 0, clothes: [])
         ]
 
         makeLocalTagData()
@@ -575,7 +575,19 @@ extension ModifyWeathyTagVC: UICollectionViewDataSource {
                     
                     dvc.tagIndex = titleIndex + 1
                     dvc.tagCategory = tagTitles[titleIndex].title
-                    dvc.tagCount = tagTitles[titleIndex].tagTab.count-1
+                    
+                    switch titleIndex {
+                    case 0:
+                        dvc.tagCount = myClothesTagData?.top.clothesNum ?? -1
+                    case 1:
+                        dvc.tagCount = myClothesTagData?.bottom.clothesNum ?? -1
+                    case 2:
+                        dvc.tagCount = myClothesTagData?.outer.clothesNum ?? -1
+                    case 3:
+                        dvc.tagCount = myClothesTagData?.etc.clothesNum ?? -1
+                    default:
+                        dvc.tagCount = -1
+                    }
                     
                     dvc.modalPresentationStyle = .overCurrentContext
                     
