@@ -211,7 +211,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="309" height="55.333333333333336"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임을 6자 이내로 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kRw-in-8ee">
-                                        <rect key="frame" x="22" y="18.333333333333371" width="232" height="19"/>
+                                        <rect key="frame" x="22" y="0.0" width="232" height="55.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         <connections>
@@ -236,11 +236,12 @@
                                     <constraint firstItem="WdG-G6-S0u" firstAttribute="leading" secondItem="kRw-in-8ee" secondAttribute="trailing" id="6NE-W3-mMP"/>
                                     <constraint firstItem="WdG-G6-S0u" firstAttribute="width" secondItem="h9H-eH-nea" secondAttribute="width" multiplier="48:309" id="Bgv-LO-N3C"/>
                                     <constraint firstAttribute="bottom" secondItem="2Yv-Ig-uCl" secondAttribute="bottom" id="CyX-EH-koO"/>
-                                    <constraint firstItem="kRw-in-8ee" firstAttribute="centerY" secondItem="h9H-eH-nea" secondAttribute="centerY" id="KvA-XE-c9i"/>
+                                    <constraint firstAttribute="bottom" secondItem="kRw-in-8ee" secondAttribute="bottom" id="GWA-cq-j5B"/>
                                     <constraint firstAttribute="trailing" secondItem="2Yv-Ig-uCl" secondAttribute="trailing" id="cot-nw-2xp"/>
                                     <constraint firstItem="kRw-in-8ee" firstAttribute="leading" secondItem="h9H-eH-nea" secondAttribute="leading" constant="22" id="nrx-tK-yeN"/>
                                     <constraint firstItem="2Yv-Ig-uCl" firstAttribute="top" secondItem="h9H-eH-nea" secondAttribute="top" id="qy3-ky-F2b"/>
                                     <constraint firstAttribute="trailing" secondItem="WdG-G6-S0u" secondAttribute="trailing" constant="7" id="vQl-Ri-mKk"/>
+                                    <constraint firstItem="kRw-in-8ee" firstAttribute="top" secondItem="h9H-eH-nea" secondAttribute="top" id="wv3-F8-SuB"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ5-Qw-z9l">
