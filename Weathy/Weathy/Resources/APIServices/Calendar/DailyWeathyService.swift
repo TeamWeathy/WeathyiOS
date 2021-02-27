@@ -55,7 +55,7 @@ struct DailyWeathyService{
             case 200:
                 return .success(decodedData.weathy)
             case 400..<500:
-                return .requestErr(decodedData.message)
+                return .requestErr(status)
             case 500:
                 return .serverErr
             default:

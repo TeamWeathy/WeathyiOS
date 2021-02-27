@@ -73,15 +73,10 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         addNotificationObserver()
         closeDrawer()
         self.view.layoutIfNeeded()
-        let flowlayout = UICollectionViewLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let frame = self.view.frame
-        //        closeDrawer()
-        //        UIView.animate(withDuration: 0.3){
-        //            self.view.layoutIfNeeded()
-        //        }
+
         self.infiniteMonthlyCV.alpha = 0
         self.infiniteWeeklyCV.alpha = 1
         weeklyCellDidSelected()
@@ -96,7 +91,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func findIndexFromSelectedDate() -> Int{
         var firstComponent = DateComponents()
         firstComponent.day = -selectedDate.weekday
-        var firstDateOfWeek = Calendar.current.date(byAdding: firstComponent, to: selectedDate)
+        let firstDateOfWeek = Calendar.current.date(byAdding: firstComponent, to: selectedDate)
         for i in 0..<infiniteWeekList.count{
             if infiniteWeekList[i].currentYearMonth == firstDateOfWeek?.currentYearMonth{
                 if infiniteWeekList[i].day == firstDateOfWeek?.day{
@@ -263,6 +258,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //MARK: - Custom Methods - Calendar
     
     func selectedDateDidChange(){
+        print("selectedDate", selectedDate)
         picker.date = selectedDate
         lastWeekIdx = selectedDate.weekday
         NotificationCenter.default.post(
@@ -502,6 +498,8 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             yearMonthTextView.text = infiniteWeekList[currentIndex].currentYearMonth
             var addComponent = DateComponents()
             addComponent.day = lastWeekIdx
+            
+            ///선택된 날짜가 미래일 경우 오늘이 선택되도록
             if Date().compare(Calendar.current.date(byAdding: addComponent, to: infiniteWeekList[currentIndex])!) == .orderedAscending{
                 selectedDate = Date()
             }

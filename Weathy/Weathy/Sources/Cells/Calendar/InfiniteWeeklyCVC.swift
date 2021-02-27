@@ -64,9 +64,8 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
                     }
                     
                 case .requestErr(let statusCode):
-                    print("[Daily] requestErr",statusCode)
                     if let code = statusCode as? Int {
-                        print("[Daily] requestErr",code)
+                        print("[Weekly] requestErr",code)
                         if code == 401{
                             LoginService.shared.postLogin(uuid: UserDefaults.standard.string(forKey: "UUID") ?? ""){ (networkResult) -> (Void) in
                                 switch networkResult{

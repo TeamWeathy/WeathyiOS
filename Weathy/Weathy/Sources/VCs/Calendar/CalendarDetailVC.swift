@@ -309,8 +309,29 @@ class CalendarDetailVC: UIViewController {
                         self.dailyWeathy = dailyData
                         self.setData()
                     }
-                case .requestErr(let msg):
-                    print("[Daily] requestErr",msg)
+                case .requestErr(let statusCode):
+                    print("[Daily] requestErr",statusCode)
+                    if let code = statusCode as? Int {
+                        if code == 401{
+                            LoginService.shared.postLogin(uuid: UserDefaults.standard.string(forKey: "UUID") ?? ""){ (networkResult) -> (Void) in
+                                switch networkResult{
+                                    case .success(let data):
+                                        if let loginData = data as? UserData{
+                                            print("Token is renewed")
+                                            UserDefaults.standard.setValue(loginData.token, forKey: "token")
+                                        }
+                                    case .requestErr(let message):
+                                        print("[Login] requestErr", message)
+                                    case .pathErr:
+                                        print("[Login] pathErr")
+                                    case .serverErr:
+                                        print("[Login] serverErr")
+                                    case .networkFail:
+                                        print("[Login] networkFail")
+                                }
+                            }
+                        }	
+                    }
                     self.setEmptyView(state: .beforeContent)
                 case .serverErr:
                     print("[Daily] serverErr")
