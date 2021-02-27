@@ -205,7 +205,7 @@
 		374D4903259F68EE00152B9A /* TagFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
 		374D490A259F6CAD00152B9A /* RecordTagTitleCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTagTitleCVC.swift; sourceTree = "<group>"; };
 		37613DAF25E3EE63004590FD /* RecordStartPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStartPopUpVC.swift; sourceTree = "<group>"; };
-		37613DCF25E9700E004590FD /* ModifyWeathyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModifyWeathyData.swift; path = Weathy/Sources/Models/ModifyWeathyData.swift; sourceTree = SOURCE_ROOT; };
+		37613DCF25E9700E004590FD /* ModifyWeathyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModifyWeathyData.swift; path = Weathy/Sources/Models/ModifyWeathy/ModifyWeathyData.swift; sourceTree = SOURCE_ROOT; };
 		37613DE225EA8B43004590FD /* RecordModifySearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModifySearchTVC.swift; sourceTree = "<group>"; };
 		37C301F825DD6B28008A30D7 /* Closet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closet.swift; sourceTree = "<group>"; };
 		37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
