@@ -575,7 +575,19 @@ extension ModifyWeathyTagVC: UICollectionViewDataSource {
                     
                     dvc.tagIndex = titleIndex + 1
                     dvc.tagCategory = tagTitles[titleIndex].title
-                    dvc.tagCount = tagTitles[titleIndex].tagTab.count-1
+                    
+                    switch titleIndex {
+                    case 0:
+                        dvc.tagCount = myClothesTagData?.top.clothesNum ?? -1
+                    case 1:
+                        dvc.tagCount = myClothesTagData?.bottom.clothesNum ?? -1
+                    case 2:
+                        dvc.tagCount = myClothesTagData?.outer.clothesNum ?? -1
+                    case 3:
+                        dvc.tagCount = myClothesTagData?.etc.clothesNum ?? -1
+                    default:
+                        dvc.tagCount = -1
+                    }
                     
                     dvc.modalPresentationStyle = .overCurrentContext
                     
