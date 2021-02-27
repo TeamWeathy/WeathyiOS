@@ -30,6 +30,9 @@ extension UIFont {
         return UIFont(name: "AppleSDGothicNeoR00", size: 20)!
     }
     
+    class var SDGothicRegular25: UIFont{
+        return UIFont(name: "AppleSDGothicNeoR00", size: 25)!
+    }
     
     /// ApleSDGothicNeo Medium
     class var SDGothicMedium15: UIFont{

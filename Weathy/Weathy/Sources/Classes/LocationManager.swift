@@ -38,7 +38,9 @@ class LocationManager: NSObject {
         }
 
         opertationQueue.addOperation {
-            completion()
+            OperationQueue.main.addOperation {
+                completion()
+            }
         }
     }
 
