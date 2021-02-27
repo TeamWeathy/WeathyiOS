@@ -19,13 +19,13 @@ class SearchTVC: UITableViewCell {
     //MARK: - IBOutlets
     
     @IBOutlet weak var radiusView: UIView!
-    @IBOutlet weak var weatherDate: UILabel!
-    @IBOutlet weak var weatherTime: UILabel!
-    @IBOutlet weak var location: UILabel!
-    @IBOutlet weak var weahterImage: UIImageView!
-    @IBOutlet weak var currentTemper: UILabel!
-    @IBOutlet weak var highTemper: UILabel!
-    @IBOutlet weak var lowTemper: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var weatherTimeLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var weahterImageView: UIImageView!
+    @IBOutlet weak var currentTempLabel: UILabel!
+    @IBOutlet weak var highTempLabel: UILabel!
+    @IBOutlet weak var lowTempLabel: UILabel!
     @IBOutlet weak var slashLabel: UILabel!
     
     //MARK: - LifeCycle Methods
@@ -41,13 +41,13 @@ class SearchTVC: UITableViewCell {
     //MARK: - @objc Methods
     
     func bind(weatherDate: String, weahterTime: String, location: String, weatherImage: String, currentTemper: String, highTemper: String, lowTemper: String){
-        self.weatherDate.text = weatherDate
-        self.weatherTime.text = weahterTime
-        self.location.text = location
-        self.weahterImage.image = UIImage(named: weatherImage)
-        self.currentTemper.text = currentTemper
-        self.highTemper.text = highTemper
-        self.lowTemper.text = " \(lowTemper)"
+        self.dateLabel.text = weatherDate
+        self.weatherTimeLabel.text = weahterTime
+        self.locationLabel.text = location
+        self.weahterImageView.image = UIImage(named: weatherImage)
+        self.currentTempLabel.text = currentTemper
+        self.highTempLabel.text = highTemper
+        self.lowTempLabel.text = " \(lowTemper)"
     }
     
     func shadowSet(){
@@ -57,19 +57,19 @@ class SearchTVC: UITableViewCell {
     }
     
     func textFont(){
-        weatherDate.font = UIFont.SDGothicRegular15
-        weatherDate.textColor = UIColor.subGrey1
-        location.font = UIFont.SDGothicSemiBold17
-        location.textColor = UIColor.subGrey1
-        weatherTime.font = UIFont.SDGothicRegular15
-        currentTemper.font = UIFont.RobotoLight50
-        highTemper.font = UIFont.RobotoLight23
-        lowTemper.font = UIFont.RobotoLight23
+        dateLabel.font = UIFont.SDGothicRegular15
+        dateLabel.textColor = UIColor.subGrey1
+        locationLabel.font = UIFont.SDGothicSemiBold17
+        locationLabel.textColor = UIColor.subGrey1
+        weatherTimeLabel.font = UIFont.SDGothicRegular15
+        currentTempLabel.font = UIFont.RobotoLight50
+        highTempLabel.font = UIFont.RobotoLight23
+        lowTempLabel.font = UIFont.RobotoLight23
     }
     
     func textColor(){
-        highTemper.textColor = .redTemp
-        lowTemper.textColor = .blueTemp
+        highTempLabel.textColor = .redTemp
+        lowTempLabel.textColor = .blueTemp
     }
     
     // MARK: - Action
