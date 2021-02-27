@@ -284,7 +284,7 @@ class OnBoardingFirstVC: UIViewController {
         if currentPage == 1 {
             /// 오른쪽 -> 왼쪽 스와이프
             if sender.direction == .left {
-                phoneImage.image = UIImage(named: "onboarding_img_phone2")
+                phoneImage.image = UIImage(named: "onboarding_img_phone3")
                 
                 firstImage.isHidden = true
                 secondImage.isHidden = false
@@ -302,7 +302,7 @@ class OnBoardingFirstVC: UIViewController {
             if currentPage == 2 {
                 /// 오른쪽 -> 왼쪽 스와이프 (3번째 장으로 넘어갈 때)
                 if sender.direction == .left {
-                    phoneImage.image = UIImage(named: "onboarding_img_phone3")
+                    phoneImage.image = UIImage(named: "onboarding_img_phone2")
                     
                     firstImage.isHidden = true
                     secondImage.isHidden = true
@@ -340,7 +340,7 @@ class OnBoardingFirstVC: UIViewController {
             if currentPage == 3 {
                 /// 왼쪽 -> 오른쪽 스와이프
                 if sender.direction == .right {
-                    phoneImage.image = UIImage(named: "onboarding_img_phone2")
+                    phoneImage.image = UIImage(named: "onboarding_img_phone3")
                     
                     firstImage.isHidden = true
                     secondImage.isHidden = false
