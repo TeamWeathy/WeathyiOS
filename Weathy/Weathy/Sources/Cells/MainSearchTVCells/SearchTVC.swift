@@ -19,13 +19,13 @@ class SearchTVC: UITableViewCell {
     //MARK: - IBOutlets
     
     @IBOutlet weak var radiusView: UIView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var weatherTimeLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var dateLabel: SpacedLabel!
+    @IBOutlet weak var weatherTimeLabel: SpacedLabel!
+    @IBOutlet weak var locationLabel: SpacedLabel!
     @IBOutlet weak var weahterImageView: UIImageView!
-    @IBOutlet weak var currentTempLabel: UILabel!
-    @IBOutlet weak var highTempLabel: UILabel!
-    @IBOutlet weak var lowTempLabel: UILabel!
+    @IBOutlet weak var currentTempLabel: SpacedLabel!
+    @IBOutlet weak var maxTempLabel: SpacedLabel!
+    @IBOutlet weak var minTempLabel: SpacedLabel!
     @IBOutlet weak var slashLabel: UILabel!
     
     //MARK: - LifeCycle Methods
@@ -33,7 +33,7 @@ class SearchTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        shadowSet()
+        setRadiusView()
         textColor()
         textFont()
     }
@@ -46,30 +46,36 @@ class SearchTVC: UITableViewCell {
         self.locationLabel.text = location
         self.weahterImageView.image = UIImage(named: weatherImage)
         self.currentTempLabel.text = currentTemper
-        self.highTempLabel.text = highTemper
-        self.lowTempLabel.text = " \(lowTemper)"
+        self.maxTempLabel.text = highTemper
+        self.minTempLabel.text = " \(lowTemper)"
     }
     
-    func shadowSet(){
+    func setRadiusView(){
         radiusView.layer.cornerRadius = 35
-        radiusView.backgroundColor  = .white
-        radiusView.dropShadow(color: .gray, offSet: CGSize(width: 0, height: 0), opacity: 0.7, radius: 1.5)
+        radiusView.backgroundColor  = UIColor.white.withAlphaComponent(0.75)
+        radiusView.setBorder(borderColor: .subGrey7, borderWidth: 1)
     }
     
     func textFont(){
         dateLabel.font = UIFont.SDGothicRegular15
-        dateLabel.textColor = UIColor.subGrey1
+        dateLabel.characterSpacing = -0.75
         locationLabel.font = UIFont.SDGothicSemiBold17
-        locationLabel.textColor = UIColor.subGrey1
+        locationLabel.characterSpacing = -0.85
         weatherTimeLabel.font = UIFont.SDGothicRegular15
+        weatherTimeLabel.characterSpacing = -0.75
         currentTempLabel.font = UIFont.RobotoLight50
-        highTempLabel.font = UIFont.RobotoLight23
-        lowTempLabel.font = UIFont.RobotoLight23
+        maxTempLabel.font = UIFont.RobotoLight23
+        minTempLabel.font = UIFont.RobotoLight23
     }
     
     func textColor(){
-        highTempLabel.textColor = .redTemp
-        lowTempLabel.textColor = .blueTemp
+        dateLabel.textColor = .subGrey1
+        locationLabel.textColor = .mainGrey
+        weatherTimeLabel.textColor = .subGrey1
+        currentTempLabel.textColor = .subGrey1
+        slashLabel.textColor = UIColor(red: 107/255, green: 107/255, blue: 107/255, alpha: 1)
+        maxTempLabel.textColor = .redTemp
+        minTempLabel.textColor = .blueTemp
     }
     
     // MARK: - Action

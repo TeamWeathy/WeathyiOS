@@ -47,26 +47,26 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dV-9c-CrN">
                                                                     <rect key="frame" x="33" y="10" width="348" height="153"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12월 20일 일요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFt-Ub-QHc">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12월 20일 일요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFt-Ub-QHc" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                                             <rect key="frame" x="25" y="23" width="106.5" height="18"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnDelete" translatesAutoresizingMaskIntoConstraints="NO" id="o3k-6C-ejf">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchIcCircle" translatesAutoresizingMaskIntoConstraints="NO" id="o3k-6C-ejf">
                                                                             <rect key="frame" x="138.5" y="30.5" width="3" height="3"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="3" id="HbO-bG-yDF"/>
                                                                                 <constraint firstAttribute="height" constant="3" id="wTZ-pk-OkH"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 4시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-2s-fZY">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 4시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-2s-fZY" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                                             <rect key="frame" x="148.5" y="22" width="59" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울 서초구" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FI0-zR-8Fc">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울 서초구" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FI0-zR-8Fc" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                                             <rect key="frame" x="25" y="44" width="78" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                             <nil key="textColor"/>
@@ -78,74 +78,67 @@
                                                                                 <constraint firstAttribute="width" secondItem="XP1-iH-SqS" secondAttribute="height" multiplier="111:92" id="8Ea-Ei-P0N"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORq-Rd-99q">
-                                                                            <rect key="frame" x="241" y="47" width="82" height="86"/>
-                                                                            <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzq-iy-3X1">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="82" height="65.5"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="41"/>
-                                                                                    <nil key="textColor"/>
-                                                                                    <nil key="highlightedColor"/>
-                                                                                </label>
-                                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcS-wM-7VS">
-                                                                                    <rect key="frame" x="0.0" y="65.5" width="80" height="20.5"/>
-                                                                                    <subviews>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-20°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OO8-Zo-Puh">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="41" height="20.5"/>
-                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                            <nil key="textColor"/>
-                                                                                            <nil key="highlightedColor"/>
-                                                                                        </label>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgH-ft-NRU">
-                                                                                            <rect key="frame" x="41" y="0.0" width="3.5" height="20.5"/>
-                                                                                            <constraints>
-                                                                                                <constraint firstAttribute="width" constant="3.6666666666666643" id="suf-oe-F8g"/>
-                                                                                            </constraints>
-                                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                                            <nil key="textColor"/>
-                                                                                            <nil key="highlightedColor"/>
-                                                                                        </label>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-20°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9N-p3-Iqb">
-                                                                                            <rect key="frame" x="44.5" y="0.0" width="35.5" height="20.5"/>
-                                                                                            <constraints>
-                                                                                                <constraint firstAttribute="width" constant="35.333333333333343" id="xi7-5y-P60"/>
-                                                                                            </constraints>
-                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                            <nil key="textColor"/>
-                                                                                            <nil key="highlightedColor"/>
-                                                                                        </label>
-                                                                                    </subviews>
-                                                                                </stackView>
-                                                                            </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                            <constraints>
-                                                                                <constraint firstItem="rzq-iy-3X1" firstAttribute="top" secondItem="ORq-Rd-99q" secondAttribute="top" id="0RA-Y9-Ayu"/>
-                                                                                <constraint firstItem="rcS-wM-7VS" firstAttribute="top" secondItem="rzq-iy-3X1" secondAttribute="bottom" id="4eI-JO-9OS"/>
-                                                                                <constraint firstAttribute="height" constant="86" id="DY6-1p-GTM"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="rzq-iy-3X1" secondAttribute="trailing" id="O4x-Zd-Tup"/>
-                                                                                <constraint firstAttribute="bottom" secondItem="rcS-wM-7VS" secondAttribute="bottom" id="Upz-W3-1B3"/>
-                                                                                <constraint firstAttribute="width" constant="82" id="ZcR-dh-LcG"/>
-                                                                                <constraint firstItem="rcS-wM-7VS" firstAttribute="leading" secondItem="ORq-Rd-99q" secondAttribute="leading" id="ls4-5b-Iua"/>
-                                                                                <constraint firstItem="rzq-iy-3X1" firstAttribute="leading" secondItem="ORq-Rd-99q" secondAttribute="leading" id="oCM-uq-H7q"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="rcS-wM-7VS" secondAttribute="trailing" constant="2" id="vNk-bX-aag"/>
-                                                                            </constraints>
-                                                                        </view>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84V-ij-0ob">
+                                                                            <rect key="frame" x="281.5" y="113.5" width="4" height="14.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-20°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNH-8y-bnO" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                                            <rect key="frame" x="246" y="112.5" width="35.5" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                                                    <real key="value" value="-1.1499999999999999"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="985-9R-FsT" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                                            <rect key="frame" x="257" y="63.5" width="66" height="49"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                                                    <real key="value" value="-2.5"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-20°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0s-WB-7XK" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                                            <rect key="frame" x="287.5" y="112.5" width="35.5" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                                                    <real key="value" value="-1.1499999999999999"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </label>
                                                                     </subviews>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <constraints>
+                                                                        <constraint firstAttribute="bottom" secondItem="o0s-WB-7XK" secondAttribute="bottom" constant="20" id="0mh-A3-QfH"/>
                                                                         <constraint firstItem="XP1-iH-SqS" firstAttribute="leading" secondItem="FI0-zR-8Fc" secondAttribute="leading" id="16A-ZZ-VcR"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="ORq-Rd-99q" secondAttribute="bottom" constant="20" id="4lf-An-Us9"/>
+                                                                        <constraint firstItem="VNH-8y-bnO" firstAttribute="bottom" secondItem="o0s-WB-7XK" secondAttribute="bottom" id="8TO-oA-luv"/>
                                                                         <constraint firstItem="dFt-Ub-QHc" firstAttribute="leading" secondItem="4dV-9c-CrN" secondAttribute="leading" constant="25" id="Acm-9w-YB3"/>
                                                                         <constraint firstItem="YNf-2s-fZY" firstAttribute="leading" secondItem="o3k-6C-ejf" secondAttribute="trailing" constant="7" id="DiF-5i-0aN"/>
                                                                         <constraint firstItem="dFt-Ub-QHc" firstAttribute="top" secondItem="4dV-9c-CrN" secondAttribute="top" constant="23" id="FSb-aK-0ty"/>
                                                                         <constraint firstItem="o3k-6C-ejf" firstAttribute="centerY" secondItem="dFt-Ub-QHc" secondAttribute="centerY" id="IMN-Hh-5Ox"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="ORq-Rd-99q" secondAttribute="trailing" constant="25" id="LOq-qg-sCJ"/>
+                                                                        <constraint firstItem="84V-ij-0ob" firstAttribute="leading" secondItem="VNH-8y-bnO" secondAttribute="trailing" id="PXM-nf-6rk"/>
                                                                         <constraint firstItem="FI0-zR-8Fc" firstAttribute="leading" secondItem="dFt-Ub-QHc" secondAttribute="leading" id="Ra4-7T-pth"/>
                                                                         <constraint firstItem="o3k-6C-ejf" firstAttribute="leading" secondItem="dFt-Ub-QHc" secondAttribute="trailing" constant="7" id="SrE-Mk-tgm"/>
                                                                         <constraint firstAttribute="bottom" secondItem="XP1-iH-SqS" secondAttribute="bottom" id="UFc-9D-TFe"/>
                                                                         <constraint firstItem="XP1-iH-SqS" firstAttribute="top" secondItem="FI0-zR-8Fc" secondAttribute="bottom" id="bJg-qD-f3g"/>
+                                                                        <constraint firstItem="985-9R-FsT" firstAttribute="trailing" secondItem="o0s-WB-7XK" secondAttribute="trailing" id="dqq-6F-cy6"/>
+                                                                        <constraint firstItem="o0s-WB-7XK" firstAttribute="top" secondItem="985-9R-FsT" secondAttribute="bottom" id="fLd-Vx-u6m"/>
+                                                                        <constraint firstItem="o0s-WB-7XK" firstAttribute="leading" secondItem="84V-ij-0ob" secondAttribute="trailing" constant="2" id="ijP-nw-TbR"/>
+                                                                        <constraint firstItem="84V-ij-0ob" firstAttribute="bottom" secondItem="o0s-WB-7XK" secondAttribute="bottom" constant="-5" id="jSB-O6-ONx"/>
                                                                         <constraint firstItem="YNf-2s-fZY" firstAttribute="centerY" secondItem="o3k-6C-ejf" secondAttribute="centerY" id="kV6-D4-8d5"/>
                                                                         <constraint firstItem="FI0-zR-8Fc" firstAttribute="top" secondItem="dFt-Ub-QHc" secondAttribute="bottom" constant="3" id="lf8-kd-wBM"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="o0s-WB-7XK" secondAttribute="trailing" constant="25" id="r06-3n-dld"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -171,15 +164,15 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <outlet property="currentTempLabel" destination="rzq-iy-3X1" id="2Ss-WQ-o5x"/>
-                                                    <outlet property="dateLabel" destination="dFt-Ub-QHc" id="4mw-RV-gzH"/>
-                                                    <outlet property="highTempLabel" destination="OO8-Zo-Puh" id="518-ET-vWI"/>
-                                                    <outlet property="locationLabel" destination="FI0-zR-8Fc" id="tmM-w1-bqi"/>
-                                                    <outlet property="lowTempLabel" destination="y9N-p3-Iqb" id="Sjc-Lg-8QR"/>
-                                                    <outlet property="radiusView" destination="4dV-9c-CrN" id="bPq-Nq-64d"/>
-                                                    <outlet property="slashLabel" destination="kgH-ft-NRU" id="fNZ-QM-gEk"/>
-                                                    <outlet property="weahterImageView" destination="XP1-iH-SqS" id="a6F-ao-wCj"/>
-                                                    <outlet property="weatherTimeLabel" destination="YNf-2s-fZY" id="X6d-k2-0Xj"/>
+                                                    <outlet property="currentTempLabel" destination="985-9R-FsT" id="jUL-U8-xOg"/>
+                                                    <outlet property="dateLabel" destination="dFt-Ub-QHc" id="eEl-bj-3Ku"/>
+                                                    <outlet property="locationLabel" destination="FI0-zR-8Fc" id="RYZ-o8-zQl"/>
+                                                    <outlet property="maxTempLabel" destination="VNH-8y-bnO" id="uwy-Zp-QNe"/>
+                                                    <outlet property="minTempLabel" destination="o0s-WB-7XK" id="EHZ-sA-uMI"/>
+                                                    <outlet property="radiusView" destination="4dV-9c-CrN" id="TlC-lb-HII"/>
+                                                    <outlet property="slashLabel" destination="84V-ij-0ob" id="0ka-xt-scl"/>
+                                                    <outlet property="weahterImageView" destination="XP1-iH-SqS" id="eaY-1d-wKn"/>
+                                                    <outlet property="weatherTimeLabel" destination="YNf-2s-fZY" id="YoH-mY-pRN"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RecordModifySearchTVC" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecordModifySearchTVC" rowHeight="173" id="K2F-mN-laj" customClass="RecordModifySearchTVC" customModule="Weathy" customModuleProvider="target">
