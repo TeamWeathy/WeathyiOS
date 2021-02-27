@@ -194,13 +194,13 @@ extension RecordTagAddPopupVC {
                 }
             case .pathErr:
                 print("pathErr")
-                self.showToastOnTop(message: "다시 시도해주세요.")
+                self.showToastOnTop(message: "이미 등록한 옷이에요!")
             case .serverErr:
                 print("serverErr")
-                self.showToastOnTop(message: "다시 시도해주세요.")
+                self.showToastOnTop(message: "잠시 후에 다시 시도해주세요!")
             case .networkFail:
                 print("networkFail")
-                self.showToastOnTop(message: "네트워크 상태를 확인해주세요.")
+                self.showToastOnTop(message: "네트워크 상태를 확인해주세요!")
             }
         }
     }

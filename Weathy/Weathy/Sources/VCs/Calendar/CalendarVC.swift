@@ -111,7 +111,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         if !hasNotch{
             weeklyHeight -= 44
             monthlyHeight = screen.height*0.9
-            calendarHeight = monthlyHeight*0.75
+            calendarHeight = 420
             monthlyCalendarHeightConstraint.constant = calendarHeight
         }
         else{

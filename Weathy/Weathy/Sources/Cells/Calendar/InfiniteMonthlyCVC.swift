@@ -168,31 +168,7 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthlyCalendarCVC.identifier, for: indexPath) as? MonthlyCalendarCVC else { return UICollectionViewCell() }
         let hasNotch = UIScreen.main.hasNotch
-        if selectedDate.monthlyLines == 4{
-            cell.climateIconTopConstraint.constant = 3
-            cell.temperatureViewTopConstraint.constant = 7
-            cell.temperatureWidthConstraint.constant = 30
-            cell.climateIconWidthConstraint.constant = 25
-        }
-        else if selectedDate.monthlyLines == 5{
-            cell.climateIconTopConstraint.constant = 2
-            cell.temperatureViewTopConstraint.constant = 6.5
-            cell.temperatureWidthConstraint.constant = 30
-            cell.climateIconWidthConstraint.constant = 25
-            if !hasNotch{
-                cell.temperatureViewTopConstraint.constant = 5
-            }
-        }
-        else if selectedDate.monthlyLines == 6{
-            cell.climateIconTopConstraint.constant = 2
-            cell.temperatureViewTopConstraint.constant = 1.6
-            if !hasNotch{
-                cell.climateIconTopConstraint.constant = 1
-                cell.temperatureViewTopConstraint.constant = 0.5
-                cell.temperatureWidthConstraint.constant = 27
-                cell.climateIconWidthConstraint.constant = 15
-            }
-        }
+        cell.setStyle(monthlyLines: selectedDate.monthlyLines, hasNotch: hasNotch)
         cell.setDay()
         ///이번달
         if indexPath.item >= selectedDate.firstWeekday && indexPath.item < selectedDate.firstWeekday+selectedDate.numberOfMonth{
