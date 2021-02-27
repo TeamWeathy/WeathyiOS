@@ -108,7 +108,7 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         else{
             temperatureDividerWidthConstraint.constant = 9
             
-            dayLabel.font = UIFont(name: "Roboto-Medium", size: 10)
+            dayLabel.font = UIFont(name: "Roboto-Medium", size: 11)
             highLabel.font = UIFont(name: "Roboto-Regular", size: 9)
             lowLabel.font = UIFont(name: "Roboto-Regular", size: 9)
             climateIconWidthConstraint.constant = 19
