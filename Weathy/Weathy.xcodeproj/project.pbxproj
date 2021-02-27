@@ -618,7 +618,6 @@
 				0E8C003325A1B7B900A31295 /* Tabbar */,
 				0E8C004525A249A900A31295 /* Setting */,
 				0E9152DE25A399FE0048E226 /* MainSearch */,
-				63EBBF0125E9946100BDCA40 /* MainGPSPopupVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -813,6 +812,7 @@
 			isa = PBXGroup;
 			children = (
 				ABBA9CA125A2217F008785BD /* MainVC.swift */,
+				63EBBF0125E9946100BDCA40 /* MainGPSPopupVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1235,7 +1235,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = J92QJ4K4KU;
+				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1243,7 +1243,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weathy.weathy1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weathy.weathy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1258,7 +1258,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = J92QJ4K4KU;
+				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Weathy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1266,7 +1266,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weathy.weathy1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weathy.weathy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

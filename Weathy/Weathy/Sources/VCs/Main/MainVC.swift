@@ -343,15 +343,13 @@ class MainVC: UIViewController {
         
         if data.weathy.imgUrl == nil {
             weathyPhotoImage.isHidden = true
-        }
-        else{
+        } else {
             weathyPhotoImage.isHidden = false
         }
         
         if data.weathy.feedback == nil {
             weathyTextImage.isHidden = true
-        }
-        else{
+        } else {
             weathyTextImage.isHidden = false
         }
     }
@@ -690,11 +688,12 @@ class MainVC: UIViewController {
                 isOnGPS = true
             } else {
                 // 팝업 띄우기
-                let alert = UIAlertController(title: nil, message: "권한이 없어요 (그런데 아직 팝업 뷰를 만들지 않았어요)", preferredStyle: .alert)
-                let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-                alert.addAction(cancel)
+                guard let popUpVC = storyboard?.instantiateViewController(withIdentifier: "MainGPSPopupVC") as? MainGPSPopupVC else { return }
                 
-                present(alert, animated: true)
+                popUpVC.modalTransitionStyle = .crossDissolve
+                popUpVC.modalPresentationStyle = .overCurrentContext
+                
+                present(popUpVC, animated: true, completion: nil)
             }
         }
     }
