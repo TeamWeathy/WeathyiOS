@@ -19,7 +19,7 @@ class NickNameVC: UIViewController {
 //                LocationManager.shared.requestLocationAuth {
 //                    let story = UIStoryboard(name: "Tabbar", bundle: nil)
 //                    guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
-//                                            
+//
 //                    vc.modalPresentationStyle = .fullScreen
 //                    self.present(vc, animated: true, completion: nil)
 //                }
@@ -72,6 +72,8 @@ class NickNameVC: UIViewController {
         totalCountLabel.font = UIFont.SDGothicRegular13
         totalCountLabel.textColor = UIColor.subGrey6
         totalCountLabel.characterSpacing = -0.65
+        
+        textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
         
         let attr = NSMutableAttributedString(string: titleLabel.text!)
         let range = (titleLabel.text! as NSString).range(of: "닉네임")
@@ -126,7 +128,7 @@ class NickNameVC: UIViewController {
     }
     
     /// textField 모두 지우기
-    @IBAction func clearButtonDidTap(_ sender: Any) {
+    @IBAction func touchUpClearButton(_ sender: Any) {
         if !isChange {
             clearButton.isHidden = false
         } else {
@@ -134,7 +136,6 @@ class NickNameVC: UIViewController {
             
             clearButton.isHidden = true
             startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
-            textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             countLabel.textColor = UIColor.subGrey6
             countLabel.text = "0"
             nickNameTextField.text = .none
@@ -168,14 +169,12 @@ extension NickNameVC: UITextFieldDelegate {
             isChange = false
             
             startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
-            textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             clearButton.isHidden = true
             countLabel.textColor = UIColor.subGrey6
         } else {
             isChange = true
             
             startButton.setBackgroundImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
-            textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
             clearButton.isHidden = false
             countLabel.textColor = UIColor.mintMain
         }
@@ -199,8 +198,12 @@ extension NickNameVC {
         if noti.name == UIResponder.keyboardWillShowNotification {
             let adjustemnHeight = keyboardFrame.height - view.safeAreaInsets.bottom
             startButtonBottom.constant = adjustemnHeight + 16
+            
+            textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
         } else {
             startButtonBottom.constant = 16
+            
+            textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
         }
     }
 }

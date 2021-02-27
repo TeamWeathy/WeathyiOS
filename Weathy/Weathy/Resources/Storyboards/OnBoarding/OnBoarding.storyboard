@@ -225,7 +225,7 @@
                                         </constraints>
                                         <state key="normal" image="btnDelete"/>
                                         <connections>
-                                            <action selector="clearButtonDidTap:" destination="Umd-x9-smB" eventType="touchUpInside" id="S0h-2Y-4VV"/>
+                                            <action selector="touchUpClearButton:" destination="Umd-x9-smB" eventType="touchUpInside" id="S0h-2Y-4VV"/>
                                         </connections>
                                     </button>
                                 </subviews>
