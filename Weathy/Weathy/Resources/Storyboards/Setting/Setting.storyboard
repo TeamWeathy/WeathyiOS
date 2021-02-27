@@ -427,13 +427,13 @@
                                     <action selector="backButtonDidTap:" destination="v8m-hs-VH6" eventType="touchUpInside" id="VPM-XM-Q6y"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임 변경" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ui-HA-fmE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임 변경" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ui-HA-fmE" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="36.5" y="111" width="114" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="변경할 닉네임을 입력해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q95-EC-W4X">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="변경할 닉네임을 입력해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q95-EC-W4X" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="36.5" y="151" width="204.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -450,7 +450,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
-                                            <action selector="NickTextFieldDidTap:" destination="v8m-hs-VH6" eventType="editingChanged" id="mKO-lU-qzk"/>
+                                            <action selector="nickTextFieldDidTap:" destination="v8m-hs-VH6" eventType="editingChanged" id="mKO-lU-qzk"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdS-xS-MiL">
@@ -481,7 +481,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7X-JX-aly">
-                                <rect key="frame" x="36.5" y="785.5" width="341" height="60.5"/>
+                                <rect key="frame" x="52.5" y="791" width="309" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i7X-JX-aly" secondAttribute="height" multiplier="309:55" id="QfN-jX-c4N"/>
                                 </constraints>
@@ -490,13 +490,13 @@
                                     <action selector="changeButtonDidTap:" destination="v8m-hs-VH6" eventType="touchUpInside" id="vC2-jJ-XK0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfX-ks-T7T">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfX-ks-T7T" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="361.5" y="278" width="16" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHl-UF-gw1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHl-UF-gw1" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="319.5" y="278" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -507,12 +507,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="i7X-JX-aly" firstAttribute="width" secondItem="G8S-Yt-2sb" secondAttribute="width" multiplier="309:375" id="402-tj-mGl"/>
                             <constraint firstItem="6xh-y7-9IU" firstAttribute="top" secondItem="cJU-F3-1XE" secondAttribute="top" id="4Su-Pd-3Fz"/>
+                            <constraint firstItem="cHl-UF-gw1" firstAttribute="bottom" secondItem="XfX-ks-T7T" secondAttribute="bottom" id="65W-zp-X30"/>
                             <constraint firstItem="Eab-DD-lof" firstAttribute="centerX" secondItem="cJU-F3-1XE" secondAttribute="centerX" id="AbM-Ik-dOE"/>
                             <constraint firstItem="Eab-DD-lof" firstAttribute="top" secondItem="q95-EC-W4X" secondAttribute="bottom" constant="46" id="BA5-t6-VDp"/>
                             <constraint firstItem="2ui-HA-fmE" firstAttribute="top" secondItem="6xh-y7-9IU" secondAttribute="bottom" constant="19" id="EFS-zR-yAK"/>
-                            <constraint firstItem="cHl-UF-gw1" firstAttribute="centerY" secondItem="XfX-ks-T7T" secondAttribute="centerY" id="Hxr-on-Yfj"/>
+                            <constraint firstItem="i7X-JX-aly" firstAttribute="width" secondItem="58n-Cx-0zT" secondAttribute="width" multiplier="0.906158" id="Ffa-Rh-qGF"/>
                             <constraint firstItem="q95-EC-W4X" firstAttribute="leading" secondItem="58n-Cx-0zT" secondAttribute="leading" id="ILI-jJ-Xzk"/>
                             <constraint firstItem="cJU-F3-1XE" firstAttribute="bottom" secondItem="i7X-JX-aly" secondAttribute="bottom" constant="16" id="LEQ-I8-IeA"/>
                             <constraint firstItem="i7X-JX-aly" firstAttribute="centerX" secondItem="G8S-Yt-2sb" secondAttribute="centerX" id="QKT-8g-1L4"/>
