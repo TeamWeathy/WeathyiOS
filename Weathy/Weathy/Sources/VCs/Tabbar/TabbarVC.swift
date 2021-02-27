@@ -85,13 +85,19 @@ class TabbarVC: UIViewController {
 
     /// Plus 버튼
     @IBAction func plusButtonDidTap(_ sender: Any) {
-        let story = UIStoryboard(name: "RecordStart", bundle: nil)
-        guard let vc = story.instantiateViewController(withIdentifier: RecordNVC.identifier) as? RecordNVC else { return }
-        
-        vc.origin = .plusRecord
-        vc.modalPresentationStyle = .fullScreen
-        
-        present(vc, animated: true, completion: nil)
+        let recentRecordDateString = UserDefaults.standard.string(forKey: "recentRecordDate")
+        if recentRecordDateString == Date().getDateToString(format: "yyyy-MM-dd", date: Date()){
+            self.showToast(message: "웨디는 하루에 하나만 기록할 수 있어요.")
+        }
+        else{
+            let nextStoryboard = UIStoryboard(name: "RecordStart", bundle: nil)
+            guard let vc = nextStoryboard.instantiateViewController(withIdentifier: RecordNVC.identifier) as? RecordNVC else { return }
+            
+            vc.origin = .plusRecord
+            vc.modalPresentationStyle = .fullScreen
+            
+            present(vc, animated: true, completion: nil)
+        }
     }
 
     /// Calendar 버튼
