@@ -107,119 +107,14 @@
             </objects>
             <point key="canvasLocation" x="-410.39999999999998" y="-96.059113300492612"/>
         </scene>
-        <!--Example SecondVC-->
-        <scene sceneID="Odu-as-C8g">
-            <objects>
-                <viewController storyboardIdentifier="ExampleSecondVC" id="7cv-9h-QV6" customClass="ExampleSecondVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kG6-EL-qlA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hY9-hX-ItY">
-                                <rect key="frame" x="21" y="59" width="20" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="clear" catalog="system">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
-                                </state>
-                                <connections>
-                                    <action selector="backPressBtn:" destination="7cv-9h-QV6" eventType="touchUpInside" id="s8M-Yn-neH"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="qd9-0N-K6Q"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FrE-g5-POW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-410" y="624"/>
-        </scene>
-        <!--Example FirstVC-->
-        <scene sceneID="Bof-1x-jVa">
-            <objects>
-                <viewController storyboardIdentifier="ExampleFirstVC" id="nCW-Jl-VGK" customClass="ExampleFirstVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YoP-el-kzy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchBgMorning" translatesAutoresizingMaskIntoConstraints="NO" id="V3I-zv-Xd2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LII-e6-KY3">
-                                <rect key="frame" x="311" y="44" width="48" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="ktR-bK-opT"/>
-                                    <constraint firstAttribute="width" constant="48" id="oUu-NQ-OFc"/>
-                                </constraints>
-                                <state key="normal" image="ic_settings"/>
-                                <connections>
-                                    <action selector="settingButtonDidTap:" destination="nCW-Jl-VGK" eventType="touchUpInside" id="Hej-2N-8Ba"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4FY-zE-YNn">
-                                <rect key="frame" x="263" y="44" width="48" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="FYU-zd-00l"/>
-                                    <constraint firstAttribute="width" constant="48" id="SQp-m9-tkB"/>
-                                </constraints>
-                                <state key="normal" image="ic_search"/>
-                                <connections>
-                                    <action selector="searchButtonDidTap:" destination="nCW-Jl-VGK" eventType="touchUpInside" id="qdT-53-Zyf"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="BSJ-i1-Ukm"/>
-                        <constraints>
-                            <constraint firstItem="V3I-zv-Xd2" firstAttribute="trailing" secondItem="BSJ-i1-Ukm" secondAttribute="trailing" id="3id-a6-JNv"/>
-                            <constraint firstItem="LII-e6-KY3" firstAttribute="top" secondItem="BSJ-i1-Ukm" secondAttribute="top" id="6Ta-eY-wOr"/>
-                            <constraint firstItem="BSJ-i1-Ukm" firstAttribute="trailing" secondItem="LII-e6-KY3" secondAttribute="trailing" constant="16" id="Bbp-pt-nan"/>
-                            <constraint firstAttribute="bottom" secondItem="V3I-zv-Xd2" secondAttribute="bottom" id="b1I-0y-OjW"/>
-                            <constraint firstItem="V3I-zv-Xd2" firstAttribute="leading" secondItem="BSJ-i1-Ukm" secondAttribute="leading" id="eRc-LN-gac"/>
-                            <constraint firstItem="LII-e6-KY3" firstAttribute="leading" secondItem="4FY-zE-YNn" secondAttribute="trailing" id="lef-62-FtD"/>
-                            <constraint firstItem="V3I-zv-Xd2" firstAttribute="top" secondItem="YoP-el-kzy" secondAttribute="top" id="nky-5K-qi9"/>
-                            <constraint firstItem="4FY-zE-YNn" firstAttribute="top" secondItem="BSJ-i1-Ukm" secondAttribute="top" id="wGm-Q9-sKw"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fAU-dT-xBY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1239.2" y="623.64532019704438"/>
-        </scene>
-        <!--Example ThirdVC-->
-        <scene sceneID="z2e-wg-Jia">
-            <objects>
-                <viewController storyboardIdentifier="ExampleThirdVC" id="5QZ-tW-shQ" customClass="ExampleThirdVC" customModule="Weathy" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VtR-L0-34l">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="AMg-jr-n7y"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mxK-Im-Xof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="410" y="624"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="clear" catalog="system" width="128" height="114"/>
         <image name="ic_calendar_selected" width="25" height="25"/>
         <image name="ic_plus" width="53" height="53"/>
-        <image name="ic_search" width="20" height="20"/>
-        <image name="ic_settings" width="20" height="20"/>
         <image name="ic_weather_selected" width="25" height="25"/>
         <image name="ic_weather_unselected_2" width="25" height="25"/>
-        <image name="searchBgMorning" width="375" height="812"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
