@@ -287,7 +287,7 @@ extension ModifyWeathyTagVC {
     }
     
     func callDisplayTagService() {
-        RecordTagService.shared.displayTag(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!) { (networkResult) -> (Void) in
+        RecordTagService.shared.displayTag(userId: UserDefaults.standard.integer(forKey: "userId"), weathyId: weathyData?.weathyId ?? 0, token: UserDefaults.standard.string(forKey: "token")!) { (networkResult) -> (Void) in
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? Closet {

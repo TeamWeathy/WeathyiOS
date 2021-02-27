@@ -43,6 +43,37 @@ struct RecordTagService {
         }
     }
     
+    func displayTag(userId:Int, weathyId: Int, token: String, completion: @escaping (NetworkResult<Any>)->(Void)) {
+        let url = APIConstants.clothesTagURL + "\(userId)" + "/clothes" + "?weathy_id=\(weathyId)"
+        
+        let header: HTTPHeaders = [
+            "Content-Type" : "application/json",
+            "x-access-token" : token
+        ]
+        
+        let dataRequest = AF.request(url,
+                                     method: .get,
+                                     parameters: nil,
+                                     encoding: JSONEncoding.default,
+                                     headers: header)
+        
+        dataRequest.responseData { (response) in
+            switch response.result {
+            case .success :
+                guard let statusCode = response.response?.statusCode else {
+                    return
+                }
+                guard let data = response.value else {
+                    return
+                }
+                completion(judgeDisplayTagService(status: statusCode, data: data))
+                
+            case .failure(let err) :
+                print(err)
+            }
+        }
+    }
+    
     private func judgeDisplayTagService(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(GetClothesArrayData.self, from: data) else {
