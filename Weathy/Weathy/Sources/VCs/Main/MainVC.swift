@@ -585,7 +585,7 @@ class MainVC: UIViewController {
         UIView.animate(withDuration: 1.0, delay: 0, options: [.autoreverse, .repeat], animations: {
             self.downImage.alpha = 0
             self.downImage.alpha = 1
-        }, completion: nil)
+        })
     }
     
     func moveWeatherImage() {
@@ -812,8 +812,20 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDelegate
 
 extension MainVC: UICollectionViewDelegate {
+    func initScrollView() {
+        mainBottomScrollView.contentOffset.y = 0
+        
+        timeZoneCenterY.constant = UIScreen.main.bounds.height
+        weeklyCenterY.constant = UIScreen.main.bounds.height
+        extraCenterY.constant = UIScreen.main.bounds.height
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
+            if scrollView.contentOffset.y == .zero {
+                initScrollView()
+            }
+            
             if lastContentOffset < scrollView.contentOffset.y, scrollView.contentOffset.y >= 200 {
                 viewScrollDown()
             } else if lastContentOffset > scrollView.contentOffset.y, scrollView.contentOffset.y <= 500 {
