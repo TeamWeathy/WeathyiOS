@@ -68,7 +68,6 @@ class CalendarDetailVC: UIViewController {
         detailTopConstraint.constant = weeklyHeight - 30
         let height = view.frame.height
         let width = view.frame.width
-        print("height",height)
         
         UIView.animate(withDuration: 0.1){
             self.view.layoutIfNeeded()
