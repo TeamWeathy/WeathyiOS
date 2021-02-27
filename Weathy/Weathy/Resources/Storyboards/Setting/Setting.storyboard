@@ -18,26 +18,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wB3-mZ-Fcq">
-                                <rect key="frame" x="22.5" y="59" width="40" height="40"/>
+                                <rect key="frame" x="22.5" y="59" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wB3-mZ-Fcq" secondAttribute="height" multiplier="1:1" id="Ly3-Vf-7bm"/>
-                                    <constraint firstAttribute="width" constant="40" id="fFP-61-Era"/>
+                                    <constraint firstAttribute="width" constant="48" id="fFP-61-Era"/>
                                 </constraints>
-                                <state key="normal" image="settings_btn_close">
+                                <state key="normal" image="icClose">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
                                 </state>
                                 <connections>
                                     <action selector="backButtonDidTap:" destination="LtZ-ok-IW0" eventType="touchUpInside" id="FYD-GE-X15"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tp5-0I-7HR" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                <rect key="frame" x="36.5" y="132" width="43.5" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tp5-0I-7HR" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                <rect key="frame" x="36.5" y="140" width="43.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NeL-lU-eZP">
-                                <rect key="frame" x="36.5" y="191" width="341" height="372"/>
+                                <rect key="frame" x="36.5" y="199" width="341" height="372"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8In-cd-6ni">
                                         <rect key="frame" x="0.0" y="0.0" width="341" height="62"/>
@@ -565,13 +565,13 @@
     </scenes>
     <resources>
         <image name="btnDelete" width="16" height="16"/>
+        <image name="icClose" width="20" height="20"/>
         <image name="ic_back" width="20" height="20"/>
         <image name="settingBgDevinfo" width="375" height="812"/>
         <image name="settingBtnEditUnselected" width="307" height="55"/>
         <image name="settingFrameArrow" width="48" height="48"/>
         <image name="settingImgDevinfoText" width="232" height="627"/>
         <image name="settingImgTextfieldUnselected" width="307" height="50"/>
-        <image name="settings_btn_close" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
