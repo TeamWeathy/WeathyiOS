@@ -8,8 +8,8 @@
 import Foundation
 import Alamofire
 
-struct autoLoginService {
-    static let shared = autoLoginService()
+struct LoginService {
+    static let shared = LoginService()
     
     func autoLoginPost(uuid: String, completion: @escaping (NetworkResult<Any>) -> () ){
         
