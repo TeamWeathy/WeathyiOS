@@ -81,11 +81,14 @@ class ModifyWeathyTextVC: UIViewController {
         if originalText.isEmpty {
             wordCountLabel.text = "0"
             wordCountLabel.textColor = UIColor.subGrey6
+            recordTextView.text = placeholder
+            recordTextView.textColor = .subGrey8
         }
         /// 원래 입력된 텍스트가 있으면
         else {
             wordCountLabel.text = "\(originalText.count)"
             wordCountLabel.textColor = UIColor.mintIcon
+            textExists()
         }
         
         photoImageView.imageFromUrl(weathyData?.imgUrl)
@@ -294,8 +297,9 @@ extension ModifyWeathyTextVC {
     }
     
     func callModifyWeathyService() {
-        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText ?? "", img: selectedImage, isDelete: isDeleted, weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
+        ModifyWeathyService.shared.modifyWeathy(userId: UserDefaults.standard.integer(forKey: "userId"), token: UserDefaults.standard.string(forKey: "token")!, date: dateString, code: locationCode, clothArray: selectedTags, stampId: selectedStamp, feedback: enteredText, img: selectedImage, isDelete: isDeleted, weathyId: weathyData?.weathyId ?? -1) { (networkResult) -> (Void) in
             print(self.weathyData?.weathyId ?? -1)
+        
             switch networkResult {
             case .success(let data):
                 if let loadData = data as? RecordWeathyData {

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class ModifyWeathyStartVC: UIViewController {
 
@@ -118,9 +117,7 @@ class ModifyWeathyStartVC: UIViewController {
         dvc.dateString = dateString
         dvc.locationCode = locationCode
         
-        if let image = selectedImage {
-            dvc.selectedImage = image
-        }
+        dvc.selectedImage = selectedImage
         
         self.navigationController?.pushViewController(dvc, animated: false)
     }
