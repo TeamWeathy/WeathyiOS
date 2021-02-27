@@ -390,6 +390,12 @@ extension RecordTagVC {
             }
         }
         
+        if tagTitles[titleIndex].tagTab.count == 1 {
+            tagEmptyImageView.isHidden = false
+        } else {
+            tagEmptyImageView.isHidden = true
+        }
+        
         
         setMaintainedData()
     }
@@ -590,6 +596,12 @@ extension RecordTagVC: UICollectionViewDataSource {
         else if collectionView == tagTitleCollectionView {
             collectionView.deselectItem(at: indexPath, animated: false)
             tagCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            
+            if tagTitles[titleIndex].tagTab.count == 1 {
+                tagEmptyImageView.isHidden = false
+            } else {
+                tagEmptyImageView.isHidden = true
+            }
             
             /// 선택된 거 빼고 모두 isSelected를 false로 변경
             for i in 0...tagTitles.count-1 {
