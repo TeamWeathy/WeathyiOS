@@ -9,7 +9,7 @@ import UIKit
 
 protocol WeekCellDelegate{
     func selectedWeekDateDidChange(_ selectedDate: Date)
-    func todayViewDidAppear(_ weekday: Int)
+//    func todayViewDidAppear(_ weekday: Int)
 }
 
 class InfiniteWeeklyCVC: UICollectionViewCell {
@@ -200,7 +200,9 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         if indexDate.currentYearMonth == Date().currentYearMonth{
             if indexDate.day == Date().day{
                 cell.setToday()
-                weekCellDelegate?.todayViewDidAppear(indexPath.item)
+//                print("@indexDate",indexDate)
+//                print("@standardDate",standardDate)
+//                weekCellDelegate?.todayViewDidAppear(indexPath.item)
             }
             else if indexDate.day > Date().day{
                 cell.setNonCurrent()

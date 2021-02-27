@@ -152,6 +152,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func setStyle(){
         yearMonthTextView.font = UIFont(name: "Roboto-Medium", size: 25)
         yearMonthTextView.textColor = .mainGrey
+        
         calendarDrawerView.clipsToBounds = true
         calendarDrawerView.layer.cornerRadius = 35
         calendarDrawerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
@@ -166,6 +167,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         for label in weekdayLabelCollection{
             label.font = UIFont(name:"AppleSDGothicNeoM00",size: 13)
         }
+        
+        ///오늘 요일 하얗게
+        weekdayLabelCollection[selectedDate.weekday].textColor = .white
         
         infiniteMonthlyCV.clipsToBounds = true
     }
@@ -258,7 +262,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //MARK: - Custom Methods - Calendar
     
     func selectedDateDidChange(){
-        print("selectedDate", selectedDate)
+        print("@selectedDate", selectedDate)
         picker.date = selectedDate
         lastWeekIdx = selectedDate.weekday
         NotificationCenter.default.post(
@@ -274,12 +278,13 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     func weeklyCellDidSelected(){
         if let infiniteCell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
-            infiniteCell.standardDate = infiniteWeekList[currentIndex]
+//            infiniteCell.standardDate = infiniteWeekList[currentIndex]
             infiniteCell.selectedDate = selectedDate
             infiniteCell.callWeeklyWeathy()
             infiniteCell.weeklyCalendarCV.reloadData()
             infiniteCell.lastSelectedIdx = currentIndex
-            infiniteCell.weeklyCalendarCV.selectItem(at: [0,selectedDate.weekday], animated: false, scrollPosition: .bottom)
+            infiniteCell.isSelected = true
+//            infiniteCell.weeklyCalendarCV.selectItem(at: [0,selectedDate.weekday], animated: false, scrollPosition: .bottom)
             
         }
         else{
@@ -366,9 +371,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         closeDrawer()
     }
     
-    func todayViewDidAppear(_ weekday: Int){
-        weekdayLabelCollection[weekday].textColor = .white
-    }
+//    func todayViewDidAppear(_ weekday: Int){
+//        weekdayLabelCollection[weekday].textColor = .white
+//    }
     
     //MARK: - @objc methods
     
@@ -506,6 +511,13 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             else{
                 selectedDate = Calendar.current.date(byAdding: addComponent, to: infiniteWeekList[currentIndex])!
             }
+            ///요일 하얗게
+            if currentIndex == infiniteMax - 1{
+                weekdayLabelCollection[selectedDate.weekday].textColor = .white
+            }
+            else{
+                setWeekdayColor()
+            }
             selectedDateDidChange()
             weeklyCellDidSelected()
         }
@@ -550,7 +562,7 @@ extension CalendarVC: UICollectionViewDataSource{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteWeeklyCVC.identifier, for: indexPath) as? InfiniteWeeklyCVC else { return UICollectionViewCell() }
             cell.weekCellDelegate = self
             cell.standardDate = infiniteWeekList[indexPath.item]
-            cell.callWeeklyWeathy()
+//            cell.callWeeklyWeathy()
             return cell
         }
         
