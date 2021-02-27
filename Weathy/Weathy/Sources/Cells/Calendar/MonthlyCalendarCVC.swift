@@ -36,6 +36,8 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     @IBOutlet weak var highLabel: SpacedLabel!
     @IBOutlet weak var lowLabel: SpacedLabel!
     @IBOutlet weak var dividerView: UIView!
+    @IBOutlet weak var dayLabelWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var temperatureDividerWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var temperatureDividerView: UIImageView!
     @IBOutlet weak var climateIconTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var temperatureViewTopConstraint: NSLayoutConstraint!
@@ -49,14 +51,12 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         isToday = false
-        setStyle()
-        
     }
     func setClimate(_ climateId: Int){
         climateIconImageView.alpha = 1
         climateIconImageView.image = UIImage(named: ClimateImage.getClimateAssetName(climateId))
     }
-    func setStyle(){
+    func setStyle(monthlyLines: Int, hasNotch: Bool){
         self.contentView.alpha = 1
         
         dividerView.alpha = 1
@@ -64,7 +64,6 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         temperatureDividerView.alpha = 0
         
         dayLabel.backgroundColor = .clear
-        dayLabel.font = UIFont(name: "Roboto-Medium", size: 13)
         dayLabel.clipsToBounds = true
         dayLabel.layer.cornerRadius = dayLabel.frame.height / 2
         dayLabel.textColor = .mainGrey
@@ -72,16 +71,60 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         highLabel.text = ""
         highLabel.alpha = 0
         highLabel.textColor = .redTemp
-        highLabel.font = .RobotoRegular12
         highLabel.characterSpacing = -0.6
         
         lowLabel.text = ""
         lowLabel.alpha = 0
         lowLabel.textColor = .blueTemp
-        lowLabel.font = .RobotoRegular12
         lowLabel.characterSpacing = -0.6
         
         climateIconImageView.alpha = 0
+        
+        if hasNotch{
+            temperatureDividerWidthConstraint.constant = 14
+            
+            dayLabel.font = UIFont(name: "Roboto-Medium", size: 13)
+            highLabel.font = .RobotoRegular12
+            lowLabel.font = .RobotoRegular12
+            climateIconWidthConstraint.constant = 25
+            temperatureWidthConstraint.constant = 30
+            dayLabelWidthConstraint.constant = 23
+            if monthlyLines == 4{
+                climateIconTopConstraint.constant = 3
+                temperatureViewTopConstraint.constant = 7
+            }
+            else if monthlyLines == 5{
+                climateIconTopConstraint.constant = 2
+                temperatureViewTopConstraint.constant = 6.5
+                temperatureWidthConstraint.constant = 30
+            }
+            else if monthlyLines == 6{
+                climateIconTopConstraint.constant = 2
+                temperatureViewTopConstraint.constant = 1.6
+            }
+            
+        }
+        ///아이폰8 , 아이폰 SE
+        else{
+            temperatureDividerWidthConstraint.constant = 9
+            
+            dayLabel.font = UIFont(name: "Roboto-Medium", size: 10)
+            highLabel.font = UIFont(name: "Roboto-Regular", size: 9)
+            lowLabel.font = UIFont(name: "Roboto-Regular", size: 9)
+            climateIconWidthConstraint.constant = 19
+            dayLabelWidthConstraint.constant = 17
+            temperatureViewTopConstraint.constant = 2.6
+            if monthlyLines == 4{
+                climateIconTopConstraint.constant = 6
+            }
+            else if monthlyLines == 5{
+                climateIconTopConstraint.constant = 5
+            }
+            else if monthlyLines == 6{
+                climateIconTopConstraint.constant = 1
+            }
+        }
+        
     }
     func setSelectedDay(){
         dayLabel.backgroundColor = .subGrey5

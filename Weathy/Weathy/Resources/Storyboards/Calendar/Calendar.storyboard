@@ -159,7 +159,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-20°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqf-FB-afp" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                <rect key="frame" x="89" y="101" width="34.5" height="20.5"/>
+                                                <rect key="frame" x="89" y="101" width="35.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -757,10 +757,12 @@
                                                                         <outlet property="climateIconTopConstraint" destination="kWk-RJ-PHv" id="Eev-yp-QqQ"/>
                                                                         <outlet property="climateIconWidthConstraint" destination="i83-nE-xfQ" id="uUf-oS-KWD"/>
                                                                         <outlet property="dayLabel" destination="HBi-qq-hlx" id="BPK-uT-bRt"/>
+                                                                        <outlet property="dayLabelWidthConstraint" destination="kl4-r0-kzd" id="bFA-go-L5t"/>
                                                                         <outlet property="dividerView" destination="Ngs-EP-ByP" id="6WT-Vp-LJc"/>
                                                                         <outlet property="highLabel" destination="vQ6-44-TyD" id="Gqf-QM-RKw"/>
                                                                         <outlet property="lowLabel" destination="Twg-iT-6Jz" id="CwJ-YZ-iGe"/>
                                                                         <outlet property="temperatureDividerView" destination="pvp-YE-1Sc" id="BMe-G6-tpS"/>
+                                                                        <outlet property="temperatureDividerWidthConstraint" destination="lgm-T0-Ic9" id="a6c-xa-4zi"/>
                                                                         <outlet property="temperatureView" destination="gQK-rX-Jpl" id="88t-ft-IFp"/>
                                                                         <outlet property="temperatureViewTopConstraint" destination="5R5-pZ-Lny" id="WYO-7H-gQq"/>
                                                                         <outlet property="temperatureWidthConstraint" destination="ybw-uV-K8v" id="hgj-QW-4Fe"/>
