@@ -15,11 +15,12 @@ struct Closet: Codable {
 // MARK: - Bottom
 struct Category: Codable {
     let categoryID: Int
+    let clothesNum: Int
     let clothes: [Clothes]
 
     enum CodingKeys: String, CodingKey {
         case categoryID = "categoryId"
-        case clothes
+        case clothes, clothesNum
     }
 }
 
