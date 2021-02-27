@@ -45,17 +45,18 @@ class RecentTVC: UITableViewCell {
         stackView.alignment = .fill
         stackView.spacing = 7
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.backgroundColor = .clear
         return stackView
     }()
     
     let deleteButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("삭제", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.backgroundColor = UIColor.gray
-        btn.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha:0.1)
+        btn.setTitleColor(.subGrey6, for: .normal)
+        btn.titleLabel?.font = .SDGothicSemiBold16
+        btn.backgroundColor = UIColor.subGrey5.withAlphaComponent(0.5)
         btn.layer.cornerRadius = 35
-        btn.dropShadow(color: .black, offSet: CGSize(width: 0, height: 0), opacity: 0.7, radius: 1)
+        btn.setBorder(borderColor: .subGrey7, borderWidth: 1)
         
         return btn
     }()
@@ -66,7 +67,7 @@ class RecentTVC: UITableViewCell {
         //MARK: - LifeCycle Methods
         
         initView()
-        shadowSet()
+        setRadiusView()
         configureLayout()
         textColor()
         textFont()
@@ -93,10 +94,10 @@ class RecentTVC: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func shadowSet(){
+    func setRadiusView(){
         radiusView.layer.cornerRadius = 35
-        radiusView.backgroundColor  = .white
-        radiusView.dropShadow(color: .gray, offSet: CGSize(width: 0, height: 0), opacity: 0.7, radius: 1.5)
+        radiusView.backgroundColor  = UIColor.white.withAlphaComponent(0.75)
+        radiusView.setBorder(borderColor: .subGrey7, borderWidth: 1)
     }
     
     func textFont(){

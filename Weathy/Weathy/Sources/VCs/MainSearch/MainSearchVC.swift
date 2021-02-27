@@ -273,7 +273,7 @@ extension MainSearchVC: UITableViewDelegate {
         if tableView == recentTableView {
             let cell = tableView.cellForRow(at: indexPath)
             /// Main에 넘겨줄 데이터 넣기
-//            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: appDelegate.appDelegateRecentInfos[indexPath.row])
+            //            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: appDelegate.appDelegateRecentInfos[indexPath.row])
             
             /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
             if !isFromRecord {
@@ -300,7 +300,7 @@ extension MainSearchVC: UITableViewDelegate {
             }
             
             /// Main에 넘겨줄 데이터 넣기
-//            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
+            //            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
             
             /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
             if !isFromRecord {
@@ -358,11 +358,25 @@ extension MainSearchVC: UITextFieldDelegate{
 
 extension MainSearchVC: CellDelegate {
     func swipeCell(indexPath: IndexPath) {
-        print("-----> index \(indexPath)")
+//        UIView.performWithoutAnimation{
         
-        UIView.animate(withDuration: 0.3, animations: {            self.appDelegate.appDelegateRecentInfos.remove(at: indexPath.row)
-                        self.recentTableView.deleteRows(at: [indexPath], with: .automatic)}, completion: {_ in self.recentTableView.reloadData()
-                            self.recentNonImage()
-                        })
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseIn], animations: {
+            guard let cell = self.recentTableView.cellForRow(at: indexPath) as? RecentTVC else{
+                return
+            }
+            cell.contentView.alpha = 0
+            
+        }, completion: {_ in self.recentTableView.performBatchUpdates({self.appDelegate.appDelegateRecentInfos.remove(at: indexPath.row)
+                                                                                        self.recentTableView.deleteRows(at: [indexPath], with: .automatic)}, completion: {_ in self.recentNonImage()})})
+            
+        
+            
+            
+//        }
+        
+//        UIView.animate(withDuration: 0.3, animations: {            }, completion: {_ in
+////                            self.recentTableView.reloadData()
+//                            
+//                        })
     }
 }
