@@ -35,6 +35,8 @@ class RecentTVC: UITableViewCell {
     var deletTrailingConstraint: NSLayoutConstraint!
     var indexPath: IndexPath?
     var delegate: CellDelegate?
+    var buttonFlag: Bool = false
+    var initialXPosition: CGFloat = 0.0
     
     // MARK: - UI
     
@@ -128,29 +130,24 @@ class RecentTVC: UITableViewCell {
     @objc
     func didPanAction(_ sender: UIPanGestureRecognizer) {
         let changedX = sender.translation(in: backView).x
+        initialXPosition += changedX
         
-        print("----> \(changedX)")
-        if changedX < 0 {
-            buttonStack.frame.size.width = -(changedX) - 15
-            leadingConstraint.constant = changedX
-            
-            UIView.animate(withDuration: 0.1) {
-                self.layoutIfNeeded()
-            }
-        }
+        print("----> \(initialXPosition)")
         
         switch sender.state {
         
         case .ended:
-            if  changedX > -170 && changedX < -(buttonStack.bounds.width) {
+            if  initialXPosition > -170 && initialXPosition < -(buttonStack.bounds.width) {
                 buttonStack.frame.size.width = 108
                 leadingConstraint.constant = -buttonStack.bounds.width - 15
                 
                 UIView.animate(withDuration: 0.3) {
                     self.layoutIfNeeded()
                     self.buttonStack.frame.size.width = 108
+                    self.buttonFlag = true
+                    
                 }
-            }else if changedX < -170{
+            }else if initialXPosition < -170{
                 leadingConstraint.constant = -(self.backView.frame.size.width)
                 UIView.animate(withDuration: 0.2) {
                     self.layoutIfNeeded()
@@ -164,12 +161,22 @@ class RecentTVC: UITableViewCell {
                 
             }else {
                 leadingConstraint.constant = 0
+                self.buttonFlag = false
                 UIView.animate(withDuration: 0.3) {
                     self.layoutIfNeeded()
                 }
             }
+        
         default:
-            break
+            if initialXPosition < 0 {
+                buttonStack.frame.size.width = -(initialXPosition) - 15
+                leadingConstraint.constant = initialXPosition
+                
+                UIView.animate(withDuration: 0.1) {
+                    self.layoutIfNeeded()
+                }
+            }
+            sender.setTranslation(CGPoint.zero, in: self.backView)
         }
     }
     
