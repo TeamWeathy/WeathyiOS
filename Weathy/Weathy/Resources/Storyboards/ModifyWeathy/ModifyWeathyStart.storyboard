@@ -133,10 +133,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Tk-Zf-E7Y">
-                                        <rect key="frame" x="25" y="99" width="84" height="60"/>
+                                        <rect key="frame" x="25" y="77.5" width="123.5" height="102.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="84" id="km5-In-1MP"/>
-                                            <constraint firstAttribute="height" constant="60" id="y0A-cS-K2T"/>
+                                            <constraint firstAttribute="width" secondItem="0Tk-Zf-E7Y" secondAttribute="height" multiplier="111:93" constant="1" id="Ukj-f6-MI5"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -150,10 +149,11 @@
                                     <constraint firstItem="KW2-qB-r3G" firstAttribute="bottom" secondItem="Nas-Q3-0bj" secondAttribute="bottom" id="WPG-0m-mUT"/>
                                     <constraint firstItem="0Tk-Zf-E7Y" firstAttribute="leading" secondItem="gm1-y0-AqJ" secondAttribute="leading" id="YmP-wZ-Vmf"/>
                                     <constraint firstItem="Nas-Q3-0bj" firstAttribute="leading" secondItem="x94-J6-mlk" secondAttribute="trailing" constant="3" id="YyD-YF-Csj"/>
+                                    <constraint firstItem="0Tk-Zf-E7Y" firstAttribute="height" secondItem="tEV-K0-a2K" secondAttribute="height" multiplier="93:163" id="cQV-6a-W0D"/>
                                     <constraint firstItem="x94-J6-mlk" firstAttribute="leading" secondItem="KW2-qB-r3G" secondAttribute="trailing" constant="-3" id="eNQ-MB-BFL"/>
                                     <constraint firstAttribute="trailing" secondItem="Nas-Q3-0bj" secondAttribute="trailing" constant="25" id="n7Z-1D-iBv"/>
                                     <constraint firstAttribute="width" secondItem="tEV-K0-a2K" secondAttribute="height" multiplier="309:163" id="uve-NH-AwM"/>
-                                    <constraint firstItem="0Tk-Zf-E7Y" firstAttribute="bottom" secondItem="KW2-qB-r3G" secondAttribute="bottom" id="v0d-fS-N0o"/>
+                                    <constraint firstItem="0Tk-Zf-E7Y" firstAttribute="bottom" secondItem="tEV-K0-a2K" secondAttribute="bottom" id="v0d-fS-N0o"/>
                                     <constraint firstItem="gm1-y0-AqJ" firstAttribute="leading" secondItem="6Xv-jt-BnR" secondAttribute="leading" id="vhb-nw-PeI"/>
                                 </constraints>
                             </view>

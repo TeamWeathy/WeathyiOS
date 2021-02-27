@@ -127,6 +127,7 @@ class ModifyWeathyStartVC: UIViewController {
         
         guard let searchVC = searchStoryBoard.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else {return}
         
+        searchVC.isFromRecord = true
         searchVC.modalPresentationStyle = .fullScreen
         
         present(searchVC, animated: true, completion: nil)
@@ -196,7 +197,8 @@ extension ModifyWeathyStartVC {
         boxLocationLabel.font = UIFont.SDGothicSemiBold17
         boxLocationLabel.textColor = UIColor.subGrey1
         
-        boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateAssetName(weathyData?.hourlyWeather.climate.iconId ?? -1))
+        boxWeatherImageView.image = UIImage(named: ClimateImage.getClimateSearchIllust(weathyData?.hourlyWeather.climate.iconId ?? -1))
+        boxWeatherImageView.contentMode = .scaleAspectFit
         
         maxTempLabel.text = "\(weathyData?.dailyWeather.temperature.maxTemp ?? 0)°"
         maxTempLabel.font = UIFont(name: "Roboto-Light", size: 40)
