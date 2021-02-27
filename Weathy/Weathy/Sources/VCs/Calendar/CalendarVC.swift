@@ -344,14 +344,17 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         self.infiniteWeeklyCV.contentOffset.x = self.infiniteWeeklyCV.frame.width*CGFloat(weeklyIndex)
         
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: weeklyHeight)
+        
         ///spring effect
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
         UIView.animate(withDuration: 0.3){
             self.infiniteMonthlyCV.alpha = 0
             self.infiniteWeeklyCV.alpha = 1
         }
+        if selectedDate.isToday{
+            weekdayLabelCollection[selectedDate.weekday].textColor = .white
+        }
         
-        self.view.layoutSubviews()
         panGesture.setTranslation(CGPoint.zero, in: self.view)
         weeklyCellDidSelected()
         self.isCovered = false
