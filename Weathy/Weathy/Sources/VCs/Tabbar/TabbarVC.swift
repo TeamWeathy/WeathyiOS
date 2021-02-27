@@ -90,14 +90,13 @@ class TabbarVC: UIViewController {
             self.showToast(message: "웨디는 하루에 하나만 기록할 수 있어요.")
         }
         else{
-            let story = UIStoryboard(name: "RecordStart", bundle: nil)
-            guard let vc = story.instantiateViewController(withIdentifier: RecordNVC.identifier) as? RecordNVC else { return }
+            let nextStoryboard = UIStoryboard(name: "RecordStart", bundle: nil)
+            guard let vc = nextStoryboard.instantiateViewController(withIdentifier: RecordNVC.identifier) as? RecordNVC else { return }
             
             vc.origin = .plusRecord
             vc.modalPresentationStyle = .fullScreen
             
             present(vc, animated: true, completion: nil)
-            
         }
     }
 
