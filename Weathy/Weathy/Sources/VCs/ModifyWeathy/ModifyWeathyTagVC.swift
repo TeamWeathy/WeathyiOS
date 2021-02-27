@@ -136,9 +136,7 @@ class ModifyWeathyTagVC: UIViewController {
         dvc.dateString = dateString
         dvc.locationCode = locationCode
         
-        if let image = selectedImage {
-            dvc.selectedImage = image
-        }
+        dvc.selectedImage = selectedImage
         
         self.navigationController?.pushViewController(self.dvc, animated: false)
     }
