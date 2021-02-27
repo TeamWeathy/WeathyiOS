@@ -398,6 +398,12 @@
                                     <constraint firstItem="OJS-Lx-AE2" firstAttribute="leading" secondItem="OjD-XH-60E" secondAttribute="leading" id="eOH-FQ-JEM"/>
                                 </constraints>
                             </scrollView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomNavibarBlur" translatesAutoresizingMaskIntoConstraints="NO" id="U78-4N-Oob">
+                                <rect key="frame" x="0.0" y="614" width="375" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="U78-4N-Oob" secondAttribute="height" multiplier="375:54" id="pjv-Qs-YYc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6NH-hq-cD8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -405,11 +411,14 @@
                             <constraint firstItem="aVD-Qw-6W5" firstAttribute="centerX" secondItem="6NH-hq-cD8" secondAttribute="centerX" id="6IP-Nb-Vo7"/>
                             <constraint firstItem="6NH-hq-cD8" firstAttribute="bottom" secondItem="OjD-XH-60E" secondAttribute="bottom" id="6JY-6Q-1hh"/>
                             <constraint firstItem="Z3O-5L-M7h" firstAttribute="top" secondItem="aVD-Qw-6W5" secondAttribute="bottom" constant="17" id="6LN-YT-sih"/>
+                            <constraint firstItem="U78-4N-Oob" firstAttribute="leading" secondItem="6NH-hq-cD8" secondAttribute="leading" id="Fhz-6h-TiJ"/>
                             <constraint firstItem="OjD-XH-60E" firstAttribute="leading" secondItem="6NH-hq-cD8" secondAttribute="leading" id="Gpp-fS-oCf"/>
+                            <constraint firstItem="U78-4N-Oob" firstAttribute="bottom" secondItem="WEm-SD-tmm" secondAttribute="bottom" constant="1" id="Lgt-A3-tXf"/>
                             <constraint firstItem="aVD-Qw-6W5" firstAttribute="top" secondItem="6NH-hq-cD8" secondAttribute="top" multiplier="354:734" constant="354" id="See-3z-jWq"/>
                             <constraint firstItem="OjD-XH-60E" firstAttribute="top" secondItem="WEm-SD-tmm" secondAttribute="top" constant="257" id="Skx-lG-PYF"/>
                             <constraint firstItem="Z3O-5L-M7h" firstAttribute="centerX" secondItem="6NH-hq-cD8" secondAttribute="centerX" id="nJi-qI-Zjb"/>
                             <constraint firstItem="6NH-hq-cD8" firstAttribute="trailing" secondItem="OjD-XH-60E" secondAttribute="trailing" id="tf3-gF-Bl5"/>
+                            <constraint firstItem="U78-4N-Oob" firstAttribute="trailing" secondItem="6NH-hq-cD8" secondAttribute="trailing" id="u9p-6m-3iS"/>
                         </constraints>
                     </view>
                     <connections>
@@ -419,6 +428,7 @@
                         <outlet property="commentTopConstraint" destination="5Pj-cE-JXR" id="Fl9-WH-gWg"/>
                         <outlet property="contentScrollView" destination="OjD-XH-60E" id="CEb-gj-8ZW"/>
                         <outlet property="dateLabel" destination="Eq8-fr-Nct" id="j53-ow-1ef"/>
+                        <outlet property="detailBlurView" destination="U78-4N-Oob" id="7mc-QL-kcZ"/>
                         <outlet property="detailEmptyImageView" destination="aVD-Qw-6W5" id="9f5-dO-39P"/>
                         <outlet property="detailTopConstraint" destination="Skx-lG-PYF" id="6B2-Gb-h7U"/>
                         <outlet property="emojiImageView" destination="Rlt-vR-vSx" id="2Cu-AB-AbV"/>
@@ -445,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1r-2E-K0o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="813.60000000000002" y="-171.42857142857144"/>
+            <point key="canvasLocation" x="813.60000000000002" y="-172.26386806596702"/>
         </scene>
         <!--CalendarVC-->
         <scene sceneID="rjw-Fe-Uh8">
@@ -912,6 +922,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bottomNavibarBlur" width="375" height="54"/>
         <image name="calendarBtnArrow" width="11" height="6.5"/>
         <image name="calendarBtnRecord" width="96" height="48"/>
         <image name="calendarDivTemp" width="16" height="14"/>
