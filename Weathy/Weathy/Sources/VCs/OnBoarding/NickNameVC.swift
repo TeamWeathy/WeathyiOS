@@ -13,19 +13,6 @@ class NickNameVC: UIViewController {
     
     var textCount = 0
     var isChange = false
-//    var isClosePopUp = false {
-//        didSet {
-//            if isClosePopUp {
-//                LocationManager.shared.requestLocationAuth {
-//                    let story = UIStoryboard(name: "Tabbar", bundle: nil)
-//                    guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
-//
-//                    vc.modalPresentationStyle = .fullScreen
-//                    self.present(vc, animated: true, completion: nil)
-//                }
-//            }
-//        }
-//    }
     
     // MARK: - IBOutlets
     
@@ -95,11 +82,11 @@ class NickNameVC: UIViewController {
                     UserDefaults.standard.set(createData.user.id, forKey: "userId")
                     UserDefaults.standard.set(uuid, forKey: "UUID")
                     
-                    let story = UIStoryboard(name: "Tabbar", bundle: nil)
-                    guard let vc = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
-                                            
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true, completion: nil)
+                    guard let popUpVC = self.storyboard?.instantiateViewController(withIdentifier: "NickNamePopUpVC") as? NickNamePopUpVC else { return }
+                    popUpVC.modalPresentationStyle = .overCurrentContext
+                    popUpVC.modalTransitionStyle = .crossDissolve
+                    
+                    self.present(popUpVC, animated: true, completion: nil)
                 }
                 
             case .requestErr:
@@ -145,10 +132,8 @@ class NickNameVC: UIViewController {
     @IBAction func touchUpStartButton(_ sender: Any) {
         guard let nickName = nickNameTextField.text else { return }
         let uuid = UUID().uuidString
-        
-        LocationManager.shared.requestLocationAuth {
-            self.createUser(uuid: uuid, nickName: nickName)
-        }
+
+        createUser(uuid: uuid, nickName: nickName)
     }
 }
 

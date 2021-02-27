@@ -41,8 +41,16 @@ class NickNamePopUpVC: UIViewController {
     // MARK: - IBActions
 
     @IBAction func touchUpConfirmButton(_ sender: Any) {
-        guard let preVC = presentingViewController as? NickNameVC else { return }
-//        preVC.isClosePopUp = true
-        preVC.dismiss(animated: true, completion: nil)
+        guard let nicknameVC = presentingViewController as? NickNameVC else { return }
+
+        dismiss(animated: true) {
+            LocationManager.shared.requestLocationAuth {
+                let story = UIStoryboard(name: "Tabbar", bundle: nil)
+                guard let tabbarVC = story.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
+
+                tabbarVC.modalPresentationStyle = .fullScreen
+                nicknameVC.present(tabbarVC, animated: true, completion: nil)
+            }
+        }
     }
 }
