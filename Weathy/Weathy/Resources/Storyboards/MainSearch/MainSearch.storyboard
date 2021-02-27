@@ -521,9 +521,9 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <outlet property="backView" destination="OKJ-Qs-Vxo" id="RGP-FY-t60"/>
-                                                    <outlet property="currentTemper" destination="Blw-vl-wYK" id="NOo-IN-Wcw"/>
-                                                    <outlet property="highTemper" destination="bWO-c0-wkC" id="qpi-Dt-JRB"/>
+                                                    <outlet property="backView" destination="OKJ-Qs-Vxo" id="HRc-5w-Fhn"/>
+                                                    <outlet property="currentTemper" destination="Blw-vl-wYK" id="nza-SH-xJq"/>
+                                                    <outlet property="highTemper" destination="bWO-c0-wkC" id="88L-4W-6Iv"/>
                                                     <outlet property="location" destination="jEX-VD-QBs" id="TCz-9R-uOa"/>
                                                     <outlet property="lowTemper" destination="Gpx-dw-jfX" id="1q5-0C-NXJ"/>
                                                     <outlet property="radiusView" destination="ZB1-07-Zjz" id="HkW-el-PQE"/>
@@ -531,6 +531,106 @@
                                                     <outlet property="weahterImage" destination="Iar-2p-hWe" id="yL8-hg-lyf"/>
                                                     <outlet property="weatherDateLabel" destination="2Fe-9c-PQi" id="4eh-hE-Fs6"/>
                                                     <outlet property="weatherTimeLabel" destination="P0O-Av-19t" id="Osh-u4-P7e"/>
+                                                </connections>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RecentFromRecordTVC" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecentFromRecordTVC" rowHeight="173" id="93N-Na-nlo" customClass="RecentFromRecordTVC" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="201" width="386" height="173"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="93N-Na-nlo" id="jCb-Q0-aiF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="386" height="173"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVj-0e-uNQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="386" height="173"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sz-Vg-tkv">
+                                                                    <rect key="frame" x="33" y="10" width="348" height="153"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12월 20일 일요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8c-Qo-R7S" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                                            <rect key="frame" x="25" y="23" width="106.5" height="18"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울 서초구" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGo-8D-HVR" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                                            <rect key="frame" x="25" y="44" width="78" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uus-Ar-Url">
+                                                                            <rect key="frame" x="237" y="101.5" width="41.5" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSJ-AO-e9B" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                                            <rect key="frame" x="281.5" y="111.5" width="41.5" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yMH-d8-HmK">
+                                                                            <rect key="frame" x="25" y="64.5" width="107" height="88.5"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" secondItem="yMH-d8-HmK" secondAttribute="height" multiplier="111:92" id="mmz-pv-88Q"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUW-Ws-TlB" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                                            <rect key="frame" x="198.5" y="111.5" width="41.5" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="FGo-8D-HVR" firstAttribute="top" secondItem="u8c-Qo-R7S" secondAttribute="bottom" constant="3" id="0XV-Xm-bJ6"/>
+                                                                        <constraint firstItem="uus-Ar-Url" firstAttribute="bottom" secondItem="cSJ-AO-e9B" secondAttribute="bottom" constant="-10" id="3Sg-oU-DnS"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="cSJ-AO-e9B" secondAttribute="trailing" constant="25" id="8hk-WD-YMV"/>
+                                                                        <constraint firstItem="yMH-d8-HmK" firstAttribute="top" secondItem="FGo-8D-HVR" secondAttribute="bottom" id="EaQ-Yi-fya"/>
+                                                                        <constraint firstItem="JUW-Ws-TlB" firstAttribute="bottom" secondItem="cSJ-AO-e9B" secondAttribute="bottom" id="NTH-ZQ-JU2"/>
+                                                                        <constraint firstItem="u8c-Qo-R7S" firstAttribute="leading" secondItem="2sz-Vg-tkv" secondAttribute="leading" constant="25" id="cUk-ze-pPW"/>
+                                                                        <constraint firstItem="yMH-d8-HmK" firstAttribute="leading" secondItem="FGo-8D-HVR" secondAttribute="leading" id="dZ3-Pj-lnY"/>
+                                                                        <constraint firstItem="uus-Ar-Url" firstAttribute="leading" secondItem="JUW-Ws-TlB" secondAttribute="trailing" constant="-3" id="er9-GL-zHb"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="cSJ-AO-e9B" secondAttribute="bottom" constant="21" id="iM9-zV-Ghz"/>
+                                                                        <constraint firstItem="FGo-8D-HVR" firstAttribute="leading" secondItem="u8c-Qo-R7S" secondAttribute="leading" id="mhT-TL-oOm"/>
+                                                                        <constraint firstItem="cSJ-AO-e9B" firstAttribute="leading" secondItem="uus-Ar-Url" secondAttribute="trailing" constant="3" id="vrg-9Q-VFW"/>
+                                                                        <constraint firstItem="u8c-Qo-R7S" firstAttribute="top" secondItem="2sz-Vg-tkv" secondAttribute="top" constant="23" id="yxs-He-d4P"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="yMH-d8-HmK" secondAttribute="bottom" id="zTy-lL-N48"/>
+                                                                    </constraints>
+                                                                </view>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="2sz-Vg-tkv" firstAttribute="leading" secondItem="cVj-0e-uNQ" secondAttribute="leading" constant="33" id="4Qc-QV-kGN"/>
+                                                                <constraint firstItem="2sz-Vg-tkv" firstAttribute="top" secondItem="cVj-0e-uNQ" secondAttribute="top" constant="10" id="BBd-Tw-cLF"/>
+                                                                <constraint firstAttribute="trailing" secondItem="2sz-Vg-tkv" secondAttribute="trailing" constant="5" id="PWm-dO-Gox"/>
+                                                                <constraint firstAttribute="bottom" secondItem="2sz-Vg-tkv" secondAttribute="bottom" constant="10" id="sO0-0f-dZd"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="cVj-0e-uNQ" secondAttribute="trailing" id="1P3-my-cPd"/>
+                                                        <constraint firstItem="cVj-0e-uNQ" firstAttribute="leading" secondItem="jCb-Q0-aiF" secondAttribute="leading" id="53V-Rb-1Oj"/>
+                                                        <constraint firstItem="cVj-0e-uNQ" firstAttribute="leading" secondItem="jCb-Q0-aiF" secondAttribute="leading" id="DYT-nQ-bQL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="cVj-0e-uNQ" secondAttribute="bottom" id="Mpa-hW-bqV"/>
+                                                        <constraint firstAttribute="bottom" secondItem="cVj-0e-uNQ" secondAttribute="bottom" id="Vwk-Sj-X8P"/>
+                                                        <constraint firstAttribute="trailing" secondItem="cVj-0e-uNQ" secondAttribute="trailing" id="fx0-jX-SHS"/>
+                                                        <constraint firstItem="cVj-0e-uNQ" firstAttribute="top" secondItem="jCb-Q0-aiF" secondAttribute="top" id="sBa-vv-xms"/>
+                                                        <constraint firstItem="cVj-0e-uNQ" firstAttribute="top" secondItem="jCb-Q0-aiF" secondAttribute="top" id="tpE-gc-hMc"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <outlet property="backView" destination="cVj-0e-uNQ" id="Vr1-Qh-UIk"/>
+                                                    <outlet property="highTemper" destination="JUW-Ws-TlB" id="Ob4-0d-Xo6"/>
+                                                    <outlet property="location" destination="FGo-8D-HVR" id="cuD-xe-jA8"/>
+                                                    <outlet property="lowTemper" destination="cSJ-AO-e9B" id="YR1-gQ-QPs"/>
+                                                    <outlet property="radiusView" destination="2sz-Vg-tkv" id="anA-So-Pcl"/>
+                                                    <outlet property="slashLabel" destination="uus-Ar-Url" id="7BO-pI-L78"/>
+                                                    <outlet property="weahterImage" destination="yMH-d8-HmK" id="SgZ-i0-n4K"/>
+                                                    <outlet property="weatherDateLabel" destination="u8c-Qo-R7S" id="vOa-pP-iaD"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
