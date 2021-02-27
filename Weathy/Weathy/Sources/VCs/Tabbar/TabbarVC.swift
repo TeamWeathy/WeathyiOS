@@ -22,6 +22,7 @@ class TabbarVC: UIViewController {
     @IBOutlet var plusButton: UIButton!
     @IBOutlet var calendarButton: UIButton!
     @IBOutlet var tabbarView: UIView!
+    @IBOutlet weak var tabbarViewBottomConstraint: NSLayoutConstraint!
     
     // MARK: - LifeCycle Methods
     
@@ -34,6 +35,14 @@ class TabbarVC: UIViewController {
         viewcontrollerSetting()
         
         NotificationCenter.default.addObserver(self, selector: #selector(recordSuccess(_:)), name: NSNotification.Name("RecordUpdated"), object: 0)
+        
+        ///노치유무에 따라 탭바 위치 조절
+        if UIScreen.main.hasNotch{
+            tabbarViewBottomConstraint.constant = -15
+        }
+        else{
+            tabbarViewBottomConstraint.constant = 0
+        }
     }
     
     @objc func recordSuccess(_ noti: Notification) {

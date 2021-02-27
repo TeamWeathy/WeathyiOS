@@ -126,9 +126,16 @@ class MainVC: UIViewController {
 
         safeInsetTop = view.safeAreaInsets.top
         safeInsetBottom = view.safeAreaInsets.bottom
-
+        let tabbarHeight: CGFloat = {
+            if UIScreen.main.hasNotch{
+                return 92
+            }
+            else{
+                return 73
+            }
+        }()
         let mainHeight = UIScreen.main.bounds.height
-        let viewHeight = mainHeight - (safeInsetTop + safeInsetBottom + mainNaviBarView.bounds.height) - 92
+        let viewHeight = mainHeight - (safeInsetTop + safeInsetBottom + mainNaviBarView.bounds.height) - tabbarHeight
         // 92: 하단 탭 바 높이
 
         mainViewHeightConstraint.constant = viewHeight
