@@ -12,6 +12,7 @@ class MainVC: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var lastContentOffset: CGFloat = 0.0
+//    let tapGesture: UITapGestureRecognizer?
     
     // gps 버튼 활성화 여부
     var isOnGPS: Bool = false {
@@ -31,8 +32,8 @@ class MainVC: UIViewController {
     var extraWeatherData: ExtraWeatherData?
     
     // search - main
-    var mainDeliverSearchInfo: OverviewWeatherList?
-    var deliveredSearchData: OverviewWeatherList?
+    var mainDeliverSearchInfo: OverviewWeather?
+    var deliveredSearchData: OverviewWeather?
     var searchImage: String?
     var searchGradient: String?
 
@@ -117,6 +118,8 @@ class MainVC: UIViewController {
         initMainBottomView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+//        tapGesture = UITapGestureRecognizer(target: self, action: #selector(<#T##@objc method#>))
     }
     
     override func viewSafeAreaInsetsDidChange() {
@@ -338,7 +341,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func changeWeatherViewBySearchData(data: OverviewWeatherList) {
+    func changeWeatherViewBySearchData(data: OverviewWeather) {
         locationLabel.text = "\(data.region.name)"
         currTempLabel.text = "\(data.hourlyWeather.temperature)°"
         maxTempLabel.text = "\(data.dailyWeather.temperature.maxTemp)°"
@@ -630,6 +633,27 @@ class MainVC: UIViewController {
         present(settingNVC, animated: true, completion: nil)
     }
     
+    @IBAction func touchUpGPSButton(_ sender: Any) {
+        if !isOnGPS {
+            let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
+            
+            if locationAuth {
+                // 현재 위치 받아오기
+                getLocationWeather(isDefault: false)
+                UserDefaults.standard.removeObject(forKey: "searchLocationCode")
+                isOnGPS = true
+            } else {
+                // 팝업 띄우기
+                guard let popUpVC = storyboard?.instantiateViewController(withIdentifier: "MainGPSPopupVC") as? MainGPSPopupVC else { return }
+                
+                popUpVC.modalTransitionStyle = .crossDissolve
+                popUpVC.modalPresentationStyle = .overCurrentContext
+                
+                present(popUpVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
     @IBAction func touchUpHelpButton(_ sender: UIButton) {
         let screenWidth: CGFloat = UIScreen.main.bounds.width
         let helpViewWidth: CGFloat = screenWidth * (286/375)
@@ -663,6 +687,7 @@ class MainVC: UIViewController {
             superview.addSubview(closeButton)
         }
         
+//        closeButton.
         helpButton.isUserInteractionEnabled = false
     }
         
@@ -683,27 +708,8 @@ class MainVC: UIViewController {
 
         helpButton.isUserInteractionEnabled = true
     }
-    
-    @IBAction func touchUpGPSButton(_ sender: Any) {
-        if !isOnGPS {
-            let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
-            
-            if locationAuth {
-                // 현재 위치 받아오기
-                getLocationWeather(isDefault: false)
-                UserDefaults.standard.removeObject(forKey: "searchLocationCode")
-                isOnGPS = true
-            } else {
-                // 팝업 띄우기
-                guard let popUpVC = storyboard?.instantiateViewController(withIdentifier: "MainGPSPopupVC") as? MainGPSPopupVC else { return }
-                
-                popUpVC.modalTransitionStyle = .crossDissolve
-                popUpVC.modalPresentationStyle = .overCurrentContext
-                
-                present(popUpVC, animated: true, completion: nil)
-            }
-        }
-    }
+
+    // MARK: - objc func
     
     @objc func touchUpTodayWeathyView() {
         if let data = recommenedWeathyData {

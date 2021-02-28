@@ -64,7 +64,7 @@ class MainTopCVC: UICollectionViewCell {
         }
     }
     
-    func changeWeatherViewBySearchData(data: OverviewWeatherList) {
+    func changeWeatherViewBySearchData(data: OverviewWeather) {
         locationLabel.text = "\(data.region.name)"
         currTempLabel.text = "\(data.hourlyWeather.temperature)°"
         maxTempLabel.text = "\(data.dailyWeather.temperature.maxTemp)°"
