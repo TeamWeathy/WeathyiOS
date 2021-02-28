@@ -31,6 +31,11 @@ class MainSearchVC: UIViewController {
     var isFromRecord: Bool = false
     var dateFromRecord: String = "0000-00-00"
     
+    var locationWeatherData: LocationWeatherData?
+    var maxTemp: Int = 0
+    var minTemp: Int = 0
+    var climateId: Int = 0
+    
     //MARK: - IBOutlets
     
     // 날씨에 따른 뒤 배경
@@ -211,6 +216,39 @@ class MainSearchVC: UIViewController {
     //            searchTextField.isSelected = !searchTextField.isSelected
     //        }
     //    }
+}
+
+extension MainSearchVC {
+    // MARK: - Network
+    
+    func getLocationWeather(indexPath: Int) {
+        
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let locationCode = appDelegate.appDelegateRecentInfos[indexPath].region.code
+        let dateString = "\(appDelegate.appDelegateRecentInfos[indexPath].dailyWeather.date.year)-\(appDelegate.appDelegateRecentInfos[indexPath].dailyWeather.date.month)-\(appDelegate.appDelegateRecentInfos[indexPath].dailyWeather.date.day)"
+        
+        RecordWeathyService.shared.getWeatherByLocation(dateString: dateString, regionCode: locationCode) { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? LocationWeatherData {
+                    self.locationWeatherData = response
+
+                    self.maxTemp = self.locationWeatherData!.overviewWeather.dailyWeather.temperature.maxTemp
+                    self.minTemp = self.locationWeatherData!.overviewWeather.dailyWeather.temperature.minTemp
+
+                    self.climateId = self.locationWeatherData!.overviewWeather.dailyWeather.climateIconID ?? 0
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
+    }
 }
 
 //MARK: - UITableView Datasource
