@@ -82,7 +82,9 @@ class RecordStartVC: UIViewController {
     
     @objc func SearchInfo(_ notification: Notification){
         guard let userInfo = notification.userInfo as? [String: Any] else { return }
-        guard let searchInfo = userInfo["mainDeliverSearchInfo"] as? OverviewWeatherList else { return}
+        guard let searchInfo = userInfo["mainDeliverSearchInfo"] as? OverviewWeather else { return}
+        
+        print("[기록날씨선택뷰]", searchInfo)
         
         locationCode = searchInfo.region.code
 
