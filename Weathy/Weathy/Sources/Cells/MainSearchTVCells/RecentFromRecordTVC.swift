@@ -62,11 +62,12 @@ class RecentFromRecordTVC: UITableViewCell {
         return btn
     }()
     
+    
+    //MARK: - LifeCycle Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //MARK: - LifeCycle Methods
-        
+
         initView()
         setRadiusView()
         configureLayout()
