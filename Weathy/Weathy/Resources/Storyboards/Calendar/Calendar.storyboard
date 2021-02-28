@@ -52,7 +52,7 @@
                                 <rect key="frame" x="0.0" y="257" width="375" height="521"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJS-Lx-AE2">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="704.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="705.66666666666663"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gth-jb-ONu">
                                                 <rect key="frame" x="294" y="24" width="48" height="48"/>
@@ -152,7 +152,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTX-8O-mf4">
-                                                <rect key="frame" x="45" y="335" width="285" height="1"/>
+                                                <rect key="frame" x="45" y="336" width="285" height="1"/>
                                                 <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="RjW-gA-jJG"/>
@@ -182,13 +182,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="기타" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrO-oa-erZ" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                <rect key="frame" x="45" y="292.66666666666663" width="30" height="20.333333333333314"/>
+                                                <rect key="frame" x="45" y="293.66666666666663" width="30" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="겉옷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d23-Eq-Wdp" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                <rect key="frame" x="45" y="261.66666666666663" width="30" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="외투" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d23-Eq-Wdp" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="45" y="261.66666666666663" width="30" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -206,13 +206,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-qz-WFd" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                <rect key="frame" x="75.666666666666671" y="261.66666666666663" width="254.33333333333331" height="21"/>
+                                                <rect key="frame" x="75.666666666666671" y="261.66666666666663" width="254.33333333333331" height="22"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdH-cT-eVd" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                <rect key="frame" x="75.666666666666671" y="292.66666666666663" width="254.33333333333331" height="20.333333333333314"/>
+                                                <rect key="frame" x="75.666666666666671" y="293.66666666666663" width="254.33333333333331" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -308,7 +308,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-6V-EYV" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                <rect key="frame" x="45" y="664.66666666666663" width="285" height="0.0"/>
+                                                <rect key="frame" x="45" y="665.66666666666663" width="285" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -319,10 +319,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="toP-0a-upF">
-                                                <rect key="frame" x="45" y="360" width="285" height="285"/>
+                                                <rect key="frame" x="45" y="361" width="285" height="285"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="toP-0a-upF" secondAttribute="height" multiplier="1:1" id="Hfm-Kr-HDO"/>
-                                                    <constraint firstAttribute="width" constant="285" id="jt1-6N-NNZ"/>
+                                                    <constraint firstAttribute="width" secondItem="toP-0a-upF" secondAttribute="height" multiplier="1:1" id="h6C-cT-3Ba"/>
+                                                    <constraint firstAttribute="width" constant="285" id="wl7-9J-HGj"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -438,7 +438,7 @@
                         <outlet property="moreMenuView" destination="bPc-en-inU" id="J0W-XB-KAc"/>
                         <outlet property="moreViewHeightConstraint" destination="1TQ-nb-GKn" id="lkm-yg-qKn"/>
                         <outlet property="photoImageView" destination="toP-0a-upF" id="HHe-wY-7eF"/>
-                        <outlet property="photoWidthConstraint" destination="jt1-6N-NNZ" id="tAx-T7-uly"/>
+                        <outlet property="photoWidthConstraint" destination="wl7-9J-HGj" id="9Ip-Bv-wtK"/>
                         <outlet property="recordButton" destination="Z3O-5L-M7h" id="ln3-tZ-PvL"/>
                         <outlet property="temperatureHighLabel" destination="jWH-Dm-en1" id="aHJ-fM-yvb"/>
                         <outlet property="temperatureLowLabel" destination="cqf-FB-afp" id="F3V-fP-nGz"/>
