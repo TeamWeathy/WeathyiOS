@@ -386,7 +386,9 @@ extension MainSearchVC: CellDelegate {
             cell.contentView.alpha = 0
             
         }, completion: {_ in self.recentTableView.performBatchUpdates({self.appDelegate.appDelegateRecentInfos.remove(at: indexPath.row)
-                                                                                        self.recentTableView.deleteRows(at: [indexPath], with: .automatic)}, completion: {_ in self.recentNonImage()})})
+                                                                                        self.recentTableView.deleteRows(at: [indexPath], with: .automatic)
+            self.recentTableView.reloadData()
+        }, completion: {_ in self.recentNonImage()})})
             
         
             
