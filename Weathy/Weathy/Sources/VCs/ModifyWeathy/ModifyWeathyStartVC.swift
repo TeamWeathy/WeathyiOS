@@ -90,7 +90,7 @@ class ModifyWeathyStartVC: UIViewController {
     
     @objc func SearchInfo(_ notification: Notification){
         guard let userInfo = notification.userInfo as? [String: Any] else { return }
-        guard let searchInfo = userInfo["mainDeliverSearchInfo"] as? OverviewWeatherList else { return}
+        guard let searchInfo = userInfo["mainDeliverSearchInfo"] as? OverviewWeather else { return}
         
         locationCode = searchInfo.region.code
 
