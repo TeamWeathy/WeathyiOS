@@ -380,10 +380,14 @@ extension MainSearchVC: CellDelegate {
 //        UIView.performWithoutAnimation{
         
         UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseIn], animations: {
-            guard let cell = self.recentTableView.cellForRow(at: indexPath) as? RecentTVC else{
-                return
+            if let cell = self.recentTableView.cellForRow(at: indexPath) as? RecentTVC{
+                cell.contentView.alpha = 0
             }
-            cell.contentView.alpha = 0
+            else{
+                if let cell = self.recentTableView.cellForRow(at: indexPath) as? RecentFromRecordTVC{
+                    cell.contentView.alpha = 0
+                }
+            }
             
         }, completion: {_ in self.recentTableView.performBatchUpdates({self.appDelegate.appDelegateRecentInfos.remove(at: indexPath.row)
                                                                                         self.recentTableView.deleteRows(at: [indexPath], with: .automatic)
