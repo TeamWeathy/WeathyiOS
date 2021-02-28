@@ -14,7 +14,18 @@ protocol CellDelegate {
 
 class RecentTVC: UITableViewCell {
     
+    //MARK: - Custom Variables
+    
     static let identifier = "RecentTVC"
+    
+    var leadingConstraint: NSLayoutConstraint!
+    var deletTrailingConstraint: NSLayoutConstraint!
+    var indexPath: IndexPath?
+    var delegate: CellDelegate?
+    var buttonFlag: Bool = false
+    var initialXPosition: CGFloat = 0.0
+    
+    var weatherData: LocationWeatherData?
     
     //MARK: - IBOutlets
     
@@ -28,15 +39,6 @@ class RecentTVC: UITableViewCell {
     @IBOutlet weak var highTemper: SpacedLabel!
     @IBOutlet weak var lowTemper: SpacedLabel!
     @IBOutlet weak var slashLabel: SpacedLabel!
-    
-    //MARK: - Custom Variables
-    
-    var leadingConstraint: NSLayoutConstraint!
-    var deletTrailingConstraint: NSLayoutConstraint!
-    var indexPath: IndexPath?
-    var delegate: CellDelegate?
-    var buttonFlag: Bool = false
-    var initialXPosition: CGFloat = 0.0
     
     // MARK: - UI
     
@@ -63,10 +65,10 @@ class RecentTVC: UITableViewCell {
         return btn
     }()
     
+    //MARK: - LifeCycle Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //MARK: - LifeCycle Methods
         
         initView()
         setRadiusView()

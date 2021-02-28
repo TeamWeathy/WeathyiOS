@@ -8,8 +8,21 @@
 import UIKit
 
 class RecentFromRecordTVC: UITableViewCell {
+
+    
+    
+    //MARK: - Custom Variables
     
     static let identifier = "RecentFromRecordTVC"
+    
+    var leadingConstraint: NSLayoutConstraint!
+    var deletTrailingConstraint: NSLayoutConstraint!
+    var indexPath: IndexPath?
+    var delegate: CellDelegate?
+    var buttonFlag: Bool = false
+    var initialXPosition: CGFloat = 0.0
+    
+    var weatherData: LocationWeatherData?
     
     //MARK: - IBOutlets
     
@@ -22,14 +35,7 @@ class RecentFromRecordTVC: UITableViewCell {
     @IBOutlet weak var lowTemper: SpacedLabel!
     @IBOutlet weak var slashLabel: UILabel!
     
-    //MARK: - Custom Variables
     
-    var leadingConstraint: NSLayoutConstraint!
-    var deletTrailingConstraint: NSLayoutConstraint!
-    var indexPath: IndexPath?
-    var delegate: CellDelegate?
-    var buttonFlag: Bool = false
-    var initialXPosition: CGFloat = 0.0
     
     // MARK: - UI
     
@@ -56,11 +62,12 @@ class RecentFromRecordTVC: UITableViewCell {
         return btn
     }()
     
+    
+    //MARK: - LifeCycle Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //MARK: - LifeCycle Methods
-        
+
         initView()
         setRadiusView()
         configureLayout()
