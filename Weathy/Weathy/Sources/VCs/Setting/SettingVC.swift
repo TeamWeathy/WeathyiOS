@@ -8,37 +8,36 @@
 import UIKit
 
 class SettingVC: UIViewController {
+    // MARK: - Custom Variables
     
-    //MARK: - Custom Variables
+    // MARK: - IBOutlets
     
-    //MARK: - IBOutlets
-    
-    @IBOutlet weak var setLabel: UILabel!
-    @IBOutlet weak var switchButton: UISwitch!
-    @IBOutlet var buttonLabels: [UILabel]!
+    @IBOutlet var setLabel: SpacedLabel!
+    @IBOutlet var buttonLabels: [SpacedLabel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //MARK: - LifeCycle Methods
-        
-        fontColorSeting()
+        setFontColor()
     }
     
-    //MARK: - Custom Methods
+    // MARK: - Custom Methods
     
-    func fontColorSeting(){
+    func setFontColor() {
         setLabel.font = UIFont.SDGothicSemiBold25
+        setLabel.textColor = UIColor.mainGrey
+        setLabel.characterSpacing = -1.25
+        
         for i in 0 ..< buttonLabels.count {
             buttonLabels[i].font = UIFont.SDGothicRegular16
+            buttonLabels[i].characterSpacing = -0.8
+            buttonLabels[i].textColor = UIColor.mainGrey
         }
-        switchButton.onTintColor = UIColor.mintMain
     }
     
-    //MARK: - @objc Methods
+    // MARK: - @objc Methods
     
-    
-    //MARK: - IBActions
+    // MARK: - IBActions
 
     @IBAction func backButtonDidTap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
