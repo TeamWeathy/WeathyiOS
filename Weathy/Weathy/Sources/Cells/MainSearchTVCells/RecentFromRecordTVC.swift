@@ -8,7 +8,7 @@
 import UIKit
 
 class RecentFromRecordTVC: UITableViewCell {
-
+    
     static let identifier = "RecentFromRecordTVC"
     
     //MARK: - IBOutlets
@@ -132,48 +132,48 @@ class RecentFromRecordTVC: UITableViewCell {
         print("----> \(initialXPosition)")
         
         switch sender.state {
-        
-        case .ended:
-            if  initialXPosition > -170 && initialXPosition < -(buttonStack.bounds.width) {
-                buttonStack.frame.size.width = 108
-                leadingConstraint.constant = -buttonStack.bounds.width - 15
-                
-                UIView.animate(withDuration: 0.3) {
-                    self.layoutIfNeeded()
-                    self.buttonStack.frame.size.width = 108
-                    self.buttonFlag = true
+            
+            case .ended:
+                if  initialXPosition > -170 && initialXPosition < -(buttonStack.bounds.width) {
+                    buttonStack.frame.size.width = 108
+                    leadingConstraint.constant = -buttonStack.bounds.width - 15
                     
-                }
-            }else if initialXPosition < -170{
-                leadingConstraint.constant = -(self.backView.frame.size.width)
-                UIView.animate(withDuration: 0.2) {
-                    self.layoutIfNeeded()
-                }
-                ///해당 cell을 지우기 위한 data 전송
-                didSwipe()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                    self.leadingConstraint.constant = 0
-                    self.layoutIfNeeded()
+                    UIView.animate(withDuration: 0.3) {
+                        self.layoutIfNeeded()
+                        self.buttonStack.frame.size.width = 108
+                        self.buttonFlag = true
+                        
+                    }
+                }else if initialXPosition < -170{
+                    leadingConstraint.constant = -(self.backView.frame.size.width)
+                    UIView.animate(withDuration: 0.2) {
+                        self.layoutIfNeeded()
+                    }
+                    ///해당 cell을 지우기 위한 data 전송
+                    didSwipe()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                        self.leadingConstraint.constant = 0
+                        self.layoutIfNeeded()
+                    }
+                    
+                }else {
+                    leadingConstraint.constant = 0
+                    self.buttonFlag = false
+                    UIView.animate(withDuration: 0.3) {
+                        self.layoutIfNeeded()
+                    }
                 }
                 
-            }else {
-                leadingConstraint.constant = 0
-                self.buttonFlag = false
-                UIView.animate(withDuration: 0.3) {
-                    self.layoutIfNeeded()
+            default:
+                if initialXPosition < 0 {
+                    buttonStack.frame.size.width = -(initialXPosition) - 15
+                    leadingConstraint.constant = initialXPosition
+                    
+                    UIView.animate(withDuration: 0.1) {
+                        self.layoutIfNeeded()
+                    }
                 }
-            }
-        
-        default:
-            if initialXPosition < 0 {
-                buttonStack.frame.size.width = -(initialXPosition) - 15
-                leadingConstraint.constant = initialXPosition
-                
-                UIView.animate(withDuration: 0.1) {
-                    self.layoutIfNeeded()
-                }
-            }
-            sender.setTranslation(CGPoint.zero, in: self.backView)
+                sender.setTranslation(CGPoint.zero, in: self.backView)
         }
     }
     
@@ -191,6 +191,12 @@ class RecentFromRecordTVC: UITableViewCell {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPanAction(_:)))
         backView.addGestureRecognizer(panGesture)
         deleteButton.addTarget(self, action: #selector(deleteAction(_:)), for: .touchUpInside)
+        panGesture.delegate = self
+    }
+    override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                                    shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer)
+    -> Bool {
+        return true
     }
     
     // MARK: - Layout
@@ -213,5 +219,5 @@ class RecentFromRecordTVC: UITableViewCell {
             buttonStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
         ])
     }
-
+    
 }
