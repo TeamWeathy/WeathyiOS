@@ -128,6 +128,7 @@ class RecordStartVC: UIViewController {
         
         searchVC.modalPresentationStyle = .fullScreen
         searchVC.isFromRecord = true
+        searchVC.dateFromRecord = dateString
         
         present(searchVC, animated: true, completion: nil)
     }

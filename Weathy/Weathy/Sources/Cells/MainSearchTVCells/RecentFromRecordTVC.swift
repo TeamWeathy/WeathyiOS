@@ -1,33 +1,26 @@
 //
-//  RecentTVC.swift
+//  RecentFromRecordTVC.swift
 //  Weathy
 //
-//  Created by 송황호 on 2021/01/06.
+//  Created by DANNA LEE on 2021/02/28.
 //
 
 import UIKit
 
-/// cell을 지우기 위한 Delegate 생성
-protocol CellDelegate {
-    func swipeCell(indexPath: IndexPath)
-}
+class RecentFromRecordTVC: UITableViewCell {
 
-class RecentTVC: UITableViewCell {
-    
-    static let identifier = "RecentTVC"
+    static let identifier = "RecentFromRecordTVC"
     
     //MARK: - IBOutlets
     
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var radiusView: UIView!
     @IBOutlet weak var weatherDateLabel: SpacedLabel!
-    @IBOutlet weak var weatherTimeLabel: SpacedLabel!
     @IBOutlet weak var location: SpacedLabel!
     @IBOutlet weak var weahterImage: UIImageView!
-    @IBOutlet weak var currentTemper: SpacedLabel!
     @IBOutlet weak var highTemper: SpacedLabel!
     @IBOutlet weak var lowTemper: SpacedLabel!
-    @IBOutlet weak var slashLabel: SpacedLabel!
+    @IBOutlet weak var slashLabel: UILabel!
     
     //MARK: - Custom Variables
     
@@ -73,6 +66,7 @@ class RecentTVC: UITableViewCell {
         configureLayout()
         textColor()
         textFont()
+        setSlashLabel()
     }
     
     //MARK: - @objc Methods
@@ -81,12 +75,10 @@ class RecentTVC: UITableViewCell {
         delegate?.swipeCell(indexPath: indexPath!)
     }
     
-    func bind(weatherDate: String, weahterTime: String, location: String, weatherImage: String, currentTemper: String, highTemper: String, lowTemper: String){
+    func bind(weatherDate: String, location: String, weatherImage: String, highTemper: String, lowTemper: String){
         self.weatherDateLabel.text = weatherDate
-        self.weatherTimeLabel.text = weahterTime
         self.location.text = location
         self.weahterImage.image = UIImage(named: weatherImage)
-        self.currentTemper.text = currentTemper
         self.highTemper.text = highTemper
         self.lowTemper.text = "\(lowTemper)"
     }
@@ -104,22 +96,27 @@ class RecentTVC: UITableViewCell {
     
     func textFont(){
         weatherDateLabel.font = UIFont.SDGothicRegular15
+        weatherDateLabel.characterSpacing = -0.75
         location.font = UIFont.SDGothicSemiBold17
-        weatherTimeLabel.font = UIFont.SDGothicRegular15
-        currentTemper.font = UIFont.RobotoLight50
-        highTemper.font = UIFont.RobotoLight23
-        lowTemper.font = UIFont.RobotoLight23
-        //        slashLabel.font = UIFont.RobotoLight23
+        location.characterSpacing = -0.85
+        highTemper.font = UIFont(name: "Roboto-Light", size: 40)
+        highTemper.characterSpacing = -2.0
+        lowTemper.font = UIFont(name: "Roboto-Light", size: 40)
+        lowTemper.characterSpacing = -2.0
     }
     
     func textColor(){
         weatherDateLabel.textColor = UIColor.subGrey1
         location.textColor = UIColor.mainGrey
-        weatherTimeLabel.textColor = .subGrey1
-        currentTemper.textColor = .subGrey1
-        slashLabel.textColor = UIColor(red: 107/255, green: 107/255, blue: 107/255, alpha: 1)
         highTemper.textColor = .redTemp
         lowTemper.textColor = .blueTemp
+    }
+    
+    func setSlashLabel() {
+        slashLabel.text = "/"
+        slashLabel.font = UIFont(name: "Roboto-Regular", size: 23)
+        slashLabel.textColor = UIColor(red: 107/255, green: 107/255, blue: 107/255, alpha: 1)
+        slashLabel.baselineAdjustment = .alignBaselines
     }
     
     @objc func deleteAction(_ sender: Any){
@@ -216,7 +213,5 @@ class RecentTVC: UITableViewCell {
             buttonStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
         ])
     }
+
 }
-
-
-

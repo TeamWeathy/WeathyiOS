@@ -29,10 +29,12 @@ class MainSearchVC: UIViewController {
     var gradient: String = ""
     
     var isFromRecord: Bool = false
+    var dateFromRecord: String = "0000-00-00"
     
     //MARK: - IBOutlets
     
-    @IBOutlet weak var backView: UIImageView!       // 날씨에 따른 뒤 배경
+    // 날씨에 따른 뒤 배경
+    @IBOutlet weak var backView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
     
@@ -150,7 +152,8 @@ class MainSearchVC: UIViewController {
                 /// 맨 마지막에 검색한 text만 서버에 연결하기 위해!
                 if searchText == self.searchTextField.text {
                     /// 서버 연결!
-                    searchService.shared.searchWheatherget(keyword: searchText, date: self.dateFormatter.string(from: Date())){(NetworkResult) -> (Void) in
+                    
+                    searchService.shared.searchWheatherget(keyword: searchText, date: self.isFromRecord == true ? self.dateFromRecord : self.dateFormatter.string(from: Date())){(NetworkResult) -> (Void) in
                         switch NetworkResult{
                         case .success(let data):
                             /// 원상복귀
@@ -213,7 +216,8 @@ extension MainSearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == recentTableView{
             return appDelegate.appDelegateRecentInfos.count
-        }else{
+        }
+        else{
             return searchInformations.count
         }
     }
@@ -221,25 +225,52 @@ extension MainSearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == recentTableView {
-            guard let recentCell = recentTableView.dequeueReusableCell(withIdentifier: RecentTVC.identifier, for: indexPath) as? RecentTVC else { return UITableViewCell() }
+            if isFromRecord == false {
+                guard let recentCell = recentTableView.dequeueReusableCell(withIdentifier: RecentTVC.identifier, for: indexPath) as? RecentTVC else { return UITableViewCell() }
+                
+                recentCell.selectionStyle = .none
+                
+                recentCell.bind(weatherDate: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.month)월 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.day)일 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.time, location: appDelegate.appDelegateRecentInfos[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.climate.iconId), currentTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.minTemp)°")
+                
+                recentCell.delegate = self
+                recentCell.indexPath = indexPath    /// 해당 cell 위치 제공
+                
+                return recentCell
+            } else {
+                guard let recentCell = recentTableView.dequeueReusableCell(withIdentifier: RecentFromRecordTVC.identifier, for: indexPath) as? RecentFromRecordTVC else { return UITableViewCell() }
+                
+                recentCell.selectionStyle = .none
+                
+                recentCell.bind(weatherDate: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.month)월 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.day)일 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.dayOfWeek)", location: appDelegate.appDelegateRecentInfos[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.climate.iconId), highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.minTemp)°")
+                
+                recentCell.delegate = self
+                recentCell.indexPath = indexPath    /// 해당 cell 위치 제공
+                
+                return recentCell
+            }
             
-            recentCell.selectionStyle = .none
             
-            recentCell.bind(weatherDate: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.month)월 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.day)일 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.time, location: appDelegate.appDelegateRecentInfos[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.climate.iconId), currentTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.minTemp)°")
-            
-            recentCell.delegate = self
-            recentCell.indexPath = indexPath    /// 해당 cell 위치 제공
-            
-            return recentCell
         }else{
-            guard let searchCell = searchTableView.dequeueReusableCell(withIdentifier: SearchTVC.identifier, for: indexPath) as? SearchTVC else { return UITableViewCell() }
+            if isFromRecord == false {
+                guard let searchCell = searchTableView.dequeueReusableCell(withIdentifier: SearchTVC.identifier, for: indexPath) as? SearchTVC else { return UITableViewCell() }
+                
+                //            print("잘 받아왔어?\(self.searchInfos)")
+                
+                searchCell.selectionStyle = .none
+                
+                searchCell.bind(weatherDate:
+                                    "\(self.searchInformations[indexPath.row].dailyWeather.date.month)월 \(self.searchInformations[indexPath.row].dailyWeather.date.day)일 \(self.searchInformations[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: self.searchInformations[indexPath.row].hourlyWeather.time, location: self.searchInformations[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(self.searchInformations[indexPath.row].hourlyWeather.climate.iconId), currentTemper: "\(self.searchInformations[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(self.searchInformations[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(self.searchInformations[indexPath.row].dailyWeather.temperature.minTemp)°")
+                
+                return searchCell
+            } else { /// isFromRecord == true
+                guard let searchCell = searchTableView.dequeueReusableCell(withIdentifier: RecordModifySearchTVC.identifier, for: indexPath) as? RecordModifySearchTVC else { return UITableViewCell() }
+                
+                searchCell.bind(weatherDate:
+                                    "\(self.searchInformations[indexPath.row].dailyWeather.date.month)월 \(self.searchInformations[indexPath.row].dailyWeather.date.day)일 \(self.searchInformations[indexPath.row].dailyWeather.date.dayOfWeek)", location: self.searchInformations[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(self.searchInformations[indexPath.row].hourlyWeather.climate.iconId), highTemper:  "\(self.searchInformations[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(self.searchInformations[indexPath.row].dailyWeather.temperature.minTemp)°")
+                
+                return searchCell
+            }
             
-            //            print("잘 받아왔어?\(self.searchInfos)")
-            
-            searchCell.bind(weatherDate:
-                                "\(self.searchInformations[indexPath.row].dailyWeather.date.month)월 \(self.searchInformations[indexPath.row].dailyWeather.date.day)일 \(self.searchInformations[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: self.searchInformations[indexPath.row].hourlyWeather.time, location: self.searchInformations[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(self.searchInformations[indexPath.row].hourlyWeather.climate.iconId), currentTemper: "\(self.searchInformations[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(self.searchInformations[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(self.searchInformations[indexPath.row].dailyWeather.temperature.minTemp)°")
-            
-            return searchCell
         }
     }
 }
@@ -258,7 +289,7 @@ extension MainSearchVC: UITableViewDelegate {
         if tableView == recentTableView {
             let cell = tableView.cellForRow(at: indexPath)
             /// Main에 넘겨줄 데이터 넣기
-//            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: appDelegate.appDelegateRecentInfos[indexPath.row])
+            //            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: appDelegate.appDelegateRecentInfos[indexPath.row])
             
             /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
             if !isFromRecord {
@@ -285,7 +316,7 @@ extension MainSearchVC: UITableViewDelegate {
             }
             
             /// Main에 넘겨줄 데이터 넣기
-//            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
+            //            NotificationCenter.default.post(name:NSNotification.Name.init(rawValue: "DeliverSearchData"), object: searchInformations[indexPath.row])
             
             /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
             if !isFromRecord {
@@ -343,11 +374,25 @@ extension MainSearchVC: UITextFieldDelegate{
 
 extension MainSearchVC: CellDelegate {
     func swipeCell(indexPath: IndexPath) {
-        print("-----> index \(indexPath)")
+//        UIView.performWithoutAnimation{
         
-        UIView.animate(withDuration: 0.3, animations: {            self.appDelegate.appDelegateRecentInfos.remove(at: indexPath.row)
-                        self.recentTableView.deleteRows(at: [indexPath], with: .automatic)}, completion: {_ in self.recentTableView.reloadData()
-                            self.recentNonImage()
-                        })
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseIn], animations: {
+            guard let cell = self.recentTableView.cellForRow(at: indexPath) as? RecentTVC else{
+                return
+            }
+            cell.contentView.alpha = 0
+            
+        }, completion: {_ in self.recentTableView.performBatchUpdates({self.appDelegate.appDelegateRecentInfos.remove(at: indexPath.row)
+                                                                                        self.recentTableView.deleteRows(at: [indexPath], with: .automatic)}, completion: {_ in self.recentNonImage()})})
+            
+        
+            
+            
+//        }
+        
+//        UIView.animate(withDuration: 0.3, animations: {            }, completion: {_ in
+////                            self.recentTableView.reloadData()
+//                            
+//                        })
     }
 }
