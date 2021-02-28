@@ -93,6 +93,9 @@ class MainSearchVC: UIViewController {
         
         recentNonImage()
         setRecentTitle()
+        
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
     }
     
     func setRecentTitle(){
@@ -144,8 +147,6 @@ class MainSearchVC: UIViewController {
         checkTextCount(textField: searchTextField)
         
         /// 한국 시간으로 설정
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
         
         guard let searchText = searchTextField.text else { return }
         
@@ -221,8 +222,8 @@ class MainSearchVC: UIViewController {
 extension MainSearchVC {
     // MARK: - Network
     
-    func getLocationWeather(indexPath: Int, date: String) {
-        
+    func getLocationWeather(indexPath: Int, date: String, cell: UITableViewCell) {
+
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let locationCode = appDelegate.appDelegateRecentInfos[indexPath].region.code
         let dateString = date
@@ -232,11 +233,36 @@ extension MainSearchVC {
             case .success(let data):
                 if let response = data as? LocationWeatherData {
                     self.locationWeatherData = response
+                    
+                    print(self.locationWeatherData)
 
-                    self.maxTemp = self.locationWeatherData!.overviewWeather.dailyWeather.temperature.maxTemp
-                    self.minTemp = self.locationWeatherData!.overviewWeather.dailyWeather.temperature.minTemp
+//                    self.maxTemp = self.locationWeatherData!.overviewWeather.dailyWeather.temperature.maxTemp
+//                    self.minTemp = self.locationWeatherData!.overviewWeather.dailyWeather.temperature.minTemp
+//
+//                    self.climateId = self.locationWeatherData!.overviewWeather.dailyWeather.climateIconID ?? 0
+                    
+                    if self.isFromRecord == false {
+                        if let recentCell = cell as? RecentTVC {
+                            
+                            recentCell.weatherDateLabel.text = "\((self.locationWeatherData?.overviewWeather.dailyWeather.date.month) ?? 0)월 \((self.locationWeatherData?.overviewWeather.dailyWeather.date.day) ?? 0)일 \((self.locationWeatherData?.overviewWeather.dailyWeather.date.dayOfWeek) ?? "땡요일")"
+                            recentCell.weatherTimeLabel.text = "\((self.locationWeatherData?.overviewWeather.hourlyWeather.time) ?? "오전 땡땡시")"
+                            recentCell.location.text = self.locationWeatherData?.overviewWeather.region.name
+                            recentCell.weahterImage.image = UIImage(named: ClimateImage.getClimateSearchIllust(self.locationWeatherData?.overviewWeather.hourlyWeather.climate.iconId ?? 0))
+                            recentCell.currentTemper.text = "\((self.locationWeatherData?.overviewWeather.hourlyWeather.temperature) ?? 0)°"
+                            recentCell.highTemper.text = "\((self.locationWeatherData?.overviewWeather.dailyWeather.temperature.maxTemp) ?? 0)°"
+                            recentCell.lowTemper.text = "\((self.locationWeatherData?.overviewWeather.dailyWeather.temperature.minTemp) ?? 0)°"
+                        }
+                    } else {
+                        if let recentCell = cell as? RecentFromRecordTVC {
+                            recentCell.weatherDateLabel.text = "\((self.locationWeatherData?.overviewWeather.dailyWeather.date.month)!)월 \((self.locationWeatherData?.overviewWeather.dailyWeather.date.day)!)일 \((self.locationWeatherData?.overviewWeather.dailyWeather.date.dayOfWeek)!)"
+                            recentCell.location.text = self.locationWeatherData?.overviewWeather.region.name
+                            recentCell.weahterImage.image = UIImage(named: ClimateImage.getClimateSearchIllust(self.locationWeatherData?.overviewWeather.hourlyWeather.climate.iconId ?? 0))
+                            recentCell.highTemper.text = "\((self.locationWeatherData?.overviewWeather.dailyWeather.temperature.maxTemp)!)°"
+                            recentCell.lowTemper.text = "\((self.locationWeatherData?.overviewWeather.dailyWeather.temperature.minTemp)!)°"
+                        }
+                    }
 
-                    self.climateId = self.locationWeatherData!.overviewWeather.dailyWeather.climateIconID ?? 0
+                    
                 }
             case .requestErr(let msg):
                 print(msg)
@@ -266,12 +292,15 @@ extension MainSearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == recentTableView {
+            /// 메인에서 들어간
             if isFromRecord == false {
                 guard let recentCell = recentTableView.dequeueReusableCell(withIdentifier: RecentTVC.identifier, for: indexPath) as? RecentTVC else { return UITableViewCell() }
                 
                 recentCell.selectionStyle = .none
                 
-                recentCell.bind(weatherDate: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.month)월 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.day)일 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.time, location: appDelegate.appDelegateRecentInfos[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.climate.iconId), currentTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.minTemp)°")
+                getLocationWeather(indexPath: indexPath.row, date: self.dateFormatter.string(from: Date()), cell: recentCell)
+                
+//                recentCell.bind(weatherDate: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.month)월 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.day)일 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.time, location: appDelegate.appDelegateRecentInfos[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.climate.iconId), currentTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.minTemp)°")
                 
                 recentCell.delegate = self
                 recentCell.indexPath = indexPath    /// 해당 cell 위치 제공
@@ -282,7 +311,9 @@ extension MainSearchVC: UITableViewDataSource {
                 
                 recentCell.selectionStyle = .none
                 
-                recentCell.bind(weatherDate: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.month)월 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.day)일 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.dayOfWeek)", location: appDelegate.appDelegateRecentInfos[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.climate.iconId), highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.minTemp)°")
+                getLocationWeather(indexPath: indexPath.row, date: self.dateFromRecord, cell: recentCell)
+                
+//                recentCell.bind(weatherDate: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.month)월 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.day)일 \(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.date.dayOfWeek)", location: appDelegate.appDelegateRecentInfos[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(appDelegate.appDelegateRecentInfos[indexPath.row].hourlyWeather.climate.iconId), highTemper:  "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(appDelegate.appDelegateRecentInfos[indexPath.row].dailyWeather.temperature.minTemp)°")
                 
                 recentCell.delegate = self
                 recentCell.indexPath = indexPath    /// 해당 cell 위치 제공
