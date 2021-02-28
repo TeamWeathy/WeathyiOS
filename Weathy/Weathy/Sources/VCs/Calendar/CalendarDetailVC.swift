@@ -60,27 +60,16 @@ class CalendarDetailVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        calendarVC = self.storyboard?.instantiateViewController(identifier: "CalendarVC") as? CalendarVC
-        calendarVC.view.frame = CGRect(x: 0, y: 0, width: screen.width, height: weeklyHeight)
-        self.addChild(calendarVC)
-        self.view.addSubview(calendarVC.view)
-        calendarVC.didMove(toParent: self)
-        calendarVC.view.backgroundColor = .clear
         detailTopConstraint.constant = weeklyHeight - 30
-        
-//        UIView.animate(withDuration: 0.1){
-//            self.view.layoutIfNeeded()
-//            self.calendarVC.view.layoutIfNeeded()
-//
-//        }
+        initChild()
         initSize()
+        initGestureRecognizer()
         setStyle()
         setPopup()
         setDefaultFormatter()
         selectedDateDidChange(nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(recordChanged(_:)), name: NSNotification.Name(rawValue: "RecordUpdated"), object: nil)
-                initGestureRecognizer()
+        setNotification()
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,6 +85,16 @@ class CalendarDetailVC: UIViewController{
     }
     
     //MARK: - Custom Methods
+    
+    func initChild(){
+        calendarVC = self.storyboard?.instantiateViewController(identifier: "CalendarVC") as? CalendarVC
+        calendarVC.view.frame = CGRect(x: 0, y: 0, width: screen.width, height: weeklyHeight)
+        self.addChild(calendarVC)
+        self.view.addSubview(calendarVC.view)
+        calendarVC.didMove(toParent: self)
+        calendarVC.view.backgroundColor = .clear
+    }
+    
     func initSize(){
         if !hasNotch{
             weeklyHeight -= 44
@@ -103,12 +102,14 @@ class CalendarDetailVC: UIViewController{
             print("weeklyHeight",weeklyHeight)
         }
     }
+    
     func setDefaultFormatter(){
         defaultDateFormatter.dateFormat = "yyyy-MM-dd"
         defaultDateFormatter.locale = Locale(identifier: "ko-Kr")
         koreanDateFormatter.locale = Locale(identifier: "ko")
         koreanDateFormatter.dateFormat = "MM월 dd일 eeee"
     }
+    
     func initGestureRecognizer() {
         let moreBtnTap = UITapGestureRecognizer(target: self, action: #selector(closeMoreMenu(_:)))
         moreBtnTap.delegate = self
@@ -158,6 +159,7 @@ class CalendarDetailVC: UIViewController{
         commentLabel.textAlignment = .left
         
     }
+    
     func setEmptyView(state: EmptyState){
         
         contentScrollView.alpha = 0
@@ -171,9 +173,11 @@ class CalendarDetailVC: UIViewController{
             detailEmptyImageView.image = UIImage(named: "calendarImgNoContentCloud")
         }
     }
+    
     func setContent(){
         contentScrollView.alpha = 1
     }
+    
     func setData(){
         setContent()
         let month = dailyWeathy?.dailyWeather.date.month
@@ -207,6 +211,7 @@ class CalendarDetailVC: UIViewController{
         if dailyWeathy?.imgUrl == nil{
             photoWidthConstraint.constant = 0
             commentTopConstraint.constant = -3.9
+            photoImageView.image = nil
         }
         else{
             photoImageView.imageFromUrl(dailyWeathy?.imgUrl)
@@ -222,6 +227,11 @@ class CalendarDetailVC: UIViewController{
         dateLabel.text = koreanDateFormatter.string(from: selectedDate)
         
         
+    }
+    
+    func setNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recordChanged(_:)), name: NSNotification.Name(rawValue: "RecordUpdated"), object: nil)
     }
     
     func insertSeparatorInArray(_ arr: [Clothes]) -> String {
@@ -384,7 +394,6 @@ class CalendarDetailVC: UIViewController{
                 print("[Delete] serverErr")
             }
         }
-        //        self.parent?.view.addSubview(self.blurView)
     }
     
     @objc func selectedDateDidChange(_ notification: NSNotification?){
@@ -418,6 +427,7 @@ class CalendarDetailVC: UIViewController{
             
         }
     }
+    
     @IBAction func editBtnDidTap(_ sender: Any) {
         guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
         closeMoreMenu(nil)
@@ -428,11 +438,13 @@ class CalendarDetailVC: UIViewController{
         self.present(recordEdit, animated: true)
         
     }
+    
     @IBAction func deleteBtnDidTap(_ sender: Any) {
         closeMoreMenu(nil)
         self.parent?.view.addSubview(blurView)
         
     }
+    
     @IBAction func recordBtnDidTap(_ sender: Any) {
         guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
         record.modalPresentationStyle = .fullScreen
