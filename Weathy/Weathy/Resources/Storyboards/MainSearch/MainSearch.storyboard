@@ -364,12 +364,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tB8-eo-ezL">
                                 <rect key="frame" x="0.0" y="173" width="414" height="689"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 검색한 위치" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIU-Tb-4UJ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 검색한 위치" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIU-Tb-4UJ">
                                         <rect key="frame" x="33" y="0.0" width="112" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLC-d9-0Rc">
+                                        <rect key="frame" x="33" y="29.5" width="31" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="K9n-j1-Jpy"/>
+                                            <constraint firstAttribute="width" constant="31" id="VGe-y7-8Xf"/>
+                                        </constraints>
+                                    </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_recent_empty_img_empty" translatesAutoresizingMaskIntoConstraints="NO" id="Rxx-Oi-mzk">
                                         <rect key="frame" x="120.5" y="169.5" width="173" height="174"/>
                                         <constraints>
@@ -639,6 +647,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="bIU-Tb-4UJ" firstAttribute="leading" secondItem="tB8-eo-ezL" secondAttribute="leading" constant="33" id="4h2-Cq-JRh"/>
+                                    <constraint firstItem="oLC-d9-0Rc" firstAttribute="leading" secondItem="bIU-Tb-4UJ" secondAttribute="leading" id="8ox-jW-Kc2"/>
                                     <constraint firstItem="bIU-Tb-4UJ" firstAttribute="top" secondItem="tB8-eo-ezL" secondAttribute="top" id="NAi-bF-s7F"/>
                                     <constraint firstItem="Rxx-Oi-mzk" firstAttribute="top" secondItem="bIU-Tb-4UJ" secondAttribute="bottom" constant="149" id="NfH-Kd-yXA"/>
                                     <constraint firstAttribute="trailing" secondItem="gGG-iQ-SXr" secondAttribute="trailing" constant="28" id="Pye-fb-47O"/>
@@ -646,6 +655,7 @@
                                     <constraint firstItem="Rxx-Oi-mzk" firstAttribute="centerX" secondItem="tB8-eo-ezL" secondAttribute="centerX" id="k4R-kP-k6i"/>
                                     <constraint firstItem="gGG-iQ-SXr" firstAttribute="top" secondItem="bIU-Tb-4UJ" secondAttribute="bottom" constant="23" id="v9v-TJ-5KH"/>
                                     <constraint firstAttribute="bottom" secondItem="gGG-iQ-SXr" secondAttribute="bottom" id="w1g-bk-sr9"/>
+                                    <constraint firstItem="oLC-d9-0Rc" firstAttribute="top" secondItem="bIU-Tb-4UJ" secondAttribute="bottom" constant="9" id="zAw-WQ-JY4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -677,6 +687,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="RecentLabelUnderlineView" destination="oLC-d9-0Rc" id="cHe-0A-yI3"/>
                         <outlet property="backView" destination="s5z-ci-BAd" id="dS8-dq-BRJ"/>
                         <outlet property="clearButton" destination="qJ0-YO-dXA" id="dci-Ky-aHD"/>
                         <outlet property="gradientView" destination="Q7R-V9-Gp1" id="XqP-U0-VxH"/>
