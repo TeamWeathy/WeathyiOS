@@ -12,7 +12,7 @@ import CoreLocation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var appDelegateRecentInfos : [OverviewWeatherList] = []
+    var appDelegateRecentInfos : [OverviewWeather] = []
     var overviewData: OverviewWeather?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

@@ -17,10 +17,10 @@ class MainSearchVC: UIViewController {
     /// 최근 검색 배열을 사용하기 위해 appdelegate에서 전역변수 생성!!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    var mainDeliverSearchInfo: OverviewWeatherList?
+    var mainDeliverSearchInfo: OverviewWeather?
     
-    var recentInformations: [OverviewWeatherList] = []
-    var searchInformations: [OverviewWeatherList] = []
+    var recentInformations: [OverviewWeather] = []
+    var searchInformations: [OverviewWeather] = []
     var changBool: Bool = false
     
     let dateFormatter = DateFormatter()
@@ -313,7 +313,7 @@ extension MainSearchVC: UITableViewDataSource {
                 searchCell.selectionStyle = .none
                 
                 searchCell.bind(weatherDate:
-                                    "\(self.searchInformations[indexPath.row].dailyWeather.date.month)월 \(self.searchInformations[indexPath.row].dailyWeather.date.day)일 \(self.searchInformations[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: self.searchInformations[indexPath.row].hourlyWeather.time, location: self.searchInformations[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(self.searchInformations[indexPath.row].hourlyWeather.climate.iconId), currentTemper: "\(self.searchInformations[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(self.searchInformations[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(self.searchInformations[indexPath.row].dailyWeather.temperature.minTemp)°")
+                                    "\(self.searchInformations[indexPath.row].dailyWeather.date.month)월 \(self.searchInformations[indexPath.row].dailyWeather.date.day)일 \(self.searchInformations[indexPath.row].dailyWeather.date.dayOfWeek)", weahterTime: self.searchInformations[indexPath.row].hourlyWeather.time ?? "d", location: self.searchInformations[indexPath.row].region.name, weatherImage: ClimateImage.getClimateSearchIllust(self.searchInformations[indexPath.row].hourlyWeather.climate.iconId), currentTemper: "\(self.searchInformations[indexPath.row].hourlyWeather.temperature)°", highTemper:  "\(self.searchInformations[indexPath.row].dailyWeather.temperature.maxTemp)°", lowTemper: "\(self.searchInformations[indexPath.row].dailyWeather.temperature.minTemp)°")
                 
                 return searchCell
             } else { /// isFromRecord == true

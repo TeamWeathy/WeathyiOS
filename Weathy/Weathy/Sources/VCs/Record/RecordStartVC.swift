@@ -30,7 +30,7 @@ class RecordStartVC: UIViewController {
     var visitedFlag: Bool = false
     var dvc = RecordTagVC()
     
-    var recordDeliverSearchInfo: OverviewWeatherList?
+    var recordDeliverSearchInfo: OverviewWeather?
     
     var locationWeatherData: LocationWeatherData?
     

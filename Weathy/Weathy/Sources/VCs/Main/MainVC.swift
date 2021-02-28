@@ -31,8 +31,8 @@ class MainVC: UIViewController {
     var extraWeatherData: ExtraWeatherData?
     
     // search - main
-    var mainDeliverSearchInfo: OverviewWeatherList?
-    var deliveredSearchData: OverviewWeatherList?
+    var mainDeliverSearchInfo: OverviewWeather?
+    var deliveredSearchData: OverviewWeather?
     var searchImage: String?
     var searchGradient: String?
 
@@ -44,7 +44,6 @@ class MainVC: UIViewController {
     // main
     @IBOutlet var mainBackgroundImage: UIImageView!
     @IBOutlet var topBlurView: UIImageView!
-    @IBOutlet var weatherCollectionView: UICollectionView!
     @IBOutlet var logoImage: UIImageView!
     @IBOutlet var todayDateTimeLabel: SpacedLabel!
     @IBOutlet var mainNaviBarView: UIView!
@@ -120,23 +119,21 @@ class MainVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
-    // FIXME: - 하단 탭바 높이 계산하기
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
 
         safeInsetTop = view.safeAreaInsets.top
         safeInsetBottom = view.safeAreaInsets.bottom
+        
         let tabbarHeight: CGFloat = {
-            if UIScreen.main.hasNotch{
+            if UIScreen.main.hasNotch {
                 return 92
-            }
-            else{
+            } else {
                 return 73
             }
         }()
         let mainHeight = UIScreen.main.bounds.height
         let viewHeight = mainHeight - (safeInsetTop + safeInsetBottom + mainNaviBarView.bounds.height) - tabbarHeight
-        // 92: 하단 탭 바 높이
 
         mainViewHeightConstraint.constant = viewHeight
     }
@@ -159,6 +156,7 @@ class MainVC: UIViewController {
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
         todayDateTimeLabel.characterSpacing = -0.75
+        todayDateTimeLabel.text = "\(Date().getDateToString(format: "M월 dd일 EEEE • a h시", date: Date()))"
 
         // top weathy view
         let weathyViewTabGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpTodayWeathyView))
@@ -284,7 +282,6 @@ class MainVC: UIViewController {
         }
         
         hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconId))
-//        moveWeatherImage()
 
         // navigation bar
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
@@ -340,7 +337,7 @@ class MainVC: UIViewController {
         }
     }
     
-    func changeWeatherViewBySearchData(data: OverviewWeatherList) {
+    func changeWeatherViewBySearchData(data: OverviewWeather) {
         locationLabel.text = "\(data.region.name)"
         currTempLabel.text = "\(data.hourlyWeather.temperature)°"
         maxTempLabel.text = "\(data.dailyWeather.temperature.maxTemp)°"
@@ -632,6 +629,27 @@ class MainVC: UIViewController {
         present(settingNVC, animated: true, completion: nil)
     }
     
+    @IBAction func touchUpGPSButton(_ sender: Any) {
+        if !isOnGPS {
+            let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
+            
+            if locationAuth {
+                // 현재 위치 받아오기
+                getLocationWeather(isDefault: false)
+                UserDefaults.standard.removeObject(forKey: "searchLocationCode")
+                isOnGPS = true
+            } else {
+                // 팝업 띄우기
+                guard let popUpVC = storyboard?.instantiateViewController(withIdentifier: "MainGPSPopupVC") as? MainGPSPopupVC else { return }
+                
+                popUpVC.modalTransitionStyle = .crossDissolve
+                popUpVC.modalPresentationStyle = .overCurrentContext
+                
+                present(popUpVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
     @IBAction func touchUpHelpButton(_ sender: UIButton) {
         let screenWidth: CGFloat = UIScreen.main.bounds.width
         let helpViewWidth: CGFloat = screenWidth * (286/375)
@@ -657,14 +675,13 @@ class MainVC: UIViewController {
         
         closeButton.addTarget(self, action: #selector(touchUpCloseHelpButton(_:)), for: .touchUpInside)
         
-        mainScrollView.isScrollEnabled = false
-        mainTopScrollView.isScrollEnabled = false
         if let superview = view.superview?.superview {
             superview.addSubview(helpBackgroundImage)
             superview.addSubview(helpBoxImage)
             superview.addSubview(closeButton)
         }
-        
+
+        helpBackgroundImage.isUserInteractionEnabled = true
         helpButton.isUserInteractionEnabled = false
     }
         
@@ -685,27 +702,8 @@ class MainVC: UIViewController {
 
         helpButton.isUserInteractionEnabled = true
     }
-    
-    @IBAction func touchUpGPSButton(_ sender: Any) {
-        if !isOnGPS {
-            let locationAuth = UserDefaults.standard.bool(forKey: "locationAuth")
-            
-            if locationAuth {
-                // 현재 위치 받아오기
-                getLocationWeather(isDefault: false)
-                UserDefaults.standard.removeObject(forKey: "searchLocationCode")
-                isOnGPS = true
-            } else {
-                // 팝업 띄우기
-                guard let popUpVC = storyboard?.instantiateViewController(withIdentifier: "MainGPSPopupVC") as? MainGPSPopupVC else { return }
-                
-                popUpVC.modalTransitionStyle = .crossDissolve
-                popUpVC.modalPresentationStyle = .overCurrentContext
-                
-                present(popUpVC, animated: true, completion: nil)
-            }
-        }
-    }
+
+    // MARK: - objc func
     
     @objc func touchUpTodayWeathyView() {
         if let data = recommenedWeathyData {
