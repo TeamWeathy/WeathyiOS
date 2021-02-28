@@ -221,11 +221,11 @@ class MainSearchVC: UIViewController {
 extension MainSearchVC {
     // MARK: - Network
     
-    func getLocationWeather(indexPath: Int) {
+    func getLocationWeather(indexPath: Int, date: String) {
         
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let locationCode = appDelegate.appDelegateRecentInfos[indexPath].region.code
-        let dateString = "\(appDelegate.appDelegateRecentInfos[indexPath].dailyWeather.date.year)-\(appDelegate.appDelegateRecentInfos[indexPath].dailyWeather.date.month)-\(appDelegate.appDelegateRecentInfos[indexPath].dailyWeather.date.day)"
+        let dateString = date
         
         RecordWeathyService.shared.getWeatherByLocation(dateString: dateString, regionCode: locationCode) { (result) -> (Void) in
             switch result {
