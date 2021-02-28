@@ -43,6 +43,7 @@ class MainSearchVC: UIViewController {
     @IBOutlet weak var recentNoneImage: UIImageView!
     @IBOutlet weak var recentTableView: UITableView!
     @IBOutlet weak var recentLabel: UILabel!
+    @IBOutlet weak var RecentLabelUnderlineView: UIView!
     
     /// 현재 검색 관련
     @IBOutlet weak var gradientView: UIImageView!
@@ -86,11 +87,13 @@ class MainSearchVC: UIViewController {
         gradientView.image = UIImage(named: self.gradient)
         
         recentNonImage()
-        font()
+        setRecentTitle()
     }
     
-    func font(){
+    func setRecentTitle(){
         recentLabel.font = UIFont.SDGothicSemiBold17
+        recentLabel.textColor = .mainGrey
+        RecentLabelUnderlineView.backgroundColor = .subGrey7
     }
     
     /// 촤근 검색 에 따른 이미지 변경
