@@ -12,7 +12,6 @@ class MainVC: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var lastContentOffset: CGFloat = 0.0
-//    let tapGesture: UITapGestureRecognizer?
     
     // gps 버튼 활성화 여부
     var isOnGPS: Bool = false {
@@ -118,8 +117,6 @@ class MainVC: UIViewController {
         initMainBottomView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
-        
-//        tapGesture = UITapGestureRecognizer(target: self, action: #selector(<#T##@objc method#>))
     }
     
     override func viewSafeAreaInsetsDidChange() {
@@ -285,7 +282,6 @@ class MainVC: UIViewController {
         }
         
         hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconId))
-//        moveWeatherImage()
 
         // navigation bar
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
@@ -679,15 +675,13 @@ class MainVC: UIViewController {
         
         closeButton.addTarget(self, action: #selector(touchUpCloseHelpButton(_:)), for: .touchUpInside)
         
-        mainScrollView.isScrollEnabled = false
-        mainTopScrollView.isScrollEnabled = false
         if let superview = view.superview?.superview {
             superview.addSubview(helpBackgroundImage)
             superview.addSubview(helpBoxImage)
             superview.addSubview(closeButton)
         }
-        
-//        closeButton.
+
+        helpBackgroundImage.isUserInteractionEnabled = true
         helpButton.isUserInteractionEnabled = false
     }
         
