@@ -9,7 +9,12 @@ import UIKit
 
 class SettingVC: UIViewController {
     // MARK: - Custom Variables
-    
+    let feedbackEmail = "weathycrew@gmail.com"
+    let privacyURL = "https://www.notion.so/5a2f164b5afe46559c78d7efed6d3e8a"
+    let locationURL = "https://www.notion.so/69010f5bca1e443ca3b47cfd74bdb41f"
+    let openSourceURL = ""
+    let feedbackSubject = "Weathy 문의 및 건의하기"
+    let feedbackBody = ""
     // MARK: - IBOutlets
     
     @IBOutlet var settingTitleLabel: SpacedLabel!
@@ -35,6 +40,26 @@ class SettingVC: UIViewController {
         }
     }
     
+    func createEmailUrl(to: String, subject: String, body: String) -> String {
+        let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let bodyEncoded = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        let defaultUrl = "mailto:\(to)?subject=\(subjectEncoded)&body=\(bodyEncoded)"
+        
+        return defaultUrl
+    }
+    
+    func openURL(urlString: String){
+        if let url = URL(string: "\(urlString)"){
+            if #available(iOS 10.0, *){
+                UIApplication.shared.open(url)
+            }
+            else{
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
     // MARK: - @objc Methods
     
     // MARK: - IBActions
@@ -43,10 +68,15 @@ class SettingVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func feedbackButtonDidTap(_ sender: Any) {
+        let email = createEmailUrl(to: feedbackEmail, subject: feedbackSubject, body: feedbackBody)
+        openURL(urlString: email)
+
     }
     @IBAction func privacyButtonDidTap(_ sender: Any) {
+        openURL(urlString: privacyURL)
     }
     @IBAction func locationButtonDidTap(_ sender: Any) {
+        openURL(urlString: locationURL)
     }
     @IBAction func openSourceButtonDidTap(_ sender: Any) {
     }
