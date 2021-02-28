@@ -12,7 +12,7 @@ class SettingVC: UIViewController {
     
     // MARK: - IBOutlets
     
-    @IBOutlet var setLabel: SpacedLabel!
+    @IBOutlet var settingTitleLabel: SpacedLabel!
     @IBOutlet var buttonLabels: [SpacedLabel]!
     
     override func viewDidLoad() {
@@ -24,9 +24,9 @@ class SettingVC: UIViewController {
     // MARK: - Custom Methods
     
     func setFontColor() {
-        setLabel.font = UIFont.SDGothicSemiBold25
-        setLabel.textColor = UIColor.mainGrey
-        setLabel.characterSpacing = -1.25
+        settingTitleLabel.font = UIFont.SDGothicSemiBold25
+        settingTitleLabel.textColor = UIColor.mainGrey
+        settingTitleLabel.characterSpacing = -1.25
         
         for i in 0 ..< buttonLabels.count {
             buttonLabels[i].font = UIFont.SDGothicRegular16
@@ -41,5 +41,13 @@ class SettingVC: UIViewController {
 
     @IBAction func backButtonDidTap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    @IBAction func feedbackButtonDidTap(_ sender: Any) {
+    }
+    @IBAction func privacyButtonDidTap(_ sender: Any) {
+    }
+    @IBAction func locationButtonDidTap(_ sender: Any) {
+    }
+    @IBAction func openSourceButtonDidTap(_ sender: Any) {
     }
 }
