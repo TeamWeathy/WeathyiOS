@@ -44,7 +44,6 @@ class MainVC: UIViewController {
     // main
     @IBOutlet var mainBackgroundImage: UIImageView!
     @IBOutlet var topBlurView: UIImageView!
-    @IBOutlet var weatherCollectionView: UICollectionView!
     @IBOutlet var logoImage: UIImageView!
     @IBOutlet var todayDateTimeLabel: SpacedLabel!
     @IBOutlet var mainNaviBarView: UIView!
@@ -120,23 +119,21 @@ class MainVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
-    // FIXME: - 하단 탭바 높이 계산하기
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
 
         safeInsetTop = view.safeAreaInsets.top
         safeInsetBottom = view.safeAreaInsets.bottom
+        
         let tabbarHeight: CGFloat = {
-            if UIScreen.main.hasNotch{
+            if UIScreen.main.hasNotch {
                 return 92
-            }
-            else{
+            } else {
                 return 73
             }
         }()
         let mainHeight = UIScreen.main.bounds.height
         let viewHeight = mainHeight - (safeInsetTop + safeInsetBottom + mainNaviBarView.bounds.height) - tabbarHeight
-        // 92: 하단 탭 바 높이
 
         mainViewHeightConstraint.constant = viewHeight
     }
@@ -159,6 +156,7 @@ class MainVC: UIViewController {
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
         todayDateTimeLabel.characterSpacing = -0.75
+        todayDateTimeLabel.text = "\(Date().getDateToString(format: "M월 dd일 EEEE • a h시", date: Date()))"
 
         // top weathy view
         let weathyViewTabGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpTodayWeathyView))
