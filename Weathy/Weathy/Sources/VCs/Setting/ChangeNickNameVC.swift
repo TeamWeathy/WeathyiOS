@@ -60,6 +60,12 @@ class ChangeNickNameVC: UIViewController {
         totalCountLabel.font = UIFont.SDGothicRegular13
         totalCountLabel.textColor = UIColor.subGrey6
         totalCountLabel.characterSpacing = -0.65
+        
+        changeButton.backgroundColor = UIColor.subGrey3
+        changeButton.makeRounded(cornerRadius: changeButton.bounds.height / 2)
+        changeButton.setTitle("변경하기", for: .normal)
+        changeButton.titleLabel?.font = UIFont.SDGothicSemiBold16
+        changeButton.titleLabel?.textColor = .white
     }
     
     // MARK: - @objc Methods
@@ -87,7 +93,7 @@ class ChangeNickNameVC: UIViewController {
         } else {
             isChange = false
             clearButton.isHidden = true
-            changeButton.setBackgroundImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
+            changeButton.backgroundColor = UIColor.subGrey3
             textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
             countLabel.textColor = UIColor.black
             countLabel.text = "0"
@@ -105,9 +111,11 @@ class ChangeNickNameVC: UIViewController {
                 
                 if let modifyData = data as? UserData {
                     UserDefaults.standard.setValue(modifyData.user.nickname, forKey: "nickname")
-                    
                     self.nickName = modifyData.user.nickname
-                    self.navigationController?.popViewController(animated: true)
+                    
+                    self.showToast(message: "닉네임이 변경되었어요.") {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
             case .requestErr:
                 print("requestErr")
@@ -137,14 +145,14 @@ extension ChangeNickNameVC: UITextFieldDelegate {
         /// 글자 개수에 따른 "변경하기" 버튼 이미지 변경
         if nickNameTextField.text?.count == 0 {
             isChange = false
-            
-            changeButton.setBackgroundImage(UIImage(named: "settingBtnEditUnselected"), for: .normal)
+
+            changeButton.backgroundColor = UIColor.subGrey3
             clearButton.isHidden = true
             countLabel.textColor = UIColor.subGrey6
         } else {
             isChange = true
             
-            changeButton.setImage(UIImage(named: "settingBtnEditSelected"), for: .normal)
+            changeButton.backgroundColor = UIColor.mintMain
             clearButton.isHidden = false
             countLabel.textColor = UIColor.mintMain
         }

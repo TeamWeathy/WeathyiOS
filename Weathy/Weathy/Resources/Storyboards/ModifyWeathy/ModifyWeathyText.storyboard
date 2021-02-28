@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MbY-T4-SOH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MbY-T4-SOH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -198,10 +198,10 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqD-sM-OYs">
-                                <rect key="frame" x="36.5" y="58" width="20" height="20"/>
+                                <rect key="frame" x="22.5" y="44" width="48" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="Ijo-uB-8ou"/>
-                                    <constraint firstAttribute="height" constant="20" id="apR-z6-1pc"/>
+                                    <constraint firstAttribute="width" constant="48" id="Ijo-uB-8ou"/>
+                                    <constraint firstAttribute="height" constant="48" id="apR-z6-1pc"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="ic_back"/>
@@ -222,8 +222,8 @@
                             <constraint firstItem="ybI-6f-yf8" firstAttribute="leading" secondItem="Pz1-uC-jg4" secondAttribute="leading" id="eTF-FW-1pO"/>
                             <constraint firstItem="bgY-z6-lK4" firstAttribute="top" secondItem="ybI-6f-yf8" secondAttribute="bottom" constant="30" id="fYI-HG-hZG"/>
                             <constraint firstItem="ybI-6f-yf8" firstAttribute="centerX" secondItem="IpM-cs-acH" secondAttribute="centerX" id="ixP-3K-TfC"/>
-                            <constraint firstItem="gqD-sM-OYs" firstAttribute="leading" secondItem="Pz1-uC-jg4" secondAttribute="leading" id="koo-XM-aT1"/>
-                            <constraint firstItem="Pz1-uC-jg4" firstAttribute="top" secondItem="gqD-sM-OYs" secondAttribute="bottom" constant="31" id="nGU-hI-YKi"/>
+                            <constraint firstItem="gqD-sM-OYs" firstAttribute="leading" secondItem="Pz1-uC-jg4" secondAttribute="leading" constant="-14" id="koo-XM-aT1"/>
+                            <constraint firstItem="gqD-sM-OYs" firstAttribute="top" secondItem="IpM-cs-acH" secondAttribute="top" id="mGG-fv-f2Y"/>
                             <constraint firstItem="ybI-6f-yf8" firstAttribute="width" secondItem="C2z-Ue-4MR" secondAttribute="width" multiplier="309:375" id="qYq-oR-r3w"/>
                             <constraint firstItem="bgY-z6-lK4" firstAttribute="leading" secondItem="IpM-cs-acH" secondAttribute="leading" constant="33" id="rAg-m1-QiT"/>
                             <constraint firstItem="ybI-6f-yf8" firstAttribute="top" secondItem="RnI-Tc-AEy" secondAttribute="bottom" constant="35" id="reb-tQ-fgr"/>

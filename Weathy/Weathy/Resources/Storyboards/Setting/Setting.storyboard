@@ -489,11 +489,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7X-JX-aly">
-                                <rect key="frame" x="52.5" y="791" width="309" height="55"/>
+                                <rect key="frame" x="36.5" y="785.5" width="341" height="60.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i7X-JX-aly" secondAttribute="height" multiplier="309:55" id="QfN-jX-c4N"/>
                                 </constraints>
-                                <state key="normal" image="settingBtnEditUnselected"/>
                                 <connections>
                                     <action selector="changeButtonDidTap:" destination="v8m-hs-VH6" eventType="touchUpInside" id="vC2-jJ-XK0"/>
                                 </connections>
@@ -520,7 +519,7 @@
                             <constraint firstItem="Eab-DD-lof" firstAttribute="centerX" secondItem="cJU-F3-1XE" secondAttribute="centerX" id="AbM-Ik-dOE"/>
                             <constraint firstItem="Eab-DD-lof" firstAttribute="top" secondItem="q95-EC-W4X" secondAttribute="bottom" constant="46" id="BA5-t6-VDp"/>
                             <constraint firstItem="2ui-HA-fmE" firstAttribute="top" secondItem="6xh-y7-9IU" secondAttribute="bottom" constant="19" id="EFS-zR-yAK"/>
-                            <constraint firstItem="i7X-JX-aly" firstAttribute="width" secondItem="58n-Cx-0zT" secondAttribute="width" multiplier="0.906158" id="Ffa-Rh-qGF"/>
+                            <constraint firstItem="i7X-JX-aly" firstAttribute="width" secondItem="G8S-Yt-2sb" secondAttribute="width" multiplier="309:375" id="Ffa-Rh-qGF"/>
                             <constraint firstItem="q95-EC-W4X" firstAttribute="leading" secondItem="58n-Cx-0zT" secondAttribute="leading" id="ILI-jJ-Xzk"/>
                             <constraint firstItem="cJU-F3-1XE" firstAttribute="bottom" secondItem="i7X-JX-aly" secondAttribute="bottom" constant="16" id="LEQ-I8-IeA"/>
                             <constraint firstItem="i7X-JX-aly" firstAttribute="centerX" secondItem="G8S-Yt-2sb" secondAttribute="centerX" id="QKT-8g-1L4"/>
@@ -581,7 +580,6 @@
         <image name="icClose" width="20" height="20"/>
         <image name="ic_back" width="20" height="20"/>
         <image name="settingBgDevinfo" width="375" height="812"/>
-        <image name="settingBtnEditUnselected" width="307" height="55"/>
         <image name="settingFrameArrow" width="48" height="48"/>
         <image name="settingImgDevinfoText" width="232" height="627"/>
         <image name="settingImgTextfieldUnselected" width="307" height="50"/>

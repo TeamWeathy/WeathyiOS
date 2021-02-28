@@ -43,12 +43,19 @@ extension UIViewController{
         toastLabel.layer.cornerRadius = 25
         toastLabel.clipsToBounds  =  true
         self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 1.0, delay: 1.5, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: { _ in
-            toastLabel.removeFromSuperview()
-            completion()
-        })
+        
+        UIView.animate(withDuration: 0.8, animations: {
+            toastLabel.alpha = 1
+            },completion: { finish in
+              UIView.animate(withDuration: 0.3, delay: 0.7, animations: {
+                toastLabel.alpha = 0
+              }, completion: { finish in
+                if finish {
+                    toastLabel.removeFromSuperview()
+                  completion()
+                }
+              })
+            })
     }
     
     func showToastOnTop(message: String) {
