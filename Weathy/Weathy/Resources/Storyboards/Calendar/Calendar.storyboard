@@ -321,8 +321,7 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="toP-0a-upF">
                                                 <rect key="frame" x="45" y="360" width="285" height="285"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="toP-0a-upF" secondAttribute="height" multiplier="1:1" id="Hfm-Kr-HDO"/>
-                                                    <constraint firstAttribute="width" constant="285" id="jt1-6N-NNZ"/>
+                                                    <constraint firstAttribute="width" secondItem="toP-0a-upF" secondAttribute="height" multiplier="1:1" id="Bwb-2h-nnp"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -372,6 +371,7 @@
                                             <constraint firstItem="Eq8-fr-Nct" firstAttribute="leading" secondItem="OJS-Lx-AE2" secondAttribute="leading" constant="45" id="esP-L4-YaO"/>
                                             <constraint firstItem="8qQ-cu-yV0" firstAttribute="top" secondItem="OJS-Lx-AE2" secondAttribute="top" constant="37" id="g8G-jg-Yin"/>
                                             <constraint firstItem="Eq8-fr-Nct" firstAttribute="top" secondItem="OJS-Lx-AE2" secondAttribute="top" constant="38" id="gCk-l4-tIv"/>
+                                            <constraint firstItem="toP-0a-upF" firstAttribute="width" secondItem="mTX-8O-mf4" secondAttribute="width" id="i5y-GO-3kx"/>
                                             <constraint firstItem="GMB-qz-WFd" firstAttribute="top" secondItem="d23-Eq-Wdp" secondAttribute="top" id="ijK-2E-oW4"/>
                                             <constraint firstItem="LbZ-I1-Rwa" firstAttribute="top" secondItem="cYN-xo-TaZ" secondAttribute="top" id="j4D-Kt-lgq"/>
                                             <constraint firstItem="toP-0a-upF" firstAttribute="top" secondItem="mTX-8O-mf4" secondAttribute="bottom" constant="24" id="nDL-xC-isG"/>
@@ -438,7 +438,6 @@
                         <outlet property="moreMenuView" destination="bPc-en-inU" id="J0W-XB-KAc"/>
                         <outlet property="moreViewHeightConstraint" destination="1TQ-nb-GKn" id="lkm-yg-qKn"/>
                         <outlet property="photoImageView" destination="toP-0a-upF" id="HHe-wY-7eF"/>
-                        <outlet property="photoWidthConstraint" destination="jt1-6N-NNZ" id="tAx-T7-uly"/>
                         <outlet property="recordButton" destination="Z3O-5L-M7h" id="ln3-tZ-PvL"/>
                         <outlet property="temperatureHighLabel" destination="jWH-Dm-en1" id="aHJ-fM-yvb"/>
                         <outlet property="temperatureLowLabel" destination="cqf-FB-afp" id="F3V-fP-nGz"/>
