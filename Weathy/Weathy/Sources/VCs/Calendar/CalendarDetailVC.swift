@@ -68,26 +68,11 @@ class CalendarDetailVC: UIViewController{
         calendarVC.view.backgroundColor = .clear
         detailTopConstraint.constant = weeklyHeight - 30
         
-        UIView.animate(withDuration: 0.1){
-            self.view.layoutIfNeeded()
-            self.calendarVC.view.layoutIfNeeded()
-        
-        }
-        let popup = WeathyPopupView(frame: CGRect(x: 0, y: 0, width: screen.width, height: screen.height))
-//        self.parent?.view.addSubview(popup)
-//        popup.setPopup(titleText: "테스트 팝업", messageText: "이것은 테스트 팝업", yesHandler: { [weak self]
-//            in
-//            popup.removeFromSuperview()
-//        }, noHandler: {[weak self]
-//            in
-//            popup.removeFromSuperview()
-//        })
-        //        if let weekCell = calendarVC.infiniteWeeklyCV.cellForItem(at: [0,selectedDate.weekday]) as? InfiniteWeeklyCVC{
-        //            weekCell.weekCellDelegate = self
-        //            DispatchQueue.main.async {
-        //
-        //            }
-        //        }
+//        UIView.animate(withDuration: 0.1){
+//            self.view.layoutIfNeeded()
+//            self.calendarVC.view.layoutIfNeeded()
+//
+//        }
         initSize()
         setStyle()
         setPopup()
@@ -225,7 +210,7 @@ class CalendarDetailVC: UIViewController{
         }
         else{
             photoImageView.imageFromUrl(dailyWeathy?.imgUrl)
-            photoWidthConstraint.constant = photoWidth
+            photoWidthConstraint.constant = screen.width-90
             commentTopConstraint.constant = commentTop
         }
         if comment == nil{
