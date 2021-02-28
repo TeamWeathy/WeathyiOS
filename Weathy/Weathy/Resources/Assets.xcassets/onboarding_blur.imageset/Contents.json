@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "onboarding_img_phone_3.png",
+      "filename" : "onboarding_blur.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "onboarding_img_phone_3@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "onboarding_img_phone_3@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

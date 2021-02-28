@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - UserInformation
 
-struct UserInformation: Codable {
+struct UserData: Codable {
     let user: User
     let token, message: String
 }

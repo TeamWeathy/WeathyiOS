@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CalendarDetailVC: UIViewController {
+class CalendarDetailVC: UIViewController{
     
     //MARK: - Custom Properties
     let hasNotch = UIScreen.main.hasNotch
@@ -54,6 +54,7 @@ class CalendarDetailVC: UIViewController {
     @IBOutlet weak var commentLabel: SpacedLabel!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var detailBlurView: UIImageView!
     
     //MARK: - Lifecycle Methods
     
@@ -66,9 +67,6 @@ class CalendarDetailVC: UIViewController {
         calendarVC.didMove(toParent: self)
         calendarVC.view.backgroundColor = .clear
         detailTopConstraint.constant = weeklyHeight - 30
-        let height = view.frame.height
-        let width = view.frame.width
-        print("height",height)
         
         UIView.animate(withDuration: 0.1){
             self.view.layoutIfNeeded()
@@ -98,7 +96,6 @@ class CalendarDetailVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(selectedDateDidChange(_:)), name: NSNotification.Name(rawValue: "ChangeDate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recordChanged(_:)), name: NSNotification.Name(rawValue: "RecordUpdated"), object: nil)
                 initGestureRecognizer()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -309,8 +306,29 @@ class CalendarDetailVC: UIViewController {
                         self.dailyWeathy = dailyData
                         self.setData()
                     }
-                case .requestErr(let msg):
-                    print("[Daily] requestErr",msg)
+                case .requestErr(let statusCode):
+                    print("[Daily] requestErr",statusCode)
+                    if let code = statusCode as? Int {
+                        if code == 401{
+                            LoginService.shared.postLogin(uuid: UserDefaults.standard.string(forKey: "UUID") ?? ""){ (networkResult) -> (Void) in
+                                switch networkResult{
+                                    case .success(let data):
+                                        if let loginData = data as? UserData{
+                                            print("Token is renewed")
+                                            UserDefaults.standard.setValue(loginData.token, forKey: "token")
+                                        }
+                                    case .requestErr(let message):
+                                        print("[Login] requestErr", message)
+                                    case .pathErr:
+                                        print("[Login] pathErr")
+                                    case .serverErr:
+                                        print("[Login] serverErr")
+                                    case .networkFail:
+                                        print("[Login] networkFail")
+                                }
+                            }
+                        }	
+                    }
                     self.setEmptyView(state: .beforeContent)
                 case .serverErr:
                     print("[Daily] serverErr")
@@ -366,6 +384,9 @@ class CalendarDetailVC: UIViewController {
                 print("[Delete]",message)
                 self.blurView.removeFromSuperview()
                 self.selectedDateDidChange(nil)
+                if self.selectedDate.isToday{
+                    UserDefaults.standard.setValue("1800-01-01", forKey: "recentRecordDate")
+                }
                 NotificationCenter.default.post(name: NSNotification.Name("DeleteWeathy"), object: self.selectedDate.weekday)
                 self.showToast(message: "웨디가 삭제되었어요.")
             case .requestErr(let message):

@@ -8,10 +8,10 @@
 import Foundation
 import Alamofire
 
-struct autoLoginService {
-    static let shared = autoLoginService()
+struct LoginService {
+    static let shared = LoginService()
     
-    func autoLoginPost(uuid: String, completion: @escaping (NetworkResult<Any>) -> () ){
+    func postLogin(uuid: String, completion: @escaping (NetworkResult<Any>) -> () ){
         
         let url = APIConstants.loginURL
         let header : HTTPHeaders = [ "Content-Type" : "application/json"]
@@ -27,8 +27,7 @@ struct autoLoginService {
                 guard let data = response.value else {
                     return
                 }
-                completion(autoLoginData(status: statusCode, data: data))
-//            print(" aaa연결??-----> \(data)")
+                completion(judgeLoginData(status: statusCode, data: data))
             case .failure(let err):
                 print(err)
                 completion(.networkFail)
@@ -36,14 +35,13 @@ struct autoLoginService {
         }
     }
     
-    private func autoLoginData(status: Int, data: Data) -> NetworkResult<Any> {
+    private func judgeLoginData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(UserInformation.self, from: data) else {
+        guard let decodedData = try? decoder.decode(UserData.self, from: data) else {
             return .pathErr
         }
         switch status {
         case 200:
-//            print(" 연결??-----> \(decodedData)")
             return .success(decodedData)
         case 400..<500:
             return .requestErr(decodedData.message)

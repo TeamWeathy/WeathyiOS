@@ -73,15 +73,10 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         addNotificationObserver()
         closeDrawer()
         self.view.layoutIfNeeded()
-        let flowlayout = UICollectionViewLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let frame = self.view.frame
-        //        closeDrawer()
-        //        UIView.animate(withDuration: 0.3){
-        //            self.view.layoutIfNeeded()
-        //        }
+
         self.infiniteMonthlyCV.alpha = 0
         self.infiniteWeeklyCV.alpha = 1
         weeklyCellDidSelected()
@@ -96,7 +91,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func findIndexFromSelectedDate() -> Int{
         var firstComponent = DateComponents()
         firstComponent.day = -selectedDate.weekday
-        var firstDateOfWeek = Calendar.current.date(byAdding: firstComponent, to: selectedDate)
+        let firstDateOfWeek = Calendar.current.date(byAdding: firstComponent, to: selectedDate)
         for i in 0..<infiniteWeekList.count{
             if infiniteWeekList[i].currentYearMonth == firstDateOfWeek?.currentYearMonth{
                 if infiniteWeekList[i].day == firstDateOfWeek?.day{
@@ -157,6 +152,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func setStyle(){
         yearMonthTextView.font = UIFont(name: "Roboto-Medium", size: 25)
         yearMonthTextView.textColor = .mainGrey
+        
         calendarDrawerView.clipsToBounds = true
         calendarDrawerView.layer.cornerRadius = 35
         calendarDrawerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
@@ -171,6 +167,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         for label in weekdayLabelCollection{
             label.font = UIFont(name:"AppleSDGothicNeoM00",size: 13)
         }
+        
+        ///오늘 요일 하얗게
+        weekdayLabelCollection[selectedDate.weekday].textColor = .white
         
         infiniteMonthlyCV.clipsToBounds = true
     }
@@ -263,6 +262,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //MARK: - Custom Methods - Calendar
     
     func selectedDateDidChange(){
+        print("@selectedDate", selectedDate)
         picker.date = selectedDate
         lastWeekIdx = selectedDate.weekday
         NotificationCenter.default.post(
@@ -278,12 +278,13 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     func weeklyCellDidSelected(){
         if let infiniteCell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
-            infiniteCell.standardDate = infiniteWeekList[currentIndex]
+//            infiniteCell.standardDate = infiniteWeekList[currentIndex]
             infiniteCell.selectedDate = selectedDate
             infiniteCell.callWeeklyWeathy()
             infiniteCell.weeklyCalendarCV.reloadData()
             infiniteCell.lastSelectedIdx = currentIndex
-            infiniteCell.weeklyCalendarCV.selectItem(at: [0,selectedDate.weekday], animated: false, scrollPosition: .bottom)
+            infiniteCell.isSelected = true
+//            infiniteCell.weeklyCalendarCV.selectItem(at: [0,selectedDate.weekday], animated: false, scrollPosition: .bottom)
             
         }
         else{
@@ -343,14 +344,17 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         self.infiniteWeeklyCV.contentOffset.x = self.infiniteWeeklyCV.frame.width*CGFloat(weeklyIndex)
         
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: weeklyHeight)
+        
         ///spring effect
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
         UIView.animate(withDuration: 0.3){
             self.infiniteMonthlyCV.alpha = 0
             self.infiniteWeeklyCV.alpha = 1
         }
+        if selectedDate.isToday{
+            weekdayLabelCollection[selectedDate.weekday].textColor = .white
+        }
         
-        self.view.layoutSubviews()
         panGesture.setTranslation(CGPoint.zero, in: self.view)
         weeklyCellDidSelected()
         self.isCovered = false
@@ -370,9 +374,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         closeDrawer()
     }
     
-    func todayViewDidAppear(_ weekday: Int){
-        weekdayLabelCollection[weekday].textColor = .white
-    }
+//    func todayViewDidAppear(_ weekday: Int){
+//        weekdayLabelCollection[weekday].textColor = .white
+//    }
     
     //MARK: - @objc methods
     
@@ -472,45 +476,9 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         setWeekdayColor()
-        ///미래 날짜로 스크롤 disable 시킴
-        let gesture = scrollView.panGestureRecognizer
-        if scrollView == infiniteMonthlyCV{
-            ///오른쪽 스크롤
-            if gesture.velocity(in: scrollView).x < 0{
-                scrollDirection = .right
-                if selectedDate.month == Date().month{
-                    //                    infiniteMonthlyCV.isScrollEnabled = false
-                }
-            }
-            else if gesture.velocity(in: scrollView).x > 0{
-                scrollDirection = .left
-            }
-        }
-        else if scrollView == infiniteWeeklyCV{
-            if gesture.velocity(in: scrollView).x < 0{
-                scrollDirection = .right
-                var leftDateComponent = DateComponents()
-                leftDateComponent.day = -(selectedDate.weekday+1)
-                var rightDateComponent = DateComponents()
-                rightDateComponent.day = 7 - selectedDate.weekday
-                let leftDate = Calendar.current.date(byAdding: leftDateComponent, to: Date())
-                let rightDate = Calendar.current.date(byAdding: rightDateComponent, to: Date())
-                if leftDate!.compare(Date()) == .orderedAscending
-                    && rightDate!.compare(Date()) == .orderedDescending{
-                    //                    infiniteWeeklyCV.isScrollEnabled = false
-                    infiniteWeeklyCV.isScrollEnabled = true
-                }
-            }
-            else if gesture.velocity(in: scrollView).x > 0{
-                scrollDirection = .left
-            }
-        }
-        infiniteMonthlyCV.isScrollEnabled = true
-        
     }
     
     ///캘린더를 왼쪽 or 오른쪽으로 스와이프 할 때
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let x = scrollView.contentOffset.x
         currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
@@ -524,13 +492,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
                 //                insertLeftDate()
             }
             else{
-                //                yearMonthTextView.text = infiniteMonthList[currentIndex].currentYearMonth
-                if scrollDirection == .left{
-                    selectedDate = infiniteMonthList[currentIndex]
-                }
-                else if scrollDirection == .right{
-                    selectedDate = infiniteMonthList[currentIndex]
-                }
+                selectedDate = infiniteMonthList[currentIndex]
                 selectedDateDidChange()
                 CATransaction.begin()
                 CATransaction.setDisableActions(true)
@@ -544,7 +506,21 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             yearMonthTextView.text = infiniteWeekList[currentIndex].currentYearMonth
             var addComponent = DateComponents()
             addComponent.day = lastWeekIdx
-            selectedDate = Calendar.current.date(byAdding: addComponent, to: infiniteWeekList[currentIndex])!
+            
+            ///선택된 날짜가 미래일 경우 오늘이 선택되도록
+            if Date().compare(Calendar.current.date(byAdding: addComponent, to: infiniteWeekList[currentIndex])!) == .orderedAscending{
+                selectedDate = Date()
+            }
+            else{
+                selectedDate = Calendar.current.date(byAdding: addComponent, to: infiniteWeekList[currentIndex])!
+            }
+            ///요일 하얗게
+            if currentIndex == infiniteMax - 1{
+                weekdayLabelCollection[selectedDate.weekday].textColor = .white
+            }
+            else{
+                setWeekdayColor()
+            }
             selectedDateDidChange()
             weeklyCellDidSelected()
         }
@@ -573,7 +549,6 @@ extension CalendarVC: UICollectionViewDataSource{
             cell.monthlyWeathyList = [] 
             cell.monthCellDelegate = self
             cell.selectedDateDidChange(infiniteMonthList[indexPath.item])
-            cell.callMonthlyWeathy()
             CATransaction.begin()
             CATransaction.setDisableActions (true)
             if isFromBatch{
@@ -590,7 +565,7 @@ extension CalendarVC: UICollectionViewDataSource{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfiniteWeeklyCVC.identifier, for: indexPath) as? InfiniteWeeklyCVC else { return UICollectionViewCell() }
             cell.weekCellDelegate = self
             cell.standardDate = infiniteWeekList[indexPath.item]
-            cell.callWeeklyWeathy()
+//            cell.callWeeklyWeathy()
             return cell
         }
         

@@ -76,7 +76,7 @@ class NickNameVC: UIViewController {
         createUserService.shared.createUserPost(uuid: uuid, nickname: nickName) { (networkResult) -> Void in
             switch networkResult {
             case .success(let data):
-                if let createData = data as? UserInformation {
+                if let createData = data as? UserData {
                     UserDefaults.standard.set(createData.user.nickname, forKey: "nickname")
                     UserDefaults.standard.set(createData.token, forKey: "token")
                     UserDefaults.standard.set(createData.user.id, forKey: "userId")

@@ -16,9 +16,8 @@ class OnBoardingFirstVC: UIViewController {
     
     // MARK: - IBOutlets
     
-    @IBOutlet var blindView: UIView!
     /// label
-    @IBOutlet var lodingCloudView: UIView!
+    @IBOutlet var loadingCloudView: UIView!
     @IBOutlet var firstWord: UILabel!
     @IBOutlet var secondWord: UILabel!
     @IBOutlet var subLabel: UILabel!
@@ -26,7 +25,7 @@ class OnBoardingFirstVC: UIViewController {
     /// dot
     @IBOutlet var firstDot: UIImageView!
     @IBOutlet var secondDot: UIImageView!
-    @IBOutlet var thridDot: UIImageView!
+    @IBOutlet var thirdDot: UIImageView!
     
     /// image
     @IBOutlet var phoneImage: UIImageView!
@@ -55,13 +54,9 @@ class OnBoardingFirstVC: UIViewController {
         startButton.isHidden = true
         startButton.alpha = 0
         
-        /// OnBoarding 한번만 띄우기 위한 방법
-        let isUser = UserDefaults.standard.bool(forKey: "onboarding")
-        blindView.isHidden = isUser ? false : true
-
         // MARK: - LifeCycle Methods
         
-        labelFont()
+        setLabel()
         makeGesture()
     }
     
@@ -80,7 +75,7 @@ class OnBoardingFirstVC: UIViewController {
             guard let uuid = UserDefaults.standard.string(forKey: "UUID")
             else { return }
             
-            autoLoginService.shared.autoLoginPost(uuid: uuid) { (NetworkResult) -> Void in
+            LoginService.shared.postLogin(uuid: uuid) { (NetworkResult) -> Void in
                 switch NetworkResult {
                 case .success:
                     let story = UIStoryboard(name: "Tabbar", bundle: nil)
@@ -106,36 +101,36 @@ class OnBoardingFirstVC: UIViewController {
     // MARK: - Custom Methods
 
     func displayFirstSplash() {
-        lodingCloudView.addSubview(animationView)
+        loadingCloudView.addSubview(animationView)
         animationView.animation = Animation.named("온보딩_1")
-        animationView.frame = CGRect(x: -lodingCloudView.frame.width/2, y: -lodingCloudView.frame.height/2, width: lodingCloudView.frame.width*2, height: lodingCloudView.frame.height*2)
+        animationView.frame = CGRect(x: -loadingCloudView.frame.width/2, y: -loadingCloudView.frame.height/2, width: loadingCloudView.frame.width*2, height: loadingCloudView.frame.height*2)
         animationView.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
-            animationView.leadingAnchor.constraint(equalTo: lodingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: lodingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: lodingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: lodingCloudView.bottomAnchor),
+            animationView.leadingAnchor.constraint(equalTo: loadingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: loadingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: loadingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: loadingCloudView.bottomAnchor),
         ])
         animationView.loopMode = .playOnce
         animationView.play()
     }
     
     func displaySecondSplash() {
-        lodingCloudView.addSubview(animationView)
+        loadingCloudView.addSubview(animationView)
         animationView.animation = Animation.named("온보딩_2")
-        animationView.frame = CGRect(x: -lodingCloudView.frame.width/2, y: -lodingCloudView.frame.height/2, width: lodingCloudView.frame.width*2, height: lodingCloudView.frame.height*2)
+        animationView.frame = CGRect(x: -loadingCloudView.frame.width/2, y: -loadingCloudView.frame.height/2, width: loadingCloudView.frame.width*2, height: loadingCloudView.frame.height*2)
         animationView.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
-            animationView.leadingAnchor.constraint(equalTo: lodingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: lodingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: lodingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: lodingCloudView.bottomAnchor),
+            animationView.leadingAnchor.constraint(equalTo: loadingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: loadingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: loadingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: loadingCloudView.bottomAnchor),
         ])
         animationView.loopMode = .playOnce
         animationView.play()
     }
     
     func displayThirdSplash() {
-        lodingCloudView.addSubview(animationView)
+        loadingCloudView.addSubview(animationView)
         animationView.animation = Animation.named("온보딩_3")
-        animationView.frame = CGRect(x: -lodingCloudView.frame.width/2, y: -lodingCloudView.frame.height/2, width: lodingCloudView.frame.width*2, height: lodingCloudView.frame.height*2)
+        animationView.frame = CGRect(x: -loadingCloudView.frame.width/2, y: -loadingCloudView.frame.height/2, width: loadingCloudView.frame.width*2, height: loadingCloudView.frame.height*2)
         animationView.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
-            animationView.leadingAnchor.constraint(equalTo: lodingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: lodingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: lodingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: lodingCloudView.bottomAnchor),
+            animationView.leadingAnchor.constraint(equalTo: loadingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: loadingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: loadingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: loadingCloudView.bottomAnchor),
         ])
         animationView.loopMode = .playOnce
         animationView.play()
@@ -152,11 +147,14 @@ class OnBoardingFirstVC: UIViewController {
     }
     
     /// Font 및 색상 설정
-    private func labelFont() {
-        firstWord.font = UIFont.SDGothicSemiBold23
+    private func setLabel() {
+        firstWord.font = UIFont.SDGothicRegular23
+        firstWord.textColor = UIColor.mainGrey
+        
         secondWord.font = UIFont.SDGothicSemiBold23
         secondWord.textColor = .mintIcon
-        subLabel.font = UIFont.SDGothicRegular16
+        
+        subLabel.font = UIFont.SDGothicRegular17
         subLabel.textColor = .subGrey6
     }
     
@@ -164,9 +162,14 @@ class OnBoardingFirstVC: UIViewController {
     private func firstLabelAnimate() {
         firstDot.image = UIImage(named: "onboarding_ic_circle_now")
         secondDot.image = UIImage(named: "onboarding_ic_circle")
-        thridDot.image = UIImage(named: "onboarding_ic_circle")
+        thirdDot.image = UIImage(named: "onboarding_ic_circle")
+        
+        firstDot.transform = CGAffineTransform(scaleX: 1.44, y: 1.44)
+        secondDot.transform = .identity
+        thirdDot.transform = .identity
 
         displayFirstSplash()
+        
         firstWord.text = "날씨를"
         secondWord.text = "기록해요"
         subLabel.text = "오늘 날씨에 대한 옷차림과 상태를 기록해요"
@@ -176,8 +179,14 @@ class OnBoardingFirstVC: UIViewController {
     private func secondLabelAnimate() {
         firstDot.image = UIImage(named: "onboarding_ic_circle")
         secondDot.image = UIImage(named: "onboarding_ic_circle_now")
-        thridDot.image = UIImage(named: "onboarding_ic_circle")
+        thirdDot.image = UIImage(named: "onboarding_ic_circle")
+        
+        firstDot.transform = .identity
+        secondDot.transform = CGAffineTransform(scaleX: 1.44, y: 1.44)
+        thirdDot.transform = .identity
+        
         displaySecondSplash()
+        
         firstWord.text = "기록을"
         secondWord.text = "모아봐요"
         subLabel.text = "캘린더에서 날씨 기록을 모아볼 수 있어요"
@@ -187,8 +196,14 @@ class OnBoardingFirstVC: UIViewController {
     private func thirdLabelAnimate() {
         firstDot.image = UIImage(named: "onboarding_ic_circle")
         secondDot.image = UIImage(named: "onboarding_ic_circle")
-        thridDot.image = UIImage(named: "onboarding_ic_circle_now")
+        thirdDot.image = UIImage(named: "onboarding_ic_circle_now")
+        
+        firstDot.transform = .identity
+        secondDot.transform = .identity
+        thirdDot.transform = CGAffineTransform(scaleX: 1.44, y: 1.44)
+        
         displayThirdSplash()
+        
         firstWord.text = "나에게"
         secondWord.text = "돌아와요"
         subLabel.text = "기록한 날씨는 비슷한 날에 돌아와요"
@@ -234,12 +249,18 @@ class OnBoardingFirstVC: UIViewController {
     
     /// thirdView 움직임 넣기
     private func thirdViewAnimate() {
-        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: { self.phoneImage.alpha = 1; self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10) }, completion: { _ in
+        UIView.animate(withDuration: 1, delay: 0, options: .allowUserInteraction, animations: {
+            self.phoneImage.alpha = 1
+            self.phoneImage.transform = CGAffineTransform(translationX: 0, y: -10)
+        }, completion: { _ in
             UIView.animate(withDuration: 1, animations: {
                 self.thirdImage.alpha = 1
                 self.thirdImage.transform = CGAffineTransform(translationX: 0, y: -10)
             }, completion: { _ in
-                UIView.animate(withDuration: 2, delay: 0, options: .allowUserInteraction, animations: { self.startButton.alpha = 1; self.startButton.transform = CGAffineTransform(translationX: 0, y: -10) }, completion: nil)
+                UIView.animate(withDuration: 2, delay: 0, options: .allowUserInteraction, animations: {
+                    self.startButton.alpha = 1
+                    self.startButton.transform = CGAffineTransform(translationX: 0, y: -10)
+                }, completion: nil)
             })
         })
     }
@@ -249,7 +270,9 @@ class OnBoardingFirstVC: UIViewController {
         phoneImage.alpha = 0
         thirdImage.alpha = 0
         startButton.alpha = 0
-        UIView.animate(withDuration: 0, animations: { self.phoneImage.transform = .identity
+        
+        UIView.animate(withDuration: 0, animations: {
+            self.phoneImage.transform = .identity
             self.thirdImage.transform = .identity
         })
         UIView.animate(withDuration: 0, animations: { self.startButton.transform = .identity })
@@ -261,7 +284,7 @@ class OnBoardingFirstVC: UIViewController {
         if currentPage == 1 {
             /// 오른쪽 -> 왼쪽 스와이프
             if sender.direction == .left {
-                phoneImage.image = UIImage(named: "onboarding_img_phone_2")
+                phoneImage.image = UIImage(named: "onboarding_img_phone3")
                 
                 firstImage.isHidden = true
                 secondImage.isHidden = false
@@ -279,7 +302,7 @@ class OnBoardingFirstVC: UIViewController {
             if currentPage == 2 {
                 /// 오른쪽 -> 왼쪽 스와이프 (3번째 장으로 넘어갈 때)
                 if sender.direction == .left {
-                    phoneImage.image = UIImage(named: "onboarding_img_phone_3")
+                    phoneImage.image = UIImage(named: "onboarding_img_phone2")
                     
                     firstImage.isHidden = true
                     secondImage.isHidden = true
@@ -298,7 +321,7 @@ class OnBoardingFirstVC: UIViewController {
                 
                 /// 왼쪽 -> 오른쪽 스와이프 (1번째 장으로 돌아갈 때)
                 if sender.direction == .right {
-                    phoneImage.image = UIImage(named: "onboarding_img_phone_1")
+                    phoneImage.image = UIImage(named: "onboarding_img_phone1")
 
                     firstImage.isHidden = false
                     secondImage.isHidden = true
@@ -317,7 +340,7 @@ class OnBoardingFirstVC: UIViewController {
             if currentPage == 3 {
                 /// 왼쪽 -> 오른쪽 스와이프
                 if sender.direction == .right {
-                    phoneImage.image = UIImage(named: "onboarding_img_phone_2")
+                    phoneImage.image = UIImage(named: "onboarding_img_phone3")
                     
                     firstImage.isHidden = true
                     secondImage.isHidden = false

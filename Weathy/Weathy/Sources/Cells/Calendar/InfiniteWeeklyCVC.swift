@@ -9,7 +9,7 @@ import UIKit
 
 protocol WeekCellDelegate{
     func selectedWeekDateDidChange(_ selectedDate: Date)
-    func todayViewDidAppear(_ weekday: Int)
+//    func todayViewDidAppear(_ weekday: Int)
 }
 
 class InfiniteWeeklyCVC: UICollectionViewCell {
@@ -34,7 +34,6 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        callWeeklyWeathy()
     }
     
     //MARK: - Network
@@ -63,8 +62,29 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
                         }
                     }
                     
-                case .requestErr(let msg):
-                    print("[Weekly] requestErr",msg)
+                case .requestErr(let statusCode):
+                    if let code = statusCode as? Int {
+                        print("[Weekly] requestErr",code)
+                        if code == 401{
+                            LoginService.shared.postLogin(uuid: UserDefaults.standard.string(forKey: "UUID") ?? ""){ (networkResult) -> (Void) in
+                                switch networkResult{
+                                    case .success(let data):
+                                        if let loginData = data as? UserData{
+                                            print("Token is renewed")
+                                            UserDefaults.standard.setValue(loginData.token, forKey: "token")
+                                        }
+                                    case .requestErr(let message):
+                                        print("[Login] requestErr", message)
+                                    case .pathErr:
+                                        print("[Login] pathErr")
+                                    case .serverErr:
+                                        print("[Login] serverErr")
+                                    case .networkFail:
+                                        print("[Login] networkFail")
+                                }
+                            }
+                        }
+                    }
                 case .serverErr:
                     print("[Weekly] serverErr")
                 case .networkFail:
@@ -179,7 +199,9 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         if indexDate.currentYearMonth == Date().currentYearMonth{
             if indexDate.day == Date().day{
                 cell.setToday()
-                weekCellDelegate?.todayViewDidAppear(indexPath.item)
+//                print("@indexDate",indexDate)
+//                print("@standardDate",standardDate)
+//                weekCellDelegate?.todayViewDidAppear(indexPath.item)
             }
             else if indexDate.day > Date().day{
                 cell.setNonCurrent()
