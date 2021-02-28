@@ -9,18 +9,12 @@ import UIKit
 
 class DevelopersInfoVC: UIViewController {
     
-    //MARK: - Custom Variables
-    
-    //MARK: - IBOutlets
-
-    
-    //MARK: - LifeCycle Methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
     }
+    
     //MARK: - IBActions
     
     @IBAction func backButtonDidTap(_ sender: Any) {

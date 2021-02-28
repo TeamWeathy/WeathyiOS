@@ -79,5 +79,7 @@ class SettingVC: UIViewController {
         openURL(urlString: locationURL)
     }
     @IBAction func openSourceButtonDidTap(_ sender: Any) {
+        guard let openSourceVC = self.storyboard?.instantiateViewController(identifier: "OpenSourceVC") as? OpenSourceVC else { return }
+        self.navigationController?.pushViewController(openSourceVC, animated: true)
     }
 }
