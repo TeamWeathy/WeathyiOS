@@ -752,13 +752,12 @@
                                                                             <constraint firstItem="gQK-rX-Jpl" firstAttribute="top" secondItem="oZJ-72-5jW" secondAttribute="bottom" constant="6.5" id="5R5-pZ-Lny"/>
                                                                             <constraint firstItem="Ngs-EP-ByP" firstAttribute="leading" secondItem="Pc8-H0-0op" secondAttribute="leading" id="6Xt-r2-4Ng"/>
                                                                             <constraint firstAttribute="bottom" secondItem="gQK-rX-Jpl" secondAttribute="bottom" constant="-5" id="8sT-fb-ttx"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="gQK-rX-Jpl" secondAttribute="trailing" constant="5.5" id="ISE-Ph-Raq"/>
-                                                                            <constraint firstItem="gQK-rX-Jpl" firstAttribute="leading" secondItem="Pc8-H0-0op" secondAttribute="leading" constant="5.5" id="Jrc-t7-ZQ8"/>
                                                                             <constraint firstAttribute="bottom" secondItem="Ngs-EP-ByP" secondAttribute="bottom" id="T0P-Ey-eIG"/>
                                                                             <constraint firstItem="oZJ-72-5jW" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="Uv5-rz-nqT"/>
                                                                             <constraint firstAttribute="trailing" secondItem="Ngs-EP-ByP" secondAttribute="trailing" id="d7p-bj-M0q"/>
                                                                             <constraint firstItem="HBi-qq-hlx" firstAttribute="top" secondItem="Pc8-H0-0op" secondAttribute="top" constant="4" id="jaH-uf-lNB"/>
                                                                             <constraint firstItem="oZJ-72-5jW" firstAttribute="top" secondItem="HBi-qq-hlx" secondAttribute="bottom" constant="2" id="kWk-RJ-PHv"/>
+                                                                            <constraint firstItem="gQK-rX-Jpl" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="ntJ-6H-XLJ"/>
                                                                             <constraint firstItem="HBi-qq-hlx" firstAttribute="centerX" secondItem="Pc8-H0-0op" secondAttribute="centerX" id="opI-cI-A1C"/>
                                                                         </constraints>
                                                                     </collectionViewCellContentView>
