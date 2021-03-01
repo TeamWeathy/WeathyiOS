@@ -276,7 +276,7 @@ class OnBoardingFirstVC: UIViewController {
                 self.thirdImage.alpha = 1
                 self.thirdImage.transform = CGAffineTransform(translationX: 0, y: -10)
             }, completion: { _ in
-                UIView.animate(withDuration: 2, delay: 0, options: .allowUserInteraction, animations: {
+                UIView.animate(withDuration: 1.2, delay: 0, options: .allowUserInteraction, animations: {
                     self.startButton.alpha = 1
                     self.startButton.transform = CGAffineTransform(translationX: 0, y: -10)
                 }, completion: nil)
