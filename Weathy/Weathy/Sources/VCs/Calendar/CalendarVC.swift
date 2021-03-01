@@ -84,7 +84,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     override func viewDidAppear(_ animated: Bool) {
         closeDrawer()
-        print(UserDefaults.standard.string(forKey: "token"))
+        print("[token]", UserDefaults.standard.string(forKey: "token"))
     }
     
     //MARK: - Custom Methods
@@ -351,8 +351,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             self.infiniteMonthlyCV.alpha = 0
             self.infiniteWeeklyCV.alpha = 1
         }
+        ///오늘이면 요일 색 하얗게
         if selectedDate.isToday{
-            weekdayLabelCollection[selectedDate.weekday].textColor = .white
+            weekdayLabelCollection[Date().weekday].textColor = .white
         }
         
         panGesture.setTranslation(CGPoint.zero, in: self.view)
