@@ -34,16 +34,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_phone1" translatesAutoresizingMaskIntoConstraints="NO" id="Xdx-y9-Waj">
                                 <rect key="frame" x="0.0" y="271" width="375" height="561"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_1" translatesAutoresizingMaskIntoConstraints="NO" id="Isq-6G-8RV">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingImgPopup1" translatesAutoresizingMaskIntoConstraints="NO" id="Isq-6G-8RV">
                                 <rect key="frame" x="15.666666666666657" y="563" width="343.66666666666674" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Isq-6G-8RV" secondAttribute="height" multiplier="317:118" id="IhA-Sc-tba"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_2" translatesAutoresizingMaskIntoConstraints="NO" id="A4D-vv-KYn">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingImgPopup2" translatesAutoresizingMaskIntoConstraints="NO" id="A4D-vv-KYn">
                                 <rect key="frame" x="30" y="356" width="315" height="148.66666666666663"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_popup_3" translatesAutoresizingMaskIntoConstraints="NO" id="DCe-Eb-WTe">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingImgPopup3" translatesAutoresizingMaskIntoConstraints="NO" id="DCe-Eb-WTe">
                                 <rect key="frame" x="24.666666666666657" y="381.66666666666674" width="326" height="310"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ITY-1x-alH">
@@ -228,7 +228,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="309" height="55.333333333333336"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임을 6자 이내로 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kRw-in-8ee">
-                                        <rect key="frame" x="22" y="0.0" width="232" height="55.333333333333336"/>
+                                        <rect key="frame" x="22" y="0.0" width="287" height="55.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         <connections>
@@ -250,7 +250,7 @@
                                 <constraints>
                                     <constraint firstItem="WdG-G6-S0u" firstAttribute="centerY" secondItem="h9H-eH-nea" secondAttribute="centerY" id="0tG-Nb-W8O"/>
                                     <constraint firstItem="2Yv-Ig-uCl" firstAttribute="leading" secondItem="h9H-eH-nea" secondAttribute="leading" id="0zL-IG-r1O"/>
-                                    <constraint firstItem="WdG-G6-S0u" firstAttribute="leading" secondItem="kRw-in-8ee" secondAttribute="trailing" id="6NE-W3-mMP"/>
+                                    <constraint firstItem="2Yv-Ig-uCl" firstAttribute="trailing" secondItem="kRw-in-8ee" secondAttribute="trailing" id="6NE-W3-mMP"/>
                                     <constraint firstItem="WdG-G6-S0u" firstAttribute="width" secondItem="h9H-eH-nea" secondAttribute="width" multiplier="48:309" id="Bgv-LO-N3C"/>
                                     <constraint firstAttribute="bottom" secondItem="2Yv-Ig-uCl" secondAttribute="bottom" id="CyX-EH-koO"/>
                                     <constraint firstAttribute="bottom" secondItem="kRw-in-8ee" secondAttribute="bottom" id="GWA-cq-j5B"/>
@@ -512,14 +512,14 @@
         <image name="accessCustomIcOption" width="30" height="17"/>
         <image name="btnDelete" width="16" height="16"/>
         <image name="nickname_btn_start" width="309" height="55"/>
+        <image name="onboardingImgPopup1" width="317" height="118"/>
+        <image name="onboardingImgPopup2" width="313.66665649414062" height="145"/>
+        <image name="onboardingImgPopup3" width="326" height="300"/>
         <image name="onboarding_bg" width="375" height="812"/>
         <image name="onboarding_blur" width="1125" height="441"/>
         <image name="onboarding_btn_start" width="309" height="55"/>
         <image name="onboarding_ic_circle" width="9" height="9"/>
         <image name="onboarding_img_phone1" width="1038" height="1731"/>
-        <image name="onboarding_img_popup_1" width="317" height="118"/>
-        <image name="onboarding_img_popup_2" width="314.33334350585938" height="145"/>
-        <image name="onboarding_img_popup_3" width="326" height="300"/>
         <image name="settingImgTextfieldUnselected" width="307" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
