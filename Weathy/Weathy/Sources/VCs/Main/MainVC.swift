@@ -117,6 +117,7 @@ class MainVC: UIViewController {
         initMainBottomView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveSearchData), name: NSNotification.Name(rawValue: "search"), object: nil)
     }
     
     override func viewSafeAreaInsetsDidChange() {
@@ -336,17 +337,18 @@ class MainVC: UIViewController {
             weathyTextImage.isHidden = false
         }
     }
-    
-    func changeWeatherViewBySearchData(data: OverviewWeather) {
-        locationLabel.text = "\(data.region.name)"
-        currTempLabel.text = "\(data.hourlyWeather.temperature)°"
-        maxTempLabel.text = "\(data.dailyWeather.temperature.maxTemp)°"
-        minTempLabel.text = "\(data.dailyWeather.temperature.minTemp)°"
-        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.hourlyWeather.climate.iconId))
-        if let description = data.hourlyWeather.climate.description {
-            climateLabel.text = "\(description)"
-        }
-    }
+
+//
+//    func changeWeatherViewBySearchData(data: OverviewWeather) {
+//        locationLabel.text = "\(data.region.name)"
+//        currTempLabel.text = "\(data.hourlyWeather.temperature)°"
+//        maxTempLabel.text = "\(data.dailyWeather.temperature.maxTemp)°"
+//        minTempLabel.text = "\(data.dailyWeather.temperature.minTemp)°"
+//        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.hourlyWeather.climate.iconId))
+//        if let description = data.hourlyWeather.climate.description {
+//            climateLabel.text = "\(description)"
+//        }
+//    }
     
     func checkLocationAndGetWeatherData() {
         if UserDefaults().isExistUserDefaults("searchLocationCode") {
@@ -604,7 +606,6 @@ class MainVC: UIViewController {
     // MARK: - IBActions
     
     @IBAction func touchUpSearch(_ sender: Any) {
-        print("search")
         let mainSearchStoryboard = UIStoryboard(name: "MainSearch", bundle: nil)
         guard let mainSearchVC = mainSearchStoryboard.instantiateViewController(withIdentifier: MainSearchVC.identifier) as? MainSearchVC else { return }
         
@@ -620,7 +621,6 @@ class MainVC: UIViewController {
     }
     
     @IBAction func touchUpSetting(_ sender: Any) {
-        print("setting")
         let settingStoryboard = UIStoryboard(name: "Setting", bundle: nil)
         
         guard let settingNVC = settingStoryboard.instantiateViewController(withIdentifier: "SettingNVC") as? SettingNVC else { return }
@@ -730,6 +730,35 @@ class MainVC: UIViewController {
     
     @objc func appMovedToForeground() {
         moveWeatherImage()
+    }
+    
+    @objc func receiveSearchData(_notification: NSNotification) {
+        let isRefreshSearch: Bool = (_notification.object != nil)
+        
+        if isRefreshSearch {
+            let width_variable: CGFloat = 33
+            let toastLabel = UILabel(frame: CGRect(x: width_variable, y: UIScreen.main.bounds.height - 165, width: view.frame.size.width - 2 * width_variable, height: 50))
+            
+            toastLabel.backgroundColor = UIColor(red: 202/255, green: 241/255, blue: 235/255, alpha: 0.6)
+            toastLabel.textColor = UIColor.mainGrey
+            toastLabel.textAlignment = .center
+            toastLabel.font = UIFont.SDGothicRegular16
+            toastLabel.lineSetting(kernValue: -0.8)
+            toastLabel.text = "변경된 위치의 날씨를 확인해보세요!"
+            toastLabel.alpha = 1
+            toastLabel.layer.cornerRadius = 25
+            toastLabel.clipsToBounds = true
+            
+            self.view.addSubview(toastLabel)
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+                UIView.animate(withDuration: 1.0, delay: 1.0, options: .curveEaseOut, animations: {
+                    toastLabel.alpha = 0.0
+                }, completion: { _ in
+                    toastLabel.removeFromSuperview()
+                })
+            }
+        }
     }
 }
 
