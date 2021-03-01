@@ -2,7 +2,7 @@
 //  MainSearchVC.swift
 //  Weathy
 //
-//  Created by 송황호 on 2021/01/05.
+//  Created by DANNA LEE on 2021/02/27.
 //
 
 import UIKit
@@ -13,9 +13,7 @@ class MainSearchVC: UIViewController {
     //MARK: - Custom Variables
     
     static let identifier = "MainSearchVC"
-    
-    /// 최근 검색 배열을 사용하기 위해 appdelegate에서 전역변수 생성!!
-//    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     
     var mainDeliverSearchInfo: OverviewWeather?
     
@@ -232,17 +230,11 @@ extension MainSearchVC {
     
     func getLocationWeather(indexPath: Int, date: String, cell: UITableViewCell) {
 
-//        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         var locationCode = 0
-        
-//        if let codes = UserDefaults.standard.array(forKey: "locationCodes") as? [Int] {
-//            locationCode = codes[indexPath]
-//        }
         
         print(locationCodes)
         locationCode = locationCodes[indexPath]
         
-//        let locationCode = appDelegate.appDelegateRecentInfos[indexPath].region.code
         
         RecordWeathyService.shared.getWeatherByLocation(dateString: date, regionCode: locationCode) { (result) -> (Void) in
             switch result {
@@ -299,7 +291,6 @@ extension MainSearchVC: UITableViewDataSource {
         if tableView == recentTableView{
             
             return locationCodes.count
-//            return appDelegate.appDelegateRecentInfos.count
         }
         else{
             return searchInformations.count
@@ -369,7 +360,7 @@ extension MainSearchVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        /// 최근 검색=
+        /// 최근 검색
         if tableView == recentTableView {
             
             /// 홈 > 최근검색
@@ -404,26 +395,6 @@ extension MainSearchVC: UITableViewDelegate {
             let cell = tableView.cellForRow(at: indexPath)
             cell?.backgroundColor = .white
             print(indexPath.row)
-            
-            /// 이미 유저디폴트에 저장된 lcoationCode가 있으면 받아옴
-//            if let locationCodeArray = UserDefaults.standard.array(forKey: "locationCodes") {
-//                if locationCodeArray.count >= 1 {
-//                    for i in 0...locationCodeArray.count - 1 {
-//                        locationCodes.append(locationCodeArray[i] as! Int)
-//                    }
-//                }
-////                locationCodes = locationCodeArray as? [Int]
-//            }
-            
-            /// 최근 검색 기록에 데이터 넣기
-//            if appDelegate.appDelegateRecentInfos.count < 3{
-//                appDelegate.appDelegateRecentInfos.append(searchInformations[indexPath.row])
-//                self.recentTableView.reloadData()
-//            }else {
-//                appDelegate.appDelegateRecentInfos.remove(at: 0)
-//                appDelegate.appDelegateRecentInfos.append(searchInformations[indexPath.row])
-//                self.recentTableView.reloadData()
-//            }
             
             /// 만약 같은 지역코드가 이미 있으면
             if locationCodes.contains(searchInformations[indexPath.row].region.code) {
@@ -522,8 +493,6 @@ extension MainSearchVC: CellDelegate {
             
             UserDefaults.standard.set(self.locationCodes, forKey: "locationCodes")
             
-//            self.appDelegate.appDelegateRecentInfos.remove(at: indexPath.row)
-//            self.recentTableView.deleteRows(at: [indexPath], with: .automatic)
             self.recentTableView.reloadData()
         }, completion: {_ in self.recentNonImage()})})
             
