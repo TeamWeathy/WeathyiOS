@@ -28,6 +28,12 @@ class NickNameVC: UIViewController {
     @IBOutlet var startButton: UIButton!
     @IBOutlet var startButtonBottom: NSLayoutConstraint!
     
+    // MARK: - Life Cycle Methods
+    
+    override func viewWillAppear(_ animated: Bool) {
+        nickNameTextField.becomeFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -176,19 +182,15 @@ extension NickNameVC {
     }
     
     @objc private func adjustInputView(noti: Notification) {
-        guard let userInfo = noti.userInfo else { return }
         // TODO: 키보드 높이에 따른 인풋뷰 위치 변경
-        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
         if noti.name == UIResponder.keyboardWillShowNotification {
-            let adjustemnHeight = keyboardFrame.height - view.safeAreaInsets.bottom
-            startButtonBottom.constant = adjustemnHeight + 16
-            
             textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
+            countLabel.isHidden = false
+            totalCountLabel.isHidden = false
         } else {
-            startButtonBottom.constant = 16
-            
             textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
+            countLabel.isHidden = true
+            totalCountLabel.isHidden = true
         }
     }
 }

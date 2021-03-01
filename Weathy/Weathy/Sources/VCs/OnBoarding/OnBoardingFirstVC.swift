@@ -26,6 +26,10 @@ class OnBoardingFirstVC: UIViewController {
     @IBOutlet var firstDot: UIImageView!
     @IBOutlet var secondDot: UIImageView!
     @IBOutlet var thirdDot: UIImageView!
+    @IBOutlet var firstDotWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var secondDotWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var thirdDotWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var dotTopConstraint: NSLayoutConstraint!
     
     /// image
     @IBOutlet var phoneImage: UIImageView!
@@ -164,9 +168,14 @@ class OnBoardingFirstVC: UIViewController {
         secondDot.image = UIImage(named: "onboarding_ic_circle")
         thirdDot.image = UIImage(named: "onboarding_ic_circle")
         
-        firstDot.transform = CGAffineTransform(scaleX: 1.44, y: 1.44)
-        secondDot.transform = .identity
-        thirdDot.transform = .identity
+        firstDotWidthConstraint.constant = 13
+        secondDotWidthConstraint.constant = 9
+        thirdDotWidthConstraint.constant = 9
+        dotTopConstraint.constant += 2
+        
+        UIView.animate(withDuration: 0.1) {
+            self.view.layoutIfNeeded()
+        }
 
         displayFirstSplash()
         
@@ -181,10 +190,15 @@ class OnBoardingFirstVC: UIViewController {
         secondDot.image = UIImage(named: "onboarding_ic_circle_now")
         thirdDot.image = UIImage(named: "onboarding_ic_circle")
         
-        firstDot.transform = .identity
-        secondDot.transform = CGAffineTransform(scaleX: 1.44, y: 1.44)
-        thirdDot.transform = .identity
+        firstDotWidthConstraint.constant = 9
+        secondDotWidthConstraint.constant = 13
+        thirdDotWidthConstraint.constant = 9
+        dotTopConstraint.constant -= 2
         
+        UIView.animate(withDuration: 0.1) {
+            self.view.layoutIfNeeded()
+        }
+
         displaySecondSplash()
         
         firstWord.text = "기록을"
@@ -198,10 +212,15 @@ class OnBoardingFirstVC: UIViewController {
         secondDot.image = UIImage(named: "onboarding_ic_circle")
         thirdDot.image = UIImage(named: "onboarding_ic_circle_now")
         
-        firstDot.transform = .identity
-        secondDot.transform = .identity
-        thirdDot.transform = CGAffineTransform(scaleX: 1.44, y: 1.44)
+        firstDotWidthConstraint.constant = 9
+        secondDotWidthConstraint.constant = 9
+        thirdDotWidthConstraint.constant = 13
+        dotTopConstraint.constant += 2
         
+        UIView.animate(withDuration: 0.1) {
+            self.view.layoutIfNeeded()
+        }
+
         displayThirdSplash()
         
         firstWord.text = "나에게"
@@ -257,7 +276,7 @@ class OnBoardingFirstVC: UIViewController {
                 self.thirdImage.alpha = 1
                 self.thirdImage.transform = CGAffineTransform(translationX: 0, y: -10)
             }, completion: { _ in
-                UIView.animate(withDuration: 2, delay: 0, options: .allowUserInteraction, animations: {
+                UIView.animate(withDuration: 1.2, delay: 0, options: .allowUserInteraction, animations: {
                     self.startButton.alpha = 1
                     self.startButton.transform = CGAffineTransform(translationX: 0, y: -10)
                 }, completion: nil)
