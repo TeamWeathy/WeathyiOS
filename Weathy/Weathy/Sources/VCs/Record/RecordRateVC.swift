@@ -147,6 +147,7 @@ extension RecordRateVC {
         nextBtn.setTitle("완료", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = .SDGothicSemiBold16
+        self.view.layoutIfNeeded()
         nextBtn.layer.cornerRadius = nextBtn.frame.height / 2
     }
     

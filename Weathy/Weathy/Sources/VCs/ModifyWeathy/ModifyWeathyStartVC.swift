@@ -222,20 +222,21 @@ extension ModifyWeathyStartVC {
         modifyBtn.setTitle("변경하기", for: .normal)
         modifyBtn.setTitleColor(.black, for: .normal)
         modifyBtn.titleLabel?.font = UIFont.SDGothicRegular13
-        modifyBtn.layer.cornerRadius = 18
+        self.view.layoutIfNeeded()
+        modifyBtn.layer.cornerRadius = modifyBtn.frame.height / 2
         
         nextBtn.backgroundColor = .white
         nextBtn.setTitle("다음", for: .normal)
         nextBtn.setTitleColor(.mintIcon, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2
         nextBtn.setBorder(borderColor: .mintMain, borderWidth: 1)
         
         finishBtn.backgroundColor = .mintMain
         finishBtn.setTitle("수정완료", for: .normal)
         finishBtn.setTitleColor(.white, for: .normal)
         finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        finishBtn.layer.cornerRadius = 30
+        finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
     }
     
     func initPosition() {

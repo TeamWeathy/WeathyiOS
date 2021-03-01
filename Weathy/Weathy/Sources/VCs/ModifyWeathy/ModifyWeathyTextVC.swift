@@ -249,7 +249,8 @@ extension ModifyWeathyTextVC {
         finishBtn.setTitle("수정완료", for: .normal)
         finishBtn.setTitleColor(.white, for: .normal)
         finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        finishBtn.layer.cornerRadius = 30
+        self.view.layoutIfNeeded()
+        finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
     }
     
     func textExists() {
