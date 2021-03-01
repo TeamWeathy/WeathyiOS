@@ -169,7 +169,7 @@ class MainSearchVC: UIViewController {
                             self.searchInformations = []
                             
                             /// 데이터 넣기
-                            if let searchWeatherData = data as? SearchWeatherInformation{
+                            if let searchWeatherData = data as? SearchWeatherInformation {
                                 self.searchInformations = searchWeatherData.overviewWeatherList
                             }
                             DispatchQueue.main.async {
