@@ -337,18 +337,6 @@ class MainVC: UIViewController {
             weathyTextImage.isHidden = false
         }
     }
-
-//
-//    func changeWeatherViewBySearchData(data: OverviewWeather) {
-//        locationLabel.text = "\(data.region.name)"
-//        currTempLabel.text = "\(data.hourlyWeather.temperature)°"
-//        maxTempLabel.text = "\(data.dailyWeather.temperature.maxTemp)°"
-//        minTempLabel.text = "\(data.dailyWeather.temperature.minTemp)°"
-//        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.hourlyWeather.climate.iconId))
-//        if let description = data.hourlyWeather.climate.description {
-//            climateLabel.text = "\(description)"
-//        }
-//    }
     
     func checkLocationAndGetWeatherData() {
         if UserDefaults().isExistUserDefaults("searchLocationCode") {
