@@ -15,7 +15,7 @@ class MainSearchVC: UIViewController {
     static let identifier = "MainSearchVC"
     
     /// 최근 검색 배열을 사용하기 위해 appdelegate에서 전역변수 생성!!
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var mainDeliverSearchInfo: OverviewWeather?
     
@@ -35,6 +35,8 @@ class MainSearchVC: UIViewController {
     var maxTemp: Int = 0
     var minTemp: Int = 0
     var climateId: Int = 0
+    
+    var locationCodes: [Int] = [1100000000]
     
     //MARK: - IBOutlets
     
@@ -98,6 +100,17 @@ class MainSearchVC: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        /// 유저디폴트에서 locationCodes 불러오기
+        if let data = UserDefaults.standard.array(forKey: "locationCodes") as? [Int] {
+            locationCodes = data
+            print("[viewWillAppear]", locationCodes, data)
+        } else {
+            locationCodes = []
+        }
+    }
+    
     func setRecentTitle(){
         recentLabel.font = UIFont.SDGothicSemiBold17
         recentLabel.textColor = .mainGrey
@@ -107,10 +120,15 @@ class MainSearchVC: UIViewController {
     /// 촤근 검색 에 따른 이미지 변경
     func recentNonImage(){
         DispatchQueue.main.async {
-            if self.appDelegate.appDelegateRecentInfos.count == 0{
-                self.recentNoneImage.isHidden = false
+            
+            if let codesCount = UserDefaults.standard.array(forKey: "locationCodes")?.count {
+                if codesCount == 0{
+                    self.recentNoneImage.isHidden = false
+                } else {
+                    self.recentNoneImage.isHidden = true
+                }
             } else {
-                self.recentNoneImage.isHidden = true
+                self.recentNoneImage.isHidden = false
             }
         }
     }
@@ -214,8 +232,17 @@ extension MainSearchVC {
     
     func getLocationWeather(indexPath: Int, date: String, cell: UITableViewCell) {
 
-        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let locationCode = appDelegate.appDelegateRecentInfos[indexPath].region.code
+//        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        var locationCode = 0
+        
+//        if let codes = UserDefaults.standard.array(forKey: "locationCodes") as? [Int] {
+//            locationCode = codes[indexPath]
+//        }
+        
+        print(locationCodes)
+        locationCode = locationCodes[indexPath]
+        
+//        let locationCode = appDelegate.appDelegateRecentInfos[indexPath].region.code
         
         RecordWeathyService.shared.getWeatherByLocation(dateString: date, regionCode: locationCode) { (result) -> (Void) in
             switch result {
@@ -270,7 +297,9 @@ extension MainSearchVC {
 extension MainSearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == recentTableView{
-            return appDelegate.appDelegateRecentInfos.count
+            
+            return locationCodes.count
+//            return appDelegate.appDelegateRecentInfos.count
         }
         else{
             return searchInformations.count
@@ -340,15 +369,17 @@ extension MainSearchVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        /// 최근 검색=
         if tableView == recentTableView {
             
             /// 홈 > 최근검색
             if !isFromRecord {
                 if let cell = tableView.cellForRow(at: indexPath) as? RecentTVC {
-                    /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
-                    UserDefaults.standard.set(appDelegate.appDelegateRecentInfos[indexPath.row].region.code, forKey: "searchLocationCode")
                     
-                    NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": appDelegate.appDelegateRecentInfos[indexPath.row]])
+                    /// 검색 위치로 유저디폴트 갱신
+                    UserDefaults.standard.set(locationCodes[indexPath.row], forKey: "searchLocationCode")
+                    
+                    NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": cell.weatherData!])
                     
                     self.presentingViewController?.dismiss(animated: true, completion: nil)
                     cell.backgroundColor = .clear
@@ -368,20 +399,52 @@ extension MainSearchVC: UITableViewDelegate {
             }
             
             
-            
+        /// 검색한 경우
         }else if tableView == searchTableView{
             let cell = tableView.cellForRow(at: indexPath)
             cell?.backgroundColor = .white
             print(indexPath.row)
+            
+            /// 이미 유저디폴트에 저장된 lcoationCode가 있으면 받아옴
+//            if let locationCodeArray = UserDefaults.standard.array(forKey: "locationCodes") {
+//                if locationCodeArray.count >= 1 {
+//                    for i in 0...locationCodeArray.count - 1 {
+//                        locationCodes.append(locationCodeArray[i] as! Int)
+//                    }
+//                }
+////                locationCodes = locationCodeArray as? [Int]
+//            }
+            
             /// 최근 검색 기록에 데이터 넣기
-            if appDelegate.appDelegateRecentInfos.count < 3{
-                appDelegate.appDelegateRecentInfos.append(searchInformations[indexPath.row])
-                self.recentTableView.reloadData()
-            }else {
-                appDelegate.appDelegateRecentInfos.remove(at: 0)
-                appDelegate.appDelegateRecentInfos.append(searchInformations[indexPath.row])
+//            if appDelegate.appDelegateRecentInfos.count < 3{
+//                appDelegate.appDelegateRecentInfos.append(searchInformations[indexPath.row])
+//                self.recentTableView.reloadData()
+//            }else {
+//                appDelegate.appDelegateRecentInfos.remove(at: 0)
+//                appDelegate.appDelegateRecentInfos.append(searchInformations[indexPath.row])
+//                self.recentTableView.reloadData()
+//            }
+            
+            /// 만약 같은 지역코드가 이미 있으면
+            if locationCodes.contains(searchInformations[indexPath.row].region.code) {
+                /// 저장돼있던 지역코드는 삭제
+                locationCodes.remove(at: locationCodes.firstIndex(of: searchInformations[indexPath.row].region.code)!)
+            }
+            
+            /// 3개 안 됐을 때
+            if locationCodes.count < 3 {
+                locationCodes.insert(searchInformations[indexPath.row].region.code, at: 0)
                 self.recentTableView.reloadData()
             }
+            /// 3개가 다 찼을 때
+            else {
+                _ = locationCodes.popLast()
+                locationCodes.insert(searchInformations[indexPath.row].region.code, at: 0)
+                self.recentTableView.reloadData()
+            }
+            
+            /// 유저디폴트에 저장
+            UserDefaults.standard.set(locationCodes, forKey: "locationCodes")
             
             /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
             if !isFromRecord {
@@ -450,8 +513,17 @@ extension MainSearchVC: CellDelegate {
                 }
             }
             
-        }, completion: {_ in self.recentTableView.performBatchUpdates({self.appDelegate.appDelegateRecentInfos.remove(at: indexPath.row)
-                                                                                        self.recentTableView.deleteRows(at: [indexPath], with: .automatic)
+        }, completion: {_ in self.recentTableView.performBatchUpdates({
+            
+            print(self.locationCodes)
+            
+            self.locationCodes.remove(at: indexPath.row)
+            self.recentTableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            UserDefaults.standard.set(self.locationCodes, forKey: "locationCodes")
+            
+//            self.appDelegate.appDelegateRecentInfos.remove(at: indexPath.row)
+//            self.recentTableView.deleteRows(at: [indexPath], with: .automatic)
             self.recentTableView.reloadData()
         }, completion: {_ in self.recentNonImage()})})
             
