@@ -129,10 +129,10 @@ struct RecordTagService {
     
     private func judgeAddTagService(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        if let decodedData = try? decoder.decode(AddClothesData.self, from: data){
+        if let decodedData = try? decoder.decode(AddClothesData.self, from: data) {
             switch status {
             case 200:
-                return .success(decodedData.clothesList)
+                return .success(decodedData.closet)
             case 400..<500:
                 return .requestErr(decodedData.message)
             case 500:

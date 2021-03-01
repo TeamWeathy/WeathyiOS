@@ -167,7 +167,7 @@ extension RecordTagAddPopupVC {
             switch networkResult {
             case .success(let data):
                 print(">>> success")
-                if let loadData = data as? Closet {
+                if let _ = data as? Closet {
                     self.showToastOnTop(message: "태그가 추가되었습니다.")
                     
                     /// 입력 완료 시 입력 돼있던 내용 삭제
