@@ -8,22 +8,21 @@
 import UIKit
 
 class MainGPSPopupVC: UIViewController {
-
-    //MARK: - IBOutlet
+    // MARK: - IBOutlet
     
-    @IBOutlet weak var popupView: UIView!
-    @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var popupTitleLabel: SpacedLabel!
-    @IBOutlet weak var popupDescriptionLabel: UILabel!
-    @IBOutlet weak var popupSmallerDesriptionLabel: UILabel!
-    @IBOutlet weak var popupConfirmButton: UIButton!
+    @IBOutlet var popupView: UIView!
+    @IBOutlet var backgroundView: UIView!
+    @IBOutlet var popupTitleLabel: SpacedLabel!
+    @IBOutlet var popupDescriptionLabel: SpacedLabel!
+    @IBOutlet var popupSmallerDesriptionLabel: UILabel!
+    @IBOutlet var popupConfirmButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setStyle()
     }
     
-    func setStyle(){
+    func setStyle() {
         backgroundView.backgroundColor = UIColor(white: 0, alpha: 0.4)
         
         popupView.makeRounded(cornerRadius: popupView.frame.height/15.86)
@@ -33,6 +32,12 @@ class MainGPSPopupVC: UIViewController {
         
         popupDescriptionLabel.font = .SDGothicRegular16
         popupDescriptionLabel.textColor = .subGrey6
+        popupDescriptionLabel.characterSpacing = -0.8
+        let attrString = NSMutableAttributedString(string: popupDescriptionLabel.text!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 2
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        popupDescriptionLabel.attributedText = attrString
         
         popupSmallerDesriptionLabel.font = .SDGothicRegular13
         popupSmallerDesriptionLabel.textColor = .subGrey6
@@ -44,6 +49,6 @@ class MainGPSPopupVC: UIViewController {
     }
     
     @IBAction func confirmButtonDidTap(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

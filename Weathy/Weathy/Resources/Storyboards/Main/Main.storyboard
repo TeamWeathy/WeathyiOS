@@ -1858,7 +1858,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOl-Jq-HAc">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOl-Jq-HAc" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                                 <rect key="frame" x="50" y="74" width="209" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="x98-ne-wGv"/>
@@ -1870,7 +1870,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정 &gt; 개인정보보호 에서 설정 가능해요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lF-pT-jAw">
-                                                <rect key="frame" x="18.666666666666657" y="122" width="272" height="21"/>
+                                                <rect key="frame" x="18.666666666666657" y="124" width="272" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1894,7 +1894,7 @@
                                             <constraint firstAttribute="width" secondItem="QX5-SF-j76" secondAttribute="height" multiplier="309:238" id="UMu-Nz-p9g"/>
                                             <constraint firstAttribute="bottom" secondItem="spr-IE-V1c" secondAttribute="bottom" constant="26" id="Xsc-cv-GcB"/>
                                             <constraint firstItem="aOl-Jq-HAc" firstAttribute="centerX" secondItem="QX5-SF-j76" secondAttribute="centerX" id="fh0-Bi-n7L"/>
-                                            <constraint firstItem="3lF-pT-jAw" firstAttribute="top" secondItem="aOl-Jq-HAc" secondAttribute="bottom" constant="6" id="jvp-6e-S8b"/>
+                                            <constraint firstItem="3lF-pT-jAw" firstAttribute="top" secondItem="aOl-Jq-HAc" secondAttribute="bottom" constant="8" id="jvp-6e-S8b"/>
                                             <constraint firstItem="3lF-pT-jAw" firstAttribute="centerX" secondItem="QX5-SF-j76" secondAttribute="centerX" id="mUy-mB-SZb"/>
                                             <constraint firstItem="lh2-YE-ZST" firstAttribute="top" secondItem="QX5-SF-j76" secondAttribute="top" constant="40" id="tAh-Ca-nHa"/>
                                             <constraint firstItem="aOl-Jq-HAc" firstAttribute="top" secondItem="lh2-YE-ZST" secondAttribute="bottom" constant="6" id="x9Z-Ax-lPj"/>
