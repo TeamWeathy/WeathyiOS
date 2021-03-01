@@ -55,6 +55,7 @@ class CalendarDetailVC: UIViewController{
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var detailBlurView: UIImageView!
+    @IBOutlet weak var scrollContentViewWidthConstraint: NSLayoutConstraint!
     
     //MARK: - Lifecycle Methods
     
@@ -158,6 +159,8 @@ class CalendarDetailVC: UIViewController{
         commentLabel.lineSetting(kernValue: -0.75, lineSpacing: 0, lineHeightMultiple: 1.17)
         commentLabel.textAlignment = .left
         
+        scrollContentViewWidthConstraint.constant = screen.width
+        
     }
     
     func setEmptyView(state: EmptyState){
@@ -215,7 +218,7 @@ class CalendarDetailVC: UIViewController{
         }
         else{
             photoImageView.imageFromUrl(dailyWeathy?.imgUrl)
-            photoWidthConstraint.constant = screen.width-90
+            photoWidthConstraint.constant = self.view.frame.width-90
             commentTopConstraint.constant = commentTop
         }
         if comment == nil{
