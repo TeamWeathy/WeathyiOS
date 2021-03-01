@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OdZ-gP-p1Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OdZ-gP-p1Y">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -38,13 +38,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9G-sT-4S1">
-                                <rect key="frame" x="33" y="123" width="42" height="21"/>
+                                <rect key="frame" x="33" y="109" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPA-Vt-UcZ" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                <rect key="frame" x="33" y="154" width="42" height="21"/>
+                                <rect key="frame" x="33" y="140" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lOI-Su-7sH">
-                                <rect key="frame" x="33" y="235" width="309" height="40"/>
+                                <rect key="frame" x="33" y="221" width="309" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="d8v-Fs-fgn"/>
@@ -124,7 +124,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wiX-dK-HUU">
-                                <rect key="frame" x="33" y="275" width="309" height="427"/>
+                                <rect key="frame" x="33" y="261" width="309" height="441"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="swA-sO-s9M">
                                     <size key="itemSize" width="128" height="128"/>
@@ -177,7 +177,7 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncI-hT-bUM">
-                                <rect key="frame" x="282" y="135" width="9" height="9"/>
+                                <rect key="frame" x="282" y="121" width="9" height="9"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="9" id="02W-f2-Dt3"/>
@@ -185,7 +185,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6g-a8-t60">
-                                <rect key="frame" x="298" y="133" width="13" height="13"/>
+                                <rect key="frame" x="298" y="119" width="13" height="13"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13" id="U2g-3v-KWR"/>
@@ -193,7 +193,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eay-L1-NoR">
-                                <rect key="frame" x="318" y="135" width="9" height="9"/>
+                                <rect key="frame" x="318" y="121" width="9" height="9"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="9" id="Igc-3L-Jhm"/>
@@ -207,7 +207,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recordImgTopblur" translatesAutoresizingMaskIntoConstraints="NO" id="Pc2-TS-gDV">
-                                <rect key="frame" x="0.0" y="275" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="261" width="375" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="0mG-9M-KKP"/>
                                 </constraints>
@@ -224,14 +224,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icDeleteText" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-ZL-eHK">
-                                <rect key="frame" x="146" y="156" width="20" height="20"/>
+                                <rect key="frame" x="146" y="142" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="3qD-Aa-rDC"/>
                                     <constraint firstAttribute="height" constant="20" id="NhG-rj-nrI"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="vPW-ZK-52J">
-                                <rect key="frame" x="111" y="396.66666666666669" width="153" height="174.00000000000006"/>
+                                <rect key="frame" x="111" y="389.66666666666669" width="153" height="174.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vPW-ZK-52J" secondAttribute="height" multiplier="153:174" id="vk6-iK-jdX"/>
                                 </constraints>
@@ -244,7 +244,7 @@
                             <constraint firstItem="p2P-Xa-6hR" firstAttribute="trailing" secondItem="Pc2-TS-gDV" secondAttribute="trailing" id="5EH-eG-eYE"/>
                             <constraint firstItem="gPA-Vt-UcZ" firstAttribute="top" secondItem="P9G-sT-4S1" secondAttribute="bottom" constant="10" id="8ny-Wz-GJv"/>
                             <constraint firstItem="vPW-ZK-52J" firstAttribute="height" secondItem="w0K-3M-6hx" secondAttribute="height" multiplier="174:812" id="9Ir-hW-1Gx"/>
-                            <constraint firstItem="P9G-sT-4S1" firstAttribute="top" secondItem="WDW-gH-0dZ" secondAttribute="bottom" constant="31" id="9O6-6R-Ecr"/>
+                            <constraint firstItem="P9G-sT-4S1" firstAttribute="top" secondItem="WDW-gH-0dZ" secondAttribute="bottom" constant="17" id="9O6-6R-Ecr"/>
                             <constraint firstItem="ncI-hT-bUM" firstAttribute="centerY" secondItem="S6g-a8-t60" secondAttribute="centerY" id="D6O-wJ-8ol"/>
                             <constraint firstItem="vPW-ZK-52J" firstAttribute="centerY" secondItem="wiX-dK-HUU" secondAttribute="centerY" constant="-5" id="FI2-D2-v43"/>
                             <constraint firstItem="eay-L1-NoR" firstAttribute="top" secondItem="P9G-sT-4S1" secondAttribute="top" constant="12" id="H87-Nf-gEv"/>

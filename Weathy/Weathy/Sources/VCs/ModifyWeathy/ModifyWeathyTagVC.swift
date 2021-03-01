@@ -60,6 +60,11 @@ class ModifyWeathyTagVC: UIViewController {
     
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
+        
+        setHeader()
+        setTitleLabel()
+        initialBtnSetting()
+        
         super.viewDidLoad()
         
         tagCollectionView.dataSource = self
@@ -70,17 +75,6 @@ class ModifyWeathyTagVC: UIViewController {
         
         tagTitleCollectionView.dataSource = self
         tagTitleCollectionView.delegate = self
-        
-        setHeader()
-        setTitleLabel()
-        
-        // 초기 상태 버튼 (애니메이션 안 들어가야 해서 따로 선언)
-        nextBtn.backgroundColor = .white
-        nextBtn.setTitle("다음", for: .normal)
-        nextBtn.setTitleColor(.subGrey3, for: .normal)
-        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
-        nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
         
         NotificationCenter.default.addObserver(self, selector: #selector(tagAdded(_:)), name: NSNotification.Name("TagAdded"), object: nil)
     }
@@ -96,7 +90,7 @@ class ModifyWeathyTagVC: UIViewController {
         }
         
         // 타이틀 애니메이션
-        animationPrac()
+        titleAnimation()
         
         // 초기화
         self.tagTitles = [
@@ -111,7 +105,7 @@ class ModifyWeathyTagVC: UIViewController {
     }
     
     @objc func tagAdded(_ noti : Notification){
-        let isAdded = noti.object
+        _ = noti.object
         self.viewWillAppear(true)
         self.showToast(message: "태그가 추가되었어요!")
     }
@@ -178,12 +172,6 @@ extension ModifyWeathyTagVC {
         
         indicatorCircle[2].layer.cornerRadius = 4.5
         indicatorCircle[2].backgroundColor = UIColor.subGrey7
-        
-        finishBtn.backgroundColor = .mintMain
-        finishBtn.setTitle("수정완료", for: .normal)
-        finishBtn.setTitleColor(.white, for: .normal)
-        finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        finishBtn.layer.cornerRadius = 30
     }
     
     func setTitleLabel() {
@@ -225,18 +213,20 @@ extension ModifyWeathyTagVC {
     func setNextBtnActivated() {
         nextBtn.isUserInteractionEnabled = true
         finishBtn.isUserInteractionEnabled = true
+        
+        self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
+        self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
+        
         UIView.animate(withDuration: 0.5, animations: {
             self.finishBtn.backgroundColor = .mintMain
             self.finishBtn.setTitle("수정완료", for: .normal)
             self.finishBtn.setTitleColor(.white, for: .normal)
             self.finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.finishBtn.layer.cornerRadius = 30
             
             self.nextBtn.backgroundColor = .white
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.mintIcon, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
             self.nextBtn.setBorder(borderColor: .mintMain, borderWidth: 1)
         })
     }
@@ -249,15 +239,34 @@ extension ModifyWeathyTagVC {
             self.finishBtn.setTitle("수정완료", for: .normal)
             self.finishBtn.setTitleColor(.white, for: .normal)
             self.finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.finishBtn.layer.cornerRadius = 30
+            self.finishBtn.layer.cornerRadius = self.finishBtn.frame.height / 2
             
             self.nextBtn.backgroundColor = .white
             self.nextBtn.setTitle("다음", for: .normal)
             self.nextBtn.setTitleColor(.subGrey3, for: .normal)
             self.nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-            self.nextBtn.layer.cornerRadius = 30
+            self.nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
             self.nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
         })
+    }
+    
+    func initialBtnSetting() {
+        // 초기 상태 버튼 (애니메이션 안 들어가야 해서 따로 선언)
+        
+        finishBtn.backgroundColor = .mintMain
+        finishBtn.setTitle("수정완료", for: .normal)
+        finishBtn.setTitleColor(.white, for: .normal)
+        finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        
+        nextBtn.backgroundColor = .white
+        nextBtn.setTitle("다음", for: .normal)
+        nextBtn.setTitleColor(.subGrey3, for: .normal)
+        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        
+        self.view.layoutIfNeeded()
+        finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
+        nextBtn.layer.cornerRadius = nextBtn.layer.cornerRadius / 2
+        nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
     }
     
     func initPosition() {
@@ -270,7 +279,7 @@ extension ModifyWeathyTagVC {
         
     }
     
-    func animationPrac() {
+    func titleAnimation() {
         self.initPosition()
         
         UIView.animate(withDuration: 1, animations: {
@@ -290,6 +299,7 @@ extension ModifyWeathyTagVC {
             case .success(let data):
                 if let loadData = data as? Closet {
                     self.myClothesTagData = loadData
+                    print(self.myClothesTagData)
                 }
                 
 //                print(self.myClothesTagData)

@@ -318,7 +318,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="309" height="50"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="날씨가 궁금한 곳을 검색해 보세요!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="se1-Mc-QHG">
-                                        <rect key="frame" x="57" y="16" width="197" height="18.5"/>
+                                        <rect key="frame" x="57" y="0.0" width="252" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -332,7 +332,7 @@
                                             <constraint firstAttribute="width" constant="20" id="mM6-tZ-P74"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJ0-YO-dXA">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJ0-YO-dXA">
                                         <rect key="frame" x="254" y="1" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Y5Q-dA-hGB"/>
@@ -347,13 +347,15 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dj3-oW-aeB" firstAttribute="leading" secondItem="96n-5m-CYG" secondAttribute="leading" constant="22" id="0YL-yp-Ple"/>
-                                    <constraint firstItem="se1-Mc-QHG" firstAttribute="centerY" secondItem="96n-5m-CYG" secondAttribute="centerY" id="DyI-ck-qLf"/>
+                                    <constraint firstAttribute="trailing" secondItem="se1-Mc-QHG" secondAttribute="trailing" id="34L-eZ-DjL"/>
                                     <constraint firstAttribute="width" constant="309" id="F6f-Uu-97H"/>
                                     <constraint firstItem="Wb5-d1-7gf" firstAttribute="leading" secondItem="96n-5m-CYG" secondAttribute="leading" id="FUl-6e-1yl"/>
+                                    <constraint firstItem="se1-Mc-QHG" firstAttribute="top" secondItem="96n-5m-CYG" secondAttribute="top" id="IoH-Uq-3U0"/>
                                     <constraint firstAttribute="height" constant="50" id="K2B-NF-wig"/>
                                     <constraint firstItem="Wb5-d1-7gf" firstAttribute="top" secondItem="96n-5m-CYG" secondAttribute="top" id="LRr-bS-Otj"/>
                                     <constraint firstAttribute="bottom" secondItem="Wb5-d1-7gf" secondAttribute="bottom" id="QPF-3a-osT"/>
-                                    <constraint firstItem="qJ0-YO-dXA" firstAttribute="leading" secondItem="se1-Mc-QHG" secondAttribute="trailing" id="Qi9-ZP-4fG"/>
+                                    <constraint firstItem="qJ0-YO-dXA" firstAttribute="leading" secondItem="Wb5-d1-7gf" secondAttribute="trailing" constant="-55" id="Qi9-ZP-4fG"/>
+                                    <constraint firstAttribute="bottom" secondItem="se1-Mc-QHG" secondAttribute="bottom" id="Sl9-vP-b4j"/>
                                     <constraint firstAttribute="trailing" secondItem="qJ0-YO-dXA" secondAttribute="trailing" constant="7" id="ZVM-cs-60V"/>
                                     <constraint firstItem="se1-Mc-QHG" firstAttribute="leading" secondItem="dj3-oW-aeB" secondAttribute="trailing" constant="15" id="i4j-N3-126"/>
                                     <constraint firstAttribute="trailing" secondItem="Wb5-d1-7gf" secondAttribute="trailing" id="nK9-8X-f79"/>

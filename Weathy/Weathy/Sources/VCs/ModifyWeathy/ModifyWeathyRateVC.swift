@@ -49,7 +49,6 @@ class ModifyWeathyRateVC: UIViewController {
         super.viewDidLoad()
         
         setAboveCollection()
-        setNextBtnEnabled()
         setTitleLabel()
         setCV()
         
@@ -57,14 +56,12 @@ class ModifyWeathyRateVC: UIViewController {
         rateCollectionView.delegate = self
         
         selectedStamp = weathyData?.stampId ?? -1
-        
-
 
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        animationPrac()
+        titleAnimation()
         setRecordedData()
     }
     
@@ -105,8 +102,6 @@ class ModifyWeathyRateVC: UIViewController {
 
 extension ModifyWeathyRateVC {
     func setAboveCollection() {
-//        backBtn.setBackgroundImage(UIImage(named: <#T##String#>), for: .normal)
-//        dismissBtn.setBackgroundImage(UIImage(named: <#T##String#>), for: .normal)
         
         titleLabel.text = "날씨는 어땠나요?"
         titleLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 25)
@@ -131,14 +126,17 @@ extension ModifyWeathyRateVC {
         nextBtn.setTitle("다음", for: .normal)
         nextBtn.setTitleColor(.mintIcon, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
         nextBtn.setBorder(borderColor: .mintMain, borderWidth: 1)
         
         finishBtn.backgroundColor = .mintMain
         finishBtn.setTitle("수정완료", for: .normal)
         finishBtn.setTitleColor(.white, for: .normal)
         finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        finishBtn.layer.cornerRadius = 30
+        
+        self.view.layoutIfNeeded()
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2
+        finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
+
     }
     
     func setTitleLabel() {
@@ -169,26 +167,6 @@ extension ModifyWeathyRateVC {
         ]
     }
     
-    func setNextBtnEnabled() {
-        self.nextBtn.isUserInteractionEnabled = true
-        nextBtn.backgroundColor = .white
-        nextBtn.setTitle("다음", for: .normal)
-        nextBtn.setTitleColor(.mintIcon, for: .normal)
-        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
-        nextBtn.setBorder(borderColor: .mintMain, borderWidth: 1)
-    }
-    
-    func setNextBtnDisabled() {
-        nextBtn.isUserInteractionEnabled = false
-        nextBtn.backgroundColor = .white
-        nextBtn.setTitle("다음", for: .normal)
-        nextBtn.setTitleColor(.subGrey3, for: .normal)
-        nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
-        nextBtn.layer.cornerRadius = 30
-        nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
-    }
-    
     func initPosition() {
         
         titleLabel.alpha = 0
@@ -199,7 +177,7 @@ extension ModifyWeathyRateVC {
         
     }
     
-    func animationPrac() {
+    func titleAnimation() {
         self.initPosition()
         
         UIView.animate(withDuration: 1, animations: {
@@ -311,7 +289,6 @@ extension ModifyWeathyRateVC: UICollectionViewDataSource {
                     rate[i].isSelected = !rate[i].isSelected
                     /// stampId
                     self.selectedStamp = indexPath.item + 1
-                    self.setNextBtnEnabled()
                 }
             } else {
                 rate[i].isSelected = false
