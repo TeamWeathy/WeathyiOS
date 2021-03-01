@@ -16,6 +16,6 @@ struct GetClothesArrayData: Codable {
 
 //MARK: - Welcome
 struct AddClothesData: Codable{
-    let clothesList: Closet
+    let closet: Closet
     let message: String
 }
