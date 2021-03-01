@@ -199,9 +199,6 @@ extension InfiniteWeeklyCVC: UICollectionViewDataSource{
         if indexDate.currentYearMonth == Date().currentYearMonth{
             if indexDate.day == Date().day{
                 cell.setToday()
-//                print("@indexDate",indexDate)
-//                print("@standardDate",standardDate)
-//                weekCellDelegate?.todayViewDidAppear(indexPath.item)
             }
             else if indexDate.day > Date().day{
                 cell.setNonCurrent()

@@ -565,6 +565,7 @@
                                                                                 <rect key="frame" x="1.6666666666666679" y="8" width="41" height="64"/>
                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                 <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="pvc-68-Ney" secondAttribute="height" multiplier="41:64" id="ljq-w1-slQ"/>
                                                                                     <constraint firstAttribute="height" constant="64" id="n7Q-Th-P7b"/>
                                                                                 </constraints>
                                                                             </view>
@@ -572,6 +573,7 @@
                                                                                 <rect key="frame" x="1.6666666666666679" y="8" width="41" height="64"/>
                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                 <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="HTB-H2-lqo" secondAttribute="height" multiplier="41:64" id="R5U-YR-8WW"/>
                                                                                     <constraint firstAttribute="height" constant="64" id="dUv-2j-33r"/>
                                                                                 </constraints>
                                                                             </view>

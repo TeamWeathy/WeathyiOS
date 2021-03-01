@@ -55,7 +55,6 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
         MonthlyWeathyService.shared.getMonthlyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), startDate: selectedDate.startDate, endDate: selectedDate.endDate){ (networkResult) -> (Void) in
             switch networkResult {
                 case .success(let data):
-                    print("[Monthly] success")
                     if let monthlyData = data as? [CalendarOverview?]{
                         self.monthlyWeathyList = monthlyData
                         DispatchQueue.main.async {
@@ -235,7 +234,6 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
         ///데이터 표시
         if monthlyWeathyList.count > 0 && (monthlyWeathyList.count == selectedDate.monthlyLines*7){
             if let data = monthlyWeathyList[indexPath.item]{
-                print("data",data)
                 cell.setData(high: data.temperature.maxTemp, low: data.temperature.minTemp)
                 cell.setClimate(data.climateIconId ?? 1)
             }
