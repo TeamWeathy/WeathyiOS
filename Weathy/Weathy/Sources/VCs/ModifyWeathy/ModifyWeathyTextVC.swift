@@ -350,7 +350,7 @@ extension ModifyWeathyTextVC {
                 print("denied")
                 /// 설정창에서 권한을 재설정 하게끔 유도한다
                 if let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String {
-                    let alert = UIAlertController(title: "설정", message: "\(appName)의 카메라 접근 권한이\n허용되어 있지 않습니다.\n설정>사진>읽기 및 쓰기를 클릭하여 변경 가능합니다.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "설정", message: "\(appName)의 카메라 접근 권한이\n허용되어 있지 않습니다.\n설정에서 변경 가능합니다.", preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "취소", style: .default) { (action) in
                         
                     }
@@ -377,9 +377,11 @@ extension ModifyWeathyTextVC {
                 print("notDetermined")
                 PHPhotoLibrary.requestAuthorization({ state in
                     if state == .authorized {
-                        self.picker.sourceType = .camera
-                        self.picker.allowsEditing = true
-                        self.present(self.picker, animated: true, completion: nil)
+                        DispatchQueue.main.async {
+                            self.picker.sourceType = .camera
+                            self.picker.allowsEditing = true
+                            self.present(self.picker, animated: true, completion: nil)
+                        }
                     } else {
 //                        self.dismiss(animated: true, completion: nil)
                     }
