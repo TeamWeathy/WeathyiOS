@@ -517,7 +517,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="341" height="55"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="부메랑" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lv4-7S-nDz">
-                                        <rect key="frame" x="22" y="0.0" width="264" height="55"/>
+                                        <rect key="frame" x="22" y="0.0" width="319" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
@@ -541,7 +541,7 @@
                                     <constraint firstAttribute="bottom" secondItem="58n-Cx-0zT" secondAttribute="bottom" id="66q-CQ-sOn"/>
                                     <constraint firstAttribute="trailing" secondItem="58n-Cx-0zT" secondAttribute="trailing" id="K7G-bT-gTl"/>
                                     <constraint firstAttribute="trailing" secondItem="XdS-xS-MiL" secondAttribute="trailing" constant="7" id="KQM-wE-qXD"/>
-                                    <constraint firstItem="XdS-xS-MiL" firstAttribute="leading" secondItem="Lv4-7S-nDz" secondAttribute="trailing" id="Xs6-Iu-3dN"/>
+                                    <constraint firstItem="58n-Cx-0zT" firstAttribute="trailing" secondItem="Lv4-7S-nDz" secondAttribute="trailing" id="Xs6-Iu-3dN"/>
                                     <constraint firstItem="58n-Cx-0zT" firstAttribute="leading" secondItem="Eab-DD-lof" secondAttribute="leading" id="jzG-A8-aXz"/>
                                     <constraint firstAttribute="width" secondItem="Eab-DD-lof" secondAttribute="height" multiplier="309:50" id="kaM-iC-D0K"/>
                                     <constraint firstItem="58n-Cx-0zT" firstAttribute="top" secondItem="Eab-DD-lof" secondAttribute="top" id="mdU-Cg-wYW"/>

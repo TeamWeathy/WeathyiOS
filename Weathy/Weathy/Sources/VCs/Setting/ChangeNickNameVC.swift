@@ -104,6 +104,7 @@ class ChangeNickNameVC: UIViewController {
     /// 변경하기 눌렀을 때 Aleart
     @IBAction func changeButtonDidTap(_ sender: Any) {
         guard let nickName = nickNameTextField.text else { return }
+        view.endEditing(true)
         
         modifyUserService.shared.modifyUserPut(nickname: nickName) { (NetworkResult) -> Void in
             switch NetworkResult {
@@ -113,9 +114,9 @@ class ChangeNickNameVC: UIViewController {
                     UserDefaults.standard.setValue(modifyData.user.nickname, forKey: "nickname")
                     self.nickName = modifyData.user.nickname
                     
-                    self.showToast(message: "닉네임이 변경되었어요.") {
+                    self.showToast(message: "닉네임이 변경되었어요.", completion: {
                         self.navigationController?.popViewController(animated: true)
-                    }
+                    })
                 }
             case .requestErr:
                 print("requestErr")

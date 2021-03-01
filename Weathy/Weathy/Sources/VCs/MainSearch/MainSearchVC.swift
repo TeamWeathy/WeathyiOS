@@ -373,10 +373,10 @@ extension MainSearchVC: UITableViewDelegate {
                     
                     UserDefaults.standard.set(locationCodes, forKey: "locationCodes")
                     
-                    
                     /// 검색 위치로 유저디폴트 갱신
                     UserDefaults.standard.set(locationCodes[0], forKey: "searchLocationCode")
                     
+                    NotificationCenter.default.post(name: .init("search"), object: true)
                     NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": cell.weatherData!])
                     
                     self.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -436,6 +436,7 @@ extension MainSearchVC: UITableViewDelegate {
             /// 기록뷰에서 변경하기 버튼을 이용해 넘어 온 경우 유저디폴트 갱신하지 않음
             if !isFromRecord {
                 UserDefaults.standard.set(searchInformations[indexPath.row].region.code, forKey: "searchLocationCode")
+                NotificationCenter.default.post(name: NSNotification.Name("search"), object: true)
             }
             
             NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": self.searchInformations[indexPath.row]])
