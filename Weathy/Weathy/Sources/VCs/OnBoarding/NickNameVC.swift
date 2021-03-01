@@ -28,6 +28,12 @@ class NickNameVC: UIViewController {
     @IBOutlet var startButton: UIButton!
     @IBOutlet var startButtonBottom: NSLayoutConstraint!
     
+    // MARK: - Life Cycle Methods
+    
+    override func viewWillAppear(_ animated: Bool) {
+        nickNameTextField.becomeFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -185,10 +191,14 @@ extension NickNameVC {
             startButtonBottom.constant = adjustemnHeight + 16
             
             textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
+            countLabel.isHidden = false
+            totalCountLabel.isHidden = false
         } else {
             startButtonBottom.constant = 16
             
             textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
+            countLabel.isHidden = true
+            totalCountLabel.isHidden = true
         }
     }
 }
