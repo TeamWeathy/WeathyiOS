@@ -53,7 +53,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfh-ys-NJ6">
-                                <rect key="frame" x="316.5" y="123" width="9" height="9"/>
+                                <rect key="frame" x="316.5" y="121" width="9" height="9"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="9" id="Al7-KY-6xn"/>
@@ -61,7 +61,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VA8-O6-T6C">
-                                <rect key="frame" x="334.5" y="123" width="9" height="9"/>
+                                <rect key="frame" x="334.5" y="121" width="9" height="9"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="9" id="H7L-Ke-n51"/>
@@ -69,7 +69,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7E-7V-MGK">
-                                <rect key="frame" x="350.5" y="121" width="13" height="13"/>
+                                <rect key="frame" x="350.5" y="119" width="13" height="13"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="9r0-QL-skr"/>
@@ -186,7 +186,7 @@
                             <constraint firstItem="xrn-4L-Oxa" firstAttribute="top" secondItem="Qll-zD-3hf" secondAttribute="bottom" constant="10" id="fVB-ZV-ycp"/>
                             <constraint firstItem="Qll-zD-3hf" firstAttribute="top" secondItem="fch-Vq-3ln" secondAttribute="bottom" constant="17" id="few-gn-5qv"/>
                             <constraint firstItem="HuM-8S-QAh" firstAttribute="height" secondItem="ZBO-7X-qzc" secondAttribute="height" id="jX9-5l-5bL"/>
-                            <constraint firstItem="Y7E-7V-MGK" firstAttribute="top" secondItem="Qll-zD-3hf" secondAttribute="top" constant="12" id="jb0-Q6-hen"/>
+                            <constraint firstItem="Y7E-7V-MGK" firstAttribute="top" secondItem="Qll-zD-3hf" secondAttribute="top" constant="10" id="jb0-Q6-hen"/>
                             <constraint firstItem="ZBO-7X-qzc" firstAttribute="top" secondItem="RcS-rQ-OR6" secondAttribute="bottom" constant="21" id="jxv-uA-Tcm"/>
                             <constraint firstItem="bUf-9H-HVD" firstAttribute="bottom" secondItem="ZBO-7X-qzc" secondAttribute="bottom" constant="16" id="xZ8-qy-PMx"/>
                             <constraint firstItem="HuM-8S-QAh" firstAttribute="leading" secondItem="RcS-rQ-OR6" secondAttribute="leading" constant="10" id="zUn-gs-n8x"/>
