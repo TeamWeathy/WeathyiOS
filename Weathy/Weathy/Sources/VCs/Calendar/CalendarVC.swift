@@ -169,10 +169,11 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         }
         
         ///오늘 요일 하얗게
-        weekdayLabelCollection[selectedDate.weekday].textColor = .white
+        setWeekdayWhite()
         
         infiniteMonthlyCV.clipsToBounds = true
     }
+    
     func setWeekdayColor(){
         for i in 0...6{
             if i == 0{
@@ -186,6 +187,11 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             }
         }
     }
+    
+    func setWeekdayWhite(){
+        weekdayLabelCollection[Date().weekday].textColor = .white
+    }
+    
     func setGesture(){
         panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(panGestureHandler))
         self.calendarDrawerView.addGestureRecognizer(panGesture)
@@ -352,8 +358,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             self.infiniteWeeklyCV.alpha = 1
         }
         ///오늘이면 요일 색 하얗게
-        if selectedDate.isToday{
-            weekdayLabelCollection[Date().weekday].textColor = .white
+        if currentIndex == infiniteMax - 1 {
+            setWeekdayWhite()
         }
         
         panGesture.setTranslation(CGPoint.zero, in: self.view)
@@ -517,7 +523,7 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             }
             ///요일 하얗게
             if currentIndex == infiniteMax - 1{
-                weekdayLabelCollection[selectedDate.weekday].textColor = .white
+                setWeekdayWhite()
             }
             else{
                 setWeekdayColor()
@@ -526,6 +532,13 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
             weeklyCellDidSelected()
         }
         
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let x = scrollView.contentOffset.x
+        currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        if currentIndex == infiniteMax - 1{
+            setWeekdayWhite()
+        }
     }
     
 }
