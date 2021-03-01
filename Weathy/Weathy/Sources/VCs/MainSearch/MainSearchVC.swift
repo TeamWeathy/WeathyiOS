@@ -367,8 +367,18 @@ extension MainSearchVC: UITableViewDelegate {
             if !isFromRecord {
                 if let cell = tableView.cellForRow(at: indexPath) as? RecentTVC {
                     
+                    print("당신이 선택한 것은", indexPath.row)
+                    print(locationCodes)
+                    
+                    /// 클릭한 지역이 가장 위로 올라올 수 있게
+                    locationCodes.insert(locationCodes[indexPath.row], at: 0)
+                    locationCodes.remove(at: indexPath.row + 1)
+                    
+                    UserDefaults.standard.set(locationCodes, forKey: "locationCodes")
+                    
+                    
                     /// 검색 위치로 유저디폴트 갱신
-                    UserDefaults.standard.set(locationCodes[indexPath.row], forKey: "searchLocationCode")
+                    UserDefaults.standard.set(locationCodes[0], forKey: "searchLocationCode")
                     
                     NotificationCenter.default.post(name: .init("record"), object: nil, userInfo: ["mainDeliverSearchInfo": cell.weatherData!])
                     
