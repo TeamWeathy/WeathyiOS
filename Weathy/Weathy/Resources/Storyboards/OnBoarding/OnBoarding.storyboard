@@ -323,7 +323,6 @@
                         <outlet property="descriptionLabel" destination="b8W-gj-k3Z" id="Tl8-pn-abN"/>
                         <outlet property="nickNameTextField" destination="kRw-in-8ee" id="h4h-E5-w3c"/>
                         <outlet property="startButton" destination="aJ5-Qw-z9l" id="p4B-Gd-bmz"/>
-                        <outlet property="startButtonBottom" destination="dGi-wb-hfK" id="kRc-kR-FOf"/>
                         <outlet property="textRadiusImage" destination="2Yv-Ig-uCl" id="UfF-7o-KHz"/>
                         <outlet property="titleLabel" destination="zp6-pQ-ciQ" id="tq7-O2-tzc"/>
                         <outlet property="totalCountLabel" destination="mV5-11-TgQ" id="goX-Ml-WVc"/>
