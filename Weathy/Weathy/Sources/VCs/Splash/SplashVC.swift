@@ -25,6 +25,23 @@ class SplashVC: UIViewController {
     @objc func nextView() {
         if UserDefaults.standard.integer(forKey: "userId") != 0{
             let nextStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
+            LoginService.shared.postLogin(uuid: UserDefaults.standard.string(forKey: "UUID") ?? ""){ (networkResult) -> (Void) in
+                switch networkResult{
+                    case .success(let data):
+                        if let loginData = data as? UserData{
+                            print("Token is renewed")
+                            UserDefaults.standard.setValue(loginData.token, forKey: "token")
+                        }
+                    case .requestErr(let message):
+                        print("[Login] requestErr", message)
+                    case .pathErr:
+                        print("[Login] pathErr")
+                    case .serverErr:
+                        print("[Login] serverErr")
+                    case .networkFail:
+                        print("[Login] networkFail")
+                }
+            }
             if let dvc = nextStoryboard.instantiateViewController(identifier: "TabbarVC") as UIViewController? {
                 UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
             }

@@ -71,11 +71,11 @@
 		37D3476F25ADB7BD0069247F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */; };
 		37FB8AA825AE4FA5001A6287 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FB8AA725AE4FA5001A6287 /* Splash.storyboard */; };
 		37FB8AAB25AE4FB7001A6287 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB8AAA25AE4FB7001A6287 /* SplashVC.swift */; };
-		37FB8AAF25AE52E1001A6287 /* 스플래시.json in Resources */ = {isa = PBXBuildFile; fileRef = 37FB8AAE25AE52E1001A6287 /* 스플래시.json */; };
 		4C6D6B3632E6D1F7D4A96051 /* Pods_Weathy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEAEEC40355B6A916F599609 /* Pods_Weathy.framework */; };
 		630149EB25EB94680028567F /* SettingOpenSourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630149EA25EB94680028567F /* SettingOpenSourceVC.swift */; };
 		630149EF25EB94920028567F /* SettingOpenSourceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630149EE25EB94920028567F /* SettingOpenSourceTVC.swift */; };
 		630149F325EB96F30028567F /* SettingOpenSourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630149F225EB96F30028567F /* SettingOpenSourceDetailVC.swift */; };
+		63014A0025ED67930028567F /* 스플래시.json in Resources */ = {isa = PBXBuildFile; fileRef = 630149FF25ED67930028567F /* 스플래시.json */; };
 		633984202599B1F400339615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339841F2599B1F400339615 /* AppDelegate.swift */; };
 		633984222599B1F400339615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633984212599B1F400339615 /* SceneDelegate.swift */; };
 		6339842A2599B1F400339615 /* Weathy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 633984282599B1F400339615 /* Weathy.xcdatamodeld */; };
@@ -214,10 +214,10 @@
 		37D3476E25ADB7BD0069247F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		37FB8AA725AE4FA5001A6287 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		37FB8AAA25AE4FB7001A6287 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
-		37FB8AAE25AE52E1001A6287 /* 스플래시.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "스플래시.json"; sourceTree = "<group>"; };
 		630149EA25EB94680028567F /* SettingOpenSourceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOpenSourceVC.swift; sourceTree = "<group>"; };
 		630149EE25EB94920028567F /* SettingOpenSourceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOpenSourceTVC.swift; sourceTree = "<group>"; };
 		630149F225EB96F30028567F /* SettingOpenSourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOpenSourceDetailVC.swift; sourceTree = "<group>"; };
+		630149FF25ED67930028567F /* 스플래시.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "스플래시.json"; sourceTree = "<group>"; };
 		6339841C2599B1F400339615 /* Weathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339841F2599B1F400339615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		633984212599B1F400339615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -532,7 +532,7 @@
 		37FB8AAD25AE52BD001A6287 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				37FB8AAE25AE52E1001A6287 /* 스플래시.json */,
+				630149FF25ED67930028567F /* 스플래시.json */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -945,11 +945,11 @@
 				AB3D206E25AFD5040030514B /* Setting.storyboard in Resources */,
 				63DEB293259CF67200A94488 /* AppleSDGothicNeoB.ttf in Resources */,
 				AB3D206A25AFD4F90030514B /* MainSearch.storyboard in Resources */,
+				63014A0025ED67930028567F /* 스플래시.json in Resources */,
 				63DEB291259CF67200A94488 /* Roboto-Light.ttf in Resources */,
 				3735AE1B25A87F6700E71DC3 /* RecordTagDelete.storyboard in Resources */,
 				374D48EA259D49CA00152B9A /* RecordTag.storyboard in Resources */,
 				63DEB296259CF67200A94488 /* Roboto-Regular.ttf in Resources */,
-				37FB8AAF25AE52E1001A6287 /* 스플래시.json in Resources */,
 				63DEB290259CF67200A94488 /* Roboto-Medium.ttf in Resources */,
 				6354ED8225AE0A2E00C5CAC5 /* Calendar.storyboard in Resources */,
 				63DEB292259CF67200A94488 /* AppleSDGothicNeoM.ttf in Resources */,

@@ -268,7 +268,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //MARK: - Custom Methods - Calendar
     
     func selectedDateDidChange(){
-        print("@selectedDate", selectedDate)
         picker.date = selectedDate
         lastWeekIdx = selectedDate.weekday
         NotificationCenter.default.post(
