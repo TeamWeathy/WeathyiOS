@@ -458,6 +458,8 @@ extension ModifyWeathyTextVC: UIImagePickerControllerDelegate, UINavigationContr
             photoImageView.image = image
             photoImageView.contentMode = .scaleAspectFill
             isDeleted = false
+            photoDeleteBtn.isHidden = false
+            photoDeleteBtn.isUserInteractionEnabled = true
         }
         
         dismiss(animated: true, completion: nil)
