@@ -63,6 +63,6 @@ class SplashVC: UIViewController {
         animationView.play()
         self.view.addSubview(animationView)
         
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.nextView), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 2.7, target: self, selector: #selector(self.nextView), userInfo: nil, repeats: false)
     }
 }
