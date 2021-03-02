@@ -73,6 +73,7 @@ class ModifyWeathyTextVC: UIViewController {
         textViewSurroundingView.layer.cornerRadius = 15
         
         originalText = weathyData?.feedback ?? ""
+        enteredText = originalText
         recordTextView.text = originalText
 
         
