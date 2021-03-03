@@ -300,7 +300,8 @@ class CalendarDetailVC: UIViewController{
             switch networkResult{
                 case .success(let data):
                     if let dailyData = data as? WeathyClass{
-                        print("[Daily] success",koreanDateFormatter.string(from: self.selectedDate))
+                        contentScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+//                        print("[Daily] success",koreanDateFormatter.string(from: self.selectedDate))
                         self.dailyWeathy = dailyData
                         self.setData()
                     }
