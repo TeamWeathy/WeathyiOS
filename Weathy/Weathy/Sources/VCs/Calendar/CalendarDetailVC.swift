@@ -295,6 +295,13 @@ class CalendarDetailVC: UIViewController{
         
         
     }
+    func showDeletePopup(){
+        UIView.transition(with: (self.parent?.view)!, duration: 0.2, options: .transitionCrossDissolve, animations: {self.parent?.view.addSubview(self.blurView)}, completion: nil)
+    }
+    func hideDeletePopup(){
+        UIView.transition(with: (self.parent?.view)!, duration: 0.2, options: .transitionCrossDissolve, animations: {self.blurView.removeFromSuperview()}, completion: nil)
+    }
+
     
     //MARK: - Network
     
@@ -376,7 +383,7 @@ class CalendarDetailVC: UIViewController{
     }
     
     @objc func cancelAction(_ sender: Any){
-        self.blurView.removeFromSuperview()
+        hideDeletePopup()
     }
     
     @objc func deleteAction(_ sender: Any){
@@ -384,7 +391,7 @@ class CalendarDetailVC: UIViewController{
             switch networkResult{
             case .success(let message):
                 print("[Delete]",message)
-                self.blurView.removeFromSuperview()
+                self.hideDeletePopup()
                 self.selectedDateDidChange(nil)
                 if self.selectedDate.isToday{
                     UserDefaults.standard.setValue("1800-01-01", forKey: "recentRecordDate")
@@ -448,10 +455,8 @@ class CalendarDetailVC: UIViewController{
     
     @IBAction func deleteBtnDidTap(_ sender: Any) {
         closeMoreMenu(nil)
-        self.parent?.view.addSubview(blurView)
-        
+        showDeletePopup()
     }
-    
     @IBAction func recordBtnDidTap(_ sender: Any) {
         guard let record = UIStoryboard.init(name: "RecordStart", bundle: nil).instantiateViewController(identifier: "RecordNVC") as? RecordNVC else{ return }
         record.modalPresentationStyle = .fullScreen
