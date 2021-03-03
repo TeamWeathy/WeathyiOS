@@ -235,7 +235,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수정하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wse-Xv-JBO" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                        <rect key="frame" x="12" y="12.000000000000002" width="56" height="20.666666666666671"/>
+                                                        <rect key="frame" x="18" y="12.000000000000002" width="56" height="20.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeoM00" family="AppleSDGothicNeoM00" pointSize="16"/>
                                                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -246,7 +246,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="삭제하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSq-jf-smz" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                        <rect key="frame" x="12" y="55.666666666666693" width="56" height="19.333333333333336"/>
+                                                        <rect key="frame" x="18" y="55.666666666666693" width="56" height="19.333333333333336"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeoM00" family="AppleSDGothicNeoM00" pointSize="16"/>
                                                         <color key="textColor" red="0.95294117647058818" green="0.44313725490196076" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -291,14 +291,14 @@
                                                     <constraint firstItem="Hy4-Iq-Ikf" firstAttribute="centerY" secondItem="nSq-jf-smz" secondAttribute="centerY" id="5OE-Pl-yos"/>
                                                     <constraint firstAttribute="trailing" secondItem="RpC-dp-nXW" secondAttribute="trailing" id="8bM-9U-J1O"/>
                                                     <constraint firstItem="RpC-dp-nXW" firstAttribute="leading" secondItem="bPc-en-inU" secondAttribute="leading" id="IYr-6F-mcN"/>
-                                                    <constraint firstItem="Wse-Xv-JBO" firstAttribute="leading" secondItem="bPc-en-inU" secondAttribute="leading" constant="12" id="KsT-zI-txz"/>
+                                                    <constraint firstItem="Wse-Xv-JBO" firstAttribute="leading" secondItem="bPc-en-inU" secondAttribute="leading" constant="18" id="KsT-zI-txz"/>
                                                     <constraint firstItem="Wse-Xv-JBO" firstAttribute="top" secondItem="bPc-en-inU" secondAttribute="top" constant="12" id="NYX-an-9da"/>
                                                     <constraint firstItem="ubF-sr-YHB" firstAttribute="leading" secondItem="bPc-en-inU" secondAttribute="leading" id="Nm0-is-wiW"/>
                                                     <constraint firstItem="nSq-jf-smz" firstAttribute="top" secondItem="ubF-sr-YHB" secondAttribute="bottom" constant="10" id="RUe-ig-yHf"/>
                                                     <constraint firstAttribute="width" constant="135" id="U34-lA-u6J"/>
                                                     <constraint firstItem="ubF-sr-YHB" firstAttribute="top" secondItem="xoG-cR-d4f" secondAttribute="bottom" id="UgE-J2-6E5"/>
                                                     <constraint firstAttribute="trailing" secondItem="ubF-sr-YHB" secondAttribute="trailing" id="ce0-t5-560"/>
-                                                    <constraint firstItem="nSq-jf-smz" firstAttribute="leading" secondItem="bPc-en-inU" secondAttribute="leading" constant="12" id="eXa-B7-kx8"/>
+                                                    <constraint firstItem="nSq-jf-smz" firstAttribute="leading" secondItem="bPc-en-inU" secondAttribute="leading" constant="18" id="eXa-B7-kx8"/>
                                                     <constraint firstItem="ubF-sr-YHB" firstAttribute="top" secondItem="Wse-Xv-JBO" secondAttribute="bottom" constant="12" id="tsN-nY-SvJ"/>
                                                     <constraint firstItem="xoG-cR-d4f" firstAttribute="leading" secondItem="bPc-en-inU" secondAttribute="leading" id="w4d-vl-x7x"/>
                                                     <constraint firstItem="RpC-dp-nXW" firstAttribute="top" secondItem="xoG-cR-d4f" secondAttribute="bottom" id="w7n-CH-0Fx"/>
