@@ -264,7 +264,7 @@ extension RecordTextVC {
         textViewSurroundingView.layer.cornerRadius = 15
         
         wordCountLabel.font = UIFont.SDGothicSemiBold13
-        wordCountLabel.textColor = UIColor.mintMain
+        wordCountLabel.textColor = UIColor.mintIcon
     }
     
     func textNotExists() {
