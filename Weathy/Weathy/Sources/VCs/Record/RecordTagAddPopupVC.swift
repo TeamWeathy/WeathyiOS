@@ -46,6 +46,10 @@ class RecordTagAddPopupVC: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tagNameTextField.becomeFirstResponder()
+    }
+    
 //    override func viewWillDisappear(_ animated: Bool) {
 //        self.presentingViewController?.viewWillAppear(false)
 //    }
