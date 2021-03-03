@@ -135,6 +135,12 @@ extension RecordTagDeleteVC {
         tagTitles[initialTagTab].isSelected = true
         tagCollectionView.contentOffset.y = self.initialYOffset
         
+        if selectedTags.count >= 1 {
+//            setNextBtnActivated()
+            nextBtn.isUserInteractionEnabled = true
+            nextBtn.backgroundColor = .pink
+        }
+        
         tagCollectionView.reloadData()
         tagTitleCollectionView.reloadData()
         
@@ -144,14 +150,12 @@ extension RecordTagDeleteVC {
     }
     
     func initialBtn() {
-        /// 송편 되는 문제 해결 - 레이아웃이 변경 됐을 때 반영
-        self.view.layoutIfNeeded()
-        
-        nextBtn.isUserInteractionEnabled = true
-        nextBtn.backgroundColor = UIColor.pink
+        nextBtn.isUserInteractionEnabled = false
+        nextBtn.backgroundColor = .subGrey3
         nextBtn.setTitle("삭제하기", for: .normal)
         nextBtn.setTitleColor(.white, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        self.view.layoutIfNeeded()
         nextBtn.layer.cornerRadius = self.nextBtn.frame.height / 2
     }
     
