@@ -44,6 +44,7 @@ class MainVC: UIViewController {
     // main
     @IBOutlet var mainBackgroundImage: UIImageView!
     @IBOutlet var topBlurView: UIImageView!
+    @IBOutlet var topBlurViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var logoImage: UIImageView!
     @IBOutlet var todayDateTimeLabel: SpacedLabel!
     @IBOutlet var mainNaviBarView: UIView!
@@ -133,6 +134,7 @@ class MainVC: UIViewController {
                 return 73
             }
         }()
+        
         let mainHeight = UIScreen.main.bounds.height
         let viewHeight = mainHeight - (safeInsetTop + safeInsetBottom + mainNaviBarView.bounds.height) - tabbarHeight
 
@@ -147,12 +149,16 @@ class MainVC: UIViewController {
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
         mainTopScrollView.showsVerticalScrollIndicator = false
+        mainTopScrollView.delegate = self
         
         logoImage.frame.origin.y += 100
         logoImage.alpha = 0
         
         topBlurView.frame.origin.y -= topBlurView.bounds.height
         topBlurView.alpha = 0
+        
+        let topBlurViewHeight = topBlurViewHeightConstraint.constant
+        topBlurViewHeightConstraint.constant = UIScreen.main.hasNotch ? topBlurViewHeight : topBlurViewHeight - 44
         
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
@@ -714,6 +720,7 @@ class MainVC: UIViewController {
     
     @objc func appMovedToForeground() {
         moveWeatherImage()
+        blankDownImage()
     }
     
     @objc func receiveSearchData(_notification: NSNotification) {
@@ -733,7 +740,7 @@ class MainVC: UIViewController {
             toastLabel.layer.cornerRadius = 25
             toastLabel.clipsToBounds = true
             
-            self.view.addSubview(toastLabel)
+            view.addSubview(toastLabel)
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
                 UIView.animate(withDuration: 1.0, delay: 1.0, options: .curveEaseOut, animations: {
@@ -860,7 +867,6 @@ extension MainVC: UICollectionViewDelegate {
                 
                 UIView.animate(withDuration: 0.3, animations: {
                     self.logoImage.alpha = 1
-                    self.topBlurView.alpha = 1
                     self.todayDateTimeLabel.alpha = 0
                 })
             } else {
@@ -871,7 +877,6 @@ extension MainVC: UICollectionViewDelegate {
                 
                 UIView.animate(withDuration: 0.3, animations: {
                     self.logoImage.alpha = 0
-                    self.topBlurView.alpha = 0
                     self.todayDateTimeLabel.alpha = 1
                 })
             }
@@ -894,6 +899,23 @@ extension MainVC: UICollectionViewDelegate {
                 UIView.animate(withDuration: 0.5) {
                     self.timeZoneLeftBlurImage.alpha = 1
                     self.timeZoneRightBlurImage.alpha = 1
+                }
+            }
+        }
+        
+        if scrollView == mainScrollView || scrollView == mainTopScrollView {
+            let mainScrollContentOffset = mainScrollView.contentOffset.y
+            let mainTopScrollContentOffset = mainTopScrollView.contentOffset.y
+            
+            if (mainScrollContentOffset > 10 || mainTopScrollContentOffset > 10 ) {
+                UIView.animate(withDuration: 0.5) {
+                    self.topBlurView.alpha = 1
+                }
+            }
+            
+            if (mainScrollContentOffset < 10 && mainTopScrollContentOffset < 10) {
+                UIView.animate(withDuration: 0.3) {
+                    self.topBlurView.alpha = 0
                 }
             }
         }
