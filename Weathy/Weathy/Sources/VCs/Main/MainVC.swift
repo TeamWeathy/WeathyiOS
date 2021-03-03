@@ -149,6 +149,7 @@ class MainVC: UIViewController {
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
         mainTopScrollView.showsVerticalScrollIndicator = false
+        mainTopScrollView.delegate = self
         
         logoImage.frame.origin.y += 100
         logoImage.alpha = 0
@@ -866,7 +867,6 @@ extension MainVC: UICollectionViewDelegate {
                 
                 UIView.animate(withDuration: 0.3, animations: {
                     self.logoImage.alpha = 1
-                    self.topBlurView.alpha = 1
                     self.todayDateTimeLabel.alpha = 0
                 })
             } else {
@@ -877,7 +877,6 @@ extension MainVC: UICollectionViewDelegate {
                 
                 UIView.animate(withDuration: 0.3, animations: {
                     self.logoImage.alpha = 0
-                    self.topBlurView.alpha = 0
                     self.todayDateTimeLabel.alpha = 1
                 })
             }
@@ -900,6 +899,23 @@ extension MainVC: UICollectionViewDelegate {
                 UIView.animate(withDuration: 0.5) {
                     self.timeZoneLeftBlurImage.alpha = 1
                     self.timeZoneRightBlurImage.alpha = 1
+                }
+            }
+        }
+        
+        if scrollView == mainScrollView || scrollView == mainTopScrollView {
+            let mainScrollContentOffset = mainScrollView.contentOffset.y
+            let mainTopScrollContentOffset = mainTopScrollView.contentOffset.y
+            
+            if (mainScrollContentOffset > 10 || mainTopScrollContentOffset > 10 ) {
+                UIView.animate(withDuration: 0.5) {
+                    self.topBlurView.alpha = 1
+                }
+            }
+            
+            if (mainScrollContentOffset < 10 && mainTopScrollContentOffset < 10) {
+                UIView.animate(withDuration: 0.3) {
+                    self.topBlurView.alpha = 0
                 }
             }
         }
