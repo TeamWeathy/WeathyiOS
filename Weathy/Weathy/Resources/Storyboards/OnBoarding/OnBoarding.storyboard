@@ -240,7 +240,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         <connections>
-                                            <action selector="nickTextFieldDidTap:" destination="Umd-x9-smB" eventType="editingChanged" id="q2S-ML-vdI"/>
+                                            <action selector="nicknameTextFieldDidTap:" destination="Umd-x9-smB" eventType="editingChanged" id="q2S-ML-vdI"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdG-G6-S0u">
@@ -303,8 +303,8 @@
                             <constraint firstItem="b8W-gj-k3Z" firstAttribute="leading" secondItem="2Yv-Ig-uCl" secondAttribute="leading" id="ImW-y5-nwY"/>
                             <constraint firstItem="h9H-eH-nea" firstAttribute="top" secondItem="b8W-gj-k3Z" secondAttribute="bottom" constant="64" id="Kk1-8j-qIK"/>
                             <constraint firstItem="h9H-eH-nea" firstAttribute="width" secondItem="aJ5-Qw-z9l" secondAttribute="width" id="LOC-S9-mFx"/>
+                            <constraint firstItem="jhf-WP-ltZ" firstAttribute="bottom" secondItem="mV5-11-TgQ" secondAttribute="bottom" id="Opr-cX-333"/>
                             <constraint firstItem="mV5-11-TgQ" firstAttribute="trailing" secondItem="2Yv-Ig-uCl" secondAttribute="trailing" id="T9X-Ue-eI9"/>
-                            <constraint firstItem="jhf-WP-ltZ" firstAttribute="centerY" secondItem="mV5-11-TgQ" secondAttribute="centerY" id="TVk-Ag-oaa"/>
                             <constraint firstItem="aJ5-Qw-z9l" firstAttribute="centerX" secondItem="8CB-mU-8w1" secondAttribute="centerX" id="Xy3-Bb-nIn"/>
                             <constraint firstItem="dyu-BG-B4h" firstAttribute="bottom" secondItem="aJ5-Qw-z9l" secondAttribute="bottom" constant="16" id="dGi-wb-hfK"/>
                             <constraint firstItem="mV5-11-TgQ" firstAttribute="leading" secondItem="jhf-WP-ltZ" secondAttribute="trailing" id="hH5-jm-CmR"/>
@@ -321,7 +321,7 @@
                         <outlet property="clearButton" destination="WdG-G6-S0u" id="Dl2-dl-bAy"/>
                         <outlet property="countLabel" destination="jhf-WP-ltZ" id="1PM-iE-PKF"/>
                         <outlet property="descriptionLabel" destination="b8W-gj-k3Z" id="Tl8-pn-abN"/>
-                        <outlet property="nickNameTextField" destination="kRw-in-8ee" id="h4h-E5-w3c"/>
+                        <outlet property="nicknameTextField" destination="kRw-in-8ee" id="h4h-E5-w3c"/>
                         <outlet property="startButton" destination="aJ5-Qw-z9l" id="p4B-Gd-bmz"/>
                         <outlet property="textRadiusImage" destination="2Yv-Ig-uCl" id="UfF-7o-KHz"/>
                         <outlet property="titleLabel" destination="zp6-pQ-ciQ" id="tq7-O2-tzc"/>
