@@ -719,6 +719,7 @@ class MainVC: UIViewController {
     
     @objc func appMovedToForeground() {
         moveWeatherImage()
+        blankDownImage()
     }
     
     @objc func receiveSearchData(_notification: NSNotification) {
