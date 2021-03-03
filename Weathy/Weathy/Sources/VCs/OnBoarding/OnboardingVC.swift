@@ -177,8 +177,6 @@ class OnboardingVC: UIViewController {
             self.view.layoutIfNeeded()
         }
 
-        displayFirstSplash()
-        
         firstWord.text = "날씨를"
         secondWord.text = "기록해요"
         subLabel.text = "오늘 날씨에 대한 옷차림과 상태를 기록해요"
@@ -199,8 +197,6 @@ class OnboardingVC: UIViewController {
             self.view.layoutIfNeeded()
         }
 
-        displaySecondSplash()
-        
         firstWord.text = "기록을"
         secondWord.text = "모아봐요"
         subLabel.text = "캘린더에서 날씨 기록을 모아볼 수 있어요"
@@ -221,8 +217,6 @@ class OnboardingVC: UIViewController {
             self.view.layoutIfNeeded()
         }
 
-        displayThirdSplash()
-        
         firstWord.text = "나에게"
         secondWord.text = "돌아와요"
         subLabel.text = "기록한 날씨는 비슷한 날에 돌아와요"
@@ -298,10 +292,11 @@ class OnboardingVC: UIViewController {
     }
     
     // MARK: - IBActions
-    
+
+    // FIXME: - 페이지 전환 제스처 감지로 하는 거 버리기
     @IBAction func actGesture(_ sender: UISwipeGestureRecognizer) {
         if currentPage == 1 {
-            /// 오른쪽 -> 왼쪽 스와이프
+            /// 1 -> 2
             if sender.direction == .left {
                 phoneImage.image = UIImage(named: "onboarding_img_phone3")
                 
@@ -314,51 +309,57 @@ class OnboardingVC: UIViewController {
                 /// 에니메이션
                 secondLabelAnimate()
                 secondViewAnimate()
+                
+                displaySecondSplash()
 
                 currentPage = 2
             }
         } else if currentPage == 2 {
-            if currentPage == 2 {
-                /// 오른쪽 -> 왼쪽 스와이프 (3번째 장으로 넘어갈 때)
-                if sender.direction == .left {
-                    phoneImage.image = UIImage(named: "onboarding_img_phone2")
-                    
-                    firstImage.isHidden = true
-                    secondImage.isHidden = true
-                    thirdImage.isHidden = false
-                    
-                    startButton.isHidden = false
-                    
-                    /// 원상복귀
-                    secondRestoration()
-                    /// 에니메이션
-                    thirdLabelAnimate()
-                    thirdViewAnimate()
-                    
-                    currentPage = 3
-                }
+            /// 2 -> 3
+            if sender.direction == .left {
+                phoneImage.image = UIImage(named: "onboarding_img_phone2")
                 
-                /// 왼쪽 -> 오른쪽 스와이프 (1번째 장으로 돌아갈 때)
-                if sender.direction == .right {
-                    phoneImage.image = UIImage(named: "onboarding_img_phone1")
-
-                    firstImage.isHidden = false
-                    secondImage.isHidden = true
-                    thirdImage.isHidden = true
-                    
-                    /// 원상복귀
-                    secondRestoration()
-                    /// 에니메이션
-                    firstLabelAnimate()
-                    firstViewAnimate()
-                    
-                    currentPage = 1
-                }
+                firstImage.isHidden = true
+                secondImage.isHidden = true
+                thirdImage.isHidden = false
+                
+                startButton.isHidden = false
+                
+                /// 원상복귀
+                secondRestoration()
+                /// 에니메이션
+                thirdLabelAnimate()
+                thirdViewAnimate()
+                
+                displayThirdSplash()
+                
+                currentPage = 3
             }
+            
+            /// 2 -> 1
+            if sender.direction == .right {
+                phoneImage.image = UIImage(named: "onboarding_img_phone1")
+
+                firstImage.isHidden = false
+                secondImage.isHidden = true
+                thirdImage.isHidden = true
+                
+                /// 원상복귀
+                secondRestoration()
+                /// 에니메이션
+                firstLabelAnimate()
+                firstViewAnimate()
+                
+                displayFirstSplash()
+                
+                currentPage = 1
+            }
+
         } else {
             if currentPage == 3 {
-                /// 왼쪽 -> 오른쪽 스와이프
+                /// 3 -> 2
                 if sender.direction == .right {
+                    print("d")
                     phoneImage.image = UIImage(named: "onboarding_img_phone3")
                     
                     firstImage.isHidden = true
@@ -371,6 +372,8 @@ class OnboardingVC: UIViewController {
                     /// 에니메이션
                     secondLabelAnimate()
                     secondViewAnimate()
+                    
+                    displaySecondSplash()
                          
                     currentPage = 2
                 }
@@ -380,23 +383,21 @@ class OnboardingVC: UIViewController {
     
     /// 닉네임 설정하기 화면으로 이동
     @IBAction func startButtonDidTap(_ sender: Any) {
-    
-        //FIXME: - 테스트 후 코드 제거
+        // FIXME: - 테스트 후 코드 제거
         
-        if UserDefaults.standard.integer(forKey: "userId") != 0{
+        if UserDefaults.standard.integer(forKey: "userId") != 0 {
             let storyboard = UIStoryboard(name: "Tabbar", bundle: nil)
             guard let tabbarVC = storyboard.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
 
             tabbarVC.modalPresentationStyle = .fullScreen
-            self.present(tabbarVC, animated: true, completion: nil)
-        }
-        else{
+            present(tabbarVC, animated: true, completion: nil)
+        } else {
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "NickNameVC") as? NickNameVC else { return }
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)
         }
         
-        //FIXME: - 테스트 후 주석 제거
+        // FIXME: - 테스트 후 주석 제거
         
 //        guard let vc = storyboard?.instantiateViewController(withIdentifier: "NickNameVC") as? NickNameVC else { return }
 //
