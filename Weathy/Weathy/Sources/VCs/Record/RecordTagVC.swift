@@ -208,7 +208,7 @@ class RecordTagVC: UIViewController {
         
         dvc.initialTagTab = titleIndex
 //        dvc.initialSelectedIdx = indexPath[1]
-        dvc.initialYOffset = scrollYOffset
+//        dvc.initialYOffset = scrollYOffset
         dvc.tagTitles = tagTitles
         
         dvc.modalPresentationStyle = .fullScreen
