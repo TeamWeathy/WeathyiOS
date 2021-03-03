@@ -79,6 +79,9 @@ class CalendarDetailVC: UIViewController{
             selectedDateDidChange(nil)
             isModified = false
         }
+        else{
+            callDailyWeathy()
+        }
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
