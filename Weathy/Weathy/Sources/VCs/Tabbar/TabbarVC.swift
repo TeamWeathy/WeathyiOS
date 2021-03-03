@@ -32,7 +32,7 @@ class TabbarVC: UIViewController {
         
         plusButton.dropShadow(color: UIColor.mintIcon, offSet: CGSize(width: 0, height: 3), opacity: 0.6, radius: 6)
 
-        viewcontrollerSetting()
+        setViewControllers()
         
         NotificationCenter.default.addObserver(self, selector: #selector(recordSuccess(_:)), name: NSNotification.Name("RecordUpdated"), object: 0)
         
@@ -55,7 +55,7 @@ class TabbarVC: UIViewController {
     // MARK: - Custom Methods
 
     /// Tabbar를 통한 화면 전환
-    func viewcontrollerSetting() {
+    func setViewControllers() {
         scrollView.contentSize.width = view.frame.width * 2
        
         guard let MainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
