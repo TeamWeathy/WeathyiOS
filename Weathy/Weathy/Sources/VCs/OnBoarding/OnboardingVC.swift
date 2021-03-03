@@ -8,7 +8,7 @@
 import Lottie
 import UIKit
 
-class OnBoardingFirstVC: UIViewController {
+class OnboardingVC: UIViewController {
     // MARK: - Custom Variables
 
     var currentPage = 1
@@ -380,10 +380,28 @@ class OnBoardingFirstVC: UIViewController {
     
     /// 닉네임 설정하기 화면으로 이동
     @IBAction func startButtonDidTap(_ sender: Any) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "NickNameVC") as? NickNameVC else { return }
+    
+        //FIXME: - 테스트 후 코드 제거
         
-        vc.modalPresentationStyle = .fullScreen
+        if UserDefaults.standard.integer(forKey: "userId") != 0{
+            let storyboard = UIStoryboard(name: "Tabbar", bundle: nil)
+            guard let tabbarVC = storyboard.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
+
+            tabbarVC.modalPresentationStyle = .fullScreen
+            self.present(tabbarVC, animated: true, completion: nil)
+        }
+        else{
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "NickNameVC") as? NickNameVC else { return }
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
+        }
         
-        present(vc, animated: true, completion: nil)
+        //FIXME: - 테스트 후 주석 제거
+        
+//        guard let vc = storyboard?.instantiateViewController(withIdentifier: "NickNameVC") as? NickNameVC else { return }
+//
+//        vc.modalPresentationStyle = .fullScreen
+//
+//        present(vc, animated: true, completion: nil)
     }
 }
