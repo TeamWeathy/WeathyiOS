@@ -23,34 +23,45 @@ class SplashVC: UIViewController {
     }
     
     @objc func nextView() {
-        if UserDefaults.standard.integer(forKey: "userId") != 0{
-            let nextStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
-            LoginService.shared.postLogin(uuid: UserDefaults.standard.string(forKey: "UUID") ?? ""){ (networkResult) -> (Void) in
-                switch networkResult{
-                    case .success(let data):
-                        if let loginData = data as? UserData{
-                            print("Token is renewed")
-                            UserDefaults.standard.setValue(loginData.token, forKey: "token")
-                        }
-                    case .requestErr(let message):
-                        print("[Login] requestErr", message)
-                    case .pathErr:
-                        print("[Login] pathErr")
-                    case .serverErr:
-                        print("[Login] serverErr")
-                    case .networkFail:
-                        print("[Login] networkFail")
-                }
-            }
-            if let dvc = nextStoryboard.instantiateViewController(identifier: "TabbarVC") as UIViewController? {
-                UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
-            }
-        }
-        else{
-            let nextStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
-            if let dvc = nextStoryboard.instantiateViewController(identifier: "OnBoardingFirstVC") as UIViewController? {
-                UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
-            }
+        
+        //FIXME: - 테스트 후 주석 제거
+        
+//        if UserDefaults.standard.integer(forKey: "userId") != 0{
+//            let nextStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
+//            LoginService.shared.postLogin(uuid: UserDefaults.standard.string(forKey: "UUID") ?? ""){ (networkResult) -> (Void) in
+//                switch networkResult{
+//                    case .success(let data):
+//                        if let loginData = data as? UserData{
+//                            print("Token is renewed")
+//                            UserDefaults.standard.setValue(loginData.token, forKey: "token")
+//                        }
+//                    case .requestErr(let message):
+//                        print("[Login] requestErr", message)
+//                    case .pathErr:
+//                        print("[Login] pathErr")
+//                    case .serverErr:
+//                        print("[Login] serverErr")
+//                    case .networkFail:
+//                        print("[Login] networkFail")
+//                }
+//            }
+//            if let dvc = nextStoryboard.instantiateViewController(identifier: "TabbarVC") as UIViewController? {
+//                UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
+//            }
+//        }
+//        else{
+//            let nextStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
+//            if let dvc = nextStoryboard.instantiateViewController(identifier: "OnBoardingVC") as UIViewController? {
+//                UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
+//            }
+//        }
+        
+        //FIXME: - 테스트 후 코드 제거
+        
+        ///무조건 스플래시 재생 후 온보딩을 띄우도록 함
+        let nextStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
+        if let dvc = nextStoryboard.instantiateViewController(identifier: "OnBoardingVC") as UIViewController? {
+            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
         }
     }
     
@@ -63,6 +74,6 @@ class SplashVC: UIViewController {
         animationView.play()
         self.view.addSubview(animationView)
         
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.nextView), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 2.7, target: self, selector: #selector(self.nextView), userInfo: nil, repeats: false)
     }
 }

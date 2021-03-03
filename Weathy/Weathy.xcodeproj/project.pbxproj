@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E3133F825A4EB5C0059028C /* RecentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3133F725A4EB5C0059028C /* RecentTVC.swift */; };
-		0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344425A724A80059028C /* OnBoardingFirstVC.swift */; };
+		0E31344525A724A80059028C /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31344425A724A80059028C /* OnboardingVC.swift */; };
 		0E6463D825DD6ADD00A9E591 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6463D725DD6ADD00A9E591 /* User.swift */; };
 		0E6E9A6925AF5CFF00702706 /* modifyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */; };
 		0E6E9A7125AF7EE300702706 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E9A7025AF7EE300702706 /* LoginService.swift */; };
@@ -151,7 +151,7 @@
 
 /* Begin PBXFileReference section */
 		0E3133F725A4EB5C0059028C /* RecentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTVC.swift; sourceTree = "<group>"; };
-		0E31344425A724A80059028C /* OnBoardingFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFirstVC.swift; sourceTree = "<group>"; };
+		0E31344425A724A80059028C /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		0E6463D725DD6ADD00A9E591 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0E6E9A6825AF5CFF00702706 /* modifyUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modifyUserService.swift; sourceTree = "<group>"; };
 		0E6E9A7025AF7EE300702706 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 		0E31344725A724AC0059028C /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				0E31344425A724A80059028C /* OnBoardingFirstVC.swift */,
+				0E31344425A724A80059028C /* OnboardingVC.swift */,
 				0E75F65A25AD984D00D98633 /* NickNameVC.swift */,
 				AB24CB6025E959ED0038C45C /* NickNamePopUpVC.swift */,
 			);
@@ -1111,7 +1111,7 @@
 				AB09371B25AE48F800F69220 /* MainService.swift in Sources */,
 				0E75F65825AD800A00D98633 /* SearchTVC.swift in Sources */,
 				0E75F64C25AC1C9D00D98633 /* SearchRecentInfo.swift in Sources */,
-				0E31344525A724A80059028C /* OnBoardingFirstVC.swift in Sources */,
+				0E31344525A724A80059028C /* OnboardingVC.swift in Sources */,
 				0E8C004B25A2514B00A31295 /* ChangeNickNameVC.swift in Sources */,
 				0E75F66625AF149500D98633 /* RecordNVC.swift in Sources */,
 				AB9183C725B0B7BE00C3B022 /* DailyWeatherData.swift in Sources */,
