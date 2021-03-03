@@ -176,8 +176,14 @@ extension ChangeNickNameVC {
     @objc private func adjustInputView(noti: Notification) {
         if noti.name == UIResponder.keyboardWillShowNotification {
             textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
+            
+            countLabel.isHidden = false
+            totalCountLabel.isHidden = false
         } else {
             textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
+            
+            countLabel.isHidden = true
+            totalCountLabel.isHidden = true
         }
     }
 }
