@@ -10,11 +10,6 @@ import UIKit
 class TabbarVC: UIViewController {
     static let identifier = "TabbarVC"
     
-    // MARK: - Custom Variables
-    
-    var mainButtonBool = true
-    var calendarButtonBool = false
-    
     // MARK: - IBOutlets
     
     @IBOutlet var scrollView: UIScrollView!
@@ -28,11 +23,11 @@ class TabbarVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.isScrollEnabled = false
         
         plusButton.dropShadow(color: UIColor.mintIcon, offSet: CGSize(width: 0, height: 3), opacity: 0.6, radius: 6)
 
-        viewcontrollerSetting()
+        setViewControllers()
+        initButton()
         
         NotificationCenter.default.addObserver(self, selector: #selector(recordSuccess(_:)), name: NSNotification.Name("RecordUpdated"), object: 0)
         
@@ -46,16 +41,14 @@ class TabbarVC: UIViewController {
     }
     
     @objc func recordSuccess(_ noti: Notification) {
-        calendarButtonBool = true
-        mainButtonBool = false
-        
+        selectButton(buttonName: .calendarButton)
         scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: false)
     }
     
     // MARK: - Custom Methods
 
     /// Tabbar를 통한 화면 전환
-    func viewcontrollerSetting() {
+    func setViewControllers() {
         scrollView.contentSize.width = view.frame.width * 2
        
         guard let MainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
@@ -72,18 +65,35 @@ class TabbarVC: UIViewController {
         rightVCView.frame = CGRect(x: view.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
         scrollView.addSubview(rightVCView)
         rightVC.didMove(toParent: self)
+        scrollView.isScrollEnabled = false
+    }
+    
+    func initButton(){
+        mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
+        mainButton.setImage(UIImage(named: "ic_weather_selected"), for: .selected)
+        calendarButton.setImage(UIImage(named: "ic_weather_unselected_2"), for: .normal)
+        calendarButton.setImage(UIImage(named:"ic_calendar_selected"), for: .selected)
+        
+        mainButton.isSelected = true
+    }
+    
+    func selectButton(buttonName: ButtonName){
+        switch buttonName{
+            case .mainButton:
+                mainButton.isSelected = true
+                calendarButton.isSelected = false
+            case .calendarButton:
+                mainButton.isSelected = false
+                calendarButton.isSelected = true
+        }
+        
     }
     
     // MARK: - IBActions
     
     /// Main 버튼
     @IBAction func mainButtonDidTap(_ sender: Any) {
-        if calendarButtonBool == true {
-            mainButton.setImage(UIImage(named: "ic_weather_selected"), for: .normal)
-            calendarButton.setImage(UIImage(named: "ic_weather_unselected_2"), for: .normal)
-            calendarButtonBool = false
-            mainButtonBool = true
-        }
+        selectButton(buttonName: .mainButton)
         
         scrollView.setContentOffset(CGPoint.zero, animated: false)
         
@@ -111,15 +121,13 @@ class TabbarVC: UIViewController {
 
     /// Calendar 버튼
     @IBAction func calendarButtonDidTap(_ sender: Any) {
-        /// image 변경을 위한 코드
-        if mainButtonBool == true {
-            mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
-            calendarButton.setImage(UIImage(named: "ic_calendar_selected"), for: .normal)
-            
-            calendarButtonBool = true
-            mainButtonBool = false
-        }
+        selectButton(buttonName: .calendarButton)
         
         scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: false)
     }
+}
+
+enum ButtonName{
+    case mainButton
+    case calendarButton
 }
