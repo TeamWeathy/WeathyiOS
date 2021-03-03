@@ -110,14 +110,13 @@ class ChangeNickNameVC: UIViewController {
         modifyUserService.shared.modifyUserPut(nickname: changedNickname) { (NetworkResult) -> Void in
             switch NetworkResult {
             case .success(let data):
+                NotificationCenter.default.post(name: Notification.Name("changeNickname"), object: nil)
                 
                 if let modifyData = data as? UserData {
                     UserDefaults.standard.setValue(modifyData.user.nickname, forKey: "nickname")
                     self.nickname = modifyData.user.nickname
                     
-                    self.showToast(message: "닉네임이 변경되었어요.", completion: {
-                        self.navigationController?.popViewController(animated: true)
-                    })
+                    self.navigationController?.popViewController(animated: true)
                 }
             case .requestErr:
                 print("requestErr")
