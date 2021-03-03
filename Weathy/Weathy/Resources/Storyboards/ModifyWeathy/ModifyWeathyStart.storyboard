@@ -44,7 +44,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QX-Ug-Xs6">
-                                <rect key="frame" x="315.5" y="119" width="13" height="13"/>
+                                <rect key="frame" x="317.5" y="119" width="13" height="13"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13" id="BvF-rI-z1D"/>
@@ -52,7 +52,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v78-Cx-PPq">
-                                <rect key="frame" x="335.5" y="121" width="9" height="9"/>
+                                <rect key="frame" x="337.5" y="121" width="9" height="9"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="9" id="EFD-vr-4Iq"/>
@@ -201,7 +201,7 @@
                             <constraint firstItem="xF6-np-AHP" firstAttribute="trailing" secondItem="tEV-K0-a2K" secondAttribute="trailing" id="9UF-3h-7yx"/>
                             <constraint firstItem="EXZ-hl-lfa" firstAttribute="top" secondItem="SJQ-vw-1S9" secondAttribute="top" id="BOX-28-AY4"/>
                             <constraint firstItem="69G-DF-wOK" firstAttribute="trailing" secondItem="tEV-K0-a2K" secondAttribute="trailing" constant="-15" id="JRc-qS-cl2"/>
-                            <constraint firstItem="69G-DF-wOK" firstAttribute="leading" secondItem="v78-Cx-PPq" secondAttribute="trailing" constant="9" id="MVa-Ov-IiM"/>
+                            <constraint firstItem="69G-DF-wOK" firstAttribute="leading" secondItem="v78-Cx-PPq" secondAttribute="trailing" constant="7" id="MVa-Ov-IiM"/>
                             <constraint firstItem="69G-DF-wOK" firstAttribute="top" secondItem="o5Q-cS-gZ3" secondAttribute="top" constant="12" id="Z3C-Fe-yoO"/>
                             <constraint firstItem="o5Q-cS-gZ3" firstAttribute="leading" secondItem="tEV-K0-a2K" secondAttribute="leading" id="b7g-gz-Fl5"/>
                             <constraint firstItem="1Py-ug-KUq" firstAttribute="leading" secondItem="tEV-K0-a2K" secondAttribute="leading" id="d1j-CU-uRa"/>
