@@ -170,6 +170,10 @@ extension NickNameVC: UITextFieldDelegate {
             countLabel.textColor = UIColor.mintMain
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nickNameTextField.resignFirstResponder()
+    }
 }
 
 // MARK: keyBoardAction
