@@ -22,7 +22,6 @@ class ChangeNickNameVC: UIViewController {
                 
                 countLabel.textColor = UIColor.mintIcon
                 countLabel.font = .SDGothicSemiBold13
-
             } else {
                 changeButton.isEnabled = false
                 clearButton.isHidden = true
@@ -116,17 +115,12 @@ class ChangeNickNameVC: UIViewController {
     @IBAction func clearButtonDidTap(_ sender: Any) {
         isPossibleChange = false
         
-        countLabel.textColor = UIColor.subGrey6
-        countLabel.font = .SDGothicRegular13
         countLabel.text = "0"
-        
         nicknameTextField.text = .none
     }
     
     /// 변경하기 눌렀을 때 Aleart
     @IBAction func changeButtonDidTap(_ sender: Any) {
-        view.endEditing(true)
-        
         guard let changedNickname = nicknameTextField.text else { return }
         
         modifyUserService.shared.modifyUserPut(nickname: changedNickname) { (NetworkResult) -> Void in

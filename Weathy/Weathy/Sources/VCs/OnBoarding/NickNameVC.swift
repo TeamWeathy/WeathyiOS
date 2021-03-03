@@ -13,18 +13,37 @@ class NickNameVC: UIViewController {
     // MARK: - Custom Variables
     
     var textCount = 0
+    var isPossibleStart: Bool = false {
+        didSet {
+            if isPossibleStart {
+                startButton.isEnabled = true
+                clearButton.isHidden = false
+                
+                countLabel.textColor = UIColor.mintIcon
+                countLabel.font = UIFont.SDGothicSemiBold13
+                
+                startButton.setBackgroundImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
+            } else {
+                startButton.isEnabled = false
+                clearButton.isHidden = true
+                
+                countLabel.textColor = UIColor.subGrey6
+                countLabel.font = UIFont.SDGothicRegular13
+                
+                startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
+            }
+        }
+    }
     
     // MARK: - IBOutlets
     
     @IBOutlet var titleLabel: SpacedLabel!
     @IBOutlet var descriptionLabel: SpacedLabel!
-    
     @IBOutlet var textRadiusImage: UIImageView!
     @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var clearButton: UIButton!
     @IBOutlet var countLabel: SpacedLabel!
     @IBOutlet var totalCountLabel: SpacedLabel!
-    
     @IBOutlet var startButton: UIButton!
     
     // MARK: - Life Cycle Methods
@@ -38,17 +57,15 @@ class NickNameVC: UIViewController {
         
         nicknameTextField.delegate = self
         
-        setView()
+        initView()
         keyBoardAction()
     }
     
     // MARK: - Custom Methods
     
-    func setView() {
-        countLabel.text = "\(textCount)"
+    func initView() {
+        isPossibleStart = false
         
-        clearButton.isHidden = true
-
         titleLabel.font = UIFont.SDGothicRegular25
         titleLabel.textColor = UIColor.mainGrey
         titleLabel.characterSpacing = -1.25
@@ -60,6 +77,7 @@ class NickNameVC: UIViewController {
         countLabel.font = UIFont.SDGothicRegular13
         countLabel.textColor = UIColor.subGrey6
         countLabel.characterSpacing = -0.65
+        countLabel.text = "\(textCount)"
         
         totalCountLabel.font = UIFont.SDGothicRegular13
         totalCountLabel.textColor = UIColor.subGrey6
@@ -119,14 +137,9 @@ class NickNameVC: UIViewController {
     }
     
     @IBAction func touchUpClearButton(_ sender: Any) {
-        clearButton.isHidden = true
+        isPossibleStart = false
         
-        startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
-        
-        countLabel.textColor = UIColor.subGrey6
-        countLabel.font = .SDGothicRegular13
         countLabel.text = "0"
-        
         nicknameTextField.text = .none
     }
     
@@ -150,19 +163,7 @@ extension NickNameVC: UITextFieldDelegate {
         textCount = Int(textField.text?.count ?? 0)
         countLabel.text = "\(textCount)"
         
-        if nicknameTextField.text?.count == 0 {
-            startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
-            clearButton.isHidden = true
-            
-            countLabel.textColor = UIColor.subGrey6
-            countLabel.font = UIFont.SDGothicRegular13
-        } else {
-            startButton.setBackgroundImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
-            clearButton.isHidden = false
-            
-            countLabel.textColor = UIColor.mintIcon
-            countLabel.font = UIFont.SDGothicSemiBold13
-        }
+        isPossibleStart = nicknameTextField.text?.count == 0 ? false : true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
