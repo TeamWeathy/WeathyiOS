@@ -43,31 +43,19 @@ class OnboardingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        phoneImage.alpha = 0
-
-        firstImage.alpha = 0
-        firstDot.image = UIImage(named: "onboarding_ic_circle_now")
-        displayFirstSplash()
-        
-        secondImage.isHidden = true
-        secondImage.alpha = 0
-        
-        thirdImage.isHidden = true
-        thirdImage.alpha = 0
-        
-        startButton.isHidden = true
-        startButton.alpha = 0
-        
-        // MARK: - LifeCycle Methods
-        
-        setLabel()
-        makeGesture()
+        initView()
+        initCloudAnimationView()
     }
+    
+    // MARK: - LifeCycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         firstLabelAnimate()
         firstViewAnimate()
+        
+        animateCloudLottie(from: 0, to: 1, idx: 1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -103,43 +91,44 @@ class OnboardingVC: UIViewController {
     }
     
     // MARK: - Custom Methods
+    
+    func initView() {
+        phoneImage.alpha = 0
 
-    func displayFirstSplash() {
+        firstImage.alpha = 0
+        firstDot.image = UIImage(named: "onboarding_ic_circle_now")
+        
+        secondImage.isHidden = true
+        secondImage.alpha = 0
+        
+        thirdImage.isHidden = true
+        thirdImage.alpha = 0
+        
+        startButton.isHidden = true
+        startButton.alpha = 0
+        
+        setLabel()
+        makeGesture()
+    }
+    
+    func initCloudAnimationView() {
         loadingCloudView.addSubview(animationView)
-        animationView.animation = Animation.named("온보딩_1")
+        
         animationView.frame = CGRect(x: -loadingCloudView.frame.width/2, y: -loadingCloudView.frame.height/2, width: loadingCloudView.frame.width*2, height: loadingCloudView.frame.height*2)
         animationView.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
             animationView.leadingAnchor.constraint(equalTo: loadingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: loadingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: loadingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: loadingCloudView.bottomAnchor),
         ])
-        animationView.loopMode = .playOnce
-        animationView.play()
     }
     
-    func displaySecondSplash() {
-        loadingCloudView.addSubview(animationView)
-        animationView.animation = Animation.named("온보딩_2")
-        animationView.frame = CGRect(x: -loadingCloudView.frame.width/2, y: -loadingCloudView.frame.height/2, width: loadingCloudView.frame.width*2, height: loadingCloudView.frame.height*2)
-        animationView.contentMode = .scaleAspectFill
-        NSLayoutConstraint.activate([
-            animationView.leadingAnchor.constraint(equalTo: loadingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: loadingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: loadingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: loadingCloudView.bottomAnchor),
-        ])
+    /// from, to: 재생 방향 지정
+    /// idx: lottie 이미지 지정을 위한  인덱스
+    func animateCloudLottie(from: Int, to: Int, idx: Int) {
         animationView.loopMode = .playOnce
-        animationView.play()
+        animationView.animation = Animation.named("온보딩_" + String(idx))
+        animationView.play(fromProgress: AnimationProgressTime(from), toProgress: AnimationProgressTime(to), loopMode: .playOnce, completion: nil)
     }
-    
-    func displayThirdSplash() {
-        loadingCloudView.addSubview(animationView)
-        animationView.animation = Animation.named("온보딩_3")
-        animationView.frame = CGRect(x: -loadingCloudView.frame.width/2, y: -loadingCloudView.frame.height/2, width: loadingCloudView.frame.width*2, height: loadingCloudView.frame.height*2)
-        animationView.contentMode = .scaleAspectFill
-        NSLayoutConstraint.activate([
-            animationView.leadingAnchor.constraint(equalTo: loadingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: loadingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: loadingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: loadingCloudView.bottomAnchor),
-        ])
-        animationView.loopMode = .playOnce
-        animationView.play()
-    }
-    
+
     func makeGesture() {
         let right = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
         right.direction = .right
@@ -310,7 +299,7 @@ class OnboardingVC: UIViewController {
                 secondLabelAnimate()
                 secondViewAnimate()
                 
-                displaySecondSplash()
+                animateCloudLottie(from: 0, to: 1, idx: 2)
 
                 currentPage = 2
             }
@@ -331,7 +320,7 @@ class OnboardingVC: UIViewController {
                 thirdLabelAnimate()
                 thirdViewAnimate()
                 
-                displayThirdSplash()
+                animateCloudLottie(from: 0, to: 1, idx: 3)
                 
                 currentPage = 3
             }
@@ -350,7 +339,7 @@ class OnboardingVC: UIViewController {
                 firstLabelAnimate()
                 firstViewAnimate()
                 
-                displayFirstSplash()
+                animateCloudLottie(from: 1, to: 0, idx: 2)
                 
                 currentPage = 1
             }
@@ -359,7 +348,6 @@ class OnboardingVC: UIViewController {
             if currentPage == 3 {
                 /// 3 -> 2
                 if sender.direction == .right {
-                    print("d")
                     phoneImage.image = UIImage(named: "onboarding_img_phone3")
                     
                     firstImage.isHidden = true
@@ -373,7 +361,7 @@ class OnboardingVC: UIViewController {
                     secondLabelAnimate()
                     secondViewAnimate()
                     
-                    displaySecondSplash()
+                    animateCloudLottie(from: 1, to: 0, idx: 3)
                          
                     currentPage = 2
                 }
