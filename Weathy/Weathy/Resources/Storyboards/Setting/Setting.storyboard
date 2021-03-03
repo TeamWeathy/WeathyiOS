@@ -521,7 +521,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
-                                            <action selector="nickTextFieldDidTap:" destination="v8m-hs-VH6" eventType="editingChanged" id="mKO-lU-qzk"/>
+                                            <action selector="nicknameTextFieldDidTap:" destination="v8m-hs-VH6" eventType="editingChanged" id="mKO-lU-qzk"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdS-xS-MiL">
@@ -604,17 +604,17 @@
                         <outlet property="changeButtonBottom" destination="LEQ-I8-IeA" id="PyQ-Ua-qv7"/>
                         <outlet property="clearButton" destination="XdS-xS-MiL" id="BGe-co-Ru9"/>
                         <outlet property="countLabel" destination="cHl-UF-gw1" id="iLW-Vd-T5U"/>
-                        <outlet property="nickLabel" destination="2ui-HA-fmE" id="GG6-cj-FVB"/>
-                        <outlet property="nickNameTextField" destination="Lv4-7S-nDz" id="q9V-fg-OTh"/>
+                        <outlet property="nicknameTextField" destination="Lv4-7S-nDz" id="q9V-fg-OTh"/>
                         <outlet property="sentenceLabel" destination="q95-EC-W4X" id="5sC-f5-bvU"/>
                         <outlet property="textRadiusImage" destination="58n-Cx-0zT" id="5Po-it-3LC"/>
+                        <outlet property="titleLabel" destination="2ui-HA-fmE" id="GG6-cj-FVB"/>
                         <outlet property="totalCountLabel" destination="XfX-ks-T7T" id="64d-3x-OCz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwc-cj-Hfu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="4TP-UE-Nt4">
                     <connections>
-                        <action selector="tapBG:" destination="v8m-hs-VH6" id="QSJ-w0-8Pw"/>
+                        <action selector="tapBackgroundView:" destination="v8m-hs-VH6" id="QSJ-w0-8Pw"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

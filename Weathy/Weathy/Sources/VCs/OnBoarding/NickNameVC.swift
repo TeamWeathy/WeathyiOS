@@ -152,14 +152,12 @@ extension NickNameVC: UITextFieldDelegate {
         
         if nicknameTextField.text?.count == 0 {
             startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
-            startButton.isEnabled = false
             clearButton.isHidden = true
             
             countLabel.textColor = UIColor.subGrey6
             countLabel.font = UIFont.SDGothicRegular13
         } else {
             startButton.setBackgroundImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
-            startButton.isEnabled = true
             clearButton.isHidden = false
             
             countLabel.textColor = UIColor.mintIcon

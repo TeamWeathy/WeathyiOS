@@ -12,15 +12,14 @@ class ChangeNickNameVC: UIViewController {
     
     var textCount = 0
     var isChange = false
-    var nickName: String?
+    var nickname: String?
     
     // MARK: - IBOutlets
     
-    @IBOutlet var nickLabel: SpacedLabel!
+    @IBOutlet var titleLabel: SpacedLabel!
     @IBOutlet var sentenceLabel: SpacedLabel!
-    
     @IBOutlet var textRadiusImage: UIImageView!
-    @IBOutlet var nickNameTextField: UITextField!
+    @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var clearButton: UIButton!
     @IBOutlet var countLabel: SpacedLabel!
     @IBOutlet var totalCountLabel: SpacedLabel!
@@ -30,24 +29,23 @@ class ChangeNickNameVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        countLabel.text = "\(textCount)"
-        clearButton.isHidden = true
-        nickNameTextField.delegate = self
-        nickName = UserDefaults.standard.string(forKey: "nickname")
-        nickNameTextField.placeholder = nickName
-        
-        // MARK: - LifeCycle Methods
-        
-        labelFontSetting()
+
+        nicknameTextField.delegate = self
+
+        initLabel()
         keyBoardAction()
     }
     
     // MARK: - Custom Methods
     
-    func labelFontSetting() {
-        nickLabel.font = UIFont.SDGothicSemiBold25
-        nickLabel.textColor = UIColor.mainGrey
-        nickLabel.characterSpacing = -1.25
+    func initLabel() {
+        clearButton.isHidden = true
+        nickname = UserDefaults.standard.string(forKey: "nickname")
+        nicknameTextField.placeholder = nickname
+        
+        titleLabel.font = UIFont.SDGothicSemiBold25
+        titleLabel.textColor = UIColor.mainGrey
+        titleLabel.characterSpacing = -1.25
         
         sentenceLabel.font = UIFont.SDGothicRegular16
         sentenceLabel.textColor = UIColor.subGrey6
@@ -56,6 +54,7 @@ class ChangeNickNameVC: UIViewController {
         countLabel.font = UIFont.SDGothicSemiBold13
         countLabel.textColor = UIColor.subGrey6
         countLabel.characterSpacing = -0.65
+        countLabel.text = "\(textCount)"
         
         totalCountLabel.font = UIFont.SDGothicRegular13
         totalCountLabel.textColor = UIColor.subGrey6
@@ -77,34 +76,31 @@ class ChangeNickNameVC: UIViewController {
     }
     
     // TODO: BG 탭했을때, 키보드 내려오게 하기
-    @IBAction func tapBG(_ sender: Any) {
-        nickNameTextField.resignFirstResponder()
+    @IBAction func tapBackgroundView(_ sender: Any) {
+        nicknameTextField.resignFirstResponder()
     }
     
-    @IBAction func nickTextFieldDidTap(_ sender: Any) {
+    @IBAction func nicknameTextFieldDidTap(_ sender: Any) {
         /// 최대길이 설정
-        checkMaxLength(textField: nickNameTextField, maxLength: 6)
+        checkMaxLength(textField: nicknameTextField, maxLength: 6)
     }
     
     /// textField 모두 지우기
     @IBAction func clearButtonDidTap(_ sender: Any) {
-        if isChange == false {
-            clearButton.isHidden = false
-        } else {
-            isChange = false
-            clearButton.isHidden = true
-            changeButton.backgroundColor = UIColor.subGrey3
-            textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
-            countLabel.textColor = UIColor.black
-            countLabel.text = "0"
-            nickNameTextField.text = ""
-        }
+        clearButton.isHidden = true
+        changeButton.backgroundColor = UIColor.subGrey3
+        
+        countLabel.textColor = UIColor.subGrey6
+        countLabel.text = "0"
+        
+        nicknameTextField.text = .none
     }
     
     /// 변경하기 눌렀을 때 Aleart
     @IBAction func changeButtonDidTap(_ sender: Any) {
-        guard let nickName = nickNameTextField.text else { return }
         view.endEditing(true)
+        
+        guard let nickName = nicknameTextField.text else { return }
         
         modifyUserService.shared.modifyUserPut(nickname: nickName) { (NetworkResult) -> Void in
             switch NetworkResult {
@@ -112,7 +108,7 @@ class ChangeNickNameVC: UIViewController {
                 
                 if let modifyData = data as? UserData {
                     UserDefaults.standard.setValue(modifyData.user.nickname, forKey: "nickname")
-                    self.nickName = modifyData.user.nickname
+                    self.nickname = modifyData.user.nickname
                     
                     self.showToast(message: "닉네임이 변경되었어요.", completion: {
                         self.navigationController?.popViewController(animated: true)
@@ -144,15 +140,11 @@ extension ChangeNickNameVC: UITextFieldDelegate {
         countLabel.text = "\(textCount)"
         
         /// 글자 개수에 따른 "변경하기" 버튼 이미지 변경
-        if nickNameTextField.text?.count == 0 {
-            isChange = false
-
+        if nicknameTextField.text?.count == 0 {
             changeButton.backgroundColor = UIColor.subGrey3
             clearButton.isHidden = true
             countLabel.textColor = UIColor.subGrey6
         } else {
-            isChange = true
-            
             changeButton.backgroundColor = UIColor.mintMain
             clearButton.isHidden = false
             countLabel.textColor = UIColor.mintMain
@@ -170,15 +162,9 @@ extension ChangeNickNameVC {
     }
     
     @objc private func adjustInputView(noti: Notification) {
-        guard let userInfo = noti.userInfo else { return }
-        // TODO: 키보드 높이에 따른 인풋뷰 위치 변경
-        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         if noti.name == UIResponder.keyboardWillShowNotification {
-            let adjustemnHeight = keyboardFrame.height - view.safeAreaInsets.bottom
-            changeButtonBottom.constant = adjustemnHeight + 16
             textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
         } else {
-            changeButtonBottom.constant = 0
             textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
         }
     }
