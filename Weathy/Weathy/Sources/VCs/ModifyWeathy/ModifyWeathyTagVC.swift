@@ -107,7 +107,6 @@ class ModifyWeathyTagVC: UIViewController {
     @objc func tagAdded(_ noti : Notification){
         _ = noti.object
         self.viewWillAppear(true)
-        self.showToast(message: "태그가 추가되었어요!")
     }
     
     //MARK: - IBActions
@@ -299,7 +298,6 @@ extension ModifyWeathyTagVC {
             case .success(let data):
                 if let loadData = data as? Closet {
                     self.myClothesTagData = loadData
-                    print(self.myClothesTagData)
                 }
                 
 //                print(self.myClothesTagData)

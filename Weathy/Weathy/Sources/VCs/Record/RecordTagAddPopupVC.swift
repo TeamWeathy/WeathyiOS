@@ -19,7 +19,7 @@ class RecordTagAddPopupVC: UIViewController {
     var isAdded: Bool = false
 
     var addCount: Int = 0
-    var placeholders: [String] = ["예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "태그 더 추가하기", "옷이 많군요?!", "혹시 더 있나요?", "옷장 구경 하고 싶네요", "웨디 사랑해줘서 고마워요 '◡'"]
+    var placeholders: [String] = ["예 : 폴로반팔티, 기모레깅스 등", "예 : 폴로반팔티, 기모레깅스 등", "예 : 폴로반팔티, 기모레깅스 등", "태그 더 추가하기", "옷이 많군요?!", "혹시 더 있나요?", "옷장 구경 하고 싶네요", "웨디 사랑해줘서 고마워요 '◡'"]
     
     //MARK: - @IBOutlets
     
@@ -43,7 +43,13 @@ class RecordTagAddPopupVC: UIViewController {
         setTextNotExists()
         
         tagNameTextField.delegate = self
+        tagNameTextField.defaultTextAttributes.updateValue(-0.8,
+            forKey: NSAttributedString.Key.kern)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tagNameTextField.becomeFirstResponder()
     }
     
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -111,7 +117,7 @@ extension RecordTagAddPopupVC {
         tagNameTextField.font = .SDGothicRegular16
         tagNameTextField.textColor = .black
         tagNameTextField.borderStyle = .none
-        tagNameTextField.placeholder = "예 : 폴로반팔티, 기모레깅스, 히트텍"
+        tagNameTextField.placeholder = "예 : 폴로반팔티, 기모레깅스 등"
         
         closeBtn.setBorder(borderColor: .subGrey2, borderWidth: 1)
         closeBtn.makeRounded(cornerRadius: 25)
@@ -168,7 +174,7 @@ extension RecordTagAddPopupVC {
             case .success(let data):
                 print(">>> success")
                 if let _ = data as? Closet {
-                    self.showToastOnTop(message: "태그가 추가되었습니다.")
+                    self.showToastOnTop(message: "태그가 추가되었어요!")
                     
                     /// 입력 완료 시 입력 돼있던 내용 삭제
                     self.tagNameTextField.text = ""
@@ -215,11 +221,6 @@ extension RecordTagAddPopupVC: UITextFieldDelegate {
         if(textField.text?.count ?? 0 > maxLength) {
             textField.deleteBackward()
         }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
 

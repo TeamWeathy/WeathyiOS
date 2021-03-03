@@ -53,7 +53,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfh-ys-NJ6">
-                                <rect key="frame" x="316.5" y="121" width="9" height="9"/>
+                                <rect key="frame" x="318.5" y="121" width="9" height="9"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="9" id="Al7-KY-6xn"/>
@@ -173,7 +173,7 @@
                             <constraint firstItem="fch-Vq-3ln" firstAttribute="leading" secondItem="Qll-zD-3hf" secondAttribute="leading" constant="-14" id="4Yb-5Y-YF4"/>
                             <constraint firstItem="fch-Vq-3ln" firstAttribute="top" secondItem="bUf-9H-HVD" secondAttribute="top" id="79v-VU-DEx"/>
                             <constraint firstItem="Y7E-7V-MGK" firstAttribute="leading" secondItem="VA8-O6-T6C" secondAttribute="trailing" constant="7" id="8Pt-5B-P2y"/>
-                            <constraint firstItem="VA8-O6-T6C" firstAttribute="leading" secondItem="sfh-ys-NJ6" secondAttribute="trailing" constant="9" id="A4U-eK-Ejp"/>
+                            <constraint firstItem="VA8-O6-T6C" firstAttribute="leading" secondItem="sfh-ys-NJ6" secondAttribute="trailing" constant="7" id="A4U-eK-Ejp"/>
                             <constraint firstItem="sfh-ys-NJ6" firstAttribute="centerY" secondItem="VA8-O6-T6C" secondAttribute="centerY" id="BRR-cR-sdS"/>
                             <constraint firstItem="HuM-8S-QAh" firstAttribute="width" secondItem="ZBO-7X-qzc" secondAttribute="width" id="Bmy-Mz-VW9"/>
                             <constraint firstItem="ZBO-7X-qzc" firstAttribute="trailing" secondItem="RcS-rQ-OR6" secondAttribute="trailing" constant="-10" id="FD5-0H-k8T"/>

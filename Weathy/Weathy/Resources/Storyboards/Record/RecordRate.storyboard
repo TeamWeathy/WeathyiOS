@@ -53,7 +53,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QkZ-YO-Jsj">
-                                <rect key="frame" x="316.5" y="121" width="9" height="9"/>
+                                <rect key="frame" x="318.5" y="121" width="9" height="9"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="9" id="8wh-ts-c8X"/>
@@ -170,7 +170,7 @@
                             <constraint firstItem="TEz-Je-2hL" firstAttribute="centerX" secondItem="m6x-WU-vaf" secondAttribute="centerX" id="ShZ-L7-LPo"/>
                             <constraint firstItem="R6c-xM-7fc" firstAttribute="top" secondItem="jk2-WS-2BT" secondAttribute="bottom" constant="10" id="dLO-WN-O6Y"/>
                             <constraint firstItem="qoI-2D-5VO" firstAttribute="centerY" secondItem="Bnb-OS-G7U" secondAttribute="centerY" id="hqe-jS-v6G"/>
-                            <constraint firstItem="qoI-2D-5VO" firstAttribute="leading" secondItem="QkZ-YO-Jsj" secondAttribute="trailing" constant="9" id="nlr-J2-YlE"/>
+                            <constraint firstItem="qoI-2D-5VO" firstAttribute="leading" secondItem="QkZ-YO-Jsj" secondAttribute="trailing" constant="7" id="nlr-J2-YlE"/>
                             <constraint firstItem="qnR-AN-DNU" firstAttribute="top" secondItem="MLF-pb-L30" secondAttribute="top" id="qd9-oo-a01"/>
                             <constraint firstItem="Bnb-OS-G7U" firstAttribute="trailing" secondItem="TEz-Je-2hL" secondAttribute="trailing" constant="-25" id="tBs-jz-3i9"/>
                             <constraint firstItem="jk2-WS-2BT" firstAttribute="top" secondItem="qnR-AN-DNU" secondAttribute="bottom" constant="17" id="w7h-ps-pGj"/>

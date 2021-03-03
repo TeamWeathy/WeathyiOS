@@ -44,7 +44,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i37-ht-eBl">
-                                <rect key="frame" x="315.5" y="119" width="13" height="13"/>
+                                <rect key="frame" x="317.5" y="119" width="13" height="13"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13" id="I2f-jF-InV"/>
@@ -52,7 +52,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agt-Go-rAR">
-                                <rect key="frame" x="335.5" y="121" width="9" height="9"/>
+                                <rect key="frame" x="337.5" y="121" width="9" height="9"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="9" id="RF3-bj-chl"/>
@@ -196,7 +196,7 @@
                             <constraint firstItem="uMe-eY-fNF" firstAttribute="top" secondItem="W6l-mk-2nU" secondAttribute="bottom" constant="17" id="rbN-Mo-D7m"/>
                             <constraint firstItem="Bb9-ee-raV" firstAttribute="leading" secondItem="4lq-qL-kGf" secondAttribute="leading" constant="33" id="t6R-Zr-sbF"/>
                             <constraint firstItem="uK9-5M-D6V" firstAttribute="width" secondItem="XaP-I9-n0b" secondAttribute="width" multiplier="309:375" id="v6S-mo-qnL"/>
-                            <constraint firstItem="a5b-WI-Cnz" firstAttribute="leading" secondItem="agt-Go-rAR" secondAttribute="trailing" constant="9" id="yeH-L3-Eyu"/>
+                            <constraint firstItem="a5b-WI-Cnz" firstAttribute="leading" secondItem="agt-Go-rAR" secondAttribute="trailing" constant="7" id="yeH-L3-Eyu"/>
                             <constraint firstItem="agt-Go-rAR" firstAttribute="leading" secondItem="i37-ht-eBl" secondAttribute="trailing" constant="7" id="zYP-3N-gj4"/>
                         </constraints>
                     </view>
