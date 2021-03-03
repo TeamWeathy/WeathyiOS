@@ -96,8 +96,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAN-ho-Gk5">
                                         <rect key="frame" x="0.0" y="62" width="341" height="62"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="피드백 및 문의하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A75-14-pM8" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="21" width="126.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문의 및 건의하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A75-14-pM8" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="21" width="112" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -671,7 +671,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49R-Dd-dAR">
-                                <rect key="frame" x="187.5" y="57" width="39" height="22.5"/>
+                                <rect key="frame" x="186" y="58" width="42" height="20"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeoSB00" family="AppleSDGothicNeoSB00" pointSize="17"/>
                                 <color key="textColor" red="0.23921568627450979" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
