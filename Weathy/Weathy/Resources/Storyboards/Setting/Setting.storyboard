@@ -601,7 +601,6 @@
                     <navigationItem key="navigationItem" id="4PP-jk-QHo"/>
                     <connections>
                         <outlet property="changeButton" destination="i7X-JX-aly" id="JF3-sb-FJT"/>
-                        <outlet property="changeButtonBottom" destination="LEQ-I8-IeA" id="PyQ-Ua-qv7"/>
                         <outlet property="clearButton" destination="XdS-xS-MiL" id="BGe-co-Ru9"/>
                         <outlet property="countLabel" destination="cHl-UF-gw1" id="iLW-Vd-T5U"/>
                         <outlet property="nicknameTextField" destination="Lv4-7S-nDz" id="q9V-fg-OTh"/>

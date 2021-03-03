@@ -11,7 +11,6 @@ class ChangeNickNameVC: UIViewController {
     // MARK: - Custom Variables
     
     var textCount = 0
-    var isChange = false
     var nickname: String?
     
     // MARK: - IBOutlets
@@ -23,9 +22,7 @@ class ChangeNickNameVC: UIViewController {
     @IBOutlet var clearButton: UIButton!
     @IBOutlet var countLabel: SpacedLabel!
     @IBOutlet var totalCountLabel: SpacedLabel!
-    
     @IBOutlet var changeButton: UIButton!
-    @IBOutlet var changeButtonBottom: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +48,7 @@ class ChangeNickNameVC: UIViewController {
         sentenceLabel.textColor = UIColor.subGrey6
         sentenceLabel.characterSpacing = -0.8
         
-        countLabel.font = UIFont.SDGothicSemiBold13
+        countLabel.font = UIFont.SDGothicRegular13
         countLabel.textColor = UIColor.subGrey6
         countLabel.characterSpacing = -0.65
         countLabel.text = "\(textCount)"
@@ -60,6 +57,7 @@ class ChangeNickNameVC: UIViewController {
         totalCountLabel.textColor = UIColor.subGrey6
         totalCountLabel.characterSpacing = -0.65
         
+        changeButton.layoutIfNeeded()
         changeButton.backgroundColor = UIColor.subGrey3
         changeButton.makeRounded(cornerRadius: changeButton.bounds.height / 2)
         changeButton.setTitle("변경하기", for: .normal)
@@ -91,6 +89,7 @@ class ChangeNickNameVC: UIViewController {
         changeButton.backgroundColor = UIColor.subGrey3
         
         countLabel.textColor = UIColor.subGrey6
+        countLabel.font = .SDGothicRegular13
         countLabel.text = "0"
         
         nicknameTextField.text = .none
@@ -143,11 +142,15 @@ extension ChangeNickNameVC: UITextFieldDelegate {
         if nicknameTextField.text?.count == 0 {
             changeButton.backgroundColor = UIColor.subGrey3
             clearButton.isHidden = true
+            
             countLabel.textColor = UIColor.subGrey6
+            countLabel.font = .SDGothicRegular13
         } else {
             changeButton.backgroundColor = UIColor.mintMain
             clearButton.isHidden = false
-            countLabel.textColor = UIColor.mintMain
+            
+            countLabel.textColor = UIColor.mintIcon
+            countLabel.font = .SDGothicSemiBold13
         }
     }
 }
