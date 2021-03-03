@@ -10,11 +10,6 @@ import UIKit
 class TabbarVC: UIViewController {
     static let identifier = "TabbarVC"
     
-    // MARK: - Custom Variables
-    
-    var mainButtonBool = true
-    var calendarButtonBool = false
-    
     // MARK: - IBOutlets
     
     @IBOutlet var scrollView: UIScrollView!
@@ -28,7 +23,6 @@ class TabbarVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.isScrollEnabled = false
         
         plusButton.dropShadow(color: UIColor.mintIcon, offSet: CGSize(width: 0, height: 3), opacity: 0.6, radius: 6)
 
@@ -47,8 +41,6 @@ class TabbarVC: UIViewController {
     }
     
     @objc func recordSuccess(_ noti: Notification) {
-//        calendarButtonBool = true
-//        mainButtonBool = false
         selectButton(buttonName: .calendarButton)
         scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: false)
     }
@@ -73,6 +65,7 @@ class TabbarVC: UIViewController {
         rightVCView.frame = CGRect(x: view.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
         scrollView.addSubview(rightVCView)
         rightVC.didMove(toParent: self)
+        scrollView.isScrollEnabled = false
     }
     
     func initButton(){
@@ -102,13 +95,6 @@ class TabbarVC: UIViewController {
     @IBAction func mainButtonDidTap(_ sender: Any) {
         selectButton(buttonName: .mainButton)
         
-//        if calendarButtonBool == true {
-//            mainButton.setImage(UIImage(named: "ic_weather_selected"), for: .normal)
-//            calendarButton.setImage(UIImage(named: "ic_weather_unselected_2"), for: .normal)
-//            calendarButtonBool = false
-//            mainButtonBool = true
-//        }
-        
         scrollView.setContentOffset(CGPoint.zero, animated: false)
         
         if let mainVC = children[0] as? MainVC {
@@ -136,14 +122,6 @@ class TabbarVC: UIViewController {
     /// Calendar 버튼
     @IBAction func calendarButtonDidTap(_ sender: Any) {
         selectButton(buttonName: .calendarButton)
-//        /// image 변경을 위한 코드
-//        if mainButtonBool == true {
-//            mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
-//            calendarButton.setImage(UIImage(named: "ic_calendar_selected"), for: .normal)
-//
-//            calendarButtonBool = true
-//            mainButtonBool = false
-//        }
         
         scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: false)
     }
