@@ -827,9 +827,10 @@
                                     <constraint firstItem="thR-o6-Rye" firstAttribute="leading" secondItem="KgJ-W2-vTI" secondAttribute="leading" id="xJv-IS-6jn"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HLM-e2-b4K">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HLM-e2-b4K">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="151" id="Kxo-lX-09e"/>
                                     <constraint firstAttribute="width" secondItem="HLM-e2-b4K" secondAttribute="height" multiplier="375:151" id="kmJ-55-zVW"/>
                                 </constraints>
                             </imageView>
@@ -954,6 +955,7 @@
                         <outlet property="todayWeathyNicknameLabel" destination="Ex7-87-cxZ" id="MHb-R2-fAT"/>
                         <outlet property="todayWeathyView" destination="Yen-xK-7Fn" id="usQ-eZ-Qsp"/>
                         <outlet property="topBlurView" destination="HLM-e2-b4K" id="kKI-Oo-9Qu"/>
+                        <outlet property="topBlurViewHeightConstraint" destination="Kxo-lX-09e" id="sIo-Cr-vxU"/>
                         <outlet property="weathyClimateImage" destination="yPj-Yg-4pD" id="HcZ-G8-Luf"/>
                         <outlet property="weathyClimateLabel" destination="o2I-jh-22a" id="dLp-xM-HHf"/>
                         <outlet property="weathyDateLabel" destination="jtX-aA-2Ev" id="nMQ-bI-zn1"/>

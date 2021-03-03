@@ -44,6 +44,7 @@ class MainVC: UIViewController {
     // main
     @IBOutlet var mainBackgroundImage: UIImageView!
     @IBOutlet var topBlurView: UIImageView!
+    @IBOutlet var topBlurViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var logoImage: UIImageView!
     @IBOutlet var todayDateTimeLabel: SpacedLabel!
     @IBOutlet var mainNaviBarView: UIView!
@@ -133,6 +134,7 @@ class MainVC: UIViewController {
                 return 73
             }
         }()
+        
         let mainHeight = UIScreen.main.bounds.height
         let viewHeight = mainHeight - (safeInsetTop + safeInsetBottom + mainNaviBarView.bounds.height) - tabbarHeight
 
@@ -153,6 +155,9 @@ class MainVC: UIViewController {
         
         topBlurView.frame.origin.y -= topBlurView.bounds.height
         topBlurView.alpha = 0
+        
+        let topBlurViewHeight = topBlurViewHeightConstraint.constant
+        topBlurViewHeightConstraint.constant = UIScreen.main.hasNotch ? topBlurViewHeight : topBlurViewHeight - 44
         
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
         todayDateTimeLabel.textColor = UIColor.subGrey1
@@ -733,7 +738,7 @@ class MainVC: UIViewController {
             toastLabel.layer.cornerRadius = 25
             toastLabel.clipsToBounds = true
             
-            self.view.addSubview(toastLabel)
+            view.addSubview(toastLabel)
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
                 UIView.animate(withDuration: 1.0, delay: 1.0, options: .curveEaseOut, animations: {
