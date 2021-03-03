@@ -19,7 +19,7 @@ class RecordTagAddPopupVC: UIViewController {
     var isAdded: Bool = false
 
     var addCount: Int = 0
-    var placeholders: [String] = ["예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "예 : 폴로반팔티, 기모레깅스, 히트텍", "태그 더 추가하기", "옷이 많군요?!", "혹시 더 있나요?", "옷장 구경 하고 싶네요", "웨디 사랑해줘서 고마워요 '◡'"]
+    var placeholders: [String] = ["예 : 폴로반팔티, 기모레깅스 등", "예 : 폴로반팔티, 기모레깅스 등", "예 : 폴로반팔티, 기모레깅스 등", "태그 더 추가하기", "옷이 많군요?!", "혹시 더 있나요?", "옷장 구경 하고 싶네요", "웨디 사랑해줘서 고마워요 '◡'"]
     
     //MARK: - @IBOutlets
     
@@ -43,6 +43,8 @@ class RecordTagAddPopupVC: UIViewController {
         setTextNotExists()
         
         tagNameTextField.delegate = self
+        tagNameTextField.defaultTextAttributes.updateValue(-0.8,
+            forKey: NSAttributedString.Key.kern)
         
     }
     
@@ -115,7 +117,7 @@ extension RecordTagAddPopupVC {
         tagNameTextField.font = .SDGothicRegular16
         tagNameTextField.textColor = .black
         tagNameTextField.borderStyle = .none
-        tagNameTextField.placeholder = "예 : 폴로반팔티, 기모레깅스, 히트텍"
+        tagNameTextField.placeholder = "예 : 폴로반팔티, 기모레깅스 등"
         
         closeBtn.setBorder(borderColor: .subGrey2, borderWidth: 1)
         closeBtn.makeRounded(cornerRadius: 25)
