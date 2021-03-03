@@ -3,6 +3,7 @@
 //  Weathy
 //
 //  Created by 송황호 on 2021/01/12.
+//  Edited by inae Lee
 //
 
 import CoreLocation
@@ -12,7 +13,6 @@ class NickNameVC: UIViewController {
     // MARK: - Custom Variables
     
     var textCount = 0
-    var isChange = false
     
     // MARK: - IBOutlets
     
@@ -20,24 +20,23 @@ class NickNameVC: UIViewController {
     @IBOutlet var descriptionLabel: SpacedLabel!
     
     @IBOutlet var textRadiusImage: UIImageView!
-    @IBOutlet var nickNameTextField: UITextField!
+    @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var clearButton: UIButton!
     @IBOutlet var countLabel: SpacedLabel!
     @IBOutlet var totalCountLabel: SpacedLabel!
     
     @IBOutlet var startButton: UIButton!
-    @IBOutlet var startButtonBottom: NSLayoutConstraint!
     
     // MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        nickNameTextField.becomeFirstResponder()
+        nicknameTextField.becomeFirstResponder()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nickNameTextField.delegate = self
+        nicknameTextField.delegate = self
         
         setView()
         keyBoardAction()
@@ -111,32 +110,28 @@ class NickNameVC: UIViewController {
 
     // MARK: - IBActions
     
-    // TODO: BG 탭했을때, 키보드 내려오게 하기
     @IBAction func tapBackgroundView(_ sender: Any) {
-        nickNameTextField.resignFirstResponder()
+        nicknameTextField.resignFirstResponder()
     }
     
-    @IBAction func nickTextFieldDidTap(_ sender: Any) {
-        checkMaxLength(textField: nickNameTextField, maxLength: 6)
+    @IBAction func nicknameTextFieldDidTap(_ sender: Any) {
+        checkMaxLength(textField: nicknameTextField, maxLength: 6)
     }
     
-    /// textField 모두 지우기
     @IBAction func touchUpClearButton(_ sender: Any) {
-        if !isChange {
-            clearButton.isHidden = false
-        } else {
-            isChange = false
-            
-            clearButton.isHidden = true
-            startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
-            countLabel.textColor = UIColor.subGrey6
-            countLabel.text = "0"
-            nickNameTextField.text = .none
-        }
+        clearButton.isHidden = true
+        
+        startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
+        
+        countLabel.textColor = UIColor.subGrey6
+        countLabel.font = .SDGothicRegular13
+        countLabel.text = "0"
+        
+        nicknameTextField.text = .none
     }
     
     @IBAction func touchUpStartButton(_ sender: Any) {
-        guard let nickName = nickNameTextField.text else { return }
+        guard let nickName = nicknameTextField.text else { return }
         let uuid = UIDevice.current.identifierForVendor!.uuidString
 
         createUser(uuid: uuid, nickName: nickName)
@@ -151,28 +146,29 @@ extension NickNameVC: UITextFieldDelegate {
         if textField.text?.count ?? 0 > maxLength {
             textField.deleteBackward()
         }
-        /// textField count 개수 구하기
+        
         textCount = Int(textField.text?.count ?? 0)
         countLabel.text = "\(textCount)"
         
-        /// 글자 개수에 따른 "변경하기" 버튼 이미지 변경
-        if nickNameTextField.text?.count == 0 {
-            isChange = false
-            
+        if nicknameTextField.text?.count == 0 {
             startButton.setBackgroundImage(UIImage(named: "nickname_btn_start"), for: .normal)
+            startButton.isEnabled = false
             clearButton.isHidden = true
-            countLabel.textColor = UIColor.subGrey6
-        } else {
-            isChange = true
             
+            countLabel.textColor = UIColor.subGrey6
+            countLabel.font = UIFont.SDGothicRegular13
+        } else {
             startButton.setBackgroundImage(UIImage(named: "nickname_btn_start_mint"), for: .normal)
+            startButton.isEnabled = true
             clearButton.isHidden = false
-            countLabel.textColor = UIColor.mintMain
+            
+            countLabel.textColor = UIColor.mintIcon
+            countLabel.font = UIFont.SDGothicSemiBold13
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nickNameTextField.resignFirstResponder()
+        nicknameTextField.resignFirstResponder()
     }
 }
 
@@ -189,10 +185,12 @@ extension NickNameVC {
         // TODO: 키보드 높이에 따른 인풋뷰 위치 변경
         if noti.name == UIResponder.keyboardWillShowNotification {
             textRadiusImage.image = UIImage(named: "settingImgTextfieldSelected")
+            
             countLabel.isHidden = false
             totalCountLabel.isHidden = false
         } else {
             textRadiusImage.image = UIImage(named: "settingImgTextfieldUnselected")
+            
             countLabel.isHidden = true
             totalCountLabel.isHidden = true
         }
