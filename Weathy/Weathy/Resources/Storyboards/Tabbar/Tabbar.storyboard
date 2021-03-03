@@ -26,8 +26,6 @@
                                             <constraint firstAttribute="width" constant="72" id="GV1-qG-Whl"/>
                                             <constraint firstAttribute="height" constant="48" id="I9Z-2Z-d7e"/>
                                         </constraints>
-                                        <state key="normal" image="ic_weather_selected"/>
-                                        <state key="selected" image="ic_weather_selected"/>
                                         <connections>
                                             <action selector="mainButtonDidTap:" destination="NZx-Ka-rL0" eventType="touchUpInside" id="lzM-CL-2LX"/>
                                         </connections>
@@ -38,8 +36,6 @@
                                             <constraint firstAttribute="width" constant="72" id="rax-Iu-meu"/>
                                             <constraint firstAttribute="height" constant="48" id="vFh-CN-UlI"/>
                                         </constraints>
-                                        <state key="normal" image="ic_weather_unselected_2"/>
-                                        <state key="selected" image="ic_calendar_selected"/>
                                         <connections>
                                             <action selector="calendarButtonDidTap:" destination="NZx-Ka-rL0" eventType="touchUpInside" id="O2X-RJ-1NT"/>
                                         </connections>
@@ -111,10 +107,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_calendar_selected" width="25" height="25"/>
         <image name="ic_plus" width="53" height="53"/>
-        <image name="ic_weather_selected" width="25" height="25"/>
-        <image name="ic_weather_unselected_2" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

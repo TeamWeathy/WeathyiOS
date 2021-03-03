@@ -33,6 +33,7 @@ class TabbarVC: UIViewController {
         plusButton.dropShadow(color: UIColor.mintIcon, offSet: CGSize(width: 0, height: 3), opacity: 0.6, radius: 6)
 
         setViewControllers()
+        initButton()
         
         NotificationCenter.default.addObserver(self, selector: #selector(recordSuccess(_:)), name: NSNotification.Name("RecordUpdated"), object: 0)
         
@@ -46,9 +47,9 @@ class TabbarVC: UIViewController {
     }
     
     @objc func recordSuccess(_ noti: Notification) {
-        calendarButtonBool = true
-        mainButtonBool = false
-        
+//        calendarButtonBool = true
+//        mainButtonBool = false
+        selectButton(buttonName: .calendarButton)
         scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: false)
     }
     
@@ -74,16 +75,39 @@ class TabbarVC: UIViewController {
         rightVC.didMove(toParent: self)
     }
     
+    func initButton(){
+        mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
+        mainButton.setImage(UIImage(named: "ic_weather_selected"), for: .selected)
+        calendarButton.setImage(UIImage(named: "ic_weather_unselected_2"), for: .normal)
+        calendarButton.setImage(UIImage(named:"ic_calendar_selected"), for: .selected)
+        
+        mainButton.isSelected = true
+    }
+    
+    func selectButton(buttonName: ButtonName){
+        switch buttonName{
+            case .mainButton:
+                mainButton.isSelected = true
+                calendarButton.isSelected = false
+            case .calendarButton:
+                mainButton.isSelected = false
+                calendarButton.isSelected = true
+        }
+        
+    }
+    
     // MARK: - IBActions
     
     /// Main 버튼
     @IBAction func mainButtonDidTap(_ sender: Any) {
-        if calendarButtonBool == true {
-            mainButton.setImage(UIImage(named: "ic_weather_selected"), for: .normal)
-            calendarButton.setImage(UIImage(named: "ic_weather_unselected_2"), for: .normal)
-            calendarButtonBool = false
-            mainButtonBool = true
-        }
+        selectButton(buttonName: .mainButton)
+        
+//        if calendarButtonBool == true {
+//            mainButton.setImage(UIImage(named: "ic_weather_selected"), for: .normal)
+//            calendarButton.setImage(UIImage(named: "ic_weather_unselected_2"), for: .normal)
+//            calendarButtonBool = false
+//            mainButtonBool = true
+//        }
         
         scrollView.setContentOffset(CGPoint.zero, animated: false)
         
@@ -111,15 +135,21 @@ class TabbarVC: UIViewController {
 
     /// Calendar 버튼
     @IBAction func calendarButtonDidTap(_ sender: Any) {
-        /// image 변경을 위한 코드
-        if mainButtonBool == true {
-            mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
-            calendarButton.setImage(UIImage(named: "ic_calendar_selected"), for: .normal)
-            
-            calendarButtonBool = true
-            mainButtonBool = false
-        }
+        selectButton(buttonName: .calendarButton)
+//        /// image 변경을 위한 코드
+//        if mainButtonBool == true {
+//            mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
+//            calendarButton.setImage(UIImage(named: "ic_calendar_selected"), for: .normal)
+//
+//            calendarButtonBool = true
+//            mainButtonBool = false
+//        }
         
         scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: false)
     }
+}
+
+enum ButtonName{
+    case mainButton
+    case calendarButton
 }
