@@ -706,11 +706,7 @@ class MainVC: UIViewController {
             NotificationCenter.default.post(
                 name: NSNotification.Name(rawValue: "ChangeDate"), object: Date().getStringToDate(format: "yyyy-MM-dd", dateString: weathyDate))
             
-            tabBarVC.mainButton.setImage(UIImage(named: "ic_weather_unselected"), for: .normal)
-            tabBarVC.calendarButton.setImage(UIImage(named: "ic_calendar_selected"), for: .normal)
-                
-            tabBarVC.calendarButtonBool = true
-            tabBarVC.mainButtonBool = false
+            tabBarVC.selectButton(buttonName: .calendarButton)
                 
             tabBarVC.scrollView.setContentOffset(CGPoint(x: tabBarVC.scrollView.frame.width, y: 0), animated: false)
         }
