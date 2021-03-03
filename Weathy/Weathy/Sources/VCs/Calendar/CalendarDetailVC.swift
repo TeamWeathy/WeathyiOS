@@ -56,6 +56,7 @@ class CalendarDetailVC: UIViewController{
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var detailBlurView: UIImageView!
     @IBOutlet weak var scrollContentViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var photoDividerView: UIView!
     
     //MARK: - Lifecycle Methods
     
@@ -214,6 +215,7 @@ class CalendarDetailVC: UIViewController{
         clothesTagLabels[1].text = insertSeparatorInArray(clothesBottomList ?? [])
         clothesTagLabels[2].text = insertSeparatorInArray(clothesOuterList ?? [])
         clothesTagLabels[3].text = insertSeparatorInArray(clothesEtcList ?? [])
+        
         if dailyWeathy?.imgUrl == nil{
             photoWidthConstraint.constant = 0
             commentTopConstraint.constant = -3.9
@@ -229,6 +231,12 @@ class CalendarDetailVC: UIViewController{
         }
         else{
             commentLabel.text = comment
+        }
+        if comment == nil && dailyWeathy?.imgUrl == nil{
+            photoDividerView.isHidden = true
+        }
+        else{
+            photoDividerView.isHidden = false
         }
         dateLabel.text = koreanDateFormatter.string(from: selectedDate)
         

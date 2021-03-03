@@ -437,6 +437,7 @@
                         <outlet property="moreBtn" destination="Gth-jb-ONu" id="4k4-Tk-lD6"/>
                         <outlet property="moreMenuView" destination="bPc-en-inU" id="J0W-XB-KAc"/>
                         <outlet property="moreViewHeightConstraint" destination="1TQ-nb-GKn" id="lkm-yg-qKn"/>
+                        <outlet property="photoDividerView" destination="mTX-8O-mf4" id="K7x-z6-FeM"/>
                         <outlet property="photoImageView" destination="toP-0a-upF" id="HHe-wY-7eF"/>
                         <outlet property="photoWidthConstraint" destination="wl7-9J-HGj" id="9Ip-Bv-wtK"/>
                         <outlet property="recordButton" destination="Z3O-5L-M7h" id="ln3-tZ-PvL"/>
