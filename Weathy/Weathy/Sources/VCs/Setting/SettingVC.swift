@@ -28,6 +28,8 @@ class SettingVC: UIViewController {
         setFontColor()
         
         NotificationCenter.default.addObserver(self, selector: #selector(showChangedNicknameToast), name: NSNotification.Name("changeNickname"), object: nil)
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     // MARK: - Custom Methods
