@@ -35,14 +35,16 @@ class ChangeNickNameVC: UIViewController {
 
         nicknameTextField.delegate = self
 
-        initLabel()
+        initView()
         keyBoardAction()
     }
     
     // MARK: - Custom Methods
     
-    func initLabel() {
+    func initView() {
         clearButton.isHidden = true
+        changeButton.isEnabled = false
+        
         nickname = UserDefaults.standard.string(forKey: "nickname")
         nicknameTextField.placeholder = nickname
         
@@ -92,13 +94,14 @@ class ChangeNickNameVC: UIViewController {
     /// textField 모두 지우기
     @IBAction func clearButtonDidTap(_ sender: Any) {
         clearButton.isHidden = true
+        changeButton.isEnabled = false
         changeButton.backgroundColor = UIColor.subGrey3
         
         countLabel.textColor = UIColor.subGrey6
         countLabel.font = .SDGothicRegular13
         countLabel.text = "0"
         
-        nicknameTextField.text = .none
+        nicknameTextField.text?.removeAll()
     }
     
     /// 변경하기 눌렀을 때 Aleart
@@ -146,12 +149,14 @@ extension ChangeNickNameVC: UITextFieldDelegate {
         /// 글자 개수에 따른 "변경하기" 버튼 이미지 변경
         if nicknameTextField.text?.count == 0 {
             changeButton.backgroundColor = UIColor.subGrey3
+            changeButton.isEnabled = false
             clearButton.isHidden = true
             
             countLabel.textColor = UIColor.subGrey6
             countLabel.font = .SDGothicRegular13
         } else {
             changeButton.backgroundColor = UIColor.mintMain
+            changeButton.isEnabled = true
             clearButton.isHidden = false
             
             countLabel.textColor = UIColor.mintIcon
