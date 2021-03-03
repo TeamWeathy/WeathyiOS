@@ -24,6 +24,12 @@ class ChangeNickNameVC: UIViewController {
     @IBOutlet var totalCountLabel: SpacedLabel!
     @IBOutlet var changeButton: UIButton!
     
+    // MARK: - Life Cycle Methods
+    
+    override func viewWillAppear(_ animated: Bool) {
+        nicknameTextField.becomeFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -99,9 +105,9 @@ class ChangeNickNameVC: UIViewController {
     @IBAction func changeButtonDidTap(_ sender: Any) {
         view.endEditing(true)
         
-        guard let nickName = nicknameTextField.text else { return }
+        guard let changedNickname = nicknameTextField.text else { return }
         
-        modifyUserService.shared.modifyUserPut(nickname: nickName) { (NetworkResult) -> Void in
+        modifyUserService.shared.modifyUserPut(nickname: changedNickname) { (NetworkResult) -> Void in
             switch NetworkResult {
             case .success(let data):
                 
@@ -152,6 +158,10 @@ extension ChangeNickNameVC: UITextFieldDelegate {
             countLabel.textColor = UIColor.mintIcon
             countLabel.font = .SDGothicSemiBold13
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }
 
