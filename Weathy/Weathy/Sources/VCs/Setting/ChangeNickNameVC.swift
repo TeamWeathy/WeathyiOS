@@ -12,6 +12,28 @@ class ChangeNickNameVC: UIViewController {
     
     var textCount = 0
     var nickname: String?
+    var isPossibleChange: Bool = false {
+        didSet {
+            if isPossibleChange {
+                changeButton.isEnabled = true
+                clearButton.isHidden = false
+                
+                changeButton.backgroundColor = UIColor.mintMain
+                
+                countLabel.textColor = UIColor.mintIcon
+                countLabel.font = .SDGothicSemiBold13
+
+            } else {
+                changeButton.isEnabled = false
+                clearButton.isHidden = true
+                
+                changeButton.backgroundColor = UIColor.subGrey3
+                
+                countLabel.textColor = UIColor.subGrey6
+                countLabel.font = .SDGothicRegular13
+            }
+        }
+    }
     
     // MARK: - IBOutlets
     
@@ -42,8 +64,7 @@ class ChangeNickNameVC: UIViewController {
     // MARK: - Custom Methods
     
     func initView() {
-        clearButton.isHidden = true
-        changeButton.isEnabled = false
+        isPossibleChange = false
         
         nickname = UserDefaults.standard.string(forKey: "nickname")
         nicknameTextField.placeholder = nickname
@@ -93,15 +114,13 @@ class ChangeNickNameVC: UIViewController {
     
     /// textField 모두 지우기
     @IBAction func clearButtonDidTap(_ sender: Any) {
-        clearButton.isHidden = true
-        changeButton.isEnabled = false
-        changeButton.backgroundColor = UIColor.subGrey3
+        isPossibleChange = false
         
         countLabel.textColor = UIColor.subGrey6
         countLabel.font = .SDGothicRegular13
         countLabel.text = "0"
         
-        nicknameTextField.text?.removeAll()
+        nicknameTextField.text = .none
     }
     
     /// 변경하기 눌렀을 때 Aleart
@@ -146,22 +165,7 @@ extension ChangeNickNameVC: UITextFieldDelegate {
         textCount = Int(textField.text?.count ?? 0)
         countLabel.text = "\(textCount)"
         
-        /// 글자 개수에 따른 "변경하기" 버튼 이미지 변경
-        if nicknameTextField.text?.count == 0 {
-            changeButton.backgroundColor = UIColor.subGrey3
-            changeButton.isEnabled = false
-            clearButton.isHidden = true
-            
-            countLabel.textColor = UIColor.subGrey6
-            countLabel.font = .SDGothicRegular13
-        } else {
-            changeButton.backgroundColor = UIColor.mintMain
-            changeButton.isEnabled = true
-            clearButton.isHidden = false
-            
-            countLabel.textColor = UIColor.mintIcon
-            countLabel.font = .SDGothicSemiBold13
-        }
+        isPossibleChange = nicknameTextField.text?.count == 0 ? false : true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
