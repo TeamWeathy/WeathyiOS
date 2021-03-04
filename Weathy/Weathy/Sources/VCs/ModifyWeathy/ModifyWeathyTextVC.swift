@@ -201,7 +201,7 @@ extension ModifyWeathyTextVC {
     func setTextField() {
         
         textTitleLabel.text = "텍스트"
-        textTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
+        textTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB00", size: 14)
         textTitleLabel.textColor = .subGrey1
         
         optionImageView[0].image = UIImage(named: "icOption")
@@ -233,7 +233,7 @@ extension ModifyWeathyTextVC {
         optionImageView[1].image = UIImage(named: "icOption")
         
         photoTitleLabel.text = "사진"
-        photoTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB", size: 14)
+        photoTitleLabel.font = UIFont(name: "AppleSDGothicNeoSB00", size: 14)
         photoTitleLabel.textColor = .subGrey1
         
         photoView.setBorder(borderColor: .subGrey7, borderWidth: 1)
