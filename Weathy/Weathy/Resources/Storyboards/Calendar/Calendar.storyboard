@@ -398,7 +398,7 @@
                                     <constraint firstItem="OJS-Lx-AE2" firstAttribute="leading" secondItem="OjD-XH-60E" secondAttribute="leading" id="eOH-FQ-JEM"/>
                                 </constraints>
                             </scrollView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomNavibarBlur" translatesAutoresizingMaskIntoConstraints="NO" id="U78-4N-Oob">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarBoxBlur" translatesAutoresizingMaskIntoConstraints="NO" id="U78-4N-Oob">
                                 <rect key="frame" x="0.0" y="789" width="390" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="U78-4N-Oob" secondAttribute="height" multiplier="375:54" id="pjv-Qs-YYc"/>
@@ -916,7 +916,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bottomNavibarBlur" width="375" height="54"/>
+        <image name="calendarBoxBlur" width="375" height="54"/>
         <image name="calendarBtnArrow" width="11" height="6.3333334922790527"/>
         <image name="calendarBtnRecord" width="96" height="48"/>
         <image name="calendarDivTemp" width="16" height="14"/>

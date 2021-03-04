@@ -108,7 +108,7 @@ struct ClimateImage {
         case 4:
             return climateId < 100 ? "search_img_brokenclouds" : "search_img_brokenclouds"
         case 9:
-            return climateId < 100 ? "search_img_showerrain_day" : "search_img_showerrain_nigh"
+            return climateId < 100 ? "search_img_showerrain_day" : "search_img_showerrain_night"
         case 10:
             return climateId < 100 ? "search_img_rain" : "search_img_rain"
         case 11:
