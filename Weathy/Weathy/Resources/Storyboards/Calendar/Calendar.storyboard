@@ -477,13 +477,6 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9k-NW-X9X">
                                 <rect key="frame" x="0.0" y="44" width="390" height="736"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DUV-T1-txb">
-                                        <rect key="frame" x="34.333333333333343" y="62" width="321.33333333333326" height="1"/>
-                                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="PPk-YN-Maf"/>
-                                        </constraints>
-                                    </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarFrameSlide" translatesAutoresizingMaskIntoConstraints="NO" id="9Mq-yL-8s0">
                                         <rect key="frame" x="127.33333333333333" y="702.66666666666663" width="135.33333333333337" height="33.333333333333371"/>
                                         <constraints>
@@ -857,7 +850,6 @@
                                     <constraint firstItem="MLH-qw-EFI" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="3p0-TN-BMc"/>
                                     <constraint firstItem="MLH-qw-EFI" firstAttribute="top" secondItem="j9k-NW-X9X" secondAttribute="top" constant="12" id="4W8-Nr-f4i"/>
                                     <constraint firstItem="bb2-V1-BIL" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="7cd-Xe-JLq"/>
-                                    <constraint firstItem="DUV-T1-txb" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="309:375" id="8Tl-vE-lWC"/>
                                     <constraint firstItem="9Mq-yL-8s0" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="8e6-gJ-kcQ"/>
                                     <constraint firstItem="Zop-PL-sAi" firstAttribute="trailing" secondItem="MLH-qw-EFI" secondAttribute="trailing" constant="-7" id="8hY-gl-rkQ"/>
                                     <constraint firstItem="9Mq-yL-8s0" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="130:375" id="GbK-jG-Srz"/>
@@ -867,9 +859,7 @@
                                     <constraint firstItem="bb2-V1-BIL" firstAttribute="top" secondItem="jUc-Bh-1hY" secondAttribute="bottom" id="Pbh-36-flb"/>
                                     <constraint firstItem="uOT-xR-3sR" firstAttribute="top" secondItem="MLH-qw-EFI" secondAttribute="bottom" id="TDz-hc-ruP"/>
                                     <constraint firstItem="jUc-Bh-1hY" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="308:375" id="UaU-8j-pnv"/>
-                                    <constraint firstItem="DUV-T1-txb" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="WQF-yh-pHJ"/>
                                     <constraint firstAttribute="trailing" secondItem="GZs-Aw-Oxd" secondAttribute="trailing" constant="26" id="YKl-hH-M0D"/>
-                                    <constraint firstItem="DUV-T1-txb" firstAttribute="top" secondItem="MLH-qw-EFI" secondAttribute="bottom" id="b4o-Ct-OCu"/>
                                     <constraint firstItem="Zop-PL-sAi" firstAttribute="width" secondItem="MLH-qw-EFI" secondAttribute="width" multiplier="0.0956522" id="ibf-8q-hxn"/>
                                     <constraint firstItem="uOT-xR-3sR" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="308:375" id="jyW-5g-Uar"/>
                                     <constraint firstItem="bb2-V1-BIL" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="308:375" id="nok-iV-qce"/>
