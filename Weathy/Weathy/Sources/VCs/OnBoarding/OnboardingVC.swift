@@ -43,31 +43,19 @@ class OnboardingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        phoneImage.alpha = 0
-
-        firstImage.alpha = 0
-        firstDot.image = UIImage(named: "onboarding_ic_circle_now")
-        displayFirstSplash()
-        
-        secondImage.isHidden = true
-        secondImage.alpha = 0
-        
-        thirdImage.isHidden = true
-        thirdImage.alpha = 0
-        
-        startButton.isHidden = true
-        startButton.alpha = 0
-        
-        // MARK: - LifeCycle Methods
-        
-        setLabel()
-        makeGesture()
+        initView()
+        initCloudAnimationView()
     }
+    
+    // MARK: - LifeCycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         firstLabelAnimate()
         firstViewAnimate()
+        
+        animateCloudLottie(from: 0, to: 1, idx: 1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -103,43 +91,44 @@ class OnboardingVC: UIViewController {
     }
     
     // MARK: - Custom Methods
+    
+    func initView() {
+        phoneImage.alpha = 0
 
-    func displayFirstSplash() {
+        firstImage.alpha = 0
+        firstDot.image = UIImage(named: "onboarding_ic_circle_now")
+        
+        secondImage.isHidden = true
+        secondImage.alpha = 0
+        
+        thirdImage.isHidden = true
+        thirdImage.alpha = 0
+        
+        startButton.isHidden = true
+        startButton.alpha = 0
+        
+        setLabel()
+        makeGesture()
+    }
+    
+    func initCloudAnimationView() {
         loadingCloudView.addSubview(animationView)
-        animationView.animation = Animation.named("온보딩_1")
+        
         animationView.frame = CGRect(x: -loadingCloudView.frame.width/2, y: -loadingCloudView.frame.height/2, width: loadingCloudView.frame.width*2, height: loadingCloudView.frame.height*2)
         animationView.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
             animationView.leadingAnchor.constraint(equalTo: loadingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: loadingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: loadingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: loadingCloudView.bottomAnchor),
         ])
-        animationView.loopMode = .playOnce
-        animationView.play()
     }
     
-    func displaySecondSplash() {
-        loadingCloudView.addSubview(animationView)
-        animationView.animation = Animation.named("온보딩_2")
-        animationView.frame = CGRect(x: -loadingCloudView.frame.width/2, y: -loadingCloudView.frame.height/2, width: loadingCloudView.frame.width*2, height: loadingCloudView.frame.height*2)
-        animationView.contentMode = .scaleAspectFill
-        NSLayoutConstraint.activate([
-            animationView.leadingAnchor.constraint(equalTo: loadingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: loadingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: loadingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: loadingCloudView.bottomAnchor),
-        ])
+    /// from, to: 재생 방향 지정
+    /// idx: lottie 이미지 지정을 위한  인덱스
+    func animateCloudLottie(from: Int, to: Int, idx: Int) {
         animationView.loopMode = .playOnce
-        animationView.play()
+        animationView.animation = Animation.named("온보딩_" + String(idx))
+        animationView.play(fromProgress: AnimationProgressTime(from), toProgress: AnimationProgressTime(to), loopMode: .playOnce, completion: nil)
     }
-    
-    func displayThirdSplash() {
-        loadingCloudView.addSubview(animationView)
-        animationView.animation = Animation.named("온보딩_3")
-        animationView.frame = CGRect(x: -loadingCloudView.frame.width/2, y: -loadingCloudView.frame.height/2, width: loadingCloudView.frame.width*2, height: loadingCloudView.frame.height*2)
-        animationView.contentMode = .scaleAspectFill
-        NSLayoutConstraint.activate([
-            animationView.leadingAnchor.constraint(equalTo: loadingCloudView.leadingAnchor), animationView.trailingAnchor.constraint(equalTo: loadingCloudView.trailingAnchor), animationView.topAnchor.constraint(equalTo: loadingCloudView.topAnchor), animationView.bottomAnchor.constraint(equalTo: loadingCloudView.bottomAnchor),
-        ])
-        animationView.loopMode = .playOnce
-        animationView.play()
-    }
-    
+
     func makeGesture() {
         let right = UISwipeGestureRecognizer(target: self, action: #selector(actGesture(_:)))
         right.direction = .right
@@ -177,8 +166,6 @@ class OnboardingVC: UIViewController {
             self.view.layoutIfNeeded()
         }
 
-        displayFirstSplash()
-        
         firstWord.text = "날씨를"
         secondWord.text = "기록해요"
         subLabel.text = "오늘 날씨에 대한 옷차림과 상태를 기록해요"
@@ -199,8 +186,6 @@ class OnboardingVC: UIViewController {
             self.view.layoutIfNeeded()
         }
 
-        displaySecondSplash()
-        
         firstWord.text = "기록을"
         secondWord.text = "모아봐요"
         subLabel.text = "캘린더에서 날씨 기록을 모아볼 수 있어요"
@@ -221,8 +206,6 @@ class OnboardingVC: UIViewController {
             self.view.layoutIfNeeded()
         }
 
-        displayThirdSplash()
-        
         firstWord.text = "나에게"
         secondWord.text = "돌아와요"
         subLabel.text = "기록한 날씨는 비슷한 날에 돌아와요"
@@ -298,10 +281,11 @@ class OnboardingVC: UIViewController {
     }
     
     // MARK: - IBActions
-    
+
+    // FIXME: - 페이지 전환 제스처 감지로 하는 거 버리기
     @IBAction func actGesture(_ sender: UISwipeGestureRecognizer) {
         if currentPage == 1 {
-            /// 오른쪽 -> 왼쪽 스와이프
+            /// 1 -> 2
             if sender.direction == .left {
                 phoneImage.image = UIImage(named: "onboarding_img_phone3")
                 
@@ -314,50 +298,55 @@ class OnboardingVC: UIViewController {
                 /// 에니메이션
                 secondLabelAnimate()
                 secondViewAnimate()
+                
+                animateCloudLottie(from: 0, to: 1, idx: 2)
 
                 currentPage = 2
             }
         } else if currentPage == 2 {
-            if currentPage == 2 {
-                /// 오른쪽 -> 왼쪽 스와이프 (3번째 장으로 넘어갈 때)
-                if sender.direction == .left {
-                    phoneImage.image = UIImage(named: "onboarding_img_phone2")
-                    
-                    firstImage.isHidden = true
-                    secondImage.isHidden = true
-                    thirdImage.isHidden = false
-                    
-                    startButton.isHidden = false
-                    
-                    /// 원상복귀
-                    secondRestoration()
-                    /// 에니메이션
-                    thirdLabelAnimate()
-                    thirdViewAnimate()
-                    
-                    currentPage = 3
-                }
+            /// 2 -> 3
+            if sender.direction == .left {
+                phoneImage.image = UIImage(named: "onboarding_img_phone2")
                 
-                /// 왼쪽 -> 오른쪽 스와이프 (1번째 장으로 돌아갈 때)
-                if sender.direction == .right {
-                    phoneImage.image = UIImage(named: "onboarding_img_phone1")
-
-                    firstImage.isHidden = false
-                    secondImage.isHidden = true
-                    thirdImage.isHidden = true
-                    
-                    /// 원상복귀
-                    secondRestoration()
-                    /// 에니메이션
-                    firstLabelAnimate()
-                    firstViewAnimate()
-                    
-                    currentPage = 1
-                }
+                firstImage.isHidden = true
+                secondImage.isHidden = true
+                thirdImage.isHidden = false
+                
+                startButton.isHidden = false
+                
+                /// 원상복귀
+                secondRestoration()
+                /// 에니메이션
+                thirdLabelAnimate()
+                thirdViewAnimate()
+                
+                animateCloudLottie(from: 0, to: 1, idx: 3)
+                
+                currentPage = 3
             }
+            
+            /// 2 -> 1
+            if sender.direction == .right {
+                phoneImage.image = UIImage(named: "onboarding_img_phone1")
+
+                firstImage.isHidden = false
+                secondImage.isHidden = true
+                thirdImage.isHidden = true
+                
+                /// 원상복귀
+                secondRestoration()
+                /// 에니메이션
+                firstLabelAnimate()
+                firstViewAnimate()
+                
+                animateCloudLottie(from: 1, to: 0, idx: 2)
+                
+                currentPage = 1
+            }
+
         } else {
             if currentPage == 3 {
-                /// 왼쪽 -> 오른쪽 스와이프
+                /// 3 -> 2
                 if sender.direction == .right {
                     phoneImage.image = UIImage(named: "onboarding_img_phone3")
                     
@@ -371,6 +360,8 @@ class OnboardingVC: UIViewController {
                     /// 에니메이션
                     secondLabelAnimate()
                     secondViewAnimate()
+                    
+                    animateCloudLottie(from: 1, to: 0, idx: 3)
                          
                     currentPage = 2
                 }
@@ -380,23 +371,21 @@ class OnboardingVC: UIViewController {
     
     /// 닉네임 설정하기 화면으로 이동
     @IBAction func startButtonDidTap(_ sender: Any) {
-    
-        //FIXME: - 테스트 후 코드 제거
+        // FIXME: - 테스트 후 코드 제거
         
-        if UserDefaults.standard.integer(forKey: "userId") != 0{
+        if UserDefaults.standard.integer(forKey: "userId") != 0 {
             let storyboard = UIStoryboard(name: "Tabbar", bundle: nil)
             guard let tabbarVC = storyboard.instantiateViewController(withIdentifier: TabbarVC.identifier) as? TabbarVC else { return }
 
             tabbarVC.modalPresentationStyle = .fullScreen
-            self.present(tabbarVC, animated: true, completion: nil)
-        }
-        else{
+            present(tabbarVC, animated: true, completion: nil)
+        } else {
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "NickNameVC") as? NickNameVC else { return }
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)
         }
         
-        //FIXME: - 테스트 후 주석 제거
+        // FIXME: - 테스트 후 주석 제거
         
 //        guard let vc = storyboard?.instantiateViewController(withIdentifier: "NickNameVC") as? NickNameVC else { return }
 //
