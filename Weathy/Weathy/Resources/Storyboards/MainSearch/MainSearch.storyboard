@@ -345,8 +345,8 @@
                                 <constraints>
                                     <constraint firstItem="dj3-oW-aeB" firstAttribute="leading" secondItem="96n-5m-CYG" secondAttribute="leading" constant="22" id="0YL-yp-Ple"/>
                                     <constraint firstAttribute="trailing" secondItem="se1-Mc-QHG" secondAttribute="trailing" constant="55" id="34L-eZ-DjL"/>
-                                    <constraint firstAttribute="width" secondItem="96n-5m-CYG" secondAttribute="height" multiplier="341:50" id="736-bY-suh"/>
                                     <constraint firstItem="se1-Mc-QHG" firstAttribute="top" secondItem="96n-5m-CYG" secondAttribute="top" id="IoH-Uq-3U0"/>
+                                    <constraint firstAttribute="height" constant="50" id="Pby-Gq-97N"/>
                                     <constraint firstAttribute="bottom" secondItem="se1-Mc-QHG" secondAttribute="bottom" id="Sl9-vP-b4j"/>
                                     <constraint firstAttribute="trailing" secondItem="qJ0-YO-dXA" secondAttribute="trailing" constant="7" id="ZVM-cs-60V"/>
                                     <constraint firstItem="se1-Mc-QHG" firstAttribute="leading" secondItem="dj3-oW-aeB" secondAttribute="trailing" constant="15" id="i4j-N3-126"/>

@@ -245,7 +245,7 @@ class MainSearchVC: UIViewController {
     
     func initialTextView() {
         searchView.setBorder(borderColor: .subGrey7, borderWidth: 1)
-        searchView.layer.cornerRadius = searchView.frame.height / 2
+        searchView.layer.cornerRadius = 25
         searchView.backgroundColor = UIColor.white.withAlphaComponent(0.75)
     }
 }
