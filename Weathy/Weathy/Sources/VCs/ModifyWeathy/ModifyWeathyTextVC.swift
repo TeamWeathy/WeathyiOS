@@ -106,6 +106,9 @@ class ModifyWeathyTextVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         animationPrac()
+        
+        wordCountLabel.isHidden = true
+        maxWordLabel.isHidden = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -409,10 +412,24 @@ extension ModifyWeathyTextVC: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textViewSetupView()
+        
+        textViewSurroundingView.layer.borderColor = UIColor.mintMain.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
+        
+        wordCountLabel.isHidden = false
+        maxWordLabel.isHidden = false
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
         textViewSetupView()
+        
+        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
+        
+        wordCountLabel.isHidden = true
+        maxWordLabel.isHidden = true
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
