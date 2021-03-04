@@ -51,6 +51,7 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         isToday = false
+        climateIconImageView.image = nil
     }
     func setClimate(_ climateId: Int){
         climateIconImageView.alpha = 1
@@ -60,13 +61,14 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         self.contentView.alpha = 1
         
         dividerView.alpha = 1
-        
+        temperatureView.alpha = 0
         temperatureDividerView.alpha = 0
         
         dayLabel.backgroundColor = .clear
         dayLabel.clipsToBounds = true
         dayLabel.layer.cornerRadius = dayLabel.frame.height / 2
         dayLabel.textColor = .mainGrey
+        dayLabel.alpha = 1
         
         highLabel.text = ""
         highLabel.alpha = 0
@@ -78,7 +80,7 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         lowLabel.textColor = .blueTemp
         lowLabel.characterSpacing = -0.6
         
-        climateIconImageView.alpha = 0
+        climateIconImageView.image = nil
         
         if hasNotch{
             temperatureDividerWidthConstraint.constant = 14
@@ -134,13 +136,15 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         dayLabel.backgroundColor = .mintMain
         dayLabel.setBorder(borderColor: .mintBorder, borderWidth: 1)
         dayLabel.textColor = .white
+        dayLabel.alpha = 1
     }
     
     func setNonCurrent(){
         
 //        dayLabel.textColor = .subGrey3
-        self.contentView.alpha = 0.4
-
+        dayLabel.alpha = 0.4
+        climateIconImageView.alpha = 0.4
+        temperatureView.alpha = 0.4
     }
     
     func setDay(){
@@ -158,11 +162,9 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     }
     
     func setData(high: Int, low: Int){
-        highLabel.alpha = 1
-        lowLabel.alpha = 1
         highLabel.text = "\(high)°"
         lowLabel.text = "\(low)°"
-        
+        climateIconImageView.alpha = 1
         temperatureDividerView.alpha = 1
     }
     

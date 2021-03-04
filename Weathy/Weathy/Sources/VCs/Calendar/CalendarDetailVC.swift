@@ -75,6 +75,7 @@ class CalendarDetailVC: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        hideMoreMenu(nil)
         if isModified{
             self.showToast(message: "웨디 내용이 수정되었어요!")
             selectedDateDidChange(nil)
@@ -86,7 +87,7 @@ class CalendarDetailVC: UIViewController{
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        closeMoreMenu(nil)
+        hideMoreMenu(nil)
     }
     
     //MARK: - Custom Methods
@@ -116,7 +117,7 @@ class CalendarDetailVC: UIViewController{
     }
     
     func initGestureRecognizer() {
-        let moreBtnTap = UITapGestureRecognizer(target: self, action: #selector(closeMoreMenu(_:)))
+        let moreBtnTap = UITapGestureRecognizer(target: self, action: #selector(hideMoreMenu(_:)))
         moreBtnTap.delegate = self
         self.view.addGestureRecognizer(moreBtnTap)
     }
@@ -148,6 +149,8 @@ class CalendarDetailVC: UIViewController{
         for tagLabel in clothesTagLabels{
             tagLabel.font = .SDGothicRegular13
             tagLabel.characterSpacing = -0.65
+            
+           
         }
         
         moreMenuView.layer.cornerRadius = 10
@@ -238,6 +241,12 @@ class CalendarDetailVC: UIViewController{
         else{
             photoDividerView.isHidden = false
         }
+        for tagLabel in clothesTagLabels{
+            tagLabel.setLinespace(spacing: 5.0)
+            if #available(iOS 14.0, *){
+                tagLabel.lineBreakStrategy = .hangulWordPriority
+            }
+        }
         dateLabel.text = koreanDateFormatter.string(from: selectedDate)
         
         
@@ -308,6 +317,13 @@ class CalendarDetailVC: UIViewController{
     }
     func hideDeletePopup(){
         UIView.transition(with: (self.parent?.view)!, duration: 0.2, options: .transitionCrossDissolve, animations: {self.blurView.removeFromSuperview()}, completion: nil)
+    }
+    func showMoreMenu(){
+        self.moreViewHeightConstraint.constant = 90
+        UIView.animate(withDuration: 0.3){
+            self.moreMenuView.alpha = 1
+            self.view.layoutIfNeeded()
+        }
     }
 
     
@@ -382,7 +398,7 @@ class CalendarDetailVC: UIViewController{
         }
     }
     
-    @objc func closeMoreMenu(_ sender: UITapGestureRecognizer?){
+    @objc func hideMoreMenu(_ sender: UITapGestureRecognizer?){
         self.moreViewHeightConstraint.constant = 0
         UIView.animate(withDuration: 0.2){
             self.view.layoutIfNeeded()
@@ -442,17 +458,18 @@ class CalendarDetailVC: UIViewController{
     //MARK: - IBActions
     
     @IBAction func moreBtnDidTap(_ sender: UIButton) {
-        self.moreViewHeightConstraint.constant = 90
-        UIView.animate(withDuration: 0.3){
-            self.moreMenuView.alpha = 1
-            self.view.layoutIfNeeded()
-            
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected{
+            showMoreMenu()
+        }
+        else{
+            hideMoreMenu(nil)
         }
     }
     
     @IBAction func editBtnDidTap(_ sender: Any) {
         guard let recordEdit = UIStoryboard.init(name: "ModifyWeathyStart", bundle: nil).instantiateViewController(identifier: "ModifyWeathyNVC") as? ModifyWeathyNVC else{ return }
-        closeMoreMenu(nil)
+        hideMoreMenu(nil)
         recordEdit.modalPresentationStyle = .fullScreen
         recordEdit.dateString = defaultDateFormatter.string(from: selectedDate)
         recordEdit.weathyData = dailyWeathy
@@ -462,7 +479,7 @@ class CalendarDetailVC: UIViewController{
     }
     
     @IBAction func deleteBtnDidTap(_ sender: Any) {
-        closeMoreMenu(nil)
+        hideMoreMenu(nil)
         showDeletePopup()
     }
     @IBAction func recordBtnDidTap(_ sender: Any) {

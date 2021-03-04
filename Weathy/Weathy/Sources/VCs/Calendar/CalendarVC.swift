@@ -301,6 +301,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             cell.selectedDateDidChange(selectedDate)
             cell.callMonthlyWeathy()
             cell.monthlyCalendarCV.reloadData()
+            cell.lastSelectedIdx = selectedDate.weekday
         }
     }
     
@@ -535,8 +536,10 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let x = scrollView.contentOffset.x
         currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
-        if currentIndex == infiniteMax - 1{
-            setWeekdayWhite()
+        if scrollView == infiniteWeeklyCV{
+            if currentIndex == infiniteMax - 1{
+                setWeekdayWhite()
+            }
         }
     }
     
