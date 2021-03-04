@@ -63,7 +63,7 @@ class RecordTextVC: UIViewController {
         textViewSetupView()
         setSkipBtn()
         setPhotoBox()
-        
+
         
         recordTextView.delegate = self
         
@@ -75,6 +75,9 @@ class RecordTextVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         animationPrac()
+        
+        wordCountLabel.isHidden = true
+        maxWordLabel.isHidden = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -258,10 +261,6 @@ extension RecordTextVC {
     
     func textExists() {
         finishBtnActivated()
-
-        textViewSurroundingView.layer.borderColor = UIColor.mintMain.cgColor
-        textViewSurroundingView.layer.borderWidth = 1
-        textViewSurroundingView.layer.cornerRadius = 15
         
         wordCountLabel.font = UIFont.SDGothicSemiBold13
         wordCountLabel.textColor = UIColor.mintIcon
@@ -272,10 +271,6 @@ extension RecordTextVC {
             finishBtnDeactivated()
         }
         
-        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
-        textViewSurroundingView.layer.borderWidth = 1
-        textViewSurroundingView.layer.cornerRadius = 15
-
         wordCountLabel.text = "0"
         wordCountLabel.font = UIFont.SDGothicRegular13
         wordCountLabel.textColor = UIColor.subGrey6
@@ -457,10 +452,24 @@ extension RecordTextVC: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textViewSetupView()
+        
+        textViewSurroundingView.layer.borderColor = UIColor.mintMain.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
+        
+        wordCountLabel.isHidden = false
+        maxWordLabel.isHidden = false
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
         textViewSetupView()
+        
+        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
+        
+        wordCountLabel.isHidden = true
+        maxWordLabel.isHidden = true
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

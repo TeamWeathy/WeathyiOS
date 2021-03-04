@@ -46,6 +46,15 @@ class RecordTagAddPopupVC: UIViewController {
         tagNameTextField.defaultTextAttributes.updateValue(-0.8,
             forKey: NSAttributedString.Key.kern)
         
+        keyBoardAction()
+        textFieldView.setBorder(borderColor: .mintMain, borderWidth: 1)
+        wordCountLabel.font = .SDGothicSemiBold13
+        wordCountLabel.textColor = .mintIcon
+        wordCountLabel.text = "\(wordCount)"
+        maxWordLabel.font = .SDGothicRegular13
+        maxWordLabel.textColor = .subGrey6
+        maxWordLabel.text = "/10"
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -130,17 +139,9 @@ extension RecordTagAddPopupVC {
     
     func setTextExists() {
         
-        textFieldView.setBorder(borderColor: .mintMain, borderWidth: 1)
-        
-        wordCountLabel.isHidden = false
         wordCountLabel.font = .SDGothicSemiBold13
         wordCountLabel.textColor = .mintIcon
         wordCountLabel.text = "\(wordCount)"
-        
-        maxWordLabel.isHidden = false
-        maxWordLabel.font = .SDGothicRegular13
-        maxWordLabel.textColor = .subGrey6
-        maxWordLabel.text = "/10"
         
         addBtn.isUserInteractionEnabled = true
         addBtn.makeRounded(cornerRadius: 25)
@@ -154,10 +155,9 @@ extension RecordTagAddPopupVC {
     
     func setTextNotExists() {
         
-        textFieldView.setBorder(borderColor: .subGrey7, borderWidth: 1)
-        
-        wordCountLabel.isHidden = true
-        maxWordLabel.isHidden = true
+        maxWordLabel.font = .SDGothicRegular13
+        maxWordLabel.textColor = .subGrey6
+        wordCountLabel.text = "0"
         
         addBtn.isUserInteractionEnabled = false
         addBtn.makeRounded(cornerRadius: 25)
@@ -208,6 +208,34 @@ extension RecordTagAddPopupVC {
                 print("networkFail")
                 self.showToastOnTop(message: "네트워크 상태를 확인해주세요!")
             }
+        }
+    }
+    
+    func keyBoardAction() {
+        // TODO: 키보드 디텍션
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func adjustInputView(noti: Notification) {
+        // TODO: 키보드 높이에 따른 인풋뷰 위치 변경
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            textFieldView.setBorder(borderColor: .mintMain, borderWidth: 1)
+            
+            wordCountLabel.isHidden = false
+            wordCountLabel.font = .SDGothicSemiBold13
+            wordCountLabel.textColor = .mintIcon
+            wordCountLabel.text = "\(wordCount)"
+            
+            maxWordLabel.isHidden = false
+            maxWordLabel.font = .SDGothicRegular13
+            maxWordLabel.textColor = .subGrey6
+            maxWordLabel.text = "/10"
+        } else {
+            textFieldView.setBorder(borderColor: .subGrey7, borderWidth: 1)
+            
+            wordCountLabel.isHidden = true
+            maxWordLabel.isHidden = true
         }
     }
     
