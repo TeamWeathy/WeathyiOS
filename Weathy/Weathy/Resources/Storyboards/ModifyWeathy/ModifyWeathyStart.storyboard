@@ -43,30 +43,6 @@
                                     <action selector="backButtonDidTap:" destination="xoM-Qd-vqy" eventType="touchUpInside" id="Dim-JT-4TC"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QX-Ug-Xs6">
-                                <rect key="frame" x="317.5" y="119" width="13" height="13"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="13" id="BvF-rI-z1D"/>
-                                    <constraint firstAttribute="height" constant="13" id="bcS-El-WMB"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v78-Cx-PPq">
-                                <rect key="frame" x="337.5" y="121" width="9" height="9"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="9" id="EFD-vr-4Iq"/>
-                                    <constraint firstAttribute="width" constant="9" id="Xg8-Ib-fOi"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69G-DF-wOK">
-                                <rect key="frame" x="353.5" y="121" width="9" height="9"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="9" id="9y5-j1-ocx"/>
-                                    <constraint firstAttribute="height" constant="9" id="jq6-OF-k1a"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5Q-cS-gZ3" customClass="SpacedLabel" customModule="Weathy" customModuleProvider="target">
                                 <rect key="frame" x="36.5" y="109" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -192,17 +168,11 @@
                         <viewLayoutGuide key="safeArea" id="SJQ-vw-1S9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="v78-Cx-PPq" firstAttribute="leading" secondItem="0QX-Ug-Xs6" secondAttribute="trailing" constant="7" id="1OT-NE-i1b"/>
-                            <constraint firstItem="0QX-Ug-Xs6" firstAttribute="centerY" secondItem="v78-Cx-PPq" secondAttribute="centerY" id="1gg-I4-E2d"/>
                             <constraint firstItem="tEV-K0-a2K" firstAttribute="width" secondItem="maM-v6-g5k" secondAttribute="width" multiplier="309:375" id="4hk-GC-UOP"/>
-                            <constraint firstItem="v78-Cx-PPq" firstAttribute="centerY" secondItem="69G-DF-wOK" secondAttribute="centerY" id="6CN-mN-FXS"/>
                             <constraint firstItem="i0Q-I8-EIg" firstAttribute="centerY" secondItem="xF6-np-AHP" secondAttribute="centerY" id="6V7-Oq-ed3"/>
                             <constraint firstItem="i0Q-I8-EIg" firstAttribute="width" secondItem="maM-v6-g5k" secondAttribute="width" multiplier="145:375" id="7Ig-vA-eIO"/>
                             <constraint firstItem="xF6-np-AHP" firstAttribute="trailing" secondItem="tEV-K0-a2K" secondAttribute="trailing" id="9UF-3h-7yx"/>
                             <constraint firstItem="EXZ-hl-lfa" firstAttribute="top" secondItem="SJQ-vw-1S9" secondAttribute="top" id="BOX-28-AY4"/>
-                            <constraint firstItem="69G-DF-wOK" firstAttribute="trailing" secondItem="tEV-K0-a2K" secondAttribute="trailing" constant="-15" id="JRc-qS-cl2"/>
-                            <constraint firstItem="69G-DF-wOK" firstAttribute="leading" secondItem="v78-Cx-PPq" secondAttribute="trailing" constant="7" id="MVa-Ov-IiM"/>
-                            <constraint firstItem="69G-DF-wOK" firstAttribute="top" secondItem="o5Q-cS-gZ3" secondAttribute="top" constant="12" id="Z3C-Fe-yoO"/>
                             <constraint firstItem="o5Q-cS-gZ3" firstAttribute="leading" secondItem="tEV-K0-a2K" secondAttribute="leading" id="b7g-gz-Fl5"/>
                             <constraint firstItem="1Py-ug-KUq" firstAttribute="leading" secondItem="tEV-K0-a2K" secondAttribute="leading" id="d1j-CU-uRa"/>
                             <constraint firstItem="axb-nK-Ry9" firstAttribute="centerX" secondItem="tEV-K0-a2K" secondAttribute="centerX" id="gFa-mk-5Tj"/>
@@ -233,9 +203,6 @@
                         <outlet property="slashLabel" destination="x94-J6-mlk" id="rjM-Id-NTM"/>
                         <outlet property="subTitleLabel" destination="1Py-ug-KUq" id="poS-qs-1Br"/>
                         <outlet property="titleLabel" destination="o5Q-cS-gZ3" id="Aff-p6-e0i"/>
-                        <outletCollection property="indicatorCircle" destination="0QX-Ug-Xs6" collectionClass="NSMutableArray" id="LLe-cx-L3E"/>
-                        <outletCollection property="indicatorCircle" destination="v78-Cx-PPq" collectionClass="NSMutableArray" id="wI9-od-x8t"/>
-                        <outletCollection property="indicatorCircle" destination="69G-DF-wOK" collectionClass="NSMutableArray" id="Cnj-0g-U9C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ne-eJ-jat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
