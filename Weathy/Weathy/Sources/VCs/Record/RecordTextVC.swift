@@ -63,6 +63,7 @@ class RecordTextVC: UIViewController {
         textViewSetupView()
         setSkipBtn()
         setPhotoBox()
+        keyBoardAction()
         
         
         recordTextView.delegate = self
@@ -184,6 +185,9 @@ extension RecordTextVC {
         textViewSurroundingView.layer.borderWidth = 1
         textViewSurroundingView.layer.cornerRadius = 15
         
+        wordCountLabel.isHidden = true
+        maxWordLabel.isHidden = true
+        
         wordCountLabel.text = "0"
         wordCountLabel.font = UIFont.SDGothicRegular13
         wordCountLabel.textColor = UIColor.subGrey6
@@ -258,10 +262,6 @@ extension RecordTextVC {
     
     func textExists() {
         finishBtnActivated()
-
-        textViewSurroundingView.layer.borderColor = UIColor.mintMain.cgColor
-        textViewSurroundingView.layer.borderWidth = 1
-        textViewSurroundingView.layer.cornerRadius = 15
         
         wordCountLabel.font = UIFont.SDGothicSemiBold13
         wordCountLabel.textColor = UIColor.mintIcon
@@ -272,10 +272,6 @@ extension RecordTextVC {
             finishBtnDeactivated()
         }
         
-        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
-        textViewSurroundingView.layer.borderWidth = 1
-        textViewSurroundingView.layer.cornerRadius = 15
-
         wordCountLabel.text = "0"
         wordCountLabel.font = UIFont.SDGothicRegular13
         wordCountLabel.textColor = UIColor.subGrey6
@@ -446,6 +442,34 @@ extension RecordTextVC {
         
         self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
+        }
+    }
+    
+    func keyBoardAction() {
+        // TODO: 키보드 디텍션
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func adjustInputView(noti: Notification) {
+        // TODO: 키보드 높이에 따른 인풋뷰 위치 변경
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            
+            textViewSurroundingView.layer.borderColor = UIColor.mintMain.cgColor
+            textViewSurroundingView.layer.borderWidth = 1
+            textViewSurroundingView.layer.cornerRadius = 15
+            
+            wordCountLabel.isHidden = false
+            maxWordLabel.isHidden = false
+            
+        } else {
+            
+            textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
+            textViewSurroundingView.layer.borderWidth = 1
+            textViewSurroundingView.layer.cornerRadius = 15
+            
+            wordCountLabel.isHidden = true
+            maxWordLabel.isHidden = true
         }
     }
 }
