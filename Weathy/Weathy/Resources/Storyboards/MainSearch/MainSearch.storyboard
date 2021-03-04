@@ -318,7 +318,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="309" height="50"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="날씨가 궁금한 곳을 검색해 보세요!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="se1-Mc-QHG">
-                                        <rect key="frame" x="57" y="0.0" width="252" height="50"/>
+                                        <rect key="frame" x="57" y="0.0" width="197" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -347,7 +347,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dj3-oW-aeB" firstAttribute="leading" secondItem="96n-5m-CYG" secondAttribute="leading" constant="22" id="0YL-yp-Ple"/>
-                                    <constraint firstAttribute="trailing" secondItem="se1-Mc-QHG" secondAttribute="trailing" id="34L-eZ-DjL"/>
+                                    <constraint firstAttribute="trailing" secondItem="se1-Mc-QHG" secondAttribute="trailing" constant="55" id="34L-eZ-DjL"/>
                                     <constraint firstAttribute="width" constant="309" id="F6f-Uu-97H"/>
                                     <constraint firstItem="Wb5-d1-7gf" firstAttribute="leading" secondItem="96n-5m-CYG" secondAttribute="leading" id="FUl-6e-1yl"/>
                                     <constraint firstItem="se1-Mc-QHG" firstAttribute="top" secondItem="96n-5m-CYG" secondAttribute="top" id="IoH-Uq-3U0"/>
