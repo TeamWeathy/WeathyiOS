@@ -48,7 +48,6 @@ class ModifyWeathyTagVC: UIViewController {
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
-    @IBOutlet var indicatorCircle: [UIView]!
     
     @IBOutlet var tagTitleCollectionView: UICollectionView!
     @IBOutlet var tagCollectionView: UICollectionView!
@@ -161,16 +160,6 @@ extension ModifyWeathyTagVC {
         explanationLabel.text = "수정하기에서는 태그를 삭제할 수 없어요."
         explanationLabel.font = UIFont.SDGothicRegular16
         explanationLabel.textColor = UIColor.subGrey6
-        
-        indicatorCircle[0].layer.cornerRadius = 4.5
-        indicatorCircle[0].backgroundColor = UIColor.mintMain
-        indicatorCircle[0].alpha = 0.4
-        
-        indicatorCircle[1].layer.cornerRadius = 6.5
-        indicatorCircle[1].backgroundColor = UIColor.mintMain
-        
-        indicatorCircle[2].layer.cornerRadius = 4.5
-        indicatorCircle[2].backgroundColor = UIColor.subGrey7
     }
     
     func setTitleLabel() {

@@ -18,14 +18,18 @@ class RecordTagTitleCVC: UICollectionViewCell {
         titleLabel.font = UIFont.SDGothicRegular18
         titleLabel.textColor = UIColor.mainGrey
         
+        bottomBarView.layer.cornerRadius = 1.5
+        
         countLabel.font = UIFont.SDGothicRegular15
-        countLabel.textColor = UIColor.subGrey6
+//        countLabel.textColor = UIColor.subGrey6
         
         if isDeleteView == false {
             countLabel.text = "\(count)/5"
             
             if let text = countLabel.text {
                 // "\(group.peopleCount)명" 부분에만 폰트를 다르게 설정
+                countLabel.textColor = .subGrey6
+                
                 let attributedStr = NSMutableAttributedString(string: countLabel.text ?? "")
                 attributedStr.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
                                            value: UIFont(name: "AppleSDGothicNeoSB00", size: 15.0)!, range: (text as NSString).range(of: "\(count)"))
@@ -33,6 +37,9 @@ class RecordTagTitleCVC: UICollectionViewCell {
                 
                 if count >= 1 {
                     countLabel.attributedText = attributedStr
+                } else {
+                    countLabel.textColor = .subGrey6
+                    countLabel.font = .SDGothicRegular15
                 }
             }
         }
@@ -40,17 +47,24 @@ class RecordTagTitleCVC: UICollectionViewCell {
             countLabel.text = "\(total)"
         }
         
-        if isSelected == true {
-            bottomBarView.layer.cornerRadius = 5
-            if isDeleteView == false {
+        if isSelected == true { /// 선택된 카테고리
+            titleLabel.textColor = .mainGrey
+            
+            if isDeleteView == false { /// 기록뷰 선택된 카테고리
                 bottomBarView.backgroundColor = UIColor.mintMain
             }
-            else {
+            else { /// 삭제뷰 선택된 카테고리
                 bottomBarView.backgroundColor = UIColor.pink
+                countLabel.textColor = .subGrey6
             }
         }
-        else {
+        else { /// 선택되지 않은 카테고리
             bottomBarView.backgroundColor = .clear
+            
+            countLabel.font = .SDGothicRegular15
+            countLabel.textColor = .subGrey4
+            
+            titleLabel.textColor = .subGrey6
         }
     }
 }

@@ -404,18 +404,41 @@ extension RecordTagVC {
         var currentTag = -1
         
         if selectedTags != [] {
+            var tagDeleted:[Int] = []
             for i in 0...selectedTags.count - 1 {
                 currentTag = selectedTags[i]
+                var existFlag = false /// 선택됐다가 삭제된 태그면 삭제하기 위한 플래그
                 for j in 0...3 {
                     for b in 0...tagTitles[j].tagTab.count - 1 {
                         if tagTitles[j].tagTab[b].id == currentTag {
                             tagTitles[j].tagTab[b].isSelected = true
                             tagTitles[j].count += 1
+                            existFlag = true
                             break
                         }
                     }
                 }
+                if existFlag == false {
+                    tagDeleted.append(selectedTags[i])
+                }
             }
+            
+            if tagDeleted != [] {
+                for i in 0...tagDeleted.count - 1 {
+                    if let deletedTagIndex = selectedTags.firstIndex(of: tagDeleted[i]) {
+                        selectedTags.remove(at: deletedTagIndex)
+                    }
+                }
+            }
+        }
+        
+        /// 선택돼있던 태그가 삭제되었을 때, 그리고 그게 딱 하나 선택된 태그였을 때 버튼 비활성화
+        if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
+            tagTitles[3].count >= 1 {
+            self.setNextBtnActivated()
+        }
+        else {
+            self.setNextBtnDeactivated()
         }
     }
 }
