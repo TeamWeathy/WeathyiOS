@@ -48,12 +48,6 @@ class RecordTagAddPopupVC: UIViewController {
         
         keyBoardAction()
         textFieldView.setBorder(borderColor: .mintMain, borderWidth: 1)
-        wordCountLabel.font = .SDGothicSemiBold13
-        wordCountLabel.textColor = .mintIcon
-        wordCountLabel.text = "\(wordCount)"
-        maxWordLabel.font = .SDGothicRegular13
-        maxWordLabel.textColor = .subGrey6
-        maxWordLabel.text = "/10"
         
     }
     
@@ -157,7 +151,10 @@ extension RecordTagAddPopupVC {
         
         maxWordLabel.font = .SDGothicRegular13
         maxWordLabel.textColor = .subGrey6
+        maxWordLabel.text = "/10"
         wordCountLabel.text = "0"
+        wordCountLabel.textColor = .subGrey6
+        wordCountLabel.font = .SDGothicRegular13
         
         addBtn.isUserInteractionEnabled = false
         addBtn.makeRounded(cornerRadius: 25)
@@ -223,14 +220,7 @@ extension RecordTagAddPopupVC {
             textFieldView.setBorder(borderColor: .mintMain, borderWidth: 1)
             
             wordCountLabel.isHidden = false
-            wordCountLabel.font = .SDGothicSemiBold13
-            wordCountLabel.textColor = .mintIcon
-            wordCountLabel.text = "\(wordCount)"
-            
             maxWordLabel.isHidden = false
-            maxWordLabel.font = .SDGothicRegular13
-            maxWordLabel.textColor = .subGrey6
-            maxWordLabel.text = "/10"
         } else {
             textFieldView.setBorder(borderColor: .subGrey7, borderWidth: 1)
             
