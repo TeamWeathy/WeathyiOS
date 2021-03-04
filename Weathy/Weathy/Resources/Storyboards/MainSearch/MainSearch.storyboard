@@ -682,7 +682,7 @@
                     </view>
                     <connections>
                         <outlet property="RecentLabelUnderlineView" destination="oLC-d9-0Rc" id="cHe-0A-yI3"/>
-                        <outlet property="backView" destination="s5z-ci-BAd" id="dS8-dq-BRJ"/>
+                        <outlet property="backImageView" destination="s5z-ci-BAd" id="dS8-dq-BRJ"/>
                         <outlet property="clearButton" destination="qJ0-YO-dXA" id="dci-Ky-aHD"/>
                         <outlet property="gradientView" destination="Q7R-V9-Gp1" id="XqP-U0-VxH"/>
                         <outlet property="recentBackgroundView" destination="tB8-eo-ezL" id="BlM-re-pNk"/>

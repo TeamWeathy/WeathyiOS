@@ -39,7 +39,7 @@ class MainSearchVC: UIViewController {
     //MARK: - IBOutlets
     
     // 날씨에 따른 뒤 배경
-    @IBOutlet weak var backView: UIImageView!
+    @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
@@ -89,7 +89,7 @@ class MainSearchVC: UIViewController {
         searchTableView.delegate = self
         searchTableView.dataSource = self
         
-        backView.image = UIImage(named: self.backImage)
+        backImageView.image = UIImage(named: self.backImage)
         gradientView.image = UIImage(named: self.gradient)
         
         recentNonImage()
