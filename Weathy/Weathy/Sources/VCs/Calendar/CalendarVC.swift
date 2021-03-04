@@ -301,6 +301,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             cell.selectedDateDidChange(selectedDate)
             cell.callMonthlyWeathy()
             cell.monthlyCalendarCV.reloadData()
+            cell.lastSelectedIdx = selectedDate.weekday
         }
     }
     
