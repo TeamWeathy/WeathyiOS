@@ -19,21 +19,32 @@ extension UILabel {
         
         guard let labelText = self.text else { return }
         
-//        let paragraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.lineSpacing = lineSpacing
-//        paragraphStyle.lineHeightMultiple = lineHeightMultiple
-//        paragraphStyle.alignment = .center
-//        var attributedString = NSMutableAttributedString(string: labelText)
-//        if let labelattributedText = self.attributedText {
-//            attributedString = NSMutableAttributedString(attributedString: labelattributedText)
-//            attributedString.addAttribute(NSAttributedString.Key.kern, value: kernValue, range: NSRange(location: 0, length: attributedString.length - 1))
-//        } else {
-//            attributedString = NSMutableAttributedString(string: labelText)
-//        }
+        //        let paragraphStyle = NSMutableParagraphStyle()
+        //        paragraphStyle.lineSpacing = lineSpacing
+        //        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+        //        paragraphStyle.alignment = .center
+        //        var attributedString = NSMutableAttributedString(string: labelText)
+        //        if let labelattributedText = self.attributedText {
+        //            attributedString = NSMutableAttributedString(attributedString: labelattributedText)
+        //            attributedString.addAttribute(NSAttributedString.Key.kern, value: kernValue, range: NSRange(location: 0, length: attributedString.length - 1))
+        //        } else {
+        //            attributedString = NSMutableAttributedString(string: labelText)
+        //        }
         
         // (Swift 4.2 and above) Line spacing attribute
-//        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
-//
-//        self.attributedText = attributedString
+        //        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        //
+        //        self.attributedText = attributedString
     }
+    
+    func setLinespace(spacing: CGFloat) {
+        if let text = self.text {
+            let attributeString = NSMutableAttributedString(string: text)
+            let style = NSMutableParagraphStyle()
+            style.lineSpacing = spacing
+            attributeString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSMakeRange(0, attributeString.length))
+            self.attributedText = attributeString
+        }
+    }
+
 }
