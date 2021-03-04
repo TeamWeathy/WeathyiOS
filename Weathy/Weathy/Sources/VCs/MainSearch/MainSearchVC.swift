@@ -40,6 +40,7 @@ class MainSearchVC: UIViewController {
     
     // 날씨에 따른 뒤 배경
     @IBOutlet weak var backView: UIImageView!
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
     
@@ -93,6 +94,7 @@ class MainSearchVC: UIViewController {
         
         recentNonImage()
         setRecentTitle()
+        keyBoardAction()
         
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
@@ -107,6 +109,8 @@ class MainSearchVC: UIViewController {
         } else {
             locationCodes = []
         }
+        
+        initialTextView()
     }
     
     func setRecentTitle(){
@@ -222,6 +226,27 @@ class MainSearchVC: UIViewController {
             self.searchInformations = []
             self.searchTableView.reloadData()
         }
+    }
+    
+    func keyBoardAction() {
+        // TODO: 키보드 디텍션
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func adjustInputView(noti: Notification) {
+        // TODO: 키보드 높이에 따른 인풋뷰 위치 변경
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            searchView.setBorder(borderColor: .mintMain, borderWidth: 1)
+        } else {
+            searchView.setBorder(borderColor: .subGrey7, borderWidth: 1)
+        }
+    }
+    
+    func initialTextView() {
+        searchView.setBorder(borderColor: .subGrey7, borderWidth: 1)
+        searchView.layer.cornerRadius = searchView.frame.height / 2
+        searchView.backgroundColor = UIColor.white.withAlphaComponent(0.75)
     }
 }
 
