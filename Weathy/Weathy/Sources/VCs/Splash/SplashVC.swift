@@ -45,24 +45,36 @@ class SplashVC: UIViewController {
 //                        print("[Login] networkFail")
 //                }
 //            }
-//            if let dvc = nextStoryboard.instantiateViewController(identifier: "TabbarVC") as UIViewController? {
-//                UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
-//            }
+//            UIView.animate(withDuration: 0.2,animations: {self.animationView.alpha = 0},completion:{ _ in
+//        let nextStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
+//        if let dvc = nextStoryboard.instantiateViewController(identifier: "TabbarVC") as TabbarVC? {
+//            dvc.modalTransitionStyle = .crossDissolve
+//            dvc.modalPresentationStyle = .overCurrentContext
+//            self.present(dvc,animated: true)}
+//    })
 //        }
 //        else{
-//            let nextStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
-//            if let dvc = nextStoryboard.instantiateViewController(identifier: "OnBoardingVC") as UIViewController? {
-//                UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
-//            }
+//            UIView.animate(withDuration: 0.2,animations: {self.animationView.alpha = 0},completion:{ _ in
+//        let nextStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
+//        if let dvc = nextStoryboard.instantiateViewController(identifier: "OnBoardingVC") as UIViewController? {
+//            dvc.modalTransitionStyle = .crossDissolve
+//            dvc.modalPresentationStyle = .overCurrentContext
+//            self.present(dvc,animated: true)}
+//    })
 //        }
         
         //FIXME: - 테스트 후 코드 제거
         
         ///무조건 스플래시 재생 후 온보딩을 띄우도록 함
-        let nextStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
-        if let dvc = nextStoryboard.instantiateViewController(identifier: "OnBoardingVC") as UIViewController? {
-            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = dvc
-        }
+        UIView.animate(withDuration: 0.3,animations: {self.animationView.alpha = 0},completion:{ _ in
+            let nextStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
+            if let dvc = nextStoryboard.instantiateViewController(identifier: "OnBoardingVC") as UIViewController? {
+                dvc.modalTransitionStyle = .crossDissolve
+                dvc.modalPresentationStyle = .overCurrentContext
+                self.present(dvc,animated: true)}
+
+        })
+        
     }
     
     func displaySplash() {
@@ -74,6 +86,6 @@ class SplashVC: UIViewController {
         animationView.play()
         self.view.addSubview(animationView)
         
-        Timer.scheduledTimer(timeInterval: 2.7, target: self, selector: #selector(self.nextView), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 2.9, target: self, selector: #selector(self.nextView), userInfo: nil, repeats: false)
     }
 }
