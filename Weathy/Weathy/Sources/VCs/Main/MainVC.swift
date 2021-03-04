@@ -907,13 +907,13 @@ extension MainVC: UICollectionViewDelegate {
             let mainScrollContentOffset = mainScrollView.contentOffset.y
             let mainTopScrollContentOffset = mainTopScrollView.contentOffset.y
             
-            if (mainScrollContentOffset > 10 || mainTopScrollContentOffset > 10 ) {
+            if mainScrollContentOffset > 10 || mainTopScrollContentOffset > 10 {
                 UIView.animate(withDuration: 0.5) {
                     self.topBlurView.alpha = 1
                 }
             }
             
-            if (mainScrollContentOffset < 10 && mainTopScrollContentOffset < 10) {
+            if mainScrollContentOffset < 10 && mainTopScrollContentOffset < 10 {
                 UIView.animate(withDuration: 0.3) {
                     self.topBlurView.alpha = 0
                 }
