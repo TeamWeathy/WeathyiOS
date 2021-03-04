@@ -188,6 +188,14 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
         let hasNotch = UIScreen.main.hasNotch
         cell.setStyle(monthlyLines: selectedDate.monthlyLines, hasNotch: hasNotch)
         cell.setDay()
+        
+        ///데이터 표시
+        if monthlyWeathyList.count > 0 && (monthlyWeathyList.count == selectedDate.monthlyLines*7){
+            if let data = monthlyWeathyList[indexPath.item]{
+                cell.setData(high: data.temperature.maxTemp, low: data.temperature.minTemp)
+                cell.setClimate(data.climateIconId ?? 1)
+            }
+        }
         ///이번달
         if indexPath.item >= selectedDate.firstWeekday && indexPath.item < selectedDate.firstWeekday+selectedDate.numberOfMonth{
             //현재 날짜(현재달)
@@ -229,14 +237,6 @@ extension InfiniteMonthlyCVC: UICollectionViewDataSource{
             cell.dayLabel.text = String(indexPath.item - (selectedDate.firstWeekday + selectedDate.numberOfMonth) + 1)
             cell.setNonCurrent()
             
-        }
-        
-        ///데이터 표시
-        if monthlyWeathyList.count > 0 && (monthlyWeathyList.count == selectedDate.monthlyLines*7){
-            if let data = monthlyWeathyList[indexPath.item]{
-                cell.setData(high: data.temperature.maxTemp, low: data.temperature.minTemp)
-                cell.setClimate(data.climateIconId ?? 1)
-            }
         }
         
         ///달력 디바이더

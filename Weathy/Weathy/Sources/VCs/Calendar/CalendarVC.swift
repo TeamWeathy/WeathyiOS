@@ -347,7 +347,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     func closeDrawer(){
         let weeklyIndex = findIndexFromSelectedDate()
         currentIndex = weeklyIndex
-        self.infiniteWeeklyCV.contentOffset.x = self.infiniteWeeklyCV.frame.width*CGFloat(weeklyIndex)
+        self.infiniteWeeklyCV.setContentOffset(CGPoint(x: self.infiniteWeeklyCV.frame.width*CGFloat(weeklyIndex), y: 0), animated: false)
         
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: weeklyHeight)
         

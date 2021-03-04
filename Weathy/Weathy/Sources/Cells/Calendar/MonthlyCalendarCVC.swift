@@ -71,12 +71,10 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         dayLabel.alpha = 1
         
         highLabel.text = ""
-        highLabel.alpha = 0
         highLabel.textColor = .redTemp
         highLabel.characterSpacing = -0.6
         
         lowLabel.text = ""
-        lowLabel.alpha = 0
         lowLabel.textColor = .blueTemp
         lowLabel.characterSpacing = -0.6
         
@@ -165,6 +163,7 @@ class MonthlyCalendarCVC: UICollectionViewCell {
         highLabel.text = "\(high)°"
         lowLabel.text = "\(low)°"
         climateIconImageView.alpha = 1
+        temperatureView.alpha = 1
         temperatureDividerView.alpha = 1
     }
     
