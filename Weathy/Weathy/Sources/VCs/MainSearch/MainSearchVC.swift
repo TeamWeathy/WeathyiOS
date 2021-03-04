@@ -509,6 +509,11 @@ extension MainSearchVC: UITextFieldDelegate{
             clearButton.isHidden = false
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 //MARK: - Cell 을 지우기 위한 CellDelegate
