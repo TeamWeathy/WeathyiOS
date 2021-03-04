@@ -41,7 +41,7 @@ class RecordTagTitleCVC: UICollectionViewCell {
         }
         
         if isSelected == true {
-            bottomBarView.layer.cornerRadius = 5
+            bottomBarView.layer.cornerRadius = 1.5
             if isDeleteView == false {
                 bottomBarView.backgroundColor = UIColor.mintMain
             }
