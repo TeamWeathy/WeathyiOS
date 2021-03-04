@@ -319,6 +319,7 @@ class CalendarDetailVC: UIViewController{
         UIView.transition(with: (self.parent?.view)!, duration: 0.2, options: .transitionCrossDissolve, animations: {self.blurView.removeFromSuperview()}, completion: nil)
     }
     func showMoreMenu(){
+        moreBtn.isSelected = true
         self.moreViewHeightConstraint.constant = 90
         UIView.animate(withDuration: 0.3){
             self.moreMenuView.alpha = 1
@@ -400,6 +401,7 @@ class CalendarDetailVC: UIViewController{
     }
     
     @objc func hideMoreMenu(_ sender: UITapGestureRecognizer?){
+        moreBtn.isSelected = false
         self.moreViewHeightConstraint.constant = 0
         UIView.animate(withDuration: 0.2){
             self.view.layoutIfNeeded()
@@ -460,12 +462,11 @@ class CalendarDetailVC: UIViewController{
     //MARK: - IBActions
     
     @IBAction func moreBtnDidTap(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
         if sender.isSelected{
-            showMoreMenu()
+            hideMoreMenu(nil)
         }
         else{
-            hideMoreMenu(nil)
+            showMoreMenu()
         }
     }
     
