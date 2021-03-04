@@ -119,7 +119,7 @@ class RecordTextVC: UIViewController {
         photoDeleteBtn.isHidden = true
         photoDeleteBtn.isUserInteractionEnabled = false
         
-        if enteredText?.count == 0 {
+        if enteredText?.count == 0 || enteredText == nil {
             finishBtnDeactivated()
         }
     }
