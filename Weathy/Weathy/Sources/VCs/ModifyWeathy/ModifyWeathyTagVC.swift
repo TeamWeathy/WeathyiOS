@@ -246,15 +246,17 @@ extension ModifyWeathyTagVC {
         finishBtn.setTitleColor(.white, for: .normal)
         finishBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
         
+        nextBtn.isUserInteractionEnabled = false
         nextBtn.backgroundColor = .white
         nextBtn.setTitle("다음", for: .normal)
         nextBtn.setTitleColor(.subGrey3, for: .normal)
         nextBtn.titleLabel?.font = UIFont.SDGothicSemiBold16
+        nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
         
         self.view.layoutIfNeeded()
         finishBtn.layer.cornerRadius = finishBtn.frame.height / 2
-        nextBtn.layer.cornerRadius = nextBtn.layer.cornerRadius / 2
-        nextBtn.setBorder(borderColor: .subGrey3, borderWidth: 1)
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2
+        
     }
     
     func initPosition() {
@@ -416,8 +418,8 @@ extension ModifyWeathyTagVC {
             }
         }
         
-        if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
-            tagTitles[3].count >= 1 {
+        if (tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
+                tagTitles[3].count >= 1) && selectedTags.count >= 1 {
             setNextBtnActivated()
         }
         
