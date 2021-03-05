@@ -278,7 +278,7 @@ class MainVC: UIViewController {
         mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
         topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
 
-        searchImage = ClimateImage.getClimateMainBgName(iconId)
+        searchImage = ClimateImage.getSearchClimateMainBgName(iconId)
         searchGradient = ClimateImage.getSearchClimateMainBlurBarName(iconId)
         
         removeFlakeEmitterCell()
@@ -606,8 +606,8 @@ class MainVC: UIViewController {
         if let image = searchImage,
            let gradient = searchGradient
         {
-//            mainSearchVC.backImage = image
-//            mainSearchVC.gradient = gradient
+            mainSearchVC.backImage = image
+            mainSearchVC.gradient = gradient
         }
         
         mainSearchVC.modalPresentationStyle = .fullScreen
