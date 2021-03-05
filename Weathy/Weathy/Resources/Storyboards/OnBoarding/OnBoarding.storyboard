@@ -32,22 +32,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_img_phone1" translatesAutoresizingMaskIntoConstraints="NO" id="Xdx-y9-Waj">
-                                <rect key="frame" x="0.0" y="281.66666666666669" width="375" height="550.33333333333326"/>
+                                <rect key="frame" x="0.0" y="271" width="375" height="561"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingImgPopup1" translatesAutoresizingMaskIntoConstraints="NO" id="Isq-6G-8RV">
-                                <rect key="frame" x="18.666666666666657" y="565.33333333333337" width="337.66666666666674" height="125.66666666666663"/>
+                                <rect key="frame" x="15.666666666666657" y="563" width="343.66666666666674" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Isq-6G-8RV" secondAttribute="height" multiplier="317:118" id="IhA-Sc-tba"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingImgPopup2" translatesAutoresizingMaskIntoConstraints="NO" id="A4D-vv-KYn">
-                                <rect key="frame" x="30" y="366.66666666666669" width="315" height="145.66666666666669"/>
+                                <rect key="frame" x="27" y="356" width="321" height="148.66666666666663"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="A4D-vv-KYn" secondAttribute="height" multiplier="313:145" id="t6X-xe-b28"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingImgPopup3" translatesAutoresizingMaskIntoConstraints="NO" id="DCe-Eb-WTe">
-                                <rect key="frame" x="22.333333333333343" y="387.66666666666674" width="330.33333333333326" height="304"/>
+                                <rect key="frame" x="19" y="381.66666666666674" width="337" height="310"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DCe-Eb-WTe" secondAttribute="height" multiplier="326:300" id="hTT-4Y-JZX"/>
                                 </constraints>
@@ -97,21 +97,21 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_ic_circle" translatesAutoresizingMaskIntoConstraints="NO" id="mTK-dV-Mix">
-                                <rect key="frame" x="177.66666666666666" y="242" width="19.666666666666657" height="19.666666666666686"/>
+                                <rect key="frame" x="183" y="242" width="9" height="9"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="9" id="AmC-fS-2iR"/>
                                     <constraint firstAttribute="width" secondItem="mTK-dV-Mix" secondAttribute="height" multiplier="1:1" id="Zu6-Hx-DQp"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_ic_circle" translatesAutoresizingMaskIntoConstraints="NO" id="UgB-fn-TBp">
-                                <rect key="frame" x="161.66666666666666" y="247.33333333333334" width="9" height="9.0000000000000284"/>
+                                <rect key="frame" x="167" y="242" width="9" height="9"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="9" id="nE5-Qq-iVS"/>
                                     <constraint firstAttribute="width" secondItem="UgB-fn-TBp" secondAttribute="height" multiplier="1:1" id="suc-ty-bpE"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_ic_circle" translatesAutoresizingMaskIntoConstraints="NO" id="w46-EK-5Zy">
-                                <rect key="frame" x="204.33333333333334" y="247.33333333333334" width="9" height="9.0000000000000284"/>
+                                <rect key="frame" x="199" y="242" width="9" height="9"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="9" id="EP0-aO-2au"/>
                                     <constraint firstAttribute="width" secondItem="w46-EK-5Zy" secondAttribute="height" multiplier="1:1" id="FYT-Ar-pgv"/>
@@ -148,7 +148,7 @@
                             <constraint firstItem="a69-LG-iOR" firstAttribute="top" secondItem="ITY-1x-alH" secondAttribute="bottom" constant="7" id="4NC-b9-RTj"/>
                             <constraint firstItem="Nnl-Jr-muc" firstAttribute="trailing" secondItem="2UP-hJ-Rj1" secondAttribute="trailing" id="5gs-Xo-msa"/>
                             <constraint firstItem="mTK-dV-Mix" firstAttribute="leading" secondItem="UgB-fn-TBp" secondAttribute="trailing" constant="7" id="7V2-j5-B1r"/>
-                            <constraint firstItem="A4D-vv-KYn" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" constant="30" id="9bl-If-GRP"/>
+                            <constraint firstItem="A4D-vv-KYn" firstAttribute="centerX" secondItem="Xdx-y9-Waj" secondAttribute="centerX" id="86g-eE-d4A"/>
                             <constraint firstItem="ITY-1x-alH" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="BEJ-Do-umQ"/>
                             <constraint firstItem="UgB-fn-TBp" firstAttribute="centerY" secondItem="mTK-dV-Mix" secondAttribute="centerY" id="GpP-lz-Dly"/>
                             <constraint firstItem="Nnl-Jr-muc" firstAttribute="leading" secondItem="2UP-hJ-Rj1" secondAttribute="leading" id="Hho-89-Pn6"/>
@@ -161,7 +161,6 @@
                             <constraint firstAttribute="bottom" secondItem="Isq-6G-8RV" secondAttribute="bottom" constant="121" id="Nbf-NJ-oGB"/>
                             <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="Qda-3t-Pnr" secondAttribute="trailing" id="RrL-6u-nre"/>
                             <constraint firstAttribute="bottom" secondItem="Xdx-y9-Waj" secondAttribute="bottom" constant="-20" id="Uil-hr-U9f"/>
-                            <constraint firstItem="2UP-hJ-Rj1" firstAttribute="trailing" secondItem="A4D-vv-KYn" secondAttribute="trailing" constant="30" id="VJu-O8-zGk"/>
                             <constraint firstItem="bKT-p6-Abv" firstAttribute="centerX" secondItem="ceg-9O-kML" secondAttribute="centerX" id="WQk-zo-9wp"/>
                             <constraint firstItem="FpN-jA-KMv" firstAttribute="top" secondItem="2UP-hJ-Rj1" secondAttribute="top" constant="36" id="WRI-Hd-895"/>
                             <constraint firstItem="Xdx-y9-Waj" firstAttribute="top" secondItem="mTK-dV-Mix" secondAttribute="bottom" constant="20" id="YpT-Df-BqS"/>
