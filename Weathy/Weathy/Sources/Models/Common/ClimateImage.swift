@@ -60,13 +60,24 @@ struct ClimateImage {
             return ""
         }
     }
+    
+    static func getSearchClimateMainBgName(_ climateId: Int) -> String {
+        switch climateId % 100 {
+        case 1, 2, 3:
+            return climateId < 100 ? "searchBgMorning" : "searchBgNight"
+        case 4, 9, 10, 11, 13, 50:
+            return climateId < 100 ? "searchBgSnowrain" : "searchBgNight"
+        default:
+            return ""
+        }
+    }
 
     static func getSearchClimateMainBlurBarName(_ climateId: Int) -> String {
         switch climateId % 100 {
         case 1, 2, 3:
-            return climateId < 100 ? "search_box_topblur_morning" : "search_box_topblur_night"
+            return climateId < 100 ? "searchBoxTopblurMorning" : "searchBoxTopblurNight"
         case 4, 9, 10, 11, 13, 50:
-            return climateId < 100 ? "search_box_topblur_snowrain" : "search_box_topblur_night"
+            return climateId < 100 ? "searchBoxTopblurSnowrain" : "searchBoxTopblurNight"
         default:
             return ""
         }

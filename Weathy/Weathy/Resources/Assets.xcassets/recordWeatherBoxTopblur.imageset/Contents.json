@@ -3,17 +3,17 @@
     {
       "scale" : "1x",
       "idiom" : "universal",
-      "filename" : "searchBgNight.png"
-    },
-    {
-      "filename" : "searchBgNight@2x.png",
-      "scale" : "2x",
-      "idiom" : "universal"
+      "filename" : "recordWeatherBoxTopblur.png"
     },
     {
       "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "recordWeatherBoxTopblur@2x.png"
+    },
+    {
       "scale" : "3x",
-      "filename" : "searchBgNight@3x.png"
+      "idiom" : "universal",
+      "filename" : "recordWeatherBoxTopblur@3x.png"
     }
   ],
   "info" : {

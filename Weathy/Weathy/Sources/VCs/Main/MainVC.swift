@@ -278,7 +278,7 @@ class MainVC: UIViewController {
         mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
         topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
 
-        searchImage = ClimateImage.getClimateMainBgName(iconId)
+        searchImage = ClimateImage.getSearchClimateMainBgName(iconId)
         searchGradient = ClimateImage.getSearchClimateMainBlurBarName(iconId)
         
         removeFlakeEmitterCell()
