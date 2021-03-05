@@ -73,7 +73,13 @@ class ModifyWeathyTextVC: UIViewController {
         originalText = weathyData?.feedback ?? ""
         enteredText = originalText
         recordTextView.text = originalText
-
+        
+        /// 스크롤뷰 터치해도 키보드 내려가게
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        backScrollView.addGestureRecognizer(singleTapGestureRecognizer)
         
         wordCountLabel.font = UIFont.SDGothicRegular13
         /// 원래 입력된 텍스트가 없으면
@@ -161,12 +167,14 @@ class ModifyWeathyTextVC: UIViewController {
     //MARK: - @objc methods
     
     @objc func textViewDidChange(sender:UITextView) {
-        
+        /// 초과되는 텍스트 제거
         if let text = sender.text {
-            // 초과되는 텍스트 제거
             print(text)
-            
         }
+    }
+    
+    @objc func tapAction(sender: UITapGestureRecognizer) {
+        _ = self.textViewShouldEndEditing(recordTextView)
     }
 }
 
@@ -494,7 +502,6 @@ extension ModifyWeathyTextVC: UIScrollViewDelegate {
     /// 스크롤뷰 위를 터치해도 키보드가 내려가게
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         _ = self.textViewShouldEndEditing(recordTextView)
-        print("scrollViewWillBeginDragging")
     }
 }
 
