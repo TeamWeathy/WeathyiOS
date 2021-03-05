@@ -331,6 +331,7 @@ class CalendarDetailVC: UIViewController{
     //MARK: - Network
     
     func callDailyWeathy(){
+        hideMoreMenu(nil)
         DailyWeathyService.shared.getDailyCalendar(userID: UserDefaults.standard.integer(forKey: "userId"), date: defaultDateFormatter.string(from: selectedDate)){ [self] (networkResult) -> (Void) in
             switch networkResult{
                 case .success(let data):
