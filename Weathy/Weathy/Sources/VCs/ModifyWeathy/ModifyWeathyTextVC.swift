@@ -38,6 +38,7 @@ class ModifyWeathyTextVC: UIViewController {
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var backScrollView: UIScrollView!
     @IBOutlet var textTitleLabel: UILabel!
     @IBOutlet var textViewSurroundingView: UIView!
     @IBOutlet var recordTextView: UITextView!
@@ -67,6 +68,7 @@ class ModifyWeathyTextVC: UIViewController {
         
         recordTextView.delegate = self
         picker.delegate = self
+        backScrollView.delegate = self
         
         originalText = weathyData?.feedback ?? ""
         enteredText = originalText
@@ -484,5 +486,15 @@ extension ModifyWeathyTextVC: UIImagePickerControllerDelegate, UINavigationContr
         
     }
     
+}
+
+//MARK: - UIScrollViewDelegate
+
+extension ModifyWeathyTextVC: UIScrollViewDelegate {
+    /// 스크롤뷰 위를 터치해도 키보드가 내려가게
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        _ = self.textViewShouldEndEditing(recordTextView)
+        print("scrollViewWillBeginDragging")
+    }
 }
 
