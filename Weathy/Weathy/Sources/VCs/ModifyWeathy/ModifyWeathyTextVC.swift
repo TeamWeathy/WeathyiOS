@@ -68,10 +68,6 @@ class ModifyWeathyTextVC: UIViewController {
         recordTextView.delegate = self
         picker.delegate = self
         
-        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
-        textViewSurroundingView.layer.borderWidth = 1
-        textViewSurroundingView.layer.cornerRadius = 15
-        
         originalText = weathyData?.feedback ?? ""
         enteredText = originalText
         recordTextView.text = originalText
@@ -91,6 +87,10 @@ class ModifyWeathyTextVC: UIViewController {
             wordCountLabel.textColor = UIColor.mintIcon
             textExists()
         }
+        
+        textViewSurroundingView.layer.borderColor = UIColor.subGrey7.cgColor
+        textViewSurroundingView.layer.borderWidth = 1
+        textViewSurroundingView.layer.cornerRadius = 15
         
         photoImageView.imageFromUrl(weathyData?.imgUrl)
         
