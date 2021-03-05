@@ -231,6 +231,7 @@
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="gqD-sM-OYs" id="aSb-BO-2rV"/>
+                        <outlet property="backScrollView" destination="ybI-6f-yf8" id="w8r-fF-gNb"/>
                         <outlet property="finishBtn" destination="bgY-z6-lK4" id="Dff-5Z-WXx"/>
                         <outlet property="maxWordLabel" destination="9b5-0K-6T3" id="6eN-4a-hpG"/>
                         <outlet property="photoBtn" destination="6Jq-Qt-pzQ" id="Sc6-my-qAg"/>

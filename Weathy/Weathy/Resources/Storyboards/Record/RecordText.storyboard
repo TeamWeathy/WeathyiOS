@@ -237,6 +237,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backScrollView" destination="YqM-i2-iUn" id="Pad-Qm-oJY"/>
                         <outlet property="finishBtn" destination="W20-Yo-UYI" id="kCa-e2-913"/>
                         <outlet property="maxWordLabel" destination="ns0-ds-di3" id="YK4-pO-NiZ"/>
                         <outlet property="photoBtn" destination="c51-UZ-WOZ" id="pgl-hG-jaE"/>

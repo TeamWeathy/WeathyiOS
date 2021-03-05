@@ -38,6 +38,7 @@ class RecordTextVC: UIViewController {
     @IBOutlet var skipBtnUnderlineView: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var backScrollView: UIScrollView!
     @IBOutlet var textTitleLabel: UILabel!
     @IBOutlet var textViewSurroundingView: UIView!
     @IBOutlet var recordTextView: UITextView!
@@ -66,10 +67,17 @@ class RecordTextVC: UIViewController {
 
         
         recordTextView.delegate = self
-        
         picker.delegate = self
+        backScrollView.delegate = self
 //        recordTextView.addTarget(self, action: #selector(textViewDidChange(sender:)),for: .editingChanged)
 //        recordTextView.add
+        
+        /// 스크롤뷰 터치해도 키보드 내려가게
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        backScrollView.addGestureRecognizer(singleTapGestureRecognizer)
 
     }
     
@@ -136,6 +144,10 @@ class RecordTextVC: UIViewController {
             print(text)
             
         }
+    }
+    
+    @objc func tapAction(sender: UITapGestureRecognizer) {
+        _ = self.textViewShouldEndEditing(recordTextView)
     }
 }
 
@@ -526,3 +538,11 @@ extension RecordTextVC: UIImagePickerControllerDelegate, UINavigationControllerD
     
 }
 
+//MARK: - UIScrollViewDelegate
+
+extension RecordTextVC: UIScrollViewDelegate {
+    /// 스크롤뷰 위를 터치해도 키보드가 내려가게
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        _ = self.textViewShouldEndEditing(recordTextView)
+    }
+}
