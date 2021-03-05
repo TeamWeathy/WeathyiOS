@@ -606,8 +606,8 @@ class MainVC: UIViewController {
         if let image = searchImage,
            let gradient = searchGradient
         {
-            mainSearchVC.backImage = image
-            mainSearchVC.gradient = gradient
+//            mainSearchVC.backImage = image
+//            mainSearchVC.gradient = gradient
         }
         
         mainSearchVC.modalPresentationStyle = .fullScreen
