@@ -90,7 +90,12 @@ class MainSearchVC: UIViewController {
         searchTableView.dataSource = self
         
         backImageView.image = UIImage(named: self.backImage)
-        gradientView.image = UIImage(named: self.gradient)
+        if isFromRecord == false {
+            gradientView.image = UIImage(named: self.gradient)
+        } else {
+            gradientView.image = UIImage(named: "recordWeatherBoxTopblur")
+        }
+        
         
         recentNonImage()
         setRecentTitle()
