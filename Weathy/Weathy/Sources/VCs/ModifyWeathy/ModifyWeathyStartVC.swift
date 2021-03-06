@@ -38,16 +38,16 @@ class ModifyWeathyStartVC: UIViewController {
     //MARK: - IBOutlets
     
     @IBOutlet var dismissBtn: UIButton!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var titleLabel: SpacedLabel!
+    @IBOutlet var subTitleLabel: SpacedLabel!
     
     @IBOutlet var boxView: UIView!
-    @IBOutlet var boxTimeLabel: UILabel!
-    @IBOutlet var boxLocationLabel: UILabel!
+    @IBOutlet var boxTimeLabel: SpacedLabel!
+    @IBOutlet var boxLocationLabel: SpacedLabel!
     @IBOutlet var boxWeatherImageView: UIImageView!
-    @IBOutlet var maxTempLabel: UILabel!
+    @IBOutlet var maxTempLabel: SpacedLabel!
     @IBOutlet var slashLabel: UILabel!
-    @IBOutlet var minTempLabel: UILabel!
+    @IBOutlet var minTempLabel: SpacedLabel!
     @IBOutlet var modifyBtn: UIButton!
     @IBOutlet var nextBtn: UIButton!
     @IBOutlet var finishBtn: UIButton!
