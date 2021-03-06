@@ -31,7 +31,7 @@
                                         </constraints>
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tRq-Sc-0Tx">
-                                        <rect key="frame" x="0.0" y="18" width="386" height="671"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="386" height="689"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchTVC" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTVC" rowHeight="173" id="BE9-HV-7eH" customClass="SearchTVC" customModule="Weathy" customModuleProvider="target">
@@ -280,7 +280,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="wpK-8B-eQb" firstAttribute="centerX" secondItem="YTn-YA-9ib" secondAttribute="centerX" id="IoX-cE-0Cn"/>
-                                    <constraint firstItem="tRq-Sc-0Tx" firstAttribute="top" secondItem="YTn-YA-9ib" secondAttribute="top" constant="18" id="J87-3G-hWS"/>
+                                    <constraint firstItem="tRq-Sc-0Tx" firstAttribute="top" secondItem="YTn-YA-9ib" secondAttribute="top" id="J87-3G-hWS"/>
                                     <constraint firstItem="wpK-8B-eQb" firstAttribute="top" secondItem="YTn-YA-9ib" secondAttribute="top" constant="85" id="bgH-zQ-FiF"/>
                                     <constraint firstAttribute="bottom" secondItem="tRq-Sc-0Tx" secondAttribute="bottom" id="uNg-0w-Wl0"/>
                                     <constraint firstAttribute="trailing" secondItem="tRq-Sc-0Tx" secondAttribute="trailing" constant="28" id="wNx-f6-z3A"/>
@@ -288,7 +288,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_box_topblur_morning" translatesAutoresizingMaskIntoConstraints="NO" id="Q7R-V9-Gp1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="272"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="236"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHN-Up-VfQ">
                                 <rect key="frame" x="33" y="58" width="20" height="20"/>
@@ -662,7 +662,7 @@
                             <constraint firstItem="s5z-ci-BAd" firstAttribute="top" secondItem="PON-iT-C0A" secondAttribute="top" id="73A-mh-nIx"/>
                             <constraint firstItem="YTn-YA-9ib" firstAttribute="leading" secondItem="qok-ah-D0h" secondAttribute="leading" id="Ax9-pz-Oa8"/>
                             <constraint firstItem="96n-5m-CYG" firstAttribute="top" secondItem="4mc-HV-U2B" secondAttribute="bottom" constant="11" id="EC3-PD-oP3"/>
-                            <constraint firstItem="tRq-Sc-0Tx" firstAttribute="top" secondItem="Q7R-V9-Gp1" secondAttribute="bottom" constant="-81" id="JVH-m9-NfR"/>
+                            <constraint firstItem="tRq-Sc-0Tx" firstAttribute="top" secondItem="Q7R-V9-Gp1" secondAttribute="bottom" constant="-63" id="JVH-m9-NfR"/>
                             <constraint firstItem="4mc-HV-U2B" firstAttribute="leading" secondItem="qok-ah-D0h" secondAttribute="leading" constant="19" id="KaE-Kn-PpH"/>
                             <constraint firstItem="96n-5m-CYG" firstAttribute="width" secondItem="PON-iT-C0A" secondAttribute="width" multiplier="309:375" id="Kmu-gl-QW2"/>
                             <constraint firstAttribute="bottom" secondItem="lqw-Fi-ksD" secondAttribute="bottom" id="Nij-Yv-Q4K"/>
@@ -686,6 +686,11 @@
                             <constraint firstItem="qok-ah-D0h" firstAttribute="trailing" secondItem="YTn-YA-9ib" secondAttribute="trailing" id="vZ7-9g-Max"/>
                             <constraint firstItem="qok-ah-D0h" firstAttribute="bottom" secondItem="tB8-eo-ezL" secondAttribute="bottom" id="yrF-34-vtc"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="tB8-eo-ezL"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="RecentLabelUnderlineView" destination="oLC-d9-0Rc" id="cHe-0A-yI3"/>
