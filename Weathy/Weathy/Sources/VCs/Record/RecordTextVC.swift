@@ -36,15 +36,15 @@ class RecordTextVC: UIViewController {
     
     @IBOutlet var skipBtn: UIButton!
     @IBOutlet var skipBtnUnderlineView: UIView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var titleLabel: SpacedLabel!
+    @IBOutlet var subTitleLabel: SpacedLabel!
     @IBOutlet var backScrollView: UIScrollView!
-    @IBOutlet var textTitleLabel: UILabel!
+    @IBOutlet var textTitleLabel: SpacedLabel!
     @IBOutlet var textViewSurroundingView: UIView!
     @IBOutlet var recordTextView: UITextView!
     @IBOutlet var wordCountLabel: UILabel!
     @IBOutlet var maxWordLabel: SpacedLabel!
-    @IBOutlet var photoTitleLabel: UILabel!
+    @IBOutlet var photoTitleLabel: SpacedLabel!
     @IBOutlet var photoView: UIView!
     @IBOutlet var photoBtn: UIButton!
     @IBOutlet var photoImageView: UIImageView!

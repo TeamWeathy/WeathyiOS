@@ -32,8 +32,8 @@ class RecordTagDeleteVC: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet var blurView: UIImageView!
     
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var titleLabel: SpacedLabel!
+    @IBOutlet var explanationLabel: SpacedLabel!
     
     @IBOutlet var tagTitleCollectionView: UICollectionView!
     @IBOutlet var tagCollectionView: UICollectionView!
