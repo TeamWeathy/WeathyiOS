@@ -36,6 +36,8 @@ class MainSearchVC: UIViewController {
     
     var locationCodes: [Int] = [1100000000]
     
+    var scrollBeginYOffset: CGFloat = 0
+    
     //MARK: - IBOutlets
     
     // 날씨에 따른 뒤 배경
@@ -314,6 +316,19 @@ extension MainSearchVC {
             }
         }
     }
+    
+    func checkScrollDirectionUp() -> Bool{
+        
+        if scrollBeginYOffset == 0 {
+            return false
+        }
+        
+        if scrollBeginYOffset <= searchTableView.contentOffset.y {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
 //MARK: - UITableView Datasource
@@ -479,7 +494,8 @@ extension MainSearchVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if tableView == searchTableView {
+        /// 스크롤 다시 위로 올라올 때는 애니메이션 제거
+        if tableView == searchTableView && !checkScrollDirectionUp() {
             cell.transform = CGAffineTransform(translationX: 0, y: 74 * 1.4)
             cell.alpha = 0
             UIView.animate(
@@ -491,6 +507,11 @@ extension MainSearchVC: UITableViewDelegate {
                     cell.alpha = 1 } )
         }
     }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollBeginYOffset = scrollView.contentOffset.y
+    }
+    
 }
 
 //MARK: - UITextField Delegate
