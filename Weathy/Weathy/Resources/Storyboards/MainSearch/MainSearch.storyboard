@@ -686,11 +686,6 @@
                             <constraint firstItem="qok-ah-D0h" firstAttribute="trailing" secondItem="YTn-YA-9ib" secondAttribute="trailing" id="vZ7-9g-Max"/>
                             <constraint firstItem="qok-ah-D0h" firstAttribute="bottom" secondItem="tB8-eo-ezL" secondAttribute="bottom" id="yrF-34-vtc"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="tB8-eo-ezL"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="RecentLabelUnderlineView" destination="oLC-d9-0Rc" id="cHe-0A-yI3"/>
