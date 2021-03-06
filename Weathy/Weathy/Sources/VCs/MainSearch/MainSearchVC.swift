@@ -477,11 +477,6 @@ extension MainSearchVC: UITableViewDelegate {
             self.recentNonImage()
         }
     }
-}
-
-//MARK: - UITextField Delegate
-
-extension MainSearchVC: UITextFieldDelegate{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if tableView == searchTableView {
@@ -496,6 +491,11 @@ extension MainSearchVC: UITextFieldDelegate{
                     cell.alpha = 1 } )
         }
     }
+}
+
+//MARK: - UITextField Delegate
+
+extension MainSearchVC: UITextFieldDelegate{
     
     func textFieldDidBeginEditing(_ textField: UITextField){
         /// textfield 눌렀을 때 최신 검색 view 숨기기
