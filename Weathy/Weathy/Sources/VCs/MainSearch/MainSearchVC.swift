@@ -89,6 +89,8 @@ class MainSearchVC: UIViewController {
         searchTableView.delegate = self
         searchTableView.dataSource = self
         
+        searchTableView.contentInset = UIEdgeInsets(top: 18, left: 0, bottom: 0, right: 0)
+        
         backImageView.image = UIImage(named: self.backImage)
         if isFromRecord == false {
             gradientView.image = UIImage(named: self.gradient)
