@@ -143,6 +143,8 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
         return true
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("didSelectItemAt",indexPath)
+        print("lastSelectedIdx",lastSelectedIdx)
         if lastSelectedIdx != indexPath.item{
             ///전에 선택된 셀 선택 해제
             if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? MonthlyCalendarCVC{
