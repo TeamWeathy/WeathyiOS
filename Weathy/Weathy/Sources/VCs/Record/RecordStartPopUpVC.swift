@@ -62,11 +62,11 @@ extension RecordStartPopUpVC {
         continueBtn.titleLabel?.font = .SDGothicMedium16
         continueBtn.titleLabel?.lineSetting(kernValue: -0.8)
         
-        quitBtn.makeRounded(cornerRadius: 25)
         quitBtn.setTitle("나가기", for: .normal)
         quitBtn.setTitleColor(.white, for: .normal)
         quitBtn.backgroundColor = .mintMain
         quitBtn.titleLabel?.font = .SDGothicSemiBold16
         quitBtn.titleLabel?.lineSetting(kernValue: -0.8)
+        quitBtn.layer.cornerRadius = quitBtn.frame.height / 2
     }
 }

@@ -56,8 +56,9 @@ class RecordTagDeleteVC: UIViewController {
         
         setHeader()
         setTitleLabel()
-        setCancelBtn()
         initialBtn()
+        setCancelBtn()
+        
         
         
         // Do any additional setup after loading the view.
