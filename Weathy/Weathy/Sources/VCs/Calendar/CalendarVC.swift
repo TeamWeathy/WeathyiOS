@@ -64,7 +64,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         setMonthList()
         setWeekList()
         initSize()
-        initDate()
+        setYearMonth()
         initPicker()
         initCollectionView()
         initCollectionViewOffset()
@@ -76,7 +76,11 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        setMonthList()
+        setWeekList()
+        findWeeklyIndexFromSelectedDate()
+        infiniteWeeklyCV.reloadData()
+        infiniteMonthlyCV.reloadData()
         self.infiniteMonthlyCV.alpha = 0
         self.infiniteWeeklyCV.alpha = 1
         weeklyCellDidSelected()
@@ -88,7 +92,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     //MARK: - Custom Methods
-    func findIndexFromSelectedDate() -> Int{
+    func findWeeklyIndexFromSelectedDate() -> Int{
         var firstComponent = DateComponents()
         firstComponent.day = -selectedDate.weekday
         let firstDateOfWeek = Calendar.current.date(byAdding: firstComponent, to: selectedDate)
@@ -316,7 +320,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //        })
     //    }
     
-    func initDate(){
+    func setYearMonth(){
         yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
         //        nextWeekDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)
         //        lastWeekDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)
@@ -345,7 +349,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     func closeDrawer(){
-        let weeklyIndex = findIndexFromSelectedDate()
+        let weeklyIndex = findWeeklyIndexFromSelectedDate()
         currentIndex = weeklyIndex
         self.infiniteWeeklyCV.setContentOffset(CGPoint(x: self.infiniteWeeklyCV.frame.width*CGFloat(weeklyIndex), y: 0), animated: false)
         
@@ -427,7 +431,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         selectedDate = picker.date
         yearMonthTextView.text = dateString
         selectedDateDidChange()
-        currentIndex = findIndexFromSelectedDate()
+        currentIndex = findWeeklyIndexFromSelectedDate()
         setWeekdayColor()
         closeDrawer()
         
