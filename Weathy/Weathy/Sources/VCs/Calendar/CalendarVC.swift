@@ -79,7 +79,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         print("viewWillAppear")
         self.infiniteMonthlyCV.alpha = 0
         self.infiniteWeeklyCV.alpha = 1
-        updateCalendarDataSource()
     }
     override func viewDidAppear(_ animated: Bool) {
         closeDrawer()
@@ -88,36 +87,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     //MARK: - Custom Methods
     
-    func updateCalendarDataSource(){
-        setMonthList()
-        setWeekList()
-        let weekIdx = findWeeklyIndexFromSelectedDate()
-        let monthIdx = findMonthlyIndexFromSelectedDate()
-        
-        ///monthly
-        if isCovered{
-            currentIndex = monthIdx
-            
-            CATransaction.begin()
-            CATransaction.setDisableActions(true)
-            openDrawer()
-            CATransaction.commit()
-            
-            monthlyCellDidSelected()
-        }
-        ///weekly
-        else{
-            currentIndex = weekIdx
-            
-            CATransaction.begin()
-            CATransaction.setDisableActions(true)
-            closeDrawer()
-            CATransaction.commit()
-            
-            weeklyCellDidSelected()
-        }
-        
-    }
     func findWeeklyIndexFromSelectedDate() -> Int{
         var firstComponent = DateComponents()
         firstComponent.day = -selectedDate.weekday
@@ -320,8 +289,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         //        lastlastMonthDate = yearMonthDateFormatter.date(from:lastMonthDate.lastYearMonth)!
         
     }
-    
+    //FIXME: - cellForItem이 nil 리턴
     func weeklyCellDidSelected(){
+        print("current", currentIndex)
         if let infiniteCell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
 //            infiniteCell.standardDate = infiniteWeekList[currentIndex]
             infiniteCell.selectedDate = selectedDate
@@ -366,23 +336,24 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     func openDrawer(){
+        setMonthList()
         currentIndex = findMonthlyIndexFromSelectedDate()
-        monthlyCellDidSelected()
+        
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: monthlyHeight)
         infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
                                                 self.infiniteMonthlyCV.contentOffset.x = self.infiniteMonthlyCV.frame.width*CGFloat(self.currentIndex)
             
         })
+//        infiniteMonthlyCV.layoutIfNeeded()
         ///spring effect
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         },
         completion: nil)
-        UIView.animate(withDuration: 0.3){
+        UIView.animate(withDuration: 0.3, animations:{
             self.infiniteMonthlyCV.alpha = 1
             self.infiniteWeeklyCV.alpha = 0
-        }
-        
+        }, completion: {_ in self.monthlyCellDidSelected()})
         self.isCovered = true
         
     }
@@ -397,6 +368,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
                                                 self.infiniteWeeklyCV.contentOffset.x = self.infiniteWeeklyCV.frame.width*CGFloat(self.currentIndex)
             
         })
+//        infiniteWeeklyCV.layoutIfNeeded()
         
         ///spring effect
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
@@ -493,7 +465,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //MARK: - IBActions
     
     @IBAction func todayButtonDidTap(_ sender: Any) {
-        updateCalendarDataSource()
         selectedDate = Date()
         yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
         selectedDateDidChange()
