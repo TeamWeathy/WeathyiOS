@@ -58,7 +58,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("111",CGFloat(Int(infiniteWeeklyCV.frame.width/7)*7),calendarWidth,infiniteWeeklyCV.frame.width)
         setDateFormatter()
         setDateComponent()
         setMonthList()
@@ -76,7 +75,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
         self.infiniteMonthlyCV.alpha = 0
         self.infiniteWeeklyCV.alpha = 1
     }
@@ -291,7 +289,6 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     //FIXME: - cellForItem이 nil 리턴
     func weeklyCellDidSelected(){
-        print("current", currentIndex)
         if let infiniteCell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
 //            infiniteCell.standardDate = infiniteWeekList[currentIndex]
             infiniteCell.selectedDate = selectedDate
@@ -506,7 +503,6 @@ extension CalendarVC: UICollectionViewDelegateFlowLayout{
     
     ///캘린더를 왼쪽 or 오른쪽으로 스와이프 할 때
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("scrollViewDidEndDecelerating")
         let x = scrollView.contentOffset.x
         currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
         
