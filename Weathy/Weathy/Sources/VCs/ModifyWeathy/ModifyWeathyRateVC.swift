@@ -35,8 +35,8 @@ class ModifyWeathyRateVC: UIViewController {
     
     //MARK: - IBOutlets
     @IBOutlet var backBtn: UIButton!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var titleLabel: SpacedLabel!
+    @IBOutlet var explanationLabel: SpacedLabel!
     @IBOutlet var rateCollectionView: UICollectionView!
     @IBOutlet var nextBtn: UIButton!
     @IBOutlet var finishBtn: UIButton!

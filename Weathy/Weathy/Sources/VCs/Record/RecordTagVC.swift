@@ -58,8 +58,8 @@ class RecordTagVC: UIViewController {
     @IBOutlet var blurView: UIImageView!
     
     @IBOutlet var backBtn: UIButton!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var titleLabel: SpacedLabel!
+    @IBOutlet var explanationLabel: SpacedLabel!
     @IBOutlet var deleteTextIconImageView: UIImageView!
     @IBOutlet var indicatorCircle: [UIView]!
     

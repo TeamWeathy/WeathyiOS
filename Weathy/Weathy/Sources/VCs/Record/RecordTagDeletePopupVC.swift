@@ -19,8 +19,8 @@ class RecordTagDeletePopupVC: UIViewController {
     //MARK: - @IBOutlets
     
     @IBOutlet var popupView: UIView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var titleLabel: SpacedLabel!
+    @IBOutlet var subTitleLabel: SpacedLabel!
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var deleteBtn: UIButton!
     

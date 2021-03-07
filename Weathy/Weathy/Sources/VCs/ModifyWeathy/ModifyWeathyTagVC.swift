@@ -46,8 +46,8 @@ class ModifyWeathyTagVC: UIViewController {
     @IBOutlet var blurView: UIImageView!
     
     @IBOutlet var backBtn: UIButton!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var titleLabel: SpacedLabel!
+    @IBOutlet var explanationLabel: SpacedLabel!
     
     @IBOutlet var tagTitleCollectionView: UICollectionView!
     @IBOutlet var tagCollectionView: UICollectionView!

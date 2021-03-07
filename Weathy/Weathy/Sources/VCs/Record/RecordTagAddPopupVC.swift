@@ -24,8 +24,8 @@ class RecordTagAddPopupVC: UIViewController {
     //MARK: - @IBOutlets
     
     @IBOutlet var popupView: UIView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var titleLabel: SpacedLabel!
+    @IBOutlet var subTitleLabel: SpacedLabel!
     @IBOutlet var textFieldView: UIView!
     @IBOutlet var tagNameTextField: UITextField!
     @IBOutlet var wordCountLabel: UILabel!
@@ -123,11 +123,13 @@ extension RecordTagAddPopupVC {
         tagNameTextField.placeholder = "예 : 폴로반팔티, 기모레깅스 등"
         
         closeBtn.setBorder(borderColor: .subGrey2, borderWidth: 1)
-        closeBtn.makeRounded(cornerRadius: 25)
         closeBtn.setTitle("닫기", for: .normal)
         closeBtn.setTitleColor(UIColor.subGrey6, for: .normal)
         closeBtn.titleLabel?.font = .SDGothicMedium16
         closeBtn.titleLabel?.lineSetting(kernValue: -0.8)
+        
+        self.view.layoutIfNeeded()
+        closeBtn.layer.cornerRadius = closeBtn.frame.height / 2
         
     }
     
@@ -138,12 +140,12 @@ extension RecordTagAddPopupVC {
         wordCountLabel.text = "\(wordCount)"
         
         addBtn.isUserInteractionEnabled = true
-        addBtn.makeRounded(cornerRadius: 25)
         addBtn.setTitle("추가하기", for: .normal)
         addBtn.setTitleColor(.white, for: .normal)
         addBtn.backgroundColor = .mintMain
         addBtn.titleLabel?.font = .SDGothicSemiBold16
         addBtn.titleLabel?.lineSetting(kernValue: -0.8)
+        addBtn.layer.cornerRadius = addBtn.frame.height / 2
         
     }
     
@@ -157,12 +159,12 @@ extension RecordTagAddPopupVC {
         wordCountLabel.font = .SDGothicRegular13
         
         addBtn.isUserInteractionEnabled = false
-        addBtn.makeRounded(cornerRadius: 25)
         addBtn.setTitle("추가하기", for: .normal)
         addBtn.setTitleColor(.white, for: .normal)
         addBtn.backgroundColor = .subGrey3
         addBtn.titleLabel?.font = .SDGothicSemiBold16
         addBtn.titleLabel?.lineSetting(kernValue: -0.8)
+        addBtn.layer.cornerRadius = addBtn.frame.height / 2
     }
     
     func callAddTagService() {

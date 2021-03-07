@@ -36,15 +36,15 @@ class RecordTextVC: UIViewController {
     
     @IBOutlet var skipBtn: UIButton!
     @IBOutlet var skipBtnUnderlineView: UIView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var titleLabel: SpacedLabel!
+    @IBOutlet var subTitleLabel: SpacedLabel!
     @IBOutlet var backScrollView: UIScrollView!
-    @IBOutlet var textTitleLabel: UILabel!
+    @IBOutlet var textTitleLabel: SpacedLabel!
     @IBOutlet var textViewSurroundingView: UIView!
     @IBOutlet var recordTextView: UITextView!
     @IBOutlet var wordCountLabel: UILabel!
     @IBOutlet var maxWordLabel: SpacedLabel!
-    @IBOutlet var photoTitleLabel: UILabel!
+    @IBOutlet var photoTitleLabel: SpacedLabel!
     @IBOutlet var photoView: UIView!
     @IBOutlet var photoBtn: UIButton!
     @IBOutlet var photoImageView: UIImageView!
@@ -367,13 +367,72 @@ extension RecordTextVC {
     }
     
     func openLibrary() {
-        print("library selected")
-        
-        picker.sourceType = .photoLibrary
-        picker.allowsEditing = true
-        
-        picker.modalPresentationStyle = .fullScreen
-        present(picker, animated: true, completion: nil)
+        /// 사진 접근 권한이 허용되었는지 검사
+        switch PHPhotoLibrary.authorizationStatus() {
+        /// 권한이 거부된 경우
+        case .denied:
+            print("denied")
+            /// 설정창에서 권한을 재설정 하게끔 유도한다
+            if let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String {
+                let alert = UIAlertController(title: "설정", message: "\(appName)의 사진 접근 권한이\n허용되어 있지 않습니다.\n설정에서 변경 가능합니다.", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "취소", style: .default) { (action) in
+
+                }
+                let confirmAction = UIAlertAction(title: "설정", style: .default) { (action) in
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                }
+
+                alert.addAction(cancelAction)
+                alert.addAction(confirmAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+        /// restricted
+        case .restricted:
+            print("restricted")
+            break
+        /// 권한이 허용된 경우
+        case .authorized:
+            print("authorized")
+            picker.sourceType = .photoLibrary
+            picker.allowsEditing = true
+            
+            picker.modalPresentationStyle = .fullScreen
+            present(picker, animated: true, completion: nil)
+        /// 권한 허용을 묻기 전인 경우 (최초 1회)
+        case .notDetermined:
+            print("notDetermined")
+            PHPhotoLibrary.requestAuthorization({ state in
+                if state == .authorized {
+                    DispatchQueue.main.async {
+                        self.picker.sourceType = .photoLibrary
+                        self.picker.allowsEditing = true
+                        
+                        self.picker.modalPresentationStyle = .fullScreen
+                        self.present(self.picker, animated: true, completion: nil)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        if let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String {
+                            let alert = UIAlertController(title: "설정", message: "\(appName)의 사진 접근 권한이\n허용되어 있지 않습니다.\n설정에서 변경 가능합니다.", preferredStyle: .alert)
+                            let cancelAction = UIAlertAction(title: "취소", style: .default) { (action) in
+
+                            }
+                            let confirmAction = UIAlertAction(title: "설정", style: .default) { (action) in
+                                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                            }
+
+                            alert.addAction(cancelAction)
+                            alert.addAction(confirmAction)
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+//                        self.dismiss(animated: true, completion: nil)
+                }
+            })
+        default:
+            print("break")
+            break
+        }
         
     }
     
@@ -383,7 +442,7 @@ extension RecordTextVC {
         if(UIImagePickerController .isSourceTypeAvailable(.camera)){
             
             /// 카메라 접근 권한이 허용되었는지 검사
-            switch PHPhotoLibrary.authorizationStatus() {
+            switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
             /// 권한이 거부된 경우
             case .denied:
                 print("denied")
@@ -410,18 +469,35 @@ extension RecordTextVC {
                 print("authorized")
                 picker.sourceType = .camera
                 picker.allowsEditing = true
+                
                 self.present(picker, animated: true, completion: nil)
             /// 권한 허용을 묻기 전인 경우 (최초 1회)
             case .notDetermined:
                 print("notDetermined")
-                PHPhotoLibrary.requestAuthorization({ state in
-                    if state == .authorized {
+                AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { state in
+                    if state == true { /// granted
                         DispatchQueue.main.async {
                             self.picker.sourceType = .camera
                             self.picker.allowsEditing = true
                             self.present(self.picker, animated: true, completion: nil)
                         }
-                    } else {
+                    } else { /// denied
+                        DispatchQueue.main.async {
+                            if let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String {
+                                let alert = UIAlertController(title: "설정", message: "\(appName)의 카메라 접근 권한이\n허용되어 있지 않습니다.\n설정에서 변경 가능합니다.", preferredStyle: .alert)
+                                let cancelAction = UIAlertAction(title: "취소", style: .default) { (action) in
+
+                                }
+                                let confirmAction = UIAlertAction(title: "설정", style: .default) { (action) in
+                                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                                }
+
+                                alert.addAction(cancelAction)
+                                alert.addAction(confirmAction)
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                        }
+                        
 //                        self.dismiss(animated: true, completion: nil)
                     }
                 })
