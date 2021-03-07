@@ -28,17 +28,17 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     var monthCellDelegate: MonthCellDelegate?
     var lastSelectedIdx = Date().firstWeekday - 1 + Date().day
     var monthlyWeathyList: [CalendarOverview?] = []
-        
+    
     //MARK: - IBOutlets
     
     @IBOutlet weak var monthlyCalendarCV: UICollectionView!
-
+    
     override func awakeFromNib(){
         super.awakeFromNib()
         monthlyCalendarCV.delegate = self
         monthlyCalendarCV.dataSource = self
         
-                
+        
     }
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -46,7 +46,7 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
         selectedDateDidChange(selectedDate)
         monthlyWeathyList = []
         callMonthlyWeathy()
-
+        
     }
     
     //MARK: - Network
@@ -148,16 +148,15 @@ extension InfiniteMonthlyCVC: UICollectionViewDelegateFlowLayout{
             if let cell = collectionView.cellForItem(at: [0,lastSelectedIdx]) as? MonthlyCalendarCVC{
                 cell.isSelected = false
             }
-            if let cell = collectionView.cellForItem(at: indexPath) as? MonthlyCalendarCVC{
-                var selectedComponent = DateComponents()
-                
-                selectedComponent.day = indexPath.item - (selectedDate.firstWeekday - 1 + selectedDate.day)
-                let newSelectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
-                selectedDate = newSelectedDate
-                monthCellDelegate?.selectedMonthDateDidChange(selectedDate)
-                lastSelectedIdx = indexPath.item
-            }
+            var selectedComponent = DateComponents()
+            
+            selectedComponent.day = indexPath.item - (selectedDate.firstWeekday - 1 + selectedDate.day)
+            let newSelectedDate = Calendar.current.date(byAdding: selectedComponent, to: selectedDate)!
+            selectedDate = newSelectedDate
+            
+            lastSelectedIdx = indexPath.item
         }
+        monthCellDelegate?.selectedMonthDateDidChange(selectedDate)
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

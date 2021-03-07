@@ -58,13 +58,12 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("111",CGFloat(Int(infiniteWeeklyCV.frame.width/7)*7),calendarWidth,infiniteWeeklyCV.frame.width)
         setDateFormatter()
         setDateComponent()
         setMonthList()
         setWeekList()
         initSize()
-        initDate()
+        setYearMonth()
         initPicker()
         initCollectionView()
         initCollectionViewOffset()
@@ -76,11 +75,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
         self.infiniteMonthlyCV.alpha = 0
         self.infiniteWeeklyCV.alpha = 1
-        weeklyCellDidSelected()
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         closeDrawer()
@@ -88,7 +84,8 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     //MARK: - Custom Methods
-    func findIndexFromSelectedDate() -> Int{
+    
+    func findWeeklyIndexFromSelectedDate() -> Int{
         var firstComponent = DateComponents()
         firstComponent.day = -selectedDate.weekday
         let firstDateOfWeek = Calendar.current.date(byAdding: firstComponent, to: selectedDate)
@@ -101,6 +98,18 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             }
         }
         return -1
+    }
+    func findMonthlyIndexFromSelectedDate() -> Int{
+        if let monthIdx = self.infiniteMonthList.lastIndex(of: self.yearMonthDateFormatter.date(from: self.selectedDate.currentYearMonth)!){
+            return monthIdx
+        }
+        return -1
+    }
+    
+    func setPickerConstraint(){
+        picker.date = selectedDate
+        picker.maximumDate = Date()
+        picker.minimumDate = infiniteWeekList[0]
     }
     func initSize(){
         if !hasNotch{
@@ -209,11 +218,9 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         picker.backgroundColor = .white
         
         ///피커뷰를 열었을때 선택된 날짜가 나오도록
-        picker.date = selectedDate
+        setPickerConstraint()
         picker.subviews[0].subviews[1].backgroundColor = UIColor(
             red: 0.506, green: 0.886, blue: 0.824, alpha: 0.15)
-        picker.maximumDate = Date()
-        picker.minimumDate = infiniteWeekList[0]
         
         let shadowView = UIView()
         shadowView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
@@ -268,7 +275,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //MARK: - Custom Methods - Calendar
     
     func selectedDateDidChange(){
-        picker.date = selectedDate
+        setPickerConstraint()
         lastWeekIdx = selectedDate.weekday
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: "ChangeDate"),object: selectedDate)
@@ -280,7 +287,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         //        lastlastMonthDate = yearMonthDateFormatter.date(from:lastMonthDate.lastYearMonth)!
         
     }
-    
+    //FIXME: - cellForItem이 nil 리턴
     func weeklyCellDidSelected(){
         if let infiniteCell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
 //            infiniteCell.standardDate = infiniteWeekList[currentIndex]
@@ -301,7 +308,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
             cell.selectedDateDidChange(selectedDate)
             cell.callMonthlyWeathy()
             cell.monthlyCalendarCV.reloadData()
-            cell.lastSelectedIdx = selectedDate.weekday
+            cell.lastSelectedIdx = selectedDate.day + selectedDate.firstWeekday - 1
         }
     }
     
@@ -316,7 +323,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //        })
     //    }
     
-    func initDate(){
+    func setYearMonth(){
         yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
         //        nextWeekDate = Calendar.current.date(byAdding: nextWeekComponent, to: selectedDate)
         //        lastWeekDate = Calendar.current.date(byAdding: lastWeekComponent, to: selectedDate)
@@ -326,30 +333,39 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     func openDrawer(){
-        currentIndex = self.infiniteMonthList.lastIndex(of: self.yearMonthDateFormatter.date(from: self.selectedDate.currentYearMonth)!)!
-        monthlyCellDidSelected()
+        setMonthList()
+        currentIndex = findMonthlyIndexFromSelectedDate()
+        
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: monthlyHeight)
         infiniteMonthlyCV.performBatchUpdates({self.infiniteMonthlyCV.reloadData()}, completion: {_ in
-                                                self.infiniteMonthlyCV.contentOffset.x = self.infiniteMonthlyCV.frame.width*CGFloat(self.currentIndex)})
+                                                self.infiniteMonthlyCV.contentOffset.x = self.infiniteMonthlyCV.frame.width*CGFloat(self.currentIndex)
+            
+        })
+//        infiniteMonthlyCV.layoutIfNeeded()
+        ///spring effect
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         },
         completion: nil)
-        UIView.animate(withDuration: 0.3){
+        UIView.animate(withDuration: 0.3, animations:{
             self.infiniteMonthlyCV.alpha = 1
             self.infiniteWeeklyCV.alpha = 0
-        }
-        
+        }, completion: {_ in self.monthlyCellDidSelected()})
         self.isCovered = true
         
     }
     
     func closeDrawer(){
-        let weeklyIndex = findIndexFromSelectedDate()
+        let weeklyIndex = findWeeklyIndexFromSelectedDate()
         currentIndex = weeklyIndex
         self.infiniteWeeklyCV.setContentOffset(CGPoint(x: self.infiniteWeeklyCV.frame.width*CGFloat(weeklyIndex), y: 0), animated: false)
         
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: weeklyHeight)
+        infiniteWeeklyCV.performBatchUpdates({infiniteWeeklyCV.reloadData()}, completion: { _ in
+                                                self.infiniteWeeklyCV.contentOffset.x = self.infiniteWeeklyCV.frame.width*CGFloat(self.currentIndex)
+            
+        })
+//        infiniteWeeklyCV.layoutIfNeeded()
         
         ///spring effect
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
@@ -427,7 +443,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
         selectedDate = picker.date
         yearMonthTextView.text = dateString
         selectedDateDidChange()
-        currentIndex = findIndexFromSelectedDate()
+        currentIndex = findWeeklyIndexFromSelectedDate()
         setWeekdayColor()
         closeDrawer()
         

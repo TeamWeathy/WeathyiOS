@@ -126,6 +126,7 @@ class TabbarVC: UIViewController {
         scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: false)
         guard let calendarDetailVC = self.children[1] as? CalendarDetailVC else{ return }
         calendarDetailVC.viewWillAppear(true)
+        calendarDetailVC.calendarVC.viewWillAppear(false)
     }
 }
 
