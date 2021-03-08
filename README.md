@@ -5,27 +5,20 @@
 <br>
 
 ![image](https://user-images.githubusercontent.com/42545818/104703718-073cd600-575b-11eb-881d-41af708a10a8.png)
+<br><br>
 
-<br>
-
-<br>
-
-## ☁️ Workflow
+### ☁️ Workflow
 
 [웨디 워크플로우로 이동](./Docs/weathy_workflow.png)
-
-<br>
 <br>
 
-
-  ## 🛠 Development Environment
+### 🛠 Development Environment
 
 - iOS 13.0+
 
 - Xcode 12.3
+<br><br>
 
-  
-  <br> <br>
 ### Library
 
 | 라이브러리(Library) | 목적(Purpose) | 버전(Version) |
@@ -33,17 +26,15 @@
 | Alamofire | 서버 통신 | 5.2.2|
 | Kingfisher | 이미지 캐싱 및 다운로드 | 5.0|
 | Lottie-ios | 애니메이션 처리 |  |
+<br><br>
 
-  <br> <br>
-
-## 📝 Coding Convention
+### 📝 Coding Convention
 
   
 
  [👉웨디 코딩컨벤션으로 이동](./Docs/CodingConvention.md)
-
-  
-
+ <br><br>
+ 
 ### 🗂 Folder Structure
 
   
@@ -86,12 +77,7 @@
 
 ```
 
-  
-
-
-<br>
-
-
+<br><br>
 
 ## 🌤 웨디 Developers
 
