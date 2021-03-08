@@ -75,8 +75,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.infiniteMonthlyCV.alpha = 0
-        self.infiniteWeeklyCV.alpha = 1
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         closeDrawer()
@@ -290,10 +289,11 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     //FIXME: - cellForItem이 nil 리턴
     func weeklyCellDidSelected(){
         if let infiniteCell = infiniteWeeklyCV.cellForItem(at: [0,currentIndex]) as? InfiniteWeeklyCVC{
-//            infiniteCell.standardDate = infiniteWeekList[currentIndex]
+            infiniteCell.standardDate = infiniteWeekList[currentIndex]
             infiniteCell.selectedDate = selectedDate
             infiniteCell.callWeeklyWeathy()
             infiniteCell.weeklyCalendarCV.reloadData()
+//            infiniteCell.weeklyCalendarCV.layoutIfNeeded()
             infiniteCell.lastSelectedIdx = currentIndex
             infiniteCell.isSelected = true
 //            infiniteCell.weeklyCalendarCV.selectItem(at: [0,selectedDate.weekday], animated: false, scrollPosition: .bottom)
@@ -356,6 +356,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     }
     
     func closeDrawer(){
+        setWeekList()
         let weeklyIndex = findWeeklyIndexFromSelectedDate()
         currentIndex = weeklyIndex
         self.infiniteWeeklyCV.setContentOffset(CGPoint(x: self.infiniteWeeklyCV.frame.width*CGFloat(weeklyIndex), y: 0), animated: false)
@@ -463,6 +464,7 @@ class CalendarVC: UIViewController,WeekCellDelegate,MonthCellDelegate{
     
     @IBAction func todayButtonDidTap(_ sender: Any) {
         selectedDate = Date()
+        setWeekList()
         yearMonthTextView.text = yearMonthDateFormatter.string(from: selectedDate)
         selectedDateDidChange()
         closeDrawer()
