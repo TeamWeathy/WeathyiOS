@@ -10,7 +10,7 @@
 ### ☁️ Workflow
 
 [웨디 워크플로우로 이동](./Docs/weathy_workflow.png)
-<br>
+<br><br>
 
 ### 🛠 Development Environment
 
@@ -25,14 +25,15 @@
 |:---|:----------|----|
 | Alamofire | 서버 통신 | 5.2.2|
 | Kingfisher | 이미지 캐싱 및 다운로드 | 5.0|
-| Lottie-ios | 애니메이션 처리 |  |
+| Lottie-ios | 애니메이션 처리 |  
+
 <br><br>
 
 ### 📝 Coding Convention
 
   
 
- [👉웨디 코딩컨벤션으로 이동](./Docs/CodingConvention.md)
+ [웨디 코딩컨벤션으로 이동](./Docs/CodingConvention.md)
  <br><br>
  
 ### 🗂 Folder Structure
