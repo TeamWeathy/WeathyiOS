@@ -278,17 +278,20 @@ class MainVC: UIViewController {
         mainBackgroundImage.image = UIImage(named: ClimateImage.getClimateMainBgName(iconId))
         topBlurView.image = UIImage(named: ClimateImage.getClimateMainBlurBarName(iconId))
 
-        searchImage = ClimateImage.getSearchClimateMainBgName(iconId)
-        searchGradient = ClimateImage.getSearchClimateMainBlurBarName(iconId)
+        searchImage = ClimateImage.getClimateSearchBgName(iconId)
+        searchGradient = ClimateImage.getClimateSearchBlurBarName(iconId)
         
         removeFlakeEmitterCell()
-        if iconId % 100 == 13 {
-            fallingSnow()
-        } else if iconId % 100 == 10 {
+        switch iconId % 100 {
+        case 9, 10, 11:
             fallingRain()
+        case 13:
+            fallingSnow()
+        default:
+            break
         }
         
-        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(data.overviewWeather.hourlyWeather.climate.iconId))
+        hourlyClimateImage.image = UIImage(named: ClimateImage.getClimateMainIllust(iconId))
 
         // navigation bar
         todayDateTimeLabel.font = UIFont.SDGothicRegular15
@@ -320,7 +323,7 @@ class MainVC: UIViewController {
             weathyDateLabel.text = "\(year)년 \(month)월 \(day)일"
         }
         
-        weathyClimateImage.image = UIImage(named: ClimateImage.getClimateAssetName(data.weathy.hourlyWeather.climate.iconId))
+        weathyClimateImage.image = UIImage(named: ClimateImage.getClimateIconName(data.weathy.hourlyWeather.climate.iconId))
         if let climateDesc = data.weathy.hourlyWeather.climate.description {
             weathyClimateLabel.text = "\(climateDesc)"
         }

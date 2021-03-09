@@ -55,7 +55,7 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     }
     func setClimate(_ climateId: Int){
         climateIconImageView.alpha = 1
-        climateIconImageView.image = UIImage(named: ClimateImage.getClimateAssetName(climateId))
+        climateIconImageView.image = UIImage(named: ClimateImage.getClimateIconName(climateId))
     }
     func setStyle(monthlyLines: Int, hasNotch: Bool){
         self.contentView.alpha = 1
