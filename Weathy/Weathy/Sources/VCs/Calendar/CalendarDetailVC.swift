@@ -210,7 +210,7 @@ class CalendarDetailVC: UIViewController{
         climateLabel.text = description
         temperatureHighLabel.text = "\(maxTemp!)°"
         temperatureLowLabel.text = "\(minTemp!)°"
-        climateImageView.image = UIImage(named: ClimateImage.getClimateAssetName(climateId ?? 0))
+        climateImageView.image = UIImage(named: ClimateImage.getClimateIconName(climateId ?? 0))
         emojiImageView.image = UIImage(named: Emoji.getEmojiImageAsset(stampId: emojiId ?? 0))
         emojiLabel.text = Emoji.getEmojiText(stampId: emojiId ?? 0)
         emojiLabel.textColor = Emoji.getEmojiTextColor(stampId: emojiId ?? 0)
