@@ -42,10 +42,11 @@ class InfiniteMonthlyCVC: UICollectionViewCell {
     }
     override func prepareForReuse() {
         super.prepareForReuse()
-        monthlyCalendarCV.isPrefetchingEnabled = true
-        selectedDateDidChange(selectedDate)
+//        monthlyCalendarCV.isPrefetchingEnabled = true
         monthlyWeathyList = []
-        callMonthlyWeathy()
+        monthlyCalendarCV.reloadData()
+        selectedDateDidChange(selectedDate)
+//        callMonthlyWeathy()
         
     }
     

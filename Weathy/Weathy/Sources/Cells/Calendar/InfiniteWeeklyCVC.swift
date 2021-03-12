@@ -34,6 +34,8 @@ class InfiniteWeeklyCVC: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        weeklyWeathyList = []
+        weeklyCalendarCV.reloadData()
     }
     
     //MARK: - Network

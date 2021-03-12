@@ -31,6 +31,7 @@ class WeeklyCalendarCVC: UICollectionViewCell {
     override func prepareForReuse() {
         isSelected = false
         setStyle()
+        emotionView.alpha = 0
     }
     func setStyle(){
         dayLabel.font = UIFont(name: "Roboto-Medium", size: 14)
