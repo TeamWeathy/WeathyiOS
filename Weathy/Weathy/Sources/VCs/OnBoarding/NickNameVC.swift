@@ -145,7 +145,7 @@ class NickNameVC: UIViewController {
     
     @IBAction func touchUpStartButton(_ sender: Any) {
         guard let nickName = nicknameTextField.text else { return }
-        let uuid = UIDevice.current.identifierForVendor!.uuidString
+        let uuid = UUID().uuidString
 
         createUser(uuid: uuid, nickName: nickName)
     }
