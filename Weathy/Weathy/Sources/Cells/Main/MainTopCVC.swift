@@ -95,7 +95,7 @@ class MainTopCVC: UICollectionViewCell {
             weathyDateLabel.text = "\(year)년 \(month)월 \(day)일"
         }
         
-        weathyClimateImage.image = UIImage(named: ClimateImage.getClimateAssetName(data.weathy.hourlyWeather.climate.iconId))
+        weathyClimateImage.image = UIImage(named: ClimateImage.getClimateIconName(data.weathy.hourlyWeather.climate.iconId))
         if let climateDesc = data.weathy.hourlyWeather.climate.description {
             weathyClimateLabel.text = "\(climateDesc)"
         }

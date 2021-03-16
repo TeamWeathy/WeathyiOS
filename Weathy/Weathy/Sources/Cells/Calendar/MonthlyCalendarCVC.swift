@@ -50,12 +50,13 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     }
     override func prepareForReuse() {
         super.prepareForReuse()
+        print("prepareForReuse")
         isToday = false
         climateIconImageView.image = nil
     }
     func setClimate(_ climateId: Int){
         climateIconImageView.alpha = 1
-        climateIconImageView.image = UIImage(named: ClimateImage.getClimateAssetName(climateId))
+        climateIconImageView.image = UIImage(named: ClimateImage.getClimateIconName(climateId))
     }
     func setStyle(monthlyLines: Int, hasNotch: Bool){
         self.contentView.alpha = 1

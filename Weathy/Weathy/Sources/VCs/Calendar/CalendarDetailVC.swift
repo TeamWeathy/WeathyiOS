@@ -13,7 +13,7 @@ class CalendarDetailVC: UIViewController{
     let hasNotch = UIScreen.main.hasNotch
     let screen = UIScreen.main.bounds
     let koreanDateFormatter = DateFormatter()
-    let noDataDate = "2020-12-13"
+    let weathyStartDate = "2021-01-12"
     var weeklyHeight = UIScreen.main.bounds.width/375*254 + 30
     var photoWidth: CGFloat = UIScreen.main.bounds.width/375*285
     var commentTop: CGFloat = 19.8
@@ -210,7 +210,7 @@ class CalendarDetailVC: UIViewController{
         climateLabel.text = description
         temperatureHighLabel.text = "\(maxTemp!)°"
         temperatureLowLabel.text = "\(minTemp!)°"
-        climateImageView.image = UIImage(named: ClimateImage.getClimateAssetName(climateId ?? 0))
+        climateImageView.image = UIImage(named: ClimateImage.getClimateIconName(climateId ?? 0))
         emojiImageView.image = UIImage(named: Emoji.getEmojiImageAsset(stampId: emojiId ?? 0))
         emojiLabel.text = Emoji.getEmojiText(stampId: emojiId ?? 0)
         emojiLabel.textColor = Emoji.getEmojiTextColor(stampId: emojiId ?? 0)
@@ -374,7 +374,7 @@ class CalendarDetailVC: UIViewController{
                 case .pathErr:
                     print("[Daily] pathErr - No content")
                     
-                    if self.selectedDate.compare(self.defaultDateFormatter.date(from: self.noDataDate)!) == .orderedAscending{
+                    if self.selectedDate.compare(self.defaultDateFormatter.date(from: self.weathyStartDate)!) == .orderedAscending{
                         self.setEmptyView(state: .beforeContent)
                     }
                     else{

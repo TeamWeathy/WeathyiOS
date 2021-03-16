@@ -30,13 +30,13 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>카메라 접근 권한이 필요합니다.</string>
+	<string>날씨 기록에 사진 등록을 위해 권한이 필요합니다.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>위치기반 날씨정보 제공을 위해 GPS 정보가 필요합니다.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>위치기반 날씨정보 제공을 위해 GPS 정보가 필요합니다.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>포토 라이브러리 접근 권한이 필요합니다.</string>
+	<string>날씨 기록에 사진 등록을 위해 권한이 필요합니다.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AppleSDGothicNeoB.ttf</string>
