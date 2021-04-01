@@ -1,4 +1,6 @@
-![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://creativecommons.org/licenses/by/4.0/)  
+![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg) [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://creativecommons.org/licenses/by/4.0/)  
+<br>
+<a href= "https://apps.apple.com/us/app/id1549517979"><img src="https://user-images.githubusercontent.com/42545818/113259432-1407a980-9308-11eb-93c1-e35a3f5d25fd.png" width = "200"/></a>
 
 # ☁️ 나에게 돌아오는 맞춤 날씨 서비스, Weathy  ☁️
 
@@ -19,7 +21,7 @@
 - Xcode 12.3
 <br><br>
 
-### Library
+### 🖍 Library
 
 | 라이브러리(Library) | 목적(Purpose) | 버전(Version) |
 |:---|:----------|----|
