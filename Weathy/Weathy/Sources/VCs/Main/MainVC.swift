@@ -12,6 +12,12 @@ class MainVC: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var lastContentOffset: CGFloat = 0.0
+    lazy var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
+        
+        return refresh
+    }()
     
     // gps 버튼 활성화 여부
     var isOnGPS: Bool = false {
@@ -119,6 +125,12 @@ class MainVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(receiveSearchData), name: NSNotification.Name(rawValue: "search"), object: nil)
+        
+        mainScrollView.refreshControl = refreshControl
+    }
+        
+    override func viewDidAppear(_ animated: Bool) {
+        refreshControl.didMoveToSuperview()
     }
     
     override func viewSafeAreaInsetsDidChange() {
@@ -148,6 +160,7 @@ class MainVC: UIViewController {
         mainScrollView.isPagingEnabled = true
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
+        mainScrollView.delegate = self
         mainTopScrollView.showsVerticalScrollIndicator = false
         mainTopScrollView.delegate = self
         
@@ -753,6 +766,12 @@ class MainVC: UIViewController {
                 })
             }
         }
+    }
+    
+    @objc func pullToRefresh(_ sender: UIRefreshControl) {
+        checkLocationAndGetWeatherData()
+        
+        sender.endRefreshing()
     }
 }
 
