@@ -445,6 +445,7 @@ class CalendarDetailVC: UIViewController{
             print("selected!",selectedDate)
         }
         if todayWeathyFlag || recordViewFlag{
+            calendarVC.yearMonthTextView.text = selectedDate.currentYearMonth
             calendarVC.selectedDate = selectedDate
             print("selectedDate",selectedDate)
             calendarVC.picker.date = selectedDate
