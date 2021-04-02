@@ -12,6 +12,7 @@ class MainVC: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var lastContentOffset: CGFloat = 0.0
+    var refreshControl: UIRefreshControl?
     
     // gps 버튼 활성화 여부
     var isOnGPS: Bool = false {
@@ -109,6 +110,11 @@ class MainVC: UIViewController {
         
         blankDownImage()
         moveWeatherImage()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        mainScrollView.refreshControl = refreshControl
+        mainScrollView.addSubview(refreshControl ?? UIRefreshControl())
     }
     
     override func viewDidLoad() {
@@ -148,6 +154,7 @@ class MainVC: UIViewController {
         mainScrollView.isPagingEnabled = true
         mainScrollView.backgroundColor = .clear
         mainScrollView.showsVerticalScrollIndicator = false
+        mainScrollView.delegate = self
         mainTopScrollView.showsVerticalScrollIndicator = false
         mainTopScrollView.delegate = self
         
@@ -753,6 +760,12 @@ class MainVC: UIViewController {
                 })
             }
         }
+    }
+    
+    @objc func pullToRefresh(_ sender: UIRefreshControl) {
+        checkLocationAndGetWeatherData()
+        
+        sender.endRefreshing()
     }
 }
 
