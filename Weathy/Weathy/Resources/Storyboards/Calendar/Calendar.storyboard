@@ -484,14 +484,15 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarBtnArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Zop-PL-sAi">
-                                        <rect key="frame" x="236.33333333333334" y="33.666666666666671" width="11.333333333333343" height="6.6666666666666643"/>
+                                        <rect key="frame" x="234.66666666666666" y="33" width="11" height="6"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Zop-PL-sAi" secondAttribute="height" multiplier="10.5:6" id="xFW-hg-Ww3"/>
                                         </constraints>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="2021. 1" translatesAutoresizingMaskIntoConstraints="NO" id="MLH-qw-EFI" customClass="SpacedTextView" customModule="Weathy" customModuleProvider="target">
-                                        <rect key="frame" x="135.33333333333334" y="12" width="119.33333333333334" height="50"/>
+                                        <rect key="frame" x="137.66666666666666" y="12" width="115" height="48"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="115" id="S6d-60-41k"/>
                                             <constraint firstAttribute="width" secondItem="MLH-qw-EFI" secondAttribute="height" multiplier="115:48" id="bZX-nQ-PUJ"/>
                                         </constraints>
                                         <inset key="scrollIndicatorInsets" minX="8" minY="8" maxX="0.0" maxY="0.0"/>
@@ -516,7 +517,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uOT-xR-3sR">
-                                        <rect key="frame" x="35" y="62" width="320" height="109"/>
+                                        <rect key="frame" x="35" y="59.999999999999993" width="320" height="109.33333333333331"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="uOT-xR-3sR" secondAttribute="height" multiplier="308:105" id="n3d-MH-o8i"/>
@@ -632,7 +633,7 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bb2-V1-BIL">
-                                        <rect key="frame" x="35" y="97.666666666666657" width="320" height="300"/>
+                                        <rect key="frame" x="35" y="95.666666666666657" width="320" height="300"/>
                                         <color key="backgroundColor" red="0.95294117649999999" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="smh-DP-FEY"/>
@@ -793,7 +794,7 @@
                                         </cells>
                                     </collectionView>
                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jUc-Bh-1hY">
-                                        <rect key="frame" x="35" y="80" width="320" height="17.666666666666671"/>
+                                        <rect key="frame" x="35" y="78" width="320" height="17.666666666666671"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGD-Gk-BMk">
                                                 <rect key="frame" x="0.0" y="0.0" width="45.666666666666664" height="17.666666666666668"/>
@@ -866,7 +867,6 @@
                                     <constraint firstItem="jUc-Bh-1hY" firstAttribute="centerX" secondItem="j9k-NW-X9X" secondAttribute="centerX" id="ogb-TP-h6Y"/>
                                     <constraint firstAttribute="bottom" secondItem="9Mq-yL-8s0" secondAttribute="bottom" id="prY-LM-ZcZ"/>
                                     <constraint firstItem="GZs-Aw-Oxd" firstAttribute="top" secondItem="j9k-NW-X9X" secondAttribute="top" constant="9" id="t3g-Jq-5Br"/>
-                                    <constraint firstItem="MLH-qw-EFI" firstAttribute="width" secondItem="j9k-NW-X9X" secondAttribute="width" multiplier="115:375" id="w9p-bo-8Ho"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Inp-Yt-33o">
