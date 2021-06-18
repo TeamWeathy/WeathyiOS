@@ -631,8 +631,8 @@ extension ModifyWeathyTagVC: UICollectionViewDataSource {
                 }
                 
                 DispatchQueue.main.async{
-                    self.tagCollectionView.reloadData()
-                    self.tagTitleCollectionView.reloadData()
+                    self.tagCollectionView.reloadItems(at: [indexPath])
+                    self.tagTitleCollectionView.reloadItems(at: [indexPath])
                 }
                 
                 if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
