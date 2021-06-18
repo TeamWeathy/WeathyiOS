@@ -546,7 +546,7 @@ extension RecordTagVC: UICollectionViewDataSource {
             if indexPath.item == 0 {
 //                print("I'm chosen")
                 
-                if tagTitles[titleIndex].tagTab.count <= 50 {
+                if tagTitles[titleIndex].tagTab.count <= 100 {
                     guard let dvc = self.storyboard?.instantiateViewController(identifier: "RecordTagAddPopupVC") as? RecordTagAddPopupVC else {
                         return
                     }
