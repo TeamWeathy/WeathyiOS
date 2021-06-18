@@ -599,11 +599,16 @@ extension RecordTagVC: UICollectionViewDataSource {
                     
                 }
                 
-                DispatchQueue.main.async{
-                    self.tagCollectionView.reloadData()
-                    self.tagTitleCollectionView.reloadData()
+                if tagTitles[titleIndex].tagTab[indexPath.item].isSelected {
+                    setTagSelected(cell: collectionView.cellForItem(at: indexPath) as! RecordTagCVC)
+                } else {
+                    setTagUnselected(cell: collectionView.cellForItem(at: indexPath) as! RecordTagCVC)
                 }
                 
+                UIView.performWithoutAnimation {
+                    self.tagTitleCollectionView.reloadItems(at: [IndexPath(item: titleIndex, section: 0)])
+                }
+
                 if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
                     tagTitles[3].count >= 1 {
                     self.setNextBtnActivated()
@@ -658,10 +663,20 @@ extension RecordTagVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellWidth : CGFloat = collectionView.frame.width/4 - 6
-        let cellHeight : CGFloat = collectionView.frame.height
+        if collectionView == tagTitleCollectionView {
+            let cellWidth : CGFloat = collectionView.frame.width/4 - 6
+            let cellHeight : CGFloat = collectionView.frame.height
+            
+            return CGSize(width: cellWidth, height: cellHeight)
+        } else {
+            if let cell = collectionView.cellForItem(at: indexPath) {
+                return CGSize(width: cell.frame.width, height: cell.frame.height)
+            }
+            
+            return CGSize(width: 0, height: 0)
+        }
         
-        return CGSize(width: cellWidth, height: cellHeight)
+        
         
     }
     
