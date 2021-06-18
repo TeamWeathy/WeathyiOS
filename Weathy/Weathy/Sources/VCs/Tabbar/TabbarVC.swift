@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SystemConfiguration
 
 class TabbarVC: UIViewController {
     static let identifier = "TabbarVC"
@@ -37,6 +38,12 @@ class TabbarVC: UIViewController {
         }
         else{
             tabbarViewBottomConstraint.constant = 0
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !isInternetAvailable() {
+            self.showToast(message: "네트워크 연결을 확인해주세요!")
         }
     }
     
@@ -89,6 +96,29 @@ class TabbarVC: UIViewController {
         
     }
     
+    func isInternetAvailable() -> Bool {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
+        return (isReachable && !needsConnection)
+    }
+    
     // MARK: - IBActions
     
     /// Main 버튼
@@ -109,13 +139,19 @@ class TabbarVC: UIViewController {
             self.showToast(message: "웨디는 하루에 하나만 기록할 수 있어요.")
         }
         else{
-            let nextStoryboard = UIStoryboard(name: "RecordStart", bundle: nil)
-            guard let vc = nextStoryboard.instantiateViewController(withIdentifier: RecordNVC.identifier) as? RecordNVC else { return }
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
             
-            vc.origin = .plusRecord
-            vc.modalPresentationStyle = .fullScreen
-            
-            present(vc, animated: true, completion: nil)
+            if let _ = appDelegate.overviewData {
+                let nextStoryboard = UIStoryboard(name: "RecordStart", bundle: nil)
+                guard let vc = nextStoryboard.instantiateViewController(withIdentifier: RecordNVC.identifier) as? RecordNVC else { return }
+                
+                vc.origin = .plusRecord
+                vc.modalPresentationStyle = .fullScreen
+                
+                present(vc, animated: true, completion: nil)
+            } else {
+                self.showToast(message: "네트워크 연결을 확인해주세요!")
+            }
         }
     }
 
