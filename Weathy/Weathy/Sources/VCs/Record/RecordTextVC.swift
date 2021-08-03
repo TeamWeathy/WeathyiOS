@@ -344,10 +344,11 @@ extension RecordTextVC {
                 if let loadData = data as? ModifyWeathyData {
                     print(loadData)
                 }
-                self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
-                }
+//                self.presentingViewController?.presentingViewController?.dismiss(animated: true) {
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RecordUpdated"), object: 0)
+//                }
 //                self.showToast(message: "웨디에 내용이 추가되었어요!")
+                self.exitToCalendar()
 
             case .requestErr(let msg):
                 print("requestErr")

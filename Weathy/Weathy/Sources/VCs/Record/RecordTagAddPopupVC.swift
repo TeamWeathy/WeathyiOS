@@ -87,7 +87,7 @@ class RecordTagAddPopupVC: UIViewController {
     }
     
     @IBAction func addBtnTap(_ sender: Any) {
-        if tagCount < 50{
+        if tagCount < 100{
             self.callAddTagService()
         }
         else {
@@ -107,7 +107,7 @@ extension RecordTagAddPopupVC {
         titleLabel.font = UIFont.SDGothicSemiBold18
         titleLabel.textColor = UIColor.mintIcon
         titleLabel.lineSetting(kernValue: -0.9)
-        titleLabel.text = "\(tagCategory) 추가하기 (\(tagCount)/50)"
+        titleLabel.text = "\(tagCategory) 추가하기 (\(tagCount)/100)"
         
         subTitleLabel.font = UIFont.SDGothicRegular16
         subTitleLabel.textColor = UIColor.subGrey6
@@ -188,7 +188,7 @@ extension RecordTagAddPopupVC {
                     
                     /// 태그 개수 하나 추가, 타이틀에 반영
                     self.tagCount += 1
-                    self.titleLabel.text = "\(self.tagCategory) 추가하기 (\(self.tagCount)/50)"
+                    self.titleLabel.text = "\(self.tagCategory) 추가하기 (\(self.tagCount)/100)"
                 }
                 
             case .requestErr(let msg):
