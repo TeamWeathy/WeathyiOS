@@ -360,10 +360,10 @@ extension RecordTagDeleteVC: UICollectionViewDataSource {
                 self.tagCount -= 1
             }
             
-            
-            DispatchQueue.main.async{
-                self.tagCollectionView.reloadData()
-                self.tagTitleCollectionView.reloadData()
+            if tagTitles[titleIndex].tagTab[indexPath.item].isSelected {
+                setTagSelected(cell: collectionView.cellForItem(at: indexPath) as! RecordTagCVC)
+            } else {
+                setTagUnselected(cell: collectionView.cellForItem(at: indexPath) as! RecordTagCVC)
             }
             
             if tagTitles[0].count >= 1 || tagTitles[1].count >= 1 || tagTitles[2].count >= 1 ||
