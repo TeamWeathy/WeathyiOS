@@ -8,7 +8,7 @@
 import Foundation
 
 struct APIConstants {
-    static let baseURL = "http://15.164.146.132:3001"
+    static let baseURL = "http://13.125.46.238:8080"
     // 기록뷰 - 태그, 태그 추가, 태그 삭제x
     static let clothesTagURL = baseURL + "/users/"
     
