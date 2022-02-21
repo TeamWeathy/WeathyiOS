@@ -50,7 +50,6 @@ class MonthlyCalendarCVC: UICollectionViewCell {
     }
     override func prepareForReuse() {
         super.prepareForReuse()
-        print("prepareForReuse")
         isToday = false
         climateIconImageView.image = nil
     }
